@@ -3,3 +3,4 @@ setInterval(function(){
 	var today = new Date();
 	document.getElementsByTagName('div').item(0).innerHTML = "Under Construction " + (goal - today);
 },10);
+console.log('もうちょっとまってね！');
