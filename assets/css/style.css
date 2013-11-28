@@ -1,6 +1,77 @@
-body {
-	margin: 8em;
+html, body {
+	margin: 0;
+	padding: 0;
 }
-div {
-	padding: 1em;
+
+header {
+	margin: 0;
+	padding: 1rem;
+	background-color: #fcc;
+}
+
+header + nav {
+	margin: 0;
+	padding: 0 3rem;
+	background-color: rgba(0,0,0,0.3);
+}
+
+section {
+	padding: 6rem 0;
+	margin: 6rem auto;
+	width: 360px;
+	text-align: center;
+	background-color: #ddd;
+}
+
+section form {
+	padding: 3rem;
+}
+
+form input[type] {
+	display: inline-block;
+	width: 2rem;
+	line-height: 3rem;
+	font-size: 3rem;
+	padding: 0 0rem;
+	margin: 0 0.4rem;
+	border: solid 1px #00f;
+}
+
+form input:invalid {
+	border: solid 1px #f00;
+}
+
+form button {
+	display: block;
+}
+
+ol {
+	list-style-type: none;
+	display: block;
+	margin: 0;
+	padding: 0;
+	font-size: 0;
+}
+
+ol li {
+	display: inline;
+	margin: 0;
+	padding: 0;
+	font-size: 1rem;
+}
+
+ol li:nth-child(3n):after {
+	content: "\A";
+	font-size: 0;
+	white-space: pre;
+}
+
+ol li button {
+	display: inline-block;
+	font-size: 3rem;
+	line-height: 3rem;
+	width: 1em;
+	height: 1em;
+	padding: 0;
+	margin: 0;
 }
