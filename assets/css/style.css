@@ -27,13 +27,58 @@ header {
 	border-radius: 6px;
 	box-shadow: inset hsla(0,0%,0%,1) 0  2px 1px 1px,
 	inset hsla(0,0%,0%,.9) 0  4px 10px 0px;
+	z-index: 1;
 }
 
-header output {
+header section {
 	display: block;
+	position: relative;
+	height: 0;
+	overflow: hidden;
+	padding: 0;
+	width: 310px;
+	top: 3px;
+	margin: auto;
+	z-index: 2;
+	box-shadow: hsla(0,0%, 0%,.01) 0 1px 0px 0px,
+	hsla(0,0%, 0%,.01) 0 2px 0px 0px,
+	hsla(0,0%, 0%,.01) 0 3px 0px 0px,
+	hsla(0,0%, 0%,.01) 0 4px 0px 0px,
+	hsla(0,0%, 0%,.01) 0 5px 0px 0px,
+	hsla(0,0%, 0%,.01) 0 6px 0px 0px,
+	hsla(0,0%, 0%,.01) 0 7px 0px 0px;
+	transition: height 6.6s linear 0.8s, box-shadow 0.6s linear 7.2s;
 }
 
-section {
+header section div{
+	display: block;
+	position: relative;
+	background-color: #fff;
+	background-image: -webkit-repeating-linear-gradient(top, hsla(0,0%,100%,0) 0%, hsla(0,0%,100%,0)   6%, hsla(0,0%,100%, .1) 100%);
+	height: 140px;
+	padding: 10px 20px;
+	width: 260px;
+	top: 0;
+	margin: auto;
+	z-index: 2;
+	box-shadow: hsla(0,0%, 0%,.15) 0 3px 4px 3px,
+	inset hsla(0,0%, 0%,.15) 0 60px 60px -60px,
+	inset hsla(0,0%, 0%,.15) 0 -60px 60px -60px;
+	border-radius: 50px 50px / 1000px 1000px;
+}
+
+header section div output {
+	font-family: 'Nixie One';
+	position: absolute;
+	top: -140px;
+	width: 260px;
+	margin: 0;
+	padding: 0;
+	transition: top 6.4s linear 0.8s;
+}
+
+header + section {
+	z-index: 1;
 	padding: 1rem 0;
 	margin: 1rem auto;
 	width: 360px;

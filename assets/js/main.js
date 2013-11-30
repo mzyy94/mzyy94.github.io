@@ -69,7 +69,7 @@ $('input').change(function(){
 	}
 });
 
-$('body').on("keydown", function(k){
+$('body').on("keypress", function(k){
 	var index = parseInt($('input.active')[0].id.slice(3));
 	var c1 = index > 1 ? function(){$('input')[index-2].focus()} : null;
 	var c2 = index < 4 ? function(){$('input')[index].focus()} : function(){setTimeout(function(){$('form').submit();},1)};
@@ -88,12 +88,10 @@ $('form').submit(function(){
 	});
 
 	if(parseInt(value) == 0511){
-		$('output').text(''); // comming soon.
-		console.log('complete');
 		$('input').addClass('active');
-		alert('Tweet: @mzyy94 I want a cookie ;( ' + (1 - new Date()));
-		$('input').val('').removeClass('active').removeClass('hasValue');
-		$('input').first().focus();
+		var i = 0;
+		$('header section').css('height','165px').css('box-shadow','none');
+		$('header section div output').css('top', '0');
 		return false;
 	} else {
 		clearInput();
