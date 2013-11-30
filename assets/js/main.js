@@ -1,3 +1,4 @@
+
 $(function(){
 
 function validateNum(key, callback1, callback2, callback3){
@@ -24,7 +25,7 @@ function validateNum(key, callback1, callback2, callback3){
 		case 57: // 9
 			if(!key.altKey && !key.shiftKey && !key.ctrlKey){
 				var val = code - 48;
-				$('input.active').addClass('hasValue');
+				$('input.active').val(val).addClass('hasValue');
 				setTimeout(function(){
 					callback2();
 					$('.keypad[value="' + val + '"]').addClass('active');
@@ -68,8 +69,8 @@ $('input').change(function(){
 	}
 });
 
-$('input').on("keydown", function(k){
-	var index = parseInt(this.id.slice(3));
+$('body').on("keydown", function(k){
+	var index = parseInt($('input.active')[0].id.slice(3));
 	var c1 = index > 1 ? function(){$('input')[index-2].focus()} : null;
 	var c2 = index < 4 ? function(){$('input')[index].focus()} : function(){setTimeout(function(){$('form').submit();},1)};
 	validateNum(k, c1, c2,function(){k.preventDefault();});
@@ -86,7 +87,7 @@ $('form').submit(function(){
 		value += $(this).val();
 	});
 
-	if(parseInt(value) == 1235){
+	if(parseInt(value) == 0511){
 		$('output').text(''); // comming soon.
 		console.log('complete');
 		$('input').addClass('active');
