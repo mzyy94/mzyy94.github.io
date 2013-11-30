@@ -9,22 +9,20 @@
 		<link rel="canonical" href="http://mzyy94.com" />
 		<link href="/favicon.png" type="image/png" rel="icon" />
 		<link href="/atom.xml" rel="alternate" title="mzyy94.com" type="application/atom+xml" />
+		<link href="http://fonts.googleapis.com/css?family=Revalia:400" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" type="text/css" href="assets/css/style.css" />
 	</head>
 	<body>
-		<header>
-			<h1>mzyy94.com</h1>
+		<header>	
+			<output></output>
 		</header>
-		<nav>
-			<a href="/">top</a>
-		</nav>
 		<section>
 			<form action="#" autocomplete="off">
-				<input type="tel" id="key1" placeholder="-" min="0" max="9" pattern="\d" maxlength="1" autofocus/>
+				<input type="tel" id="key1" placeholder="-" min="0" max="9" pattern="\d" maxlength="1" autofocus class="active"/>
 				<input type="tel" id="key2" placeholder="-" min="0" max="9" pattern="\d" maxlength="1"/>
 				<input type="tel" id="key3" placeholder="-" min="0" max="9" pattern="\d" maxlength="1"/>
 				<input type="tel" id="key4" placeholder="-" min="0" max="9" pattern="\d" maxlength="1"/>
-				<button type="submit">submit</button>
+				<input type="submit" />
 			</form>	
 			<ol>
 				<li><button class="keypad" value="1">1</button></li>
@@ -36,7 +34,9 @@
 				<li><button class="keypad" value="7">7</button></li>
 				<li><button class="keypad" value="8">8</button></li>
 				<li><button class="keypad" value="9">9</button></li>
+				<li><button class="keypad" value="*">*</button></li>
 				<li><button class="keypad" value="0">0</button></li>
+				<li><button class="keypad" value="C">C</button></li>
 			</ol>
 		</section>
 		<footer>
@@ -44,6 +44,7 @@
 				mzyy94
 			</address>
 		</footer>
+		<script type="text/javascript" src="assets/js/jquery-2.0.3.min.js"></script>
 		<script type="text/javascript" src="assets/js/main.js"></script>
 	</body>
 </html>
