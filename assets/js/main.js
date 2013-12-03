@@ -1,6 +1,8 @@
 
 $(function(){
 
+var limit = 3;
+
 function validateNum(key, callback1, callback2, callback3){
 	var code = key.keyCode;
 	switch(code){
@@ -89,7 +91,12 @@ $('form').submit(function(){
 
 	if(parseInt(value) == 0511){
 		$('input').addClass('active');
-		var i = 0;
+		$('header section').css('height','165px').css('box-shadow','none');
+		$('header section div output').css('top', '0');
+		return false;
+	} else if(--limit < 0){
+		$('input').addClass('invalid').addClass('hasValue');
+		$('output').html('<h2>Oh sorry...</h2><p>Your answers weren\'t correct.</p><p>(๑´ڡ`๑)</p>');
 		$('header section').css('height','165px').css('box-shadow','none');
 		$('header section div output').css('top', '0');
 		return false;
