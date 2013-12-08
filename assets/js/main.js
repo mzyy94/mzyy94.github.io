@@ -96,7 +96,7 @@ $('form').submit(function(){
 		return false;
 	} else if(--limit < 0){
 		$('input').addClass('invalid').addClass('hasValue');
-		$('output').html('<h2>Oh sorry...</h2><p>Your answers weren\'t correct.</p><p><a href="/blog/">My Blog</a></p><p>(๑´ڡ`๑)</p>');
+		$('output').html('<h2>Oh sorry...</h2><p>Your answers weren\'t correct.</p><p><a href="/blog/">My Blog</a> (๑´ڡ`๑)</p>');
 		$('header section').css('height','165px').css('box-shadow','none');
 		$('header section div output').css('top', '0');
 		return false;
