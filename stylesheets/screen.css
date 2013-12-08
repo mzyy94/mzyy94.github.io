@@ -192,3 +192,7 @@ a.btn[title*="Post:"] span {
 body > footer {
 	text-align: center;
 }
+
+body > footer span {
+	white-space: nowrap;
+}
