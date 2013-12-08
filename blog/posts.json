@@ -1,0 +1,13 @@
+{
+	"title" : "-blog: mzyy94: command not found",
+	"url"   : "http://mzyy94.com", 
+	"author": "mzyy94",
+    
+	"posts" : [ 
+		{
+			"date": "2013-12-07 18:22:11 +0900",
+			"title": "blogを建ててみた",
+			"url": "/blog/2013/12/07/create-new-blog/"
+		}
+	]
+}
