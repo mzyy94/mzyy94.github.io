@@ -66,6 +66,8 @@
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="/stylesheets/prettyPhoto.css" rel="stylesheet">
+<script src="/javascripts/jquery.prettyPhoto.js"></script>
 
   
   <script type="text/javascript">
@@ -83,14 +85,21 @@
 
 </head>
 
-<body  class="container">
+<body  class="">
+  <div class="container">
   <div class="content">
   <header class="row">
     <nav id="topmenu" class="col-sm-12" role="navigation"><ul class="dropdown clearfix boxed boxed-blue">
     <li class="menu-level-0"><a href="/">Home</a></li>
   <li class="menu-level-0"><a href="/blog/">Blog</a></li>
   <li class="menu-level-0"><a href="/service/">Service</a></li>
-  <li class="menu-level-0"><a href="/about/">About</a></li>
+  <li class="menu-level-0">
+  <a href="/about/">About</a>
+  <ul class="submenu-1">
+	  <li class="menu-level-1"><a href="/about/">About me</a></li>
+	  <li class="menu-level-1"><a href="/about/license.html">License</a></li>
+  </ul>
+  </li>
 
   <li class="menu-level-0">
     <a>Subscribe</a>
@@ -129,7 +138,7 @@
     
   </header>
   
-  <div class="entry-content">
+  <div class="page-content">
   <div id="blog-archives" class="tag">
 
 
@@ -209,7 +218,7 @@
 						return [ postDates.indexOf(string) != -1 ]
 					},
 					dateFormat: 'yy/mm/dd',
-					minDate: new Date(postDates[0]),
+					minDate: new Date(postDates[postDates.length - 1]),
 					maxDate: today,
 					maxPicks: 1,
 					altField: id,
@@ -241,6 +250,10 @@
 <section class="widget-container widget-recently boxed">
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/12/10/timemachine-with-nas4free/">NAS4FreeでTime Machineの設定するメモ</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2013/12/07/create-new-blog/">blogを建ててみた</a>
@@ -339,12 +352,13 @@
 
   </div>
   <footer class="boxed-yellow" role="contentinfo"><p>
-  Copyright &copy; 2013 - mzyy94 - 
+  Copyright &copy; 2013 - mzyy94 -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> -
   <span class="credit">Designed with <a href="http://pixelkit.com/kits/flat-ui-kit">Flat UI Kit | Modern Touch</a></span> -
   <span>Licensed under a <a rel="license" href="http://opensource.org/licenses/mit-license.html">MIT License</a> and <a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a><span>
 </p>
 
 </footer>
+  </div>
 </body>
 </html>

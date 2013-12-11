@@ -5,6 +5,12 @@
     
 	"posts" : [ 
 		{
+			"date": "2013-12-10 12:58:47 +0900",
+			"title": "NAS4FreeでTime Machineの設定するメモ",
+			"url": "/blog/2013/12/10/timemachine-with-nas4free/"
+		},
+	
+		{
 			"date": "2013-12-07 18:22:11 +0900",
 			"title": "blogを建ててみた",
 			"url": "/blog/2013/12/07/create-new-blog/"

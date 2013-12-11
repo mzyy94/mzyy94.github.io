@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>-blog: mzyy94: command not found</title>
+  <title>NAS4FreeでTime Machineの設定するメモ - -blog: mzyy94: command not found</title>
   <meta name="author" content="mzyy94">
 
   
@@ -20,7 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://mzyy94.com/blog">
+  <link rel="canonical" href="http://mzyy94.com/blog/2013/12/10/timemachine-with-nas4free">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/blog/atom.xml" rel="alternate" title="-blog: mzyy94: command not found" type="application/atom+xml">
@@ -131,14 +131,11 @@
 </header>
     <div class="row">
       <main class="col-sm-8">
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title boxed-green"><a href="/blog/2013/12/10/timemachine-with-nas4free/">NAS4FreeでTime Machineの設定するメモ</a></h1>
+      <h1 class="entry-title boxed-green">NAS4FreeでTime Machineの設定するメモ</h1>
     
     
       <p class="meta">
@@ -175,8 +172,8 @@
 
 
         
-		<i class="glyphicon glyphicon-comment"></i><a href="/blog/2013/12/10/timemachine-with-nas4free/#disqus_thread"
-             data-disqus-identifier="http://mzyy94.com/blog/2013/12/10/timemachine-with-nas4free/">Comments</a>
+		<i class="glyphicon glyphicon-comment"></i><a href="#disqus_thread"
+             data-disqus-identifier="http://mzyy94.com">Comments</a>
         
       </p>
     
@@ -186,7 +183,7 @@
 <img src="/blog/resources/images/2013/12/10/timemachine-with-nas4free.png" alt="article image" />
 
 
-  <div class="entry-content"><p>Mavericksの登場で手元のMacBook Airをクリーンインストールしました。
+<div class="entry-content"><p>Mavericksの登場で手元のMacBook Airをクリーンインストールしました。
 その際、バックアップから復元するような手段は取らず、必要なデータのみを移して環境を再構築しました。
 というのも、いままではTime Machineでバックアップを取っていなかったがために復元する手段がなかったのです。</p>
 
@@ -200,27 +197,181 @@ Time Machineのバックアップ用ネットワークストレージとして�
 主な機能としてのTime MachineのバックアップとIEEE802.11ac対応無線LANルータの２つを備えた2TBのもので29,800円するという。
 もっと多機能で安価なものを自分で構成したいという欲が湧いてきました。</p>
 
+<!-- more -->
+
+
+<p>前置きが長くなりましたが、ここからが本題です。
+NASを建ててTime Machineのバックアップ先にするというお仕事になります。</p>
+
+<p>まず、NASを立てるところから始めます。既成品のNASはいじりがいがいがないので却下しました。
+<strong>たまたま</strong>自宅にAcer Aspire H340なるサーバー用のマシンが転がっていたのでこれを流用します。
+ストレージには<a href="http://www.amazon.co.jp/gp/product/B009QWUF6M/ref=as_li_qf_sp_asin_tl?ie=UTF8&amp;camp=247&amp;creative=1211&amp;creativeASIN=B009QWUF6M&amp;linkCode=as2&amp;tag=mzyy940f-22">WD Green 3.5inch 2.0TB</a>を利用します。</p>
+
+<p>ハードウェアが準備出来たら次はソフトウェアです。NAS向けのOSはいくつか存在しています。</p>
+
+<ul>
+<li><a href="http://freenas.org/">FreeNAS</a></li>
+<li><a href="http://www.nas4free.org/">NAS4Free</a></li>
+<li><a href="http://openmediavault.org/">OpenMediaVault</a></li>
+<li><a href="http://www.openfiler.com/">Openfiler</a></li>
+<li><a href="http://cryptonas.org/">CryptoNAS</a></li>
+</ul>
+
+
+<p>どれも得意な機能を持っており、その特徴と利用したい機能が一致したものを利用すればいいのですが、今回用意したH340のマシンは256MBのオンボードフラッシュストレージを搭載しているので、その256MBに収まるものに限定することにしました。
+今回リストアップしたなかでは、NAS4Freeが機能的にもよく、256MBにも収まるものでしたのでこれを選択しました。</p>
+
+<h2>NAS4Freeのインストール</h2>
+
+<p>ダウンロードしたx8664のイメージをCDに焼き、ブートして起動してEmbeddedインストールするだけです。
+このEmbeddedインストールではイメージファイルを書き込むもので、256MBに収まる用にできています。
+FreeNASも同じくEmbededインストールをサポートしていますが、2GBの容量が必要とのことですので断念しました。</p>
+
+<h2>起動</h2>
+
+<p>ネットワークの設定をして起動し、<a href="http://nas4free.local">nas4free.local</a>にアクセスします。</p>
+
+<h2>設定</h2>
+
+<h3>ディスクの設定</h3>
+
+<p>NAS4Freeが起動したら</p>
+
+<ol>
+<li>Disk->Managementでディクスをオンラインにし、</li>
+<li>Disk->Formatでフォーマットした後に、</li>
+<li>Disk->Mount pointでマウントします。</li>
+</ol>
+
+
+<p>フォーマット形式はUFSにしました。
+以前、FreeNAS用にZFSで作った際にpoolを破壊してしまってデータが吹っ飛んだ経験があるため、ZFSは避けましたが、
+メモリが潤沢に搭載されているシステムであればraidzを利用してもいいかと思います。</p>
+
+<div class="widget-container widget-gallery boxed">
+    <div class="inner">
+        <div id="myCarousel" class="carousel slide" data-interval="20000">
+        <!-- Carousel items -->
+        <div class="carousel-inner">
+        <div class="item active">
+            <a href="/blog/resources/images/2013/12/10/NAS4Free-1.png" class="prettyPhoto" data-rel="prettyPhoto" title="">
+            <img src="/blog/resources/images/2013/12/10/NAS4Free-1.png" alt="" />
+            </a>
+        </div>
+        <div class="item">
+            <a href="/blog/resources/images/2013/12/10/NAS4Free-2.png" class="prettyPhoto" data-rel="prettyPhoto" title="">
+            <img src="/blog/resources/images/2013/12/10/NAS4Free-2.png" alt="" />
+            </a>
+        </div>
+        <div class="item">
+            <a href="/blog/resources/images/2013/12/10/NAS4Free-3.png" class="prettyPhoto" data-rel="prettyPhoto" title="">
+            <img src="/blog/resources/images/2013/12/10/NAS4Free-3.png" alt="" />
+            </a>
+        </div>
+        </div>
+
+        <div class="carousel-controls">
+        <!-- Carousel indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+        <!-- Carousel nav -->
+        <a class="carousel-control left" href="#myCarousel" data-slide="prev"></a>
+        <a class="carousel-control right" href="#myCarousel" data-slide="next"></a>
+        </div>
+        </div>
+    </div>
 </div>
-  
-  
-    <footer>
-	<a rel="full-article" href="/blog/2013/12/10/timemachine-with-nas4free/" class="btn btn-icon-left"><span>More</span></a>
-    </footer>
-  
 
 
-    </article>
-  
-  
-    <article>
+<h3>AFPの設定</h3>
+
+<p>Services->AFPにて、</p>
+
+<ol>
+<li>SettingsタブをEnableにし、 Enable local user authentication. にチェックしてサービスを開始し、</li>
+<li>Shareタブで、</li>
+</ol>
+
+
+<hr />
+
+<ul>
+<li>Name: 適当な名前</li>
+<li>Comment: 適当なコメント</li>
+<li>Path: 先ほどマウントしたマウントポイント以下の任意のパス</li>
+<li>Share Character Set: UTF8</li>
+<li>Allow: timecapsule</li>
+<li>Read/Write Access: timecapsule</li>
+<li>Automatic disk discovery: Enable</li>
+<li>Automatic disk discovery mode: Time Machine</li>
+</ul>
+
+
+<hr />
+
+<p>と、設定します。ほかはデフォルトのままにしました。</p>
+
+<div class="widget-container widget-gallery boxed">
+    <div class="inner">
+        <div id="myCarousel1" class="carousel slide" data-interval="20000">
+        <!-- Carousel items -->
+        <div class="carousel-inner">
+        <div class="item active">
+            <a href="/blog/resources/images/2013/12/10/NAS4Free-4.png" class="prettyPhoto" data-rel="prettyPhoto" title="">
+            <img src="/blog/resources/images/2013/12/10/NAS4Free-4.png" alt="" />
+            </a>
+        </div>
+        <div class="item">
+            <a href="/blog/resources/images/2013/12/10/NAS4Free-5.png" class="prettyPhoto" data-rel="prettyPhoto" title="">
+            <img src="/blog/resources/images/2013/12/10/NAS4Free-5.png" alt="" />
+            </a>
+        </div>
+        <div class="item">
+            <a href="/blog/resources/images/2013/12/10/NAS4Free-6.png" class="prettyPhoto" data-rel="prettyPhoto" title="">
+            <img src="/blog/resources/images/2013/12/10/NAS4Free-6.png" alt="" />
+            </a>
+        </div>
+        </div>
+
+        <div class="carousel-controls">
+        <!-- Carousel indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel1" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel1" data-slide-to="1"></li>
+            <li data-target="#myCarousel1" data-slide-to="2"></li>
+        </ol>
+        <!-- Carousel nav -->
+        <a class="carousel-control left" href="#myCarousel1" data-slide="prev"></a>
+        <a class="carousel-control right" href="#myCarousel1" data-slide="next"></a>
+        </div>
+        </div>
+    </div>
+</div>
+
+
+<p>この設定で、同一ネットワークにつながったMacからTime Machineの設定を開くと以下のように、バックアップ先に設定できるようになっていると思います。</p>
+
+<figure>
+<img src="/blog/resources/images/2013/12/10/NAS4Free-7.png" alt="blog html sourcecode" />
+<figcaption class="boxed-green">Time Machineの設定画面</figcaption>
+</figure>
+
+
+<p>設定方法と、NASの紹介でした。</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title boxed-green"><a href="/blog/2013/12/07/create-new-blog/">blogを建ててみた</a></h1>
-    
-    
-      <p class="meta">
-        
+  
+
+<span class="byline author vcard"><i class="glyphicon glyphicon-user"></i><span class="fn">mzyy94</span></span>
+
+      
 
 
 
@@ -233,68 +384,64 @@ Time Machineのバックアップ用ネットワークストレージとして�
 
 
 
-<i class="glyphicon glyphicon-calendar"></i><time datetime="2013-12-07T18:22:11+09:00" pubdate data-updated="true">Dec 7<span>th</span>, 2013</time>
-        
+<i class="glyphicon glyphicon-calendar"></i><time datetime="2013-12-10T12:58:47+09:00" pubdate data-updated="true">Dec 10<span>th</span>, 2013</time>
+      
 
 <i class="glyphicon glyphicon-folder-close"></i><span class="categories">
   
-    <a class='category' href='/blog/categories/html/'>HTML</a>
+    <a class='category' href='/blog/categories/nas4free/'>NAS4Free</a>
   
 </span>
 
 
-        
+      
 
 <i class="glyphicon glyphicon-tags"></i><span class="tags">
   
-    <a class='tag' href='/blog/tags/css3/'>CSS3</a>, <a class='tag' href='/blog/tags/html5/'>HTML5</a>, <a class='tag' href='/blog/tags/gh-pages/'>gh-pages</a>
+    <a class='tag' href='/blog/tags/mac/'>Mac</a>, <a class='tag' href='/blog/tags/nas4free/'>NAS4Free</a>, <a class='tag' href='/blog/tags/timemachine/'>TimeMachine</a>
   
 </span>
 
 
-        
-		<i class="glyphicon glyphicon-comment"></i><a href="/blog/2013/12/07/create-new-blog/#disqus_thread"
-             data-disqus-identifier="http://mzyy94.com/blog/2013/12/07/create-new-blog/">Comments</a>
-        
-      </p>
+    </p>
     
-  </header>
+      <div class="widget-container widget-social">
+	<ul class="clearfix">
+  
 
+  <!--li class="social-twitter"><a href="https://twitter.com/intent/tweet?original_referer=http://mzyy94.com/blog/2013/12/10/timemachine-with-nas4free/&text=NAS4FreeでTime Machineの設定するメモ%20-%20-blog: mzyy94: command not found&tw_p=tweetbutton&url=http://mzyy94.com/blog/2013/12/10/timemachine-with-nas4free/&via=mzyy94"><i>Tweet</i></a></li-->
 
-<img src="/blog/resources/images/2013/12/07/create-new-blog.png" alt="article image" />
-
-
-  <div class="entry-content"><p>いままで情報を発信する場として、確かなものが周りになかったので新年に向けて新しくブログを作成しました。
-よろしくお願いします。</p>
-
-<p>今回はサイトのホスティングとして、Github pagesを用いることにしました。Github pagesでブログを制作する方法に関しては、
-<a href="http://morizyun.github.io/blog/octopress-gitpage-minimum-install-guide/" title="OctopressでGitHub無料ブログ構築。sourceをBitbucket管理。簡単ガイド！ - 酒と泪とRubyとRailsと">こちら</a>とかで確認して下さい。</p>
-
-<p>ブログのスタイリングのために、今回はBootstrapをベースに構成しました。BootstrapはOOCSSを謳っているものの、
-オブジェクト指向特有のごちゃごちゃしたプロパティ名が好みではなかったので利用を控えていました。
-ではなぜBootstrapを選んだかというと、単純にスタイルテンプレートがBootstrap向けだったためです。</p>
-
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://mzyy94.com/blog/2013/12/10/timemachine-with-nas4free/" data-via="mzyy94" data-counturl="http://mzyy94.com/blog/2013/12/10/timemachine-with-nas4free/" >Tweet</a>
+  
+  
+  <!-- li class="social-google"><a href="#"><i>Google</i></a></li -->
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+  <!-- li class="social-facebook"><a href="#"><i>Facebook</i></a></li -->
+  <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+  </ul>
 </div>
-  
-  
-    <footer>
-	<a rel="full-article" href="/blog/2013/12/07/create-new-blog/" class="btn btn-icon-left"><span>More</span></a>
-    </footer>
-  
-
-
-    </article>
-  
-  <div class="tf_pagination">
-  <div class="inner">
-    
-
-	
 
     
-  </div>
-  </div>
+    <div>
+      
+	  <a class="btn btn-icon-left btn-arrow-left" href="/blog/2013/12/07/create-new-blog/" title="Previous Post: blogを建ててみた"><span>blogを建ててみた</span></a>
+      
+      
+    </div>
+  </footer>
+</article>
+
+  <section class="comment">
+    <h1 class="boxed-red">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
 </main>
+
 <aside class="col-sm-4">
   
     <div class="widget-container widget-avatar boxed boxed-yellow">
@@ -394,7 +541,7 @@ Time Machineのバックアップ用ネットワークストレージとして�
 <section class="widget-container widget-github boxed">
   <h1>GitHub Repos</h1>
   <ul id="gh_repos">
-    <li class="loading">Status updating&#8230;</li>
+    <li class="loading">Status updating...</li>
   </ul>
   
   <script type="text/javascript">
@@ -425,6 +572,7 @@ Time Machineのバックアップ用ネットワークストレージとして�
   
 </aside>
 
+
     </div>
   
 
@@ -432,7 +580,10 @@ Time Machineのバックアップ用ネットワークストレージとして�
       var disqus_shortname = 'mzyy94blog';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://mzyy94.com/blog/2013/12/10/timemachine-with-nas4free/';
+        var disqus_url = 'http://mzyy94.com/blog/2013/12/10/timemachine-with-nas4free/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

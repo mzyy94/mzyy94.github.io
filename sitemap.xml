@@ -2,19 +2,27 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://mzyy94.com/blog/2013/12/07/create-new-blog/</loc>
-        <lastmod>2013-12-08T11:43:54+09:00</lastmod>
+        <lastmod>2013-12-11T11:42:24+09:00</lastmod>
+    </url>
+    <url>
+        <loc>http://mzyy94.com/blog/2013/12/10/timemachine-with-nas4free/</loc>
+        <lastmod>2013-12-11T11:42:24+09:00</lastmod>
     </url>
     <url>
         <loc>http://mzyy94.com/about/</loc>
-        <lastmod>2013-12-08T23:40:48+09:00</lastmod>
+        <lastmod>2013-12-11T11:42:24+09:00</lastmod>
+    </url>
+    <url>
+        <loc>http://mzyy94.com/about/license.html</loc>
+        <lastmod>2013-12-11T11:42:24+09:00</lastmod>
     </url>
     <url>
         <loc>http://mzyy94.com/blog/archives/</loc>
-        <lastmod>2013-12-08T22:02:09+09:00</lastmod>
+        <lastmod>2013-12-11T11:42:24+09:00</lastmod>
     </url>
     <url>
         <loc>http://mzyy94.com/blog/</loc>
-        <lastmod>2013-12-08T11:43:54+09:00</lastmod>
+        <lastmod>2013-12-11T11:42:24+09:00</lastmod>
     </url>
     <url>
         <loc>http://mzyy94.com/blog/posts.json</loc>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[-blog: mzyy94: command not found]]></title>
-  <link href="http://mzyy94.com/atom.xml" rel="self"/>
+  <title><![CDATA[Tag: NAS4Free | -blog: mzyy94: command not found]]></title>
+  <link href="http://mzyy94.com/blog/tags/nas4free/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
   <updated>2013-12-11T11:43:41+09:00</updated>
   <id>http://mzyy94.com/</id>
@@ -189,60 +189,12 @@ FreeNASも同じくEmbededインストールをサポートしていますが、
 
 <p>この設定で、同一ネットワークにつながったMacからTime Machineの設定を開くと以下のように、バックアップ先に設定できるようになっていると思います。</p>
 
-<figure>
+<p><figure>
 <img src="http://mzyy94.com/blog/resources/images/2013/12/10/NAS4Free-7.png" alt="blog html sourcecode" />
 <figcaption class="boxed-green">Time Machineの設定画面</figcaption>
-</figure>
-
+</figure></p>
 
 <p>設定方法と、NASの紹介でした。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[blogを建ててみた]]></title>
-    <link href="http://mzyy94.com/blog/2013/12/07/create-new-blog/"/>
-    <updated>2013-12-07T18:22:11+09:00</updated>
-    <id>http://mzyy94.com/blog/2013/12/07/create-new-blog</id>
-    <content type="html"><![CDATA[<p>いままで情報を発信する場として、確かなものが周りになかったので新年に向けて新しくブログを作成しました。
-よろしくお願いします。</p>
-
-<p>今回はサイトのホスティングとして、Github pagesを用いることにしました。Github pagesでブログを制作する方法に関しては、
-<a href="http://morizyun.github.io/blog/octopress-gitpage-minimum-install-guide/" title="OctopressでGitHub無料ブログ構築。sourceをBitbucket管理。簡単ガイド！ - 酒と泪とRubyとRailsと">こちら</a>とかで確認して下さい。</p>
-
-<p>ブログのスタイリングのために、今回はBootstrapをベースに構成しました。BootstrapはOOCSSを謳っているものの、
-オブジェクト指向特有のごちゃごちゃしたプロパティ名が好みではなかったので利用を控えていました。
-ではなぜBootstrapを選んだかというと、単純にスタイルテンプレートがBootstrap向けだったためです。</p>
-
-<!-- more -->
-
-
-<p>サイトデザインを模索しているときに出会ったとても気に入ったテーマがありました。<a href="http://pixelkit.com/" title="Premium Web UI Kits &amp; Design Resources | PixelKit">PixelKit</a>で公開されている<a href="http://pixelkit.com/kits/flat-ui-kit" title="Flat UI Kit | Modern Touch">Modern Touch</a>というものです。
-最近の流行であるフラットデザインをシンプルな配色で実装し、中途半端さが無く、とても清潔感あふれている点に惹かれました。
-しかしここで気になったのがデザインの配布形式です。</p>
-
-<p>過去から現在にかけてWeb UIデザインは各所で提案され公開されてきていますが、公開形式として大半を占めているのがPSD形式のものです。
-HTML5やCSS3が主要となりつつある現代WebデザインにおいてはUIに多くの画像を用いることはあまり好まれません。
-汎用性が高いという理由でしょうが、Web UIやUIデザインが提供されている形式はPSD形式ばかりです。
-そんなサイトがたくさんある中、少数派であるHTML5とCSS3を用いてサイトデザインを提供公開しているサイトにもれず、<a href="http://pixelkit.com/" title="Premium Web UI Kits &amp; Design Resources | PixelKit">Pixelkit</a>もHTML5/CSS3でデザインを提供していたのです。</p>
-
-<p>このサイトにあるデザインはすべてが無料で提供されているわけではありません。公開されているデザインをすべて利用するには年間Subscriptionが必要です。
-しかし、今回使用したテーマのModern touchを始め、いくつかのデザインは<a href="https://github.com/Pixelkit/PixelKit-Bootstrap-UI-Kits">GitHubにて公開</a>されています。ライセンスは<a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons — Attribution 3.0 Unported — CC BY 3.0">CC BY 3.0</a>と<a href="http://opensource.org/licenses/mit-license.html" title="The MIT License (MIT) | Open Source Initiative">MIT</a>です。</p>
-
-<p>「せっかくよいデザインを見つけたのだから使いたい」と思ったので使うことにしました。
-サイトデザインのために、好みでなかったTwitter Bootstrapを利用しはじめ、Octopressのテーマをいじっていきました。
-時々出力されたサイトのソースをみるとこんなかんじになっていました。</p>
-
-<figure>
-<img src="http://mzyy94.com/blog/resources/images/2013/12/07/blog-html-sourcecode.png" alt="blog html sourcecode" />
-<figcaption class="boxed-green">blogのソースコード</figcaption>
-</figure>
-
-
-<p>OOCSSの影響でclassが溢れて可読性が下がると思っていましたが、この程度の組み方であればあまり影響はないようです。</p>
-
-<p>GitHub pagesとOctopressによってブログを書き始めました。というお話でした。
-まだまだ未熟者ですが今後とも宜しくお願いします。</p>
 ]]></content>
   </entry>
   

@@ -2,6 +2,19 @@
 	padding: 0
 }
 
+article .page-content {
+	padding: 24px;
+	font-size: 1rem;
+}
+
+article .page-content h3 + h4 {
+	padding-left: 0.3rem;
+}
+
+article .page-content h3 + h4 ~ p {
+	padding-left: 1rem;
+}
+
 article .entry-content {
 	padding: 24px;
 	font-size: 1rem;
@@ -74,6 +87,15 @@ article i.glyphicon {
 	overflow: visible;
 }
 
+article .entry-content ul {
+	margin: 0 0 16px 32px;
+}
+
+article .entry-content ol {
+	margin: 0 0 16px 48px;
+	list-style: decimal-leading-zero;
+}
+
 article header + img[alt="article image"] {
 	width: 100%;
 }
@@ -81,6 +103,7 @@ article header + img[alt="article image"] {
 article footer {
 	display: block;
 	min-height: 45px;
+	overflow: hidden;
 }
 
 section.comment {
