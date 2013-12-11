@@ -3,6 +3,28 @@ $(function(){
 
 var limit = 3;
 
+function init404() {
+	var message = "    404 NOT FOUND    ";
+	$('input').addClass('invalid').addClass('hasValue').attr("disabled", "disabled");
+	var j = 0;
+	for(var i = 0, limit = message.length - 3; i < limit; i++){
+		setTimeout(function(){
+			$('input[type="tel"]').each(function(num){
+				$(this).val(message[j+num]);
+				console.log(j+num);
+			});
+			j++;
+		},i*500);
+	}
+	setTimeout(function(){
+		$('input').removeClass('invalid').removeClass('hasValue').removeAttr("disabled");
+		$('input').val('');
+	},i*500);
+
+}
+
+init404();
+
 function validateNum(key, callback1, callback2, callback3){
 	var code = key.keyCode;
 	switch(code){
