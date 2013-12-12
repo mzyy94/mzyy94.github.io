@@ -5,6 +5,12 @@
     
 	"posts" : [ 
 		{
+			"date": "2013-12-11 23:50:50 +0900",
+			"title": "まどマギコンサート名古屋行ってきた",
+			"url": "/blog/2013/12/11/madomagi-concert-nagoya/"
+		},
+	
+		{
 			"date": "2013-12-10 12:58:47 +0900",
 			"title": "NAS4FreeでTime Machineの設定するメモ",
 			"url": "/blog/2013/12/10/timemachine-with-nas4free/"

@@ -43,6 +43,34 @@ article .entry-content figure figcaption {
 	color: #fff;
 }
 
+article .entry-content blockquote {
+	position: relative;
+	margin: 10px 0 20px 0;
+	padding: 16px;
+}
+
+article .entry-content blockquote p {
+	font-size: 1rem;
+}
+
+article .entry-content blockquote:before, article .entry-content blockquote:after {
+	font-size: 4rem;
+	position: absolute;
+	color: #ddd;
+}
+
+article .entry-content blockquote:before {
+	content: "\201C";
+	top: -1rem;
+	left: 0;
+}
+
+article .entry-content blockquote:after {
+	content: "\201D";
+	bottom: -2rem;
+	right: 0;
+}
+
 main article {
 	margin: 0 0 40px 0;
 }
@@ -91,7 +119,7 @@ article .entry-content ul {
 	margin: 0 0 16px 32px;
 }
 
-article .entry-content ol {
+article .entry-content > ol {
 	margin: 0 0 16px 48px;
 	list-style: decimal-leading-zero;
 }
