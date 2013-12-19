@@ -5,6 +5,12 @@
     
 	"posts" : [ 
 		{
+			"date": "2013-12-18 12:48:12 +0900",
+			"title": "OS Xで再現されるBus error: 10の原因探ってみた",
+			"url": "/blog/2013/12/18/buserr-segfault-osx/"
+		},
+	
+		{
 			"date": "2013-12-11 23:50:50 +0900",
 			"title": "まどマギコンサート名古屋行ってきた",
 			"url": "/blog/2013/12/11/madomagi-concert-nagoya/"

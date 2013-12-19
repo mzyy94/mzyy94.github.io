@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: bus_error | mzyy94: command not found]]></title>
+  <link href="http://mzyy94.com/blog/tags/bus-error/atom.xml" rel="self"/>
+  <link href="http://mzyy94.com/"/>
+  <updated>2013-12-19T14:03:14+09:00</updated>
+  <id>http://mzyy94.com/</id>
+  <author>
+    <name><![CDATA[mzyy94]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[OS Xで再現されるBus error: 10の原因探ってみた]]></title>
+    <link href="http://mzyy94.com/blog/2013/12/18/buserr-segfault-osx/"/>
+    <updated>2013-12-18T12:48:12+09:00</updated>
+    <id>http://mzyy94.com/blog/2013/12/18/buserr-segfault-osx</id>
+    <content type="html"><![CDATA[<p>Cです。</p>
+
+<p>アプリケーションの例外でおこるSegmetion fault: 11 はよく目にするのですが、
+OS Xで時々現れるBus error: 10 が現れる条件が気になったのでごちゃごちゃいじって探してみました。</p>
+
+<p>こういう情報はどこかインターネットにあるのだと思ったのですが、
+<a href="http://togetter.com/li/253717">Segmentation FaultとBus Errorの違いとMac &ndash; Togetterまとめ</a>
+などには納得のいく答えがなかったのが今回探してみた経緯となります。</p>
+
+<p>結論からいうと、原因の特定はできませんでした。
+様子を伺うまでの手順など、やったことの記録になります。</p>
+
+<!-- more -->
+
+
+<p>早速ですが、Segmentation faultとBus errorがどういう基準で区別されているか、明確ではありません。
+たとえば、<code>char a[1]</code>としたときに<code>int i = 512341232; a[i] = '\0';</code>とするとSegmentation faultになったり、
+<code>int i = 512341285; a[i] = '\0';</code>とするとBus errorになったりします。
+さらに、この条件は起動時に割り当てられるメモリによって変わったりするので、原因を探るのはすこし大変です。</p>
+
+<p>しかし、記憶クラスを変えると出される例外がある程度固定されるようです。</p>
+
+<p>まず、以下のようなコードを書いて例外が発生した状態を調べました。</p>
+
+<script src="https://gist.github.com/mzyy94/8016375.js"></script>
+
+
+<p>結果は以下の通りとなりました。</p>
+
+<script src="https://gist.github.com/mzyy94/8017126.js"></script>
+
+
+<p>staticで宣言した変数に対してのアクセスでおこる例外はBus errorとなっています。</p>
+
+<p>そこで、次のようなコードを利用し、デバッガで探ってみました。</p>
+
+<script src="https://gist.github.com/mzyy94/8017103.js"></script>
+
+
+<p>OS X Mavericsなので、デバッガはgdbではなくlldbを用いました。
+0,1,2,3の引数を与えてデバッグした結果は以下の通りになりました。</p>
+
+<script src="https://gist.github.com/mzyy94/8017373.js"></script>
+
+
+<p>この結果から、引数をそれぞれ与えたときのエラーメッセージはどれもEXC_BAD_ACCESSで、
+このメッセージの中のエラーコードが1もしくは2ということで分かれています。例外は、2がSIGBUSで1がSIGSEGVであるようです。</p>
+
+<p>disassembleした結果が面白いことになっています。
+処理が違うのがわかりますが、ここでアセンブラをみてみます。</p>
+
+<script src="https://gist.github.com/mzyy94/8017712.js"></script>
+
+
+<script src="https://gist.github.com/mzyy94/8017515.js"></script>
+
+
+<p>アセンブラのコードでは、switch文中のcaseにあたるの部分が、上から順に</p>
+
+<table>
+<thead>
+<tr>
+<th>Cソース </th>
+<th>アセンブラ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>case &lsquo;0&rsquo;</td>
+<td>LBB0_5:</td>
+</tr>
+<tr>
+<td>case &lsquo;1&rsquo;</td>
+<td>LBB0_6:</td>
+</tr>
+<tr>
+<td>case &lsquo;2&rsquo;</td>
+<td>LBB0_7:</td>
+</tr>
+<tr>
+<td>default </td>
+<td>LBB0_8:</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>と、対応しています。</p>
+
+<p>このアセンブラを追いかけてみていると、値は次のように対応付けしているようです。</p>
+
+<table>
+<thead>
+<tr>
+<th>Cソース </th>
+<th>アセンブラ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>c[]     </td>
+<td> -17(%rbp)</td>
+</tr>
+<tr>
+<td>s[]     </td>
+<td> _main.s(%rip)</td>
+</tr>
+<tr>
+<td>i       </td>
+<td> -24(%rbp)</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>LBB0_5と、LBB0_6をみてみると、
+leaq(64bit Load Effective Address)で実効アドレスから変数s[]を%raxレジスタに格納しています。
+その次にはmovslq(64bit Move Signed Long)で変数iを%rcxに格納しています。
+この読み出した%raxレジスタの%rcx番目、すなわち、s[i]にアクセス際に例外が発生しています。</p>
+
+<p>LBB0_7と、LBB0_8をでは、
+leaqはせず、
+movslqでレジスタ%raxに格納した変数iを-17(%rbp,%rax)としてアクセス、すなわちc[i]としてアクセスしたところで例外が発生しています。</p>
+
+<p>さて、この二つ組の違いはleaqにありますが、leaq命令事態はforループ中のレジスタ操作効率化のためのものなので、特段問題を抱えているようすはありません。
+また、アセンブラコードの下部にある.zerofillはstatic変数に対するものですが、この命令はゼロ埋めするというもので、static変数の初期値に0を代入するものなので、これも影響は与えていません。<a href="https://developer.apple.com/library/mac/documentation/DeveloperTools/Reference/Assembler/040-Assembler_Directives/asm_directives.html" title="OS X ">1</a></p>
+
+<p>ほかの部分に関してもアクセス例外が明確に違うところは見あたらず、根本的原因はわかりませんでした。</p>
+
+<p>おしまい</p>
+]]></content>
+  </entry>
+  
+</feed>
