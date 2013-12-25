@@ -636,6 +636,14 @@ Time Machineのバックアップ用ネットワークストレージとして�
   <span class="credit">Designed with <a href="http://pixelkit.com/kits/flat-ui-kit">Flat UI Kit | Modern Touch</a></span> -
   <span>Licensed under a <a rel="license" href="http://opensource.org/licenses/mit-license.html">MIT License</a> and <a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a><span>
 </p>
+<script>
+	$(function () {
+		$("a[href^='http'], a[href^='ftp']").click(function () {
+			if ($(this).attr("target") === undefined) 
+			$(this).attr("target", "_blank");
+		});
+	});
+</script>
 
 </footer>
   </div>
