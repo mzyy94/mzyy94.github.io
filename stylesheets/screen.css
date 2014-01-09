@@ -340,3 +340,21 @@ article .entry-content > table tfoot tr *[colspan]:first-child {
 	padding-right: 3rem;
 }
 
+code.code, pre.code {
+	display: block;
+	overflow-x: scroll;
+	word-break: break-all;
+	word-wrap: normal;
+	white-space: pre;
+	color: #010125;
+	margin:auto;
+	padding: 4px;
+	width: 100%;
+	border-radius: 0px;
+	font-family: 'Courier New' 'Consolas' 'Mono' 'Courier';
+}
+
+code.code:first-letter, pre.code:first-letter {
+	padding-left: 0;
+}
+
