@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: debian | mzyy94: command not found]]></title>
   <link href="http://mzyy94.com/blog/tags/debian/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2014-01-09T17:46:38+09:00</updated>
+  <updated>2014-01-10T10:13:25+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -18,7 +18,7 @@
     <link href="http://mzyy94.com/blog/2014/01/09/iscsi-debian/"/>
     <updated>2014-01-09T13:45:08+09:00</updated>
     <id>http://mzyy94.com/blog/2014/01/09/iscsi-debian</id>
-    <content type="html"><![CDATA[<p>Linux上でのiSCSIパケット収集のためにVirtual Boxで作成したDebian 7.0.0にiSCSI initiatorとtargetを入れたときのメモを起こしておきます。</p>
+    <content type="html"><![CDATA[<p>Linux上でのiSCSIパケット収集のためにVirtual Boxで作成した、Debian 7.0.0にiSCSI initiatorとtargetを入れたときのメモを起こしておきます。</p>
 
 <!-- more -->
 
@@ -100,7 +100,7 @@ rootで<code>aptitude install iscsitarget iscsitarget-dkms</code>としてパッ
 <p><code class="code">Target iqn.yyyy-mm.&lt;reversed domain name&gt;[:identifier]
    Lun 0 Path=&lt;image file path&gt;,Type=fileio,ScsiId=&lt;id&gt;,ScsiSN=&lt;sn&gt;</code></p>
 
-<p>各所で紹介されている生地にはScsiIDやScsiSNを指定していないものもありましたが、open-iscsi 2.0.873@Debian 7.0.0ではSCSIデバイスとして認識されないのでちゃんとつけておきましょう（これがわからず1時間くらい考えこんでた）。</p>
+<p>各所で紹介されている記事にはScsiIDやScsiSNを指定していないものもありましたが、open-iscsi 2.0.873@Debian 7.0.0ではSCSIデバイスとして認識されないのでちゃんとつけておきましょう（これがわからず1時間くらい考えこんでた）。</p>
 
 <p>Pathで指定するファイルは<code>dd if=/dev/zero of=/disk.img bs=1 count=0 seek=10G</code>などで適当につくってしまいましょう。
 今回はこのように設定しました。</p>

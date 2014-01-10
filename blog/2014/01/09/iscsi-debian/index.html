@@ -10,7 +10,7 @@
   <meta name="author" content="mzyy94">
 
   
-  <meta name="description" content="Linux上でのiSCSIパケット収集のためにVirtual Boxで作成したDebian 7.0.0にiSCSI initiatorとtargetを入れたときのメモを起こしておきます。 今回iSCSIパケットの収集をする必要があったので、Linux上で動くように導入しました。 &hellip;">
+  <meta name="description" content="Linux上でのiSCSIパケット収集のためにVirtual Boxで作成した、Debian 7.0.0にiSCSI initiatorとtargetを入れたときのメモを起こしておきます。 今回iSCSIパケットの収集をする必要があったので、Linux上で動くように導入しました。 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -104,6 +104,7 @@
     <a>Subscribe</a>
 	<ul class="submenu-1">
   <li class="menu-level-1"><a href="/blog/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  <li class="menu-level-1"><a href="http://cloud.feedly.com/#subscription%2Ffeed%2Fhttp%3A%2F%2Fmzyy94.com%2Fblog%2Fatom.xml" rel="subscribe-feedly" title="subscribe on Feedly">Feedly</a></li>
   
   </ul>
   
@@ -183,7 +184,7 @@
 <img src="/blog/resources/images/2014/1/9/debian-iscsi.png" alt="article image" class="main image"/>
 
 
-<div class="entry-content"><p>Linux上でのiSCSIパケット収集のためにVirtual Boxで作成したDebian 7.0.0にiSCSI initiatorとtargetを入れたときのメモを起こしておきます。</p>
+<div class="entry-content"><p>Linux上でのiSCSIパケット収集のためにVirtual Boxで作成した、Debian 7.0.0にiSCSI initiatorとtargetを入れたときのメモを起こしておきます。</p>
 
 <!-- more -->
 
@@ -265,7 +266,7 @@ rootで<code>aptitude install iscsitarget iscsitarget-dkms</code>としてパッ
 <p><code class="code">Target iqn.yyyy-mm.&lt;reversed domain name&gt;[:identifier]
    Lun 0 Path=&lt;image file path&gt;,Type=fileio,ScsiId=&lt;id&gt;,ScsiSN=&lt;sn&gt;</code></p>
 
-<p>各所で紹介されている生地にはScsiIDやScsiSNを指定していないものもありましたが、open-iscsi 2.0.873@Debian 7.0.0ではSCSIデバイスとして認識されないのでちゃんとつけておきましょう（これがわからず1時間くらい考えこんでた）。</p>
+<p>各所で紹介されている記事にはScsiIDやScsiSNを指定していないものもありましたが、open-iscsi 2.0.873@Debian 7.0.0ではSCSIデバイスとして認識されないのでちゃんとつけておきましょう（これがわからず1時間くらい考えこんでた）。</p>
 
 <p>Pathで指定するファイルは<code>dd if=/dev/zero of=/disk.img bs=1 count=0 seek=10G</code>などで適当につくってしまいましょう。
 今回はこのように設定しました。</p>
