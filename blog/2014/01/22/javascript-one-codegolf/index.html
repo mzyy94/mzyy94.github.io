@@ -6,11 +6,12 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: madomagi - -blogtags: mzyy94: command not found</title>
+  <title>JavaScriptの記号だけで'1'を作るコードゴルフ - -blog: mzyy94: command not found</title>
   <meta name="author" content="mzyy94">
 
   
-  <meta name="description" content="Tag: madomagi">
+  <meta name="description" content="CodeIQでお正月チャレンジをしていた時に遭遇した問題を解決するために、いろいろと試行錯誤したことがありました。 ある条件下で数値を作成しなければいけないという問題に直面したときのことです。
+条件としては、以下のとおりになっていました。 入力欄の文字数：100文字以内 禁止文字：1 2 3 4 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://mzyy94.comblog/tags/madomagi">
+  <link rel="canonical" href="http://mzyy94.com/blog/2014/01/22/javascript-one-codegolf">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/blog/atom.xml" rel="alternate" title="mzyy94: command not found" type="application/atom+xml">
@@ -126,47 +127,268 @@
   </header>
   <header class="col-sm-12 boxed-red" role="banner"><hgroup>
   
-  <h1><a href="/">-blogtags: mzyy94: command not found</a></h1>
+  <h1><a href="/">-blog: mzyy94: command not found</a></h1>
   
 </hgroup>
 
 </header>
     <div class="row">
-      
-<main class="col-sm-8">
-
-<article role="article">
+      <main class="col-sm-8">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Tag: madomagi</h1>
+    
+      <h1 class="entry-title boxed-green">JavaScriptの記号だけで'1'を作るコードゴルフ</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+<i class="glyphicon glyphicon-calendar"></i><time datetime="2014-01-22T11:02:22+09:00" pubdate data-updated="true">Jan 22<span>nd</span>, 2014</time>
+        
+
+<i class="glyphicon glyphicon-folder-close"></i><span class="categories">
+  
+    <a class='category' href='/blog/categories/javascript/'>JavaScript</a>
+  
+</span>
+
+
+        
+
+<i class="glyphicon glyphicon-tags"></i><span class="tags">
+  
+    <a class='tag' href='/blog/tags/codegolf/'>codegolf</a>
+  
+</span>
+
+
+        
+		<i class="glyphicon glyphicon-comment"></i><a href="#disqus_thread"
+             data-disqus-identifier="http://mzyy94.com">Comments</a>
+        
+      </p>
     
   </header>
-  
-  <div class="page-content">
-  <div id="blog-archives" class="tag">
 
 
-
-  
-  <h2>2013</h2>
-
-<article>
-  
-<h1><a href="/blog/2013/12/11/madomagi-concert-nagoya/">まどマギコンサート名古屋行ってきた</a></h1>
-<time datetime="2013-12-11T23:50:50+09:00" pubdate><span class='month'>Dec</span> <span class='day'>11</span> <span class='year'>2013</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/dialy/'>dialy</a></span>
-</footer>
+<img src="/blog/resources/images/2014/1/22/javascript-one-codegolf.png" alt="article image" class="main image"/>
 
 
-</article>
+<div class="entry-content"><p>CodeIQでお正月チャレンジをしていた時に遭遇した問題を解決するために、いろいろと試行錯誤したことがありました。</p>
 
+<p>ある条件下で数値を作成しなければいけないという問題に直面したときのことです。
+条件としては、以下のとおりになっていました。</p>
+
+<p>入力欄の文字数：100文字以内</p>
+
+<p>禁止文字：1 2 3 4 5 6 7 8 9 0 , + % ? : this eval function Function Array join split repeat &lsquo; &#8221;</p>
+
+<p>この条件下で数字の1を作成した結果は以下のとおりになりました。</p>
+
+<!-- more -->
+
+
+<h2>1</h2>
+
+<h3>初期案 (11文字)</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="p">[].</span><span class="nx">push</span><span class="p">([])</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>数字の１を作成するためにまず思いついたのがこれです。
+Arrayオブジェクトのpushは返り値が要素数になることを利用して、空配列に空配列を追加して1を得ました。</p>
+
+<p>まだまだこれは短縮できそうということで、考えを練っていたら次にこのようなものが思い浮かびました。</p>
+
+<h3>改善案 (6文字)</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="o">~~!!</span><span class="p">[]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>６文字まで短縮することができました。
+このコードは主に3つの要素から成り立っています。</p>
+
+<h4>[]</h4>
+
+<p>空配列です。
+ここでは、実態のあるオブジェクトがほしいだけなので、{}でも大丈夫です。</p>
+
+<h4>!</h4>
+
+<p>否定演算子です。
+今回は、配列として実態があるものに対して行っているので、![]ではfalseが返ってきます。
+!![]とすることで、trueを得ることができます。</p>
+
+<h4>~</h4>
+
+<p>ビット反転演算子です。
+!![]で返ってきたtrueをビット反転することによって、数値として認識させます。
+~!![]は、すなわち~trueであり、すなわち~1なので、-2を返します。
+~~!![]とすることで、ビット反転を打ち消し、1を返させることができます。</p>
+
+<p>６文字ではまだまだ字数が多すぎると思い、ふと閃いたものが以下になります。</p>
+
+<h3>最終案 (4文字)</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="o">-~</span><span class="p">[]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Arrayオブジェクトに対して、直接ビット演算をしてしまいます。
+要素数ゼロのArrayオブジェクトは数値として扱った場合に、ゼロとなるのでそれを用いてゼロをビット反転してしまいます。
+補数により0は-1となり、正負を反転させるために-(マイナス)を加えて1としました。</p>
+
+<p>記号を使った1を生成する最短コードなんじゃないでしょうか。</p>
+
+<h1>おまけ</h1>
+
+<p>2と3も作ってみました。</p>
+
+<h2>2</h2>
+
+<h3>初期案 (10文字)</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="o">-~</span><span class="p">[]</span><span class="o">&lt;&lt;-~</span><span class="p">[]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>上で作成した1を用いてビットシフトしています。
+1を倍にすることで2になるという単純なものです。</p>
+
+<p>ここで、1を作成した時のことを考えていたら、もっと単純で短いものがありました。</p>
+
+<h3>最終案 (6文字)</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="o">-~!!</span><span class="p">[]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>先ほどの1を作成する改善案を元に、符号を反転させただけのものです。</p>
+
+<p>最短コードなんじゃないでしょうか。</p>
+
+<h2>3</h2>
+
+<h3>初期案 (11文字)</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="o">-~!!</span><span class="p">[]</span><span class="o">|-~</span><span class="p">[]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>1と2でビットの論理和を計算して3とします。</p>
+
+<h3>最終案 (8文字)</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="o">-~-~!!</span><span class="p">[]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>2の最終案を元に、ビット反転して-3にし、それを-(マイナス)で符号反転して３を作りました。</p>
+
+<p>これら2と3を作った方法を元にすれば4,5,6..も同様に作れてしまいます。</p>
+
+<p>この方法をもとにCodeIQのお正月ダンジョンLv.3に挑んだコードがトップ画像になります。</p>
+
+<p>以上、豆知識的なメモでした。</p>
 </div>
 
-  </div>
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard"><i class="glyphicon glyphicon-user"></i><span class="fn">mzyy94</span></span>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+<i class="glyphicon glyphicon-calendar"></i><time datetime="2014-01-22T11:02:22+09:00" pubdate data-updated="true">Jan 22<span>nd</span>, 2014</time>
+      
+
+<i class="glyphicon glyphicon-folder-close"></i><span class="categories">
+  
+    <a class='category' href='/blog/categories/javascript/'>JavaScript</a>
+  
+</span>
+
+
+      
+
+<i class="glyphicon glyphicon-tags"></i><span class="tags">
+  
+    <a class='tag' href='/blog/tags/codegolf/'>codegolf</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="widget-container widget-social">
+	<ul class="clearfix">
+  
+
+  <!--li class="social-twitter"><a href="https://twitter.com/intent/tweet?original_referer=http://mzyy94.com/blog/2014/01/22/javascript-one-codegolf/&text=JavaScriptの記号だけで'1'を作るコードゴルフ%20-%20mzyy94: command not found&tw_p=tweetbutton&url=http://mzyy94.com/blog/2014/01/22/javascript-one-codegolf/&via=mzyy94"><i>Tweet</i></a></li-->
+
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://mzyy94.com/blog/2014/01/22/javascript-one-codegolf/" data-via="mzyy94" data-counturl="http://mzyy94.com/blog/2014/01/22/javascript-one-codegolf/" >Tweet</a>
+  
+  
+  <!-- li class="social-google"><a href="#"><i>Google</i></a></li -->
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+  <!-- li class="social-facebook"><a href="#"><i>Facebook</i></a></li -->
+  <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+  </ul>
+</div>
+
+    
+    <div>
+      
+	  <a class="btn btn-icon-left btn-arrow-left" href="/blog/2014/01/09/iscsi-debian/" title="Previous Post: debianでiscsi target/initiator動作させるメモ"><span>debianでiscsi target/initiator動作させるメモ</span></a>
+      
+      
+    </div>
+  </footer>
 </article>
+
+  <section class="comment">
+    <h1 class="boxed-red">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </main>
 
@@ -320,7 +542,10 @@
       var disqus_shortname = 'mzyy94blog';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://mzyy94.com/blog/2014/01/22/javascript-one-codegolf/';
+        var disqus_url = 'http://mzyy94.com/blog/2014/01/22/javascript-one-codegolf/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

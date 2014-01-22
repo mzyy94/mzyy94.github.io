@@ -4,7 +4,7 @@
   <title><![CDATA[mzyy94: command not found]]></title>
   <link href="http://mzyy94.com/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2014-01-10T10:13:25+09:00</updated>
+  <updated>2014-01-22T15:57:18+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -12,6 +12,139 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[JavaScriptの記号だけで'1'を作るコードゴルフ]]></title>
+    <link href="http://mzyy94.com/blog/2014/01/22/javascript-one-codegolf/"/>
+    <updated>2014-01-22T11:02:22+09:00</updated>
+    <id>http://mzyy94.com/blog/2014/01/22/javascript-one-codegolf</id>
+    <content type="html"><![CDATA[<p>CodeIQでお正月チャレンジをしていた時に遭遇した問題を解決するために、いろいろと試行錯誤したことがありました。</p>
+
+<p>ある条件下で数値を作成しなければいけないという問題に直面したときのことです。
+条件としては、以下のとおりになっていました。</p>
+
+<p>入力欄の文字数：100文字以内</p>
+
+<p>禁止文字：1 2 3 4 5 6 7 8 9 0 , + % ? : this eval function Function Array join split repeat &lsquo; &#8221;</p>
+
+<p>この条件下で数字の1を作成した結果は以下のとおりになりました。</p>
+
+<!-- more -->
+
+
+<h2>1</h2>
+
+<h3>初期案 (11文字)</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="p">[].</span><span class="nx">push</span><span class="p">([])</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>数字の１を作成するためにまず思いついたのがこれです。
+Arrayオブジェクトのpushは返り値が要素数になることを利用して、空配列に空配列を追加して1を得ました。</p>
+
+<p>まだまだこれは短縮できそうということで、考えを練っていたら次にこのようなものが思い浮かびました。</p>
+
+<h3>改善案 (6文字)</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="o">~~!!</span><span class="p">[]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>６文字まで短縮することができました。
+このコードは主に3つの要素から成り立っています。</p>
+
+<h4>[]</h4>
+
+<p>空配列です。
+ここでは、実態のあるオブジェクトがほしいだけなので、{}でも大丈夫です。</p>
+
+<h4>!</h4>
+
+<p>否定演算子です。
+今回は、配列として実態があるものに対して行っているので、![]ではfalseが返ってきます。
+!![]とすることで、trueを得ることができます。</p>
+
+<h4>~</h4>
+
+<p>ビット反転演算子です。
+!![]で返ってきたtrueをビット反転することによって、数値として認識させます。
+~!![]は、すなわち~trueであり、すなわち~1なので、-2を返します。
+~~!![]とすることで、ビット反転を打ち消し、1を返させることができます。</p>
+
+<p>６文字ではまだまだ字数が多すぎると思い、ふと閃いたものが以下になります。</p>
+
+<h3>最終案 (4文字)</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="o">-~</span><span class="p">[]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Arrayオブジェクトに対して、直接ビット演算をしてしまいます。
+要素数ゼロのArrayオブジェクトは数値として扱った場合に、ゼロとなるのでそれを用いてゼロをビット反転してしまいます。
+補数により0は-1となり、正負を反転させるために-(マイナス)を加えて1としました。</p>
+
+<p>記号を使った1を生成する最短コードなんじゃないでしょうか。</p>
+
+<h1>おまけ</h1>
+
+<p>2と3も作ってみました。</p>
+
+<h2>2</h2>
+
+<h3>初期案 (10文字)</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="o">-~</span><span class="p">[]</span><span class="o">&lt;&lt;-~</span><span class="p">[]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>上で作成した1を用いてビットシフトしています。
+1を倍にすることで2になるという単純なものです。</p>
+
+<p>ここで、1を作成した時のことを考えていたら、もっと単純で短いものがありました。</p>
+
+<h3>最終案 (6文字)</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="o">-~!!</span><span class="p">[]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>先ほどの1を作成する改善案を元に、符号を反転させただけのものです。</p>
+
+<p>最短コードなんじゃないでしょうか。</p>
+
+<h2>3</h2>
+
+<h3>初期案 (11文字)</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="o">-~!!</span><span class="p">[]</span><span class="o">|-~</span><span class="p">[]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>1と2でビットの論理和を計算して3とします。</p>
+
+<h3>最終案 (8文字)</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="o">-~-~!!</span><span class="p">[]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>2の最終案を元に、ビット反転して-3にし、それを-(マイナス)で符号反転して３を作りました。</p>
+
+<p>これら2と3を作った方法を元にすれば4,5,6..も同様に作れてしまいます。</p>
+
+<p>この方法をもとにCodeIQのお正月ダンジョンLv.3に挑んだコードがトップ画像になります。</p>
+
+<p>以上、豆知識的なメモでした。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[debianでiscsi target/initiator動作させるメモ]]></title>

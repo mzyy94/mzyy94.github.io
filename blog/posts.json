@@ -5,6 +5,12 @@
     
 	"posts" : [ 
 		{
+			"date": "2014-01-22 11:02:22 +0900",
+			"title": "JavaScriptの記号だけで'1'を作るコードゴルフ",
+			"url": "/blog/2014/01/22/javascript-one-codegolf/"
+		},
+	
+		{
 			"date": "2014-01-09 13:45:08 +0900",
 			"title": "debianでiscsi target/initiator動作させるメモ",
 			"url": "/blog/2014/01/09/iscsi-debian/"

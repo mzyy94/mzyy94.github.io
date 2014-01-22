@@ -5,6 +5,7 @@
 article .page-content {
 	padding: 24px;
 	font-size: 1rem;
+	position: relative;
 }
 
 article .page-content h3 + h4 {
@@ -18,6 +19,7 @@ article .page-content h3 + h4 ~ p {
 article .entry-content {
 	padding: 24px;
 	font-size: 1rem;
+	position: relative;
 }
 
 article .entry-content p:first-letter {
@@ -28,7 +30,7 @@ article .entry-content figure {
 	margin: 20px 0;
 }
 
-article .entry-content figure * {
+article .entry-content figure > * {
 	width: 100%;
 	margin: 0 auto;
 	padding: 0;
@@ -124,7 +126,7 @@ article .entry-content > ol {
 	list-style: decimal-leading-zero;
 }
 
-article header + img[alt="article image"] {
+img.main.image[alt="article image"] {
 	width: 100%;
 }
 
@@ -265,6 +267,7 @@ body > footer span {
 	white-space: nowrap;
 }
 
+/*
 .gist * {
 	font-family: Consolas, "Liberation Mono", Courier, monospace;
 	font-size: 0.9rem;
@@ -275,6 +278,7 @@ article .gist .gist-file, article .gist .gist-file .gist-meta {
 	background-color: #fff;
 	background-image: none;
 }
+*/
 
 /* table */
 article .entry-content > table {
@@ -340,6 +344,7 @@ article .entry-content > table tfoot tr *[colspan]:first-child {
 	padding-right: 3rem;
 }
 
+/*
 code.code, pre.code {
 	display: block;
 	overflow-x: scroll;
@@ -357,4 +362,5 @@ code.code, pre.code {
 code.code:first-letter, pre.code:first-letter {
 	padding-left: 0;
 }
+*/
 
