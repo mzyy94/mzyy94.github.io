@@ -4,7 +4,7 @@
   <title><![CDATA[Category: dialy | mzyy94: command not found]]></title>
   <link href="http://mzyy94.com/blog/categories/dialy/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2014-01-22T15:57:18+09:00</updated>
+  <updated>2014-02-04T13:55:52+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -27,49 +27,10 @@
 
 <h2>会場</h2>
 
-<div class="widget-container widget-gallery boxed">
-    <div class="inner">
-        <div id="myCarousel" class="carousel slide" data-interval="20000">
-        <!-- Carousel items -->
-        <div class="carousel-inner">
-        <div class="item active">
-            <a href="http://mzyy94.com/blog/resources/images/2013/12/11/madocon-1.jpg" class="prettyPhoto" data-rel="prettyPhoto" title="">
-            <img src="http://mzyy94.com/blog/resources/images/2013/12/11/madocon-1.jpg" alt="" />
-            </a>
-        </div>
-        <div class="item">
-            <a href="http://mzyy94.com/blog/resources/images/2013/12/11/madocon-2.jpg" class="prettyPhoto" data-rel="prettyPhoto" title="">
-            <img src="http://mzyy94.com/blog/resources/images/2013/12/11/madocon-2.jpg" alt="" />
-            </a>
-        </div>
-        <div class="item">
-            <a href="http://mzyy94.com/blog/resources/images/2013/12/11/madocon-3.jpg" class="prettyPhoto" data-rel="prettyPhoto" title="">
-            <img src="http://mzyy94.com/blog/resources/images/2013/12/11/madocon-3.jpg" alt="" />
-            </a>
-        </div>
-        <div class="item">
-            <a href="http://mzyy94.com/blog/resources/images/2013/12/11/madocon-4.jpg" class="prettyPhoto" data-rel="prettyPhoto" title="">
-            <img src="http://mzyy94.com/blog/resources/images/2013/12/11/madocon-4.jpg" alt="" />
-            </a>
-        </div>
-        </div>
-
-        <div class="carousel-controls">
-        <!-- Carousel indicators -->
-        <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-            <li data-target="#myCarousel" data-slide-to="3"></li>
-        </ol>
-        <!-- Carousel nav -->
-        <a class="carousel-control left" href="#myCarousel" data-slide="prev"></a>
-        <a class="carousel-control right" href="#myCarousel" data-slide="next"></a>
-        </div>
-        </div>
-    </div>
-</div>
-
+<p><img src="/blog/resources/images/2013/12/11/madocon-1.jpg" alt="alt" />
+<img src="/blog/resources/images/2013/12/11/madocon-2.jpg" alt="alt" />
+<img src="/blog/resources/images/2013/12/11/madocon-3.jpg" alt="alt" />
+<img src="/blog/resources/images/2013/12/11/madocon-4.jpg" alt="alt" /></p>
 
 <p>名古屋公演は<a href="http://www.aac.pref.aichi.jp/">愛知芸術文化センター</a>内の<a href="http://www.aac.pref.aichi.jp/gekijyo/">愛知芸術劇場</a>5階、<a href="http://www.aac.pref.aichi.jp/gekijyo/c_hole.html">コンサートホール</a>にて開催されました。
 栄駅降りてすぐのところで、開場1時間前には辺りも暗くなり、隣接するオアシス２１とテレビ塔が綺麗に光り輝いていました。
@@ -117,49 +78,10 @@
 
 <p>せっかくなのでパンフレットと、会場入りする前の水分補給として十六茶を購入しました。</p>
 
-<div class="widget-container widget-gallery boxed">
-    <div class="inner">
-        <div id="myCarousel1" class="carousel slide" data-interval="20000">
-        <!-- Carousel items -->
-        <div class="carousel-inner">
-        <div class="item active">
-            <a href="http://mzyy94.com/blog/resources/images/2013/12/11/madocon-5.jpg" class="prettyPhoto" data-rel="prettyPhoto" title="">
-            <img src="http://mzyy94.com/blog/resources/images/2013/12/11/madocon-5.jpg" alt="" />
-            </a>
-        </div>
-        <div class="item">
-            <a href="http://mzyy94.com/blog/resources/images/2013/12/11/madocon-6.jpg" class="prettyPhoto" data-rel="prettyPhoto" title="">
-            <img src="http://mzyy94.com/blog/resources/images/2013/12/11/madocon-6.jpg" alt="" />
-            </a>
-        </div>
-        <div class="item">
-            <a href="http://mzyy94.com/blog/resources/images/2013/12/11/madocon-7.jpg" class="prettyPhoto" data-rel="prettyPhoto" title="">
-            <img src="http://mzyy94.com/blog/resources/images/2013/12/11/madocon-7.jpg" alt="" />
-            </a>
-        </div>
-        <div class="item">
-            <a href="http://mzyy94.com/blog/resources/images/2013/12/11/madocon-8.jpg" class="prettyPhoto" data-rel="prettyPhoto" title="">
-            <img src="http://mzyy94.com/blog/resources/images/2013/12/11/madocon-8.jpg" alt="" />
-            </a>
-        </div>
-        </div>
-
-        <div class="carousel-controls">
-        <!-- Carousel indicators -->
-        <ol class="carousel-indicators">
-            <li data-target="#myCarousel1" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel1" data-slide-to="1"></li>
-            <li data-target="#myCarousel1" data-slide-to="2"></li>
-            <li data-target="#myCarousel1" data-slide-to="3"></li>
-        </ol>
-        <!-- Carousel nav -->
-        <a class="carousel-control left" href="#myCarousel1" data-slide="prev"></a>
-        <a class="carousel-control right" href="#myCarousel1" data-slide="next"></a>
-        </div>
-        </div>
-    </div>
-</div>
-
+<p><img src="/blog/resources/images/2013/12/11/madocon-5.jpg" alt="alt" />
+<img src="/blog/resources/images/2013/12/11/madocon-6.jpg" alt="alt" />
+<img src="/blog/resources/images/2013/12/11/madocon-7.jpg" alt="alt" />
+<img src="/blog/resources/images/2013/12/11/madocon-8.jpg" alt="alt" /></p>
 
 <h2>ホール内</h2>
 

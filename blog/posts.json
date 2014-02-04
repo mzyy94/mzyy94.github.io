@@ -5,6 +5,12 @@
     
 	"posts" : [ 
 		{
+			"date": "2014-02-04 08:47:16 +0900",
+			"title": "Qiで203Zを充電できるようにしてみた",
+			"url": "/blog/2014/02/04/qi-battery-203z/"
+		},
+	
+		{
 			"date": "2014-01-22 11:02:22 +0900",
 			"title": "JavaScriptの記号だけで'1'を作るコードゴルフ",
 			"url": "/blog/2014/01/22/javascript-one-codegolf/"

@@ -4,7 +4,7 @@
   <title><![CDATA[mzyy94: command not found]]></title>
   <link href="http://mzyy94.com/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2014-01-22T15:57:18+09:00</updated>
+  <updated>2014-02-04T13:55:52+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -12,6 +12,83 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Qiで203Zを充電できるようにしてみた]]></title>
+    <link href="http://mzyy94.com/blog/2014/02/04/qi-battery-203z/"/>
+    <updated>2014-02-04T08:47:16+09:00</updated>
+    <id>http://mzyy94.com/blog/2014/02/04/qi-battery-203z</id>
+    <content type="html"><![CDATA[<p>Qiという無接点充電の<em>事実上</em>標準規格なものがありまして、それを利用したモバイルルータの充電をしてみましたという日記です。</p>
+
+<p>デバイスをQiにて充電するには、Qi給電の機能をもとからもっているデバイスを購入するか、もしくは非対応デバイスをQi対応にさせるかの2択しかありません。</p>
+
+<p>今回Qi対応にしたいデバイスはモバイルルータのSoftBank 203Zです。出先でMac/iPadその他機器でインターネットに接続するために利用しているものです。バッテリーは結構もつのですが、それでも毎日充電しなければ一日中使うような日には持ちません。あの小さな小さなmicorUSBに毎晩のように上下を間違えて刺すこと数十日。さすがにうっとうしくなってきたのでmicroUSBを使わず充電できる方法を探りました。</p>
+
+<!-- more -->
+
+
+<h1>無接点充電という何か</h1>
+
+<p>数年前からQiというものの存在を知っており、研究のため、今年度初めて利用する機会を得ました。実際に使ってみたところ、これは調子いい。わざわざ充電器に刺すことなく、奥だけで充電できるのはすばらしいじゃないか。こんな感想を抱いた記憶があります。「欲しい。」ただそう思いました。</p>
+
+<p>月日が経ち、203Zを接続する煩わしさが溜まりにたまったところでQiのことを思い出し、導入することにしました。</p>
+
+<h2>Panasonic 無接点充電パッド</h2>
+
+<p>Qiには無接点給電する充電器が必要なのです。そのQi充電器は数社から出ており、いろいろな機能・サイズなどがあります。
+たくさんある充電器ですが、購入するときは特に迷いもなくPanasonic製のものを買いました。</p>
+
+<p>迷いもなく<a href="http://www.amazon.co.jp/gp/product/B0051R4ECM/ref=as_li_ss_tl?ie=UTF8&amp;camp=247&amp;creative=7399&amp;creativeASIN=B0051R4ECM&amp;linkCode=as2&amp;tag=mzyy940a-22">Panasonic 無接点充電パッド ChargePadチャージパッド ブラック QE-TM101-K</a>を選択したのは、以前研究に使っていたものと同機種で、実際に使い勝手がよいのを感じでいたものだったためです。
+移動式コイルによって２台まで充電させることができ、置く場所を意識しなくてもいいという点が高ポイントでした。</p>
+
+<h2>Qi ワイヤレス充電レシーバー microUSB版</h2>
+
+<p>正式名称がわからないのですが、ようするに上記の無接点充電パッドからの宮殿を受けるレシーバーです。
+203ZはmicroUSB type-B端子での充電なので、それに対応したものをAmazon.co.jpで探し、購入してみました。</p>
+
+<p>薄型タイプのものはたくさん販売されているのですが、検索時点で安く一定の評価がある商品を選びました。
+現在は購入できませんが、<a href="http://www.amazon.co.jp/gp/product/B00H7FJX7M/">こちらの商品</a>を購入しました。</p>
+
+<h3>届いた</h3>
+
+<p>注文した商品が届きました。
+香港からの発送とあったので、２−３週間ほどかかるのではないかと予想をしてたところ、2014/1/14に注文して2014/1/30に到着と、約２週間かかっていました。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2014/2/4/DSC08056.JPG" alt="届いた状態" /></p>
+
+<p>結構簡素な梱包でAIR MAILとして届きました。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2014/2/4/DSC08055.JPG" alt="img" /></p>
+
+<p>封筒から出すとこのような箱が１点のみでした。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2014/2/4/DSC08012.JPG" alt="img" /></p>
+
+<p>先ほどの箱の中身はこれまた充電パッド一点のみ。
+簡素さが貫き通せてます。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2014/2/4/DSC08013.JPG" alt="img" /></p>
+
+<p>この充電パッドを背面パネルを外した203Zの充電端子に差し込み、裏蓋を閉じるだけで無接点充電環境は整いました。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2014/2/4/DSC08073.JPG" alt="img" /></p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2014/2/4/DSC08081.JPG" alt="img" /></p>
+
+<p>背面パネルを閉じたところ、端子の一部が若干飛び出してしまいましたが、問題はなさそうです。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2014/2/4/DSC08086.JPG" alt="img" /></p>
+
+<p>実際に充電してみたところ、ちゃんと充電できている様子でした。</p>
+
+<p>が、それも毎日は続かず、５日充電を試したところ、そのうち２日は充電されていないということがありました。
+寝る前に確実に充電ランプが点灯していることを確認しているので、充電開始後に充電がされなくなる状況が発生したようです。
+となりに一緒において充電してあるiPhoneは満充電になっているので、パッドが充電されたと勘違いして給電が止められたのかもしれません。
+せっかく快適な充電環境を構築したと思ったら、充電したつもりだけど充電されていない、といった余計な問題が増えてしまったので、もう取り外しました。</p>
+
+<p>なんのためのレビューだったのか┐(´∀｀)┌ﾔﾚﾔﾚ</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[JavaScriptの記号だけで'1'を作るコードゴルフ]]></title>
@@ -567,49 +644,10 @@ movslqでレジスタ%raxに格納した変数iを-17(%rbp,%rax)としてアク�
 
 <h2>会場</h2>
 
-<div class="widget-container widget-gallery boxed">
-    <div class="inner">
-        <div id="myCarousel" class="carousel slide" data-interval="20000">
-        <!-- Carousel items -->
-        <div class="carousel-inner">
-        <div class="item active">
-            <a href="http://mzyy94.com/blog/resources/images/2013/12/11/madocon-1.jpg" class="prettyPhoto" data-rel="prettyPhoto" title="">
-            <img src="http://mzyy94.com/blog/resources/images/2013/12/11/madocon-1.jpg" alt="" />
-            </a>
-        </div>
-        <div class="item">
-            <a href="http://mzyy94.com/blog/resources/images/2013/12/11/madocon-2.jpg" class="prettyPhoto" data-rel="prettyPhoto" title="">
-            <img src="http://mzyy94.com/blog/resources/images/2013/12/11/madocon-2.jpg" alt="" />
-            </a>
-        </div>
-        <div class="item">
-            <a href="http://mzyy94.com/blog/resources/images/2013/12/11/madocon-3.jpg" class="prettyPhoto" data-rel="prettyPhoto" title="">
-            <img src="http://mzyy94.com/blog/resources/images/2013/12/11/madocon-3.jpg" alt="" />
-            </a>
-        </div>
-        <div class="item">
-            <a href="http://mzyy94.com/blog/resources/images/2013/12/11/madocon-4.jpg" class="prettyPhoto" data-rel="prettyPhoto" title="">
-            <img src="http://mzyy94.com/blog/resources/images/2013/12/11/madocon-4.jpg" alt="" />
-            </a>
-        </div>
-        </div>
-
-        <div class="carousel-controls">
-        <!-- Carousel indicators -->
-        <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-            <li data-target="#myCarousel" data-slide-to="3"></li>
-        </ol>
-        <!-- Carousel nav -->
-        <a class="carousel-control left" href="#myCarousel" data-slide="prev"></a>
-        <a class="carousel-control right" href="#myCarousel" data-slide="next"></a>
-        </div>
-        </div>
-    </div>
-</div>
-
+<p><img src="http://mzyy94.com/blog/resources/images/2013/12/11/madocon-1.jpg" alt="alt" />
+<img src="http://mzyy94.com/blog/resources/images/2013/12/11/madocon-2.jpg" alt="alt" />
+<img src="http://mzyy94.com/blog/resources/images/2013/12/11/madocon-3.jpg" alt="alt" />
+<img src="http://mzyy94.com/blog/resources/images/2013/12/11/madocon-4.jpg" alt="alt" /></p>
 
 <p>名古屋公演は<a href="http://www.aac.pref.aichi.jp/">愛知芸術文化センター</a>内の<a href="http://www.aac.pref.aichi.jp/gekijyo/">愛知芸術劇場</a>5階、<a href="http://www.aac.pref.aichi.jp/gekijyo/c_hole.html">コンサートホール</a>にて開催されました。
 栄駅降りてすぐのところで、開場1時間前には辺りも暗くなり、隣接するオアシス２１とテレビ塔が綺麗に光り輝いていました。
@@ -657,49 +695,10 @@ movslqでレジスタ%raxに格納した変数iを-17(%rbp,%rax)としてアク�
 
 <p>せっかくなのでパンフレットと、会場入りする前の水分補給として十六茶を購入しました。</p>
 
-<div class="widget-container widget-gallery boxed">
-    <div class="inner">
-        <div id="myCarousel1" class="carousel slide" data-interval="20000">
-        <!-- Carousel items -->
-        <div class="carousel-inner">
-        <div class="item active">
-            <a href="http://mzyy94.com/blog/resources/images/2013/12/11/madocon-5.jpg" class="prettyPhoto" data-rel="prettyPhoto" title="">
-            <img src="http://mzyy94.com/blog/resources/images/2013/12/11/madocon-5.jpg" alt="" />
-            </a>
-        </div>
-        <div class="item">
-            <a href="http://mzyy94.com/blog/resources/images/2013/12/11/madocon-6.jpg" class="prettyPhoto" data-rel="prettyPhoto" title="">
-            <img src="http://mzyy94.com/blog/resources/images/2013/12/11/madocon-6.jpg" alt="" />
-            </a>
-        </div>
-        <div class="item">
-            <a href="http://mzyy94.com/blog/resources/images/2013/12/11/madocon-7.jpg" class="prettyPhoto" data-rel="prettyPhoto" title="">
-            <img src="http://mzyy94.com/blog/resources/images/2013/12/11/madocon-7.jpg" alt="" />
-            </a>
-        </div>
-        <div class="item">
-            <a href="http://mzyy94.com/blog/resources/images/2013/12/11/madocon-8.jpg" class="prettyPhoto" data-rel="prettyPhoto" title="">
-            <img src="http://mzyy94.com/blog/resources/images/2013/12/11/madocon-8.jpg" alt="" />
-            </a>
-        </div>
-        </div>
-
-        <div class="carousel-controls">
-        <!-- Carousel indicators -->
-        <ol class="carousel-indicators">
-            <li data-target="#myCarousel1" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel1" data-slide-to="1"></li>
-            <li data-target="#myCarousel1" data-slide-to="2"></li>
-            <li data-target="#myCarousel1" data-slide-to="3"></li>
-        </ol>
-        <!-- Carousel nav -->
-        <a class="carousel-control left" href="#myCarousel1" data-slide="prev"></a>
-        <a class="carousel-control right" href="#myCarousel1" data-slide="next"></a>
-        </div>
-        </div>
-    </div>
-</div>
-
+<p><img src="http://mzyy94.com/blog/resources/images/2013/12/11/madocon-5.jpg" alt="alt" />
+<img src="http://mzyy94.com/blog/resources/images/2013/12/11/madocon-6.jpg" alt="alt" />
+<img src="http://mzyy94.com/blog/resources/images/2013/12/11/madocon-7.jpg" alt="alt" />
+<img src="http://mzyy94.com/blog/resources/images/2013/12/11/madocon-8.jpg" alt="alt" /></p>
 
 <h2>ホール内</h2>
 
@@ -935,43 +934,9 @@ FreeNASも同じくEmbededインストールをサポートしていますが、
 以前、FreeNAS用にZFSで作った際にpoolを破壊してしまってデータが吹っ飛んだ経験があるため、ZFSは避けましたが、
 メモリが潤沢に搭載されているシステムであればraidzを利用してもいいかと思います。</p>
 
-<div class="widget-container widget-gallery boxed">
-    <div class="inner">
-        <div id="myCarousel" class="carousel slide" data-interval="20000">
-        <!-- Carousel items -->
-        <div class="carousel-inner">
-        <div class="item active">
-            <a href="http://mzyy94.com/blog/resources/images/2013/12/10/NAS4Free-1.png" class="prettyPhoto" data-rel="prettyPhoto" title="">
-            <img src="http://mzyy94.com/blog/resources/images/2013/12/10/NAS4Free-1.png" alt="" />
-            </a>
-        </div>
-        <div class="item">
-            <a href="http://mzyy94.com/blog/resources/images/2013/12/10/NAS4Free-2.png" class="prettyPhoto" data-rel="prettyPhoto" title="">
-            <img src="http://mzyy94.com/blog/resources/images/2013/12/10/NAS4Free-2.png" alt="" />
-            </a>
-        </div>
-        <div class="item">
-            <a href="http://mzyy94.com/blog/resources/images/2013/12/10/NAS4Free-3.png" class="prettyPhoto" data-rel="prettyPhoto" title="">
-            <img src="http://mzyy94.com/blog/resources/images/2013/12/10/NAS4Free-3.png" alt="" />
-            </a>
-        </div>
-        </div>
-
-        <div class="carousel-controls">
-        <!-- Carousel indicators -->
-        <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol>
-        <!-- Carousel nav -->
-        <a class="carousel-control left" href="#myCarousel" data-slide="prev"></a>
-        <a class="carousel-control right" href="#myCarousel" data-slide="next"></a>
-        </div>
-        </div>
-    </div>
-</div>
-
+<p><img src="http://mzyy94.com/blog/resources/images/2013/12/10/NAS4Free-1.png" alt="alt" />
+<img src="http://mzyy94.com/blog/resources/images/2013/12/10/NAS4Free-2.png" alt="alt" />
+<img src="http://mzyy94.com/blog/resources/images/2013/12/10/NAS4Free-3.png" alt="alt" /></p>
 
 <h3>AFPの設定</h3>
 
@@ -1001,51 +966,13 @@ FreeNASも同じくEmbededインストールをサポートしていますが、
 
 <p>と、設定します。ほかはデフォルトのままにしました。</p>
 
-<div class="widget-container widget-gallery boxed">
-    <div class="inner">
-        <div id="myCarousel1" class="carousel slide" data-interval="20000">
-        <!-- Carousel items -->
-        <div class="carousel-inner">
-        <div class="item active">
-            <a href="http://mzyy94.com/blog/resources/images/2013/12/10/NAS4Free-4.png" class="prettyPhoto" data-rel="prettyPhoto" title="">
-            <img src="http://mzyy94.com/blog/resources/images/2013/12/10/NAS4Free-4.png" alt="" />
-            </a>
-        </div>
-        <div class="item">
-            <a href="http://mzyy94.com/blog/resources/images/2013/12/10/NAS4Free-5.png" class="prettyPhoto" data-rel="prettyPhoto" title="">
-            <img src="http://mzyy94.com/blog/resources/images/2013/12/10/NAS4Free-5.png" alt="" />
-            </a>
-        </div>
-        <div class="item">
-            <a href="http://mzyy94.com/blog/resources/images/2013/12/10/NAS4Free-6.png" class="prettyPhoto" data-rel="prettyPhoto" title="">
-            <img src="http://mzyy94.com/blog/resources/images/2013/12/10/NAS4Free-6.png" alt="" />
-            </a>
-        </div>
-        </div>
-
-        <div class="carousel-controls">
-        <!-- Carousel indicators -->
-        <ol class="carousel-indicators">
-            <li data-target="#myCarousel1" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel1" data-slide-to="1"></li>
-            <li data-target="#myCarousel1" data-slide-to="2"></li>
-        </ol>
-        <!-- Carousel nav -->
-        <a class="carousel-control left" href="#myCarousel1" data-slide="prev"></a>
-        <a class="carousel-control right" href="#myCarousel1" data-slide="next"></a>
-        </div>
-        </div>
-    </div>
-</div>
-
+<p><img src="http://mzyy94.com/blog/resources/images/2013/12/10/NAS4Free-4.png" alt="alt" />
+<img src="http://mzyy94.com/blog/resources/images/2013/12/10/NAS4Free-5.png" alt="alt" />
+<img src="http://mzyy94.com/blog/resources/images/2013/12/10/NAS4Free-6.png" alt="alt" /></p>
 
 <p>この設定で、同一ネットワークにつながったMacからTime Machineの設定を開くと以下のように、バックアップ先に設定できるようになっていると思います。</p>
 
-<figure>
-<img src="http://mzyy94.com/blog/resources/images/2013/12/10/NAS4Free-7.png" alt="blog html sourcecode" />
-<figcaption class="boxed-green">Time Machineの設定画面</figcaption>
-</figure>
-
+<p><img src="http://mzyy94.com/blog/resources/images/2013/12/10/NAS4Free-7.png" alt="Time Machineの設定画面" /></p>
 
 <p>設定方法と、NASの紹介でした。</p>
 ]]></content>
