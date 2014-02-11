@@ -1,0 +1,152 @@
+* {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	user-select: none;
+	-webkit-user-select: none;
+}
+body {
+	width: 100%;
+	height: 100%;
+	background-color: #000;
+}
+a {
+	text-decoration: none;
+	color: #ccc;
+}
+iframe#bgmovie {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: -5;
+	border: none;
+}
+#license {
+	padding: 0 1em;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	display: block;
+	color: #fff;
+	z-index: 5;
+	line-height: 1rem;
+}
+#license img {
+	display: inline-block;
+}
+#display {
+	position: absolute;
+	margin-top: 100px;
+	width: 4200px;
+	z-index: -3;
+}
+.box {
+	transition-property: background-color;
+	transition-duration: 0.2s;
+	transition-timing-function: linear;
+	font-size: 14px;
+	display: inline-block;
+	width: 800px;
+	height: 400px;
+	background-color: rgba(200,200,200,0.6);
+	color: #fff;
+	margin: 0 20px;
+}
+.box.right:first-child {
+	animation: movein 0.2s linear 0 1 normal;
+	-webkit-animation: movein 0.2s linear 0 1 normal;
+}
+.box.left:first-child {
+	animation: moveout 0.2s linear 0 1 normal;
+	-webkit-animation: moveout 0.2s linear 0 1 normal;
+}
+@keyframes movein {
+	0% { margin-left: -820px; }
+	100% { margin-left::0px; }
+}
+@-webkit-keyframes movein {
+	0% { margin-left: -820px; }
+	100% { margin-left::0px; }
+}
+@keyframes moveout {
+	0% { margin-left: 820px; }
+	100% { margin-left::0px; }
+}
+@-webkit-keyframes moveout {
+	0% { margin-left: 820px; }
+	100% { margin-left::0px; }
+}
+.box:not(.active):hover {
+	cursor: pointer;
+	background-color: rgba(220,220,220,0.9);
+}
+.box img {
+	display: inline-block;
+	width: 300px;
+	height: 300px;
+	border-radius: 150px;
+	margin: 50px;
+}
+.box section {
+	display: inline-block;
+	width: 380px;
+	height: 300px;
+	padding: 50px 0px;
+}
+.box section h1 {
+	font-family: 'Lato' !important;
+	font-style: normal;
+	font-weight: 700;
+	text-transform: uppercase;
+	font-size: 48px;
+}
+.box section div {
+	font-family: 'Lato' !important;
+	font-style: normal;
+	font-weight: 100;
+	height: 140px;
+	margin: 40px 10px 40px 0;
+}
+.button {
+	display: inline-block;
+	align-items: flex-start;
+	box-sizing: border-box;
+	font-family: 'Lato' !important;
+	font-style: normal;
+	font-weight: 300;
+	text-transform: uppercase;
+	white-space: nowrap;
+	width: 180px;
+	height: 40px;
+	background-color: #eee;
+	border: 1px solid transparent;
+	color: #888;
+	font-size: 18px;
+	line-height: 40px;
+	text-align: center;
+	cursor: pointer;
+	outline: none;
+}
+#back {
+	position: absolute;
+	top: 30px;
+	left: 50px;
+}
+#loading {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	z-index: -1;
+	background-color: #000;
+	text-align: center;
+}
+#floatingCirclesG {
+	margin: auto;
+}
+a.button[href="http://honda-3d.com/"] {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+}
