@@ -64,19 +64,19 @@ iframe#bgmovie {
 }
 @keyframes movein {
 	0% { margin-left: -820px; }
-	100% { margin-left::0px; }
+	100% { margin-left: 0px; }
 }
 @-webkit-keyframes movein {
 	0% { margin-left: -820px; }
-	100% { margin-left::0px; }
+	100% { margin-left: 0px; }
 }
 @keyframes moveout {
 	0% { margin-left: 820px; }
-	100% { margin-left::0px; }
+	100% { margin-left: 0px; }
 }
 @-webkit-keyframes moveout {
 	0% { margin-left: 820px; }
-	100% { margin-left::0px; }
+	100% { margin-left: 0px; }
 }
 .box:not(.active):hover {
 	cursor: pointer;
