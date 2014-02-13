@@ -2,7 +2,7 @@ $(function(){
 
 	function fitWindow() {
 		$('#floatingCirclesG').css('margin-top', ($(window).height() - 128) / 2 + 'px');
-		$('#display').offset({left: ($(window).width() - $('#display').width())/2});
+		$('#display').offset({top: ($(window).height() - $('#display').height())/2, left: ($(window).width() - $('#display').width())/2});
 		$('iframe').offset({top: ($(window).height() - $('iframe').height())/2});
 	}
 	fitWindow();
@@ -32,16 +32,21 @@ $(function(){
 
 	$(document).on('click', '#display .active a[href="#3Dview"]', function(){
 		modelView($(this).parent().parent()[0].id);
+		$('.box:first').removeClass().addClass('box');
+		$('#display').hide();
+		$('#bgmovie').hide();
 		$('#back').show();
 		$('#loading').show();
 	});
 
 	$('#back').click(function(){
-		location.href="#";
+		//location.href="#";
 		cancelAnimationFrame($('canvas').attr('class'));
 		$('canvas').html('');
 		//$('canvas').empty();
 		$('canvas').remove();
+		$('#display').show();
+		$('#bgmovie').show();
 		$('#back').hide();
 		$('#loading').hide();
 	});

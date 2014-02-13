@@ -6,6 +6,9 @@
 	-webkit-user-select: none;
 }
 body {
+	font-family: 'Lato' !important;
+	font-style: normal;
+	cursor: default;
 	width: 100%;
 	height: 100%;
 	background-color: #000;
@@ -38,9 +41,9 @@ iframe#bgmovie {
 }
 #display {
 	position: absolute;
-	margin-top: 100px;
-	width: 4200px;
-	z-index: -3;
+	width: 10000px;
+	text-align: center;
+	z-index: 0;
 }
 .box {
 	transition-property: background-color;
@@ -48,8 +51,10 @@ iframe#bgmovie {
 	transition-timing-function: linear;
 	font-size: 14px;
 	display: inline-block;
+	text-align: left;
 	width: 800px;
-	height: 400px;
+	padding: 50px 0;
+	height: 300px;
 	background-color: rgba(200,200,200,0.6);
 	color: #fff;
 	margin: 0 20px;
@@ -63,20 +68,28 @@ iframe#bgmovie {
 	-webkit-animation: moveout 0.2s linear 0 1 normal;
 }
 @keyframes movein {
-	0% { margin-left: -820px; }
-	100% { margin-left: 0px; }
+	0% { margin-left: -1640px;}
+	100% { margin-left: 20px;}
 }
 @-webkit-keyframes movein {
-	0% { margin-left: -820px; }
-	100% { margin-left: 0px; }
+	0% { margin-left: -1640px;}
+	100% { margin-left: 20px;}
 }
 @keyframes moveout {
-	0% { margin-left: 820px; }
-	100% { margin-left: 0px; }
+	0% { margin-left: 1640px;}
+	100% { margin-left: 20px;}
 }
 @-webkit-keyframes moveout {
-	0% { margin-left: 820px; }
-	100% { margin-left: 0px; }
+	0% { margin-left: 1640px;}
+	100% { margin-left: 20px;}
+}
+@-webkit-keyframes fadein {
+	0% { opacity: 0;}
+	100% { opacity: 1;}
+}
+@-webkit-keyframes fadeout {
+	0% { opacity: 1;}
+	100% { opacity: 0;}
 }
 .box:not(.active):hover {
 	cursor: pointer;
@@ -87,34 +100,27 @@ iframe#bgmovie {
 	width: 300px;
 	height: 300px;
 	border-radius: 150px;
-	margin: 50px;
+	margin: 0 50px;
 }
 .box section {
 	display: inline-block;
-	width: 380px;
+	width: 370px;
 	height: 300px;
-	padding: 50px 0px;
+	text-align: justify;
 }
 .box section h1 {
-	font-family: 'Lato' !important;
-	font-style: normal;
 	font-weight: 700;
-	text-transform: uppercase;
-	font-size: 48px;
+	font-size: 56px;
 }
 .box section div {
-	font-family: 'Lato' !important;
-	font-style: normal;
 	font-weight: 100;
 	height: 140px;
-	margin: 40px 10px 40px 0;
+	margin: 20px 10px 40px 0;
 }
 .button {
 	display: inline-block;
 	align-items: flex-start;
 	box-sizing: border-box;
-	font-family: 'Lato' !important;
-	font-style: normal;
 	font-weight: 300;
 	text-transform: uppercase;
 	white-space: nowrap;

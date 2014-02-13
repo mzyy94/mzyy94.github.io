@@ -1,0 +1,611 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <title>Honda 3DのサイトがFlashだったときの症例 - -blog: mzyy94: command not found</title>
+  <meta name="author" content="mzyy94">
+
+  
+  <meta name="description" content="RSSを消化してたときのこと。
+ホンダが歴代コンセプトカーの3DデータをCCライセンスで公開、NSX Concept など全5種 (動画) &ndash; Engadget Japanese
+なる記事を見つけて、「クリエイティブコモンズで3Dモデル公開とはなかなかやるな。流行に乗っててよろしい。」 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://mzyy94.com/blog/2014/02/13/honda-3d-webgl">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/blog/atom.xml" rel="alternate" title="mzyy94: command not found" type="application/atom+xml">
+  <!-- main JS libs -->
+  <script src="/javascripts/libs/modernizr.min.js"></script>
+  <script src="/javascripts/jquery-2.0.3.min.js"></script>
+  <script src="/javascripts/libs/jquery-ui.min.js"></script>
+  <script src="/javascripts/libs/bootstrap.min.js"></script>
+  <!-- Style CSS -->
+  <link href="/stylesheets/bootstrap.css" media="screen" rel="stylesheet">
+  <link href="/stylesheets/style.css" media="screen" rel="stylesheet">
+  <link href="/stylesheets/syntax.css" media="screen" rel="stylesheet">
+  <!-- scripts -->
+  <script src="/javascripts/general.js"></script>
+  <!-- custom input -->
+  <script src="/javascripts/jquery.customInput.js"></script>
+  <script type="text/javascript" src="/javascripts/custom.js"></script>
+  <!-- Placeholders -->
+  <script type="text/javascript" src="/javascripts/jquery.powerful-placeholder.min.js"></script>
+  <!-- Lightbox prettyPhoto -->
+  <link href="/stylesheets/prettyPhoto.css" rel="stylesheet">
+  <script src="/javascripts/jquery.prettyPhoto.js"></script>
+  <!-- CarouFredSel  -->
+  <script src="/javascripts/jquery.carouFredSel-6.2.1-packed.js"></script>
+  <!-- Progress Bars -->
+  <script src="/javascripts/progressbar.js"></script>
+  <!-- Calendar -->
+  <script src="/javascripts/jquery-ui.multidatespicker.js"></script>
+  <!-- range sliders -->
+  <script src="/javascripts/jquery.slider.bundle.js"></script>
+  <script src="/javascripts/jquery.slider.js"></script>
+  <link rel="stylesheet" href="/stylesheets/jslider.css">
+  <!-- Video Player -->
+  <link href="/stylesheets/video-js.css" rel="stylesheet">
+  <script src="/javascripts/video.js"></script>
+  <!-- Scroll Bars -->
+  <script src="/javascripts/jquery.mousewheel.js"></script>
+  <script src="/javascripts/jquery.jscrollpane.min.js"></script>
+
+<!--[if lt IE 9]><script src="/javascripts/respond.min.js"></script><![endif]-->
+<!--[if gte IE 9]>
+<style type="text/css">
+	.gradient {filter: none !important;}
+</style>
+<![endif]-->
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-41944495-3']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body  >
+  <div class="container">
+  <div class="content">
+  <header class="row">
+    <nav id="topmenu" class="col-sm-12" role="navigation"><ul class="dropdown clearfix boxed boxed-blue">
+    <li class="menu-level-0"><a href="/">Home</a></li>
+  <li class="menu-level-0"><a href="/blog/">Blog</a></li>
+  <li class="menu-level-0"><a href="/service/">Service</a></li>
+  <li class="menu-level-0">
+  <a href="/about/">About</a>
+  <ul class="submenu-1">
+	  <li class="menu-level-1"><a href="/about/">About me</a></li>
+	  <li class="menu-level-1"><a href="/about/license.html">License</a></li>
+  </ul>
+  </li>
+
+  <li class="menu-level-0">
+    <a>Subscribe</a>
+	<ul class="submenu-1">
+  <li class="menu-level-1"><a href="/blog/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  <li class="menu-level-1"><a href="http://cloud.feedly.com/#subscription%2Ffeed%2Fhttp%3A%2F%2Fmzyy94.com%2Fblog%2Fatom.xml" rel="subscribe-feedly" title="subscribe on Feedly">Feedly</a></li>
+  
+  </ul>
+  
+  <li class="menu-search last">
+
+	<form action="http://google.com/search" id="searchForm" class="menu-search-form" method="get">
+		<fieldset role="search">
+			<input type="hidden" name="q" value="site:mzyy94.com" />
+			<input type="text" name="q" value="" results="0" class="menu-search-field" placeholder="Search the website" hidefocus="true" style="outline: none;">
+			<input type="submit" value="" class="btn menu-search-submit" name="search-send" hidefocus="true" style="outline: none;">
+		</fieldset>
+	</form>
+
+  </li>
+  
+</ul>
+</nav>
+  </header>
+  <header class="col-sm-12 boxed-red" role="banner"><hgroup>
+  
+  <h1><a href="/">-blog: mzyy94: command not found</a></h1>
+  
+</hgroup>
+
+</header>
+    <div class="row">
+      <main class="col-sm-8">
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title boxed-green">Honda 3DのサイトがFlashだったときの症例</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+<i class="glyphicon glyphicon-calendar"></i><time datetime="2014-02-13T19:03:54+09:00" pubdate data-updated="true">Feb 13<span>th</span>, 2014</time>
+        
+
+<i class="glyphicon glyphicon-folder-close"></i><span class="categories">
+  
+    <a class='category' href='/blog/categories/web/'>Web</a>
+  
+</span>
+
+
+        
+
+<i class="glyphicon glyphicon-tags"></i><span class="tags">
+  
+    <a class='tag' href='/blog/tags/css3/'>CSS3</a>, <a class='tag' href='/blog/tags/html5/'>HTML5</a>, <a class='tag' href='/blog/tags/webgl/'>WebGL</a>, <a class='tag' href='/blog/tags/three-dot-js/'>three.js</a>
+  
+</span>
+
+
+        
+		<i class="glyphicon glyphicon-comment"></i><a href="#disqus_thread"
+             data-disqus-identifier="http://mzyy94.com">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<img src="/blog/resources/images/2014/2/13/honda-3d-diff.png" alt="article image" class="main image"/>
+
+
+<div class="entry-content"><p>RSSを消化してたときのこと。
+<a href="http://japanese.engadget.com/2014/01/28/3d-nsx-concept-5/">ホンダが歴代コンセプトカーの3DデータをCCライセンスで公開、NSX Concept など全5種 (動画) &ndash; Engadget Japanese</a>
+なる記事を見つけて、「クリエイティブコモンズで3Dモデル公開とはなかなかやるな。流行に乗っててよろしい。」と感心していました。</p>
+
+<p>しかし、そんな関心も次のクリックで吹っ飛びました。</p>
+
+<!-- more -->
+
+
+<pre>
+＿人人人人人人人＿
+＞　衝撃のFlash　＜
+￣Y^Y^Y^Y^Y^Y￣
+</pre>
+
+
+<p>流行に乗ってると微塵でも思ってしまったことを後悔。
+3Dプリンタという流行を意識した3Dモデルの公開に使われたものが流行遅れのFlashであるという、なんとも言い難い悲しい状況を目の当たりにしてしまったのです。</p>
+
+<p>この惨状を目にした60分後、手元にはこんなものが出来上がっていました。</p>
+
+<h3><a href="http://mzyy94.com/demo/honda-3d_webgl/">Honda 3D &ndash; WebGL Demo (Beta)</a></h3>
+
+<p><span>※Chrome 33向けです。</span><br>
+<span>※※RAMとCPU使用率と通信量を膨大に使うので開く際はご注意ください</span></p>
+
+<p>悲しみからか、手が勝手に動き<strong>Flashなし</strong>で模倣していました。</p>
+
+<p>このれらのサイトを構成している技術に関して比較してみました。</p>
+
+<p><img src="/blog/resources/images/2014/2/13/comparison.png" alt="comparison" /></p>
+
+<p>せっかくつくったので解説させてください。</p>
+
+<h1>トップページ</h1>
+
+<p>上：拙作デモサイト　下：本家サイト</p>
+
+<p><img src="/blog/resources/images/2014/2/13/demo-top.png" alt="demo" />
+<img src="/blog/resources/images/2014/2/13/original-top.png" alt="original" /></p>
+
+<p>メインページの全体像はほとんど違和感を感じさせない作りとなっています。
+左右のパネルを選択すると本家と変わらないスライドアニメーションで次のパネルへ移り変わります。</p>
+
+<p>このカルーセルはjQueryによるclass操作とCSS3のkey frame アニメーションを使っています。クリック時に左端のパネルのmarginを以下のように動かすことで滑らかなスライドアニメーションを疑似的に見せています。</p>
+
+<p>CSS3の技術が詰まったパネルをもう少し詳しく見てみましょう。
+テキストの上でもカーソル形状は本家のものと同じくデフォルトになるようにしてあります。
+背景透過はbackground-colorをCSS3からのrgba値を用いており、サムネイルを円形にしてあるのもCSS3のborder-radiusを指定して実現しています。さらに、パネル上の美しいfontもCSS3によるWeb fontを利用しています。</p>
+
+<p>背景動画はYouTubeのHTML5 videoでの埋め込みにしてあるというAnti-Flashの徹底ぶり。オプションを以下の通り指定してNo Flashにしました。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;iframe id="bgmovie" width="1920" height="1080" src="http://www.youtube.com/embed/MJWzLm91Hmg?html5=1&playlist=kdOVr4Tqdoc&autoplay=1&disablekb=1&controls=0&showinfo=0&vq=hd1080&modestbranding=1&rel=0&loop=1" style="top: -374px;"&gt;&lt;/iframe&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>3D ビュー</h1>
+
+<p>ここのシーンを見せるためにHondaはFlashを試用したというのは安易に想定できますが、せっかくなのでHTML5の技術を使って欲しかったです。
+ということで、HTML5の新技術であるWebGLを利用してモデルを表示するようにしました。</p>
+
+<p>WebGLの複雑なコードを書かずとも、数十行のコードで手軽にWebGLをつかえるライブラリはいくつか存在します。
+今回は<a href="http://threejs.org/">three.js</a>とよばれるWebGLラッパーを利用しました。</p>
+
+<p>WebGLで3Dモデルを表示するには、表示するための3Dデータが必要です。
+現在、Honda-3d.comからダウンロードできるファイルは3Dプリンタ向けのSTL形式で、WebGL、加えてthree.jsでもそのままでは利用できるものではありません。
+そこで、three.jsで扱える形式に変換する必要があります。
+今回は3Dモデリング界では名高い<a href="http://www.blender.org/">Blender</a>を利用しました。</p>
+
+<h2>3Dモデルデータを変換する</h2>
+
+<p>BlenderでSTL形式をthree.jsで扱える形式に変換する方法はそこまで難しいことではありません。
+Blenderは標準でSTL形式を扱えるので、three.jsで使えるよう、
+three.jsに含まれるBlender用のAdd-onを導入すれば、three.jsで表示できる形式に変換する環境は整います。
+このAdd-onはthree.jsをgitリポジトリからCloneした際に、一緒にダウンロードされています。</p>
+
+<p>Add-onを導入するのは簡単で、必要なファイル群をBlenderのアプリケーションフォルダに入れてあげるだけです。
+OS X上で、Blender@2.69とthree.js@r65を利用する場合は、</p>
+
+<pre><code>[three.jsのClone先ディレクトリ]/utils/exporters/blender/2.65/scripts/addons
+</code></pre>
+
+<p>にある<code>io_mesh_threejs</code>ディレクトリを</p>
+
+<pre><code>[アプリケーションフォルダ]/Blender.app/Contents/MacOS/2.69/scripts/addons
+</code></pre>
+
+<p>の中にコピーします。</p>
+
+<p><img src="/blog/resources/images/2014/2/13/blender-1.png" alt="blender" /></p>
+
+<p>コピーし終わったらBlenderを起動し、File->User Preferences&hellip;で設定画面を開き、
+Addonsタブにある検索ボックスでthreejsとして検索して出てくる項目をチェックし有効化します。
+チェックし終わったら次回以降も反映されるよう、Save User Settingsをしておきます。
+<img src="/blog/resources/images/2014/2/13/blender-2.png" alt="blender" />
+<img src="/blog/resources/images/2014/2/13/blender-3.png" alt="blender" /></p>
+
+<p>設定画面を閉じたらFile->Import->Stlでダウンロードしたファイルを開き、
+起動時に作られていた不要なオブジェクトを削除し、File->Export->Three.jsでthree.js用の形式にして出力します。
+<img src="/blog/resources/images/2014/2/13/blender-4.png" alt="blender" />
+<img src="/blog/resources/images/2014/2/13/blender-5.png" alt="blender" />
+<img src="/blog/resources/images/2014/2/13/blender-6.png" alt="blender" /></p>
+
+<h2>3Dモデルデータを表示する</h2>
+
+<p>上：拙作デモサイト　下：本家サイト</p>
+
+<p><img src="/blog/resources/images/2014/2/13/demo-3dview.png" alt="demo" />
+<img src="/blog/resources/images/2014/2/13/original-3dview.png" alt="original" /></p>
+
+<p>表示はthree.jsの基本的な機能を使うだけで行っています。
+基本的な方法は、
+<a href="http://www.atmarkit.co.jp/ait/articles/1210/04/news142.html">Webグラフィックをハックする（5）：多彩な表現力のWebGLを扱いやすくする「Three.js」 (1/5) &ndash; ＠IT</a>
+にて説明されています。
+この説明を参考に、three.jsのファイルを読み込ませて表示させています。
+ちゃんとマウスでぐりぐりできるようになっています。</p>
+
+<p>各コードに関して説明したかったのですが、すでに結構な分量になっているので、気になる人は以下のGistにてご参照ください。</p>
+
+<p><a href="https://gist.github.com/mzyy94/8974444">https://gist.github.com/mzyy94/8974444</a></p>
+
+<p>以上、Anti-Flashをこじらせた人の症例でした。</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard"><i class="glyphicon glyphicon-user"></i><span class="fn">mzyy94</span></span>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+<i class="glyphicon glyphicon-calendar"></i><time datetime="2014-02-13T19:03:54+09:00" pubdate data-updated="true">Feb 13<span>th</span>, 2014</time>
+      
+
+<i class="glyphicon glyphicon-folder-close"></i><span class="categories">
+  
+    <a class='category' href='/blog/categories/web/'>Web</a>
+  
+</span>
+
+
+      
+
+<i class="glyphicon glyphicon-tags"></i><span class="tags">
+  
+    <a class='tag' href='/blog/tags/css3/'>CSS3</a>, <a class='tag' href='/blog/tags/html5/'>HTML5</a>, <a class='tag' href='/blog/tags/webgl/'>WebGL</a>, <a class='tag' href='/blog/tags/three-dot-js/'>three.js</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="widget-container widget-social">
+	<ul class="clearfix">
+  
+
+  <!--li class="social-twitter"><a href="https://twitter.com/intent/tweet?original_referer=http://mzyy94.com/blog/2014/02/13/honda-3d-webgl/&text=Honda 3DのサイトがFlashだったときの症例%20-%20mzyy94: command not found&tw_p=tweetbutton&url=http://mzyy94.com/blog/2014/02/13/honda-3d-webgl/&via=mzyy94"><i>Tweet</i></a></li-->
+
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://mzyy94.com/blog/2014/02/13/honda-3d-webgl/" data-via="mzyy94" data-counturl="http://mzyy94.com/blog/2014/02/13/honda-3d-webgl/" >Tweet</a>
+  
+  
+  <!-- li class="social-google"><a href="#"><i>Google</i></a></li -->
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+  <!-- li class="social-facebook"><a href="#"><i>Facebook</i></a></li -->
+  <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+  </ul>
+</div>
+
+    
+    <div>
+      
+	  <a class="btn btn-icon-left btn-arrow-left" href="/blog/2014/02/04/qi-battery-203z/" title="Previous Post: Qiで203Zを充電できるようにしてみた"><span>Qiで203Zを充電できるようにしてみた</span></a>
+      
+      
+    </div>
+  </footer>
+</article>
+
+  <section class="comment">
+    <h1 class="boxed-red">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</main>
+
+<aside class="col-sm-4">
+  
+    <div class="widget-container widget-avatar boxed boxed-yellow">
+	<div class="inner">
+		<h5>mzyy94</h5>
+		<span class="subtitle">Network</span>
+		<div class="avatar">
+			<img src="/images/avatar.png" alt="avatar icon" />
+		</div>
+		<a href="/about/" class="btn btn-brown btn-follow">
+			<span>About me</span>
+		</a>
+	</div>
+</div>
+<div class="widget-container widget_calendar boxed boxed-red">
+	<div class="inner">
+		<input type="text" name="date_departure" class="inputField" id="date_departure">
+	</div>
+</div>
+<script>
+	// <![CDATA[
+	$(document).ready(function() {
+		var posts = {};
+		var postDates = [];
+		$.getJSON('/blog/posts.json', function(data){
+			var dp = data.posts;
+			for(var i = 0, limit = dp.length; i < limit; i++){
+				posts[dp[i].date.slice(0,10)] = dp[i];
+			}
+			for(var i in posts){
+				postDates.push(i);
+			}
+			assignCalendar('#date_departure');
+			refreshDate();
+		});
+
+
+		var today = new Date();
+
+		function goPage(date){
+			window.location.href = posts[date.replace(/\//g,'-')].url;
+		}
+
+		function assignCalendar(id){
+			$('<div class="calendar" />')
+				.insertAfter( $(id) )
+				.datepicker({
+					beforeShowDay: function(date){
+						var string = $.datepicker.formatDate('yy-mm-dd', date);
+						return [ postDates.indexOf(string) != -1 ]
+					},
+					dateFormat: 'yy/mm/dd',
+					minDate: new Date(postDates[postDates.length - 1]),
+					maxDate: today,
+					maxPicks: 1,
+					altField: id,
+					firstDay: 0,
+					showOtherMonths: true,
+					onSelect: goPage,
+					onChangeMonthYear: refreshDate
+				}).prev().hide();
+		}
+
+		function refreshDate(){
+			setTimeout(function(){
+				$('a.ui-state-default').each(function(num){
+					var prefix = '/blog/';
+					var ref = prefix;
+					ref += $(this).parent().attr('data-year');
+					ref += '/';
+					ref += ('0' + (parseInt($(this).parent().attr('data-month')) + 1)).slice(-2);
+					ref += '/';
+					ref += ('0' + $(this).text()).slice(-2);
+					$(this).attr('data-title', posts[ref.replace(prefix,'').replace(/\//g,'-')].title);
+					$(this).attr('href', ref + '/' + posts[ref.replace(prefix,'').replace(/\//g,'-')].url);
+				});
+			},10);
+		}
+	});
+	// ]]>
+</script>
+<section class="widget-container widget-recently boxed">
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/honda-3d-webgl/">Honda 3DのサイトがFlashだったときの症例</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/04/qi-battery-203z/">Qiで203Zを充電できるようにしてみた</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/01/22/javascript-one-codegolf/">JavaScriptの記号だけで'1'を作るコードゴルフ</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/01/09/iscsi-debian/">debianでiscsi target/initiator動作させるメモ</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/18/buserr-segfault-osx/">OS Xで再現されるBus error: 10の原因探ってみた</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section class="widget-container widget-github boxed">
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'mzyy94',
+            count: 2,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'mzyy94blog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://mzyy94.com/blog/2014/02/13/honda-3d-webgl/';
+        var disqus_url = 'http://mzyy94.com/blog/2014/02/13/honda-3d-webgl/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+  </div>
+  <footer class="boxed-yellow" role="contentinfo"><p>
+  Copyright &copy; 2014 - mzyy94 -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> -
+  <span class="credit">Designed with <a href="http://pixelkit.com/kits/flat-ui-kit">Flat UI Kit | Modern Touch</a></span> -
+  <span>Licensed under a <a rel="license" href="http://opensource.org/licenses/mit-license.html">MIT License</a> and <a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a><span>
+</p>
+<script>
+	$(function () {
+		$("a[href^='http'], a[href^='ftp']").click(function () {
+			if ($(this).attr("target") === undefined) 
+			$(this).attr("target", "_blank");
+		});
+	});
+</script>
+
+</footer>
+  </div>
+</body>
+</html>
