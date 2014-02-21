@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[mzyy94: command not found]]></title>
+  <title><![CDATA[パケットの中の隠れみっきー]]></title>
   <link href="http://mzyy94.com/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2014-02-21T21:01:27+09:00</updated>
+  <updated>2014-02-21T21:23:16+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -40,7 +40,7 @@ PopClip拡張機能を作るための手順に関しては、さっきからよ�
 
 <p><img src="http://mzyy94.com/blog/resources/images/2014/2/21/UnicodeEncode_popclipext.gif" alt="UnicodeEncode_popclipext" /></p>
 
-<p>そこまで難しく考えることなく、サンプルのURLエンコードの拡張機能をちょちょっと編集して、\uXXXXの形のUnicode形式を出力するプログラムをかきました。UTF-8→Unicodeの変換は、<a href="http://gihyo.jp/admin/serial/01/charcode/0004">第4回 UTF-8の冗長なエンコード：本当は怖い文字コードの話｜gihyo.jp … 技術評論社</a>を参考にしました（はせがわさんの警告無視）。バグあります（後述）。</p>
+<p>そこまで難しく考えることなく、サンプルのURLエンコードの拡張機能をちょちょっと編集して、\uXXXXの形のUnicode形式を出力するプログラムをかきました。UTF-8→Unicodeの変換は、<a href="http://gihyo.jp/admin/serial/01/charcode/0004">第4回 UTF-8の冗長なエンコード：本当は怖い文字コードの話｜gihyo.jp … 技術評論社</a>を参考にしました（はせがわさんの警告無視）。</p>
 
 <p>こちらになります。<a href="https://github.com/mzyy94/UnicodeEncode.popclipext">mzyy94/UnicodeEncode.popclipext</a></p>
 
@@ -66,7 +66,7 @@ PopClip拡張機能は、起動時にLANG環境変数を引き継ぐことなく
 
 <p>まず、以下の例をみてください。</p>
 
-<p><img src="http://mzyy94.com/blog/resources/images/2014/2/21/problem1.gif" alt="Problem2" /></p>
+<p><img src="http://mzyy94.com/blog/resources/images/2014/2/21/problem2.gif" alt="Problem2" /></p>
 
 <p>三人ともおなじ５文字の名前なのに、鹿目さんだけがUnicode化した際に６文字になってしまっています。
 これは、鹿目さんが悪いのではなく、OS Xの挙動が悪いのです。</p>
