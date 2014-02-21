@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: CSS3 | mzyy94: command not found]]></title>
   <link href="http://mzyy94.com/blog/tags/css3/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2014-02-21T20:50:26+09:00</updated>
+  <updated>2014-02-21T21:01:27+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -39,12 +39,14 @@
 
 <p>この惨状を目にした60分後、手元にはこんなものが出来上がっていました。</p>
 
-<h3><a href="http://mzyy94.com/demo/honda-3d_webgl/">Honda 3D &ndash; WebGL Demo (Beta)</a></h3>
+<h3><a href="http://mzyy94.com/HONDA-3D-WebGL-demo/">Honda 3D &ndash; WebGL Demo (Beta)</a></h3>
 
 <p>
 <span>※Chrome 33向けです。</span><br>
 <span>※※RAMとCPU使用率と通信量を膨大に使うので開く際はご注意ください</span>
 </p>
+
+<p><a href="https://github.com/mzyy94/HONDA-3D-WebGL-demo">GitHub Repository</a></p>
 
 <p>悲しみからか、手が勝手に動き<strong>Flashなし</strong>で模倣していました。</p>
 
