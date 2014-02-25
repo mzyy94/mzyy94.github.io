@@ -5,11 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Tag: bus_error - パケットの中の隠れみっきー</title>
+  <title>Node.jsでダウンロードしながらGunzipしてmd5の計算しながら保存する奴 - パケットの中の隠れみっきー</title>
   <meta name="author" content="mzyy94">
 
   
-  <meta name="description" content="Tag: bus_error">
+  <meta name="description" content="Node.jsです。
+Lempel-Ziv符号化で圧縮されたファイル(.gz)のダウンロードをしようとしたときの話です。
+ブラウザからダウンロードすると、拡張子gzで保存され、それを解凍することで必要なデータを得ることができるのですが、圧縮されたファイルは解凍したあとでは不要です。 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://mzyy94.comblog/tags/bus-error">
+  <link rel="canonical" href="http://mzyy94.com/blog/2014/02/25/dl-gunzip-with-nodejs">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/blog/atom.xml" rel="alternate" title="パケットの中の隠れみっきー" type="application/atom+xml">
@@ -131,41 +133,164 @@
 
 </header>
     <div class="row">
-      
-<main class="col-sm-8">
-
-<article role="article">
+      <main class="col-sm-8">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Tag: bus_error</h1>
+    
+      <h1 class="entry-title boxed-green">Node.jsでダウンロードしながらGunzipしてmd5の計算しながら保存する奴</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+<i class="glyphicon glyphicon-calendar"></i><time datetime="2014-02-25T22:18:21+09:00" pubdate data-updated="true">Feb 25<span>th</span>, 2014</time>
+        
+
+<i class="glyphicon glyphicon-folder-close"></i><span class="categories">
+  
+    <a class='category' href='/blog/categories/nodejs/'>nodejs</a>
+  
+</span>
+
+
+        
+
+<i class="glyphicon glyphicon-tags"></i><span class="tags">
+  
+    <a class='tag' href='/blog/tags/crypto/'>crypto</a>, <a class='tag' href='/blog/tags/gunzip/'>gunzip</a>, <a class='tag' href='/blog/tags/http/'>http</a>, <a class='tag' href='/blog/tags/md5/'>md5</a>, <a class='tag' href='/blog/tags/zlib/'>zlib</a>
+  
+</span>
+
+
+        
+		<i class="glyphicon glyphicon-comment"></i><a href="#disqus_thread"
+             data-disqus-identifier="http://mzyy94.com">Comments</a>
+        
+      </p>
     
   </header>
-  
-  <div class="page-content">
-  <div id="blog-archives" class="tag">
 
 
-
-  
-  <h2>2013</h2>
-
-<article>
-  
-<h1><a href="/blog/2013/12/18/buserr-segfault-osx/">OS Xで再現されるBus error: 10の原因探ってみた</a></h1>
-<time datetime="2013-12-18T12:48:12+09:00" pubdate><span class='month'>Dec</span> <span class='day'>18</span> <span class='year'>2013</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/c/'>C</a></span>
-</footer>
+<img src="/blog/resources/images/2014/2/25/dl-gunzip-with-nodejs.png" alt="article image" class="main image"/>
 
 
-</article>
+<div class="entry-content"><p><a href="http://nodejs.org/">Node.js</a>です。
+Lempel-Ziv符号化で圧縮されたファイル(.gz)のダウンロードをしようとしたときの話です。
+ブラウザからダウンロードすると、拡張子gzで保存され、それを解凍することで必要なデータを得ることができるのですが、圧縮されたファイルは解凍したあとでは不要です。
+このような不要ファイルを保存することなく、目的のファイルが欲しいような状況になったので、いろいろと調べて解決しました。</p>
 
+<!-- more -->
+
+
+<p>Lempel-Ziv符号化で圧縮されたファイルは、かの有名な<a href="http://www.zlib.net/">zlib</a>によって扱うことができます。
+Node.jsの標準モジュールには、zlibがあり、require()で取り込むことでzlibを利用することができます。
+標準モジュールであるため、APIに関する説明が<a href="http://nodejs.org/api/zlib.html">Node.js公式ドキュメント</a>にあるのですが、よく使い方がわからなかったので、いろいろと試行錯誤してみました。</p>
+
+<p>結果、zlibモジュールを利用してストリームを扱うオブジェクトを作成し、パイプでつなげることで、前途の目的である、圧縮されたアーカイブファイルを保存することなく、目的のファイルを保存することができました。</p>
+
+<p>以下、ソースコードになります。
+引数に拡張子gzのファイルのURLを渡し実行することで、解凍されたファイルを保存できます。</p>
+
+<script src="https://gist.github.com/mzyy94/9209459.js"></script>
+
+
+<p>20行目の<code>res.pipe(gunzip).pipe(output);</code>にてhttp.getで得られたストリームを<code>zlib.createGunzip()</code>で作成したgunzipオブジェクトにパイプで渡し、処理されたものを、<code>fs.createWriteStream()</code>で作成されたoutputオブジェクトにさらにパイプすることで不要なファイルを保存することなく、ダウンロードしながら解凍し、保存しています。</p>
+
+<p>保存時に、gunzipオブジェクトの&#8217;data&#8217;イベントを拾って、crypto標準モジュールでmd5の値を計算させています。
+ダウンロードのときはmd5チェックしたいですし。</p>
+
+<p>Node.jsのzlibモジュールに関して、あまり実例がなく、せっかくなので記事にしました。
+ご参考になれば幸いです。</p>
 </div>
 
-  </div>
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard"><i class="glyphicon glyphicon-user"></i><span class="fn">mzyy94</span></span>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+<i class="glyphicon glyphicon-calendar"></i><time datetime="2014-02-25T22:18:21+09:00" pubdate data-updated="true">Feb 25<span>th</span>, 2014</time>
+      
+
+<i class="glyphicon glyphicon-folder-close"></i><span class="categories">
+  
+    <a class='category' href='/blog/categories/nodejs/'>nodejs</a>
+  
+</span>
+
+
+      
+
+<i class="glyphicon glyphicon-tags"></i><span class="tags">
+  
+    <a class='tag' href='/blog/tags/crypto/'>crypto</a>, <a class='tag' href='/blog/tags/gunzip/'>gunzip</a>, <a class='tag' href='/blog/tags/http/'>http</a>, <a class='tag' href='/blog/tags/md5/'>md5</a>, <a class='tag' href='/blog/tags/zlib/'>zlib</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="widget-container widget-social">
+	<ul class="clearfix">
+  
+
+  <!--li class="social-twitter"><a href="https://twitter.com/intent/tweet?original_referer=http://mzyy94.com/blog/2014/02/25/dl-gunzip-with-nodejs/&text=Node.jsでダウンロードしながらGunzipしてmd5の計算しながら保存する奴%20-%20パケットの中の隠れみっきー&tw_p=tweetbutton&url=http://mzyy94.com/blog/2014/02/25/dl-gunzip-with-nodejs/&via=mzyy94"><i>Tweet</i></a></li-->
+
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://mzyy94.com/blog/2014/02/25/dl-gunzip-with-nodejs/" data-via="mzyy94" data-counturl="http://mzyy94.com/blog/2014/02/25/dl-gunzip-with-nodejs/" >Tweet</a>
+  
+  
+  <!-- li class="social-google"><a href="#"><i>Google</i></a></li -->
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+  <!-- li class="social-facebook"><a href="#"><i>Facebook</i></a></li -->
+  <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+  </ul>
+</div>
+
+    
+    <div>
+      
+	  <a class="btn btn-icon-left btn-arrow-left" href="/blog/2014/02/21/unicode-popclip-extension/" title="Previous Post: Unicode形式に変換するPopClipのExtensionを作りたかっただけだったのに"><span>Unicode形式に変換するPopClipのExtensionを作りたかっただけだったのに</span></a>
+      
+      
+    </div>
+  </footer>
 </article>
+
+  <section class="comment">
+    <h1 class="boxed-red">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </main>
 
@@ -319,7 +444,10 @@
       var disqus_shortname = 'mzyy94blog';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://mzyy94.com/blog/2014/02/25/dl-gunzip-with-nodejs/';
+        var disqus_url = 'http://mzyy94.com/blog/2014/02/25/dl-gunzip-with-nodejs/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
