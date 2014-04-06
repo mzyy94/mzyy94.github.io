@@ -5,6 +5,12 @@
     
 	"posts" : [ 
 		{
+			"date": "2014-04-06 23:10:36 +0900",
+			"title": "自宅サーバーを増やした",
+			"url": "/blog/2014/04/06/new-server/"
+		},
+	
+		{
 			"date": "2014-02-25 22:18:21 +0900",
 			"title": "Node.jsでダウンロードしながらGunzipしてmd5の計算しながら保存する奴",
 			"url": "/blog/2014/02/25/dl-gunzip-with-nodejs/"

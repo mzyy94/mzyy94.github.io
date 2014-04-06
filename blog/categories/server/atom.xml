@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Server | パケットの中の隠れみっきー]]></title>
+  <link href="http://mzyy94.com/blog/categories/server/atom.xml" rel="self"/>
+  <link href="http://mzyy94.com/"/>
+  <updated>2014-04-06T23:06:43+09:00</updated>
+  <id>http://mzyy94.com/</id>
+  <author>
+    <name><![CDATA[mzyy94]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[自宅サーバーを増やした]]></title>
+    <link href="http://mzyy94.com/blog/2014/04/06/new-server/"/>
+    <updated>2014-04-06T23:10:36+09:00</updated>
+    <id>http://mzyy94.com/blog/2014/04/06/new-server</id>
+    <content type="html"><![CDATA[<p>増税前のPCパーツ買いだめイベントに便乗して、３月中に自宅サーバーを増設しました。
+どんな構成で組み立てたのかの紹介になります。</p>
+
+<!-- more -->
+
+
+<p>サーバー増設にあたって、次に挙げる構成目標を先に決めていました。</p>
+
+<ul>
+<li>４コア以上、かつ８スレッド以上</li>
+<li>16GB以上のDRAM</li>
+<li>速い記憶装置</li>
+<li>8万円以下</li>
+</ul>
+
+
+<p>あまり欲がありませんが、だいたいこれを満たせるようにと組みました。</p>
+
+<p>SandyBridge世代のCPUを載せた、自宅サーバーっぽいものは前からありました。
+構成は、以下の表の通りです。</p>
+
+<table>
+<thead>
+<tr>
+<th>パーツ</th>
+<th>種類</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CPU</td>
+<td>Intel Core i5</td>
+</tr>
+<tr>
+<td>DRAM</td>
+<td> DDR3-1333 8GB (4GB x 2)</td>
+</tr>
+<tr>
+<td>HDD</td>
+<td> WD2TB</td>
+</tr>
+<tr>
+<td>MB</td>
+<td>ECS H67I</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>どこがサーバーじゃいと思うかもしれませんが、そう思うのもあたりまえ、元デスクトップマシンの構成のままなのです。
+大概のことはこなせていたので、新しく組む必要はなかったといわれればその通りなのですが、気軽に仮想マシンをたてて、実験して、つぶして、のような遊びをするには非力であったため、最新のパーツで新たに組むことにしました。</p>
+
+<h1>パーツ選定</h1>
+
+<h2>CPU</h2>
+
+<p><img src="/blog/resources/images/2014/4/6/DSC08114.JPG" alt="" />
+「サーバー向けならXeonっしょ。」と各所で言われているので、Xeonにしました。
+用途としては、CIサーバーが主で、適当な仮想マシンインスタンスを作っては遊び、追加していくという将来を見据えて、<a href="http://ark.intel.com/ja/products/75462/Intel-Xeon-Processor-E3-1245-v3-8M-Cache-3_40-GHz">Intel Xeon E3-1245 v3</a>にしました。</p>
+
+<table>
+<thead>
+<tr>
+<th>プロセッサー</th>
+<th>Intel Xeon E3-1245 v3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>動作周波数 </td>
+<td>3.4 GHz</td>
+</tr>
+<tr>
+<td>TB時周波数  </td>
+<td>3.8 GHz</td>
+</tr>
+<tr>
+<td>キャッシュ </td>
+<td>8 MB</td>
+</tr>
+<tr>
+<td>最大 TDP  </td>
+<td>84 W</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>動作周波数3.4GHzあれば１０個ほど仮想マシン立ち上げても大丈夫でしょう。</p>
+
+<h2>MB</h2>
+
+<p><img src="/blog/resources/images/2014/4/6/DSC08093.JPG" alt="" />
+自宅に転がっているPCケースがどれもMini-ITX向けのものなので、Mini-ITXにします。Xeon対応を謳っているマザーボードは少なく、Mini-ITXに限定してしまうと片手で数えきれるほどしか候補がありません。
+サーバー向けチップセットを載せたASUSの<a href="http://www.asus.com/Commercial_Servers_Workstations/P9DI/">P9D-I</a>が購入時時点のXeon向けMini-ITXマザーボードとしては最上位であるものの、予算オーバーしてしまうので、今回は見送りました。
+残る選択肢はGIGABYTEかASRockのほぼ二択となり、両者の違いはeSATAの有無やGbEの数などで、仮想マシンをいくつもたてることを考えると、二つGbEがあるほうが好ましいということで、GIGABYTEの<a href="http://www.gigabyte.jp/products/product-page.aspx?pid=4600">GA-Z87N-WIFI</a>を購入しました。</p>
+
+<h2>DRAM</h2>
+
+<p><img src="/blog/resources/images/2014/4/6/DSC08105.JPG" alt="" />
+Xeon向けチップセットを載せたマザーボードを選んでいれば、ECC付きのメモリで長期運用時の信頼性を高めることができるのですが、上記の通り、Z87チップセットを載せたマザーボードを選択したため、特にECCに関してはこだわる必要がありません。
+Z87チップセットはDDR3-1333/1600対応のため、たくさんの仮想マシンを支えられるよう、DDR3-1600のもので、16GB（8GB x ２枚）のものを探しました。
+相性問題などは特に気にせず、財布と相談しながら予算に合うものを選んだ結果、Kingstonの<a href="http://www.amazon.co.jp/gp/product/B008KRZYH4/ref=as_li_ss_tl?ie=UTF8&amp;camp=247&amp;creative=7399&amp;creativeASIN=B008KRZYH4&amp;linkCode=as2&amp;tag=mzyy-22">KHX16C10B1K2/16X</a>の価格が暴落していたのですぐさま購入しました。</p>
+
+<h2>Storage</h2>
+
+<p>なんでもよかったです。とにかく速いものであれば。
+これも、お財布と相談しながらということで、適当に探してSanDiskの<a href="http://www.amazon.co.jp/gp/product/B00BWR2QZC/ref=as_li_ss_tl?ie=UTF8&amp;camp=247&amp;creative=7399&amp;creativeASIN=B00BWR2QZC&amp;linkCode=as2&amp;tag=mzyy-22">SanDisk SSD UltraPlus 128GB</a>にしました。</p>
+
+<h2>その他パーツ</h2>
+
+<p>増設ということで、旧マシンから流用できるパーツがありません。あまっているパーツは7mm厚120mmファンくらいで、必要なものがいくつもありました。</p>
+
+<p>CPUはバルクで購入したのでファンがついておらず、CPUファンを購入する必要がありました。ケースの高さ制限より、これもまた選択肢が少なく、某所のレビューでよく冷えるとあったので、Scytheの<a href="http://www.amazon.co.jp/gp/product/B004W5KS0G/ref=as_li_ss_tl?ie=UTF8&amp;camp=247&amp;creative=7399&amp;creativeASIN=B004W5KS0G&amp;linkCode=as2&amp;tag=mzyy-22">KOZUTI</a>にしました。</p>
+
+<p>CPUファンとの熱伝導のためのグリスは、ファン付属のものでもよかったのですが、どうしても別で買いたかったのでAINEXの<a href="http://www.amazon.co.jp/gp/product/B000BLBHTQ/ref=as_li_ss_tl?ie=UTF8&amp;camp=247&amp;creative=7399&amp;creativeASIN=B000BLBHTQ&amp;linkCode=as2&amp;tag=mzyy-22">シルバーグリス</a>を購入しました。よく冷えそうなので。</p>
+
+<p>あとは、2.5インチSSDを3.5インチに変える、<a href="http://www.amazon.co.jp/gp/product/B0088QXTK6/ref=as_li_ss_tl?ie=UTF8&amp;camp=247&amp;creative=7399&amp;creativeASIN=B0088QXTK6&amp;linkCode=as2&amp;tag=mzyy-22">センチュリー 裸族のインナー</a>や、ケースの狂った配線とつなぐための<a href="http://www.amazon.co.jp/gp/product/B000FHQACA/ref=as_li_ss_tl?ie=UTF8&amp;camp=247&amp;creative=7399&amp;creativeASIN=B000FHQACA&amp;linkCode=as2&amp;tag=mzyy-22">アイネックス ピン配列交換ケーブル</a>や<a href="http://www.amazon.co.jp/gp/product/B000Y1YUKG/ref=as_li_ss_tl?ie=UTF8&amp;camp=247&amp;creative=7399&amp;creativeASIN=B000Y1YUKG&amp;linkCode=as2&amp;tag=mzyy-22">アイネックス コネクタ簡単脱着ケーブル</a>を購入しました。</p>
+
+<h1>組み立て</h1>
+
+<h2>ケースの整備</h2>
+
+<p><img src="/blog/resources/images/2014/4/6/DSC08139.JPG" alt="" />
+普通のPCケースならば、パーツをケースに組み込むだけですが、自宅に転がっているというケースがくせ者で、数年前のAcer Aspire H340のものなのです。
+このケース、Mini-ITXサイズのマザーボードが組み込まれていたので、一見どのマザーボードでも使えるかと思ったら大間違い。フロントパネルのボタンは効かないわSATAは認識しないわで問題ばかり。このケースを市販されているMini-ITXマザーボードで活用しようと思う方はたくさん居るようで、ウェブに情報はたくさんあります。
+今回は、<a href="http://z.apps.atjp.jp/memo/h340.html">http://z.apps.atjp.jp/memo/h340.html</a>を参考にさせていただき、ケースを利用できる状態にしました。</p>
+
+<h2>パーツ組み込み</h2>
+
+<p><img src="/blog/resources/images/2014/4/6/DSC08158.JPG" alt="" /></p>
+
+<p>やっと普通のPCケースとして使える状態になったので、組み込みます。
+ここからの手順は、ご存知の方多いと思いますので割愛します。</p>
+
+<h2>設置</h2>
+
+<p><img src="/blog/resources/images/2014/4/6/Servers.JPG" alt="" />
+ちゃんとケースに組み込んで所定の位置に設置しました。
+ほかのサーバーとおなじ見た目なのでわかりづらいですが、右上のが今回新設したサーバーとなります。
+それらに関してはおいおい紹介していきますのでしばしおまちを。</p>
+
+<h1>費用</h1>
+
+<p>気になるサーバー構築費用です（すべて税込み）。</p>
+
+<table>
+<thead>
+<tr>
+<th>パーツ</th>
+<th align="right">購入価格(円)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CPU    </td>
+<td align="right">26800</td>
+</tr>
+<tr>
+<td>MB     </td>
+<td align="right"> 8800</td>
+</tr>
+<tr>
+<td>DRAM   </td>
+<td align="right">11151</td>
+</tr>
+<tr>
+<td>SSD    </td>
+<td align="right"> 9790</td>
+</tr>
+<tr>
+<td>Fan    </td>
+<td align="right"> 2880</td>
+</tr>
+<tr>
+<td>Grease </td>
+<td align="right"> 1140</td>
+</tr>
+<tr>
+<td>Mounter</td>
+<td align="right">  891</td>
+</tr>
+<tr>
+<td>Cable  </td>
+<td align="right">  827</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>計62,279円で、このサーバーを構築できました。目標としていた8万円を大きく下回り、金銭的にストレージ増設の余地があります。
+このサーバーを生かして、今後いろいろと実験していくような記事を書く予定ですので、こう御期待。</p>
+]]></content>
+  </entry>
+  
+</feed>
