@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: gunzip | パケットの中の隠れみっきー]]></title>
+  <link href="http://mzyy94.com/blog/tags/gunzip/atom.xml" rel="self"/>
+  <link href="http://mzyy94.com/"/>
+  <updated>2014-09-03T15:30:07+09:00</updated>
+  <id>http://mzyy94.com/</id>
+  <author>
+    <name><![CDATA[mzyy94]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Node.jsでダウンロードしながらGunzipしてmd5の計算しながら保存する奴]]></title>
+    <link href="http://mzyy94.com/blog/2014/02/25/dl-gunzip-with-nodejs/"/>
+    <updated>2014-02-25T22:18:21+09:00</updated>
+    <id>http://mzyy94.com/blog/2014/02/25/dl-gunzip-with-nodejs</id>
+    <content type="html"><![CDATA[<p><a href="http://nodejs.org/">Node.js</a>です。
+Lempel-Ziv符号化で圧縮されたファイル(.gz)のダウンロードをしようとしたときの話です。
+ブラウザからダウンロードすると、拡張子gzで保存され、それを解凍することで必要なデータを得ることができるのですが、圧縮されたファイルは解凍したあとでは不要です。
+このような不要ファイルを保存することなく、目的のファイルが欲しいような状況になったので、いろいろと調べて解決しました。</p>
+
+<!-- more -->
+
+
+<p>Lempel-Ziv符号化で圧縮されたファイルは、かの有名な<a href="http://www.zlib.net/">zlib</a>によって扱うことができます。
+Node.jsの標準モジュールには、zlibがあり、require()で取り込むことでzlibを利用することができます。
+標準モジュールであるため、APIに関する説明が<a href="http://nodejs.org/api/zlib.html">Node.js公式ドキュメント</a>にあるのですが、よく使い方がわからなかったので、いろいろと試行錯誤してみました。</p>
+
+<p>結果、zlibモジュールを利用してストリームを扱うオブジェクトを作成し、パイプでつなげることで、前途の目的である、圧縮されたアーカイブファイルを保存することなく、目的のファイルを保存することができました。</p>
+
+<p>以下、ソースコードになります。
+引数に拡張子gzのファイルのURLを渡し実行することで、解凍されたファイルを保存できます。</p>
+
+<script src="https://gist.github.com/mzyy94/9209459.js"></script>
+
+
+<p>20行目の<code>res.pipe(gunzip).pipe(output);</code>にてhttp.getで得られたストリームを<code>zlib.createGunzip()</code>で作成したgunzipオブジェクトにパイプで渡し、処理されたものを、<code>fs.createWriteStream()</code>で作成されたoutputオブジェクトにさらにパイプすることで不要なファイルを保存することなく、ダウンロードしながら解凍し、保存しています。</p>
+
+<p>保存時に、gunzipオブジェクトの'data'イベントを拾って、crypto標準モジュールでmd5の値を計算させています。
+ダウンロードのときはmd5チェックしたいですし。</p>
+
+<p>Node.jsのzlibモジュールに関して、あまり実例がなく、せっかくなので記事にしました。
+ご参考になれば幸いです。</p>
+]]></content>
+  </entry>
+  
+</feed>

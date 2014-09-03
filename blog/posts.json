@@ -5,6 +5,12 @@
     
 	"posts" : [ 
 		{
+			"date": "2014-09-03 14:40:47 +0900",
+			"title": "SECCON 2014 横浜大会NW予選 Write-up",
+			"url": "/blog/2014/09/03/seccon2014-yokohama-2nd-day/"
+		},
+	
+		{
 			"date": "2014-04-06 23:10:36 +0900",
 			"title": "自宅サーバーを増やした",
 			"url": "/blog/2014/04/06/new-server/"
