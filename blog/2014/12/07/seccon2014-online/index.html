@@ -1,0 +1,866 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>SECCON2014 Online英語版予選 Write-up - 犬アイコンのみっきー</title>
+  <meta name="author" content="mzyy94">
+
+  
+  <meta name="description" content="昨日12月6日午前9時（日本時間）から12月7日午後5時までの32時間耐久CTFが行われたので参加してみました。
+あまり活躍できずでしたがチャレンジしたもののまとめを記します。 Get the key (Network 100) 配布されたパケットからキーの手がかりを探すというもの。 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://mzyy94.com/blog/2014/12/07/seccon2014-online">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/blog/atom.xml" rel="alternate" title="犬アイコンのみっきー" type="application/atom+xml">
+  <!-- main JS libs -->
+  <script src="/javascripts/libs/modernizr.min.js"></script>
+  <script src="/javascripts/jquery-2.0.3.min.js"></script>
+  <script src="/javascripts/libs/jquery-ui.min.js"></script>
+  <script src="/javascripts/libs/bootstrap.min.js"></script>
+  <!-- Style CSS -->
+  <link href="/stylesheets/bootstrap.css" media="screen" rel="stylesheet">
+  <link href="/stylesheets/style.css" media="screen" rel="stylesheet">
+  <link href="/stylesheets/syntax.css" media="screen" rel="stylesheet">
+  <!-- scripts -->
+  <script src="/javascripts/general.js"></script>
+  <!-- custom input -->
+  <script src="/javascripts/jquery.customInput.js"></script>
+  <script type="text/javascript" src="/javascripts/custom.js"></script>
+  <!-- Placeholders -->
+  <script type="text/javascript" src="/javascripts/jquery.powerful-placeholder.min.js"></script>
+  <!-- Lightbox prettyPhoto -->
+  <link href="/stylesheets/prettyPhoto.css" rel="stylesheet">
+  <script src="/javascripts/jquery.prettyPhoto.js"></script>
+  <!-- CarouFredSel  -->
+  <script src="/javascripts/jquery.carouFredSel-6.2.1-packed.js"></script>
+  <!-- Progress Bars -->
+  <script src="/javascripts/progressbar.js"></script>
+  <!-- Calendar -->
+  <script src="/javascripts/jquery-ui.multidatespicker.js"></script>
+  <!-- range sliders -->
+  <script src="/javascripts/jquery.slider.bundle.js"></script>
+  <script src="/javascripts/jquery.slider.js"></script>
+  <link rel="stylesheet" href="/stylesheets/jslider.css">
+  <!-- Video Player -->
+  <link href="/stylesheets/video-js.css" rel="stylesheet">
+  <script src="/javascripts/video.js"></script>
+  <!-- Scroll Bars -->
+  <script src="/javascripts/jquery.mousewheel.js"></script>
+  <script src="/javascripts/jquery.jscrollpane.min.js"></script>
+
+<!--[if lt IE 9]><script src="/javascripts/respond.min.js"></script><![endif]-->
+<!--[if gte IE 9]>
+<style type="text/css">
+	.gradient {filter: none !important;}
+</style>
+<![endif]-->
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-41944495-3']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body  >
+  <div class="container">
+  <div class="content">
+  <header class="row">
+    <nav id="topmenu" class="col-sm-12" role="navigation"><ul class="dropdown clearfix boxed boxed-blue">
+    <li class="menu-level-0"><a href="/">Home</a></li>
+  <li class="menu-level-0"><a href="/blog/">Blog</a></li>
+  <li class="menu-level-0"><a href="/service/">Service</a></li>
+  <li class="menu-level-0">
+  <a href="/about/">About</a>
+  <ul class="submenu-1">
+	  <li class="menu-level-1"><a href="/about/">About me</a></li>
+	  <li class="menu-level-1"><a href="/about/license.html">License</a></li>
+  </ul>
+  </li>
+
+  <li class="menu-level-0">
+    <a>Subscribe</a>
+	<ul class="submenu-1">
+  <li class="menu-level-1"><a href="/blog/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  <li class="menu-level-1"><a href="http://cloud.feedly.com/#subscription%2Ffeed%2Fhttp%3A%2F%2Fmzyy94.com%2Fblog%2Fatom.xml" rel="subscribe-feedly" title="subscribe on Feedly">Feedly</a></li>
+  
+  </ul>
+  
+  <li class="menu-search last">
+
+	<form action="https://www.google.com/search" id="searchForm" class="menu-search-form" method="get">
+		<fieldset role="search">
+			<input type="hidden" name="q" value="site:mzyy94.com" />
+			<input type="text" name="q" value="" results="0" class="menu-search-field" placeholder="Search the website" hidefocus="true" style="outline: none;">
+			<input type="submit" value="" class="btn menu-search-submit" name="search-send" hidefocus="true" style="outline: none;">
+		</fieldset>
+	</form>
+
+  </li>
+  
+</ul>
+</nav>
+  </header>
+  <header class="col-sm-12 boxed-red" role="banner"><hgroup>
+  
+  <h1><a href="/">犬アイコンのみっきー</a></h1>
+  
+</hgroup>
+
+</header>
+    <div class="row">
+      <main class="col-sm-9">
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title boxed-green">SECCON2014 Online英語版予選 Write-up</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+<i class="glyphicon glyphicon-calendar"></i><time datetime="2014-12-07T17:59:06+09:00" pubdate data-updated="true">07 Dec 2014</time>
+        
+
+<i class="glyphicon glyphicon-folder-close"></i><span class="categories">
+  
+    <a class='category' href='/blog/categories/ctf/'>ctf</a>
+  
+</span>
+
+
+        
+
+<i class="glyphicon glyphicon-tags"></i><span class="tags">
+  
+    <a class='tag' href='/blog/tags/seccon-seccon2014/'>seccon. seccon2014</a>
+  
+</span>
+
+
+        
+		<i class="glyphicon glyphicon-comment"></i><a href="#disqus_thread"
+             data-disqus-identifier="http://mzyy94.com">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<img src="/blog/resources/images/2014/12/7/SECCON2014Online_en.png" alt="article image" class="main image"/>
+
+
+<div class="entry-content"><p>昨日12月6日午前9時（日本時間）から12月7日午後5時までの32時間耐久CTFが行われたので参加してみました。
+あまり活躍できずでしたがチャレンジしたもののまとめを記します。</p>
+
+<!-- more -->
+
+
+<h1>Get the key (Network 100)</h1>
+
+<p><img src="/blog/resources/images/2014/12/7/NW100-1.png" alt="Get the key pcap file opened" />
+配布されたパケットからキーの手がかりを探すというもの。
+これはNWの基本問題だったので解説することはほとんどないです。
+Wiresharkで開いてWebサイトのログイン情報が出るのでそれでアクセスしておしまい。</p>
+
+<p><img src="/blog/resources/images/2014/12/7/NW100-2.png" alt="Get the key WebSite login" />
+<img src="/blog/resources/images/2014/12/7/NW100Flag.png" alt="NW100Flag" /></p>
+
+<h1>Reverseit (Bin 100)</h1>
+
+<p>なにやら配られたファイルを反転しろというもの。
+バイト列反転、ビット反転いろいろな反転方法を試したところ、
+4bitごとに反転してあげるとJPEG画像に早変わり。</p>
+
+<p><img src="/blog/resources/images/2014/12/7/BIN100Flag.jpg" alt="BIN100Flag" /></p>
+
+<p>画像中の答えも左右反転してるので眼で見て脳内反転しておしまい。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class='C'><span class='line'><span class="cp">#include &lt;sys/stat.h&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;fcntl.h&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;unistd.h&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="k">const</span><span class="o">*</span> <span class="n">argv</span><span class="p">[])</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="kt">int</span> <span class="n">in</span><span class="p">,</span> <span class="n">out</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">((</span><span class="n">in</span> <span class="o">=</span> <span class="n">open</span><span class="p">(</span><span class="s">&quot;Reverseit&quot;</span><span class="p">,</span> <span class="n">O_RDONLY</span><span class="p">))</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">struct</span> <span class="n">stat</span> <span class="n">st</span><span class="p">;</span>
+</span><span class='line'>      <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+</span><span class='line'>      <span class="kt">char</span> <span class="n">buf</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">out</span> <span class="o">=</span> <span class="n">open</span><span class="p">(</span><span class="s">&quot;reversed&quot;</span><span class="p">,</span> <span class="n">O_RDWR</span><span class="o">|</span><span class="n">O_CREAT</span><span class="p">,</span> <span class="mo">0666</span><span class="p">);</span>
+</span><span class='line'>      <span class="n">stat</span><span class="p">(</span><span class="s">&quot;Reverseit&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">st</span><span class="p">);</span>
+</span><span class='line'>      <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="n">st</span><span class="p">.</span><span class="n">st_size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="o">--</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="n">lseek</span><span class="p">(</span><span class="n">in</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">SEEK_SET</span><span class="p">);</span>
+</span><span class='line'>          <span class="n">read</span><span class="p">(</span><span class="n">in</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>          <span class="n">buf</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">buf</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&amp;</span> <span class="mh">0x0f</span> <span class="o">&lt;&lt;</span> <span class="mi">4</span><span class="p">)</span> <span class="o">|</span> <span class="p">((</span><span class="n">buf</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&amp;</span> <span class="mh">0xf0</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">4</span><span class="p">);</span>
+</span><span class='line'>          <span class="n">write</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>SECCON Wars: The Flag Awakens (QR 300)</h1>
+
+<iframe width="459" height="344" src="http://www.youtube.com/embed/1pC56S17-_A?feature=oembed" frameborder="0" allowfullscreen></iframe>
+
+
+<p>新ジャンルQRからの出題。
+<a href="http://youtu.be/1pC56S17-_A">YouTubeの動画</a>を見ろとの指令のみが与えられた問題。</p>
+
+<p><img src="/blog/resources/images/2014/12/7/QR300-1.png" alt="SECCON Wars QR code movie" /></p>
+
+<p>よーく見るとSECCONのバナーが出るときに動画の下の方にQRコードが流れているのでそれをスキャンすればよさそう。</p>
+
+<p>手順としては動画をまずローカルに引っ張り出して、QRコードの出現する54秒の時点から7秒間を16fpsで連番画像として抜き出します。
+ファイル情報を確認すると320x240ピクセルなので、目視で下部3ピクセルに表示されてると仮定して、320x3ピクセルの画像に切り出します。
+あとはこれを連結してノイズを減らして色反転すると、</p>
+
+<p><img src="/blog/resources/images/2014/12/7/QR300Flag.jpg" alt="QR300 Flag" /></p>
+
+<p>このようなQRコードが得られ、スキャンして答えをゲットできます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='C'><span class='line'><span class="n">ffmpeg</span> <span class="o">-</span><span class="n">i</span> <span class="n">SECCON_WARS</span><span class="p">.</span><span class="n">mp4</span> <span class="o">-</span><span class="n">ss</span> <span class="mi">54</span> <span class="o">-</span><span class="n">t</span> <span class="mi">7</span> <span class="o">-</span><span class="n">r</span> <span class="mi">16</span> <span class="o">-</span><span class="n">f</span> <span class="n">image2</span> <span class="o">%</span><span class="mo">04</span><span class="n">d</span><span class="p">.</span><span class="n">jpg</span>
+</span><span class='line'><span class="n">identify</span> <span class="mf">0001.</span><span class="n">jpg</span>
+</span><span class='line'><span class="n">convert</span> <span class="o">*</span><span class="p">.</span><span class="n">jpg</span> <span class="o">-</span><span class="n">crop</span> <span class="err">&#39;</span><span class="mi">320</span><span class="n">x3</span><span class="o">+</span><span class="mi">0</span><span class="o">+</span><span class="mi">237</span><span class="err">&#39;</span> <span class="n">qr_</span><span class="o">%</span><span class="mo">04</span><span class="n">d</span><span class="p">.</span><span class="n">jpg</span>
+</span><span class='line'><span class="n">convert</span> <span class="o">-</span><span class="n">append</span> <span class="n">qr_</span><span class="o">*</span><span class="p">.</span><span class="n">jpg</span> <span class="n">qr_appended</span><span class="p">.</span><span class="n">jpg</span>
+</span><span class='line'><span class="n">convert</span> <span class="o">-</span><span class="n">median</span> <span class="mi">3</span> <span class="o">-</span><span class="n">negate</span> <span class="n">qr_appended</span><span class="p">.</span><span class="n">jpg</span> <span class="n">qr</span><span class="p">.</span><span class="n">jpg</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>The Golden Gate (Programming 400)</h1>
+
+<p><img src="/blog/resources/images/2014/12/7/GoldenGate.jpg" alt="The Golden Gate" /></p>
+
+<p>自作ハードウェアエンコーダーの写真があって、それによってエンコードされた文字<code>BQDykmgZ0I6SaQnq4o/iEONudetXdPJdpl1UVSlU69oZOtvqnHfinOpcEfIjXy9okkVpsuw2kpKS==</code>をデコードしてくれとのこと。
+このハードウェアエンコーダーはユニーバーサル基板上に作られていて、絡み合うジャンパ線がどう番っているのかをしっかり把握できれば回路図を起こすのは以外と簡単。</p>
+
+<p><img src="/blog/resources/images/2014/12/7/TGG-1.jpg" alt="Handwriting Circuit" /></p>
+
+<p>7400のNANDゲートによって入力から出力までの間は、2入力NANDの結果をさらにその2入力でそれぞれNANDし、それらをNANDするという、何度もNANDする処理が入ってるだけでした。
+要するにXORです。</p>
+
+<p>よって、プログラムは簡潔にできあがり、難なく答えを手に入れることができると思いました。</p>
+
+<p>&#8230;思いました。</p>
+
+<p>残念ながら時間中に答えは得られませんでした。</p>
+
+<p>一点、デコードすべき文がなんなのかがわからなかったことがあります。BASE64にしては文字数が合わないのです。
+そして、どのタクトスイッチがどのbitをさしているのか、アノード・カソードどちらなのか写真からよくわからない、など、躓く点が多かったのです。</p>
+
+<p>SECCONは終わってしまいましたが、ヒントが出され、入力と出力とが対応付けられるようになりました。</p>
+
+<iframe width="480" height="270" src="http://www.youtube.com/embed/kaDjypSndMk?feature=oembed" frameborder="0" allowfullscreen></iframe>
+
+
+<p>タクトスイッチによる入力が一部反転できてなかったようです。</p>
+
+<p>入力文を正規のBASE64にして実行してみると、しっかりとgzipのデータとなり、フラッグを得られました。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='C'><span class='line'><span class="n">echo</span> <span class="s">&quot;BQDykmgZ0I6SaQnq4o/iEONudetXdPJdpl1UVSlU69oZOtvqnHfinOpcEfIjXy9okkVpsuw2kpKS&quot;</span> <span class="o">|</span> <span class="n">openssl</span> <span class="n">base64</span> <span class="o">-</span><span class="n">d</span> <span class="o">&gt;</span> <span class="n">input</span>
+</span><span class='line'><span class="n">gcc</span> <span class="n">goldengate</span><span class="p">.</span><span class="n">c</span> <span class="o">-</span><span class="n">o</span> <span class="n">gg</span>
+</span><span class='line'><span class="p">.</span><span class="o">/</span><span class="n">gg</span> <span class="n">input</span>
+</span><span class='line'><span class="n">file</span> <span class="n">out</span>
+</span><span class='line'><span class="n">gzip</span> <span class="o">-</span><span class="n">S</span> <span class="p">.</span><span class="n">gz</span> <span class="o">-</span><span class="n">d</span> <span class="o">-</span><span class="n">c</span> <span class="n">out</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+</pre></td><td class='code'><pre><code class='C'><span class='line'><span class="cp">#include &lt;stdio.h&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;stdlib.h&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;sys/stat.h&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;fcntl.h&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;unistd.h&gt;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="cp">#define B(y) ((*buf &gt;&gt; (y)) &amp; 1)</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">unsigned</span> <span class="kt">char</span> <span class="nf">nand</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">a</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">b</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">unsigned</span> <span class="kt">char</span> <span class="nf">xor</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">a</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">nand</span><span class="p">(</span><span class="n">nand</span><span class="p">(</span><span class="n">nand</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">),</span> <span class="n">a</span><span class="p">),</span> <span class="n">nand</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">nand</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)));</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">void</span> <span class="nf">encoder</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">char</span> <span class="o">*</span><span class="n">buf</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">a4</span> <span class="o">=</span> <span class="n">xor</span><span class="p">(</span><span class="n">B</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">^</span><span class="mi">1</span><span class="p">,</span> <span class="n">B</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="o">^</span><span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>  <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">a6</span> <span class="o">=</span> <span class="n">xor</span><span class="p">(</span><span class="n">B</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">B</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">^</span><span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>  <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">a5</span> <span class="o">=</span> <span class="n">xor</span><span class="p">(</span><span class="n">a6</span><span class="p">,</span> <span class="n">B</span><span class="p">(</span><span class="mi">5</span><span class="p">));</span>
+</span><span class='line'>  <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">g1</span> <span class="o">=</span> <span class="n">xor</span><span class="p">(</span><span class="n">B</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">B</span><span class="p">(</span><span class="mi">7</span><span class="p">));</span>
+</span><span class='line'>  <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">a0</span> <span class="o">=</span> <span class="n">xor</span><span class="p">(</span><span class="n">g1</span><span class="p">,</span> <span class="n">B</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">^</span><span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>  <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">a2</span> <span class="o">=</span> <span class="n">xor</span><span class="p">(</span><span class="n">B</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>  <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">g2</span> <span class="o">=</span> <span class="n">xor</span><span class="p">(</span><span class="n">B</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">B</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">^</span><span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>  <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">a1</span> <span class="o">=</span> <span class="n">xor</span><span class="p">(</span><span class="n">a2</span><span class="p">,</span> <span class="n">g2</span><span class="p">);</span>
+</span><span class='line'>  <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">a3</span> <span class="o">=</span> <span class="n">xor</span><span class="p">(</span><span class="n">g1</span><span class="p">,</span> <span class="n">g2</span><span class="p">);</span>
+</span><span class='line'>  <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">a7</span> <span class="o">=</span> <span class="n">xor</span><span class="p">(</span><span class="n">B</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">^</span><span class="mi">1</span><span class="p">,</span> <span class="n">g2</span><span class="p">);</span>
+</span><span class='line'>  <span class="kt">int</span> <span class="n">t</span> <span class="o">=</span>
+</span><span class='line'>      <span class="p">((</span><span class="n">a7</span> <span class="o">&lt;&lt;</span> <span class="mi">7</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">128</span><span class="p">)</span> <span class="o">|</span>
+</span><span class='line'>      <span class="p">((</span><span class="n">a6</span> <span class="o">&lt;&lt;</span> <span class="mi">6</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">64</span><span class="p">)</span> <span class="o">|</span>
+</span><span class='line'>      <span class="p">((</span><span class="n">a5</span> <span class="o">&lt;&lt;</span> <span class="mi">5</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">32</span><span class="p">)</span> <span class="o">|</span>
+</span><span class='line'>      <span class="p">((</span><span class="n">a4</span> <span class="o">&lt;&lt;</span> <span class="mi">4</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">16</span><span class="p">)</span> <span class="o">|</span>
+</span><span class='line'>      <span class="p">((</span><span class="n">a3</span> <span class="o">&lt;&lt;</span> <span class="mi">3</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">|</span>
+</span><span class='line'>      <span class="p">((</span><span class="n">a2</span> <span class="o">&lt;&lt;</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">4</span><span class="p">)</span> <span class="o">|</span>
+</span><span class='line'>      <span class="p">((</span><span class="n">a1</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">2</span><span class="p">)</span> <span class="o">|</span>
+</span><span class='line'>      <span class="p">((</span><span class="n">a0</span> <span class="o">&lt;&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>  <span class="o">*</span><span class="n">buf</span> <span class="o">=</span> <span class="p">((</span><span class="kt">unsigned</span> <span class="kt">char</span><span class="p">)</span><span class="n">t</span> <span class="o">^</span> <span class="mh">0xff</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="k">const</span><span class="o">*</span> <span class="n">argv</span><span class="p">[])</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="kt">int</span> <span class="n">in</span><span class="p">;</span>
+</span><span class='line'>  <span class="kt">int</span> <span class="n">out</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">struct</span> <span class="n">stat</span> <span class="n">st</span><span class="p">;</span>
+</span><span class='line'>  <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">buf</span><span class="p">[</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">];</span>
+</span><span class='line'>  <span class="kt">char</span> <span class="n">name</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span>
+</span><span class='line'>  <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">;</span>
+</span><span class='line'>  <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">table</span><span class="p">[</span><span class="mi">256</span><span class="p">];</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// create table</span>
+</span><span class='line'>  <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">c</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">256</span><span class="p">;</span> <span class="n">c</span> <span class="o">=</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="n">encoder</span><span class="p">(</span><span class="o">&amp;</span><span class="n">c</span><span class="p">);</span>
+</span><span class='line'>      <span class="n">table</span><span class="p">[(</span><span class="kt">int</span><span class="p">)</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="kt">unsigned</span> <span class="kt">char</span><span class="p">)</span><span class="n">i</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">256</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">,</span> <span class="o">++</span><span class="n">c</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">table</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="n">argc</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">if</span> <span class="p">((</span><span class="n">in</span> <span class="o">=</span> <span class="n">open</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">O_RDONLY</span><span class="p">))</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="n">stat</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="o">&amp;</span><span class="n">st</span><span class="p">);</span>
+</span><span class='line'>      <span class="n">out</span> <span class="o">=</span> <span class="n">open</span><span class="p">(</span><span class="s">&quot;out&quot;</span><span class="p">,</span> <span class="n">O_RDWR</span><span class="o">|</span><span class="n">O_CREAT</span><span class="p">,</span> <span class="mo">0666</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">st</span><span class="p">.</span><span class="n">st_size</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="n">read</span><span class="p">(</span><span class="n">in</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>          <span class="n">buf</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">table</span><span class="p">[</span><span class="n">buf</span><span class="p">[</span><span class="mi">0</span><span class="p">]];</span>
+</span><span class='line'>          <span class="n">write</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">close</span><span class="p">(</span><span class="n">out</span><span class="p">);</span>
+</span><span class='line'>      <span class="n">close</span><span class="p">(</span><span class="n">in</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>QR (Easy) (QR 100)</h1>
+
+<p><img src="/blog/resources/images/2014/12/7/QRCake.jpg" alt="QR Cake" /></p>
+
+<p>昨年のSECCON 2013オンライン予選でも出題された、データビットの部分だけ残ってるQRコードを解析するという問題。
+今回はパンケーキに焼いて食べてしまったようです。</p>
+
+<p>おなじみ<a href="http://en.wikipedia.org/wiki/QR_code">英語版WikipediaのQRコード解説ページ</a>のデータ配置図を元にデータビットを埋めていくだけです。
+今回のフラッグの形式は<code>SECCON{XXXXXXX}</code>なので、最初の6文字が&#8221;SECCON&#8221;になるようなマスクを<a href="http://www.swetake.com/qrcode/qr5.html">QRコードの解説サイト</a>を見ながら特定すると、マスクパターンは001であることがわかります。</p>
+
+<p><img src="/blog/resources/images/2014/12/7/QR100-1.png" alt="QR Cake" /></p>
+
+<p>あとは淡々とビットを解析して行って得た答えは、</p>
+
+<pre>
+0010 : 英数モード
+000000110 : 6文字
+10011111010 : 'SE'
+01000101000 : 'CC'
+10001001111 : 'ON'
+0100 : 8bitバイトモード
+00010010 : 18文字
+01111011 : '{'
+01010000 : 'P'
+01010011 : 'S'
+01110111 : 'w'
+01011101 : ']'
+01010001 : 'Q'
+00111001 : '9'
+01100100 : 'd'
+00111001 : '9'
+01000111 : 'G'
+01101010 : 'j'
+01001011 : 'K'
+01010100 : 'T'
+01100100 : 'd'
+01000100 : 'D'
+00111000 : '8'
+01001000 : 'H'
+01111101 : '}'
+0101
+11
+</pre>
+
+
+<p><code>SECCON{PSw]Q9d9GjKTdD8H}</code>
+しかし<strong>Incorrect.</strong></p>
+
+<p>骨の折れる作業で再度トライする気にはならなかったのですが、
+今になって見返してみると間違ってるビットを発見。
+正解は<code>SECCON{PSwIQ9d9GjKTdD8H}</code>;</p>
+
+<h2>おしまい</h2>
+
+<p>チーム合計で2500点でした(´Д` )</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard"><i class="glyphicon glyphicon-user"></i><span class="fn">mzyy94</span></span>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+<i class="glyphicon glyphicon-calendar"></i><time datetime="2014-12-07T17:59:06+09:00" pubdate data-updated="true">07 Dec 2014</time>
+      
+
+<i class="glyphicon glyphicon-folder-close"></i><span class="categories">
+  
+    <a class='category' href='/blog/categories/ctf/'>ctf</a>
+  
+</span>
+
+
+      
+
+<i class="glyphicon glyphicon-tags"></i><span class="tags">
+  
+    <a class='tag' href='/blog/tags/seccon-seccon2014/'>seccon. seccon2014</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="widget-container widget-social">
+	<ul class="clearfix">
+  
+
+  <!--li class="social-twitter"><a href="https://twitter.com/intent/tweet?original_referer=http://mzyy94.com/blog/2014/12/07/seccon2014-online/&text=SECCON2014 Online英語版予選 Write-up%20-%20犬アイコンのみっきー&tw_p=tweetbutton&url=http://mzyy94.com/blog/2014/12/07/seccon2014-online/&via=mzyy94"><i>Tweet</i></a></li-->
+
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://mzyy94.com/blog/2014/12/07/seccon2014-online/" data-via="mzyy94" data-counturl="http://mzyy94.com/blog/2014/12/07/seccon2014-online/" >Tweet</a>
+  
+  
+  <!-- li class="social-google"><a href="#"><i>Google</i></a></li -->
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+  <!-- li class="social-facebook"><a href="#"><i>Facebook</i></a></li -->
+  <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+  </ul>
+</div>
+
+    
+    <div>
+      
+	  <a class="btn btn-icon-left btn-arrow-left" href="/blog/2014/09/03/seccon2014-yokohama-2nd-day/" title="Previous Post: SECCON 2014 横浜大会NW予選 Write-up"><span>SECCON 2014 横浜大会NW予選 Write-up</span></a>
+      
+      
+    </div>
+  </footer>
+</article>
+
+  <section class="comment">
+    <h1 class="boxed-red">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</main>
+
+<aside class="col-sm-3">
+  
+    <div class="widget-container widget-avatar boxed boxed-yellow">
+	<div class="inner">
+		<h5>mzyy94</h5>
+		<span class="subtitle">Network</span>
+		<div class="avatar">
+			<img src="/images/avatar.png" alt="avatar icon" />
+		</div>
+		<a href="/about/" class="btn btn-brown btn-follow">
+			<span>About me</span>
+		</a>
+	</div>
+</div>
+<div class="widget-container widget_calendar boxed boxed-red">
+	<div class="inner">
+		<input type="text" name="date_departure" class="inputField" id="date_departure">
+	</div>
+</div>
+<script>
+	// <![CDATA[
+	$(document).ready(function() {
+		var posts = {};
+		var postDates = [];
+		$.getJSON('/blog/posts.json', function(data){
+			var dp = data.posts;
+			for(var i = 0, limit = dp.length; i < limit; i++){
+				posts[dp[i].date.slice(0,10)] = dp[i];
+			}
+			for(var i in posts){
+				postDates.push(i);
+			}
+			assignCalendar('#date_departure');
+			refreshDate();
+		});
+
+
+		var today = new Date();
+
+		function goPage(date){
+			window.location.href = posts[date.replace(/\//g,'-')].url;
+		}
+
+		function assignCalendar(id){
+			$('<div class="calendar" />')
+				.insertAfter( $(id) )
+				.datepicker({
+					beforeShowDay: function(date){
+						var string = $.datepicker.formatDate('yy-mm-dd', date);
+						return [ postDates.indexOf(string) != -1 ]
+					},
+					dateFormat: 'yy/mm/dd',
+					minDate: new Date(postDates[postDates.length - 1]),
+					maxDate: today,
+					maxPicks: 1,
+					altField: id,
+					firstDay: 0,
+					showOtherMonths: true,
+					onSelect: goPage,
+					onChangeMonthYear: refreshDate
+				}).prev().hide();
+		}
+
+		function refreshDate(){
+			setTimeout(function(){
+				$('a.ui-state-default').each(function(num){
+					var prefix = '/blog/';
+					var ref = prefix;
+					ref += $(this).parent().attr('data-year');
+					ref += '/';
+					ref += ('0' + (parseInt($(this).parent().attr('data-month')) + 1)).slice(-2);
+					ref += '/';
+					ref += ('0' + $(this).text()).slice(-2);
+					$(this).attr('data-title', posts[ref.replace(prefix,'').replace(/\//g,'-')].title);
+					$(this).attr('href', ref + '/' + posts[ref.replace(prefix,'').replace(/\//g,'-')].url);
+				});
+			},10);
+		}
+	});
+	// ]]>
+</script>
+<section class="widget-container widget-recently boxed">
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/12/07/seccon2014-online/">SECCON2014 Online英語版予選 Write-up</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/09/03/seccon2014-yokohama-2nd-day/">SECCON 2014 横浜大会NW予選 Write-up</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/06/new-server/">自宅サーバーを増やした</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/25/dl-gunzip-with-nodejs/">Node.jsでダウンロードしながらGunzipしてmd5の計算しながら保存する奴</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/21/unicode-popclip-extension/">Unicode形式に変換するPopClipのExtensionを作りたかっただけだったのに</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section class="widget-container widget-github boxed">
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'mzyy94',
+            count: 3,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'mzyy94blog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://mzyy94.com/blog/2014/12/07/seccon2014-online/';
+        var disqus_url = 'http://mzyy94.com/blog/2014/12/07/seccon2014-online/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+  </div>
+  <footer class="boxed-yellow" role="contentinfo"><p>
+  Copyright &copy; 2014 - mzyy94 -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> -
+  <span class="credit">Designed with <a href="http://pixelkit.com/kits/flat-ui-kit">Flat UI Kit | Modern Touch</a></span> -
+  <span>Licensed under a <a rel="license" href="http://opensource.org/licenses/mit-license.html">MIT License</a> and <a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a><span>
+</p>
+<script>
+	$(function () {
+		$("a[href^='http'], a[href^='ftp']").click(function () {
+			if ($(this).attr("target") === undefined) 
+			$(this).attr("target", "_blank");
+		});
+	});
+</script>
+
+</footer>
+  </div>
+</body>
+</html>

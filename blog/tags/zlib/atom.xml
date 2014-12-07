@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Tag: zlib | パケットの中の隠れみっきー]]></title>
+  <title><![CDATA[Tag: zlib | 犬アイコンのみっきー]]></title>
   <link href="http://mzyy94.com/blog/tags/zlib/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2014-09-03T16:35:33+09:00</updated>
+  <updated>2014-12-07T21:46:15+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -40,7 +40,7 @@ Node.jsの標準モジュールには、zlibがあり、require()で取り込む
 
 <p>20行目の<code>res.pipe(gunzip).pipe(output);</code>にてhttp.getで得られたストリームを<code>zlib.createGunzip()</code>で作成したgunzipオブジェクトにパイプで渡し、処理されたものを、<code>fs.createWriteStream()</code>で作成されたoutputオブジェクトにさらにパイプすることで不要なファイルを保存することなく、ダウンロードしながら解凍し、保存しています。</p>
 
-<p>保存時に、gunzipオブジェクトの'data'イベントを拾って、crypto標準モジュールでmd5の値を計算させています。
+<p>保存時に、gunzipオブジェクトの&#8217;data&#8217;イベントを拾って、crypto標準モジュールでmd5の値を計算させています。
 ダウンロードのときはmd5チェックしたいですし。</p>
 
 <p>Node.jsのzlibモジュールに関して、あまり実例がなく、せっかくなので記事にしました。

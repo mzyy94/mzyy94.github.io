@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Tag: WebGL | パケットの中の隠れみっきー]]></title>
+  <title><![CDATA[Tag: WebGL | 犬アイコンのみっきー]]></title>
   <link href="http://mzyy94.com/blog/tags/webgl/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2014-09-03T16:35:33+09:00</updated>
+  <updated>2014-12-07T21:46:15+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -19,7 +19,7 @@
     <updated>2014-02-13T19:03:54+09:00</updated>
     <id>http://mzyy94.com/blog/2014/02/13/honda-3d-webgl</id>
     <content type="html"><![CDATA[<p>RSSを消化してたときのこと。
-<a href="http://japanese.engadget.com/2014/01/28/3d-nsx-concept-5/">ホンダが歴代コンセプトカーの3DデータをCCライセンスで公開、NSX Concept など全5種 (動画) &ndash; Engadget Japanese</a>
+<a href="http://japanese.engadget.com/2014/01/28/3d-nsx-concept-5/">ホンダが歴代コンセプトカーの3DデータをCCライセンスで公開、NSX Concept など全5種 (動画) - Engadget Japanese</a>
 なる記事を見つけて、「クリエイティブコモンズで3Dモデル公開とはなかなかやるな。流行に乗っててよろしい。」と感心していました。</p>
 
 <p>しかし、そんな関心も次のクリックで吹っ飛びました。</p>
@@ -39,7 +39,7 @@
 
 <p>この惨状を目にした60分後、手元にはこんなものが出来上がっていました。</p>
 
-<h3><a href="http://mzyy94.com/HONDA-3D-WebGL-demo/">Honda 3D &ndash; WebGL Demo (Beta)</a></h3>
+<h3><a href="http://mzyy94.com/HONDA-3D-WebGL-demo/">Honda 3D - WebGL Demo (Beta)</a></h3>
 
 <p>
 <span>※Chrome 33向けです。</span><br>
@@ -74,12 +74,12 @@
 
 <p>背景動画はYouTubeのHTML5 videoでの埋め込みにしてあるというAnti-Flashの徹底ぶり。オプションを以下の通り指定してNo Flashにしました。</p>
 
-<p>```</p>
+<p>&#8220;`</p>
 
 <iframe id="bgmovie" width="1920" height="1080" src="http://www.youtube.com/embed/MJWzLm91Hmg?html5=1&playlist=kdOVr4Tqdoc&autoplay=1&disablekb=1&controls=0&showinfo=0&vq=hd1080&modestbranding=1&rel=0&loop=1" style="top: -374px;"></iframe>
 
 
-<p>```</p>
+<p>&#8220;`</p>
 
 <h1>3D ビュー</h1>
 
@@ -116,7 +116,7 @@ OS X上で、Blender@2.69とthree.js@r65を利用する場合は、</p>
 
 <p><img src="/blog/resources/images/2014/2/13/blender-1.png" alt="blender" /></p>
 
-<p>コピーし終わったらBlenderを起動し、File->User Preferences&hellip;で設定画面を開き、
+<p>コピーし終わったらBlenderを起動し、File->User Preferences&#8230;で設定画面を開き、
 Addonsタブにある検索ボックスでthreejsとして検索して出てくる項目をチェックし有効化します。
 チェックし終わったら次回以降も反映されるよう、Save User Settingsをしておきます。
 <img src="/blog/resources/images/2014/2/13/blender-2.png" alt="blender" />
@@ -137,7 +137,7 @@ Addonsタブにある検索ボックスでthreejsとして検索して出てく�
 
 <p>表示はthree.jsの基本的な機能を使うだけで行っています。
 基本的な方法は、
-<a href="http://www.atmarkit.co.jp/ait/articles/1210/04/news142.html">Webグラフィックをハックする（5）：多彩な表現力のWebGLを扱いやすくする「Three.js」 (1/5) &ndash; ＠IT</a>
+<a href="http://www.atmarkit.co.jp/ait/articles/1210/04/news142.html">Webグラフィックをハックする（5）：多彩な表現力のWebGLを扱いやすくする「Three.js」 (1/5) - ＠IT</a>
 にて説明されています。
 この説明を参考に、three.jsのファイルを読み込ませて表示させています。
 ちゃんとマウスでぐりぐりできるようになっています。</p>

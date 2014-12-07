@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Tag: iscsi | パケットの中の隠れみっきー]]></title>
+  <title><![CDATA[Tag: iscsi | 犬アイコンのみっきー]]></title>
   <link href="http://mzyy94.com/blog/tags/iscsi/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2014-09-03T16:35:33+09:00</updated>
+  <updated>2014-12-07T21:46:15+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -26,35 +26,35 @@
 <p>今回iSCSIパケットの収集をする必要があったので、Linux上で動くように導入しました。
 iSCSIの説明はまた今度にするとして、簡単に用語を定義しておくと、
 iSCSIターゲット
-&ndash; iSCSIサーバー
+- iSCSIサーバー
 iSCSIイニシエータ
-&ndash; iSCSIクライアント</p>
+- iSCSIクライアント</p>
 
 <p>対象とするシステムは以下のとおりです。</p>
 
 <table>
 <thead>
 <tr>
-<th align="center">  Initiator </th>
-<th align="center">     Target</th>
+<th style="text-align:center;">Initiator </th>
+<th style="text-align:center;">     Target</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">Debian 7.0.0</td>
-<td align="center"> Debian 7.0.0</td>
+<td style="text-align:center;">Debian 7.0.0</td>
+<td style="text-align:center;"> Debian 7.0.0</td>
 </tr>
 <tr>
-<td align="center">仮想1コアCPU</td>
-<td align="center">仮想1コアCPU</td>
+<td style="text-align:center;">仮想1コアCPU</td>
+<td style="text-align:center;">仮想1コアCPU</td>
 </tr>
 <tr>
-<td align="center"> 512MB RAM  </td>
-<td align="center"> 512MB RAM</td>
+<td style="text-align:center;">512MB RAM  </td>
+<td style="text-align:center;"> 512MB RAM</td>
 </tr>
 <tr>
-<td align="center"> 10GB SSD   </td>
-<td align="center"> 10GB SSD</td>
+<td style="text-align:center;">10GB SSD   </td>
+<td style="text-align:center;"> 10GB SSD</td>
 </tr>
 </tbody>
 </table>
@@ -65,12 +65,12 @@ iSCSIイニシエータ
 <p>iSCSIに関するパッケージは以下のとおり。targetはiscsitargetとiscsitarget-dkms、イニシエータはopen-iscsiとなっています。</p>
 
 <p><code class="code">root@debian:~# aptitude search iscsi
-p   iscsitarget                                            &ndash; iSCSI Enterprise Target userland tools
-p   iscsitarget-dkms                                       &ndash; iSCSI Enterprise Target kernel module source &ndash; dkms version
-p   libiscsi-bin                                           &ndash; iSCSI client shared library &ndash; utilities
-p   libiscsi-dev                                           &ndash; iSCSI client shared library
-p   libiscsi1                                              &ndash; iSCSI client shared library
-p   open-iscsi                                             &ndash; High performance, transport independent iSCSI implementation</code></p>
+p   iscsitarget                                            - iSCSI Enterprise Target userland tools
+p   iscsitarget-dkms                                       - iSCSI Enterprise Target kernel module source - dkms version
+p   libiscsi-bin                                           - iSCSI client shared library - utilities
+p   libiscsi-dev                                           - iSCSI client shared library
+p   libiscsi1                                              - iSCSI client shared library
+p   open-iscsi                                             - High performance, transport independent iSCSI implementation</code></p>
 
 <p>まずサーバーとなるターゲットのインストールから。
 rootで<code>aptitude install iscsitarget iscsitarget-dkms</code>としてパッケージインストールして下記のとおりに設定し、iSCSIターゲットを有効にします。</p>
@@ -78,14 +78,14 @@ rootで<code>aptitude install iscsitarget iscsitarget-dkms</code>としてパッ
 <table>
 <thead>
 <tr>
-<th align="center">   ファイルパス </th>
-<th align="center">   変更内容</th>
+<th style="text-align:center;">ファイルパス </th>
+<th style="text-align:center;">   変更内容</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">/etc/default/iscsitarget </td>
-<td align="center"> ISCSITARGET_ENABLE=falseをtrueに</td>
+<td style="text-align:center;">/etc/default/iscsitarget </td>
+<td style="text-align:center;"> ISCSITARGET_ENABLE=falseをtrueに</td>
 </tr>
 </tbody>
 </table>
@@ -159,7 +159,7 @@ Starting iSCSI enterprise target service:.
 <td>ネットワークポータル指定</td>
 </tr>
 <tr>
-<td> 127.0.0.1</td>
+<td>127.0.0.1</td>
 <td>指定ネットワークアドレス</td>
 </tr>
 <tr>
@@ -177,7 +177,7 @@ Starting iSCSI enterprise target service:.
 [ 6484.765289] sd 3:0:0:0: [sdb] 2097152 512-byte logical blocks: (1.07 GB/1.00 GiB)
 [ 6484.765325] sd 3:0:0:0: [sdb] Write Protect is off
 [ 6484.765328] sd 3:0:0:0: [sdb] Mode Sense: 77 00 00 08
-[ 6484.765389] sd 3:0:0:0: [sdb] Write cache: disabled, read cache: enabled, doesn&rsquo;t support DPO or FUA
+[ 6484.765389] sd 3:0:0:0: [sdb] Write cache: disabled, read cache: enabled, doesn't support DPO or FUA
 [ 6484.766030]  sdb: unknown partition table
 [ 6484.766303] sd 3:0:0:0: [sdb] Attached SCSI disk
 [ 6484.766417] sd 3:0:0:0: Attached scsi generic sg2 type 0</code></p>

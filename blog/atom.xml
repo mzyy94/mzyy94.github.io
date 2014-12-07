@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[パケットの中の隠れみっきー]]></title>
+  <title><![CDATA[犬アイコンのみっきー]]></title>
   <link href="http://mzyy94.com/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2014-09-03T16:35:33+09:00</updated>
+  <updated>2014-12-07T21:46:15+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -12,6 +12,393 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[SECCON2014 Online英語版予選 Write-up]]></title>
+    <link href="http://mzyy94.com/blog/2014/12/07/seccon2014-online/"/>
+    <updated>2014-12-07T17:59:06+09:00</updated>
+    <id>http://mzyy94.com/blog/2014/12/07/seccon2014-online</id>
+    <content type="html"><![CDATA[<p>昨日12月6日午前9時（日本時間）から12月7日午後5時までの32時間耐久CTFが行われたので参加してみました。
+あまり活躍できずでしたがチャレンジしたもののまとめを記します。</p>
+
+<!-- more -->
+
+
+<h1>Get the key (Network 100)</h1>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2014/12/7/NW100-1.png" alt="Get the key pcap file opened" />
+配布されたパケットからキーの手がかりを探すというもの。
+これはNWの基本問題だったので解説することはほとんどないです。
+Wiresharkで開いてWebサイトのログイン情報が出るのでそれでアクセスしておしまい。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2014/12/7/NW100-2.png" alt="Get the key WebSite login" />
+<img src="http://mzyy94.com/blog/resources/images/2014/12/7/NW100Flag.png" alt="NW100Flag" /></p>
+
+<h1>Reverseit (Bin 100)</h1>
+
+<p>なにやら配られたファイルを反転しろというもの。
+バイト列反転、ビット反転いろいろな反転方法を試したところ、
+4bitごとに反転してあげるとJPEG画像に早変わり。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2014/12/7/BIN100Flag.jpg" alt="BIN100Flag" /></p>
+
+<p>画像中の答えも左右反転してるので眼で見て脳内反転しておしまい。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class='C'><span class='line'><span class="cp">#include &lt;sys/stat.h&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;fcntl.h&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;unistd.h&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="k">const</span><span class="o">*</span> <span class="n">argv</span><span class="p">[])</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="kt">int</span> <span class="n">in</span><span class="p">,</span> <span class="n">out</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">((</span><span class="n">in</span> <span class="o">=</span> <span class="n">open</span><span class="p">(</span><span class="s">&quot;Reverseit&quot;</span><span class="p">,</span> <span class="n">O_RDONLY</span><span class="p">))</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">struct</span> <span class="n">stat</span> <span class="n">st</span><span class="p">;</span>
+</span><span class='line'>      <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+</span><span class='line'>      <span class="kt">char</span> <span class="n">buf</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">out</span> <span class="o">=</span> <span class="n">open</span><span class="p">(</span><span class="s">&quot;reversed&quot;</span><span class="p">,</span> <span class="n">O_RDWR</span><span class="o">|</span><span class="n">O_CREAT</span><span class="p">,</span> <span class="mo">0666</span><span class="p">);</span>
+</span><span class='line'>      <span class="n">stat</span><span class="p">(</span><span class="s">&quot;Reverseit&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">st</span><span class="p">);</span>
+</span><span class='line'>      <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="n">st</span><span class="p">.</span><span class="n">st_size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="o">--</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="n">lseek</span><span class="p">(</span><span class="n">in</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">SEEK_SET</span><span class="p">);</span>
+</span><span class='line'>          <span class="n">read</span><span class="p">(</span><span class="n">in</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>          <span class="n">buf</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">buf</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&amp;</span> <span class="mh">0x0f</span> <span class="o">&lt;&lt;</span> <span class="mi">4</span><span class="p">)</span> <span class="o">|</span> <span class="p">((</span><span class="n">buf</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&amp;</span> <span class="mh">0xf0</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">4</span><span class="p">);</span>
+</span><span class='line'>          <span class="n">write</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>SECCON Wars: The Flag Awakens (QR 300)</h1>
+
+<iframe width="459" height="344" src="http://www.youtube.com/embed/1pC56S17-_A?feature=oembed" frameborder="0" allowfullscreen></iframe>
+
+
+<p>新ジャンルQRからの出題。
+<a href="http://youtu.be/1pC56S17-_A">YouTubeの動画</a>を見ろとの指令のみが与えられた問題。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2014/12/7/QR300-1.png" alt="SECCON Wars QR code movie" /></p>
+
+<p>よーく見るとSECCONのバナーが出るときに動画の下の方にQRコードが流れているのでそれをスキャンすればよさそう。</p>
+
+<p>手順としては動画をまずローカルに引っ張り出して、QRコードの出現する54秒の時点から7秒間を16fpsで連番画像として抜き出します。
+ファイル情報を確認すると320x240ピクセルなので、目視で下部3ピクセルに表示されてると仮定して、320x3ピクセルの画像に切り出します。
+あとはこれを連結してノイズを減らして色反転すると、</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2014/12/7/QR300Flag.jpg" alt="QR300 Flag" /></p>
+
+<p>このようなQRコードが得られ、スキャンして答えをゲットできます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='C'><span class='line'><span class="n">ffmpeg</span> <span class="o">-</span><span class="n">i</span> <span class="n">SECCON_WARS</span><span class="p">.</span><span class="n">mp4</span> <span class="o">-</span><span class="n">ss</span> <span class="mi">54</span> <span class="o">-</span><span class="n">t</span> <span class="mi">7</span> <span class="o">-</span><span class="n">r</span> <span class="mi">16</span> <span class="o">-</span><span class="n">f</span> <span class="n">image2</span> <span class="o">%</span><span class="mo">04</span><span class="n">d</span><span class="p">.</span><span class="n">jpg</span>
+</span><span class='line'><span class="n">identify</span> <span class="mf">0001.</span><span class="n">jpg</span>
+</span><span class='line'><span class="n">convert</span> <span class="o">*</span><span class="p">.</span><span class="n">jpg</span> <span class="o">-</span><span class="n">crop</span> <span class="err">&#39;</span><span class="mi">320</span><span class="n">x3</span><span class="o">+</span><span class="mi">0</span><span class="o">+</span><span class="mi">237</span><span class="err">&#39;</span> <span class="n">qr_</span><span class="o">%</span><span class="mo">04</span><span class="n">d</span><span class="p">.</span><span class="n">jpg</span>
+</span><span class='line'><span class="n">convert</span> <span class="o">-</span><span class="n">append</span> <span class="n">qr_</span><span class="o">*</span><span class="p">.</span><span class="n">jpg</span> <span class="n">qr_appended</span><span class="p">.</span><span class="n">jpg</span>
+</span><span class='line'><span class="n">convert</span> <span class="o">-</span><span class="n">median</span> <span class="mi">3</span> <span class="o">-</span><span class="n">negate</span> <span class="n">qr_appended</span><span class="p">.</span><span class="n">jpg</span> <span class="n">qr</span><span class="p">.</span><span class="n">jpg</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>The Golden Gate (Programming 400)</h1>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2014/12/7/GoldenGate.jpg" alt="The Golden Gate" /></p>
+
+<p>自作ハードウェアエンコーダーの写真があって、それによってエンコードされた文字<code>BQDykmgZ0I6SaQnq4o/iEONudetXdPJdpl1UVSlU69oZOtvqnHfinOpcEfIjXy9okkVpsuw2kpKS==</code>をデコードしてくれとのこと。
+このハードウェアエンコーダーはユニーバーサル基板上に作られていて、絡み合うジャンパ線がどう番っているのかをしっかり把握できれば回路図を起こすのは以外と簡単。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2014/12/7/TGG-1.jpg" alt="Handwriting Circuit" /></p>
+
+<p>7400のNANDゲートによって入力から出力までの間は、2入力NANDの結果をさらにその2入力でそれぞれNANDし、それらをNANDするという、何度もNANDする処理が入ってるだけでした。
+要するにXORです。</p>
+
+<p>よって、プログラムは簡潔にできあがり、難なく答えを手に入れることができると思いました。</p>
+
+<p>&#8230;思いました。</p>
+
+<p>残念ながら時間中に答えは得られませんでした。</p>
+
+<p>一点、デコードすべき文がなんなのかがわからなかったことがあります。BASE64にしては文字数が合わないのです。
+そして、どのタクトスイッチがどのbitをさしているのか、アノード・カソードどちらなのか写真からよくわからない、など、躓く点が多かったのです。</p>
+
+<p>SECCONは終わってしまいましたが、ヒントが出され、入力と出力とが対応付けられるようになりました。</p>
+
+<iframe width="480" height="270" src="http://www.youtube.com/embed/kaDjypSndMk?feature=oembed" frameborder="0" allowfullscreen></iframe>
+
+
+<p>タクトスイッチによる入力が一部反転できてなかったようです。</p>
+
+<p>入力文を正規のBASE64にして実行してみると、しっかりとgzipのデータとなり、フラッグを得られました。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='C'><span class='line'><span class="n">echo</span> <span class="s">&quot;BQDykmgZ0I6SaQnq4o/iEONudetXdPJdpl1UVSlU69oZOtvqnHfinOpcEfIjXy9okkVpsuw2kpKS&quot;</span> <span class="o">|</span> <span class="n">openssl</span> <span class="n">base64</span> <span class="o">-</span><span class="n">d</span> <span class="o">&gt;</span> <span class="n">input</span>
+</span><span class='line'><span class="n">gcc</span> <span class="n">goldengate</span><span class="p">.</span><span class="n">c</span> <span class="o">-</span><span class="n">o</span> <span class="n">gg</span>
+</span><span class='line'><span class="p">.</span><span class="o">/</span><span class="n">gg</span> <span class="n">input</span>
+</span><span class='line'><span class="n">file</span> <span class="n">out</span>
+</span><span class='line'><span class="n">gzip</span> <span class="o">-</span><span class="n">S</span> <span class="p">.</span><span class="n">gz</span> <span class="o">-</span><span class="n">d</span> <span class="o">-</span><span class="n">c</span> <span class="n">out</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+</pre></td><td class='code'><pre><code class='C'><span class='line'><span class="cp">#include &lt;stdio.h&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;stdlib.h&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;sys/stat.h&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;fcntl.h&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;unistd.h&gt;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="cp">#define B(y) ((*buf &gt;&gt; (y)) &amp; 1)</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">unsigned</span> <span class="kt">char</span> <span class="nf">nand</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">a</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">b</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">unsigned</span> <span class="kt">char</span> <span class="nf">xor</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">a</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">nand</span><span class="p">(</span><span class="n">nand</span><span class="p">(</span><span class="n">nand</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">),</span> <span class="n">a</span><span class="p">),</span> <span class="n">nand</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">nand</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)));</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">void</span> <span class="nf">encoder</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">char</span> <span class="o">*</span><span class="n">buf</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">a4</span> <span class="o">=</span> <span class="n">xor</span><span class="p">(</span><span class="n">B</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">^</span><span class="mi">1</span><span class="p">,</span> <span class="n">B</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="o">^</span><span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>  <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">a6</span> <span class="o">=</span> <span class="n">xor</span><span class="p">(</span><span class="n">B</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">B</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">^</span><span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>  <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">a5</span> <span class="o">=</span> <span class="n">xor</span><span class="p">(</span><span class="n">a6</span><span class="p">,</span> <span class="n">B</span><span class="p">(</span><span class="mi">5</span><span class="p">));</span>
+</span><span class='line'>  <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">g1</span> <span class="o">=</span> <span class="n">xor</span><span class="p">(</span><span class="n">B</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">B</span><span class="p">(</span><span class="mi">7</span><span class="p">));</span>
+</span><span class='line'>  <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">a0</span> <span class="o">=</span> <span class="n">xor</span><span class="p">(</span><span class="n">g1</span><span class="p">,</span> <span class="n">B</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">^</span><span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>  <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">a2</span> <span class="o">=</span> <span class="n">xor</span><span class="p">(</span><span class="n">B</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>  <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">g2</span> <span class="o">=</span> <span class="n">xor</span><span class="p">(</span><span class="n">B</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">B</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">^</span><span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>  <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">a1</span> <span class="o">=</span> <span class="n">xor</span><span class="p">(</span><span class="n">a2</span><span class="p">,</span> <span class="n">g2</span><span class="p">);</span>
+</span><span class='line'>  <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">a3</span> <span class="o">=</span> <span class="n">xor</span><span class="p">(</span><span class="n">g1</span><span class="p">,</span> <span class="n">g2</span><span class="p">);</span>
+</span><span class='line'>  <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">a7</span> <span class="o">=</span> <span class="n">xor</span><span class="p">(</span><span class="n">B</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">^</span><span class="mi">1</span><span class="p">,</span> <span class="n">g2</span><span class="p">);</span>
+</span><span class='line'>  <span class="kt">int</span> <span class="n">t</span> <span class="o">=</span>
+</span><span class='line'>      <span class="p">((</span><span class="n">a7</span> <span class="o">&lt;&lt;</span> <span class="mi">7</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">128</span><span class="p">)</span> <span class="o">|</span>
+</span><span class='line'>      <span class="p">((</span><span class="n">a6</span> <span class="o">&lt;&lt;</span> <span class="mi">6</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">64</span><span class="p">)</span> <span class="o">|</span>
+</span><span class='line'>      <span class="p">((</span><span class="n">a5</span> <span class="o">&lt;&lt;</span> <span class="mi">5</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">32</span><span class="p">)</span> <span class="o">|</span>
+</span><span class='line'>      <span class="p">((</span><span class="n">a4</span> <span class="o">&lt;&lt;</span> <span class="mi">4</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">16</span><span class="p">)</span> <span class="o">|</span>
+</span><span class='line'>      <span class="p">((</span><span class="n">a3</span> <span class="o">&lt;&lt;</span> <span class="mi">3</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">|</span>
+</span><span class='line'>      <span class="p">((</span><span class="n">a2</span> <span class="o">&lt;&lt;</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">4</span><span class="p">)</span> <span class="o">|</span>
+</span><span class='line'>      <span class="p">((</span><span class="n">a1</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">2</span><span class="p">)</span> <span class="o">|</span>
+</span><span class='line'>      <span class="p">((</span><span class="n">a0</span> <span class="o">&lt;&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>  <span class="o">*</span><span class="n">buf</span> <span class="o">=</span> <span class="p">((</span><span class="kt">unsigned</span> <span class="kt">char</span><span class="p">)</span><span class="n">t</span> <span class="o">^</span> <span class="mh">0xff</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="k">const</span><span class="o">*</span> <span class="n">argv</span><span class="p">[])</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="kt">int</span> <span class="n">in</span><span class="p">;</span>
+</span><span class='line'>  <span class="kt">int</span> <span class="n">out</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">struct</span> <span class="n">stat</span> <span class="n">st</span><span class="p">;</span>
+</span><span class='line'>  <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">buf</span><span class="p">[</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">];</span>
+</span><span class='line'>  <span class="kt">char</span> <span class="n">name</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span>
+</span><span class='line'>  <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">;</span>
+</span><span class='line'>  <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">table</span><span class="p">[</span><span class="mi">256</span><span class="p">];</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// create table</span>
+</span><span class='line'>  <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">c</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">256</span><span class="p">;</span> <span class="n">c</span> <span class="o">=</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="n">encoder</span><span class="p">(</span><span class="o">&amp;</span><span class="n">c</span><span class="p">);</span>
+</span><span class='line'>      <span class="n">table</span><span class="p">[(</span><span class="kt">int</span><span class="p">)</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="kt">unsigned</span> <span class="kt">char</span><span class="p">)</span><span class="n">i</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">256</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">,</span> <span class="o">++</span><span class="n">c</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">table</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="n">argc</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">if</span> <span class="p">((</span><span class="n">in</span> <span class="o">=</span> <span class="n">open</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">O_RDONLY</span><span class="p">))</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="n">stat</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="o">&amp;</span><span class="n">st</span><span class="p">);</span>
+</span><span class='line'>      <span class="n">out</span> <span class="o">=</span> <span class="n">open</span><span class="p">(</span><span class="s">&quot;out&quot;</span><span class="p">,</span> <span class="n">O_RDWR</span><span class="o">|</span><span class="n">O_CREAT</span><span class="p">,</span> <span class="mo">0666</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">st</span><span class="p">.</span><span class="n">st_size</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="n">read</span><span class="p">(</span><span class="n">in</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>          <span class="n">buf</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">table</span><span class="p">[</span><span class="n">buf</span><span class="p">[</span><span class="mi">0</span><span class="p">]];</span>
+</span><span class='line'>          <span class="n">write</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">close</span><span class="p">(</span><span class="n">out</span><span class="p">);</span>
+</span><span class='line'>      <span class="n">close</span><span class="p">(</span><span class="n">in</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>QR (Easy) (QR 100)</h1>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2014/12/7/QRCake.jpg" alt="QR Cake" /></p>
+
+<p>昨年のSECCON 2013オンライン予選でも出題された、データビットの部分だけ残ってるQRコードを解析するという問題。
+今回はパンケーキに焼いて食べてしまったようです。</p>
+
+<p>おなじみ<a href="http://en.wikipedia.org/wiki/QR_code">英語版WikipediaのQRコード解説ページ</a>のデータ配置図を元にデータビットを埋めていくだけです。
+今回のフラッグの形式は<code>SECCON{XXXXXXX}</code>なので、最初の6文字が&#8221;SECCON&#8221;になるようなマスクを<a href="http://www.swetake.com/qrcode/qr5.html">QRコードの解説サイト</a>を見ながら特定すると、マスクパターンは001であることがわかります。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2014/12/7/QR100-1.png" alt="QR Cake" /></p>
+
+<p>あとは淡々とビットを解析して行って得た答えは、</p>
+
+<pre>
+0010 : 英数モード
+000000110 : 6文字
+10011111010 : 'SE'
+01000101000 : 'CC'
+10001001111 : 'ON'
+0100 : 8bitバイトモード
+00010010 : 18文字
+01111011 : '{'
+01010000 : 'P'
+01010011 : 'S'
+01110111 : 'w'
+01011101 : ']'
+01010001 : 'Q'
+00111001 : '9'
+01100100 : 'd'
+00111001 : '9'
+01000111 : 'G'
+01101010 : 'j'
+01001011 : 'K'
+01010100 : 'T'
+01100100 : 'd'
+01000100 : 'D'
+00111000 : '8'
+01001000 : 'H'
+01111101 : '}'
+0101
+11
+</pre>
+
+
+<p><code>SECCON{PSw]Q9d9GjKTdD8H}</code>
+しかし<strong>Incorrect.</strong></p>
+
+<p>骨の折れる作業で再度トライする気にはならなかったのですが、
+今になって見返してみると間違ってるビットを発見。
+正解は<code>SECCON{PSwIQ9d9GjKTdD8H}</code>;</p>
+
+<h2>おしまい</h2>
+
+<p>チーム合計で2500点でした(´Д` )</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[SECCON 2014 横浜大会NW予選 Write-up]]></title>
@@ -64,12 +451,9 @@ NW,BIN,WEBと３部門の予選がありましたが、ネットワーク大好�
 </code></pre>
 
 <p>簡単ですね。
-tsharkでパケットをチェックしてみると、</p>
-
-<pre><code>  1   0.000000    127.0.0.1 -&gt; 127.0.0.1    ICMP 66 Echo (ping) request  id=0x1818, seq=0/0, ttl=64
-</code></pre>
-
-<p>と出力されるので、ICMPメッセージにフラッグが隠されてるんだろうなーっと想像つきます。
+tsharkでパケットをチェックしてみると、
+      1   0.000000    127.0.0.1 -> 127.0.0.1    ICMP 66 Echo (ping) request  id=0x1818, seq=0/0, ttl=64
+と出力されるので、ICMPメッセージにフラッグが隠されてるんだろうなーっと想像つきます。
 上記のファイルを見ると、目nkfで簡単に答えが出てきます。
 目nkf力が無い人は、<code>echo ZmxhZ3tzZWNjb25zZWNjb259|nkf -mB</code>とでもやるとよいでしょう。</p>
 
@@ -201,7 +585,7 @@ A6 B9 08 09  0A 0B 0C 0D  0E 0F 10 11  12 13 14 15
 
 <p>目wiresharkするとわかると思いますが、求めるフラッグはICMPのChecksumです。
 計算してもいいのですが、wireshark/tsharkのチェック機能を使ってさっくりと解いてしまいます。
-&mdash;の部分に00を埋めてわざと間違っているであるだろうChecksumを入力してpcapファイルを作成し、
+&#8211;の部分に00を埋めてわざと間違っているであるだろうChecksumを入力してpcapファイルを作成し、
 tsharkで詳細情報を見ると、以下のように出力されます。</p>
 
 <pre><code>$ tshark -r q06.pcap -V
@@ -328,12 +712,10 @@ Internet Control Message Protocol
 </code></pre>
 
 <p>ぱっと見で大体予想はつくのですが、今回もpcapファイルを作成して見てみます。
-tsharkの出力は以下のようになりました。</p>
-
-<pre><code>$ tshark -r q08.pcap
-  1   0.000000              -&gt;              Ethernet 2 [Malformed Packet]
-  2   0.000001 00:66:77:88:99:aa -&gt; 00:11:22:33:44:55 ARP 60 1.2.0.17 is at 0066778899aac0a8
-</code></pre>
+tsharkの出力は以下のようになりました。
+    $ tshark -r q08.pcap
+      1   0.000000              ->              Ethernet 2 [Malformed Packet]
+      2   0.000001 00:66:77:88:99:aa -> 00:11:22:33:44:55 ARP 60 1.2.0.17 is at 0066778899aac0a8</p>
 
 <p>1パケット目が壊れてるようです。
 この通信はARPの問い合わせの様子を示しているようで、ARPの構造を知っていればすぐに解ける問題です。
@@ -393,7 +775,7 @@ ASCIIコードテーブル片手に0x21から0x37までのASCII文字を記入�
 <blockquote class="twitter-tweet" lang="ja"><p>わいわい <a href="http://t.co/YaEfzCCFq8">pic.twitter.com/YaEfzCCFq8</a></p>&mdash; 誕生日前日amzn.to/1vvKISb (@mzyy94) <a href="https://twitter.com/mzyy94/status/507067029547806720">2014, 9月 3</a></blockquote>
 
 
-<script async src="http://mzyy94.com//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 ]]></content>
   </entry>
@@ -463,35 +845,13 @@ ASCIIコードテーブル片手に0x21から0x37までのASCII文字を記入�
 「サーバー向けならXeonっしょ。」と各所で言われているので、Xeonにしました。
 用途としては、CIサーバーが主で、適当な仮想マシンインスタンスを作っては遊び、追加していくという将来を見据えて、<a href="http://ark.intel.com/ja/products/75462/Intel-Xeon-Processor-E3-1245-v3-8M-Cache-3_40-GHz">Intel Xeon E3-1245 v3</a>にしました。</p>
 
-<table>
-<thead>
-<tr>
-<th>プロセッサー</th>
-<th>Intel Xeon E3-1245 v3</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>動作周波数 </td>
-<td>3.4 GHz</td>
-</tr>
-<tr>
-<td>TB時周波数  </td>
-<td>3.8 GHz</td>
-</tr>
-<tr>
-<td>キャッシュ </td>
-<td>8 MB</td>
-</tr>
-<tr>
-<td>最大 TDP  </td>
-<td>84 W</td>
-</tr>
-</tbody>
-</table>
-
-
-<p>動作周波数3.4GHzあれば１０個ほど仮想マシン立ち上げても大丈夫でしょう。</p>
+<p>プロセッサー|Intel Xeon E3-1245 v3
+&#8212;&#8212;&#8212;-|&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;
+動作周波数 |3.4 GHz
+TB時周波数  |3.8 GHz
+キャッシュ |8 MB
+最大 TDP  |84 W
+動作周波数3.4GHzあれば１０個ほど仮想マシン立ち上げても大丈夫でしょう。</p>
 
 <h2>MB</h2>
 
@@ -553,41 +913,41 @@ Z87チップセットはDDR3-1333/1600対応のため、たくさんの仮想マ
 <thead>
 <tr>
 <th>パーツ</th>
-<th align="right">購入価格(円)</th>
+<th style="text-align:right;">購入価格(円)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>CPU    </td>
-<td align="right">26800</td>
+<td style="text-align:right;">26800</td>
 </tr>
 <tr>
 <td>MB     </td>
-<td align="right"> 8800</td>
+<td style="text-align:right;"> 8800</td>
 </tr>
 <tr>
 <td>DRAM   </td>
-<td align="right">11151</td>
+<td style="text-align:right;">11151</td>
 </tr>
 <tr>
 <td>SSD    </td>
-<td align="right"> 9790</td>
+<td style="text-align:right;"> 9790</td>
 </tr>
 <tr>
 <td>Fan    </td>
-<td align="right"> 2880</td>
+<td style="text-align:right;"> 2880</td>
 </tr>
 <tr>
 <td>Grease </td>
-<td align="right"> 1140</td>
+<td style="text-align:right;"> 1140</td>
 </tr>
 <tr>
 <td>Mounter</td>
-<td align="right">  891</td>
+<td style="text-align:right;">  891</td>
 </tr>
 <tr>
 <td>Cable  </td>
-<td align="right">  827</td>
+<td style="text-align:right;">  827</td>
 </tr>
 </tbody>
 </table>
@@ -677,7 +1037,7 @@ OS X Mavericksで日本語環境でターミナルを起動する際は、標準
 
 <p><img src="http://mzyy94.com/blog/resources/images/2014/2/21/problem1.gif" alt="Problem1" /></p>
 
-<p>&ldquo;あ&#8221;をUnicode表記にすると\u0342になるはずですが、この例では出力がUTF-8バイトコードの&#8221;あ&#8221;であるe3 81 82がそれぞれ個々の文字としてUnicodeにエンコードされています。
+<p>&#8220;あ&#8221;をUnicode表記にすると\u0342になるはずですが、この例では出力がUTF-8バイトコードの&#8221;あ&#8221;であるe3 81 82がそれぞれ個々の文字としてUnicodeにエンコードされています。
 PopClip拡張機能は、起動時にLANG環境変数を引き継ぐことなく、未指定の状態でスクリプトが実行されているようで、デフォルトであるLANG=Cでの処理となってしまっているためです。bashで実装したのが大きな原因であるようですが、どうも文字列を文字ごとに分割するときにLANG=Cではマルチバイト文字をASCII文字として扱ってしまっているのが原因らしいです。</p>
 
 <p>解決策として、<code>export LANG=en_US.UTF-8</code>と、UTF-8ロケールに設定しました。</p>
@@ -708,7 +1068,7 @@ OS XではUTF-8を扱う文字コードが２種存在します。<code>iconv -l
     <updated>2014-02-13T19:03:54+09:00</updated>
     <id>http://mzyy94.com/blog/2014/02/13/honda-3d-webgl</id>
     <content type="html"><![CDATA[<p>RSSを消化してたときのこと。
-<a href="http://japanese.engadget.com/2014/01/28/3d-nsx-concept-5/">ホンダが歴代コンセプトカーの3DデータをCCライセンスで公開、NSX Concept など全5種 (動画) &ndash; Engadget Japanese</a>
+<a href="http://japanese.engadget.com/2014/01/28/3d-nsx-concept-5/">ホンダが歴代コンセプトカーの3DデータをCCライセンスで公開、NSX Concept など全5種 (動画) - Engadget Japanese</a>
 なる記事を見つけて、「クリエイティブコモンズで3Dモデル公開とはなかなかやるな。流行に乗っててよろしい。」と感心していました。</p>
 
 <p>しかし、そんな関心も次のクリックで吹っ飛びました。</p>
@@ -728,7 +1088,7 @@ OS XではUTF-8を扱う文字コードが２種存在します。<code>iconv -l
 
 <p>この惨状を目にした60分後、手元にはこんなものが出来上がっていました。</p>
 
-<h3><a href="http://mzyy94.com/HONDA-3D-WebGL-demo/">Honda 3D &ndash; WebGL Demo (Beta)</a></h3>
+<h3><a href="http://mzyy94.com/HONDA-3D-WebGL-demo/">Honda 3D - WebGL Demo (Beta)</a></h3>
 
 <p><span>※Chrome 33向けです。</span><br>
 <span>※※RAMとCPU使用率と通信量を膨大に使うので開く際はご注意ください</span></p>
@@ -800,7 +1160,7 @@ OS X上で、Blender@2.69とthree.js@r65を利用する場合は、</p>
 
 <p><img src="http://mzyy94.com/blog/resources/images/2014/2/13/blender-1.png" alt="blender" /></p>
 
-<p>コピーし終わったらBlenderを起動し、File->User Preferences&hellip;で設定画面を開き、
+<p>コピーし終わったらBlenderを起動し、File->User Preferences&#8230;で設定画面を開き、
 Addonsタブにある検索ボックスでthreejsとして検索して出てくる項目をチェックし有効化します。
 チェックし終わったら次回以降も反映されるよう、Save User Settingsをしておきます。
 <img src="http://mzyy94.com/blog/resources/images/2014/2/13/blender-2.png" alt="blender" />
@@ -821,7 +1181,7 @@ Addonsタブにある検索ボックスでthreejsとして検索して出てく�
 
 <p>表示はthree.jsの基本的な機能を使うだけで行っています。
 基本的な方法は、
-<a href="http://www.atmarkit.co.jp/ait/articles/1210/04/news142.html">Webグラフィックをハックする（5）：多彩な表現力のWebGLを扱いやすくする「Three.js」 (1/5) &ndash; ＠IT</a>
+<a href="http://www.atmarkit.co.jp/ait/articles/1210/04/news142.html">Webグラフィックをハックする（5）：多彩な表現力のWebGLを扱いやすくする「Three.js」 (1/5) - ＠IT</a>
 にて説明されています。
 この説明を参考に、three.jsのファイルを読み込ませて表示させています。
 ちゃんとマウスでぐりぐりできるようになっています。</p>
@@ -923,7 +1283,7 @@ Addonsタブにある検索ボックスでthreejsとして検索して出てく�
 
 <p>入力欄の文字数：100文字以内</p>
 
-<p>禁止文字：1 2 3 4 5 6 7 8 9 0 , + % ? : this eval function Function Array join split repeat &lsquo; &#8221;</p>
+<p>禁止文字：1 2 3 4 5 6 7 8 9 0 , + % ? : this eval function Function Array join split repeat &#8217; &#8221;</p>
 
 <p>この条件下で数字の1を作成した結果は以下のとおりになりました。</p>
 
@@ -1057,35 +1417,35 @@ Arrayオブジェクトのpushは返り値が要素数になることを利用�
 <p>今回iSCSIパケットの収集をする必要があったので、Linux上で動くように導入しました。
 iSCSIの説明はまた今度にするとして、簡単に用語を定義しておくと、
 iSCSIターゲット
-&ndash; iSCSIサーバー
+- iSCSIサーバー
 iSCSIイニシエータ
-&ndash; iSCSIクライアント</p>
+- iSCSIクライアント</p>
 
 <p>対象とするシステムは以下のとおりです。</p>
 
 <table>
 <thead>
 <tr>
-<th align="center">  Initiator </th>
-<th align="center">     Target</th>
+<th style="text-align:center;">Initiator </th>
+<th style="text-align:center;">     Target</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">Debian 7.0.0</td>
-<td align="center"> Debian 7.0.0</td>
+<td style="text-align:center;">Debian 7.0.0</td>
+<td style="text-align:center;"> Debian 7.0.0</td>
 </tr>
 <tr>
-<td align="center">仮想1コアCPU</td>
-<td align="center">仮想1コアCPU</td>
+<td style="text-align:center;">仮想1コアCPU</td>
+<td style="text-align:center;">仮想1コアCPU</td>
 </tr>
 <tr>
-<td align="center"> 512MB RAM  </td>
-<td align="center"> 512MB RAM</td>
+<td style="text-align:center;">512MB RAM  </td>
+<td style="text-align:center;"> 512MB RAM</td>
 </tr>
 <tr>
-<td align="center"> 10GB SSD   </td>
-<td align="center"> 10GB SSD</td>
+<td style="text-align:center;">10GB SSD   </td>
+<td style="text-align:center;"> 10GB SSD</td>
 </tr>
 </tbody>
 </table>
@@ -1096,12 +1456,12 @@ iSCSIイニシエータ
 <p>iSCSIに関するパッケージは以下のとおり。targetはiscsitargetとiscsitarget-dkms、イニシエータはopen-iscsiとなっています。</p>
 
 <p><code class="code">root@debian:~# aptitude search iscsi
-p   iscsitarget                                            &ndash; iSCSI Enterprise Target userland tools
-p   iscsitarget-dkms                                       &ndash; iSCSI Enterprise Target kernel module source &ndash; dkms version
-p   libiscsi-bin                                           &ndash; iSCSI client shared library &ndash; utilities
-p   libiscsi-dev                                           &ndash; iSCSI client shared library
-p   libiscsi1                                              &ndash; iSCSI client shared library
-p   open-iscsi                                             &ndash; High performance, transport independent iSCSI implementation</code></p>
+p   iscsitarget                                            - iSCSI Enterprise Target userland tools
+p   iscsitarget-dkms                                       - iSCSI Enterprise Target kernel module source - dkms version
+p   libiscsi-bin                                           - iSCSI client shared library - utilities
+p   libiscsi-dev                                           - iSCSI client shared library
+p   libiscsi1                                              - iSCSI client shared library
+p   open-iscsi                                             - High performance, transport independent iSCSI implementation</code></p>
 
 <p>まずサーバーとなるターゲットのインストールから。
 rootで<code>aptitude install iscsitarget iscsitarget-dkms</code>としてパッケージインストールして下記のとおりに設定し、iSCSIターゲットを有効にします。</p>
@@ -1109,14 +1469,14 @@ rootで<code>aptitude install iscsitarget iscsitarget-dkms</code>としてパッ
 <table>
 <thead>
 <tr>
-<th align="center">   ファイルパス </th>
-<th align="center">   変更内容</th>
+<th style="text-align:center;">ファイルパス </th>
+<th style="text-align:center;">   変更内容</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">/etc/default/iscsitarget </td>
-<td align="center"> ISCSITARGET_ENABLE=falseをtrueに</td>
+<td style="text-align:center;">/etc/default/iscsitarget </td>
+<td style="text-align:center;"> ISCSITARGET_ENABLE=falseをtrueに</td>
 </tr>
 </tbody>
 </table>
@@ -1190,7 +1550,7 @@ Starting iSCSI enterprise target service:.
 <td>ネットワークポータル指定</td>
 </tr>
 <tr>
-<td> 127.0.0.1</td>
+<td>127.0.0.1</td>
 <td>指定ネットワークアドレス</td>
 </tr>
 <tr>
@@ -1208,7 +1568,7 @@ Starting iSCSI enterprise target service:.
 [ 6484.765289] sd 3:0:0:0: [sdb] 2097152 512-byte logical blocks: (1.07 GB/1.00 GiB)
 [ 6484.765325] sd 3:0:0:0: [sdb] Write Protect is off
 [ 6484.765328] sd 3:0:0:0: [sdb] Mode Sense: 77 00 00 08
-[ 6484.765389] sd 3:0:0:0: [sdb] Write cache: disabled, read cache: enabled, doesn&rsquo;t support DPO or FUA
+[ 6484.765389] sd 3:0:0:0: [sdb] Write cache: disabled, read cache: enabled, doesn't support DPO or FUA
 [ 6484.766030]  sdb: unknown partition table
 [ 6484.766303] sd 3:0:0:0: [sdb] Attached SCSI disk
 [ 6484.766417] sd 3:0:0:0: Attached scsi generic sg2 type 0</code></p>
@@ -1324,7 +1684,7 @@ tmpfs                                                   276M     0  276M   0% /r
 OS Xで時々現れるBus error: 10 が現れる条件が気になったのでごちゃごちゃいじって探してみました。</p>
 
 <p>こういう情報はどこかインターネットにあるのだと思ったのですが、
-<a href="http://togetter.com/li/253717">Segmentation FaultとBus Errorの違いとMac &ndash; Togetterまとめ</a>
+<a href="http://togetter.com/li/253717">Segmentation FaultとBus Errorの違いとMac - Togetterまとめ</a>
 などには納得のいく答えがなかったのが今回探してみた経緯となります。</p>
 
 <p>結論からいうと、原因の特定はできませんでした。
@@ -1386,15 +1746,15 @@ OS Xで時々現れるBus error: 10 が現れる条件が気になったので�
 </thead>
 <tbody>
 <tr>
-<td>case &lsquo;0&rsquo;</td>
+<td>case &#8216;0&#8217;</td>
 <td>LBB0_5:</td>
 </tr>
 <tr>
-<td>case &lsquo;1&rsquo;</td>
+<td>case &#8216;1&#8217;</td>
 <td>LBB0_6:</td>
 </tr>
 <tr>
-<td>case &lsquo;2&rsquo;</td>
+<td>case &#8216;2&#8217;</td>
 <td>LBB0_7:</td>
 </tr>
 <tr>
@@ -1492,7 +1852,7 @@ movslqでレジスタ%raxに格納した変数iを-17(%rbp,%rax)としてアク�
 <blockquote class="twitter-tweet" lang="ja"><p>本日開催の『劇場版　魔法少女まどか☆マギカ』オーケストラ・コンサート名古屋公演ですが、機材席の一部を解放しまして当日券を若干ではございますが販売することになりました。当日券は18時より販売致します。枚数が限られており、完売の場合はご了承ください。 <a href="https://twitter.com/search?q=%23madoka_magica&amp;src=hash">#madoka_magica</a></p>&mdash; 魔法少女まどか☆マギカ (@madoka_magica) <a href="https://twitter.com/madoka_magica/statuses/410683990618566656">2013, 12月 11</a></blockquote>
 
 
-<script async src="http://mzyy94.com//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
 <p>とつぶやき、急遽当日券を用意してくださっていました。</p>
@@ -1542,19 +1902,19 @@ movslqでレジスタ%raxに格納した変数iを-17(%rbp,%rax)としてアク�
 <blockquote class="twitter-tweet" lang="ja"><p>まどか☆マギカオーケストラの名古屋公演。いよいよ今日の夜です。&#10;とっても素晴らしい響きのホールですよ！ <a href="http://t.co/qeL6D8Jgak">pic.twitter.com/qeL6D8Jgak</a></p>&mdash; 待山 一生 (@machiyamaissei) <a href="https://twitter.com/machiyamaissei/statuses/410479386731618304">2013, 12月 10</a></blockquote>
 
 
-<script async src="http://mzyy94.com//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
 <blockquote class="twitter-tweet" lang="ja"><p>朝からパーカッションパートの方々と優雅な朝食済ませて、ホール入り。&#10;大好きなアニメの演奏を、素晴らしいホールや素敵なオーケストラ、指揮者、そして楽しい仲間と出来るって、それはとっても嬉しいなって。 <a href="http://t.co/3FEE0zlhGX">pic.twitter.com/3FEE0zlhGX</a></p>&mdash; 待山 一生 (@machiyamaissei) <a href="https://twitter.com/machiyamaissei/statuses/410582767705944064">2013, 12月 11</a></blockquote>
 
 
-<script async src="http://mzyy94.com//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
 <blockquote class="twitter-tweet" lang="ja"><p>まもなく、魔法少女まどか☆マギカのオーケストラコンサート名古屋公演です。視覚と聴覚の両方で、魔法少女たちの物語を感じてください。<a href="https://twitter.com/search?q=%23madoka_magica&amp;src=hash">#madoka_magica</a> <a href="http://t.co/m2sZlhFQL4">pic.twitter.com/m2sZlhFQL4</a></p>&mdash; 待山 一生 (@machiyamaissei) <a href="https://twitter.com/machiyamaissei/statuses/410691793655578625">2013, 12月 11</a></blockquote>
 
 
-<script async src="http://mzyy94.com//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
 <h2>演奏</h2>
@@ -1630,7 +1990,7 @@ movslqでレジスタ%raxに格納した変数iを-17(%rbp,%rax)としてアク�
 <blockquote class="twitter-tweet" lang="en"><p>名古屋公演は無事終了しました！ホールからの撤収も完了しました。ご来場下さった全てのお客様に感謝申し上げます！&#10;ありがとうございました！！ <a href="http://t.co/EoFnAmimi2">pic.twitter.com/EoFnAmimi2</a></p>&mdash; 株式会社アイムビレッジ (@AimVil_MusicDiv) <a href="https://twitter.com/AimVil_MusicDiv/statuses/410771901640749056">December 11, 2013</a></blockquote>
 
 
-<script async src="http://mzyy94.com//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
 <p>以上、劇場版 魔法少女まどか☆マギカ オーケストラ・コンサートに行ってきた感想でした。</p>

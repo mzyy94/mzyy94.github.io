@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Tag: unicode | パケットの中の隠れみっきー]]></title>
+  <title><![CDATA[Tag: unicode | 犬アイコンのみっきー]]></title>
   <link href="http://mzyy94.com/blog/tags/unicode/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2014-09-03T16:35:33+09:00</updated>
+  <updated>2014-12-07T21:46:15+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -57,7 +57,7 @@ OS X Mavericksで日本語環境でターミナルを起動する際は、標準
 
 <p><img src="/blog/resources/images/2014/2/21/problem1.gif" alt="Problem1" /></p>
 
-<p>&ldquo;あ"をUnicode表記にすると\u0342になるはずですが、この例では出力がUTF-8バイトコードの"あ"であるe3 81 82がそれぞれ個々の文字としてUnicodeにエンコードされています。
+<p>&#8220;あ&#8221;をUnicode表記にすると\u0342になるはずですが、この例では出力がUTF-8バイトコードの&#8221;あ&#8221;であるe3 81 82がそれぞれ個々の文字としてUnicodeにエンコードされています。
 PopClip拡張機能は、起動時にLANG環境変数を引き継ぐことなく、未指定の状態でスクリプトが実行されているようで、デフォルトであるLANG=Cでの処理となってしまっているためです。bashで実装したのが大きな原因であるようですが、どうも文字列を文字ごとに分割するときにLANG=Cではマルチバイト文字をASCII文字として扱ってしまっているのが原因らしいです。</p>
 
 <p>解決策として、<code>export LANG=en_US.UTF-8</code>と、UTF-8ロケールに設定しました。</p>

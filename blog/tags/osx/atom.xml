@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Tag: osx | パケットの中の隠れみっきー]]></title>
+  <title><![CDATA[Tag: osx | 犬アイコンのみっきー]]></title>
   <link href="http://mzyy94.com/blog/tags/osx/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2014-09-03T16:35:33+09:00</updated>
+  <updated>2014-12-07T21:46:15+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -24,7 +24,7 @@
 OS Xで時々現れるBus error: 10 が現れる条件が気になったのでごちゃごちゃいじって探してみました。</p>
 
 <p>こういう情報はどこかインターネットにあるのだと思ったのですが、
-<a href="http://togetter.com/li/253717">Segmentation FaultとBus Errorの違いとMac &ndash; Togetterまとめ</a>
+<a href="http://togetter.com/li/253717">Segmentation FaultとBus Errorの違いとMac - Togetterまとめ</a>
 などには納得のいく答えがなかったのが今回探してみた経緯となります。</p>
 
 <p>結論からいうと、原因の特定はできませんでした。
@@ -86,15 +86,15 @@ OS Xで時々現れるBus error: 10 が現れる条件が気になったので�
 </thead>
 <tbody>
 <tr>
-<td>case &lsquo;0&rsquo;</td>
+<td>case &#8216;0&#8217;</td>
 <td>LBB0_5:</td>
 </tr>
 <tr>
-<td>case &lsquo;1&rsquo;</td>
+<td>case &#8216;1&#8217;</td>
 <td>LBB0_6:</td>
 </tr>
 <tr>
-<td>case &lsquo;2&rsquo;</td>
+<td>case &#8216;2&#8217;</td>
 <td>LBB0_7:</td>
 </tr>
 <tr>

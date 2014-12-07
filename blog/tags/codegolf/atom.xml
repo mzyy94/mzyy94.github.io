@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Tag: codegolf | パケットの中の隠れみっきー]]></title>
+  <title><![CDATA[Tag: codegolf | 犬アイコンのみっきー]]></title>
   <link href="http://mzyy94.com/blog/tags/codegolf/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2014-09-03T16:35:33+09:00</updated>
+  <updated>2014-12-07T21:46:15+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -25,7 +25,7 @@
 
 <p>入力欄の文字数：100文字以内</p>
 
-<p>禁止文字：1 2 3 4 5 6 7 8 9 0 , + % ? : this eval function Function Array join split repeat &lsquo; "</p>
+<p>禁止文字：1 2 3 4 5 6 7 8 9 0 , + % ? : this eval function Function Array join split repeat &#8217; &#8221;</p>
 
 <p>この条件下で数字の1を作成した結果は以下のとおりになりました。</p>
 
@@ -36,9 +36,8 @@
 
 <h3>初期案 (11文字)</h3>
 
-<p><code>javascript
-[].push([])
-</code></p>
+<pre><code class="javascript">[].push([])
+</code></pre>
 
 <p>数字の１を作成するためにまず思いついたのがこれです。
 Arrayオブジェクトのpushは返り値が要素数になることを利用して、空配列に空配列を追加して1を得ました。</p>
@@ -47,9 +46,8 @@ Arrayオブジェクトのpushは返り値が要素数になることを利用�
 
 <h3>改善案 (6文字)</h3>
 
-<p><code>javascript
-~~!![]
-</code></p>
+<pre><code class="javascript">~~!![]
+</code></pre>
 
 <p>６文字まで短縮することができました。
 このコードは主に3つの要素から成り立っています。</p>
@@ -76,9 +74,8 @@ Arrayオブジェクトのpushは返り値が要素数になることを利用�
 
 <h3>最終案 (4文字)</h3>
 
-<p><code>javascript
--~[]
-</code></p>
+<pre><code class="javascript">-~[]
+</code></pre>
 
 <p>Arrayオブジェクトに対して、直接ビット演算をしてしまいます。
 要素数ゼロのArrayオブジェクトは数値として扱った場合に、ゼロとなるのでそれを用いてゼロをビット反転してしまいます。
@@ -94,9 +91,8 @@ Arrayオブジェクトのpushは返り値が要素数になることを利用�
 
 <h3>初期案 (10文字)</h3>
 
-<p><code>javascript
--~[]&lt;&lt;-~[]
-</code></p>
+<pre><code class="javascript">-~[]&lt;&lt;-~[]
+</code></pre>
 
 <p>上で作成した1を用いてビットシフトしています。
 1を倍にすることで2になるという単純なものです。</p>
@@ -105,9 +101,8 @@ Arrayオブジェクトのpushは返り値が要素数になることを利用�
 
 <h3>最終案 (6文字)</h3>
 
-<p><code>javascript
--~!![]
-</code></p>
+<pre><code class="javascript">-~!![]
+</code></pre>
 
 <p>先ほどの1を作成する改善案を元に、符号を反転させただけのものです。</p>
 
@@ -117,17 +112,15 @@ Arrayオブジェクトのpushは返り値が要素数になることを利用�
 
 <h3>初期案 (11文字)</h3>
 
-<p><code>javascript
--~!![]|-~[]
-</code></p>
+<pre><code class="javascript">-~!![]|-~[]
+</code></pre>
 
 <p>1と2でビットの論理和を計算して3とします。</p>
 
 <h3>最終案 (8文字)</h3>
 
-<p><code>javascript
--~-~!![]
-</code></p>
+<pre><code class="javascript">-~-~!![]
+</code></pre>
 
 <p>2の最終案を元に、ビット反転して-3にし、それを-(マイナス)で符号反転して３を作りました。</p>
 

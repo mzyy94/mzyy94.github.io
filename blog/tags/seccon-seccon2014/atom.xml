@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: seccon. seccon2014 | 犬アイコンのみっきー]]></title>
+  <link href="http://mzyy94.com/blog/tags/seccon-seccon2014/atom.xml" rel="self"/>
+  <link href="http://mzyy94.com/"/>
+  <updated>2014-12-07T21:46:15+09:00</updated>
+  <id>http://mzyy94.com/</id>
+  <author>
+    <name><![CDATA[mzyy94]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[SECCON2014 Online英語版予選 Write-up]]></title>
+    <link href="http://mzyy94.com/blog/2014/12/07/seccon2014-online/"/>
+    <updated>2014-12-07T17:59:06+09:00</updated>
+    <id>http://mzyy94.com/blog/2014/12/07/seccon2014-online</id>
+    <content type="html"><![CDATA[<p>昨日12月6日午前9時（日本時間）から12月7日午後5時までの32時間耐久CTFが行われたので参加してみました。
+あまり活躍できずでしたがチャレンジしたもののまとめを記します。</p>
+
+<!-- more -->
+
+
+<h1>Get the key (Network 100)</h1>
+
+<p><img src="/blog/resources/images/2014/12/7/NW100-1.png" alt="Get the key pcap file opened" />
+配布されたパケットからキーの手がかりを探すというもの。
+これはNWの基本問題だったので解説することはほとんどないです。
+Wiresharkで開いてWebサイトのログイン情報が出るのでそれでアクセスしておしまい。</p>
+
+<p><img src="/blog/resources/images/2014/12/7/NW100-2.png" alt="Get the key WebSite login" />
+<img src="/blog/resources/images/2014/12/7/NW100Flag.png" alt="NW100Flag" /></p>
+
+<h1>Reverseit (Bin 100)</h1>
+
+<p>なにやら配られたファイルを反転しろというもの。
+バイト列反転、ビット反転いろいろな反転方法を試したところ、
+4bitごとに反転してあげるとJPEG画像に早変わり。</p>
+
+<p><img src="/blog/resources/images/2014/12/7/BIN100Flag.jpg" alt="BIN100Flag" /></p>
+
+<p>画像中の答えも左右反転してるので眼で見て脳内反転しておしまい。</p>
+
+<pre><code class="C">#include &lt;sys/stat.h&gt;
+#include &lt;fcntl.h&gt;
+#include &lt;unistd.h&gt;
+
+int main(int argc, char const* argv[])
+{
+    int in, out;
+    if ((in = open("Reverseit", O_RDONLY)) != -1) {
+        struct stat st;
+        int i;
+        char buf[2];
+
+        out = open("reversed", O_RDWR|O_CREAT, 0666);
+        stat("Reverseit", &amp;st);
+        for (i = st.st_size - 1; i &gt;= 0; --i) {
+            lseek(in, i, SEEK_SET);
+            read(in, buf, 1);
+            buf[0] = (buf[0] &amp; 0x0f &lt;&lt; 4) | ((buf[0] &amp; 0xf0) &gt;&gt; 4);
+            write(out, buf, 1);
+        }
+    }
+    return 0;
+}
+</code></pre>
+
+<h1>SECCON Wars: The Flag Awakens (QR 300)</h1>
+
+<p><a href="http://youtu.be/1pC56S17-_A">http://youtu.be/1pC56S17-_A</a>&#8220;>http://youtu.be/1pC56S17-_A&#8221;>http://youtu.be/1pC56S17-_A</a></a>
+新ジャンルQRからの出題。
+<a href="http://youtu.be/1pC56S17-_A">YouTubeの動画</a>を見ろとの指令のみが与えられた問題。</p>
+
+<p><img src="/blog/resources/images/2014/12/7/QR300-1.png" alt="SECCON Wars QR code movie" /></p>
+
+<p>よーく見るとSECCONのバナーが出るときに動画の下の方にQRコードが流れているのでそれをスキャンすればよさそう。</p>
+
+<p>手順としては動画をまずローカルに引っ張り出して、QRコードの出現する54秒の時点から7秒間を16fpsで連番画像として抜き出します。
+ファイル情報を確認すると320x240ピクセルなので、目視で下部3ピクセルに表示されてると仮定して、320x3ピクセルの画像に切り出します。
+あとはこれを連結してノイズを減らして色反転すると、</p>
+
+<p><img src="/blog/resources/images/2014/12/7/QR300Flag.jpg" alt="QR300 Flag" /></p>
+
+<p>このようなQRコードが得られ、スキャンして答えをゲットできます。</p>
+
+<pre><code>ffmpeg -i SECCON_WARS.mp4 -ss 54 -t 7 -r 16 -f image2 %04d.jpg
+identify 0001.jpg
+convert *.jpg -crop '320x3+0+237' qr_%04d.jpg
+convert -append qr_*.jpg qr_appended.jpg
+convert -median 3 -negate qr_appended.jpg qr.jpg
+</code></pre>
+
+<h1>The Golden Gate (Programming 400)</h1>
+
+<p><img src="/blog/resources/images/2014/12/7/GoldenGate.jpg" alt="The Golden Gate" /></p>
+
+<p>自作ハードウェアエンコーダーの写真があって、それによってエンコードされた文字<code>BQDykmgZ0I6SaQnq4o/iEONudetXdPJdpl1UVSlU69oZOtvqnHfinOpcEfIjXy9okkVpsuw2kpKS==</code>をデコードしてくれとのこと。
+このハードウェアエンコーダーはユニーバーサル基板上に作られていて、絡み合うジャンパ線がどう番っているのかをしっかり把握できれば回路図を起こすのは以外と簡単。</p>
+
+<p><img src="/blog/resources/images/2014/12/7/TGG-1.jpg" alt="Handwriting Circuit" /></p>
+
+<p>7400のNANDゲートによって入力から出力までの間は、2入力NANDの結果をさらにその2入力でそれぞれNANDし、それらをNANDするという、何度もNANDする処理が入ってるだけでした。
+要するにXORです。</p>
+
+<p>よって、プログラムは簡潔にできあがり、難なく答えを手に入れることができると思いました。</p>
+
+<p>&#8230;思いました。</p>
+
+<p>残念ながら時間中に答えは得られませんでした。</p>
+
+<p>一点、デコードすべき文がなんなのかがわからなかったことがあります。BASE64にしては文字数が合わないのです。
+そして、どのタクトスイッチがどのbitをさしているのか、アノード・カソードどちらなのか写真からよくわからない、など、躓く点が多かったのです。</p>
+
+<p>SECCONは終わってしまいましたが、ヒントが出され、入力と出力とが対応付けられるようになりました。
+<a href="https://www.youtube.com/watch?v=kaDjypSndMk">https://www.youtube.com/watch?v=kaDjypSndMk</a>&#8220;>https://www.youtube.com/watch?v=kaDjypSndMk&#8221;>https://www.youtube.com/watch?v=kaDjypSndMk</a></a></p>
+
+<p>タクトスイッチによる入力が一部反転できてなかったようです。</p>
+
+<p>入力文を正規のBASE64にして実行してみると、しっかりとgzipのデータとなり、フラッグを得られました。
+<code>
+echo "BQDykmgZ0I6SaQnq4o/iEONudetXdPJdpl1UVSlU69oZOtvqnHfinOpcEfIjXy9okkVpsuw2kpKS" | openssl base64 -d &gt; input
+gcc goldengate.c -o gg
+./gg input
+file out
+gzip -S .gz -d -c out
+</code></p>
+
+<pre><code class="C">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;sys/stat.h&gt;
+#include &lt;fcntl.h&gt;
+#include &lt;unistd.h&gt;
+
+
+#define B(y) ((*buf &gt;&gt; (y)) &amp; 1)
+
+unsigned char nand(unsigned char a, unsigned char b) {
+    if (a == 1 &amp;&amp; b == 1) {
+        return 0;
+    }
+    return 1;
+}
+
+unsigned char xor(unsigned char a, unsigned char b) {
+    return nand(nand(nand(a, b), a), nand(b, nand(a, b)));
+}
+
+void encoder(unsigned char *buf) {
+    unsigned char a4 = xor(B(1)^1, B(6)^1);
+    unsigned char a6 = xor(B(3), B(1)^1);
+    unsigned char a5 = xor(a6, B(5));
+    unsigned char g1 = xor(B(5), B(7));
+    unsigned char a0 = xor(g1, B(0)^1);
+    unsigned char a2 = xor(B(2),1);
+    unsigned char g2 = xor(B(2), B(1)^1);
+    unsigned char a1 = xor(a2, g2);
+    unsigned char a3 = xor(g1, g2);
+    unsigned char a7 = xor(B(4)^1, g2);
+    int t =
+        ((a7 &lt;&lt; 7) &amp; 128) |
+        ((a6 &lt;&lt; 6) &amp; 64) |
+        ((a5 &lt;&lt; 5) &amp; 32) |
+        ((a4 &lt;&lt; 4) &amp; 16) |
+        ((a3 &lt;&lt; 3) &amp; 8) |
+        ((a2 &lt;&lt; 2) &amp; 4) |
+        ((a1 &lt;&lt; 1) &amp; 2) |
+        ((a0 &lt;&lt; 0) &amp; 1);
+    *buf = ((unsigned char)t ^ 0xff);
+}
+
+
+int main(int argc, char const* argv[])
+{
+    int in;
+    int out;
+    struct stat st;
+    unsigned char buf[1 + 1];
+    char name[8];
+    int i, j;
+    unsigned char table[256];
+
+    // create table
+    unsigned char c;
+    for (i = c = 0; i &lt; 256; c = ++i) {
+        encoder(&amp;c);
+        table[(int)c] = ((unsigned char)i &amp; 0xff);
+    }
+
+    for (i = c = 0; i &lt; 256; ++i, ++c) {
+        printf("%d: %d\n", i, table[i]);
+    }
+
+    if (argc != 2) {
+        return 1;
+    }
+
+    if ((in = open(argv[1], O_RDONLY)) != -1) {
+        stat(argv[1], &amp;st);
+        out = open("out", O_RDWR|O_CREAT, 0666);
+
+        for (i = 0; i &lt; st.st_size; i++) {
+            read(in, buf, 1);
+            buf[0] = table[buf[0]];
+            write(out, buf, 1);
+        }
+
+        close(out);
+        close(in);
+    }
+    return 0;
+}
+</code></pre>
+
+<h1>QR (Easy) (QR 100)</h1>
+
+<p><img src="/blog/resources/images/2014/12/7/QRCake.jpg" alt="QR Cake" /></p>
+
+<p>昨年のSECCON 2013オンライン予選でも出題された、データビットの部分だけ残ってるQRコードを解析するという問題。
+今回はパンケーキに焼いて食べてしまったようです。</p>
+
+<p>おなじみ<a href="http://en.wikipedia.org/wiki/QR_code">英語版WikipediaのQRコード解説ページ</a>のデータ配置図を元にデータビットを埋めていくだけです。
+今回のフラッグの形式は<code>SECCON{XXXXXXX}</code>なので、最初の6文字が&#8221;SECCON&#8221;になるようなマスクを<a href="http://www.swetake.com/qrcode/qr5.html">QRコードの解説サイト</a>を見ながら特定すると、マスクパターンは001であることがわかります。</p>
+
+<p><img src="/blog/resources/images/2014/12/7/QR100-1.png" alt="QR Cake" /></p>
+
+<p>あとは淡々とビットを解析して行って得た答えは、</p>
+
+<pre>
+0010 : 英数モード
+000000110 : 6文字
+10011111010 : 'SE'
+01000101000 : 'CC'
+10001001111 : 'ON'
+0100 : 8bitバイトモード
+00010010 : 18文字
+01111011 : '{'
+01010000 : 'P'
+01010011 : 'S'
+01110111 : 'w'
+01011101 : ']'
+01010001 : 'Q'
+00111001 : '9'
+01100100 : 'd'
+00111001 : '9'
+01000111 : 'G'
+01101010 : 'j'
+01001011 : 'K'
+01010100 : 'T'
+01100100 : 'd'
+01000100 : 'D'
+00111000 : '8'
+01001000 : 'H'
+01111101 : '}'
+0101
+11
+</pre>
+
+
+<p><code>SECCON{PSw]Q9d9GjKTdD8H}</code>
+しかし<strong>Incorrect.</strong></p>
+
+<p>骨の折れる作業で再度トライする気にはならなかったのですが、
+今になって見返してみると間違ってるビットを発見。
+正解は<code>SECCON{PSwIQ9d9GjKTdD8H}</code>;</p>
+
+<h2>おしまい</h2>
+
+<p>チーム合計で2500点でした(´Д` )</p>
+]]></content>
+  </entry>
+  
+</feed>
