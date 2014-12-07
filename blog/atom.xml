@@ -4,7 +4,7 @@
   <title><![CDATA[犬アイコンのみっきー]]></title>
   <link href="http://mzyy94.com/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2014-12-07T21:46:15+09:00</updated>
+  <updated>2014-12-07T22:07:29+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -42,7 +42,7 @@ Wiresharkで開いてWebサイトのログイン情報が出るのでそれで�
 
 <p><img src="http://mzyy94.com/blog/resources/images/2014/12/7/BIN100Flag.jpg" alt="BIN100Flag" /></p>
 
-<p>画像中の答えも左右反転してるので眼で見て脳内反転しておしまい。</p>
+<p>画像中のFLAGも左右反転してるので眼で見て脳内反転しておしまい。</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -111,7 +111,7 @@ Wiresharkで開いてWebサイトのログイン情報が出るのでそれで�
 
 <p><img src="http://mzyy94.com/blog/resources/images/2014/12/7/QR300Flag.jpg" alt="QR300 Flag" /></p>
 
-<p>このようなQRコードが得られ、スキャンして答えをゲットできます。</p>
+<p>このようなQRコードが得られ、スキャンしてFLAGをゲットできます。</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -131,18 +131,18 @@ Wiresharkで開いてWebサイトのログイン情報が出るのでそれで�
 <p><img src="http://mzyy94.com/blog/resources/images/2014/12/7/GoldenGate.jpg" alt="The Golden Gate" /></p>
 
 <p>自作ハードウェアエンコーダーの写真があって、それによってエンコードされた文字<code>BQDykmgZ0I6SaQnq4o/iEONudetXdPJdpl1UVSlU69oZOtvqnHfinOpcEfIjXy9okkVpsuw2kpKS==</code>をデコードしてくれとのこと。
-このハードウェアエンコーダーはユニーバーサル基板上に作られていて、絡み合うジャンパ線がどう番っているのかをしっかり把握できれば回路図を起こすのは以外と簡単。</p>
+このハードウェアエンコーダーはユニーバーサル基板上に作られていて、絡み合うジャンパ線がどう繋がっているのかをしっかり把握できれば回路図を起こすのは以外と簡単。</p>
 
 <p><img src="http://mzyy94.com/blog/resources/images/2014/12/7/TGG-1.jpg" alt="Handwriting Circuit" /></p>
 
 <p>7400のNANDゲートによって入力から出力までの間は、2入力NANDの結果をさらにその2入力でそれぞれNANDし、それらをNANDするという、何度もNANDする処理が入ってるだけでした。
 要するにXORです。</p>
 
-<p>よって、プログラムは簡潔にできあがり、難なく答えを手に入れることができると思いました。</p>
+<p>よって、プログラムは簡潔にできあがり、難なくFLAGを手に入れることができると思いました。</p>
 
 <p>&#8230;思いました。</p>
 
-<p>残念ながら時間中に答えは得られませんでした。</p>
+<p>残念ながら時間中にFLAGは得られませんでした。</p>
 
 <p>一点、デコードすべき文がなんなのかがわからなかったことがあります。BASE64にしては文字数が合わないのです。
 そして、どのタクトスイッチがどのbitをさしているのか、アノード・カソードどちらなのか写真からよくわからない、など、躓く点が多かったのです。</p>
@@ -354,7 +354,7 @@ Wiresharkで開いてWebサイトのログイン情報が出るのでそれで�
 
 <p><img src="http://mzyy94.com/blog/resources/images/2014/12/7/QR100-1.png" alt="QR Cake" /></p>
 
-<p>あとは淡々とビットを解析して行って得た答えは、</p>
+<p>あとは淡々とビットを解析して行って得たFLAGは、</p>
 
 <pre>
 0010 : 英数モード
