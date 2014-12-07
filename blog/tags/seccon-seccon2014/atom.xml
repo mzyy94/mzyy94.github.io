@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: seccon. seccon2014 | 犬アイコンのみっきー]]></title>
   <link href="http://mzyy94.com/blog/tags/seccon-seccon2014/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2014-12-07T22:07:29+09:00</updated>
+  <updated>2014-12-07T22:21:24+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -182,20 +182,16 @@ int main(int argc, char const* argv[])
     char name[8];
     int i, j;
     unsigned char table[256];
-
-    // create table
     unsigned char c;
-    for (i = c = 0; i &lt; 256; c = ++i) {
-        encoder(&amp;c);
-        table[(int)c] = ((unsigned char)i &amp; 0xff);
-    }
-
-    for (i = c = 0; i &lt; 256; ++i, ++c) {
-        printf("%d: %d\n", i, table[i]);
-    }
 
     if (argc != 2) {
         return 1;
+    }
+
+    // create table
+    for (i = c = 0; i &lt; 256; c = ++i) {
+        encoder(&amp;c);
+        table[(int)c] = ((unsigned char)i &amp; 0xff);
     }
 
     if ((in = open(argv[1], O_RDONLY)) != -1) {

@@ -418,10 +418,6 @@ Wiresharkで開いてWebサイトのログイン情報が出るのでそれで�
 <span class='line-number'>78</span>
 <span class='line-number'>79</span>
 <span class='line-number'>80</span>
-<span class='line-number'>81</span>
-<span class='line-number'>82</span>
-<span class='line-number'>83</span>
-<span class='line-number'>84</span>
 </pre></td><td class='code'><pre><code class='C'><span class='line'><span class="cp">#include &lt;stdio.h&gt;</span>
 </span><span class='line'><span class="cp">#include &lt;stdlib.h&gt;</span>
 </span><span class='line'><span class="cp">#include &lt;sys/stat.h&gt;</span>
@@ -475,20 +471,16 @@ Wiresharkで開いてWebサイトのログイン情報が出るのでそれで�
 </span><span class='line'>  <span class="kt">char</span> <span class="n">name</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span>
 </span><span class='line'>  <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">;</span>
 </span><span class='line'>  <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">table</span><span class="p">[</span><span class="mi">256</span><span class="p">];</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="c1">// create table</span>
 </span><span class='line'>  <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">c</span><span class="p">;</span>
-</span><span class='line'>  <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">256</span><span class="p">;</span> <span class="n">c</span> <span class="o">=</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>      <span class="n">encoder</span><span class="p">(</span><span class="o">&amp;</span><span class="n">c</span><span class="p">);</span>
-</span><span class='line'>      <span class="n">table</span><span class="p">[(</span><span class="kt">int</span><span class="p">)</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="kt">unsigned</span> <span class="kt">char</span><span class="p">)</span><span class="n">i</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="p">);</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">256</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">,</span> <span class="o">++</span><span class="n">c</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>      <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">table</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
-</span><span class='line'>  <span class="p">}</span>
 </span><span class='line'>
 </span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="n">argc</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
 </span><span class='line'>      <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// create table</span>
+</span><span class='line'>  <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">256</span><span class="p">;</span> <span class="n">c</span> <span class="o">=</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="n">encoder</span><span class="p">(</span><span class="o">&amp;</span><span class="n">c</span><span class="p">);</span>
+</span><span class='line'>      <span class="n">table</span><span class="p">[(</span><span class="kt">int</span><span class="p">)</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="kt">unsigned</span> <span class="kt">char</span><span class="p">)</span><span class="n">i</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="p">);</span>
 </span><span class='line'>  <span class="p">}</span>
 </span><span class='line'>
 </span><span class='line'>  <span class="k">if</span> <span class="p">((</span><span class="n">in</span> <span class="o">=</span> <span class="n">open</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">O_RDONLY</span><span class="p">))</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
