@@ -9,9 +9,8 @@
   <meta name="author" content="mzyy94">
 
   
-  <meta name="description" content="昨日に開催された魔法少女まどか☆マギカ オーケストラ・コンサートに行ってきまし。
-このオーケストラコンサートは各所ですでに開演されており、今回行った名古屋公演で4回目とのことです。
-少しの写真とコンサートを聴いた雑感をまとめておきます。 ">
+  <meta name="description" content="Cです。 アプリケーションの例外でおこるSegmetion fault: 11 はよく目にするのですが、
+OS Xで時々現れるBus error: 10 が現れる条件が気になったのでごちゃごちゃいじって探してみました。 こういう情報はどこかインターネットにあるのだと思ったのですが、 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -135,6 +134,82 @@
     <div class="row">
       <main class="col-sm-9">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title boxed-green"><a href="/blog/2013/12/18/buserr-segfault-osx/">OS Xで再現されるBus error: 10の原因探ってみた</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+<i class="glyphicon glyphicon-calendar"></i><time datetime="2013-12-18T12:48:12+09:00" pubdate data-updated="true">18 Dec 2013</time>
+        
+
+<i class="glyphicon glyphicon-folder-close"></i><span class="categories">
+  
+    <a class='category' href='/blog/categories/c/'>c</a>
+  
+</span>
+
+
+        
+
+<i class="glyphicon glyphicon-tags"></i><span class="tags">
+  
+    <a class='tag' href='/blog/tags/bus-error/'>bus_error</a>, <a class='tag' href='/blog/tags/osx/'>osx</a>, <a class='tag' href='/blog/tags/segmentation-fault/'>segmentation_fault</a>
+  
+</span>
+
+
+        
+		<i class="glyphicon glyphicon-comment"></i><a href="/blog/2013/12/18/buserr-segfault-osx/#disqus_thread"
+             data-disqus-identifier="http://mzyy94.com/blog/2013/12/18/buserr-segfault-osx/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<img src="/blog/resources/images/2013/12/18/buserr-segfault-osx.png" alt="article image" class="main image"/>
+
+
+<div class="entry-content"><p>Cです。</p>
+
+<p>アプリケーションの例外でおこるSegmetion fault: 11 はよく目にするのですが、
+OS Xで時々現れるBus error: 10 が現れる条件が気になったのでごちゃごちゃいじって探してみました。</p>
+
+<p>こういう情報はどこかインターネットにあるのだと思ったのですが、
+<a href="http://togetter.com/li/253717">Segmentation FaultとBus Errorの違いとMac - Togetterまとめ</a>
+などには納得のいく答えがなかったのが今回探してみた経緯となります。</p>
+
+<p>結論からいうと、原因の特定はできませんでした。
+様子を伺うまでの手順など、やったことの記録になります。</p>
+
+</div>
+  
+  
+    <footer>
+	<a rel="full-article" href="/blog/2013/12/18/buserr-segfault-osx/" class="btn btn-icon-left"><span>Read more</span></a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -472,6 +547,10 @@ Time Machineのバックアップ用ネットワークストレージとして�
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/12/10/kotatsu-heating/">サーバーの発熱でこたつを温める</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/12/07/seccon2014-online/">SECCON2014 Online英語版予選 Write-up</a>
       </li>
     
@@ -485,10 +564,6 @@ Time Machineのバックアップ用ネットワークストレージとして�
     
       <li class="post">
         <a href="/blog/2014/02/25/dl-gunzip-with-nodejs/">Node.jsでダウンロードしながらGunzipしてmd5の計算しながら保存する奴</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/02/21/unicode-popclip-extension/">Unicode形式に変換するPopClipのExtensionを作りたかっただけだったのに</a>
       </li>
     
   </ul>

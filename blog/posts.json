@@ -5,6 +5,12 @@
 	
 	"posts" : [ 
 		{
+			"date": "2014-12-10T00:02:35+09:00",
+			"title": "サーバーの発熱でこたつを温める",
+			"url": "/blog/2014/12/10/kotatsu-heating/"
+		},
+	
+		{
 			"date": "2014-12-07T17:59:06+09:00",
 			"title": "SECCON2014 Online英語版予選 Write-up",
 			"url": "/blog/2014/12/07/seccon2014-online/"

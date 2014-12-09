@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://mzyy94.com/blog/2014/12/10/kotatsu-heating/</loc>
+    <lastmod>2014-12-10T00:02:35+09:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>http://mzyy94.com/blog/2014/12/07/seccon2014-online/</loc>
     <lastmod>2014-12-07T17:59:06+09:00</lastmod>
     <priority>0.8</priority>
@@ -67,31 +72,31 @@
   </url>
   <url>
     <loc>http://mzyy94.com/blog/archives/</loc>
-    <lastmod>2014-12-08T01:22:35+09:00</lastmod>
+    <lastmod>2014-12-10T00:07:09+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://mzyy94.com/blog/</loc>
-    <lastmod>2014-12-08T01:22:35+09:00</lastmod>
+    <lastmod>2014-12-10T00:07:09+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://mzyy94.com/</loc>
-    <lastmod>2014-12-08T01:22:35+09:00</lastmod>
+    <lastmod>2014-12-10T00:07:09+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>http://mzyy94.com/about/</loc>
-    <lastmod>2014-12-08T01:22:35+09:00</lastmod>
+    <lastmod>2014-12-10T00:07:09+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://mzyy94.com/about/license.html</loc>
-    <lastmod>2014-12-08T01:22:35+09:00</lastmod>
+    <lastmod>2014-12-10T00:07:09+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>

@@ -4,7 +4,7 @@
   <title><![CDATA[犬アイコンのみっきー]]></title>
   <link href="http://mzyy94.com/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2014-12-08T01:22:35+09:00</updated>
+  <updated>2014-12-10T00:07:09+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -12,6 +12,194 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[サーバーの発熱でこたつを温める]]></title>
+    <link href="http://mzyy94.com/blog/2014/12/10/kotatsu-heating/"/>
+    <updated>2014-12-10T00:02:35+09:00</updated>
+    <id>http://mzyy94.com/blog/2014/12/10/kotatsu-heating</id>
+    <content type="html"><![CDATA[<p>この記事は<a href="http://www.adventar.org/calendars/443">coins Advent Calendar</a>の一部です。</p>
+
+<p>寒い日が続きますね。昨夜の外気温は摂氏2度でした。みなさんいかがお過ごしでしょうか。</p>
+
+<p>我が家は先月下旬にこたつを出しました。こたつから出られない生活が続いております。
+故に、こんなスライドをLTで発表しました。</p>
+
+<p><a href="http://www.slideshare.net/mzyy94/kotatsu">こたつ - coinsLT #1</a></p>
+
+<iframe src="http://www.slideshare.net/slideshow/embed_code/42258069" width="427" height="356" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
+
+
+<p> <div style="margin-bottom:5px"> <strong> <a href="https://www.slideshare.net/mzyy94/kotatsu" title="こたつ - coinsLT #1" target="_blank">こたつ - coinsLT #1</a> </strong> from <strong><a href="http://www.slideshare.net/mzyy94" target="_blank">Yuki Mizuno</a></strong> </div></p>
+
+<p>ITによってこたつ生活のQoLが向上したのですが、まだ改善の余地はあります。
+そう、<strong>熱源の有効利用</strong>です。</p>
+
+<p>みなさんご存知の通り、PC機器は熱を持ちます。この熱、せっかくなので有効活用したくありませんか？
+ということで、実際にサーバー・デスクトップPCを熱源にしてこたつを温めてみる実験をしてみました。</p>
+
+<!-- more -->
+
+
+<h1>どのように熱源として活用するか</h1>
+
+<p>冒頭に掲載したスライドにあるように、すでにすべてのサーバーはLANケーブルと電源さえあれば動作し利用できるようになっています。
+なので、我が家では電源とLANをこたつまで引っ張り、設置場所をこたつのなかに変えるだけで熱源として利用することができます。</p>
+
+<p><strong>※熱を持つマシンは火災の危険があり、その危険度はアパートを燃やしてVPSを借りるという炎上マーケティングに利用されるほどです。真似する際は十分に注意してください。</strong></p>
+
+<h1>実験環境</h1>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:center;">        日時      </th>
+<th style="text-align:center;">             場所           </th>
+<th style="text-align:center;"> 外気温 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">2014/12/9 19:04:22</td>
+<td style="text-align:center;">学園都市内のマンションの一室</td>
+<td style="text-align:center;">  2  ℃  </td>
+</tr>
+</tbody>
+</table>
+
+
+<p>LTで発表した2つのシステムをこたつ内で動作させて、熱の有効利用ができるかどうかを検証してみます。</p>
+
+<h1>録画サーバー</h1>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2014/12/10/recording-server.jpg" alt="Recording Server" /></p>
+
+<p>まずは録画サーバーを熱源としてこたつを温めてみたいと思います。
+主な熱源となりうるパーツは以下の通りです。</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:center;">パーツ</th>
+<th style="text-align:center;">種類</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;"> CPU  </td>
+<td style="text-align:center;"> Intel Celeron 847 </td>
+</tr>
+<tr>
+<td style="text-align:center;"> GPU  </td>
+<td style="text-align:center;"> n/a </td>
+</tr>
+<tr>
+<td style="text-align:center;"> HDD  </td>
+<td style="text-align:center;"> 3x WD Green 3TB </td>
+</tr>
+<tr>
+<td style="text-align:center;"> SSD  </td>
+<td style="text-align:center;"> 1x SanDisk 128GB </td>
+</tr>
+<tr>
+<td style="text-align:center;">Power </td>
+<td style="text-align:center;"> 200W FlexATX </td>
+</tr>
+</tbody>
+</table>
+
+
+<p>24時間稼働を前提に構成したサーバーなので低消費電力のパーツが多いですが、HDD3台の発熱は結構なものであると思います。</p>
+
+<h2>実験</h2>
+
+<p>いつもの利用方法を想定して、電源を入れてアニメを2本、計50分ストリーミング再生して温度上昇がどれほどかを実験してみます。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2014/12/10/recording-server-temperature1.jpg" alt="temperature1" /></p>
+
+<p>電源をいれる直前のこたつ内の温度は16.0℃でした。アニメを再生しているときの録画サーバーの消費電力は平均40.4Wでした。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2014/12/10/recording-server-power.jpg" alt="power1" /></p>
+
+<h2>結果</h2>
+
+<p>体温が熱源となることがないよう、寒いこたつの外でアニメを2本みた後のこたつ内の温度はどうなったでしょうか。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2014/12/10/recording-server-temperature2.jpg" alt="temperature2" /></p>
+
+<p>1時間の録画サーバーの稼働でなんとこたつ内の温度は21.2℃になりました。5.2℃の上昇です。
+なんとなく温もりを感じられますが、まだまだこたつとしては物足りなさを感じてしまう温度です。</p>
+
+<h1>ゲームストリームサーバー</h1>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2014/12/10/gamestream-server.jpg" alt="GameStream Server" />
+そこで、ゲームストリームサーバーを追加してあらたな熱源としてこたつを温めてみたいと思います。
+主な熱源となりうるパーツは以下の通りです。</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:center;">パーツ</th>
+<th style="text-align:center;">種類</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;"> CPU  </td>
+<td style="text-align:center;"> Intel Core i5-2400S </td>
+</tr>
+<tr>
+<td style="text-align:center;"> GPU  </td>
+<td style="text-align:center;"> ZOTAC GeForce 750Ti</td>
+</tr>
+<tr>
+<td style="text-align:center;"> HDD  </td>
+<td style="text-align:center;"> n/a</td>
+</tr>
+<tr>
+<td style="text-align:center;"> SSD  </td>
+<td style="text-align:center;"> 1x Transcend 128GB </td>
+</tr>
+<tr>
+<td style="text-align:center;">Power </td>
+<td style="text-align:center;"> 200W FlexATX </td>
+</tr>
+</tbody>
+</table>
+
+
+<p>ゲーミングマシンとあって、発熱の多いGPUを搭載しているのが特長です。</p>
+
+<h2>実験</h2>
+
+<p>先ほどの録画サーバーによって温まったこたつに、ゲームストリームサーバーを追加して、2台のマシンでどれほどこたつを温められるかを実験してみます。
+こちらもいつもの利用方法を想定して、電源を入れてゲームを1チャプター、約30分プレイしてこたつ内を温めます。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2014/12/10/gamestream-server-temperature1.jpg" alt="temperature1" /></p>
+
+<p>電源をいれる直前のこたつ内の温度は20.8℃でした。アニメを再生した直後より少し下がっていますが、これはこたつ内にサーバーを搬入した際に、こたつ外の冷えた空気が入ったためです。
+ゲームをプレイしているときの2台のマシンの消費電力は平均120Wでした。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2014/12/10/gamestream-server-power.jpg" alt="power2" /></p>
+
+<h2>結果</h2>
+
+<p>1回死んでしまいましたが、なんとかチャプターをクリアできました。透明なハンターは強い。
+さて、こたつ内の温度はどうなったでしょうか。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2014/12/10/gamestream-server-temperature2.jpg" alt="temperature2" /></p>
+
+<p>30分間のゲームプレイで、温度はなんと26.1℃になりました。2台のマシンで16.0℃から26.1℃にまで暖かくなりました。10℃も！！
+こたつに入ってみると、眠りを誘う温もりを感じられるほどでした。普通にあったかい。</p>
+
+<h1>まとめ</h1>
+
+<p>いくらサーバーの発熱がすごいからと、室温を劇的に上げることはできませんが、こたつの中なら10℃ほど温められることがわかりました。寒い冬にはもってこいのお得情報です。
+しかし、こたつの中は埃が多く、炎上してVPSを借りる羽目になることもあるので、くれぐれも真似する際は十分に注意をはらって行ってください。</p>
+
+<p>明日のcoins Advent Calendarは<a href="https://twitter.com/azuma962">カブさん</a>です。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[SECCON2014 Online英語版予選 Write-up]]></title>
