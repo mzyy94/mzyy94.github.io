@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: qsv | 犬アイコンのみっきー]]></title>
   <link href="http://mzyy94.com/blog/tags/qsv/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2014-12-12T23:58:27+09:00</updated>
+  <updated>2014-12-13T00:10:52+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -29,7 +29,7 @@
 
 <p>QSVを利用できるベアメタルマシンは我が家に2台あり、より新しいものはCPUにXeon E3v3を搭載しています。
 このマシンではKVMで仮想マシンを複数立ち上げていて、カーネルコンパイルなどのCIを回したり、クロスコンパイル環境を構築しているものです。
-今回はそのマシンに録画用仮想マシンを立て、録画に必要なUSBデバイスとPCI ExpressのレーンとQSVエンコードのためにIntel HD Graphicsのパススルーを試みてみました。</p>
+今回はそのマシンに録画用仮想マシンを立て、録画に必要なUSBデバイスとPCI ExpressのレーンとQSVエンコードのためにIntel HD Graphicsのパススルーを試みる記録の第1章となります。</p>
 
 <!-- more -->
 
