@@ -122,6 +122,10 @@ article i.glyphicon {
 	overflow: visible;
 }
 
+article .entry-content a {
+	color: #9466D8;
+}
+
 article .entry-content ul {
 	margin: 0 0 16px 32px;
 }

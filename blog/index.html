@@ -9,8 +9,7 @@
   <meta name="author" content="mzyy94">
 
   
-  <meta name="description" content="この記事はcoins Advent Calendarの一部です。 寒い日が続きますね。昨夜の外気温は摂氏2度でした。みなさんいかがお過ごしでしょうか。 我が家は先月下旬にこたつを出しました。こたつから出られない生活が続いております。
-故に、こんなスライドをLTで発表しました。 こたつ - &hellip;">
+  <meta name="description" content="この記事はLinux Advent Calendar 2014 12日目の記事です。 12月も中頃となり寒い日が続きますね。みなさん体調はいかがでしょうか。 先日のこたつを温める実験で十分な熱を得られることを知ってしまい、つい調子に乗って動画のエンコードをこたつの中でやってしまって、40℃ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -134,6 +133,81 @@
     <div class="row">
       <main class="col-sm-9">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title boxed-green"><a href="/blog/2014/12/12/kvm-intel-hd-graphics-passthrough/">KVMでQSVするためIntel HD Graphicsパススルーするー</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+<i class="glyphicon glyphicon-calendar"></i><time datetime="2014-12-12T23:59:49+09:00" pubdate data-updated="true">12 Dec 2014</time>
+        
+
+<i class="glyphicon glyphicon-folder-close"></i><span class="categories">
+  
+    <a class='category' href='/blog/categories/linux/'>linux</a>
+  
+</span>
+
+
+        
+
+<i class="glyphicon glyphicon-tags"></i><span class="tags">
+  
+    <a class='tag' href='/blog/tags/kernel/'>kernel</a>, <a class='tag' href='/blog/tags/kvm/'>kvm</a>, <a class='tag' href='/blog/tags/qsv/'>qsv</a>
+  
+</span>
+
+
+        
+		<i class="glyphicon glyphicon-comment"></i><a href="/blog/2014/12/12/kvm-intel-hd-graphics-passthrough/#disqus_thread"
+             data-disqus-identifier="http://mzyy94.com/blog/2014/12/12/kvm-intel-hd-graphics-passthrough/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<div class="entry-content"><p>この記事は<a href="http://qiita.com/advent-calendar/2014/linux">Linux Advent Calendar 2014</a> 12日目の記事です。</p>
+
+<p>12月も中頃となり寒い日が続きますね。みなさん体調はいかがでしょうか。</p>
+
+<p>先日の<a href="/blog/2014/12/10/kotatsu-heating/">こたつを温める実験</a>で十分な熱を得られることを知ってしまい、つい調子に乗って動画のエンコードをこたつの中でやってしまって、40℃超の高温になるという経験を得るなど、新しい発見のある毎日です。</p>
+
+<p>こたつ温め実験で使った録画サーバーはCPUがIntel Celeron 847はとても貧弱で、動画をH.264にエンコードしようものなら30分のアニメで8時間かかってしまうほどです。
+なんとか短時間で動画エンコードできないかと悩んでいたところ、Intel QuickSync Video(以下QSV、詳細は後述)がLinuxもサポートされていることを思い出し、LinuxでQSVエンコードをしてみようと思い立ちました。</p>
+
+<p>QSVを利用できるベアメタルマシンは我が家に2台あり、より新しいものはCPUにXeon E3v3を搭載しています。
+このマシンではKVMで仮想マシンを複数立ち上げていて、カーネルコンパイルなどのCIを回したり、クロスコンパイル環境を構築しているものです。
+今回はそのマシンに録画用仮想マシンを立て、録画に必要なUSBデバイスとPCI ExpressのレーンとQSVエンコードのためにIntel HD Graphicsのパススルーを試みてみました。</p>
+
+</div>
+  
+  
+    <footer>
+	<a rel="full-article" href="/blog/2014/12/12/kvm-intel-hd-graphics-passthrough/" class="btn btn-icon-left"><span>Read more</span></a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -806,72 +880,6 @@ Lempel-Ziv符号化で圧縮されたファイル(.gz)のダウンロードを�
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title boxed-green"><a href="/blog/2014/01/09/iscsi-debian/">debianでiscsi target/initiator動作させるメモ</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-
-
-
-
-<i class="glyphicon glyphicon-calendar"></i><time datetime="2014-01-09T13:45:08+09:00" pubdate data-updated="true">09 Jan 2014</time>
-        
-
-<i class="glyphicon glyphicon-folder-close"></i><span class="categories">
-  
-    <a class='category' href='/blog/categories/network/'>network</a>
-  
-</span>
-
-
-        
-
-<i class="glyphicon glyphicon-tags"></i><span class="tags">
-  
-    <a class='tag' href='/blog/tags/debian/'>debian</a>, <a class='tag' href='/blog/tags/iscsi/'>iscsi</a>
-  
-</span>
-
-
-        
-		<i class="glyphicon glyphicon-comment"></i><a href="/blog/2014/01/09/iscsi-debian/#disqus_thread"
-             data-disqus-identifier="http://mzyy94.com/blog/2014/01/09/iscsi-debian/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-<img src="/blog/resources/images/2014/1/9/debian-iscsi.png" alt="article image" class="main image"/>
-
-
-<div class="entry-content"><p>Linux上でのiSCSIパケット収集のためにVirtual Boxで作成した、Debian 7.0.0にiSCSI initiatorとtargetを入れたときのメモを起こしておきます。</p>
-
-</div>
-  
-  
-    <footer>
-	<a rel="full-article" href="/blog/2014/01/09/iscsi-debian/" class="btn btn-icon-left"><span>Read more</span></a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="tf_pagination">
   <div class="inner">
     
@@ -988,6 +996,10 @@ Lempel-Ziv符号化で圧縮されたファイル(.gz)のダウンロードを�
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/12/12/kvm-intel-hd-graphics-passthrough/">KVMでQSVするためIntel HD Graphicsパススルーするー</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/12/10/kotatsu-heating/">サーバーの発熱でこたつを温める</a>
       </li>
     
@@ -1001,10 +1013,6 @@ Lempel-Ziv符号化で圧縮されたファイル(.gz)のダウンロードを�
     
       <li class="post">
         <a href="/blog/2014/04/06/new-server/">自宅サーバーを増やした</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/02/25/dl-gunzip-with-nodejs/">Node.jsでダウンロードしながらGunzipしてmd5の計算しながら保存する奴</a>
       </li>
     
   </ul>

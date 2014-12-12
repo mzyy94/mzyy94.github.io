@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: kvm | 犬アイコンのみっきー]]></title>
+  <link href="http://mzyy94.com/blog/tags/kvm/atom.xml" rel="self"/>
+  <link href="http://mzyy94.com/"/>
+  <updated>2014-12-12T23:58:27+09:00</updated>
+  <id>http://mzyy94.com/</id>
+  <author>
+    <name><![CDATA[mzyy94]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[KVMでQSVするためIntel HD Graphicsパススルーするー]]></title>
+    <link href="http://mzyy94.com/blog/2014/12/12/kvm-intel-hd-graphics-passthrough/"/>
+    <updated>2014-12-12T23:59:49+09:00</updated>
+    <id>http://mzyy94.com/blog/2014/12/12/kvm-intel-hd-graphics-passthrough</id>
+    <content type="html"><![CDATA[<p>この記事は<a href="http://qiita.com/advent-calendar/2014/linux">Linux Advent Calendar 2014</a> 12日目の記事です。</p>
+
+<p>12月も中頃となり寒い日が続きますね。みなさん体調はいかがでしょうか。</p>
+
+<p>先日の<a href="/blog/2014/12/10/kotatsu-heating/">こたつを温める実験</a>で十分な熱を得られることを知ってしまい、つい調子に乗って動画のエンコードをこたつの中でやってしまって、40℃超の高温になるという経験を得るなど、新しい発見のある毎日です。</p>
+
+<p>こたつ温め実験で使った録画サーバーはCPUがIntel Celeron 847はとても貧弱で、動画をH.264にエンコードしようものなら30分のアニメで8時間かかってしまうほどです。
+なんとか短時間で動画エンコードできないかと悩んでいたところ、Intel QuickSync Video(以下QSV、詳細は後述)がLinuxもサポートされていることを思い出し、LinuxでQSVエンコードをしてみようと思い立ちました。</p>
+
+<p>QSVを利用できるベアメタルマシンは我が家に2台あり、より新しいものはCPUにXeon E3v3を搭載しています。
+このマシンではKVMで仮想マシンを複数立ち上げていて、カーネルコンパイルなどのCIを回したり、クロスコンパイル環境を構築しているものです。
+今回はそのマシンに録画用仮想マシンを立て、録画に必要なUSBデバイスとPCI ExpressのレーンとQSVエンコードのためにIntel HD Graphicsのパススルーを試みてみました。</p>
+
+<!-- more -->
+
+
+<h1>Intel QuickSync Video</h1>
+
+<p><a href="http://www.intel.co.jp/content/www/jp/ja/architecture-and-technology/quick-sync-video/quick-sync-video-general.html">IntelのQSV公式サイト</a>に情報が載っていますが簡単にまとめます。</p>
+
+<p>Intel Quick Sync Videoとは、Sandy Bridge世代のCore iシリーズのIntel CPUに搭載されているIntel HD Graphicsによる、動画のハードウェアエンコード・デコード技術のことです。
+対象となるコーデックはH.264とH.262のみですが、エンコードに関してはソフトウェアで行うものよりもQSVを利用したものの方が圧倒的に高速（ただし品質は低下する模様）です。</p>
+
+<p>QSVをオープンソースな動画エンコードソフトウェアで利用する動きは近頃活発であり、有名どころとしては<a href="https://handbrake.fr">Handbrake</a>が最新版である<a href="https://handbrake.fr/news.php?article=27">バージョン0.10.0でQSVエンコードをサポート</a>し始めました。
+<a href="http://www.videolan.org">VLC</a>も<a href="http://www.videolan.org/vlc/releases/2.1.0.html">バージョン2.10からQSVエンコードをサポート</a>しています。</p>
+
+<p>ただ、これらのオープンソースソフトウェア(OSS)によって、QSVによるH.264エンコード高速化の恩恵を受けられるのは、両者ともいまのところWindows版のみとなっています。</p>
+
+<h1>QSV on Linux</h1>
+
+<p>Windows向けにしかOSSのQSVエンコーダーがないからって、なにもLinuxでQSVでエンコードできないわけではないのです。
+ffmpegのエンコードコーデックとして、LinuxでもQSVエンコードができる<a href="https://github.com/shenhailuanma/qsv-ffmpeg-codec">qsv-ffmpeg-codec</a>なるものがあるのです。
+これを利用するには、Intel Media SDKを導入する必要がありますが、これによってOSSでのQSVエンコードがLinuxでもできるのです。</p>
+
+<h1>Intel Media SDK</h1>
+
+<p>Intel HD GraphicsをLinuxで利用するためにはSDKが必要となります。そのSDKがこれ、Intel Media SDKです。これは現在、<a href="https://software.intel.com/en-us/intel-media-server-studio">Intel(r) Medoa Server Studio 2015</a>(以下IMMS)に含まれる形で提供されています。IMMS 2015 R2ではUbuntuとSUSE Linuxがサポートされています。</p>
+
+<h1>Intel HD Graphics pass-through</h1>
+
+<p>いろいろなシステムの説明を終えたのでここからが本題です。
+KVMでIntel HD Graphicsをpass-throughする方法を手順を追って説明していきます。</p>
+
+<p>仮想マシンでのPCIデバイスのパススルーはよく行われており、XenにおいてはGPUパススルーによって<a href="http://www.slideshare.net/zgock/203o">家庭内VDIサーバーを作る</a>というような例があります。</p>
+
+<p><a href="http://www.slideshare.net/zgock/203o">http://www.slideshare.net/zgock/203o</a>&#8220;>http://www.slideshare.net/zgock/203o&#8221;>http://www.slideshare.net/zgock/203o</a></a></p>
+
+<p>XenによるPCIパススルーの記事はたくさん見つかるものの、KVMによるPCIパススルーに関するものは少なく、ましてやCPU内臓GPUのパススルーは皆無と言ってもいいほどです。
+これは、KVMにおいてPCIパススルーをするにはIntel VT-dテクノロジーが必要なので、ユーザーが限られてしまうのも影響しているかもしれません。</p>
+
+<p>KVMでPCIパススルーするための手がかりを<code>make menuconfig</code>で調べたところ、次の2つのオプションを有効化することでIntel HD GraphicsをKVMにパススルーできそうだということがわかりました。</p>
+
+<p><img src="/blog/resources/images/2014/12/12/Intel-IOMMU-option.png" alt="Intel IOMMU" />
+<img src="/blog/resources/images/2014/12/12/VFIO-option.png" alt="Intel VFIO" /></p>
+
+<p>Intel IOMMUはIntel VT-dの機能をカーネルで有効にするものです。
+また、VFIOはIOMMUによるデバイスへのアクセスを提供するものです。</p>
+
+<p>これらを有効にしてコンパイル &amp;&amp; インストールしカーネルをKVMでPCIデバイスパススルーできるようにします。</p>
+
+<p>その次はqemuの起動オプションです。
+まず、ベアメタルマシン上ではどのようにIntel HD Graphicsが認識されているのかを調べます。</p>
+
+<p><img src="/blog/resources/images/2014/12/12/Intel-HD-Graphics-Host.png" alt="Intel HD Graphics host" /></p>
+
+<p>バス00:02.0にIntel HD Graphicsが認識されています。</p>
+
+<p>このバス 00:02.0をPCIデバイスとしてパススルーするため、kvmの起動オプションに<code>-device vfio-pci,host=00:02.0,id=hostpci0,bus=ich9-pcie-port-1,addr=0x0,x-vga=on -machine type=q35</code>を追加します。
+すると、ゲストLinuxにしっかりとIntel HD Graphicsが渡されていることがわかります。</p>
+
+<p><img src="/blog/resources/images/2014/12/12/Intel-HD-Graphics-Guest.png" alt="Intel HD Graphics guest" /></p>
+
+<h1>Intel Media SDK Install</h1>
+
+<p>この先の記事が長くなってしまったのでIMSIに関しては後ほど別記事に書きます。。</p>
+
+<h1>まとめ</h1>
+
+<p>KVMでもPCIパススルーして幸せになろう！</p>
+
+<p>明日はmasami256さんです。</p>
+]]></content>
+  </entry>
+  
+</feed>
