@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: xeon | 犬アイコンのみっきー]]></title>
   <link href="http://mzyy94.com/blog/tags/xeon/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2014-12-13T00:16:44+09:00</updated>
+  <updated>2015-01-08T22:28:55+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -78,13 +78,35 @@
 「サーバー向けならXeonっしょ。」と各所で言われているので、Xeonにしました。
 用途としては、CIサーバーが主で、適当な仮想マシンインスタンスを作っては遊び、追加していくという将来を見据えて、<a href="http://ark.intel.com/ja/products/75462/Intel-Xeon-Processor-E3-1245-v3-8M-Cache-3_40-GHz">Intel Xeon E3-1245 v3</a>にしました。</p>
 
-<p>プロセッサー|Intel Xeon E3-1245 v3
-&#8212;&#8212;&#8212;-|&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;
-動作周波数 |3.4 GHz
-TB時周波数  |3.8 GHz
-キャッシュ |8 MB
-最大 TDP  |84 W
-動作周波数3.4GHzあれば１０個ほど仮想マシン立ち上げても大丈夫でしょう。</p>
+<table>
+<thead>
+<tr>
+<th>プロセッサー</th>
+<th>Intel Xeon E3-1245 v3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>動作周波数</td>
+<td>3.4 GHz</td>
+</tr>
+<tr>
+<td>TB時周波数</td>
+<td>3.8 GHz</td>
+</tr>
+<tr>
+<td>キャッシュ</td>
+<td>8 MB</td>
+</tr>
+<tr>
+<td>最大 TDP</td>
+<td>84 W</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>動作周波数3.4GHzあれば１０個ほど仮想マシン立ち上げても大丈夫でしょう。</p>
 
 <h2>MB</h2>
 
