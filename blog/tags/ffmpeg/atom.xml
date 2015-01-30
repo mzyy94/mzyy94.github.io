@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: ffmpeg | 犬アイコンのみっきー]]></title>
   <link href="http://mzyy94.com/blog/tags/ffmpeg/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2015-01-30T22:12:06+09:00</updated>
+  <updated>2015-01-30T22:15:01+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -133,7 +133,7 @@ IMSSはIntel Developer Zoneのメンバーになってから、<a href="https://
 
 <p><em><a href="https://github.com/mzyy94/qsv_h264-ffmpeg">mzyy94/h264_qsv-ffmpeg</a></em></p>
 
-<p>ここからフォークし、ディレクトリ下にある<code>./setup.sh</code>を実行して、FFmpeg-2.2ディレクトリに移動して<code>make</code>して、インストールください。</p>
+<p>ここからクローンし、ディレクトリ下にある<code>./setup.sh</code>を実行して、FFmpeg-2.2ディレクトリに移動して<code>make</code>して、インストールください。</p>
 
 <p>このコーデック、QSVによるH.264へのエンコードはしっかりとできるのですが、<strong>MPEG-TSファイルのエンコードはエラーになります</strong>。原因は、TSの仕組みゆえの、ライブラリの関数<code>MFXVideoENCODE_EncodeFrameAsync</code>に渡される引数によるものというところまではわかったのですが、修正にはほぼ全ての処理を書き換えないといけない手間がかかるので、MPEG-TSから一度RAWファイルを抽出し、パイプ等を使ってQSVコーデックに渡してエンコードしてください。</p>
 
