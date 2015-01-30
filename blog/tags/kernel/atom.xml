@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: kernel | 犬アイコンのみっきー]]></title>
   <link href="http://mzyy94.com/blog/tags/kernel/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2015-01-08T22:28:55+09:00</updated>
+  <updated>2015-01-30T22:12:06+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -54,7 +54,7 @@ ffmpegのエンコードコーデックとして、LinuxでもQSVエンコード
 
 <h1>Intel Media SDK</h1>
 
-<p>Intel HD GraphicsをLinuxで利用するためにはSDKが必要となります。そのSDKがこれ、Intel Media SDKです。これは現在、<a href="https://software.intel.com/en-us/intel-media-server-studio">Intel(r) Medoa Server Studio 2015</a>(以下IMMS)に含まれる形で提供されています。IMMS 2015 R2ではUbuntuとSUSE Linuxがサポートされています。</p>
+<p>Intel HD GraphicsをLinuxで利用するためにはSDKが必要となります。そのSDKがこれ、Intel Media SDKです。これは現在、<a href="https://software.intel.com/en-us/intel-media-server-studio">Intel(r) Medoa Server Studio 2015</a>(以下IMSS)に含まれる形で提供されています。IMSS 2015 R2ではUbuntuとSUSE Linuxがサポートされています。</p>
 
 <h1>Intel HD Graphics pass-through</h1>
 
@@ -85,14 +85,21 @@ KVMでIntel HD Graphicsをpass-throughする方法を手順を追って説明し
 
 <p>バス00:02.0にIntel HD Graphicsが認識されています。</p>
 
-<p>このバス 00:02.0をPCIデバイスとしてパススルーするため、kvmの起動オプションに<code>-device vfio-pci,host=00:02.0,id=hostpci0,bus=ich9-pcie-port-1,addr=0x0,x-vga=on -machine type=q35</code>を追加します。
-すると、ゲストLinuxにしっかりとIntel HD Graphicsが渡されていることがわかります。</p>
+<p>このバス 00:02.0をPCIデバイスとしてパススルーするため、kvmの起動オプションに<code>-device vfio-pci,host=00:02.0,id=hostpci0,bus=ich9-pcie-port-1,addr=0x0,x-vga=on -machine type=q35</code>を追加します。</p>
+
+<p><strong> !&#8211; 追記(2015/1/30) &#8211; </strong></p>
+
+<p>このとき、CPUタイプのオプションを<code>-cpu Haswell,kvm=off,+x2apic</code>とすることを忘れないでください。</p>
+
+<p><strong> !&#8211; 追記ここまで &#8211; </strong></p>
+
+<p>すると、ゲストLinuxにしっかりとIntel HD Graphicsが渡されていることがわかります。</p>
 
 <p><img src="/blog/resources/images/2014/12/12/Intel-HD-Graphics-Guest.png" alt="Intel HD Graphics guest" /></p>
 
 <h1>Intel Media SDK Install</h1>
 
-<p>この先の記事が長くなってしまったのでIMMSのインストール以降は後ほど別記事に書きます。。</p>
+<p>この先の記事が長くなってしまったのでIMSSのインストール以降は後ほど別記事に書きます。。</p>
 
 <h1>まとめ</h1>
 
