@@ -303,6 +303,23 @@ FFmpegの粋な計らいによって、エンコード中は以下のように�
 
 <p>予想はついていましたが、QSVでは8コアでも1コアでもほとんど時間は変わらないようです。</p>
 
+<h1>仮想1コアで複数のQSVエンコード&#8230;?</h1>
+
+<p>記事公開直後にこのような気になる意見をいただきました。</p>
+
+<blockquote class="twitter-tweet"><p><a href="https://twitter.com/mzyy94">@mzyy94</a> 一コア使用QSVで複数同時エンコしたらどうなるか実験してもらえるとうれしいです</p>&mdash; の (@polamjag) <a href="https://twitter.com/polamjag/status/561469823561920513">January 31, 2015</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<p>早速、QSVでの同時エンコードを試してみました。
+tmuxで分割し、上下のコンソールで同時にエンコードを開始してみた結果が以下の画像のとおりになります。</p>
+
+<p><img src="/blog/resources/images/2015/01/31/qsv-1core-multi-encode.png" alt="qsv 1core multi encode" /></p>
+
+<p>ライブラリがIGPへアクセスできないようでアクセス違反起こして終了してしまうため、QSVでの同時エンコードはダメでした。</p>
+
 <h2>ファイルサイズ比較</h2>
 
 <p>ビットレート固定なのでそれほど違いはありませんが、ファイルサイズは以下のようになっています。</p>

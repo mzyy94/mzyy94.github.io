@@ -4,7 +4,7 @@
   <title><![CDATA[Category: linux | 犬アイコンのみっきー]]></title>
   <link href="http://mzyy94.com/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2015-01-31T19:18:36+09:00</updated>
+  <updated>2015-01-31T19:38:46+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -125,6 +125,19 @@ sys     0m0.972s
 </code></pre>
 
 <p>予想はついていましたが、QSVでは8コアでも1コアでもほとんど時間は変わらないようです。</p>
+
+<h1>仮想1コアで複数のQSVエンコード&#8230;?</h1>
+
+<p>記事公開直後にこのような気になる意見をいただきました。</p>
+
+<p><a href="https://twitter.com/polamjag/status/561469823561920513">https://twitter.com/polamjag/status/561469823561920513</a>&#8220;>https://twitter.com/polamjag/status/561469823561920513&#8221;>https://twitter.com/polamjag/status/561469823561920513</a></a></p>
+
+<p>早速、QSVでの同時エンコードを試してみました。
+tmuxで分割し、上下のコンソールで同時にエンコードを開始してみた結果が以下の画像のとおりになります。</p>
+
+<p><img src="/blog/resources/images/2015/01/31/qsv-1core-multi-encode.png" alt="qsv 1core multi encode" /></p>
+
+<p>ライブラリがIGPへアクセスできないようでアクセス違反起こして終了してしまうため、QSVでの同時エンコードはダメでした。</p>
 
 <h2>ファイルサイズ比較</h2>
 
