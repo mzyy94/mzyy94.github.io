@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: imss | 犬アイコンのみっきー]]></title>
   <link href="http://mzyy94.com/blog/tags/imss/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2015-01-30T22:17:58+09:00</updated>
+  <updated>2015-01-31T19:18:36+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -23,6 +23,9 @@ Intel QSVは高速にある程度の画質のエンコードできてよいで�
 
 <p>今回はKVMでIntel HD Graphicsをパススルーした仮装マシン上に、SDKのインストールとカーネルモジュールのインストール、そしてffmpegでのQSVによるH.264エンコードができる環境づくりまでの手順をご紹介します。
 <del>これが意外と骨が折れる作業だったので同じような思いをせぬよう、ご熟読ください。</del>（書き直す前の文章です。書き直した理由は後述。）</p>
+
+<!-- more -->
+
 
 <h1>Intel Media Server Studio (Intel Media SDK)</h1>
 

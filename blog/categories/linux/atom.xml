@@ -4,7 +4,7 @@
   <title><![CDATA[Category: linux | 犬アイコンのみっきー]]></title>
   <link href="http://mzyy94.com/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2015-01-30T22:17:58+09:00</updated>
+  <updated>2015-01-31T19:18:36+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -12,6 +12,142 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[LinuxでQSVとH.264のエンコード対決]]></title>
+    <link href="http://mzyy94.com/blog/2015/01/31/qsv-x264-linux-battle/"/>
+    <updated>2015-01-31T19:23:04+09:00</updated>
+    <id>http://mzyy94.com/blog/2015/01/31/qsv-x264-linux-battle</id>
+    <content type="html"><![CDATA[<p>先日の記事、でLinuxでH.264の動画をエンコードできることを紹介しました。
+そのベンチマークをとってみました。QSVでのエンコードとlibx264を用いたエンコードの比較となります。</p>
+
+<p>今回エンコード時間の比較に用いた動画は以下のものを利用しました。</p>
+
+<p><em><a href="http://www.bigbuckbunny.org">Big Buck Bunny</a></em></p>
+
+<p><img src="/blog/resources/images/2015/01/31/big-buck-bunny.png" alt="Big Buck Bunny" /></p>
+
+<p>ここの、<code>big_buck_bunny_1080p_surround.avi</code>を以下の表のオプションでLibx264とQSVでのエンコードで変換し、比較をしてみました。</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:center;">項目 </th>
+<th style="text-align:center;"> 値</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">音声コーデック</td>
+<td style="text-align:center;"> コピー</td>
+</tr>
+<tr>
+<td style="text-align:center;">ビットレート</td>
+<td style="text-align:center;">2000kbps</td>
+</tr>
+<tr>
+<td style="text-align:center;">サイズ</td>
+<td style="text-align:center;"> 1280x720</td>
+</tr>
+<tr>
+<td style="text-align:center;">フレームレート</td>
+<td style="text-align:center;"> 29.97</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>このオプションで起動すると、<strong>ffmpeg -i big_buck_bunny_1080p_surround.avi -acodec copy -vcodec コーデック -b:v 2000k -s 1280x720 -r 30000/1001 -y 出力ファイル</strong>という起動オプションになります。</p>
+
+<!-- more -->
+
+
+<h1>仮想8コアでx264エンコード</h1>
+
+<p>Xeon搭載マシンで動かしているKVMに仮想8コアを割り当てた環境でエンコードしてみました。
+FFmpegの粋な計らいによって、エンコード中は以下のようにたくさんのスレッドが立ちがあり、マシンはエンコードに専念していました。</p>
+
+<p><img src="/blog/resources/images/2015/01/31/x264-8core-encode.png" alt="x264 8core encode" /></p>
+
+<p>CPUはエンコード中、全コア90%前後の使用率を維持していました。そんなエンコードにかかった時間は以下の通りでした。</p>
+
+<pre><code>real    2m50.118s
+user    20m15.617s
+sys     0m7.375s
+</code></pre>
+
+<p>10分の動画を3分足らずでエンコードしてしまいました。恐るべきコア数の暴力。</p>
+
+<h1>仮想8コアでQSVエンコード</h1>
+
+<p>先ほどと同じ環境でQSVを用いたエンコードをしてみました。
+こちらもFFmpegによって複数のスレッドによる処理がされるのですが、CPUの負荷は多くて各コア10%程度となる非常に省エネなエンコードとなっていました。</p>
+
+<p><img src="/blog/resources/images/2015/01/31/qsv-8core-encode.png" alt="QSV 8core encode" /></p>
+
+<p>こんな省エネでもエンコードに要する時間はそれほどかかりませんでした。</p>
+
+<pre><code>real    3m6.697s
+user    2m56.301s
+sys     0m4.871s
+</code></pre>
+
+<p>3分とちょっとでエンコードが完了しています。さすがにXeon 8コアにはかなわないようです。</p>
+
+<h1>仮想1コアでx264エンコード</h1>
+
+<p>KVMで割り当てコア数を1コアに設定し、x264を用いたエンコードをしてみました。
+負荷はほぼ100%、まれに90%前後になる程度でした。</p>
+
+<p><img src="/blog/resources/images/2015/01/31/x264-1core-encode.png" alt="x264 1core encode" /></p>
+
+<p>じっくりエンコードしてかかった時間は以下のとおりです。</p>
+
+<pre><code>real    10m56.739s
+user    10m54.374s
+sys     0m1.070s
+</code></pre>
+
+<p>動画再生時間+10%程度の時間がかかっていました。</p>
+
+<h1>仮想1コアでQSVエンコード</h1>
+
+<p>QSVとコア数の関係性は不明ながら、比較のために同じ環境でQSVでもエンコードしてみました。
+負荷はほとんどないかと思ってたのですが、エンコーダに渡す前処理などで少々CPUを使うようで、90%前後まで達したり0%付近をうろうろしたりと、不安定な負荷がかかっていました。また、なぜか2スレッドで処理していました。</p>
+
+<p><img src="/blog/resources/images/2015/01/31/qsv-1core-encode.png" alt="qsv 1core encode" /></p>
+
+<p>要した時間は以下のとおりです。</p>
+
+<pre><code>real    3m0.692s
+user    2m35.944s
+sys     0m0.972s
+</code></pre>
+
+<p>予想はついていましたが、QSVでは8コアでも1コアでもほとんど時間は変わらないようです。</p>
+
+<h2>ファイルサイズ比較</h2>
+
+<p>ビットレート固定なのでそれほど違いはありませんが、ファイルサイズは以下のようになっています。</p>
+
+<pre><code>$ ls -l
+total 1261812
+-rw-rw-r--. 1 ninniku ninniku 928670754 May  6  2008 big_buck_bunny_1080p_surround.avi
+-rw-rw-r--. 1 ninniku ninniku 179373021 Jan 31 02:27 big_buck_bunny_qsv.mp4
+-rw-rw-r--. 1 ninniku ninniku 184045287 Jan 31 02:23 big_buck_bunny_x264.mp4
+</code></pre>
+
+<p>QSVでエンコードしたほうが4MBほどファイルサイズが小さくなっていました。</p>
+
+<h1>品質について</h1>
+
+<p>x264とQSVの比較では目立った差異は見受けられなかったです。視力の問題かもしれませんが。</p>
+
+<h1>まとめ</h1>
+
+<p>動画再生時間の3分の1程度でエンコードができるQSVはLinuxでもすごい。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Intel QSVのH.264エンコードをLinuxで！]]></title>
@@ -23,6 +159,9 @@ Intel QSVは高速にある程度の画質のエンコードできてよいで�
 
 <p>今回はKVMでIntel HD Graphicsをパススルーした仮装マシン上に、SDKのインストールとカーネルモジュールのインストール、そしてffmpegでのQSVによるH.264エンコードができる環境づくりまでの手順をご紹介します。
 <del>これが意外と骨が折れる作業だったので同じような思いをせぬよう、ご熟読ください。</del>（書き直す前の文章です。書き直した理由は後述。）</p>
+
+<!-- more -->
+
 
 <h1>Intel Media Server Studio (Intel Media SDK)</h1>
 

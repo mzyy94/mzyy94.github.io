@@ -9,8 +9,8 @@
   <meta name="author" content="mzyy94">
 
   
-  <meta name="description" content="前回の記事から1ヶ月以上空いてしまいました。遅ればせながらで申し訳ありません。続編です。
-Intel QSVは高速にある程度の画質のエンコードできてよいです。とても。 今回はKVMでIntel HD Graphicsをパススルーした仮装マシン上に、 &hellip;">
+  <meta name="description" content="先日の記事、でLinuxでH.264の動画をエンコードできることを紹介しました。
+そのベンチマークをとってみました。QSVでのエンコードとlibx264を用いたエンコードの比較となります。 今回エンコード時間の比較に用いた動画は以下のものを利用しました。 Big Buck Bunny ここの、 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -140,6 +140,109 @@ Intel QSVは高速にある程度の画質のエンコードできてよいで�
       
   <header>
     
+      <h1 class="entry-title boxed-green"><a href="/blog/2015/01/31/qsv-x264-linux-battle/">LinuxでQSVとH.264のエンコード対決</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+<i class="glyphicon glyphicon-calendar"></i><time datetime="2015-01-31T19:23:04+09:00" pubdate data-updated="true">31 Jan 2015</time>
+        
+
+<i class="glyphicon glyphicon-folder-close"></i><span class="categories">
+  
+    <a class='category' href='/blog/categories/linux/'>linux</a>
+  
+</span>
+
+
+        
+
+<i class="glyphicon glyphicon-tags"></i><span class="tags">
+  
+    <a class='tag' href='/blog/tags/ffmpeg/'>ffmpeg</a>, <a class='tag' href='/blog/tags/qsv/'>qsv</a>, <a class='tag' href='/blog/tags/x264/'>x264</a>
+  
+</span>
+
+
+        
+		<i class="glyphicon glyphicon-comment"></i><a href="/blog/2015/01/31/qsv-x264-linux-battle/#disqus_thread"
+             data-disqus-identifier="http://mzyy94.com/blog/2015/01/31/qsv-x264-linux-battle/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<div class="entry-content"><p>先日の記事、でLinuxでH.264の動画をエンコードできることを紹介しました。
+そのベンチマークをとってみました。QSVでのエンコードとlibx264を用いたエンコードの比較となります。</p>
+
+<p>今回エンコード時間の比較に用いた動画は以下のものを利用しました。</p>
+
+<p><em><a href="http://www.bigbuckbunny.org">Big Buck Bunny</a></em></p>
+
+<p><img src="/blog/resources/images/2015/01/31/big-buck-bunny.png" alt="Big Buck Bunny" /></p>
+
+<p>ここの、<code>big_buck_bunny_1080p_surround.avi</code>を以下の表のオプションでLibx264とQSVでのエンコードで変換し、比較をしてみました。</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:center;">項目 </th>
+<th style="text-align:center;"> 値</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">音声コーデック</td>
+<td style="text-align:center;"> コピー</td>
+</tr>
+<tr>
+<td style="text-align:center;">ビットレート</td>
+<td style="text-align:center;">2000kbps</td>
+</tr>
+<tr>
+<td style="text-align:center;">サイズ</td>
+<td style="text-align:center;"> 1280x720</td>
+</tr>
+<tr>
+<td style="text-align:center;">フレームレート</td>
+<td style="text-align:center;"> 29.97</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>このオプションで起動すると、<strong>ffmpeg -i big_buck_bunny_1080p_surround.avi -acodec copy -vcodec コーデック -b:v 2000k -s 1280x720 -r 30000/1001 -y 出力ファイル</strong>という起動オプションになります。</p>
+
+</div>
+  
+  
+    <footer>
+	<a rel="full-article" href="/blog/2015/01/31/qsv-x264-linux-battle/" class="btn btn-icon-left"><span>Read more</span></a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title boxed-green"><a href="/blog/2015/01/30/intel-qsv-on-linux/">Intel QSVのH.264エンコードをLinuxで！</a></h1>
     
     
@@ -192,130 +295,12 @@ Intel QSVは高速にある程度の画質のエンコードできてよいで�
 <p>今回はKVMでIntel HD Graphicsをパススルーした仮装マシン上に、SDKのインストールとカーネルモジュールのインストール、そしてffmpegでのQSVによるH.264エンコードができる環境づくりまでの手順をご紹介します。
 <del>これが意外と骨が折れる作業だったので同じような思いをせぬよう、ご熟読ください。</del>（書き直す前の文章です。書き直した理由は後述。）</p>
 
-<h1>Intel Media Server Studio (Intel Media SDK)</h1>
-
-<p>前回の記事で紹介したIntel Media Server Studio(以下、IMSS。旧Intel Media SDK)のインストールをします。
-IMSSはIntel Developer Zoneのメンバーになってから、<a href="https://software.intel.com/en-us/intel-media-server-studio">こちら</a>へアクセスすることでダウンロードできます。
-メンバー登録時と同じメールアドレスを指定するとダウンロードリンクが送られてくるので、アクセスしてfor Linuxの方をダウンロードします。</p>
-
-<p><img src="/blog/resources/images/2015/01/30/IMSS-download.png" alt="IMSS donwload page" /></p>
-
-<p>執筆時点での最新版は2015 R3です。この2015 R3を対象にインストールを進めていきます。(12月中旬に2015 R2を対象にした記事を書き終わっていたのだけれど、公開し損ねてる間にバージョンアップがあったため最初から書き直してるなんて言えない。。)</p>
-
-<p>IMSS 2015 R3から対応OSはCentOSとSLESの2種類のみとなったので、どちらか好きな方を選んでインストールしてください。以下にはCentOS 7での様子を載せます。</p>
-
-<h2>Intel Media SDK Install</h2>
-
-<p>IMSSをダウンロードし回答すると、下図のように幾つかアーカイブの入ったディレクトリが展開されます。そこにあるSDKをインストールすることでQSVを利用することができるようになります。</p>
-
-<p><img src="/blog/resources/images/2015/01/30/IMSS-step-1.png" alt="IMSS step 1" /></p>
-
-<p>このSDKのアーカイブを展開すると下図のように、インストール手順の書かれたPDFファイルとOSごとにディレクトリで分けられたドライバがでてきます。</p>
-
-<p><img src="/blog/resources/images/2015/01/30/IMSS-step-2.png" alt="IMSS step 2" /></p>
-
-<p>今回はCentOS 7なので、CentOSディレクトリに移動し、PDFに記載のインストール手順を踏むだけでいいはずなんですが、幾つか依存関係にあるパッケージが必要になります。これがなくてインストールコケまくったので下表にまとめておきます。<code>yum install</code>などでインストールしてください。</p>
-
-<table>
-<thead>
-<tr>
-<th style="text-align:center;">パッケージ名 </th>
-<th style="text-align:left;"> 簡易説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center;">mesa-dri-drivers </td>
-<td style="text-align:left;"> グラフィックデバイスドライバ</td>
-</tr>
-<tr>
-<td style="text-align:center;">redhat-lsb </td>
-<td style="text-align:left;"> lsb_releaseでOS情報取得したいらしい</td>
-</tr>
-<tr>
-<td style="text-align:center;">wget </td>
-<td style="text-align:left;"> あのダウンロードするやつ</td>
-</tr>
-<tr>
-<td style="text-align:center;">net-tools </td>
-<td style="text-align:left;"> ネットワーク設定するアレ</td>
-</tr>
-</tbody>
-</table>
-
-
-<p>そしてあとは手順通りにインストールすればいいだけ。だと思ってたんですが、そのままインストールすると、ファイルやディレクトリが足りない（？）というエラーで怒られてしまいます。
-見た感じインストールスクリプトのバグのようですが、一般環境向けのGeneric SDKが用意されているので、これを先にインストールしてからOS SpecificなSDKで上書きすることで、正常にインストールすることができるようです。</p>
-
-<p>なので、SDKのディレクトリにあるGenericディレクトリに移動し、ぽつりと存在するアーカイブを展開します。</p>
-
-<p><img src="/blog/resources/images/2015/01/30/IMSS-step-3.png" alt="IMSS step 3" /></p>
-
-<p>展開されたファイルの中にあるシェルスクリプトを管理者権限で実行し、Generic SDKをインストールします。</p>
-
-<p><img src="/blog/resources/images/2015/01/30/IMSS-step-4.png" alt="IMSS step 4" /></p>
-
-<p>この作業で必要なディレクトリとファイルが作成されるので、次にOS固有のドライバとSDKをインストールします。</p>
-
-<p>SDKのディレクトリに戻り、さらにCentOSのディレクトリに移動しファイルを確認すると、以下のようになっているはずです。</p>
-
-<p><img src="/blog/resources/images/2015/01/30/IMSS-step-5.png" alt="IMSS step 5" /></p>
-
-<p>　
-ここではファイルの展開等は行わず、PDF記載の通りにユーザーをvideoグループに追加して、<code>/MSS</code>ディレクトリを作成してそこにファイルをコピーしてカレントディレクトリも移動し、インストール関連ファイルの入ったアーカイブを展開してでてくるSDKのインストールスクリプトを実行します。下図のninnikuはカレントユーザー名なので適当に<code>$(whoami)</code>に置換してください。</p>
-
-<p><img src="/blog/resources/images/2015/01/30/IMSS-step-6.png" alt="IMSS step 6" /></p>
-
-<p>SDKのインストールが成功すると、下図のようになり、再起動を促されるのでひとまず再起動します。</p>
-
-<p><img src="/blog/resources/images/2015/01/30/IMSS-step-7.png" alt="IMSS step 7" /></p>
-
-<p>再起動後、再度<code>/MSS</code>へ移動して、下図のようにドライバの組み込まれたカーネルをビルドします。</p>
-
-<p><img src="/blog/resources/images/2015/01/30/IMSS-step-8.png" alt="IMSS step 8" /></p>
-
-<p>正常に終了すると以下のようになります。</p>
-
-<p><img src="/blog/resources/images/2015/01/30/IMSS-step-9.png" alt="IMSS step 9" /></p>
-
-<p>指定された場所<code>./rpmbuild/RPMS/</code>に移動すると<code>x86_64</code>ディレクトリがさらにあるのでそこに移動し、ここにあるQSVドライバが組み込まれたカーネルカーネルをインストールします。しかし今回使用しているCentOS 7では、QSVドライバが組み込まれたカーネルより新しいカーネルがインストールされていたため、QSVドライバ付きカーネルのインストールを拒否されてしまいました。
-古いバージョンであることを重々承知した上でインストールするため、<code>--oldpackage</code>オプションを追加してインストールし、再起動してドライバのインストールは終了です。</p>
-
-<p><img src="/blog/resources/images/2015/01/30/IMSS-step-10.png" alt="IMSS step 10" /></p>
-
-<p>再起動後、<code>lsmod | grep i915</code>として、以下のように幾つか該当があれば、ドライバが動作していることを確認できます。</p>
-
-<p><img src="/blog/resources/images/2015/01/30/IMSS-step-11.png" alt="IMSS step 11" /></p>
-
-<p>これで終わりかと思いきや、インストールスクリプトのバグなのか、ライブラリのリンク先が間違っており、実際にSDKを利用するときにリンクできずにプログラムが起動しない、などが発生してしまいます。</p>
-
-<p>なので、下記スクリプトを実行してライブラリのパスを再設定してください。</p>
-
-<p><code>sudo bash -c '(ldconfig -p -N | grep intel.mediasdk) || echo "/opt/intel/mediasdk/lib64" &gt;&gt; /etc/ld.so.conf.d/intel-mediasdk.conf &amp;&amp; ldconfig'</code></p>
-
-<h1>H264_QSV codec for FFmpeg</h1>
-
-<p>さて、IMSSのインストールができたのでSDKを利用する代表的なプログラムとして、QSVによるH.264エンコードをしましょう。</p>
-
-<p>前回の記事で紹介した<a href="https://github.com/shenhailuanma/qsv-ffmpeg-codec">qsv_ffmpeg_codec</a>はIntel Media SDKの対応バージョンが古く、導入に手間がかかるのでIMSS 2014 R3対応版としてフォークしました。下記リポジトリに置いてあります。</p>
-
-<p><em><a href="https://github.com/mzyy94/qsv_h264-ffmpeg">mzyy94/h264_qsv-ffmpeg</a></em></p>
-
-<p>ここからクローンし、ディレクトリ下にある<code>./setup.sh</code>を実行して、FFmpeg-2.2ディレクトリに移動して<code>make</code>して、インストールください。</p>
-
-<p>このコーデック、QSVによるH.264へのエンコードはしっかりとできるのですが、<strong>MPEG-TSファイルのエンコードはエラーになります</strong>。原因は、TSの仕組みゆえの、ライブラリの関数<code>MFXVideoENCODE_EncodeFrameAsync</code>に渡される引数によるものというところまではわかったのですが、修正にはほぼ全ての処理を書き換えないといけない手間がかかるので、MPEG-TSから一度RAWファイルを抽出し、パイプ等を使ってQSVコーデックに渡してエンコードしてください。</p>
-
-<p>実行方法の例としては、
-<code>ffmpeg -i in.avi -acodec copy -vcodec h264_qsv -b:v 2000k -y -sar 16:9 -s 1280x720 -r 30000/1001 -bufsize 20000k -maxrate 25000k out.mp4</code>
-のようにHDサイズにリサイズして変換することができます。</p>
-
-<p>せっかくなのでベンチマークとして、<a href="http://www.bigbuckbunny.org">Big Buck Bunny</a>をエンコードしようと思ったのですが、残念ながら執筆中にダウンロードが終わらなかったのでまたの機会に追記する形で公開しようと思います。</p>
-
-<h1>まとめ</h1>
-
-<p>LinuxでもQSVできる。</p>
 </div>
   
+  
+    <footer>
+	<a rel="full-article" href="/blog/2015/01/30/intel-qsv-on-linux/" class="btn btn-icon-left"><span>Read more</span></a>
+    </footer>
   
 
 
@@ -922,76 +907,6 @@ Lempel-Ziv符号化で圧縮されたファイル(.gz)のダウンロードを�
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title boxed-green"><a href="/blog/2014/02/04/qi-battery-203z/">Qiで203Zを充電できるようにしてみた</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-
-
-
-
-<i class="glyphicon glyphicon-calendar"></i><time datetime="2014-02-04T08:47:16+09:00" pubdate data-updated="true">04 Feb 2014</time>
-        
-
-<i class="glyphicon glyphicon-folder-close"></i><span class="categories">
-  
-    <a class='category' href='/blog/categories/review/'>review</a>
-  
-</span>
-
-
-        
-
-<i class="glyphicon glyphicon-tags"></i><span class="tags">
-  
-    <a class='tag' href='/blog/tags/203z/'>203z</a>, <a class='tag' href='/blog/tags/qi/'>qi</a>
-  
-</span>
-
-
-        
-		<i class="glyphicon glyphicon-comment"></i><a href="/blog/2014/02/04/qi-battery-203z/#disqus_thread"
-             data-disqus-identifier="http://mzyy94.com/blog/2014/02/04/qi-battery-203z/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-<img src="/blog/resources/images/2014/2/4/DSC08069.JPG" alt="article image" class="main image"/>
-
-
-<div class="entry-content"><p>Qiという無接点充電の<em>事実上</em>標準規格なものがありまして、それを利用したモバイルルータの充電をしてみましたという日記です。</p>
-
-<p>デバイスをQiにて充電するには、Qi給電の機能をもとからもっているデバイスを購入するか、もしくは非対応デバイスをQi対応にさせるかの2択しかありません。</p>
-
-<p>今回Qi対応にしたいデバイスはモバイルルータのSoftBank 203Zです。出先でMac/iPadその他機器でインターネットに接続するために利用しているものです。バッテリーは結構もつのですが、それでも毎日充電しなければ一日中使うような日には持ちません。あの小さな小さなmicorUSBに毎晩のように上下を間違えて刺すこと数十日。さすがにうっとうしくなってきたのでmicroUSBを使わず充電できる方法を探りました。</p>
-
-</div>
-  
-  
-    <footer>
-	<a rel="full-article" href="/blog/2014/02/04/qi-battery-203z/" class="btn btn-icon-left"><span>Read more</span></a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="tf_pagination">
   <div class="inner">
     
@@ -1108,6 +1023,10 @@ Lempel-Ziv符号化で圧縮されたファイル(.gz)のダウンロードを�
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/01/31/qsv-x264-linux-battle/">LinuxでQSVとH.264のエンコード対決</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/01/30/intel-qsv-on-linux/">Intel QSVのH.264エンコードをLinuxで！</a>
       </li>
     
@@ -1121,10 +1040,6 @@ Lempel-Ziv符号化で圧縮されたファイル(.gz)のダウンロードを�
     
       <li class="post">
         <a href="/blog/2014/12/07/seccon2014-online/">SECCON2014 Online英語版予選 Write-up</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/09/03/seccon2014-yokohama-2nd-day/">SECCON 2014 横浜大会NW予選 Write-up</a>
       </li>
     
   </ul>
