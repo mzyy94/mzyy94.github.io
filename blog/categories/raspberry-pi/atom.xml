@@ -4,7 +4,7 @@
   <title><![CDATA[Category: raspberry-pi | 犬アイコンのみっきー]]></title>
   <link href="http://mzyy94.com/blog/categories/raspberry-pi/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2015-02-16T20:14:36+09:00</updated>
+  <updated>2015-02-16T20:18:58+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Raspberry Pi2にOSMC入れてKodi(旧:XBMC)日本語化するまで]]></title>
-    <link href="http://mzyy94.com/blog/2015/02/16/raspberry-pi2-osmc-dtv/"/>
+    <link href="http://mzyy94.com/blog/2015/02/16/raspberry-pi2-osmc-jp/"/>
     <updated>2015-02-16T20:05:56+09:00</updated>
-    <id>http://mzyy94.com/blog/2015/02/16/raspberry-pi2-osmc-dtv</id>
+    <id>http://mzyy94.com/blog/2015/02/16/raspberry-pi2-osmc-jp</id>
     <content type="html"><![CDATA[<p>今月頭の発表で一気に盛り上がりを見せた<a href="http://www.raspberrypi.org/products/raspberry-pi-2-model-b/">Raspberry Pi 2 Model B</a>。もちろん発売日に購入しました。
 手元にはRaspberry Pi BとGalileo Gen2の2つのLinuxが動く小型ボードがあるんですが、主にメディアセンター用途で使おうとしていたRaspberry Pi Bに性能面で不満を抱いていたため、今回この新バージョン購入は即決しました。</p>
 
