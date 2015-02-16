@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: osmc | 犬アイコンのみっきー]]></title>
+  <link href="http://mzyy94.com/blog/tags/osmc/atom.xml" rel="self"/>
+  <link href="http://mzyy94.com/"/>
+  <updated>2015-02-16T20:14:36+09:00</updated>
+  <id>http://mzyy94.com/</id>
+  <author>
+    <name><![CDATA[mzyy94]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Raspberry Pi2にOSMC入れてKodi(旧:XBMC)日本語化するまで]]></title>
+    <link href="http://mzyy94.com/blog/2015/02/16/raspberry-pi2-osmc-dtv/"/>
+    <updated>2015-02-16T20:05:56+09:00</updated>
+    <id>http://mzyy94.com/blog/2015/02/16/raspberry-pi2-osmc-dtv</id>
+    <content type="html"><![CDATA[<p>今月頭の発表で一気に盛り上がりを見せた<a href="http://www.raspberrypi.org/products/raspberry-pi-2-model-b/">Raspberry Pi 2 Model B</a>。もちろん発売日に購入しました。
+手元にはRaspberry Pi BとGalileo Gen2の2つのLinuxが動く小型ボードがあるんですが、主にメディアセンター用途で使おうとしていたRaspberry Pi Bに性能面で不満を抱いていたため、今回この新バージョン購入は即決しました。</p>
+
+<p>Raspberry Piでのメディアセンター用途で代表的なのは<a href="http://www.raspbmc.com/">Raspbmc</a>ですが、
+このプロジェクトは<a href="https://osmc.tv/about/">OSMC</a>に移行するようで、2015年2月2日のFinalリリースの配布をもって終了となりました。</p>
+
+<p>ということで、Raspberry Pi 2 Model B(以下、RPi2B)にOSMCを導入して日本語化するまでのメモを残します。</p>
+
+<!-- more -->
+
+
+<h1>OSMCインストール</h1>
+
+<p><img src="/blog/resources/images/2015/02/16/osmc-installer.png" alt="OSMC Installer" /></p>
+
+<p>OSMCは<a href="https://osmc.tv/download/">https://osmc.tv/download/</a>からインストーラーがダウンロードできるので、自分の使ってるOSにあったインストーラーをダウンロード・実行して、microSDHCにイメージを書き込むだけです。2015/2/16時点での最新版であるAlpha 4をインストールしました。</p>
+
+<h1>日本語化</h1>
+
+<p><img src="/blog/resources/images/2015/02/16/osmc-mainmenu.png" alt="OSMC main menu" /></p>
+
+<p>起動するとこんな感じです。OSMCテーマ標準のフォントは流行りのLightなウェイトを持つRobotoとOpenSansが利用されているため、もちろんのこと日本語は表示できません。
+テーマのデザインを損ねることなく、日本語でも美しい細字のフォントで表示したく思い、<a href="http://mplus-fonts.sourceforge.jp/mplus-outline-fonts/index.html">M+ FONT</a>を利用することにしました。</p>
+
+<p>M+ FONTはJIS第一水準までの漢字を網羅し、極細から極太まで7種のウェイトを収録した美しいフリーフォントです。
+LightウェイトフォントでJIS第二水準まで含むオープンなフォントはAdobeとGoolgeが共同で開発・公開している<a href="https://www.google.com/get/noto/cjk.html">Noto Sans CJK</a>/<a href="https://github.com/adobe-fonts/source-han-sans/tree/release">Source Han Sans</a>があります。しかし、OpenTypeフォントとしての配布である上に、TrueTypeに変換しても18MB前後のフォントファイルとなってしまい、Kodiで読み込めないことを確認したのでM+ FONTを利用します。</p>
+
+<p>M+ FONTを利用するため、以下のスクリプトを実行するか、<code>curl -L http://git.io/NSrC | sh -</code>とするとデフォルトフォントをM+ FONTに差し替えられます。</p>
+
+<script src="https://gist.github.com/mzyy94/15ee1b3880107e9d7ece.js"></script>
+
+
+<p>このあと、Settings->Appearance->International->Japaneseとすることで、以下のような美しい日本語メニューが表示されるようになります。</p>
+
+<p>（本当は日本語化したくてやったんじゃなく、次の記事で紹介する地デジの番組表情報が表示されるよにするために日本語フォント導入したので、表示確認後英語表記に戻しました。）</p>
+
+<p><img src="/blog/resources/images/2015/02/16/osmc-mainmenu-jp.png" alt="OSMC JP" /></p>
+
+<h1>MPEG-2ライセンス購入</h1>
+
+<p>メディアプレイヤー用途として使うにはMPEG-2のハードウェアデコードを有効化して、快適に動画（地デジ）再生ができるようにしたいと思い、ライセンスを購入しました。</p>
+
+<p>Raspberry PiはMPEG-2ハードウェアデコーダーの利用にライセンス料を課しているので、£2.40支払ってキーを入手します。
+<a href="http://www.raspberrypi.com/mpeg-2-license-key/">ライセンスキーストア</a>にシリアル番号を入力してカートに入れ購入手続きし、深夜にでも送られてくるであろうシリアルキーを、
+<code>echo decode_MPG2=0xdeadbeef | sudo tee -a /boot/config.txt</code>のようにしてハードウェア設定ファイルに追記し再起動してハードウェアデコーダーを有効にします。</p>
+
+<p>これで快適に地デジなどの動画が再生できるようになります。</p>
+
+<h1>次回予告</h1>
+
+<p>Raspberry Pi 2で地デジ視聴する</p>
+]]></content>
+  </entry>
+  
+</feed>

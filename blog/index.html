@@ -9,8 +9,8 @@
   <meta name="author" content="mzyy94">
 
   
-  <meta name="description" content="先日の記事、でLinuxでH.264の動画をエンコードできることを紹介しました。
-そのベンチマークをとってみました。QSVでのエンコードとlibx264を用いたエンコードの比較となります。 今回エンコード時間の比較に用いた動画は以下のものを利用しました。 Big Buck Bunny ここの、 &hellip;">
+  <meta name="description" content="今月頭の発表で一気に盛り上がりを見せたRaspberry Pi 2 Model B。もちろん発売日に購入しました。
+手元にはRaspberry Pi BとGalileo Gen2の2つのLinuxが動く小型ボードがあるんですが、主にメディアセンター用途で使おうとしていたRaspberry Pi &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -134,6 +134,78 @@
     <div class="row">
       <main class="col-sm-9">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title boxed-green"><a href="/blog/2015/02/16/raspberry-pi2-osmc-dtv/">Raspberry Pi2にOSMC入れてKodi(旧:XBMC)日本語化するまで</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+<i class="glyphicon glyphicon-calendar"></i><time datetime="2015-02-16T20:05:56+09:00" pubdate data-updated="true">16 Feb 2015</time>
+        
+
+<i class="glyphicon glyphicon-folder-close"></i><span class="categories">
+  
+    <a class='category' href='/blog/categories/raspberry-pi/'>raspberry-pi</a>
+  
+</span>
+
+
+        
+
+<i class="glyphicon glyphicon-tags"></i><span class="tags">
+  
+    <a class='tag' href='/blog/tags/kodi/'>kodi</a>, <a class='tag' href='/blog/tags/osmc/'>osmc</a>
+  
+</span>
+
+
+        
+		<i class="glyphicon glyphicon-comment"></i><a href="/blog/2015/02/16/raspberry-pi2-osmc-dtv/#disqus_thread"
+             data-disqus-identifier="http://mzyy94.com/blog/2015/02/16/raspberry-pi2-osmc-dtv/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<img src="/blog/resources/images/2015/02/16/raspi2.jpg" alt="article image" class="main image"/>
+
+
+<div class="entry-content"><p>今月頭の発表で一気に盛り上がりを見せた<a href="http://www.raspberrypi.org/products/raspberry-pi-2-model-b/">Raspberry Pi 2 Model B</a>。もちろん発売日に購入しました。
+手元にはRaspberry Pi BとGalileo Gen2の2つのLinuxが動く小型ボードがあるんですが、主にメディアセンター用途で使おうとしていたRaspberry Pi Bに性能面で不満を抱いていたため、今回この新バージョン購入は即決しました。</p>
+
+<p>Raspberry Piでのメディアセンター用途で代表的なのは<a href="http://www.raspbmc.com/">Raspbmc</a>ですが、
+このプロジェクトは<a href="https://osmc.tv/about/">OSMC</a>に移行するようで、2015年2月2日のFinalリリースの配布をもって終了となりました。</p>
+
+<p>ということで、Raspberry Pi 2 Model B(以下、RPi2B)にOSMCを導入して日本語化するまでのメモを残します。</p>
+
+</div>
+  
+  
+    <footer>
+	<a rel="full-article" href="/blog/2015/02/16/raspberry-pi2-osmc-dtv/" class="btn btn-icon-left"><span>Read more</span></a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -837,76 +909,6 @@ Lempel-Ziv符号化で圧縮されたファイル(.gz)のダウンロードを�
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title boxed-green"><a href="/blog/2014/02/13/honda-3d-webgl/">Honda 3DのサイトがFlashだったときの症例</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-
-
-
-
-<i class="glyphicon glyphicon-calendar"></i><time datetime="2014-02-13T19:03:54+09:00" pubdate data-updated="true">13 Feb 2014</time>
-        
-
-<i class="glyphicon glyphicon-folder-close"></i><span class="categories">
-  
-    <a class='category' href='/blog/categories/web/'>web</a>
-  
-</span>
-
-
-        
-
-<i class="glyphicon glyphicon-tags"></i><span class="tags">
-  
-    <a class='tag' href='/blog/tags/css3/'>CSS3</a>, <a class='tag' href='/blog/tags/html5/'>HTML5</a>, <a class='tag' href='/blog/tags/webgl/'>WebGL</a>, <a class='tag' href='/blog/tags/three-dot-js/'>three.js</a>
-  
-</span>
-
-
-        
-		<i class="glyphicon glyphicon-comment"></i><a href="/blog/2014/02/13/honda-3d-webgl/#disqus_thread"
-             data-disqus-identifier="http://mzyy94.com/blog/2014/02/13/honda-3d-webgl/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-<img src="/blog/resources/images/2014/2/13/honda-3d-diff.png" alt="article image" class="main image"/>
-
-
-<div class="entry-content"><p>RSSを消化してたときのこと。
-<a href="http://japanese.engadget.com/2014/01/28/3d-nsx-concept-5/">ホンダが歴代コンセプトカーの3DデータをCCライセンスで公開、NSX Concept など全5種 (動画) - Engadget Japanese</a>
-なる記事を見つけて、「クリエイティブコモンズで3Dモデル公開とはなかなかやるな。流行に乗っててよろしい。」と感心していました。</p>
-
-<p>しかし、そんな関心も次のクリックで吹っ飛びました。</p>
-
-</div>
-  
-  
-    <footer>
-	<a rel="full-article" href="/blog/2014/02/13/honda-3d-webgl/" class="btn btn-icon-left"><span>Read more</span></a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="tf_pagination">
   <div class="inner">
     
@@ -1023,6 +1025,10 @@ Lempel-Ziv符号化で圧縮されたファイル(.gz)のダウンロードを�
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/02/16/raspberry-pi2-osmc-dtv/">Raspberry Pi2にOSMC入れてKodi(旧:XBMC)日本語化するまで</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/01/31/qsv-x264-linux-battle/">LinuxでQSVとH.264のエンコード対決</a>
       </li>
     
@@ -1036,10 +1042,6 @@ Lempel-Ziv符号化で圧縮されたファイル(.gz)のダウンロードを�
     
       <li class="post">
         <a href="/blog/2014/12/10/kotatsu-heating/">サーバーの発熱でこたつを温める</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/12/07/seccon2014-online/">SECCON2014 Online英語版予選 Write-up</a>
       </li>
     
   </ul>
