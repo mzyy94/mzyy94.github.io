@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: kodi | 犬アイコンのみっきー]]></title>
   <link href="http://mzyy94.com/blog/tags/kodi/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2015-02-16T20:18:58+09:00</updated>
+  <updated>2015-02-16T20:41:19+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -52,7 +52,7 @@ LightウェイトフォントでJIS第二水準まで含むオープンなフォ
 
 <p>このあと、Settings->Appearance->International->Japaneseとすることで、以下のような美しい日本語メニューが表示されるようになります。</p>
 
-<p>（本当は日本語化したくてやったんじゃなく、次の記事で紹介する地デジの番組表情報が表示されるよにするために日本語フォント導入したので、表示確認後英語表記に戻しました。）</p>
+<p>（本当は日本語化したくてやったんじゃなく、次の記事で紹介する地デジの番組表情報が表示されるようにするために日本語フォントが必要で導入したので、表示確認後英語表記に戻しました。）</p>
 
 <p><img src="/blog/resources/images/2015/02/16/osmc-mainmenu-jp.png" alt="OSMC JP" /></p>
 
