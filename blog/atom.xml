@@ -4,7 +4,7 @@
   <title><![CDATA[犬アイコンのみっきー]]></title>
   <link href="http://mzyy94.com/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2015-02-16T20:43:34+09:00</updated>
+  <updated>2015-02-19T18:32:27+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -45,7 +45,8 @@
 <p>M+ FONTはJIS第一水準までの漢字を網羅し、極細から極太まで7種のウェイトを収録した美しいフリーフォントです。
 LightウェイトフォントでJIS第二水準まで含むオープンなフォントはAdobeとGoolgeが共同で開発・公開している<a href="https://www.google.com/get/noto/cjk.html">Noto Sans CJK</a>/<a href="https://github.com/adobe-fonts/source-han-sans/tree/release">Source Han Sans</a>があります。しかし、OpenTypeフォントとしての配布である上に、TrueTypeに変換しても18MB前後のフォントファイルとなってしまい、Kodiで読み込めないことを確認したのでM+ FONTを利用します。</p>
 
-<p>M+ FONTを利用するため、以下のスクリプトを実行するか、<code>curl -L http://git.io/NSrC | sh -</code>とするとデフォルトフォントをM+ FONTに差し替えられます。</p>
+<p>M+ FONTを利用するため、OSMC上で以下のスクリプトを実行するか、<code>curl -L http://git.io/NSrC | sh -</code>とするとデフォルトフォントをM+ FONTに差し替えられます。
+OSMCへはSSHで（USER/PASSともに<code>osmc</code>）ログインしてください。※パスワードの変更をお忘れなく。</p>
 
 <script src="https://gist.github.com/mzyy94/15ee1b3880107e9d7ece.js"></script>
 
