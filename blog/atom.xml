@@ -4,7 +4,7 @@
   <title><![CDATA[犬アイコンのみっきー]]></title>
   <link href="http://mzyy94.com/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2015-02-21T05:57:34+09:00</updated>
+  <updated>2015-02-21T05:58:59+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -93,7 +93,7 @@ Chinachuは番組の録画・再生が主な機能とされていますが、現
 <p><img src="http://mzyy94.com/blog/resources/images/2015/02/21/addon-configure1.png" alt="Add-on configure1" />
 <img src="http://mzyy94.com/blog/resources/images/2015/02/21/addon-configure2.png" alt="Add-on configure2" /></p>
 
-<p>設定を終えたらSimple IPTV Clientの<strong>有効</strong>を洗濯して有効にし、Kodiの全体の設定にあるLive TV設定に移動してLCD有効(誤訳？)すると、
+<p>設定を終えたらSimple IPTV Clientの<strong>有効</strong>を選択して有効にし、Kodiの全体の設定にあるLive TV設定に移動してLCD有効(誤訳？)すると、
 トップの画像のようにライブTVの項目が現れ、PVRが利用できるようになります。</p>
 
 <p><img src="http://mzyy94.com/blog/resources/images/2015/02/21/enable-pvr.png" alt="Enable PVR" /></p>
