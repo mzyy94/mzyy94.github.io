@@ -1,0 +1,608 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>KodiとChinachuで地デジLive視聴 on Raspberry Pi2 w/ OSMC - 犬アイコンのみっきー</title>
+  <meta name="author" content="mzyy94">
+
+  
+  <meta name="description" content="どうも、Raspberry Pi2で遊ぶ毎日が続いております。
+Raspberry Pi model B（2ではない）にRaspbmcを入れて昨年の夏頃からChinachu経由で地上デジタル放送を視聴する環境を構築していたのですが、
+いかんせんスペックが低く、 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://mzyy94.com/blog/2015/02/21/kodi-livetv-chinachu">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/blog/atom.xml" rel="alternate" title="犬アイコンのみっきー" type="application/atom+xml">
+  <!-- main JS libs -->
+  <script src="/javascripts/libs/modernizr.min.js"></script>
+  <script src="/javascripts/jquery-2.0.3.min.js"></script>
+  <script src="/javascripts/libs/jquery-ui.min.js"></script>
+  <script src="/javascripts/libs/bootstrap.min.js"></script>
+  <!-- Style CSS -->
+  <link href="/stylesheets/bootstrap.css" media="screen" rel="stylesheet">
+  <link href="/stylesheets/style.css" media="screen" rel="stylesheet">
+  <link href="/stylesheets/syntax.css" media="screen" rel="stylesheet">
+  <!-- scripts -->
+  <script src="/javascripts/general.js"></script>
+  <!-- custom input -->
+  <script src="/javascripts/jquery.customInput.js"></script>
+  <script type="text/javascript" src="/javascripts/custom.js"></script>
+  <!-- Placeholders -->
+  <script type="text/javascript" src="/javascripts/jquery.powerful-placeholder.min.js"></script>
+  <!-- Lightbox prettyPhoto -->
+  <link href="/stylesheets/prettyPhoto.css" rel="stylesheet">
+  <script src="/javascripts/jquery.prettyPhoto.js"></script>
+  <!-- CarouFredSel  -->
+  <script src="/javascripts/jquery.carouFredSel-6.2.1-packed.js"></script>
+  <!-- Progress Bars -->
+  <script src="/javascripts/progressbar.js"></script>
+  <!-- Calendar -->
+  <script src="/javascripts/jquery-ui.multidatespicker.js"></script>
+  <!-- range sliders -->
+  <script src="/javascripts/jquery.slider.bundle.js"></script>
+  <script src="/javascripts/jquery.slider.js"></script>
+  <link rel="stylesheet" href="/stylesheets/jslider.css">
+  <!-- Video Player -->
+  <link href="/stylesheets/video-js.css" rel="stylesheet">
+  <script src="/javascripts/video.js"></script>
+  <!-- Scroll Bars -->
+  <script src="/javascripts/jquery.mousewheel.js"></script>
+  <script src="/javascripts/jquery.jscrollpane.min.js"></script>
+
+<!--[if lt IE 9]><script src="/javascripts/respond.min.js"></script><![endif]-->
+<!--[if gte IE 9]>
+<style type="text/css">
+	.gradient {filter: none !important;}
+</style>
+<![endif]-->
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-41944495-3']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body  >
+  <div class="container">
+  <div class="content">
+  <header class="row">
+    <nav id="topmenu" class="col-sm-12" role="navigation"><ul class="dropdown clearfix boxed boxed-blue">
+    <li class="menu-level-0"><a href="/">Home</a></li>
+  <li class="menu-level-0"><a href="/blog/">Blog</a></li>
+  <li class="menu-level-0"><a href="/service/">Service</a></li>
+  <li class="menu-level-0">
+  <a href="/about/">About</a>
+  <ul class="submenu-1">
+	  <li class="menu-level-1"><a href="/about/">About me</a></li>
+	  <li class="menu-level-1"><a href="/about/license.html">License</a></li>
+  </ul>
+  </li>
+
+  <li class="menu-level-0">
+    <a>Subscribe</a>
+	<ul class="submenu-1">
+  <li class="menu-level-1"><a href="/blog/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  <li class="menu-level-1"><a href="http://cloud.feedly.com/#subscription%2Ffeed%2Fhttp%3A%2F%2Fmzyy94.com%2Fblog%2Fatom.xml" rel="subscribe-feedly" title="subscribe on Feedly">Feedly</a></li>
+  
+  </ul>
+  
+  <li class="menu-search last">
+
+	<form action="https://www.google.com/search" id="searchForm" class="menu-search-form" method="get">
+		<fieldset role="search">
+			<input type="hidden" name="q" value="site:mzyy94.com" />
+			<input type="text" name="q" value="" results="0" class="menu-search-field" placeholder="Search the website" hidefocus="true" style="outline: none;">
+			<input type="submit" value="" class="btn menu-search-submit" name="search-send" hidefocus="true" style="outline: none;">
+		</fieldset>
+	</form>
+
+  </li>
+  
+</ul>
+</nav>
+  </header>
+  <header class="col-sm-12 boxed-red" role="banner"><hgroup>
+  
+  <h1><a href="/">犬アイコンのみっきー</a></h1>
+  
+</hgroup>
+
+</header>
+    <div class="row">
+      <main class="col-sm-9">
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title boxed-green">KodiとChinachuで地デジLive視聴 on Raspberry Pi2 w/ OSMC</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+<i class="glyphicon glyphicon-calendar"></i><time datetime="2015-02-21T07:02:43+09:00" pubdate data-updated="true">21 Feb 2015</time>
+        
+
+<i class="glyphicon glyphicon-folder-close"></i><span class="categories">
+  
+    <a class='category' href='/blog/categories/raspberry-pi/'>raspberry-pi</a>
+  
+</span>
+
+
+        
+
+<i class="glyphicon glyphicon-tags"></i><span class="tags">
+  
+    <a class='tag' href='/blog/tags/chinachu/'>chinachu</a>, <a class='tag' href='/blog/tags/dtv/'>dtv</a>, <a class='tag' href='/blog/tags/kodi/'>kodi</a>, <a class='tag' href='/blog/tags/osmc/'>osmc</a>
+  
+</span>
+
+
+        
+		<i class="glyphicon glyphicon-comment"></i><a href="#disqus_thread"
+             data-disqus-identifier="http://mzyy94.com">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<img src="/blog/resources/images/2015/02/21/kodi-livetv.png" alt="article image" class="main image"/>
+
+
+<div class="entry-content"><p>どうも、Raspberry Pi2で遊ぶ毎日が続いております。
+Raspberry Pi model B（2ではない）にRaspbmcを入れて昨年の夏頃からChinachu経由で地上デジタル放送を視聴する環境を構築していたのですが、
+いかんせんスペックが低く、チャンネル切り替え時などにもたついていました。</p>
+
+<p>Raspberry Pi2が発売され、従来の6倍のパフォーマンスが発揮できるようになり、もたつきがなく不便しなくなってきたので、
+Raspbmc改めOSMCで地デジ視聴をする方法をまとめます。</p>
+
+<!-- more -->
+
+
+<h1>PVRクライアント</h1>
+
+<p>Kodi(旧:XBMC)にはテレビ放送を視聴するためのPVRクライアントという機能があります。
+テレビ放送の配信携帯に合わせていくつかPVRクライアントがAdd-onとして提供されていますが、汎用的につかえるものに
+<a href="https://github.com/afedchin/xbmc-addon-iptvsimple/">XBMC IPTV Simple Client</a>というものがあります。</p>
+
+<p>XBMCからKodiに名称変更した際に、Kodi本体にこれらのPVRクライアントはあらかじめバンドルされるようになり、
+これまでは各自ビルドしてインストールしていたのが、設定して有効化するだけで使えるようになっています。
+もちろんこのIPTV Simple Clientもバンドルされています。これを使って地デジを視聴する環境を構築します。</p>
+
+<h2>IPTV Simple Client</h2>
+
+<p>このAdd-onは、m3u形式で配信されているチャンネル配信情報と、<a href="http://wiki.xmltv.org/index.php/XMLTVFormat">XMLTV形式</a>で配信されている番組表情報を用いてネットワーク経由でテレビを視聴することができるPVRクライアントです。
+数あるプレイリストフォーマットの中でも一般的な形式であるm3uと、<a href="http://www.mythtv.org/">MythTV</a>などのテレビ視聴・録画クライアントがサポートするEPG番組表形式であるXMLTVを用いているため、テレビ放送配信側となるサーバーがサポートしていれば簡単に地デジをKodiで視聴できます。
+G
+今回テレビ放送を配信するサーバーとしてはChinachuを使いますが、残念ながら上記のm3u形式のチャンネル情報とXMLTV形式の番組表情報は提供されていません。
+なので、Chinachuに2つのファイルを追加して機能を追加することで対応するようにしました。</p>
+
+<h1>Chinachu</h1>
+
+<p>数ある地デジ録画管理ソフトウェアの中でもモダンなデザインで、使い勝手がよくREST APIを提供している素敵なソフトウェアです。
+Chinachuは番組の録画・再生が主な機能とされていますが、現在放送中の番組の視聴にも対応しており、APIを経由することでいろいろなクライアントから再生することができます。
+しかし、前途の通りChinachuが提供するAPIでは、IPTV Simple Clientが対応するm3u形式のプレイリストやXMLTV形式の番組表情報は取得できません。
+幸いなことに、ChinachuへのAPIの追加は難しくなく、Chinachuが動作するディレクトリ直下にある<strong>api</strong>ディレクトリにAPIリソース情報とスクリプトを配置することで必要なAPIを追加することができます。</p>
+
+<p>IPTV Simple Clientに必要な、</p>
+
+<ul>
+<li>m3u形式でのチャンネル配信情報</li>
+<li>XMLTV形式での番組表情報</li>
+</ul>
+
+
+<p>の二つをAPIで提供するファイルを作りました。
+以下からダウンロードしてapiディレクトリのファイルをChinachuのapiディレクトリに放り込んでください。</p>
+
+<p><em><a href="https://github.com/mzyy94/Chinachu-IPTV-API-addon">https://github.com/mzyy94/Chinachu-IPTV-API-addon</a></em></p>
+
+<p>これを導入すると、</p>
+
+<ul>
+<li><code>/api/kodi/channel.m3u8</code>にチャンネル配信情報</li>
+<li><code>/api/kodi/epg.xml</code>にXMLTV情報</li>
+</ul>
+
+
+<p>が提供されるようになります。</p>
+
+<h1>KodiでSimple IPTV Clientの設定</h1>
+
+<p>サーバー側の準備は整ったのでKodiの方の設定をします。前回の記事で日本語化したRaspberry Pi2で動くOSMC上のKodiでの設定方法になります。</p>
+
+<p>上記の通り、KodiにはPVRクライアントが導入されているので、Add-on管理から設定をして有効化するだけで準備ができます。</p>
+
+<p>まず、設定のAdd-onの中にある無効なアドオンからPVR Simple IPTV Clientを探して選択し、設定画面を開きます。</p>
+
+<p><img src="/blog/resources/images/2015/02/21/disabled-addons.png" alt="Disabled add-ons" />
+<img src="/blog/resources/images/2015/02/21/iptv-simple-client-addon.png" alt="IPTV Simple client" /></p>
+
+<p>設定画面にあるM3UプレイリストのURLとXMLTV URLにChinachuのWUIが動作するURLに続けて、下図のように設定します。
+各自環境に合わせて<code>chinachu:10772</code>の部分を書き換えてください。</p>
+
+<p><img src="/blog/resources/images/2015/02/21/addon-configure1.png" alt="Add-on configure1" />
+<img src="/blog/resources/images/2015/02/21/addon-configure2.png" alt="Add-on configure2" /></p>
+
+<p>設定を終えたらSimple IPTV Clientの<strong>有効</strong>を洗濯して有効にし、Kodiの全体の設定にあるLive TV設定に移動してLCD有効(誤訳？)すると、
+トップの画像のようにライブTVの項目が現れ、PVRが利用できるようになります。</p>
+
+<p><img src="/blog/resources/images/2015/02/21/enable-pvr.png" alt="Enable PVR" /></p>
+
+<p>m3uプレイリストとしてAPIが提供するチャンネルは、Chinachuの設定ファイルに記載の通りの順番でサブチャンネル含め配信しているので、
+後日紹介するであろうリモコンを使ってチャンネル切り替えを行う場合は、Live TV設定のチャンネルマネージャーからグループ管理を行って、
+不要なチャンネルを隠すことでリモコンでの操作に適したチャンネルのみを切り替え可能にできます。</p>
+
+<p><img src="/blog/resources/images/2015/02/21/channel-manager1.png" alt="Channel Manager1" />
+<img src="/blog/resources/images/2015/02/21/channel-manager2.png" alt="Channel Manager2" />
+<img src="/blog/resources/images/2015/02/21/channel-manager3.png" alt="Channel Manager3" /></p>
+
+<p>ここまで終わった状態で、Kodiのトップに移動するとライブTVの項目が増えているはずです。これを選択すると、デフォルトでは番組表が表示されます。</p>
+
+<p><img src="/blog/resources/images/2015/02/21/pvr-epg.png" alt="PVR EPG view" /></p>
+
+<p>また、バックスペースキーを押すとチャンネル一覧を表示するメニューが現れるので、そちらに切り替えると現在放送中の番組情報が表示されます。</p>
+
+<p><img src="/blog/resources/images/2015/02/21/pvr-channel.png" alt="PVR Channel view" /></p>
+
+<p>ここで好きなようにチャンネルを切り替え、地デジを観ることができます。</p>
+
+<h1>まとめ</h1>
+
+<p>MPEG-2ライセンスを導入してあるRaspberry Pi2だとサクサク地デジが見られる。</p>
+
+<blockquote class="twitter-tweet"><p>Raspberry Pi 2での地デジ視聴時の負荷&#10;HWデコーダー有効にするとフレームドロップなしでCPU負荷はほぼゼロ <a href="http://t.co/rAzv7eCTGW">pic.twitter.com/rAzv7eCTGW</a></p>&mdash; 犬みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/565610656809091072">February 11, 2015</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard"><i class="glyphicon glyphicon-user"></i><span class="fn">mzyy94</span></span>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+<i class="glyphicon glyphicon-calendar"></i><time datetime="2015-02-21T07:02:43+09:00" pubdate data-updated="true">21 Feb 2015</time>
+      
+
+<i class="glyphicon glyphicon-folder-close"></i><span class="categories">
+  
+    <a class='category' href='/blog/categories/raspberry-pi/'>raspberry-pi</a>
+  
+</span>
+
+
+      
+
+<i class="glyphicon glyphicon-tags"></i><span class="tags">
+  
+    <a class='tag' href='/blog/tags/chinachu/'>chinachu</a>, <a class='tag' href='/blog/tags/dtv/'>dtv</a>, <a class='tag' href='/blog/tags/kodi/'>kodi</a>, <a class='tag' href='/blog/tags/osmc/'>osmc</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="widget-container widget-social">
+	<ul class="clearfix">
+  
+
+  <!--li class="social-twitter"><a href="https://twitter.com/intent/tweet?original_referer=http://mzyy94.com/blog/2015/02/21/kodi-livetv-chinachu/&text=KodiとChinachuで地デジLive視聴 on Raspberry Pi2 w/ OSMC%20-%20犬アイコンのみっきー&tw_p=tweetbutton&url=http://mzyy94.com/blog/2015/02/21/kodi-livetv-chinachu/&via=mzyy94"><i>Tweet</i></a></li-->
+
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://mzyy94.com/blog/2015/02/21/kodi-livetv-chinachu/" data-via="mzyy94" data-counturl="http://mzyy94.com/blog/2015/02/21/kodi-livetv-chinachu/" >Tweet</a>
+  
+  
+  <!-- li class="social-google"><a href="#"><i>Google</i></a></li -->
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+  <!-- li class="social-facebook"><a href="#"><i>Facebook</i></a></li -->
+  <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+  </ul>
+</div>
+
+    
+    <div>
+      
+	  <a class="btn btn-icon-left btn-arrow-left" href="/blog/2015/02/16/raspberry-pi2-osmc-jp/" title="Previous Post: Raspberry Pi2にOSMC入れてKodi(旧:XBMC)日本語化するまで"><span>Raspberry Pi2にOSMC入れてKodi(旧:XBMC)日本語化するまで</span></a>
+      
+      
+    </div>
+  </footer>
+</article>
+
+  <section class="comment">
+    <h1 class="boxed-red">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</main>
+
+<aside class="col-sm-3">
+  
+    <div class="widget-container widget-avatar boxed boxed-yellow">
+	<div class="inner">
+		<h5>mzyy94</h5>
+		<span class="subtitle">Network</span>
+		<div class="avatar">
+			<img src="/images/avatar.png" alt="avatar icon" />
+		</div>
+		<a href="/about/" class="btn btn-brown btn-follow">
+			<span>About me</span>
+		</a>
+	</div>
+</div>
+<div class="widget-container widget_calendar boxed boxed-red">
+	<div class="inner">
+		<input type="text" name="date_departure" class="inputField" id="date_departure">
+	</div>
+</div>
+<script>
+	// <![CDATA[
+	$(document).ready(function() {
+		var posts = {};
+		var postDates = [];
+		$.getJSON('/blog/posts.json', function(data){
+			var dp = data.posts;
+			for(var i = 0, limit = dp.length; i < limit; i++){
+				posts[dp[i].date.slice(0,10)] = dp[i];
+			}
+			for(var i in posts){
+				postDates.push(i);
+			}
+			assignCalendar('#date_departure');
+			refreshDate();
+		});
+
+
+		var today = new Date();
+
+		function goPage(date){
+			window.location.href = posts[date.replace(/\//g,'-')].url;
+		}
+
+		function assignCalendar(id){
+			$('<div class="calendar" />')
+				.insertAfter( $(id) )
+				.datepicker({
+					beforeShowDay: function(date){
+						var string = $.datepicker.formatDate('yy-mm-dd', date);
+						return [ postDates.indexOf(string) != -1 ]
+					},
+					dateFormat: 'yy/mm/dd',
+					minDate: new Date(postDates[postDates.length - 1]),
+					maxDate: today,
+					maxPicks: 1,
+					altField: id,
+					firstDay: 0,
+					showOtherMonths: true,
+					onSelect: goPage,
+					onChangeMonthYear: refreshDate
+				}).prev().hide();
+		}
+
+		function refreshDate(){
+			setTimeout(function(){
+				$('a.ui-state-default').each(function(num){
+					var prefix = '/blog/';
+					var ref = prefix;
+					ref += $(this).parent().attr('data-year');
+					ref += '/';
+					ref += ('0' + (parseInt($(this).parent().attr('data-month')) + 1)).slice(-2);
+					ref += '/';
+					ref += ('0' + $(this).text()).slice(-2);
+					$(this).attr('data-title', posts[ref.replace(prefix,'').replace(/\//g,'-')].title);
+					$(this).attr('href', ref + '/' + posts[ref.replace(prefix,'').replace(/\//g,'-')].url);
+				});
+			},10);
+		}
+	});
+	// ]]>
+</script>
+<section class="widget-container widget-recently boxed">
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/02/21/kodi-livetv-chinachu/">KodiとChinachuで地デジLive視聴 on Raspberry Pi2 w/ OSMC</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/02/16/raspberry-pi2-osmc-jp/">Raspberry Pi2にOSMC入れてKodi(旧:XBMC)日本語化するまで</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/01/31/qsv-x264-linux-battle/">LinuxでQSVとH.264のエンコード対決</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/01/30/intel-qsv-on-linux/">Intel QSVのH.264エンコードをLinuxで！</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/12/12/kvm-intel-hd-graphics-passthrough/">KVMでQSVするためIntel HD Graphicsパススルーするー</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section class="widget-container widget-github boxed">
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'mzyy94',
+            count: 3,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+<div class="widget-container boxed boxed-blue">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- sidebar-small -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:120px;height:240px"
+     data-ad-client="ca-pub-5429584698977304"
+     data-ad-slot="3454316875"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'mzyy94blog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://mzyy94.com/blog/2015/02/21/kodi-livetv-chinachu/';
+        var disqus_url = 'http://mzyy94.com/blog/2015/02/21/kodi-livetv-chinachu/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+  </div>
+  <footer class="boxed-yellow" role="contentinfo"><p>
+  Copyright &copy; 2015 - mzyy94 -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> -
+  <span class="credit">Designed with <a href="http://pixelkit.com/kits/flat-ui-kit">Flat UI Kit | Modern Touch</a></span> -
+  <span>Licensed under a <a rel="license" href="http://opensource.org/licenses/mit-license.html">MIT License</a> and <a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a><span>
+</p>
+<script>
+	$(function () {
+		$("a[href^='http'], a[href^='ftp']").click(function () {
+			if ($(this).attr("target") === undefined) 
+			$(this).attr("target", "_blank");
+		});
+	});
+</script>
+
+</footer>
+  </div>
+</body>
+</html>

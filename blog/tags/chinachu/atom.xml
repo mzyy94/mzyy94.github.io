@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: chinachu | 犬アイコンのみっきー]]></title>
+  <link href="http://mzyy94.com/blog/tags/chinachu/atom.xml" rel="self"/>
+  <link href="http://mzyy94.com/"/>
+  <updated>2015-02-21T05:52:52+09:00</updated>
+  <id>http://mzyy94.com/</id>
+  <author>
+    <name><![CDATA[mzyy94]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[KodiとChinachuで地デジLive視聴 on Raspberry Pi2 w/ OSMC]]></title>
+    <link href="http://mzyy94.com/blog/2015/02/21/kodi-livetv-chinachu/"/>
+    <updated>2015-02-21T07:02:43+09:00</updated>
+    <id>http://mzyy94.com/blog/2015/02/21/kodi-livetv-chinachu</id>
+    <content type="html"><![CDATA[<p>どうも、Raspberry Pi2で遊ぶ毎日が続いております。
+Raspberry Pi model B（2ではない）にRaspbmcを入れて昨年の夏頃からChinachu経由で地上デジタル放送を視聴する環境を構築していたのですが、
+いかんせんスペックが低く、チャンネル切り替え時などにもたついていました。</p>
+
+<p>Raspberry Pi2が発売され、従来の6倍のパフォーマンスが発揮できるようになり、もたつきがなく不便しなくなってきたので、
+Raspbmc改めOSMCで地デジ視聴をする方法をまとめます。</p>
+
+<!-- more -->
+
+
+<h1>PVRクライアント</h1>
+
+<p>Kodi(旧:XBMC)にはテレビ放送を視聴するためのPVRクライアントという機能があります。
+テレビ放送の配信携帯に合わせていくつかPVRクライアントがAdd-onとして提供されていますが、汎用的につかえるものに
+<a href="https://github.com/afedchin/xbmc-addon-iptvsimple/">XBMC IPTV Simple Client</a>というものがあります。</p>
+
+<p>XBMCからKodiに名称変更した際に、Kodi本体にこれらのPVRクライアントはあらかじめバンドルされるようになり、
+これまでは各自ビルドしてインストールしていたのが、設定して有効化するだけで使えるようになっています。
+もちろんこのIPTV Simple Clientもバンドルされています。これを使って地デジを視聴する環境を構築します。</p>
+
+<h2>IPTV Simple Client</h2>
+
+<p>このAdd-onは、m3u形式で配信されているチャンネル配信情報と、<a href="http://wiki.xmltv.org/index.php/XMLTVFormat">XMLTV形式</a>で配信されている番組表情報を用いてネットワーク経由でテレビを視聴することができるPVRクライアントです。
+数あるプレイリストフォーマットの中でも一般的な形式であるm3uと、<a href="http://www.mythtv.org/">MythTV</a>などのテレビ視聴・録画クライアントがサポートするEPG番組表形式であるXMLTVを用いているため、テレビ放送配信側となるサーバーがサポートしていれば簡単に地デジをKodiで視聴できます。
+G
+今回テレビ放送を配信するサーバーとしてはChinachuを使いますが、残念ながら上記のm3u形式のチャンネル情報とXMLTV形式の番組表情報は提供されていません。
+なので、Chinachuに2つのファイルを追加して機能を追加することで対応するようにしました。</p>
+
+<h1>Chinachu</h1>
+
+<p>数ある地デジ録画管理ソフトウェアの中でもモダンなデザインで、使い勝手がよくREST APIを提供している素敵なソフトウェアです。
+Chinachuは番組の録画・再生が主な機能とされていますが、現在放送中の番組の視聴にも対応しており、APIを経由することでいろいろなクライアントから再生することができます。
+しかし、前途の通りChinachuが提供するAPIでは、IPTV Simple Clientが対応するm3u形式のプレイリストやXMLTV形式の番組表情報は取得できません。
+幸いなことに、ChinachuへのAPIの追加は難しくなく、Chinachuが動作するディレクトリ直下にある<strong>api</strong>ディレクトリにAPIリソース情報とスクリプトを配置することで必要なAPIを追加することができます。</p>
+
+<p>IPTV Simple Clientに必要な、</p>
+
+<ul>
+<li>m3u形式でのチャンネル配信情報</li>
+<li>XMLTV形式での番組表情報</li>
+</ul>
+
+
+<p>の二つをAPIで提供するファイルを作りました。
+以下からダウンロードしてapiディレクトリのファイルをChinachuのapiディレクトリに放り込んでください。</p>
+
+<p><em><a href="https://github.com/mzyy94/Chinachu-IPTV-API-addon">https://github.com/mzyy94/Chinachu-IPTV-API-addon</a></em></p>
+
+<p>これを導入すると、</p>
+
+<ul>
+<li><code>/api/kodi/channel.m3u8</code>にチャンネル配信情報</li>
+<li><code>/api/kodi/epg.xml</code>にXMLTV情報</li>
+</ul>
+
+
+<p>が提供されるようになります。</p>
+
+<h1>KodiでSimple IPTV Clientの設定</h1>
+
+<p>サーバー側の準備は整ったのでKodiの方の設定をします。前回の記事で日本語化したRaspberry Pi2で動くOSMC上のKodiでの設定方法になります。</p>
+
+<p>上記の通り、KodiにはPVRクライアントが導入されているので、Add-on管理から設定をして有効化するだけで準備ができます。</p>
+
+<p>まず、設定のAdd-onの中にある無効なアドオンからPVR Simple IPTV Clientを探して選択し、設定画面を開きます。</p>
+
+<p><img src="/blog/resources/images/2015/02/21/disabled-addons.png" alt="Disabled add-ons" />
+<img src="/blog/resources/images/2015/02/21/iptv-simple-client-addon.png" alt="IPTV Simple client" /></p>
+
+<p>設定画面にあるM3UプレイリストのURLとXMLTV URLにChinachuのWUIが動作するURLに続けて、下図のように設定します。
+各自環境に合わせて<code>chinachu:10772</code>の部分を書き換えてください。</p>
+
+<p><img src="/blog/resources/images/2015/02/21/addon-configure1.png" alt="Add-on configure1" />
+<img src="/blog/resources/images/2015/02/21/addon-configure2.png" alt="Add-on configure2" /></p>
+
+<p>設定を終えたらSimple IPTV Clientの<strong>有効</strong>を洗濯して有効にし、Kodiの全体の設定にあるLive TV設定に移動してLCD有効(誤訳？)すると、
+トップの画像のようにライブTVの項目が現れ、PVRが利用できるようになります。</p>
+
+<p><img src="/blog/resources/images/2015/02/21/enable-pvr.png" alt="Enable PVR" /></p>
+
+<p>m3uプレイリストとしてAPIが提供するチャンネルは、Chinachuの設定ファイルに記載の通りの順番でサブチャンネル含め配信しているので、
+後日紹介するであろうリモコンを使ってチャンネル切り替えを行う場合は、Live TV設定のチャンネルマネージャーからグループ管理を行って、
+不要なチャンネルを隠すことでリモコンでの操作に適したチャンネルのみを切り替え可能にできます。</p>
+
+<p><img src="/blog/resources/images/2015/02/21/channel-manager1.png" alt="Channel Manager1" />
+<img src="/blog/resources/images/2015/02/21/channel-manager2.png" alt="Channel Manager2" />
+<img src="/blog/resources/images/2015/02/21/channel-manager3.png" alt="Channel Manager3" /></p>
+
+<p>ここまで終わった状態で、Kodiのトップに移動するとライブTVの項目が増えているはずです。これを選択すると、デフォルトでは番組表が表示されます。</p>
+
+<p><img src="/blog/resources/images/2015/02/21/pvr-epg.png" alt="PVR EPG view" /></p>
+
+<p>また、バックスペースキーを押すとチャンネル一覧を表示するメニューが現れるので、そちらに切り替えると現在放送中の番組情報が表示されます。</p>
+
+<p><img src="/blog/resources/images/2015/02/21/pvr-channel.png" alt="PVR Channel view" /></p>
+
+<p>ここで好きなようにチャンネルを切り替え、地デジを観ることができます。</p>
+
+<h1>まとめ</h1>
+
+<p>MPEG-2ライセンスを導入してあるRaspberry Pi2だとサクサク地デジが見られる。</p>
+
+<p><a href="https://twitter.com/mzyy94/status/565610656809091072">https://twitter.com/mzyy94/status/565610656809091072</a>&#8220;>https://twitter.com/mzyy94/status/565610656809091072&#8221;>https://twitter.com/mzyy94/status/565610656809091072</a></a></p>
+]]></content>
+  </entry>
+  
+</feed>
