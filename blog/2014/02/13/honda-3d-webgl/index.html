@@ -416,58 +416,52 @@ Addonsタブにある検索ボックスでthreejsとして検索して出てく�
 	// <![CDATA[
 	$(document).ready(function() {
 		var posts = {};
-		var postDates = [];
+		var datelist = [];
 		$.getJSON('/blog/posts.json', function(data){
 			var dp = data.posts;
 			for(var i = 0, limit = dp.length; i < limit; i++){
-				posts[dp[i].date.slice(0,10)] = dp[i];
-			}
-			for(var i in posts){
-				postDates.push(i);
+				var date = new Date(dp[i].date);
+				posts[dp[i].date] = {title:dp[i].title,
+					url: '/blog/' + date.getFullYear() + '/' + ('0' + (date.getMonth() + 1)).slice(-2) + '/' + ('0' + date.getDate()).slice(-2) + '/' + dp[i].url + '/'}
+				datelist.push(dp[i].date);
 			}
 			assignCalendar('#date_departure');
 			refreshDate();
 		});
 
 
-		var today = new Date();
-
-		function goPage(date){
-			window.location.href = posts[date.replace(/\//g,'-')].url;
-		}
-
 		function assignCalendar(id){
 			$('<div class="calendar" />')
 				.insertAfter( $(id) )
 				.datepicker({
 					beforeShowDay: function(date){
-						var string = $.datepicker.formatDate('yy-mm-dd', date);
-						return [ postDates.indexOf(string) != -1 ]
+						var string = $.datepicker.formatDate('dd M yy', date);
+						return [ datelist.indexOf(string) != -1 ]
 					},
-					dateFormat: 'yy/mm/dd',
-					minDate: new Date(postDates[postDates.length - 1]),
-					maxDate: today,
+					dateFormat: 'dd M yy',
+					minDate: new Date(datelist[datelist.length - 1]),
+					maxDate: new Date(),
 					maxPicks: 1,
 					altField: id,
 					firstDay: 0,
 					showOtherMonths: true,
-					onSelect: goPage,
+					onSelect: function(date){
+						window.location.href = posts[date].url;
+					},
 					onChangeMonthYear: refreshDate
 				}).prev().hide();
 		}
 
+		var month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 		function refreshDate(){
 			setTimeout(function(){
 				$('a.ui-state-default').each(function(num){
-					var prefix = '/blog/';
-					var ref = prefix;
-					ref += $(this).parent().attr('data-year');
-					ref += '/';
-					ref += ('0' + (parseInt($(this).parent().attr('data-month')) + 1)).slice(-2);
-					ref += '/';
-					ref += ('0' + $(this).text()).slice(-2);
-					$(this).attr('data-title', posts[ref.replace(prefix,'').replace(/\//g,'-')].title);
-					$(this).attr('href', ref + '/' + posts[ref.replace(prefix,'').replace(/\//g,'-')].url);
+					var yy = $(this).parent().attr('data-year');
+					var M = month[$(this).parent().attr('data-month')];
+					var dd = ('0' + $(this).text()).slice(-2);
+					var idx = dd + ' ' + M + ' ' + yy;
+					$(this).attr('data-title', posts[idx].title);
+					$(this).attr('href', posts[idx].url);
 				});
 			},10);
 		}

@@ -5,117 +5,117 @@
 	
 	"posts" : [ 
 		{
-			"date": "2015-02-21T07:02:43+09:00",
+			"date": "21 Feb 2015",
 			"title": "KodiとChinachuで地デジLive視聴 on Raspberry Pi2 w/ OSMC",
-			"url": "/blog/2015/02/21/kodi-livetv-chinachu/"
+			"url": "kodi-livetv-chinachu"
 		},
 	
 		{
-			"date": "2015-02-16T20:05:56+09:00",
+			"date": "16 Feb 2015",
 			"title": "Raspberry Pi2にOSMC入れてKodi(旧:XBMC)日本語化するまで",
-			"url": "/blog/2015/02/16/raspberry-pi2-osmc-jp/"
+			"url": "raspberry-pi2-osmc-jp"
 		},
 	
 		{
-			"date": "2015-01-31T19:23:04+09:00",
+			"date": "31 Jan 2015",
 			"title": "LinuxでQSVとH.264のエンコード対決",
-			"url": "/blog/2015/01/31/qsv-x264-linux-battle/"
+			"url": "qsv-x264-linux-battle"
 		},
 	
 		{
-			"date": "2015-01-30T22:22:03+09:00",
+			"date": "30 Jan 2015",
 			"title": "Intel QSVのH.264エンコードをLinuxで！",
-			"url": "/blog/2015/01/30/intel-qsv-on-linux/"
+			"url": "intel-qsv-on-linux"
 		},
 	
 		{
-			"date": "2014-12-12T23:59:49+09:00",
+			"date": "12 Dec 2014",
 			"title": "KVMでQSVするためIntel HD Graphicsパススルーするー",
-			"url": "/blog/2014/12/12/kvm-intel-hd-graphics-passthrough/"
+			"url": "kvm-intel-hd-graphics-passthrough"
 		},
 	
 		{
-			"date": "2014-12-10T00:02:35+09:00",
+			"date": "10 Dec 2014",
 			"title": "サーバーの発熱でこたつを温める",
-			"url": "/blog/2014/12/10/kotatsu-heating/"
+			"url": "kotatsu-heating"
 		},
 	
 		{
-			"date": "2014-12-07T17:59:06+09:00",
+			"date": "07 Dec 2014",
 			"title": "SECCON2014 Online英語版予選 Write-up",
-			"url": "/blog/2014/12/07/seccon2014-online/"
+			"url": "seccon2014-online"
 		},
 	
 		{
-			"date": "2014-09-03T14:40:47+09:00",
+			"date": "03 Sep 2014",
 			"title": "SECCON 2014 横浜大会NW予選 Write-up",
-			"url": "/blog/2014/09/03/seccon2014-yokohama-2nd-day/"
+			"url": "seccon2014-yokohama-2nd-day"
 		},
 	
 		{
-			"date": "2014-04-06T23:10:36+09:00",
+			"date": "06 Apr 2014",
 			"title": "自宅サーバーを増やした",
-			"url": "/blog/2014/04/06/new-server/"
+			"url": "new-server"
 		},
 	
 		{
-			"date": "2014-02-25T22:18:21+09:00",
+			"date": "25 Feb 2014",
 			"title": "Node.jsでダウンロードしながらGunzipしてmd5の計算しながら保存する奴",
-			"url": "/blog/2014/02/25/dl-gunzip-with-nodejs/"
+			"url": "dl-gunzip-with-nodejs"
 		},
 	
 		{
-			"date": "2014-02-21T17:46:27+09:00",
+			"date": "21 Feb 2014",
 			"title": "Unicode形式に変換するPopClipのExtensionを作りたかっただけだったのに",
-			"url": "/blog/2014/02/21/unicode-popclip-extension/"
+			"url": "unicode-popclip-extension"
 		},
 	
 		{
-			"date": "2014-02-13T19:03:54+09:00",
+			"date": "13 Feb 2014",
 			"title": "Honda 3DのサイトがFlashだったときの症例",
-			"url": "/blog/2014/02/13/honda-3d-webgl/"
+			"url": "honda-3d-webgl"
 		},
 	
 		{
-			"date": "2014-02-04T08:47:16+09:00",
+			"date": "04 Feb 2014",
 			"title": "Qiで203Zを充電できるようにしてみた",
-			"url": "/blog/2014/02/04/qi-battery-203z/"
+			"url": "qi-battery-203z"
 		},
 	
 		{
-			"date": "2014-01-22T11:02:22+09:00",
+			"date": "22 Jan 2014",
 			"title": "JavaScriptの記号だけで&#8217;1&#8217;を作るコードゴルフ",
-			"url": "/blog/2014/01/22/javascript-one-codegolf/"
+			"url": "javascript-one-codegolf"
 		},
 	
 		{
-			"date": "2014-01-09T13:45:08+09:00",
+			"date": "09 Jan 2014",
 			"title": "debianでiscsi target/initiator動作させるメモ",
-			"url": "/blog/2014/01/09/iscsi-debian/"
+			"url": "iscsi-debian"
 		},
 	
 		{
-			"date": "2013-12-18T12:48:12+09:00",
+			"date": "18 Dec 2013",
 			"title": "OS Xで再現されるBus error: 10の原因探ってみた",
-			"url": "/blog/2013/12/18/buserr-segfault-osx/"
+			"url": "buserr-segfault-osx"
 		},
 	
 		{
-			"date": "2013-12-11T23:50:50+09:00",
+			"date": "11 Dec 2013",
 			"title": "まどマギコンサート名古屋行ってきた",
-			"url": "/blog/2013/12/11/madomagi-concert-nagoya/"
+			"url": "madomagi-concert-nagoya"
 		},
 	
 		{
-			"date": "2013-12-10T12:58:47+09:00",
+			"date": "10 Dec 2013",
 			"title": "NAS4FreeでTime Machineの設定するメモ",
-			"url": "/blog/2013/12/10/timemachine-with-nas4free/"
+			"url": "timemachine-with-nas4free"
 		},
 	
 		{
-			"date": "2013-12-07T18:22:11+09:00",
+			"date": "07 Dec 2013",
 			"title": "blogを建ててみた",
-			"url": "/blog/2013/12/07/create-new-blog/"
+			"url": "create-new-blog"
 		}
 	]
 }
