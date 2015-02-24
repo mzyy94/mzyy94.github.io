@@ -5,6 +5,12 @@
 	
 	&#8220;posts&#8221; : [ 
 		{
+			&#8220;date&#8221;: &#8220;24 Feb 2015&#8221;,
+			&#8220;title&#8221;: &#8220;KodiでChinachuの録画を観るAdd-on作った&#8221;,
+			&#8220;url&#8221;: &#8220;kodi-chinachu-addon&#8221;
+		},
+	
+		{
 			&#8220;date&#8221;: &#8220;21 Feb 2015&#8221;,
 			&#8220;title&#8221;: &#8220;KodiとChinachuで地デジLive視聴 on Raspberry Pi2 w/ OSMC&#8221;,
 			&#8220;url&#8221;: &#8220;kodi-livetv-chinachu&#8221;

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: raspberry-pi | 犬アイコンのみっきー]]></title>
   <link href="http://mzyy94.com/blog/categories/raspberry-pi/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2015-02-21T07:45:00+09:00</updated>
+  <updated>2015-02-24T19:27:57+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -12,6 +12,103 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[KodiでChinachuの録画を観るAdd-on作った]]></title>
+    <link href="http://mzyy94.com/blog/2015/02/24/kodi-chinachu-addon/"/>
+    <updated>2015-02-24T19:28:35+09:00</updated>
+    <id>http://mzyy94.com/blog/2015/02/24/kodi-chinachu-addon</id>
+    <content type="html"><![CDATA[<p>Raspberry Pi2でKodi（旧：XBMC)が快適に動き、地デジのLIVE視聴環境として優れているので、
+Chinachuの本領である録画した動画の視聴したみが高まってきました。</p>
+
+<p>Kodiには簡単にAdd-onが作れる仕組みがあり、動画や音楽のコンテンツを独自で配信・管理する仕組みがつくれます。
+Chinachuには録画ファイルの情報とストリーミング視聴ができるREST APIが搭載されているので、
+これを叩いてKodiで動画コンテンツを視聴できるAdd-onを作ったのでお知らせいたします。</p>
+
+<!-- more -->
+
+
+<h1>Kodi/XBMC Add-on</h1>
+
+<p>KodiではPythonを用いてGUIやコンテンツを操るAdd-onを作成できるようになっています。
+Add-on作成に関する情報は<a href="http://kodi.wiki/view/Add-on_development">Add-on development - Kodi</a>にあるので、作成はそこまで難しくないです。
+コンテンツ管理プラグインの他にも、スキンやバックグラウンドサービスも同じAdd-onの構造で作成できるので興味がある人は作ってみてください。</p>
+
+<h1>Chinachu client add-on</h1>
+
+<p>ChinachuのREST APIを叩いて動画を取得してコンテンツ一覧に表示、再生、そしてChinachuサーバー上の録画データを削除できるAdd-onを作成しました。</p>
+
+<p><strong><a href="https://github.com/mzyy94/plugin.video.chinachu">https://github.com/mzyy94/plugin.video.chinachu</a></strong></p>
+
+<p>Releaseのページからダウンロードして設定のアドオンからzipファイルからインストールでインストールしてください。
+その後、有効なアドオンの一覧からビデオアドオンにあるChinachu clientを探し、設定を開いてChinachuの動くサーバーのアドレスとその他オプションを設定すると利用できるようになります。</p>
+
+<h2>使い方</h2>
+
+<p>利用方法は、Kodiトップにあるビデオメニューの中のビデオアドオンからChinachu clientを起動するだけです。</p>
+
+<p><img src="/blog/resources/images/2015/02/24/launch-chinachu-client.png" alt="Launch Chinachu client" /></p>
+
+<p>一覧の動画を選択した状態で右クリックを押すかメニューを表示すると、メニュー中に削除の項目があります。
+これを選択すると、確認ダイアログ表示の後、Chinachuで管理されている<strong>録画ファイルと録画情報の両方を削除</strong>します。
+キャンセルはできないのでご注意を。</p>
+
+<p><img src="/blog/resources/images/2015/02/24/deletion-dialog.png" alt="File deletion" /></p>
+
+<h2>設定</h2>
+
+<p><img src="/blog/resources/images/2015/02/24/configuration-window.png" alt="Configuratoin window" /></p>
+
+<p>Chinachu clientには幾つか設定を設けてあります。</p>
+
+<h3>基本</h3>
+
+<p>基本となるChinachuのURLの設定は必須です。Chinachu-WUIのAPIを叩くので、プロトコルとポート番号を含めたURLを設定してください。</p>
+
+<p><img src="/blog/resources/images/2015/02/24/general-configuration.png" alt="General configuratoin" /></p>
+
+<h3>ストリーミング</h3>
+
+<p>ストリーミングカテゴリにはChinachu WUIでストリーミングする際に指定するものと同じ感覚で設定してください。
+MPEG-2 ハードウェアデコーダーを導入してあるRasPi2ではこのオプションは未設定の方が良いと思います。</p>
+
+<h3>サムネイル</h3>
+
+<p>サムネイルカテゴリには、Chinachu APIのpreview.jpgを取得してKodiのサムネイルフォルダにキャッシュするオプションがあります。
+avconvで生成している都合上、取得には時間がかかるので必要でなければ無効のままにしておくことをお勧めします。
+また、一度サムネイルを取得し始めるとKodiを終了するまでバックグラウンドで取得し続けます。さらに、未取得のサムネイルは毎囘取得しに行きます。
+この点ご注意ください。</p>
+
+<p>サムネイルが不要になった際は、キャッシュのクリアもできます。</p>
+
+<h3>動画情報</h3>
+
+<p>動画情報カテゴリでは、動画情報に関する細かなオプションがあります。</p>
+
+<p>エピソード番号を強制的に指定オプションは、一部のテーマ向けの設定です。
+放送日がエピソード番号が指定されていないと表示されないテーマがあるため、放送日が表示されない動画がある場合は有効にしてください。
+このオプションが有効の場合、バラエティ番組など連続したエピソードがない放送にエピソード番号に1を指定します。</p>
+
+<p>チャンネル名を表示する場所を選択するオプションも、一部のテーマ向けの設定です。
+通常、チャンネル名はスタジオとして動画情報に登録されている場合、動画の詳細情報に表示されるのですが、テーマによってはスタジオを表示しないものがあるようです。
+チャンネル名が表示されないなと思ったらこのオプションをいじってみてください。</p>
+
+<h2>動作してる図</h2>
+
+<p>こんなかんじです。
+スキンは一番上はConfluenceで他はTitanです。</p>
+
+<p><img src="/blog/resources/images/2015/02/24/preview1.png" alt="Preview1" />
+<img src="/blog/resources/images/2015/02/24/preview2.png" alt="Preview2" />
+<img src="/blog/resources/images/2015/02/24/preview3.png" alt="Preview3" />
+<img src="/blog/resources/images/2015/02/24/preview4.png" alt="Preview4" />
+<img src="/blog/resources/images/2015/02/24/preview5.png" alt="Preview5" /></p>
+
+<h1>まとめ</h1>
+
+<p>Raspberry Pi2は買いである</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[KodiとChinachuで地デジLive視聴 on Raspberry Pi2 w/ OSMC]]></title>
