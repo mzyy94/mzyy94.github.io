@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: misc | 犬アイコンのみっきー]]></title>
+  <link href="http://mzyy94.com/blog/categories/misc/atom.xml" rel="self"/>
+  <link href="http://mzyy94.com/"/>
+  <updated>2015-03-06T19:12:54+09:00</updated>
+  <id>http://mzyy94.com/</id>
+  <author>
+    <name><![CDATA[mzyy94]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[柚子胡椒でサーバーを壊さないために]]></title>
+    <link href="http://mzyy94.com/blog/2015/03/06/yuzu-trouble/"/>
+    <updated>2015-03-06T18:05:49+09:00</updated>
+    <id>http://mzyy94.com/blog/2015/03/06/yuzu-trouble</id>
+    <content type="html"><![CDATA[<blockquote class="twitter-tweet" lang="ja"><p>【急募】PCIスロットに詰まった柚子胡椒を取り除く方法</p>&mdash; えびみっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/573719000464556033">2015, 3月 6</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<p>柚子胡椒を部屋中にぶちまけたところ、メンテナンス中だったサーバーのマザーボードに降りかかり、あろうことか柚子胡椒がPCIeスロットに入り込んでいました。
+すでにそのような経験のある人には不要な記事かもしれませんが、Twitter経由で得られた、柚子胡椒とサーバーをお持ちのみなさまによる解決案と対策をまとめました。</p>
+
+<!-- more -->
+
+
+<h1>事の経緯</h1>
+
+<blockquote class="twitter-tweet" lang="ja"><p>柚子胡椒のチューブの出が悪い&#10;↓&#10;振って出やすくする&#10;↓&#10;キャップ閉め忘れる&#10;↓&#10;部屋中に柚子胡椒が飛び散る&#10;↓&#10;メンテナンス中のサーバーに降りかかってる&#10;↓&#10;PCIスロットに詰まってる</p>&mdash; えびみっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/573719406284398592">2015, 3月 6</a></blockquote>
+
+
+<p>柚子胡椒を出したかっただけなのです。</p>
+
+<h1>解決案</h1>
+
+<p>柚子胡椒を取り除く解決案がいくつか寄せられたのでご紹介します。</p>
+
+<h2>吹き付ける</h2>
+
+<blockquote class="twitter-tweet" data-conversation="none" lang="ja"><p><a href="https://twitter.com/mzyy94">@mzyy94</a> ふつうにエアダスターとかでは</p>&mdash; 日替わりデトックス (@polamjag) <a href="https://twitter.com/polamjag/status/573721418392727552">2015, 3月 6</a></blockquote>
+
+
+<blockquote class="twitter-tweet" data-conversation="none" lang="ja"><p><a href="https://twitter.com/mzyy94">@mzyy94</a> マジレスすると逆さまにして下からブレーキクリーナーを吹いて流すくらいですかねー&#10;ある程度は爪楊枝や紙で取っておくといいでしょう</p>&mdash; タモ＝サーン (@tamosan) <a href="https://twitter.com/tamosan/status/573721435580956672">2015, 3月 6</a></blockquote>
+
+
+<p>エアダスターは手持ちを切らしていてトライできず。ブレーキクリーナーは持ってなかったので試せなかったのですが、油分の多い調味料がスロットに入った場合は効果的かもしれません。</p>
+
+<h2>吸う</h2>
+
+<blockquote class="twitter-tweet" data-conversation="none" lang="ja"><p><a href="https://twitter.com/mzyy94">@mzyy94</a> 単なる思い付きで確証はないですがハンダ吸い取り器とか使えませんかね</p>&mdash; ゆーいちろー@沈降中 (@Yuichiro_S) <a href="https://twitter.com/Yuichiro_S/status/573721963736096768">2015, 3月 6</a></blockquote>
+
+
+<blockquote class="twitter-tweet" data-conversation="none" lang="ja"><p><a href="https://twitter.com/mzyy94">@mzyy94</a> 掃除機で吸えば……</p>&mdash; 堀石 廉 (@Holyithylene) <a href="https://twitter.com/Holyithylene/status/573720291160944641">2015, 3月 6</a></blockquote>
+
+
+<blockquote class="twitter-tweet" data-conversation="none" lang="ja"><p><a href="https://twitter.com/mzyy94">@mzyy94</a> 「急いで口で吸え！」とか自分が知らないネタを言ってみる</p>&mdash; 赤井太一 (@CM_cube) <a href="https://twitter.com/CM_cube/status/573720661647982592">2015, 3月 6</a></blockquote>
+
+
+<blockquote class="twitter-tweet" data-conversation="none" lang="ja"><p><a href="https://twitter.com/mzyy94">@mzyy94</a> 電源入れてあっためたらとんでも無いことになりそう・・・！　うーん、、掃除機で吸い出して、その後なんとか拭き取るってのもあるけど錆びちゃいそうですよね・・・吹かないと。</p>&mdash; salexkidd (@salexkidd) <a href="https://twitter.com/salexkidd/status/573722031193116673">2015, 3月 6</a></blockquote>
+
+
+<blockquote class="twitter-tweet" data-conversation="none" lang="ja"><p><a href="https://twitter.com/mzyy94">@mzyy94</a> まず大きな塊はストローで吸い取れませんか</p>&mdash; Koike (@kichi_robo) <a href="https://twitter.com/kichi_robo/status/573721080570888194">2015, 3月 6</a></blockquote>
+
+
+<blockquote class="twitter-tweet" lang="ja"><p>水吸うパーツもあるからなあ。掃除機で吸う→乾かす→エアダスターアンド掃除機でさらに吸う とかでよかった気もする <a href="https://twitter.com/hashtag/%E6%9F%9A%E5%AD%90%E8%83%A1%E6%A4%92?src=hash">#柚子胡椒</a></p>&mdash; \m (@m43net) <a href="https://twitter.com/m43net/status/573743610425815041">2015, 3月 6</a></blockquote>
+
+
+<p>一番多かった解決案です。吸引力でなんとかなる調味料もあるかもしれませんが、PCIスロットに潜む柚子胡椒はあの半固体感と適度な粘性によって、半田吸い取り機での吸引は効果ゼロでした。あと手元にある掃除機はルンバだけなので、掃除機チャレンジはできませんでした。</p>
+
+<h2>洗い流す</h2>
+
+<blockquote class="twitter-tweet" data-conversation="none" lang="ja"><p><a href="https://twitter.com/mzyy94">@mzyy94</a> もう、マザーボードはずして水洗いしか。バックアップバッテリーはずすの忘れないように。</p>&mdash; 堀石 廉 (@Holyithylene) <a href="https://twitter.com/Holyithylene/status/573721583505661952">2015, 3月 6</a></blockquote>
+
+
+<blockquote class="twitter-tweet" data-conversation="none" lang="ja"><p><a href="https://twitter.com/mzyy94">@mzyy94</a> <a href="https://twitter.com/takauke">@takauke</a> 純アルコールに漬け込んでみてはいかがですかね？</p>&mdash; いとー@東京 (@transistor) <a href="https://twitter.com/transistor/status/573723431113334784">2015, 3月 6</a></blockquote>
+
+
+<blockquote class="twitter-tweet" data-conversation="none" lang="ja"><p><a href="https://twitter.com/mzyy94">@mzyy94</a> 最終手段としては、CMOS電池外す⇒中性洗剤で洗う⇒水道水でよくすすぐ&#10;⇒純水ですすぐ⇒エタノール漬けで脱水⇒よく乾燥させるくらいですかね？</p>&mdash; 桜庭ねむ＠醤油屋L０L1エンジニア (@sakuraba_nemu) <a href="https://twitter.com/sakuraba_nemu/status/573724225879441409">2015, 3月 6</a></blockquote>
+
+
+<p>今回採用したケースです。塩分と油分の含まれる柚子胡椒には中性洗剤を溶いた純水（純水の定義については後述）が効果的であるという目論見のもと、この解決案を採用しました。乾燥にはアルコール（エタノール）を使用するというのがマザボ水洗い界隈には定石のようです。</p>
+
+<h1>トラブル対処の図</h1>
+
+<blockquote class="twitter-tweet" lang="ja"><p>TLの皆様からの貴重な解決法の提供を受け&#10;・純水使用&#10;・中性洗剤使用&#10;・歯ブラシは危険&#10;・エタノールで水分揮発&#10;を実践してみます。各位貴重な情報ありがとうございます。 <a href="http://t.co/z6TDweZYOL">pic.twitter.com/z6TDweZYOL</a></p>&mdash; PCI柚子胡椒職人 (@mzyy94) <a href="https://twitter.com/mzyy94/status/573728196991918080">2015, 3月 6</a></blockquote>
+
+
+<h1>注意点</h1>
+
+<h2>純水と精製水は違う</h2>
+
+<blockquote class="twitter-tweet" lang="ja"><p>純水と超純水はちがうっすよ，PCI柚胡椒氏．．．</p>&mdash; じとめすきー (@jitomesky) <a href="https://twitter.com/jitomesky/status/573729225326247936">2015, 3月 6</a></blockquote>
+
+
+<p>手元にあった純水は、サーバーで飼っていたえびの汽水濃度を調節するものです。また、純水≠精製水であり、電子機器の洗浄に用いられるのは超純水というものであるそうです。慌てふためいていたのですっかり「純水＝純水という名の水」と勘違いしてしまい、純水(精製水ではない)を使ってしまいました。</p>
+
+<blockquote class="twitter-tweet" lang="ja"><p>&gt;&gt; 半導体などの電子部品や電子回路の基板、更には液晶パネルに使うガラスなどの製造工程で使う洗浄水には、ごく微量の不純物が残っていても製品の品質に重大な影響を及ぼすため、純水から純度を更に上げた超純水を用いる必要がある。</p>&mdash; じとめすきー (@jitomesky) <a href="https://twitter.com/jitomesky/status/573728845771071488">2015, 3月 6</a></blockquote>
+
+
+<p>薬局で「精製水」と記載のあるあるものを利用するのが、一般家庭での基板洗浄には最適だそうです。</p>
+
+<h2>歯ブラシでこする</h2>
+
+<blockquote class="twitter-tweet" data-conversation="none" lang="ja"><p><a href="https://twitter.com/mzyy94">@mzyy94</a> マジレスすると歯ブラシはやめておいたほうがいいっす。ホコリとろうとしてやったら中のピンが大変なことに…（AGPスロットだったけど）</p>&mdash; salexkidd (@salexkidd) <a href="https://twitter.com/salexkidd/status/573720752198840320">2015, 3月 6</a></blockquote>
+
+
+<p>確かに細かいピンが並んでるPCIeスロットは下手に歯ブラシでこすると傷つけたりピン折れたりしそうなので、たとえ柚子胡椒が入り込んでもおっしゃる通りやめておきましょう。</p>
+
+<h2>つけ置き</h2>
+
+<blockquote class="twitter-tweet" data-conversation="none" lang="ja"><p><a href="https://twitter.com/mzyy94">@mzyy94</a> 失礼します。精製水の方が良いのはその通りですが、水道水で洗う人もいて、通常なんてことはないのでこの際気にしないで良いのでは。柚子胡椒はちゃんと落とさないと腐蝕の原因になると思いますが。買い出しに行って水に漬けっぱなしの方が心配。</p>&mdash; アキ (@Jaguaimo) <a href="https://twitter.com/Jaguaimo/status/573741851758366720">2015, 3月 6</a></blockquote>
+
+
+<p>密かに隠れている柚子胡椒成分が染み出している場合なども考えると、つけ置きは良くないということですね。常識的に考えてもマザーボードをつけ置きするなんてこと聞いたことないですし、やめておくのが得策です。</p>
+
+<h1>先駆者の言葉</h1>
+
+<blockquote class="twitter-tweet" lang="ja"><p>PCIもPCIeもそんなチャチな節点じゃないよ。LGAも</p>&mdash; ふぁるす (@sushi514) <a href="https://twitter.com/sushi514/status/573738766453473280">2015, 3月 6</a></blockquote>
+
+
+<h1>対策</h1>
+
+<blockquote class="twitter-tweet" lang="ja"><p>俺も柚子胡椒を振る時はちゃんとキャップ閉めよう</p>&mdash; やまじゅん (@MtJune11) <a href="https://twitter.com/MtJune11/status/573737721786593280">2015, 3月 6</a></blockquote>
+
+
+<p>以上です。</p>
+
+<h1>おすすめ柚子胡椒</h1>
+
+<h2>瓶入り</h2>
+
+<blockquote class="twitter-tweet" data-conversation="none" lang="ja"><p><a href="https://twitter.com/mzyy94">@mzyy94</a> 柚子胡椒はびん入りのがあるので、アキバの日本百貨店あたりでGetできるかと。あっちのほーが色々便利かもよ？</p>&mdash; タモ＝サーン (@tamosan) <a href="https://twitter.com/tamosan/status/573781580545593345">2015, 3月 6</a></blockquote>
+
+
+<p>瓶入りなので振ってPCIスロットに詰まるという事故が防げます。</p>
+
+<h2>ゆずすこ</h2>
+
+<blockquote class="twitter-tweet" lang="ja"><p>福岡土産でもらった覚えがあるけど、柚子胡椒にお酢を加えてタバスコ風にしたYUZUSCO（ゆずすこ）っていう調味料があるよ</p>&mdash; mzsm (@mzsm_j) <a href="https://twitter.com/mzsm_j/status/573736798838484992">2015, 3月 6</a></blockquote>
+
+
+<blockquote class="twitter-tweet" lang="ja"><p>液体の柚子胡椒「ゆずすこ」 ゆずすこ [楽天] <a href="http://t.co/dRvymRSKzH">http://t.co/dRvymRSKzH</a> <a href="https://twitter.com/hashtag/RakutenIchiba?src=hash">#RakutenIchiba</a> <a href="http://t.co/2xHIh09Xpe">pic.twitter.com/2xHIh09Xpe</a></p>&mdash; mzsm (@mzsm_j) <a href="https://twitter.com/mzsm_j/status/573738420742193152">2015, 3月 6</a></blockquote>
+
+
+<blockquote class="twitter-tweet" data-conversation="none" lang="ja"><p><a href="https://twitter.com/tamosan">@tamosan</a> <a href="https://twitter.com/mzyy94">@mzyy94</a> <a href="http://t.co/juLQl708Lx">http://t.co/juLQl708Lx</a>　あとはゆずすこ なんてものも…</p>&mdash; greenz(修験者) (@greenz_greenz) <a href="https://twitter.com/greenz_greenz/status/573782317505757185">2015, 3月 6</a></blockquote>
+
+
+<p>酢が入った液体の柚子胡椒もあるようです。これなら粘性が低そうなので取り除きやすいかもしれません。</p>
+
+<h2>赤いゆずこしょう</h2>
+
+<blockquote class="twitter-tweet" lang="ja"><p>赤もありました：高山物産 の 高山さんの赤いゆずごしょう（柚子胡椒赤）120g を Amazon でチェック！ <a href="http://t.co/MOULMnZQO8">http://t.co/MOULMnZQO8</a></p>&mdash; 対テロ戦争 (@syuu1228) <a href="https://twitter.com/syuu1228/status/573740978680393728">2015, 3月 6</a></blockquote>
+
+
+<p>赤い柚子胡椒もあるそうです。これならマザーボードに詰まっても見つけやすく、取り残しの心配が減りますね。</p>
+
+<h2>S&amp;B柚子こしょう40g</h2>
+
+<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=mzyy-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B0084J95W8" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+<p>今回登場した柚子胡椒です。PCIスロットに入りやすいのでご注意ください。</p>
+
+<h1>まとめ</h1>
+
+<blockquote class="twitter-tweet" lang="ja"><p>柚子胡椒のためになんで野口3枚も飛ばさにゃならんのだ。。</p>&mdash; PCI柚子胡椒職人 (@mzyy94) <a href="https://twitter.com/mzyy94/status/573765816887345152">2015, 3月 6</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+
+]]></content>
+  </entry>
+  
+</feed>
