@@ -5,6 +5,12 @@
 	
 	"posts" : [ 
 		{
+			"date": "09 Mar 2015",
+			"title": "無印良品で買えるRaspberry Pi2にぴったりのケース",
+			"url": "muji-raspberry-pi-enclosure"
+		},
+	
+		{
 			"date": "06 Mar 2015",
 			"title": "柚子胡椒でサーバーを壊さないために",
 			"url": "yuzu-trouble"

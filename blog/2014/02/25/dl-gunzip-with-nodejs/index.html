@@ -67,8 +67,21 @@ Lempel-Ziv符号化で圧縮されたファイル(.gz)のダウンロードを�
 </style>
 <![endif]-->
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+<meta property="twitter:card" content="summary" />
+<meta property="twitter:site" content="mzyy94" />
+<meta property="twitter:url" content="http://mzyy94.com/blog/2014/02/25/dl-gunzip-with-nodejs" />
+<meta property="twitter:title" content="Node.jsでダウンロードしながらGunzipしてmd5の計算しながら保存する奴" />
+
+<meta property="twitter:image" content="http://mzyy94.com/blog/resources/images/2014/2/25/dl-gunzip-with-nodejs.png" />
+
+<meta property="twitter:description" content="Node.jsです。
+Lempel-Ziv符号化で圧縮されたファイル(.gz)のダウンロードをしようとしたときの話です。
+ブラウザからダウンロードすると、拡張子gzで保存され、それを解凍することで必要なデータを得ることができるのですが、圧縮されたファイルは解凍したあとでは不要です。
+このような不要ファイルを保存することなく、目的のファイルが欲しいような状況になったので、 &hellip;" />
+
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" />
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" />
 
   
   <script type="text/javascript">
@@ -376,6 +389,10 @@ Node.jsの標準モジュールには、zlibがあり、require()で取り込む
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/03/09/muji-raspberry-pi-enclosure/">無印良品で買えるRaspberry Pi2にぴったりのケース</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/03/06/yuzu-trouble/">柚子胡椒でサーバーを壊さないために</a>
       </li>
     
@@ -389,10 +406,6 @@ Node.jsの標準モジュールには、zlibがあり、require()で取り込む
     
       <li class="post">
         <a href="/blog/2015/02/16/raspberry-pi2-osmc-jp/">Raspberry Pi2にOSMC入れてKodi(旧:XBMC)日本語化するまで</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/01/31/qsv-x264-linux-battle/">LinuxでQSVとH.264のエンコード対決</a>
       </li>
     
   </ul>
