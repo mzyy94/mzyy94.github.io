@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: mikutter | 犬アイコンのみっきー]]></title>
+  <link href="http://mzyy94.com/blog/categories/mikutter/atom.xml" rel="self"/>
+  <link href="http://mzyy94.com/"/>
+  <updated>2015-03-13T10:46:33+09:00</updated>
+  <id>http://mzyy94.com/</id>
+  <author>
+    <name><![CDATA[mzyy94]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[OS X向けmikutterパッケージ(Homebrew)作ったよ]]></title>
+    <link href="http://mzyy94.com/blog/2015/03/13/mikutter-brew-formula/"/>
+    <updated>2015-03-13T10:48:00+09:00</updated>
+    <id>http://mzyy94.com/blog/2015/03/13/mikutter-brew-formula</id>
+    <content type="html"><![CDATA[<p>3月13日ですがミクの日です。</p>
+
+<p>mikutterをご存知ない方はいないと思いますが、簡単に説明すると、日本で一番有名なツイッタークライアントのことです。
+このmikutter、Linuxの幾つかのメジャーなディストリビューションにはパッケージが用意されているのですが、
+革新的なOSであるOS Xにはパッケージが存在せず、導入する際には各自ちまちまと依存関係をクリアしていかなければいけないのです。</p>
+
+<p>新しいMacBookが発表されて世のOS Xユーザーも0.1‰ほど増えるだろうというこの時期に、mikutterがパッケージ管理されない状態が続いていていいのでしょうか。</p>
+
+<p>そんな自問自答からOS X用パッケージマネージャーの<a href="http://brew.sh/index_ja.html">Homebrew</a>向けにパッケージを作ったのでご報告です。</p>
+
+<!-- more -->
+
+
+<h1>Brew formulae</h1>
+
+<p>Homebrewでは、パッケージをformulaという形で管理しています。
+このformulaは、パッケージの依存関係とソースコードやバイナリの場所、そしてインストール処理を行うスクリプトが書かれているRubyのコードでできています。
+新しいパッケージを追加したい場合などはこのformulaを作成し、HomebrewのリポジトリにPull-Requestを行う事で大元のパッケージ群に追加してもらうことができます。
+この新しいformulaの作成はbrewコマンドで行うことができます。
+詳しくは<a href="https://github.com/Homebrew/homebrew/blob/master/share/doc/homebrew/Formula-Cookbook.md">homebrew/Formula-Cookbook.md at master · Homebrew/homebrew</a>を参考にしてください。</p>
+
+<h1>mikutter formula</h1>
+
+<p>前節のようにしてPull-Requestを行っている状態のBrewパッケージとして、mikutter formulaを作成しました。
+mikutterを動作させる上で必要なライブラリ等の依存関係も解決してインストールするようにできています。</p>
+
+<p><a href="https://github.com/Homebrew/homebrew/pull/37642">mikutter 3.2.2 (new formula) by mzyy94 · Pull Request #37642 · Homebrew/homebrew</a></p>
+
+<p>このformulaがHomebrewのリポジトリにマージされればコマンド1行打ち込むだけでmikutterのインストールが完了するのですが、
+まだマージされていないので2行のコマンドを打つ必要があります。
+今までは、 tar-ballをダウンロードしてGTK+インストールしてgemインストールして&#8230; と、10行近くコマンドを打ち込まなければいけなかったので2行でも大きな進歩と言えます。</p>
+
+<h1>#mikutterInstallBattle</h1>
+
+<p>皆さん大好き#mikutterInstallBattleの時間です。</p>
+
+<p>まず、最低限必要なものは以下の2つです。</p>
+
+<ul>
+<li><a href="http://brew.sh">Homebrew</a></li>
+<li><a href="https://xquartz.macosforge.org">Xquartz.app</a></li>
+</ul>
+
+
+<p>パッケージマネージャーのHomebrewとX11アプリケーションのためのX Window SystemであるXquartzを導入しておくだけでいいです。</p>
+
+<p>あとはHomebrewのコマンドを叩くだけ。
+執筆時点(2015/3/13 10:24:33+JST)ではまだPull-Requestはマージされていないので、まずPull-Requestからformulaを引っ張ってきます。</p>
+
+<pre><code>$ brew pull 37642
+</code></pre>
+
+<p>無事formulaが取得できたらあとは、
+<code>
+$ brew install mikutter
+</code>
+でインストールができます。</p>
+
+<p>そして、
+<code>
+$ mikutter
+</code>
+で起動します。
+以上です。</p>
+
+<h1>日本語入力</h1>
+
+<p>日本語入力はインストールしたての状態ではできないので各自ぐぐってがんばってください。</p>
+]]></content>
+  </entry>
+  
+</feed>
