@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: osmc | 犬アイコンのみっきー]]></title>
   <link href="http://mzyy94.com/blog/tags/osmc/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2015-03-18T11:09:25+09:00</updated>
+  <updated>2015-03-18T11:23:12+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -166,8 +166,8 @@ Chinachuは番組の録画・再生が主な機能とされていますが、現
 <p>これを導入すると、</p>
 
 <ul>
-<li><code>/api/kodi/channel.m3u8</code>にチャンネル配信情報</li>
-<li><code>/api/kodi/epg.xml</code>にXMLTV情報</li>
+<li><code>/api/iptv/channel.m3u8</code>にチャンネル配信情報</li>
+<li><code>/api/iptv/epg.xml</code>にXMLTV情報</li>
 </ul>
 
 
