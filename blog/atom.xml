@@ -4,7 +4,7 @@
   <title><![CDATA[犬アイコンのみっきー]]></title>
   <link href="http://mzyy94.com/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2015-04-13T15:05:15+09:00</updated>
+  <updated>2015-04-14T00:07:08+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -12,6 +12,675 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[ネットエージェント最終面接問題 Write-up その2]]></title>
+    <link href="http://mzyy94.com/blog/2015/04/14/netagent-mondai5-6/"/>
+    <updated>2015-04-14T00:05:14+09:00</updated>
+    <id>http://mzyy94.com/blog/2015/04/14/netagent-mondai5-6</id>
+    <content type="html"><![CDATA[<p>ネットニュースサイトにも取り上げられ、盛り上がりを見せていたネットエージェントのいきなり最終面接mondaiのWrite-upその2です。</p>
+
+<ul>
+<li><a href="http://nlab.itmedia.co.jp/nl/articles/1503/30/news143.html">「解けたらいきなり最終面接」 ネットエージェント、今年も新卒向けに“難問”出題 - ねとらぼ</a></li>
+</ul>
+
+
+<p>某所ではこれらのmondaiを10分で解けたとの声が上がっているようで、世の中にはこの記事とは比べ物にならないくらい効率のよい解き方をしている方がいるようです。それらの解法と比べると、この記事の解法は全部解くのに数日かかっているので、内容が無いも同然という位置付けとなります。
+もし10分で解いた猛者たちの解法が公開されていたら、この記事ではなくそちらをご覧になることをお勧めします。</p>
+
+<p>昨日の<a href="http://mzyy94.com/blog/2015/04/13/netagent-mondai1-4/">mondai1からmondai4までのWrite-upの記事</a>に続き、今日はmondai5とmondai6のWrite-upを公開します。</p>
+
+<!-- more -->
+
+
+<h1>mondai5</h1>
+
+<p>mondai4.zipを解凍した際に出てきたファイル、mondai5は何だろうかと<code>file</code>コマンドを用いて調べると、ASCII textであるらしいことがわかります。テキストエディタで開いてみると、各行76文字で折り返されている、長いBASE64エンコードされた文字列が記載されていました。
+そのまま<code>base64</code>に食べさせてデコードします。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>base64 -D mondai5 -o mondai5-1
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>デコードしてできたmondai5-1を<code>file</code>コマンドで調べてみるとまたもASCII textで、内容も先ほどと同じように、各行76文字で折り返されたBASE64エンコード文字列が書かれています。
+同じように<code>base64</code>でデコードしてmondai5-2を作成します。</p>
+
+<p>作成したmondai5-2を調べると、なんとmondai5、mondai5-1と同じ形で、またも64エンコード文字列が書かれてるASCII textでした。
+これもまた<code>base64</code>でデコードしてmondai5-3を作成します。
+できあがった<strong>mondai5-3も同じ形式</strong>なので、同様の手順でmondai5-4を作成します。</p>
+
+<p>mondai5-4は<code>file</code>コマンドで調べると、以下のように返してきます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>file mondai5-4
+</span><span class='line'>mondai5-4: uuencoded or xxencoded text
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>uuencodeされた文字列が格納されているようです。
+<code>uudecode</code>コマンドでmondai5-5を作成します。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>uudecode -o mondai5-5 mondai5-4
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>mondai5-5を調べてみるとgzip圧縮ファイルだということがわかります。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>file mondai5-5
+</span><span class='line'>mondai5-5: gzip compressed data, from Unix, last modified: Thu Mar <span class="m">19</span> 17:31:56 2015
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>gunzip</code>で解凍してmondai5-6を作成します。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>gunzip -d mondai5-5 -c &gt; mondai5-6
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>mondai5-6を調査してみましょう。<code>file</code>コマンドによるとzip圧縮ファイルとのことなので、中身を調べてみます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>file mondai5-6
+</span><span class='line'>mondai5-6: Zip archive data, at least v1.0 to extract
+</span><span class='line'><span class="nv">$ </span>7z l mondai5-6
+</span><span class='line'>7-Zip <span class="o">[</span>64<span class="o">]</span> 9.20  Copyright <span class="o">(</span>c<span class="o">)</span> 1999-2010 Igor Pavlov  2010-11-18
+</span><span class='line'>p7zip Version 9.20 <span class="o">(</span><span class="nv">locale</span><span class="o">=</span>utf8,Utf16<span class="o">=</span>on,HugeFiles<span class="o">=</span>on,4 CPUs<span class="o">)</span>
+</span><span class='line'>
+</span><span class='line'>Listing archive: mondai5-6
+</span><span class='line'>
+</span><span class='line'>--
+</span><span class='line'><span class="nv">Path</span> <span class="o">=</span> mondai5-6
+</span><span class='line'><span class="nv">Type</span> <span class="o">=</span> zip
+</span><span class='line'>Physical <span class="nv">Size</span> <span class="o">=</span> 1472
+</span><span class='line'>
+</span><span class='line'>   Date      Time    Attr         Size   Compressed  Name
+</span><span class='line'>------------------- ----- ------------ ------------  ------------------------
+</span><span class='line'>2015-03-18 18:50:16 ....A         <span class="m">1332</span>         <span class="m">1332</span>  nek
+</span><span class='line'>------------------- ----- ------------ ------------  ------------------------
+</span><span class='line'>                                  <span class="m">1332</span>         <span class="m">1332</span>  <span class="m">1</span> files, <span class="m">0</span> folders
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>nekというファイルが格納されているようです。<code>7z</code>コマンドで解凍してnekを取り出します。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>7z x mondai5-6
+</span><span class='line'>
+</span><span class='line'>7-Zip <span class="o">[</span>64<span class="o">]</span> 9.20  Copyright <span class="o">(</span>c<span class="o">)</span> 1999-2010 Igor Pavlov  2010-11-18
+</span><span class='line'>p7zip Version 9.20 <span class="o">(</span><span class="nv">locale</span><span class="o">=</span>utf8,Utf16<span class="o">=</span>on,HugeFiles<span class="o">=</span>on,4 CPUs<span class="o">)</span>
+</span><span class='line'>
+</span><span class='line'>Processing archive: mondai5-6
+</span><span class='line'>
+</span><span class='line'>Extracting  nek
+</span><span class='line'>
+</span><span class='line'>Everything is Ok
+</span><span class='line'>
+</span><span class='line'>Size:       1332
+</span><span class='line'>Compressed: 1472
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>nekを調べると、bzip圧縮ファイルとのことなので、<code>bzip2</code>コマンドで解凍します。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>file nek
+</span><span class='line'>nek: bzip2 compressed data, block <span class="nv">size</span> <span class="o">=</span> 900k
+</span><span class='line'><span class="nv">$ </span>bzip2 -d nek -c &gt; mondai5-8
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>mondai5-8は7z圧縮ファイルとのことなので、<code>7z</code>コマンドで解凍します。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>file mondai5-8
+</span><span class='line'>mondai5-8: 7-zip archive data, version 0.3
+</span><span class='line'><span class="nv">$ </span>7z x mondai5-8
+</span><span class='line'>
+</span><span class='line'>7-Zip <span class="o">[</span>64<span class="o">]</span> 9.20  Copyright <span class="o">(</span>c<span class="o">)</span> 1999-2010 Igor Pavlov  2010-11-18
+</span><span class='line'>p7zip Version 9.20 <span class="o">(</span><span class="nv">locale</span><span class="o">=</span>utf8,Utf16<span class="o">=</span>on,HugeFiles<span class="o">=</span>on,4 CPUs<span class="o">)</span>
+</span><span class='line'>
+</span><span class='line'>Processing archive: mondai5-8
+</span><span class='line'>
+</span><span class='line'>Extracting  n
+</span><span class='line'>
+</span><span class='line'>Everything is Ok
+</span><span class='line'>
+</span><span class='line'>Size:       974
+</span><span class='line'>Compressed: 1082
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>これによって、nというファイルが展開されます。このファイルはrar圧縮ファイルとのことなので<code>unrar</code>で解凍します。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>file n
+</span><span class='line'>n: RAR archive data, v1d, os: Win32
+</span><span class='line'><span class="nv">$ </span>unrar x n
+</span><span class='line'>
+</span><span class='line'>UNRAR 5.20 beta <span class="m">1</span> freeware      Copyright <span class="o">(</span>c<span class="o">)</span> 1993-2014 Alexander Roshal
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>Extracting from n
+</span><span class='line'>
+</span><span class='line'>Extracting  ne                                                        OK
+</span><span class='line'>All OK
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>neというファイルが出てきましたね。neはlha圧縮されたファイルとのことなので、<code>lha</code>コマンドで解凍します。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>file ne
+</span><span class='line'>ne: LHarc 1.x/ARX archive data <span class="o">[</span>lh0<span class="o">]</span>
+</span><span class='line'><span class="nv">$ </span>lha x ne
+</span><span class='line'>nex     - Melted   :  o
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>nexファイルが出来上がりました。はい。調べるとxz圧縮なので<code>xz</code>で解凍します。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>file nex
+</span><span class='line'>nex: xz compressed data
+</span><span class='line'><span class="nv">$ </span>xz -d nex -c &gt; mondai5-12
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ちょっと疲れたのでコーヒーを飲みます。</p>
+
+<p>mondai5-12を<code>file</code>コマンドで調べると、なんと、判定してくれません！（貧弱なfileめ）</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>file mondai5-12
+</span><span class='line'>mondai5-12: data
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>マジックナンバーを見てみると、MSWIMとなってることが確認出ました。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>xxd mondai5-12 <span class="p">|</span> head -2
+</span><span class='line'>0000000: 4d53 <span class="m">5749</span> 4d00 <span class="m">0000</span> d000 <span class="m">0000</span> 000d <span class="m">0100</span>  MSWIM...........
+</span><span class='line'>0000010: <span class="m">8000</span> <span class="m">0000</span> <span class="m">0000</span> <span class="m">0000</span> 4ef7 dcb4 6e01 bfe4  ........N...n...
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Googleで「&#8221;MSWIM&#8221; magic number」として調べると、1番目に次のページがヒットします。</p>
+
+<p><a href="http://en.wikipedia.org/wiki/Windows_Imaging_Format">Windows Imaging Format - Wikipedia, the free encyclopedia</a></p>
+
+<p>このWikipediaの記事の最後に、<em>LZX圧縮だし7zとかで開けるよ（意訳）</em>と書いてあるので、<code>7z</code>で展開を試みてみます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>7z x mondai5-12
+</span><span class='line'>
+</span><span class='line'>7-Zip <span class="o">[</span>64<span class="o">]</span> 9.20  Copyright <span class="o">(</span>c<span class="o">)</span> 1999-2010 Igor Pavlov  2010-11-18
+</span><span class='line'>p7zip Version 9.20 <span class="o">(</span><span class="nv">locale</span><span class="o">=</span>utf8,Utf16<span class="o">=</span>on,HugeFiles<span class="o">=</span>on,4 CPUs<span class="o">)</span>
+</span><span class='line'>
+</span><span class='line'>Processing archive: mondai5-12
+</span><span class='line'>
+</span><span class='line'>Extracting  QRcode
+</span><span class='line'>
+</span><span class='line'>Everything is Ok
+</span><span class='line'>
+</span><span class='line'>Size:       16052
+</span><span class='line'>Compressed: 17310
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>あっさりと展開でき、QRcodeという名のファイルが出てきました。
+このファイルの形式はSun raster image dataとのことです。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>file QRcode
+</span><span class='line'>QRcode: Sun raster image data, <span class="m">123</span> x 123, 8-bit, RGB colormap
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>画像データらしいですが、開けるアプリケーションを持ち合わせていないので、ImageMagickに投げ込んでみます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>convert QRcode qrcode.png
+</span><span class='line'><span class="nv">$ </span>file qrcode.png
+</span><span class='line'>qrcode.png: PNG image data, <span class="m">123</span> x 123, 4-bit grayscale, non-interlaced
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>さすがImageMagick難なく変換できたすごい！
+簡単に開ける形式の画像ファイルができたので開いてみます。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2015/04/14/qrcode.png" alt="qrcode.png" /></p>
+
+<p><a href="http://mzyy94.com/blog/2014/12/07/seccon2014-online/">半分食べられてしまったパンケーキ</a>ではなく、普通のQRコードでした。</p>
+
+<p>適当なQRコードリーダーで読み込むと、以下のような文字列が得られます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>+BCcENQQxBEMEQAQwBEgEOgQw-
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>+で始まり-で終わる文字列、そう、UTF-7エンコード文字列です。
++と-の間はUTF-16のBASE64エンコード文字列（ただしパッディングの=が省略されている）なので、<code>nkf</code>で変換してみます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span><span class="nb">echo </span>BCcENQQxBEMEQAQwBEgEOgQw <span class="p">|</span> nkf -mB -W16B
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<!--
+Чебурашка
+-->
+
+
+<p>何やらロシア語らしきものが出てきます。意味を調べると、ロシアの絵本のキャラクターとのことです。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2015/04/14/Cheburashka.jpg" alt="Cheburashka.jpg" /></p>
+
+<p>これ以上解くものがなくなったので、これがmondai5の答えのようです。しかし、<code>7z</code>コマンドで解凍を試みると、パスワードが違うと言われる始末です。</p>
+
+<p>p7zipの<code>7z</code>コマンドによる非ASCII文字パスワード付き7zipの解凍・圧縮は、環境によって正しく処理されないということを、以前日本語パスワードをセットしたときに経験したのを思い出し、本家7zipの<code>7z.exe</code>を使って解凍をしてみます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>wine 7z.exe x mondai6.zip
+</span><span class='line'>
+</span><span class='line'>7-Zip <span class="o">[</span>64<span class="o">]</span> 9.35 beta  Copyright <span class="o">(</span>c<span class="o">)</span> 1999-2014 Igor Pavlov  2014-12-07
+</span><span class='line'>
+</span><span class='line'>Processing archive: mondai6.zip
+</span><span class='line'>
+</span><span class='line'>Extracting  hint6.txt
+</span><span class='line'>Enter password <span class="o">(</span>will not be echoed<span class="o">)</span>:
+</span><span class='line'>
+</span><span class='line'>Extracting  mondai6.txt
+</span><span class='line'>Extracting  mondai7.zip
+</span><span class='line'>
+</span><span class='line'>Everything is Ok
+</span><span class='line'>
+</span><span class='line'>Files: 3
+</span><span class='line'>Size:       70362410
+</span><span class='line'>Compressed: 70373511
+</span><span class='line'>
+</span><span class='line'>Kernel  <span class="nv">Time</span> <span class="o">=</span>     0.046 <span class="o">=</span>    1%
+</span><span class='line'>User    <span class="nv">Time</span> <span class="o">=</span>     0.780 <span class="o">=</span>   17%
+</span><span class='line'>Process <span class="nv">Time</span> <span class="o">=</span>     0.826 <span class="o">=</span>   18%    Virtual  <span class="nv">Memory</span> <span class="o">=</span>      <span class="m">2</span> MB
+</span><span class='line'>Global  <span class="nv">Time</span> <span class="o">=</span>     4.394 <span class="o">=</span>  100%    Physical <span class="nv">Memory</span> <span class="o">=</span>      <span class="m">4</span> MB
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<!--
+$ wine 7z.exe x mondai6.zip -pЧебурашка
+
+7-Zip [64] 9.35 beta  Copyright (c) 1999-2014 Igor Pavlov  2014-12-07
+
+Processing archive: mondai6.zip
+
+Extracting  hint6.txt
+Extracting  mondai6.txt
+Extracting  mondai7.zip
+
+Everything is Ok
+
+Files: 3
+Size:       70362410
+Compressed: 70373511
+
+Kernel  Time =     0.046 =    5%
+User    Time =     0.811 =   89%
+Process Time =     0.858 =   94%    Virtual  Memory =      2 MB
+Global  Time =     0.909 =  100%    Physical Memory =      4 MB
+-->
+
+
+<p>解凍できました！（やっと終わった。。）</p>
+
+<h1>mondai6</h1>
+
+<p>mondai6.txtには以下のように記載がありました。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>http://49.212.84.208/cgi-bin/hode7hb376dgeas6df783gr4/mondai6.cgi
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>実際にこのURLにアクセスしに行くと、次のようなレスポンスを得られました。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>curl -v http://49.212.84.208/cgi-bin/hode7hb376dgeas6df783gr4/mondai6.cgi
+</span><span class='line'>* Hostname was NOT found in DNS cache
+</span><span class='line'>*   Trying 49.212.84.208...
+</span><span class='line'>* Connected to 49.212.84.208 <span class="o">(</span>49.212.84.208<span class="o">)</span> port <span class="m">80</span> <span class="o">(</span><span class="c">#0)</span>
+</span><span class='line'>&gt; GET /cgi-bin/hode7hb376dgeas6df783gr4/mondai6.cgi HTTP/1.1
+</span><span class='line'>&gt; User-Agent: curl/7.37.1
+</span><span class='line'>&gt; Host: 49.212.84.208
+</span><span class='line'>&gt; Accept: */*
+</span><span class='line'>&gt;
+</span><span class='line'>&lt; HTTP/1.1 <span class="m">200</span> OK
+</span><span class='line'>&lt; Date: Tue, <span class="m">07</span> Apr <span class="m">2015</span> 08:20:21 GMT
+</span><span class='line'>* Server Apache/2.2.3 <span class="o">(</span>CentOS<span class="o">)</span> is not blacklisted
+</span><span class='line'>&lt; Server: Apache/2.2.3 <span class="o">(</span>CentOS<span class="o">)</span>
+</span><span class='line'>&lt; Connection: close
+</span><span class='line'>&lt; Transfer-Encoding: chunked
+</span><span class='line'>&lt; Content-Type: text/html<span class="p">;</span> <span class="nv">charset</span><span class="o">=</span>utf-8
+</span><span class='line'>&lt;
+</span><span class='line'><span class="o">{</span> <span class="o">[</span>data not shown<span class="o">]</span>
+</span><span class='line'>
+</span><span class='line'>* Closing connection 0
+</span><span class='line'>&lt;HTML&gt;&lt;BODY&gt;use R4000
+</span><span class='line'>&lt;/BODY&gt;&lt;/HTML&gt;
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>なにやらR4000を使えとの文字だけが返ってきました。
+R4000でGoogle検索すると、MIPSのプロセッサ情報がいくつか引っかかります。
+MIPS R4000を搭載したデバイスでアクセスすればいいのかな？と思ったので、
+Googleで「MIPS R4000 デバイス」で検索し、MIPS R4000搭載のデバイスを探してみました。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2015/04/14/mips-r4000-search.png" alt="mips-r4000-search.png" /></p>
+
+<p>検索結果1ページ目によると、PSPに搭載されているとの情報がいくつかヒットしていました。
+早速PSPのブラウザからアクセスする際に送られるUser-Agentを調べてみます。</p>
+
+<p><a href="http://www.openspc2.org/userAgent/">userAgent一覧/ユーザーエージェント一覧</a></p>
+
+<p>このサイトによると、PSPのUAは、</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>Mozilla/4.0 <span class="o">(</span>PSP PlayStation Portable<span class="o">)</span><span class="p">;</span> 2.00<span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>となっているようです。</p>
+
+<p>早速このUAで先ほどのURLにアクセスしてみます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>curl -v -A <span class="s1">&#39;Mozilla/4.0 (PSP PlayStation Portable); 2.00)&#39;</span> http://49.212.84.208/cgi-bin/hode7hb376dgeas6df783gr4/mondai6.cgi
+</span><span class='line'>* Hostname was NOT found in DNS cache
+</span><span class='line'>*   Trying 49.212.84.208...
+</span><span class='line'>* Connected to 49.212.84.208 <span class="o">(</span>49.212.84.208<span class="o">)</span> port <span class="m">80</span> <span class="o">(</span><span class="c">#0)</span>
+</span><span class='line'>&gt; GET /cgi-bin/hode7hb376dgeas6df783gr4/mondai6.cgi HTTP/1.1
+</span><span class='line'>&gt; User-Agent: Mozilla/4.0 <span class="o">(</span>PSP PlayStation Portable<span class="o">)</span><span class="p">;</span> 2.00<span class="o">)</span>
+</span><span class='line'>&gt; Host: 49.212.84.208
+</span><span class='line'>&gt; Accept: */*
+</span><span class='line'>&gt;
+</span><span class='line'>&lt; HTTP/1.1 <span class="m">200</span> OK
+</span><span class='line'>&lt; Date: Tue, <span class="m">07</span> Apr <span class="m">2015</span> 08:31:47 GMT
+</span><span class='line'>* Server Apache/2.2.3 <span class="o">(</span>CentOS<span class="o">)</span> is not blacklisted
+</span><span class='line'>&lt; Server: Apache/2.2.3 <span class="o">(</span>CentOS<span class="o">)</span>
+</span><span class='line'>&lt; Content-Length: 42
+</span><span class='line'>&lt; Connection: close
+</span><span class='line'>&lt; Content-Type: text/html<span class="p">;</span> <span class="nv">charset</span><span class="o">=</span>utf-8
+</span><span class='line'>&lt;
+</span><span class='line'>* Closing connection 0
+</span><span class='line'>&lt;HTML&gt;&lt;BODY&gt;de la Bucure?ti
+</span><span class='line'>&lt;/BODY&gt;&lt;/HTML&gt;
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>レスポンスが変わりました。知らない国の言葉で書かれていたのでGoogle翻訳にタイプしてみると、ルーマニア語であるとの情報を得ました。</p>
+
+<p>先ほどのレスポンスの一部文字が&#8221;?&#8221;となっているので、ルーマニア語を許容するヘッダーを付加すると表示が変わるかもしれないと思い、Accept-Languageにルーマニア語を指定してアクセスしてみました。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>curl -v -H <span class="s1">&#39;Accept-Language: ro-RO&#39;</span> -A <span class="s1">&#39;Mozilla/4.0 (PSP PlayStation Portable); 2.00)&#39;</span> http://49.212.84.208/cgi-bin/hode7hb376dgeas6df783gr4/mondai6.cgi
+</span><span class='line'>* Hostname was NOT found in DNS cache
+</span><span class='line'>*   Trying 49.212.84.208...
+</span><span class='line'>* Connected to 49.212.84.208 <span class="o">(</span>49.212.84.208<span class="o">)</span> port <span class="m">80</span> <span class="o">(</span><span class="c">#0)</span>
+</span><span class='line'>&gt; GET /cgi-bin/hode7hb376dgeas6df783gr4/mondai6.cgi HTTP/1.1
+</span><span class='line'>&gt; User-Agent: Mozilla/4.0 <span class="o">(</span>PSP PlayStation Portable<span class="o">)</span><span class="p">;</span> 2.00<span class="o">)</span>
+</span><span class='line'>&gt; Host: 49.212.84.208
+</span><span class='line'>&gt; Accept: */*
+</span><span class='line'>&gt; Accept-Language: ro-RO
+</span><span class='line'>&gt;
+</span><span class='line'>&lt; HTTP/1.1 <span class="m">200</span> OK
+</span><span class='line'>&lt; Date: Tue, <span class="m">07</span> Apr <span class="m">2015</span> 08:35:33 GMT
+</span><span class='line'>* Server Apache/2.2.3 <span class="o">(</span>CentOS<span class="o">)</span> is not blacklisted
+</span><span class='line'>&lt; Server: Apache/2.2.3 <span class="o">(</span>CentOS<span class="o">)</span>
+</span><span class='line'>&lt; Connection: close
+</span><span class='line'>&lt; Transfer-Encoding: chunked
+</span><span class='line'>&lt; Content-Type: text/html<span class="p">;</span> <span class="nv">charset</span><span class="o">=</span>utf-8
+</span><span class='line'>&lt;
+</span><span class='line'>* Closing connection 0
+</span><span class='line'>&lt;HTML&gt;&lt;BODY&gt;key: Minesweeper1990
+</span><span class='line'>&lt;/BODY&gt;&lt;/HTML&gt;
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>表示が変わり、mondai6の答えが出てきました。mondai7.zipのパスワードに指定して解凍してmondai6はおしまいです。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>7z x mondai7.zip
+</span><span class='line'>
+</span><span class='line'>7-Zip <span class="o">[</span>64<span class="o">]</span> 9.20  Copyright <span class="o">(</span>c<span class="o">)</span> 1999-2010 Igor Pavlov  2010-11-18
+</span><span class='line'>p7zip Version 9.20 <span class="o">(</span><span class="nv">locale</span><span class="o">=</span>utf8,Utf16<span class="o">=</span>on,HugeFiles<span class="o">=</span>on,4 CPUs<span class="o">)</span>
+</span><span class='line'>
+</span><span class='line'>Processing archive: mondai7.zip
+</span><span class='line'>
+</span><span class='line'>Extracting  hint7.txt
+</span><span class='line'>Enter password <span class="o">(</span>will not be echoed<span class="o">)</span> :
+</span><span class='line'>
+</span><span class='line'>Extracting  mondai8.zip
+</span><span class='line'>Extracting  normal.exe
+</span><span class='line'>
+</span><span class='line'>Everything is Ok
+</span><span class='line'>
+</span><span class='line'>Files: 3
+</span><span class='line'>Size:       70383731
+</span><span class='line'>Compressed: 70362268
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<!--
+$ 7z x mondai7.zip -pMinesweeper1990
+
+7-Zip [64] 9.20  Copyright (c) 1999-2010 Igor Pavlov  2010-11-18
+p7zip Version 9.20 (locale=utf8,Utf16=on,HugeFiles=on,4 CPUs)
+
+Processing archive: mondai7.zip
+
+Extracting  hint7.txt
+Extracting  mondai8.zip
+Extracting  normal.exe
+
+Everything is Ok
+
+Files: 3
+Size:       70383731
+Compressed: 70362268
+-->
+
+
+<p>明日はmondai7からmondai9までのWrite-upを公開する予定です。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[ネットエージェント最終面接問題 Write-up その1]]></title>
@@ -3231,275 +3900,6 @@ Arrayオブジェクトのpushは返り値が要素数になることを利用�
 <p>この方法をもとにCodeIQのお正月ダンジョンLv.3に挑んだコードがトップ画像になります。</p>
 
 <p>以上、豆知識的なメモでした。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[debianでiscsi target/initiator動作させるメモ]]></title>
-    <link href="http://mzyy94.com/blog/2014/01/09/iscsi-debian/"/>
-    <updated>2014-01-09T13:45:08+09:00</updated>
-    <id>http://mzyy94.com/blog/2014/01/09/iscsi-debian</id>
-    <content type="html"><![CDATA[<p>Linux上でのiSCSIパケット収集のためにVirtual Boxで作成した、Debian 7.0.0にiSCSI initiatorとtargetを入れたときのメモを起こしておきます。</p>
-
-<!-- more -->
-
-
-<p>今回iSCSIパケットの収集をする必要があったので、Linux上で動くように導入しました。
-iSCSIの説明はまた今度にするとして、簡単に用語を定義しておくと、
-iSCSIターゲット
-- iSCSIサーバー
-iSCSIイニシエータ
-- iSCSIクライアント</p>
-
-<p>対象とするシステムは以下のとおりです。</p>
-
-<table>
-<thead>
-<tr>
-<th style="text-align:center;">Initiator </th>
-<th style="text-align:center;">     Target</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center;">Debian 7.0.0</td>
-<td style="text-align:center;"> Debian 7.0.0</td>
-</tr>
-<tr>
-<td style="text-align:center;">仮想1コアCPU</td>
-<td style="text-align:center;">仮想1コアCPU</td>
-</tr>
-<tr>
-<td style="text-align:center;">512MB RAM  </td>
-<td style="text-align:center;"> 512MB RAM</td>
-</tr>
-<tr>
-<td style="text-align:center;">10GB SSD   </td>
-<td style="text-align:center;"> 10GB SSD</td>
-</tr>
-</tbody>
-</table>
-
-
-<p>全く同じシステムで、初期インストール時の設定はminimalです。（gccなどはおろか、sshdも入っていない状態）</p>
-
-<p>iSCSIに関するパッケージは以下のとおり。targetはiscsitargetとiscsitarget-dkms、イニシエータはopen-iscsiとなっています。</p>
-
-<p><code class="code">root@debian:~# aptitude search iscsi
-p   iscsitarget                                            - iSCSI Enterprise Target userland tools
-p   iscsitarget-dkms                                       - iSCSI Enterprise Target kernel module source - dkms version
-p   libiscsi-bin                                           - iSCSI client shared library - utilities
-p   libiscsi-dev                                           - iSCSI client shared library
-p   libiscsi1                                              - iSCSI client shared library
-p   open-iscsi                                             - High performance, transport independent iSCSI implementation</code></p>
-
-<p>まずサーバーとなるターゲットのインストールから。
-rootで<code>aptitude install iscsitarget iscsitarget-dkms</code>としてパッケージインストールして下記のとおりに設定し、iSCSIターゲットを有効にします。</p>
-
-<table>
-<thead>
-<tr>
-<th style="text-align:center;">ファイルパス </th>
-<th style="text-align:center;">   変更内容</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center;">/etc/default/iscsitarget </td>
-<td style="text-align:center;"> ISCSITARGET_ENABLE=falseをtrueに</td>
-</tr>
-</tbody>
-</table>
-
-
-<p>そして、iSCSIとして提供するデバイスを設定します。
-この設定ファイルは/etc/iet/ietd.confに追記して設定します。</p>
-
-<p>iSCSIターゲットの設定書式は設定ファイルにもサンプルがありますが、最小限の記述は以下の様な形式になります。
-ここではfileioタイプを用い、単一ファイルをあたかもSCSIデバイスとして利用する方法を取ります。</p>
-
-<p><code class="code">Target iqn.yyyy-mm.&lt;reversed domain name&gt;[:identifier]
-   Lun 0 Path=&lt;image file path&gt;,Type=fileio,ScsiId=&lt;id&gt;,ScsiSN=&lt;sn&gt;</code></p>
-
-<p>各所で紹介されている記事にはScsiIDやScsiSNを指定していないものもありましたが、open-iscsi 2.0.873@Debian 7.0.0ではSCSIデバイスとして認識されないのでちゃんとつけておきましょう（これがわからず1時間くらい考えこんでた）。</p>
-
-<p>Pathで指定するファイルは<code>dd if=/dev/zero of=/disk.img bs=1 count=0 seek=10G</code>などで適当につくってしまいましょう。
-今回はこのように設定しました。</p>
-
-<p><code class="code">Target iqn.2014-01.localhost:fileio.test
-   Lun 0 Path=/root/disk.img,Type=fileio,ScsiId=test,ScsiSN=test</code></p>
-
-<p>ここまででターゲットの設定は終わりなので、サービスを再起動します。</p>
-
-<p><code class="code">root@debian:~# service iscsitarget restart
-Removing iSCSI enterprise target devices: :.
-Starting iSCSI enterprise target service:.
-.</code></p>
-
-<p>エラーに関しては多くは出力されないので、<code>dmesg | tail</code>で確認するなりした方がいいと思います。
-正常に動作しているかどうかは<code>neststat -a | grep iscsi</code>や<code>lsof -i:3260</code>で状態をみて判断します。</p>
-
-<p>繋げてみないことには動作確認は取れませんので、クライアントとしてのopen-iscsiをインストールします。
-<code>aptitude install open-iscsi</code>として、iscsiイニシエータを導入します。</p>
-
-<p>最低限の動作には設定は必要ないのでこのままコマンドを入力して接続していきます。
-<code>dpkg -L open-iscsi</code>すると、いくつかiscsiで始まるコマンドがインストールされていますが、すべてを統合的に実行できるiscsiadmを利用します。</p>
-
-<p>iscsiadmに関して詳しいことはmanを見るとして、今回繋げるためには以下のようにして簡単ログインしてしまいましょう。</p>
-
-<p><code class="code">root@debian:~# iscsiadm -m discovery -t sendtargets -p 127.0.0.1 -l</code></p>
-
-<p>オプションに関して詳しいことはmanをみてもらうとして、今回使ったオプションは次のような意味を持っています。</p>
-
-<table>
-<thead>
-<tr>
-<th>Option </th>
-<th> Sense</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-m     </td>
-<td> モード指定</td>
-</tr>
-<tr>
-<td>discovery</td>
-<td>iSCSIターゲット探索</td>
-</tr>
-<tr>
-<td>-t     </td>
-<td>タイプ指定</td>
-</tr>
-<tr>
-<td>sendtargets</td>
-<td>準iSCSIプロトコルを用いているターゲット探索</td>
-</tr>
-<tr>
-<td>-p</td>
-<td>ネットワークポータル指定</td>
-</tr>
-<tr>
-<td>127.0.0.1</td>
-<td>指定ネットワークアドレス</td>
-</tr>
-<tr>
-<td>-l</td>
-<td>ログイン</td>
-</tr>
-</tbody>
-</table>
-
-
-<p>これで接続し、ちゃんとSCSIデバイスとして認識できていればdmesgに以下のように出ます。</p>
-
-<p><code class="code">[ 6484.501041] scsi3 : iSCSI Initiator over TCP/IP
-[ 6484.764505] scsi 3:0:0:0: Direct-Access     IET      VIRTUAL-DISK     0    PQ: 0 ANSI: 4
-[ 6484.765289] sd 3:0:0:0: [sdb] 2097152 512-byte logical blocks: (1.07 GB/1.00 GiB)
-[ 6484.765325] sd 3:0:0:0: [sdb] Write Protect is off
-[ 6484.765328] sd 3:0:0:0: [sdb] Mode Sense: 77 00 00 08
-[ 6484.765389] sd 3:0:0:0: [sdb] Write cache: disabled, read cache: enabled, doesn't support DPO or FUA
-[ 6484.766030]  sdb: unknown partition table
-[ 6484.766303] sd 3:0:0:0: [sdb] Attached SCSI disk
-[ 6484.766417] sd 3:0:0:0: Attached scsi generic sg2 type 0</code></p>
-
-<p>こんなかんじの出力があれば、大体検討はつくと思いますが、/dev/sdbにiSCSIターゲットがSCSIデバイスとして認識されています。
-このブロックデバイスをパーティショニングし、フォーマットし、マウントすることで実際にディスクとして利用することが出来ます。
-こんなかんじです。</p>
-
-<pre class="code">root@debian:~# fdisk /dev/sdb
-Device contains neither a valid DOS partition table, nor Sun, SGI or OSF disklabel
-Building a new DOS disklabel with disk identifier 0x86017ce7.
-Changes will remain in memory only, until you decide to write them.
-After that, of course, the previous content won't be recoverable.
-
-Warning: invalid flag 0x0000 of partition table 4 will be corrected by w(rite)
-
-Command (m for help): n
-Partition type:
-   p   primary (0 primary, 0 extended, 4 free)
-   e   extended
-Select (default p):
-Using default response p
-Partition number (1-4, default 1):
-Using default value 1
-First sector (2048-2097151, default 2048):
-Using default value 2048
-Last sector, +sectors or +size{K,M,G} (2048-2097151, default 2097151):
-Using default value 2097151
-
-Command (m for help): w
-The partition table has been altered!
-
-Calling ioctl() to re-read partition table.
-Syncing disks.
-root@debian:~# mkfs -t ext4 /dev/sdb1
-mke2fs 1.42.5 (29-Jul-2012)
-Filesystem label=
-OS type: Linux
-Block size=4096 (log=2)
-Fragment size=4096 (log=2)
-Stride=0 blocks, Stripe width=0 blocks
-65536 inodes, 261888 blocks
-13094 blocks (5.00%) reserved for the super user
-First data block=0
-Maximum filesystem blocks=268435456
-8 block groups
-32768 blocks per group, 32768 fragments per group
-8192 inodes per group
-Superblock backups stored on blocks:
-        32768, 98304, 163840, 229376
- 
-Allocating group tables: done
-Writing inode tables: done
-Creating journal (4096 blocks): done
-Writing superblocks and filesystem accounting information: done
- 
-root@debian:~# mkdir mount
-root@debian:~# mount /dev/sdb1 mount/
-root@debian:~# df -h
-Filesystem                                              Size  Used Avail Use% Mounted on
-rootfs                                                   19G 1022M   17G   6% /
-udev                                                     10M     0   10M   0% /dev
-tmpfs                                                    50M  240K   50M   1% /run
-/dev/disk/by-uuid/f5aa3b2c-46ae-4b43-8191-1173de38f1d8   19G 1022M   17G   6% /
-tmpfs                                                   5.0M     0  5.0M   0% /run/lock
-tmpfs                                                   276M     0  276M   0% /run/shm
-/dev/sdb1                                              1007M   18M  939M   2% /root/mount</pre>
-
-
-<p>あとはマウントしたディレクトリに対して好き放題アクセスしたら、切り離しておきます。
-<code class="code">root@debian:~# iscsiadm -m session -u</code>
-オプションは、</p>
-
-<table>
-<thead>
-<tr>
-<th>Option </th>
-<th> Sense</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-m     </td>
-<td> モード指定</td>
-</tr>
-<tr>
-<td>session</td>
-<td>現在はられているセッションを指定</td>
-</tr>
-<tr>
-<td>-u</td>
-<td>ログアウト</td>
-</tr>
-</tbody>
-</table>
-
-
-<p>以上がまっさらな状態からiSCSIイニシエータ／ターゲットを導入して繋げるまで、です。
-これらをインストールして動作するまでにしたログに関してはgistにあげてありますので、より詳しく見たい方などよければご参照ください。</p>
-
-<p><a href="https://gist.github.com/mzyy94/8329470">https://gist.github.com/mzyy94/8329470</a></p>
 ]]></content>
   </entry>
   
