@@ -574,29 +574,29 @@ mondai4.pngはヒエログリフが書かれた画像です。ヒエログリフ
 </span><span class='line'><span class="c1"># Wordlist generator</span>
 </span><span class='line'><span class="n">queue</span> <span class="o">=</span> <span class="o">[]</span>
 </span><span class='line'><span class="no">Thread</span><span class="o">.</span><span class="n">start</span> <span class="p">{</span>
-</span><span class='line'>    <span class="n">q</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="o">]</span>
+</span><span class='line'>  <span class="n">q</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="o">]</span>
 </span><span class='line'>  <span class="k">for</span> <span class="n">p0</span> <span class="k">in</span> <span class="n">list</span> <span class="k">do</span>
 </span><span class='line'>      <span class="k">for</span> <span class="n">p1</span> <span class="k">in</span> <span class="n">list</span> <span class="k">do</span>
 </span><span class='line'>          <span class="k">for</span> <span class="n">p2</span> <span class="k">in</span> <span class="n">list</span> <span class="k">do</span>
 </span><span class='line'>              <span class="k">for</span> <span class="n">p3</span> <span class="k">in</span> <span class="n">list</span> <span class="k">do</span>
 </span><span class='line'>                  <span class="k">for</span> <span class="n">p4</span> <span class="k">in</span> <span class="n">list</span> <span class="k">do</span>
 </span><span class='line'>                      <span class="k">for</span> <span class="n">p5</span> <span class="k">in</span> <span class="n">list</span> <span class="k">do</span>
-</span><span class='line'>                            <span class="n">q</span><span class="o">[</span><span class="mi">5</span><span class="o">]</span> <span class="o">=</span> <span class="n">p5</span>
+</span><span class='line'>                          <span class="n">q</span><span class="o">[</span><span class="mi">5</span><span class="o">]</span> <span class="o">=</span> <span class="n">p5</span>
 </span><span class='line'>                          <span class="n">qq</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">join</span>
 </span><span class='line'>                          <span class="k">unless</span> <span class="n">qq</span> <span class="o">=~</span> <span class="sr">/^(.)\1/</span> <span class="k">then</span>
 </span><span class='line'>                              <span class="n">locker</span><span class="o">.</span><span class="n">synchronize</span> <span class="p">{</span> <span class="n">queue</span><span class="o">.</span><span class="n">push</span> <span class="n">qq</span> <span class="p">}</span>
 </span><span class='line'>                          <span class="k">end</span>
 </span><span class='line'>                      <span class="k">end</span>
-</span><span class='line'>                        <span class="n">q</span><span class="o">[</span><span class="mi">4</span><span class="o">]</span> <span class="o">=</span> <span class="n">p4</span>
+</span><span class='line'>                      <span class="n">q</span><span class="o">[</span><span class="mi">4</span><span class="o">]</span> <span class="o">=</span> <span class="n">p4</span>
 </span><span class='line'>                  <span class="k">end</span>
-</span><span class='line'>                    <span class="n">q</span><span class="o">[</span><span class="mi">3</span><span class="o">]</span> <span class="o">=</span> <span class="n">p3</span>
+</span><span class='line'>                  <span class="n">q</span><span class="o">[</span><span class="mi">3</span><span class="o">]</span> <span class="o">=</span> <span class="n">p3</span>
 </span><span class='line'>              <span class="k">end</span>
-</span><span class='line'>                <span class="n">q</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="o">=</span> <span class="n">p2</span>
+</span><span class='line'>              <span class="n">q</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="o">=</span> <span class="n">p2</span>
 </span><span class='line'>          <span class="k">end</span>
-</span><span class='line'>            <span class="n">q</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">p1</span>
+</span><span class='line'>          <span class="n">q</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">p1</span>
 </span><span class='line'>      <span class="k">end</span>
-</span><span class='line'>        <span class="n">q</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="n">p0</span>
-</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>      <span class="n">q</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="n">p0</span>
+</span><span class='line'>  <span class="k">end</span>
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'>
 </span><span class='line'>
