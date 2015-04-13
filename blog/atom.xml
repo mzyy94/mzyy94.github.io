@@ -4,7 +4,7 @@
   <title><![CDATA[犬アイコンのみっきー]]></title>
   <link href="http://mzyy94.com/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2015-03-18T11:23:12+09:00</updated>
+  <updated>2015-04-13T14:08:21+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -12,6 +12,539 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[ネットエージェント最終面接問題 Write-up その1]]></title>
+    <link href="http://mzyy94.com/blog/2015/04/13/netagent-mondai1-4/"/>
+    <updated>2015-04-13T14:08:49+09:00</updated>
+    <id>http://mzyy94.com/blog/2015/04/13/netagent-mondai1-4</id>
+    <content type="html"><![CDATA[<p>恒例のネットエージェントのいきなり最終面接問題が3月末に公開されました。</p>
+
+<ul>
+<li><a href="http://www.netagent.co.jp/recruit/newgraduates_2016.html">2016年度 新卒採用｜ネットエージェント株式会社</a></li>
+</ul>
+
+
+<p>ネットニュースサイトにも取り上げられ（(「解けたらいきなり最終面接」 ネットエージェント、今年も新卒向けに“難問”出題 - ねとらぼ)[<a href="http://nlab.itmedia.co.jp/nl/articles/1503/30/news143.html">http://nlab.itmedia.co.jp/nl/articles/1503/30/news143.html</a>]）、盛り上がりを見せていたあのmondaiです。
+2016年新卒として、書類審査や2次選考を飛ばして最終面接を受けられるということなので本腰を入れて取り組んでみました。
+このいきなり最終面接問題に関しては、全問正解者しなければ回答の公開をしてはいけないとのことだったので察しがつくと思いますが、なんとかすべての問題をクリアできました。
+これらmondaiを解いてきた過程をWrite-upとして残すことにしたので、興味がある方はご覧ください。</p>
+
+<p>この記事ではmondai1からmondai4までの回答を掲載しています。</p>
+
+<!-- more -->
+
+
+<h1>mondai1</h1>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>選考過程を縮めたい方に問題を用意いたしました。問題に答えると最終面接から始められます。 
+</span><span class='line'>※２０１６年３月卒業予定の方以外も挑戦していただけますが、採用対象とはなりません。
+</span><span class='line'>問題：LzYxMDIvcGouaGJwLy86cHR0aA==
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>BASE64でエンコードされた文字列を渡されるので、ちょちょっとコマンドを打つと逆さまになったURLがでてきます。</p>
+
+<p>なので<code>rev</code>コマンドを噛ませて逆順にしてアクセス可能なURLが表示されたらmondai1はおしまいです。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span><span class="nb">echo </span><span class="nv">LzYxMDIvcGouaGJwLy86cHR0aA</span><span class="o">==</span> <span class="p">|</span> base64 -D <span class="p">|</span> rev
+</span></code></pre></td></tr></table></div></figure>
+
+
+<!--
+http://pbh.jp/2016/
+-->
+
+
+<h1>modai2</h1>
+
+<p>mondai1の答えのURLにアクセスするとzip圧縮されたファイルを入手でき、そのファイルを展開するとmondai2.txtとzip形式の圧縮ファイルがあります。mondai2.txtの内容は以下の通りでした。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>2016の平方根の小数点以下2016桁目から20桁をパスワードにしました。
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>大きな有効数字の平方根を扱えるコマンドが*nix系システムには存在します。そう<code>bc</code>コマンドです。</p>
+
+<p>この<code>bc</code>コマンドを用いて小数点以下2035桁(2015番目から20桁)の2016の平方根を計算させます。
+<code>bc</code>コマンドによる出力は、適当な桁数で折り返しがあるので<code>perl</code>の正規表現を用いて削り、<code>tail</code>で終端から20バイトを取り出します。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span><span class="nb">echo</span> <span class="s1">&#39;scale=2015+20;sqrt(2016)&#39;</span> <span class="p">|</span> bc <span class="p">|</span> perl -pe<span class="s1">&#39;s/\\?\n//&#39;</span> <span class="p">|</span> tail -c20
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<!--
+74571026133060730881
+-->
+
+
+<p>これをパスワードとして入力すればmondai3.zipを解凍できます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>7z x mondai3.zip
+</span><span class='line'>
+</span><span class='line'>7-Zip <span class="o">[</span>64<span class="o">]</span> 9.20  Copyright <span class="o">(</span>c<span class="o">)</span> 1999-2010 Igor Pavlov  2010-11-18
+</span><span class='line'>p7zip Version 9.20 <span class="o">(</span><span class="nv">locale</span><span class="o">=</span>utf8,Utf16<span class="o">=</span>on,HugeFiles<span class="o">=</span>on,4 CPUs<span class="o">)</span>
+</span><span class='line'>
+</span><span class='line'>Processing archive: mondai3.zip
+</span><span class='line'>
+</span><span class='line'>Extracting  hint3.txt
+</span><span class='line'>Enter password <span class="o">(</span>will not be echoed<span class="o">)</span> :
+</span><span class='line'>
+</span><span class='line'>Extracting  mondai3.txt
+</span><span class='line'>Extracting  mondai4.zip
+</span><span class='line'>
+</span><span class='line'>Everything is Ok
+</span><span class='line'>
+</span><span class='line'>Files: 3
+</span><span class='line'>Size:       70392202
+</span><span class='line'>Compressed: 70392736
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<!--
+
+$ 7za x mondai3.zip -p74571026133060730881
+
+7-Zip (a) [64] 9.38 beta  Copyright (c) 1999-2014 Igor Pavlov  2015-01-03
+p7zip Version 9.38.1 (locale=ja_JP.UTF-8,Utf16=on,HugeFiles=on,4 CPUs)
+
+Processing archive: mondai3.zip
+
+Extracting  hint3.txt
+Extracting  mondai3.txt
+Extracting  mondai4.zip
+
+Everything is Ok
+
+Files: 3
+Size:       70392202
+Compressed: 70392736
+
+-->
+
+
+<h1>mondai3</h1>
+
+<p>mondai3.txtの中身は以下の通り。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>ハッシュパスワード問題
+</span><span class='line'>答え：３つの答えをつなげて
+</span><span class='line'>
+</span><span class='line'>0f1aae8b8398c20f81e1c36e349a7880c9234c63
+</span><span class='line'>01821f5469967540a5a774197463e8c4d658f588
+</span><span class='line'>264f39cab871e4cfd65b3a002f7255888bb5ed97
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>パスワードを3つに分割してSHA1ハッシュを生成したものが記されており、それらの元の文字列を探し出せばいいというもの。広いWebの世界には単純な単語のハッシュ化前後のテーブルが存在し、手軽に利用できるものに
+<a href="http://www.hashkiller.co.uk/sha1-decrypter.aspx">SHA1 Decrypter - SHA1 Decryption, Free SHA1 Decryptor, Online SHA1 Cracker, SHA1 Security</a>などがあります。このサイトに問題のハッシュ値をペーストして探索をかけると1秒足らずでハッシュ化前の数値を返してくれます。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2015/04/13/hashkiller.png" alt="hashkiller.png" /></p>
+
+<p>ここで得られた単語をそのままくっつけてパスワードに指定すると、mondai4.zipが解凍できます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>7z x mondai4.zip
+</span><span class='line'>
+</span><span class='line'>7-Zip <span class="o">[</span>64<span class="o">]</span> 9.20  Copyright <span class="o">(</span>c<span class="o">)</span> 1999-2010 Igor Pavlov  2010-11-18
+</span><span class='line'>p7zip Version 9.20 <span class="o">(</span><span class="nv">locale</span><span class="o">=</span>utf8,Utf16<span class="o">=</span>on,HugeFiles<span class="o">=</span>on,4 CPUs<span class="o">)</span>
+</span><span class='line'>
+</span><span class='line'>Processing archive: mondai4.zip
+</span><span class='line'>
+</span><span class='line'>Extracting  hint4.txt
+</span><span class='line'>Enter password <span class="o">(</span>will not be echoed<span class="o">)</span> :
+</span><span class='line'>
+</span><span class='line'>Extracting  mondai4.png
+</span><span class='line'>Extracting  mondai5.zip
+</span><span class='line'>
+</span><span class='line'>Everything is Ok
+</span><span class='line'>
+</span><span class='line'>Files: 3
+</span><span class='line'>Size:       70391846
+</span><span class='line'>Compressed: 70391891
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<!--
+$ 7za x mondai4.zip -ptokyouenoline
+
+7-Zip (a) [64] 9.38 beta  Copyright (c) 1999-2014 Igor Pavlov  2015-01-03
+p7zip Version 9.38.1 (locale=ja_JP.UTF-8,Utf16=on,HugeFiles=on,4 CPUs)
+
+Processing archive: mondai4.zip
+
+Extracting  hint4.txt
+Extracting  mondai4.png
+Extracting  mondai5.zip
+
+Everything is Ok
+
+Files: 3
+Size:       70391846
+Compressed: 70391891
+
+-->
+
+
+<h1>mondai4</h1>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2015/04/13/mondai4.png" alt="mondai4.png" />
+mondai4.pngはヒエログリフが書かれた画像です。ヒエログリフを読解できなければ問題文すら読めない状況なので、ヒエログリフ学習サイトを探して学びます。以下のサイトを参考に3分ほどで学びました。</p>
+
+<ul>
+<li><a href="http://www004.upp.so-net.ne.jp/anubis/j50/jp50.html">日本語五十音をヒエログリフで表現</a></li>
+</ul>
+
+
+<p>ヒエログリフを学び終わると、すらすらと画像の文字が読めるようになるので、日本語に起こします。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>のらかちいくち　てちのちんちもちみら　もにみちもにみら　もにとちのにみちもちい　のらもらま
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ぱっと見で平仮名で換字式暗号化された英文もしくはローマ字の文だと想像がつきます。ここで適当な文節として二言目の「てちのちんちもちみら」をGoogleで検索してみると、上位にヒットしたものにこの暗号の手がかりがでてきます。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2015/04/13/techinochi-search.png" alt="techinochi-search.png" /></p>
+
+<p>日本語キーボードのかな入力モードにしてローマ字の文を打った文は、母音に位置する「ら」や「ち」が多く登場することから、この暗号方式はカナ入力のままのローマ字打ちだと断定しました。
+しかし英字キーボードユーザーなので、かなが印刷されたキーボードを持っていません。仕方なしにWikimediaでそれっぽい画像を拾ってきて、平仮名⇆アルファベット変換を行うと、上記の平仮名文字列は以下のように変換できます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>kotaeha wakayamano minamino misakinamae komoji
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>「答えは和歌山の南の岬名前小文字」とのことです。早速Googleマップを開いて和歌山県の南にある岬を探します。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2015/04/13/wakayama-map.png" alt="wakayama-map.png" /></p>
+
+<p>探すと潮岬（読み：しおのみさき）が和歌山の南部にある岬なので、これをアルファベット小文字にしてパスワードにして回答終了…だとおもってました。
+<strong>shionomisaki</strong>としてタイプしてもパスワードが間違っていると言われ、解凍できません。「もしや違う岬なのかな？」と思い、和歌山の岬をいろいろ調べて同じように入力しても開きません。もうだめ&#8230;と心折れそうになってしまったので、あとはBruteForceに任せようと、次のような適当なスクリプトを書いて放置しました。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+<span class='line-number'>85</span>
+<span class='line-number'>86</span>
+<span class='line-number'>87</span>
+<span class='line-number'>88</span>
+<span class='line-number'>89</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#!/usr/bin/env ruby</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># kana 50 components</span>
+</span><span class='line'><span class="n">vowel5</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="s1">&#39;u&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="o">]</span>
+</span><span class='line'><span class="n">consonant5</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="s1">&#39;sh&#39;</span><span class="p">,</span> <span class="s1">&#39;t&#39;</span><span class="p">,</span> <span class="s1">&#39;ch&#39;</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">,</span> <span class="s1">&#39;j&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;p&#39;</span><span class="o">]</span>
+</span><span class='line'><span class="n">vowel3</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;u&#39;</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="o">]</span>
+</span><span class='line'><span class="n">consonant3</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;ky&#39;</span><span class="p">,</span> <span class="s1">&#39;sy&#39;</span><span class="p">,</span> <span class="s1">&#39;ts&#39;</span><span class="p">,</span> <span class="s1">&#39;ny&#39;</span><span class="p">,</span> <span class="s1">&#39;hy&#39;</span><span class="p">,</span> <span class="s1">&#39;by&#39;</span><span class="p">,</span> <span class="s1">&#39;gy&#39;</span><span class="p">,</span> <span class="s1">&#39;py&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="o">]</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># kana list</span>
+</span><span class='line'><span class="n">list</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;&#39;</span><span class="o">]</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">for</span> <span class="n">v</span> <span class="k">in</span> <span class="n">vowel5</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">list</span><span class="o">.</span><span class="n">push</span> <span class="n">v</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">for</span> <span class="n">c</span> <span class="k">in</span> <span class="n">consonant5</span> <span class="k">do</span>
+</span><span class='line'>  <span class="k">for</span> <span class="n">v</span> <span class="k">in</span> <span class="n">vowel5</span> <span class="k">do</span>
+</span><span class='line'>      <span class="n">list</span><span class="o">.</span><span class="n">push</span> <span class="n">c</span> <span class="o">+</span> <span class="n">v</span>
+</span><span class='line'>      <span class="n">list</span><span class="o">.</span><span class="n">push</span> <span class="n">c</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">+</span> <span class="n">c</span> <span class="o">+</span> <span class="n">v</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">for</span> <span class="n">c</span> <span class="k">in</span> <span class="n">consonant3</span> <span class="k">do</span>
+</span><span class='line'>  <span class="k">for</span> <span class="n">v</span> <span class="k">in</span> <span class="n">vowel3</span> <span class="k">do</span>
+</span><span class='line'>      <span class="n">list</span><span class="o">.</span><span class="n">push</span> <span class="n">c</span> <span class="o">+</span> <span class="n">v</span>
+</span><span class='line'>      <span class="n">list</span><span class="o">.</span><span class="n">push</span> <span class="n">c</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">+</span> <span class="n">c</span> <span class="o">+</span> <span class="n">v</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">list</span><span class="o">.</span><span class="n">push</span> <span class="s1">&#39;nn&#39;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="n">locker</span> <span class="o">=</span> <span class="no">Mutex</span><span class="o">::</span><span class="kp">new</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># Wordlist generator</span>
+</span><span class='line'><span class="n">queue</span> <span class="o">=</span> <span class="o">[]</span>
+</span><span class='line'><span class="no">Thread</span><span class="o">.</span><span class="n">start</span> <span class="p">{</span>
+</span><span class='line'>    <span class="n">q</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="o">]</span>
+</span><span class='line'>  <span class="k">for</span> <span class="n">p0</span> <span class="k">in</span> <span class="n">list</span> <span class="k">do</span>
+</span><span class='line'>      <span class="k">for</span> <span class="n">p1</span> <span class="k">in</span> <span class="n">list</span> <span class="k">do</span>
+</span><span class='line'>          <span class="k">for</span> <span class="n">p2</span> <span class="k">in</span> <span class="n">list</span> <span class="k">do</span>
+</span><span class='line'>              <span class="k">for</span> <span class="n">p3</span> <span class="k">in</span> <span class="n">list</span> <span class="k">do</span>
+</span><span class='line'>                  <span class="k">for</span> <span class="n">p4</span> <span class="k">in</span> <span class="n">list</span> <span class="k">do</span>
+</span><span class='line'>                      <span class="k">for</span> <span class="n">p5</span> <span class="k">in</span> <span class="n">list</span> <span class="k">do</span>
+</span><span class='line'>                            <span class="n">q</span><span class="o">[</span><span class="mi">5</span><span class="o">]</span> <span class="o">=</span> <span class="n">p5</span>
+</span><span class='line'>                          <span class="n">qq</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">join</span>
+</span><span class='line'>                          <span class="k">unless</span> <span class="n">qq</span> <span class="o">=~</span> <span class="sr">/^(.)\1/</span> <span class="k">then</span>
+</span><span class='line'>                              <span class="n">locker</span><span class="o">.</span><span class="n">synchronize</span> <span class="p">{</span> <span class="n">queue</span><span class="o">.</span><span class="n">push</span> <span class="n">qq</span> <span class="p">}</span>
+</span><span class='line'>                          <span class="k">end</span>
+</span><span class='line'>                      <span class="k">end</span>
+</span><span class='line'>                        <span class="n">q</span><span class="o">[</span><span class="mi">4</span><span class="o">]</span> <span class="o">=</span> <span class="n">p4</span>
+</span><span class='line'>                  <span class="k">end</span>
+</span><span class='line'>                    <span class="n">q</span><span class="o">[</span><span class="mi">3</span><span class="o">]</span> <span class="o">=</span> <span class="n">p3</span>
+</span><span class='line'>              <span class="k">end</span>
+</span><span class='line'>                <span class="n">q</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="o">=</span> <span class="n">p2</span>
+</span><span class='line'>          <span class="k">end</span>
+</span><span class='line'>            <span class="n">q</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">p1</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>        <span class="n">q</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="n">p0</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># Password cracker</span>
+</span><span class='line'><span class="nb">puts</span> <span class="s1">&#39;Cracking...&#39;</span>
+</span><span class='line'><span class="n">thread_count</span> <span class="o">=</span> <span class="mi">128</span>
+</span><span class='line'><span class="n">threads</span> <span class="o">=</span> <span class="o">[]</span>
+</span><span class='line'><span class="n">found</span> <span class="o">=</span> <span class="kp">false</span>
+</span><span class='line'><span class="n">thread_count</span><span class="o">.</span><span class="n">times</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
+</span><span class='line'>  <span class="n">threads</span> <span class="o">&lt;&lt;</span> <span class="no">Thread</span><span class="o">.</span><span class="n">start</span> <span class="p">{</span>
+</span><span class='line'>      <span class="kp">loop</span> <span class="k">do</span>
+</span><span class='line'>          <span class="k">break</span> <span class="k">if</span> <span class="n">found</span>
+</span><span class='line'>          <span class="k">break</span> <span class="k">unless</span> <span class="n">queue</span>
+</span><span class='line'>          <span class="n">pass</span> <span class="o">=</span> <span class="n">locker</span><span class="o">.</span><span class="n">synchronize</span> <span class="p">{</span> <span class="n">queue</span><span class="o">.</span><span class="n">shift</span> <span class="p">}</span> <span class="o">+</span> <span class="s2">&quot;misaki&quot;</span>
+</span><span class='line'>          <span class="n">t</span> <span class="o">=</span> <span class="nb">system</span> <span class="s2">&quot;7za x -p</span><span class="si">#{</span><span class="n">pass</span><span class="si">}</span><span class="s2"> -so mondai5.zip &gt; /dev/null 2&gt; /dev/null&quot;</span>
+</span><span class='line'>          <span class="k">if</span> <span class="n">t</span> <span class="k">then</span>
+</span><span class='line'>              <span class="n">found</span> <span class="o">=</span> <span class="kp">true</span>
+</span><span class='line'>              <span class="nb">puts</span> <span class="s1">&#39;## PASS FOUND ##&#39;</span>
+</span><span class='line'>              <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;pass.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="n">f</span><span class="o">.</span><span class="n">puts</span> <span class="n">pass</span> <span class="p">}</span>
+</span><span class='line'>              <span class="nb">puts</span> <span class="s1">&#39;pass saved.&#39;</span>
+</span><span class='line'>          <span class="k">end</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="n">threads</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">th</span><span class="o">|</span> <span class="n">th</span><span class="o">.</span><span class="n">join</span> <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>1時間ほどお風呂に入って放置していたら、答えが吐き出されていました。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span><span class="nb">time</span> ./solver.rb
+</span><span class='line'>Cracking...
+</span><span class='line'><span class="c">## PASS FOUND ##</span>
+</span><span class='line'>pass saved.
+</span><span class='line'>
+</span><span class='line'>real    16m44.573s
+</span><span class='line'>user    30m36.171s
+</span><span class='line'>sys     18m7.269s
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>潮岬（読み：しおのみさき）の「潮」の字を「うしお」と読み違えて（？）パスワードに設定していたようです。</p>
+
+<p>このパスワードを入力することでmondai5.zipを展開することができました。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>7z x mondai5.zip
+</span><span class='line'>
+</span><span class='line'>7-Zip <span class="o">[</span>64<span class="o">]</span> 9.20  Copyright <span class="o">(</span>c<span class="o">)</span> 1999-2010 Igor Pavlov  2010-11-18
+</span><span class='line'>p7zip Version 9.20 <span class="o">(</span><span class="nv">locale</span><span class="o">=</span>utf8,Utf16<span class="o">=</span>on,HugeFiles<span class="o">=</span>on,4 CPUs<span class="o">)</span>
+</span><span class='line'>
+</span><span class='line'>Processing archive: mondai5.zip
+</span><span class='line'>
+</span><span class='line'>Extracting  hint5.txt
+</span><span class='line'>Enter password <span class="o">(</span>will not be echoed<span class="o">)</span> :
+</span><span class='line'>
+</span><span class='line'>Extracting  mondai5
+</span><span class='line'>Extracting  mondai6.zip
+</span><span class='line'>
+</span><span class='line'>Everything is Ok
+</span><span class='line'>
+</span><span class='line'>Files: 3
+</span><span class='line'>Size:       70380412
+</span><span class='line'>Compressed: 70378640
+</span></code></pre></td></tr></table></div></figure>
+
+
+<!--
+
+$ 7za x mondai5.zip -pushiomisaki
+
+7-Zip (a) [64] 9.38 beta  Copyright (c) 1999-2014 Igor Pavlov  2015-01-03
+p7zip Version 9.38.1 (locale=ja_JP.UTF-8,Utf16=on,HugeFiles=on,4 CPUs)
+
+Processing archive: mondai5.zip
+
+Extracting  hint5.txt
+Extracting  mondai5
+Extracting  mondai6.zip
+
+Everything is Ok
+
+Files: 3
+Size:       70380412
+Compressed: 70378640
+
+-->
+
+
+<p>mondai5以降のWrite-upは明日公開します。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[OS X向けmikutterパッケージ(Homebrew)作ったよ]]></title>
@@ -2967,144 +3500,6 @@ tmpfs                                                   276M     0  276M   0% /r
 これらをインストールして動作するまでにしたログに関してはgistにあげてありますので、より詳しく見たい方などよければご参照ください。</p>
 
 <p><a href="https://gist.github.com/mzyy94/8329470">https://gist.github.com/mzyy94/8329470</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[OS Xで再現されるBus error: 10の原因探ってみた]]></title>
-    <link href="http://mzyy94.com/blog/2013/12/18/buserr-segfault-osx/"/>
-    <updated>2013-12-18T12:48:12+09:00</updated>
-    <id>http://mzyy94.com/blog/2013/12/18/buserr-segfault-osx</id>
-    <content type="html"><![CDATA[<p>Cです。</p>
-
-<p>アプリケーションの例外でおこるSegmetion fault: 11 はよく目にするのですが、
-OS Xで時々現れるBus error: 10 が現れる条件が気になったのでごちゃごちゃいじって探してみました。</p>
-
-<p>こういう情報はどこかインターネットにあるのだと思ったのですが、
-<a href="http://togetter.com/li/253717">Segmentation FaultとBus Errorの違いとMac - Togetterまとめ</a>
-などには納得のいく答えがなかったのが今回探してみた経緯となります。</p>
-
-<p>結論からいうと、原因の特定はできませんでした。
-様子を伺うまでの手順など、やったことの記録になります。</p>
-
-<!-- more -->
-
-
-<p>早速ですが、Segmentation faultとBus errorがどういう基準で区別されているか、明確ではありません。
-たとえば、<code>char a[1]</code>としたときに<code>int i = 512341232; a[i] = '\0';</code>とするとSegmentation faultになったり、
-<code>int i = 512341285; a[i] = '\0';</code>とするとBus errorになったりします。
-さらに、この条件は起動時に割り当てられるメモリによって変わったりするので、原因を探るのはすこし大変です。</p>
-
-<p>しかし、記憶クラスを変えると出される例外がある程度固定されるようです。</p>
-
-<p>まず、以下のようなコードを書いて例外が発生した状態を調べました。</p>
-
-<script src="https://gist.github.com/mzyy94/8016375.js"></script>
-
-
-<p>結果は以下の通りとなりました。</p>
-
-<script src="https://gist.github.com/mzyy94/8017126.js"></script>
-
-
-<p>staticで宣言した変数に対してのアクセスでおこる例外はBus errorとなっています。</p>
-
-<p>そこで、次のようなコードを利用し、デバッガで探ってみました。</p>
-
-<script src="https://gist.github.com/mzyy94/8017103.js"></script>
-
-
-<p>OS X Mavericsなので、デバッガはgdbではなくlldbを用いました。
-0,1,2,3の引数を与えてデバッグした結果は以下の通りになりました。</p>
-
-<script src="https://gist.github.com/mzyy94/8017373.js"></script>
-
-
-<p>この結果から、引数をそれぞれ与えたときのエラーメッセージはどれもEXC_BAD_ACCESSで、
-このメッセージの中のエラーコードが1もしくは2ということで分かれています。例外は、2がSIGBUSで1がSIGSEGVであるようです。</p>
-
-<p>disassembleした結果が面白いことになっています。
-処理が違うのがわかりますが、ここでアセンブラをみてみます。</p>
-
-<script src="https://gist.github.com/mzyy94/8017712.js"></script>
-
-
-<script src="https://gist.github.com/mzyy94/8017515.js"></script>
-
-
-<p>アセンブラのコードでは、switch文中のcaseにあたるの部分が、上から順に</p>
-
-<table>
-<thead>
-<tr>
-<th>Cソース </th>
-<th>アセンブラ</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>case &#8216;0&#8217;</td>
-<td>LBB0_5:</td>
-</tr>
-<tr>
-<td>case &#8216;1&#8217;</td>
-<td>LBB0_6:</td>
-</tr>
-<tr>
-<td>case &#8216;2&#8217;</td>
-<td>LBB0_7:</td>
-</tr>
-<tr>
-<td>default </td>
-<td>LBB0_8:</td>
-</tr>
-</tbody>
-</table>
-
-
-<p>と、対応しています。</p>
-
-<p>このアセンブラを追いかけてみていると、値は次のように対応付けしているようです。</p>
-
-<table>
-<thead>
-<tr>
-<th>Cソース </th>
-<th>アセンブラ</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>c[]     </td>
-<td> -17(%rbp)</td>
-</tr>
-<tr>
-<td>s[]     </td>
-<td> _main.s(%rip)</td>
-</tr>
-<tr>
-<td>i       </td>
-<td> -24(%rbp)</td>
-</tr>
-</tbody>
-</table>
-
-
-<p>LBB0_5と、LBB0_6をみてみると、
-leaq(64bit Load Effective Address)で実効アドレスから変数s[]を%raxレジスタに格納しています。
-その次にはmovslq(64bit Move Signed Long)で変数iを%rcxに格納しています。
-この読み出した%raxレジスタの%rcx番目、すなわち、s[i]にアクセス際に例外が発生しています。</p>
-
-<p>LBB0_7と、LBB0_8をでは、
-leaqはせず、
-movslqでレジスタ%raxに格納した変数iを-17(%rbp,%rax)としてアクセス、すなわちc[i]としてアクセスしたところで例外が発生しています。</p>
-
-<p>さて、この二つ組の違いはleaqにありますが、leaq命令事態はforループ中のレジスタ操作効率化のためのものなので、特段問題を抱えているようすはありません。
-また、アセンブラコードの下部にある.zerofillはstatic変数に対するものですが、この命令はゼロ埋めするというもので、static変数の初期値に0を代入するものなので、これも影響は与えていません。<a href="https://developer.apple.com/library/mac/documentation/DeveloperTools/Reference/Assembler/040-Assembler_Directives/asm_directives.html" title="OS X ">1</a></p>
-
-<p>ほかの部分に関してもアクセス例外が明確に違うところは見あたらず、根本的原因はわかりませんでした。</p>
-
-<p>おしまい</p>
 ]]></content>
   </entry>
   
