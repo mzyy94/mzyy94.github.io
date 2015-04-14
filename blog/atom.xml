@@ -4,7 +4,7 @@
   <title><![CDATA[犬アイコンのみっきー]]></title>
   <link href="http://mzyy94.com/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2015-04-14T00:07:08+09:00</updated>
+  <updated>2015-04-14T23:41:49+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -12,6 +12,405 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[ネットエージェント最終面接問題 Write-up その3]]></title>
+    <link href="http://mzyy94.com/blog/2015/04/15/netagent-mondai7-9/"/>
+    <updated>2015-04-15T00:01:21+09:00</updated>
+    <id>http://mzyy94.com/blog/2015/04/15/netagent-mondai7-9</id>
+    <content type="html"><![CDATA[<p>あのネットエージェントのいきなり最終面接問題を解いたのでWrite-upを書きました。</p>
+
+<ul>
+<li><a href="http://www.netagent.co.jp/recruit/newgraduates_2016.html">2016年度 新卒採用｜ネットエージェント株式会社</a></li>
+</ul>
+
+
+<p>これまでのmondaiはLinuxやOS Xがあれば解くことができていましたが、mondai7からはWindowsの実行ファイル形式やMicrosoft Officeドキュメントが登場したりと、そろそろWindowsがない環境には手厳しい問題となってきました。
+なので、今回の記事に掲載のmondaiはすべて（<code>file</code>コマンドでのファイル情報調査以外）、Windows上での解法となっております。</p>
+
+<p>昨日の<a href="http://mzyy94.com/blog/2015/04/14/netagent-mondai5-6/">mondai6までの解法</a>に続いて本日はmondai7、mondai8、mondai9の解法を公開します。</p>
+
+<!-- more -->
+
+
+<h1>mondai7</h1>
+
+<p>mondai7はnormal.exeというWIN/PE32実行ファイルを解析して答えを得る問題のようです。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>file normal.exe
+</span><span class='line'>normal.exe: PE32 executable <span class="k">for</span> MS Windows <span class="o">(</span>GUI<span class="o">)</span> Intel <span class="m">80386</span> 32-bit
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>今回はIDA Pro(demo)を使って解析してみます。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2015/04/15/normal-ida1.png" alt="normal-ida1.png" /></p>
+
+<p>IDAに解析させて表示を見てみると、おもむろに正解を表示するらしい<em>aCorrectKeyIsS</em>がみつかります。
+ここまで来る過程をアセンブリ表示で追っていくことにします。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2015/04/15/normal-ida2.png" alt="normal-ida2.png" /></p>
+
+<p><em>aCorrectKeyIsS</em>はsprintfで渡されるテンプレート文字列で、そこにコマンドライン引数が埋め込められるようにいなっているようです。
+このことから、normal.exeにキー候補の文字列を渡して実行して、正しい場合に<strong>Correct! KEY is : </strong>に続いてその文字列が表示されるようになっていることがわかります。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2015/04/15/normal-ida3.png" alt="normal-ida3.png" /></p>
+
+<p>すこし遡ってみると、キーが表示される部分のサブルーチンへ来る前に、なにやら条件分岐があります。
+コマンドライン第一引数の文字長をstrlenでチェックし、0x0A(=10)と比較し、合致しない場合に<strong>Try Again!</strong>と表示する処理がみつかりました。
+このことから、キーは10文字長であることがわかります。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2015/04/15/normal-ida4.png" alt="normal-ida4.png" /></p>
+
+<p>キーが表示される直前に行われる処理を見てみると、サブルーチン<em>sub_4011C0</em>を呼んだ戻り値が0の場合、<strong>Try Again!</strong>の表示をさせるようになっています。
+<em>sub_4011C0</em>にはコマンドライン引数を渡しているので、ある特定の文字列が引数として渡されているかをチェックしていると推測できます。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2015/04/15/normal-ida5.png" alt="normal-ida5.png" /></p>
+
+<p>サブルーチン<em>sub_4011C0</em>のはじめの方では、ループインデックス（以下、i）を0にしたりと、forループの初期化が行われている様子がつかめます。このループの中の処理を見てみます。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2015/04/15/normal-ida6.png" alt="normal-ida6.png" /></p>
+
+<p>このforループでは、インデックスが0x0A(=10)までループが回れば1を、途中でbreakが発生すれば0をサブルーチン呼び出し元に返すような処理をしています。
+途中でbreakが発生する条件は、ループ内で呼ばれる<em>sub_401170</em>の戻り値と謎の配列<em>dword_40C068</em>の比較になっています。
+引数として、i番目のコマンドライン引数の文字が渡されて呼び出されている<em>sub_401170</em>を見てみます。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2015/04/15/normal-ida7.png" alt="normal-ida7.png" /></p>
+
+<p><em>sub_401170</em>は引数で与えられた文字が、謎の文字列<strong>&#8220;efyTUwxqrY&#8230;&#8221;</strong>の中の何番目に出てくるかを、forループを回して一つずつチェックしているようです。そして戻り値として、謎の文字列の何番目に現れたかを呼び出し元に返しています。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2015/04/15/normal-ida8.png" alt="normal-ida8.png" /></p>
+
+<p>謎の配列<em>dword_40C068</em>の中身を見に行くと、unsignled long型の配列として、数値が格納されていました。
+先のサブルーチン<em>sub_4011C0</em>のループ内では、i番目の文字を<em>sub_401170</em>に渡し、謎の文字列の何番目に出現するかを取得し、その値とこの<em>dword_40C068</em>のi番目の数値を比較して、同じであればループを継続するという処理でした。</p>
+
+<p>ここまでの調査を基にまとめると、このプログラムの処理は簡易的に以下のようになっていることがわかります。</p>
+
+<ul>
+<li>引数に与えられた文字列があり、</li>
+<li>その文字列は10文字であり、</li>
+<li>文字列の1文字1文字が謎の文字列<strong>&#8220;efyTUwxqrY&#8230;&#8221;</strong>の何番目に位置するかを調べており、</li>
+<li>その位置がすべて謎の配列<em>dword_40C068</em>に定義されたもの同じであれば<strong>Correct! Key is :</strong>に続けて引数を表示する</li>
+</ul>
+
+
+<p>なので逆に考えると、謎の文字列の中の、謎の配列に定義されている場所の文字を抽出すればキーが見つかるということです。
+パパッと以下のようなものを書いてキーを抽出します。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#!/usr/bin/env ruby</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">string</span> <span class="o">=</span> <span class="s2">&quot;efyTUwxqrYHEFmduCJAXQpgKLBnhiltINPGOoszkMDvcjabSZRVW&quot;</span>
+</span><span class='line'><span class="n">indexes</span> <span class="o">=</span> <span class="o">[</span><span class="mh">0x03</span><span class="p">,</span> <span class="mh">0x24</span><span class="p">,</span> <span class="mh">0x2b</span><span class="p">,</span> <span class="mh">0x1b</span><span class="p">,</span> <span class="mh">0x0f</span><span class="p">,</span> <span class="mh">0x17</span><span class="p">,</span> <span class="mh">0x2d</span><span class="p">,</span> <span class="mh">0x25</span><span class="p">,</span> <span class="mh">0x24</span><span class="p">,</span> <span class="mh">0x0f</span><span class="o">]</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">key</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="n">indexes</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">key</span> <span class="o">+=</span> <span class="n">string</span><span class="o">[</span><span class="n">i</span><span class="o">]</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="nb">p</span> <span class="n">key</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<!--
+$ ruby mondai7.rb
+"TochuKasou"
+-->
+
+
+<p>試しにnormal.exeの引数に、このコードを実行して得られたキーを与えて実行してみたところ、以下のようになりました。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2015/04/15/TochuKasou.png" alt="TochuKasou.png" /></p>
+
+<p>この文字列を与えてmondai8.zipを解凍してmondai7は終了です。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>&gt;7z.exe x mondai8.zip
+</span><span class='line'>
+</span><span class='line'>7-Zip <span class="o">[</span>64<span class="o">]</span> 9.35 beta  Copyright <span class="o">(</span>c<span class="o">)</span> 1999-2014 Igor Pavlov  2014-12-07
+</span><span class='line'>
+</span><span class='line'>Processing archive: mondai8.zip
+</span><span class='line'>
+</span><span class='line'>Extracting  mondai8.tc
+</span><span class='line'>Enter password <span class="o">(</span>will not be echoed<span class="o">)</span>:
+</span><span class='line'>
+</span><span class='line'>Extracting  mondai8.txt
+</span><span class='line'>Extracting  mondai9.zip
+</span><span class='line'>
+</span><span class='line'>Everything is Ok
+</span><span class='line'>
+</span><span class='line'>Files: 3
+</span><span class='line'>Size:       70339136
+</span><span class='line'>Compressed: 70339594
+</span><span class='line'>
+</span><span class='line'>Kernel  <span class="nv">Time</span> <span class="o">=</span>     0.015 <span class="o">=</span>    0%
+</span><span class='line'>User    <span class="nv">Time</span> <span class="o">=</span>     1.170 <span class="o">=</span>   21%
+</span><span class='line'>Process <span class="nv">Time</span> <span class="o">=</span>     1.185 <span class="o">=</span>   22%    Virtual  <span class="nv">Memory</span> <span class="o">=</span>      <span class="m">2</span> MB
+</span><span class='line'>Global  <span class="nv">Time</span> <span class="o">=</span>     5.379 <span class="o">=</span>  100%    Physical <span class="nv">Memory</span> <span class="o">=</span>      <span class="m">4</span> MB
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<!--
+$ wine 7z x mondai8.zip -pTochuKasou
+
+7-Zip [64] 9.20  Copyright (c) 1999-2010 Igor Pavlov  2010-11-18
+p7zip Version 9.20 (locale=utf8,Utf16=on,HugeFiles=on,4 CPUs)
+
+Processing archive: mondai8.zip
+
+Extracting  mondai8.tc
+Extracting  mondai8.txt
+Extracting  mondai9.zip
+
+Everything is Ok
+
+Files: 3
+Size:       70339136
+Compressed: 70339594
+-->
+
+
+<h1>mondai8</h1>
+
+<p>なにやら怪しげなファイルmondai8.tcと問題文mondai8.txtがあります。mondai8.txtには以下のような記述がありました。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>TrueCrypt pass:mondai8
+</span><span class='line'>漢字８文字
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>mondai8.tcはTrueCryptファイルで、開くためのパスワードはmondai8であるとのことです。そしてこのmondai8の答えは漢字8文字ということでしょう。
+TrueCryptでmondai8.tcをマウントして中を見てみました。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2015/04/15/mondai8-files.png" alt="mondai8-files.png" /></p>
+
+<p>こういったCTF系の問題でイメージファイルが配布されるときは、フォレンジック問題であると相場が決まっているので、TrueCryptでマウントしたらAutopsyで調査します。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2015/04/15/autopsy.png" alt="autopsy.png" /></p>
+
+<p>マウントした際に表示されていたファイルになかった「今日の本.xlsx」という削除されたファイルが見つかりました。怪しいですね。
+復元してファイルを開いてみます。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2015/04/15/todaysbook1.png" alt="todaysbook1.png" />
+<img src="http://mzyy94.com/blog/resources/images/2015/04/15/todaysbook2.png" alt="todaysbook2.png" />
+<img src="http://mzyy94.com/blog/resources/images/2015/04/15/todaysbook3.png" alt="todaysbook3.png" /></p>
+
+<p>シート1にはアルファベットと2つの数字が書かれた行があり、シート2には、<a href="http://www.aozora.gr.jp/cards/001670/card56113.html">青空文庫の奇談クラブ</a>からコピーされたであろう本の内容が書かれていました。</p>
+
+<p>シート3には、key:passwordに対応するanswerを入力するような空欄がありました。
+このpasswordという文字列はきっとシート1のアルファベットと2つの数字に対応していて、1つ目の数字は行番号、2つ目の数字はその行の文字の位置を指しているだろうと思いました。
+Excel Onlineの印刷機能でシート2をHTML形式にし、保存したのちテキストに変換して<a href="http://mzyy94.com/blog/resources/data/2015/04/15/kidanclub.txt">kidanclub.txt</a>を作成し、
+シート1を基に、アルファベット<strong>&#8220;password&#8221;</strong>に対応する行から文字を抽出するコードを書きました。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2015/04/15/print-book.png" alt="print-book.png" /></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#!/usr/bin/env ruby</span>
+</span><span class='line'><span class="n">password</span> <span class="o">=</span> <span class="o">[</span>
+</span><span class='line'>  <span class="o">[</span><span class="mi">119</span><span class="p">,</span><span class="mi">161</span><span class="o">]</span><span class="p">,</span> <span class="c1"># p</span>
+</span><span class='line'>  <span class="o">[</span> <span class="mi">62</span><span class="p">,</span> <span class="mi">11</span><span class="o">]</span><span class="p">,</span> <span class="c1"># a</span>
+</span><span class='line'>  <span class="o">[</span><span class="mi">276</span><span class="p">,</span> <span class="mi">40</span><span class="o">]</span><span class="p">,</span> <span class="c1"># s</span>
+</span><span class='line'>  <span class="o">[</span><span class="mi">276</span><span class="p">,</span> <span class="mi">40</span><span class="o">]</span><span class="p">,</span> <span class="c1"># s</span>
+</span><span class='line'>  <span class="o">[</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">58</span><span class="o">]</span><span class="p">,</span> <span class="c1"># w</span>
+</span><span class='line'>  <span class="o">[</span><span class="mi">239</span><span class="p">,</span> <span class="mi">44</span><span class="o">]</span><span class="p">,</span> <span class="c1"># o</span>
+</span><span class='line'>  <span class="o">[</span><span class="mi">236</span><span class="p">,</span>  <span class="mi">7</span><span class="o">]</span><span class="p">,</span> <span class="c1"># r</span>
+</span><span class='line'>  <span class="o">[</span><span class="mi">185</span><span class="p">,</span>  <span class="mi">7</span><span class="o">]</span>  <span class="c1"># d</span>
+</span><span class='line'><span class="o">]</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">book</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="no">ARGV</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">readlines</span>
+</span><span class='line'><span class="n">key</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+</span><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="n">password</span> <span class="k">do</span>
+</span><span class='line'>    <span class="c1"># One-based numbering</span>
+</span><span class='line'>  <span class="n">key</span> <span class="o">+=</span> <span class="n">book</span><span class="o">[</span><span class="n">i</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">-</span> <span class="mi">1</span><span class="o">][</span><span class="n">i</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">-</span> <span class="mi">1</span><span class="o">]</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="nb">p</span> <span class="n">key</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>引数に先ほど作成した<a href="http://mzyy94.com/blog/resources/data/2015/04/15/kidanclub.txt">kidanclub.txt</a>を与えて実行してみると、漢字8文字のパスワードを得ることができました。</p>
+
+<!--
+$ ruby mondai8.rb kidanclub.txt
+"意気揚揚明鏡止水"
+-->
+
+
+<p>mondai5同様、非ASCII文字のパスワードなので、<code>7z.exe</code>を利用してmondai9.zipを解凍しておしまいです。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>&gt; 7z.exe x mondai9.zip
+</span><span class='line'>
+</span><span class='line'>7-Zip <span class="o">[</span>64<span class="o">]</span> 9.35 beta  Copyright <span class="o">(</span>c<span class="o">)</span> 1999-2014 Igor Pavlov  2014-12-07
+</span><span class='line'>
+</span><span class='line'>Processing archive: mondai9.zip
+</span><span class='line'>
+</span><span class='line'>Extracting  mondai10.tc
+</span><span class='line'>Enter password <span class="o">(</span>will not be echoed<span class="o">)</span>:
+</span><span class='line'>
+</span><span class='line'>Extracting  mondai9.pkt
+</span><span class='line'>
+</span><span class='line'>Everything is Ok
+</span><span class='line'>
+</span><span class='line'>Files: 2
+</span><span class='line'>Size:       68517107
+</span><span class='line'>Compressed: 68241943
+</span><span class='line'>
+</span><span class='line'>Kernel  <span class="nv">Time</span> <span class="o">=</span>     0.046 <span class="o">=</span>    1%
+</span><span class='line'>User    <span class="nv">Time</span> <span class="o">=</span>     0.733 <span class="o">=</span>   16%
+</span><span class='line'>Process <span class="nv">Time</span> <span class="o">=</span>     0.780 <span class="o">=</span>   17%    Virtual  <span class="nv">Memory</span> <span class="o">=</span>      <span class="m">2</span> MB
+</span><span class='line'>Global  <span class="nv">Time</span> <span class="o">=</span>     4.536 <span class="o">=</span>  100%    Physical <span class="nv">Memory</span> <span class="o">=</span>      <span class="m">4</span> MB
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<!--
+$ wine 7z.exe x mondai9.zip -p意気揚揚明鏡止水
+
+7-Zip [64] 9.35 beta  Copyright (c) 1999-2014 Igor Pavlov  2014-12-07
+
+Processing archive: mondai9.zip
+
+Extracting  mondai10.tc
+Extracting  mondai9.pkt
+
+Everything is Ok
+
+Files: 2
+Size:       68517107
+Compressed: 68241943
+
+Kernel  Time =     0.046 =    5%
+User    Time =     0.733 =   87%
+Process Time =     0.780 =   93%    Virtual  Memory =      2 MB
+Global  Time =     0.836 =  100%    Physical Memory =      4 MB
+-->
+
+
+<h1>mondai9</h1>
+
+<p>mondai9.pktは<code>file</code>コマンドによると、little-endianなpcapファイルのようです。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>file mondai9.pkt
+</span><span class='line'>mondai9.pkt: tcpdump capture file <span class="o">(</span>little-endian<span class="o">)</span> - version 2.4 <span class="o">(</span>Ethernet, capture length 65535<span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>また、拡張子pktはWindowsの関連付けでは、Wiresharkで開けるファイルとなっています。
+早速Wiresharkで見てみます。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2015/04/15/mondai9-wireshark1.png" alt="mondai9-wireshark1.png" /></p>
+
+<p>ざっと目を通した感じ、<code>tcpdump -f 'tcp port 80'</code>によって、fast-uploader.comにアクセスしている様子をキャプチャしたもののようです。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2015/04/15/mondai9-wireshark2.png" alt="mondai9-wireshark2.png" /></p>
+
+<p>httpリクエストで絞り込むと、POSTメソッドによってファイルを幾つかアップロードしているようです。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2015/04/15/mondai9-wireshark3.png" alt="mondai9-wireshark3.png" /></p>
+
+<p>アップロードしたファイルを抽出しようとメニューのHTTP objectから抽出を試みたのですが、Wiresharkでは<em>multipart/form-data</em>としてPOSTされたデータ中のファイルはうまく取り出せないようなので、NetworkMinerを使います。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2015/04/15/mondai9-networkminer.png" alt="mondai9-networkminer.png" /></p>
+
+<p>NetworkMinerで4つのアップロードされたファイルを抽出したところ、文字化けした2つのExcelファイルと1つのWordファイル、パスワードのかかったzipファイルがありました。
+パスワードをクラックするとWordファイルが出てきたので、4つのOfficeファイルを開いてみました。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2015/04/15/office-files.png" alt="office-files.png" /></p>
+
+<p>どのOfficeファイルにも文字の記入はなく、答えらしきものがみつかりません。
+ファイル名で検索してみたりいろいろしたあと、ファイルのメタ情報を詮索してみることにしたところ、文字化けしたWordファイルにそれらしきものがあることに気づきました。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2015/04/15/word-property.png" alt="word-property.png" /></p>
+
+<p>これパスワードとしてmondai10.tcをTrueCryptでマウントしてみたところ、開くことができました。</p>
+
+<p>明日は最終問題、mondai10のWrite-upを公開します。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[ネットエージェント最終面接問題 Write-up その2]]></title>
@@ -46,7 +445,7 @@
 <p>デコードしてできたmondai5-1を<code>file</code>コマンドで調べてみるとまたもASCII textで、内容も先ほどと同じように、各行76文字で折り返されたBASE64エンコード文字列が書かれています。
 同じように<code>base64</code>でデコードしてmondai5-2を作成します。</p>
 
-<p>作成したmondai5-2を調べると、なんとmondai5、mondai5-1と同じ形で、またも64エンコード文字列が書かれてるASCII textでした。
+<p>作成したmondai5-2を調べると、なんとmondai5、mondai5-1と同じ形で、またもBASE64エンコード文字列が書かれてるASCII textでした。
 これもまた<code>base64</code>でデコードしてmondai5-3を作成します。
 できあがった<strong>mondai5-3も同じ形式</strong>なので、同様の手順でmondai5-4を作成します。</p>
 
@@ -363,7 +762,7 @@
 
 <p><img src="http://mzyy94.com/blog/resources/images/2015/04/14/Cheburashka.jpg" alt="Cheburashka.jpg" /></p>
 
-<p>これ以上解くものがなくなったので、これがmondai5の答えのようです。しかし、<code>7z</code>コマンドで解凍を試みると、パスワードが違うと言われる始末です。</p>
+<p>これ以上解くものがなくなったので、これがmondai5の答えのようです。しかし<code>7z</code>コマンドで解凍を試みても、パスワードが違うと言われる始末です。</p>
 
 <p>p7zipの<code>7z</code>コマンドによる非ASCII文字パスワード付き7zipの解凍・圧縮は、環境によって正しく処理されないということを、以前日本語パスワードをセットしたときに経験したのを思い出し、本家7zipの<code>7z.exe</code>を使って解凍をしてみます。</p>
 
@@ -3767,139 +4166,6 @@ Addonsタブにある検索ボックスでthreejsとして検索して出てく�
 せっかく快適な充電環境を構築したと思ったら、充電したつもりだけど充電されていない、といった余計な問題が増えてしまったので、もう取り外しました。</p>
 
 <p>なんのためのレビューだったのか┐(´∀｀)┌ﾔﾚﾔﾚ</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[JavaScriptの記号だけで'1'を作るコードゴルフ]]></title>
-    <link href="http://mzyy94.com/blog/2014/01/22/javascript-one-codegolf/"/>
-    <updated>2014-01-22T11:02:22+09:00</updated>
-    <id>http://mzyy94.com/blog/2014/01/22/javascript-one-codegolf</id>
-    <content type="html"><![CDATA[<p>CodeIQでお正月チャレンジをしていた時に遭遇した問題を解決するために、いろいろと試行錯誤したことがありました。</p>
-
-<p>ある条件下で数値を作成しなければいけないという問題に直面したときのことです。
-条件としては、以下のとおりになっていました。</p>
-
-<p>入力欄の文字数：100文字以内</p>
-
-<p>禁止文字：1 2 3 4 5 6 7 8 9 0 , + % ? : this eval function Function Array join split repeat &#8217; &#8221;</p>
-
-<p>この条件下で数字の1を作成した結果は以下のとおりになりました。</p>
-
-<!-- more -->
-
-
-<h2>1</h2>
-
-<h3>初期案 (11文字)</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="p">[].</span><span class="nx">push</span><span class="p">([])</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>数字の１を作成するためにまず思いついたのがこれです。
-Arrayオブジェクトのpushは返り値が要素数になることを利用して、空配列に空配列を追加して1を得ました。</p>
-
-<p>まだまだこれは短縮できそうということで、考えを練っていたら次にこのようなものが思い浮かびました。</p>
-
-<h3>改善案 (6文字)</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="o">~~!!</span><span class="p">[]</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>６文字まで短縮することができました。
-このコードは主に3つの要素から成り立っています。</p>
-
-<h4>[]</h4>
-
-<p>空配列です。
-ここでは、実態のあるオブジェクトがほしいだけなので、{}でも大丈夫です。</p>
-
-<h4>!</h4>
-
-<p>否定演算子です。
-今回は、配列として実態があるものに対して行っているので、![]ではfalseが返ってきます。
-!![]とすることで、trueを得ることができます。</p>
-
-<h4>~</h4>
-
-<p>ビット反転演算子です。
-!![]で返ってきたtrueをビット反転することによって、数値として認識させます。
-~!![]は、すなわち~trueであり、すなわち~1なので、-2を返します。
-~~!![]とすることで、ビット反転を打ち消し、1を返させることができます。</p>
-
-<p>６文字ではまだまだ字数が多すぎると思い、ふと閃いたものが以下になります。</p>
-
-<h3>最終案 (4文字)</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="o">-~</span><span class="p">[]</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Arrayオブジェクトに対して、直接ビット演算をしてしまいます。
-要素数ゼロのArrayオブジェクトは数値として扱った場合に、ゼロとなるのでそれを用いてゼロをビット反転してしまいます。
-補数により0は-1となり、正負を反転させるために-(マイナス)を加えて1としました。</p>
-
-<p>記号を使った1を生成する最短コードなんじゃないでしょうか。</p>
-
-<h1>おまけ</h1>
-
-<p>2と3も作ってみました。</p>
-
-<h2>2</h2>
-
-<h3>初期案 (10文字)</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="o">-~</span><span class="p">[]</span><span class="o">&lt;&lt;-~</span><span class="p">[]</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>上で作成した1を用いてビットシフトしています。
-1を倍にすることで2になるという単純なものです。</p>
-
-<p>ここで、1を作成した時のことを考えていたら、もっと単純で短いものがありました。</p>
-
-<h3>最終案 (6文字)</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="o">-~!!</span><span class="p">[]</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>先ほどの1を作成する改善案を元に、符号を反転させただけのものです。</p>
-
-<p>最短コードなんじゃないでしょうか。</p>
-
-<h2>3</h2>
-
-<h3>初期案 (11文字)</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="o">-~!!</span><span class="p">[]</span><span class="o">|-~</span><span class="p">[]</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>1と2でビットの論理和を計算して3とします。</p>
-
-<h3>最終案 (8文字)</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="o">-~-~!!</span><span class="p">[]</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>2の最終案を元に、ビット反転して-3にし、それを-(マイナス)で符号反転して３を作りました。</p>
-
-<p>これら2と3を作った方法を元にすれば4,5,6..も同様に作れてしまいます。</p>
-
-<p>この方法をもとにCodeIQのお正月ダンジョンLv.3に挑んだコードがトップ画像になります。</p>
-
-<p>以上、豆知識的なメモでした。</p>
 ]]></content>
   </entry>
   

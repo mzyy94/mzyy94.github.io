@@ -9,7 +9,8 @@
   <meta name="author" content="mzyy94">
 
   
-  <meta name="description" content="この記事はLinux Advent Calendar 2014 12日目の記事です。 12月も中頃となり寒い日が続きますね。みなさん体調はいかがでしょうか。 先日のこたつを温める実験で十分な熱を得られることを知ってしまい、つい調子に乗って動画のエンコードをこたつの中でやってしまって、40℃ &hellip;">
+  <meta name="description" content="前回の記事から1ヶ月以上空いてしまいました。遅ればせながらで申し訳ありません。続編です。
+Intel QSVは高速にある程度の画質のエンコードできてよいです。とても。 今回はKVMでIntel HD Graphicsをパススルーした仮装マシン上に、 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -71,7 +72,8 @@
 <meta property="twitter:url" content="http://mzyy94.com/blog/page/2" />
 <meta property="twitter:title" content="犬アイコンのみっきー" />
 
-<meta property="twitter:description" content="この記事はLinux Advent Calendar 2014 12日目の記事です。 12月も中頃となり寒い日が続きますね。みなさん体調はいかがでしょうか。 先日のこたつを温める実験で十分な熱を得られることを知ってしまい、つい調子に乗って動画のエンコードをこたつの中でやってしまって、40℃超の高温になるという経験を得るなど、新しい発見のある毎日です。 &hellip;" />
+<meta property="twitter:description" content="前回の記事から1ヶ月以上空いてしまいました。遅ればせながらで申し訳ありません。続編です。
+Intel QSVは高速にある程度の画質のエンコードできてよいです。とても。 今回はKVMでIntel HD Graphicsをパススルーした仮装マシン上に、SDKのインストールとカーネルモジュールのインストール、そしてffmpegでのQSVによるH. &hellip;" />
 
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" />
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" />
@@ -141,6 +143,74 @@
     <div class="row">
       <main class="col-sm-9">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title boxed-green"><a href="/blog/2015/01/30/intel-qsv-on-linux/">Intel QSVのH.264エンコードをLinuxで！</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+<i class="glyphicon glyphicon-calendar"></i><time datetime="2015-01-30T22:22:03+09:00" pubdate data-updated="true">30 Jan 2015</time>
+        
+
+<i class="glyphicon glyphicon-folder-close"></i><span class="categories">
+  
+    <a class='category' href='/blog/categories/linux/'>linux</a>
+  
+</span>
+
+
+        
+
+<i class="glyphicon glyphicon-tags"></i><span class="tags">
+  
+    <a class='tag' href='/blog/tags/ffmpeg/'>ffmpeg</a>, <a class='tag' href='/blog/tags/imss/'>imss</a>, <a class='tag' href='/blog/tags/qsv/'>qsv</a>
+  
+</span>
+
+
+        
+		<i class="glyphicon glyphicon-comment"></i><a href="/blog/2015/01/30/intel-qsv-on-linux/#disqus_thread"
+             data-disqus-identifier="http://mzyy94.com/blog/2015/01/30/intel-qsv-on-linux/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<div class="entry-content"><p><a href="/blog/2014/12/12/kvm-intel-hd-graphics-passthrough/">前回の記事</a>から1ヶ月以上空いてしまいました。遅ればせながらで申し訳ありません。続編です。
+Intel QSVは高速にある程度の画質のエンコードできてよいです。とても。</p>
+
+<p>今回はKVMでIntel HD Graphicsをパススルーした仮装マシン上に、SDKのインストールとカーネルモジュールのインストール、そしてffmpegでのQSVによるH.264エンコードができる環境づくりまでの手順をご紹介します。
+<del>これが意外と骨が折れる作業だったので同じような思いをせぬよう、ご熟読ください。</del>（書き直す前の文章です。書き直した理由は後述。）</p>
+
+</div>
+  
+  
+    <footer>
+	<a rel="full-article" href="/blog/2015/01/30/intel-qsv-on-linux/" class="btn btn-icon-left"><span>Read more</span></a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -813,81 +883,6 @@ Lempel-Ziv符号化で圧縮されたファイル(.gz)のダウンロードを�
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title boxed-green"><a href="/blog/2014/01/22/javascript-one-codegolf/">JavaScriptの記号だけで&#8217;1&#8217;を作るコードゴルフ</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-
-
-
-
-<i class="glyphicon glyphicon-calendar"></i><time datetime="2014-01-22T11:02:22+09:00" pubdate data-updated="true">22 Jan 2014</time>
-        
-
-<i class="glyphicon glyphicon-folder-close"></i><span class="categories">
-  
-    <a class='category' href='/blog/categories/javascript/'>javascript</a>
-  
-</span>
-
-
-        
-
-<i class="glyphicon glyphicon-tags"></i><span class="tags">
-  
-    <a class='tag' href='/blog/tags/codegolf/'>codegolf</a>
-  
-</span>
-
-
-        
-		<i class="glyphicon glyphicon-comment"></i><a href="/blog/2014/01/22/javascript-one-codegolf/#disqus_thread"
-             data-disqus-identifier="http://mzyy94.com/blog/2014/01/22/javascript-one-codegolf/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-<img src="/blog/resources/images/2014/1/22/javascript-one-codegolf.png" alt="article image" class="main image"/>
-
-
-<div class="entry-content"><p>CodeIQでお正月チャレンジをしていた時に遭遇した問題を解決するために、いろいろと試行錯誤したことがありました。</p>
-
-<p>ある条件下で数値を作成しなければいけないという問題に直面したときのことです。
-条件としては、以下のとおりになっていました。</p>
-
-<p>入力欄の文字数：100文字以内</p>
-
-<p>禁止文字：1 2 3 4 5 6 7 8 9 0 , + % ? : this eval function Function Array join split repeat &#8217; &#8221;</p>
-
-<p>この条件下で数字の1を作成した結果は以下のとおりになりました。</p>
-
-</div>
-  
-  
-    <footer>
-	<a rel="full-article" href="/blog/2014/01/22/javascript-one-codegolf/" class="btn btn-icon-left"><span>Read more</span></a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="tf_pagination">
   <div class="inner">
     
@@ -1006,6 +1001,10 @@ Lempel-Ziv符号化で圧縮されたファイル(.gz)のダウンロードを�
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/04/15/netagent-mondai7-9/">ネットエージェント最終面接問題 Write-up その3</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/04/14/netagent-mondai5-6/">ネットエージェント最終面接問題 Write-up その2</a>
       </li>
     
@@ -1019,10 +1018,6 @@ Lempel-Ziv符号化で圧縮されたファイル(.gz)のダウンロードを�
     
       <li class="post">
         <a href="/blog/2015/03/09/muji-raspberry-pi-enclosure/">無印良品で買えるRaspberry Pi2にぴったりのケース</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/03/06/yuzu-trouble/">柚子胡椒でサーバーを壊さないために</a>
       </li>
     
   </ul>
