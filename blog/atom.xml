@@ -4,7 +4,7 @@
   <title><![CDATA[犬アイコンのみっきー]]></title>
   <link href="http://mzyy94.com/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2015-04-15T00:28:48+09:00</updated>
+  <updated>2015-04-15T00:31:55+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -162,7 +162,7 @@ $ ruby mondai7.rb
 <span class='line-number'>20</span>
 <span class='line-number'>21</span>
 <span class='line-number'>22</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>&gt;7z.exe x mondai8.zip
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>&gt; 7z.exe x mondai8.zip
 </span><span class='line'>
 </span><span class='line'>7-Zip <span class="o">[</span>64<span class="o">]</span> 9.35 beta  Copyright <span class="o">(</span>c<span class="o">)</span> 1999-2014 Igor Pavlov  2014-12-07
 </span><span class='line'>
