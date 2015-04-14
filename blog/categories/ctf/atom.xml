@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ctf | 犬アイコンのみっきー]]></title>
   <link href="http://mzyy94.com/blog/categories/ctf/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2015-04-15T00:44:39+09:00</updated>
+  <updated>2015-04-15T00:51:34+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -62,7 +62,7 @@ normal.exe: PE32 executable for MS Windows (GUI) Intel 80386 32-bit
 <p><img src="/blog/resources/images//normal-ida4.png" alt="normal-ida4.png" /></p>
 
 <p>キーが表示される直前に行われる処理を見てみると、サブルーチン<em>sub_4011C0</em>を呼んだ戻り値が0の場合、<strong>Try Again!</strong>の表示をさせるようになっています。
-<em>sub_4011C0</em>にはコマンドライン引数を渡しているので、ある特定の文字列が引数として渡されているかをチェックしていると推測できます。</p>
+<em>sub_4011C0</em>にはコマンドライン引数を渡しているので、この引数が何か特定の文字列と比較されていると推測できます。</p>
 
 <p><img src="/blog/resources/images//normal-ida5.png" alt="normal-ida5.png" /></p>
 
@@ -72,11 +72,11 @@ normal.exe: PE32 executable for MS Windows (GUI) Intel 80386 32-bit
 
 <p>このforループでは、インデックスが0x0A(=10)までループが回れば1を、途中でbreakが発生すれば0をサブルーチン呼び出し元に返すような処理をしています。
 途中でbreakが発生する条件は、ループ内で呼ばれる<em>sub_401170</em>の戻り値と謎の配列<em>dword_40C068</em>の比較が偽である場合となっています。
-i番目のコマンドライン引数の文字が引数として渡されて呼び出されている<em>sub_401170</em>を見てみます。</p>
+コマンドライン引数のi番目の文字が引数として渡されて呼び出されている<em>sub_401170</em>を見てみます。</p>
 
 <p><img src="/blog/resources/images//normal-ida7.png" alt="normal-ida7.png" /></p>
 
-<p><em>sub_401170</em>はサブルーチンの引数で与えられた文字（＝i番目のコマンドライン引数）が、謎の文字列<strong>&#8220;efyTUwxqrY&#8230;&#8221;</strong>の中の何番目に出てくるかを、forループを回して一つずつチェックしているようです。そして戻り値として、謎の文字列の何番目に現れたかを呼び出し元に返しています。</p>
+<p><em>sub_401170</em>はサブルーチンの引数で与えられた文字（＝コマンドライン引数のi番目の文字）が、謎の文字列<strong>&#8220;efyTUwxqrY&#8230;&#8221;</strong>の中の何番目に出てくるかを、forループを回して一つずつチェックしているようです。そしてサブルーチンの戻り値として、謎の文字列の何番目に引数の文字が現れたかを呼び出し元に返しています。</p>
 
 <p><img src="/blog/resources/images//normal-ida8.png" alt="normal-ida8.png" /></p>
 
@@ -88,7 +88,7 @@ i番目のコマンドライン引数の文字が引数として渡されて呼�
 <ul>
 <li>コマンドライン引数に与えられた文字列があり、</li>
 <li>その文字列は10文字であり、</li>
-<li>文字列の1文字1文字が謎の文字列<strong>&#8220;efyTUwxqrY&#8230;&#8221;</strong>の何番目に位置するかを調べており、</li>
+<li>その文字列の1文字1文字が謎の文字列<strong>&#8220;efyTUwxqrY&#8230;&#8221;</strong>の何番目に位置するかを調べていて、</li>
 <li>その位置がすべて謎の配列<em>dword_40C068</em>に定義されたもの同じであれば<strong>Correct! Key is :</strong>に続けて引数を表示する</li>
 </ul>
 
