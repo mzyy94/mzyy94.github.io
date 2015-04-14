@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ctf | 犬アイコンのみっきー]]></title>
   <link href="http://mzyy94.com/blog/categories/ctf/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2015-04-15T00:31:55+09:00</updated>
+  <updated>2015-04-15T00:44:39+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -71,8 +71,8 @@ normal.exe: PE32 executable for MS Windows (GUI) Intel 80386 32-bit
 <p><img src="/blog/resources/images//normal-ida6.png" alt="normal-ida6.png" /></p>
 
 <p>このforループでは、インデックスが0x0A(=10)までループが回れば1を、途中でbreakが発生すれば0をサブルーチン呼び出し元に返すような処理をしています。
-途中でbreakが発生する条件は、ループ内で呼ばれる<em>sub_401170</em>の戻り値と謎の配列<em>dword_40C068</em>の比較になっています。
-引数として、i番目のコマンドライン引数の文字が渡されて呼び出されている<em>sub_401170</em>を見てみます。</p>
+途中でbreakが発生する条件は、ループ内で呼ばれる<em>sub_401170</em>の戻り値と謎の配列<em>dword_40C068</em>の比較が偽である場合となっています。
+i番目のコマンドライン引数の文字が引数として渡されて呼び出されている<em>sub_401170</em>を見てみます。</p>
 
 <p><img src="/blog/resources/images//normal-ida7.png" alt="normal-ida7.png" /></p>
 
