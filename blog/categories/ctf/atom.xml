@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ctf | 犬アイコンのみっきー]]></title>
   <link href="http://mzyy94.com/blog/categories/ctf/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2015-04-16T01:35:59+09:00</updated>
+  <updated>2015-04-16T01:41:34+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -518,12 +518,12 @@ hint7.txtのヤマヒゲナガケンミジンコから血の池が導けてい�
 
 <p><a href="/blog/resources/images//IMG_2477.JPG"><img src="/blog/resources/images//IMG_2477_thumb.JPG" alt="IMG_2477.JPG" /></a></p>
 
-<p>急いで降りてきた会があってか、バスが来るまで1時間も余裕があったので、持って来たコーヒーと板チョコレートで休憩しました。</p>
+<p>急いで降りてきた甲斐があってか、バスが来るまで1時間も余裕があったので、持って来たコーヒーと板チョコレートで休憩しました。</p>
 
 <blockquote class="twitter-tweet" lang="ja"><p>バスが来るまで1時間あるのでチョコとコーヒーで休憩 <a href="http://t.co/RfTO5ZNJA8">pic.twitter.com/RfTO5ZNJA8</a></p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584980254445305856">2015, 4月 6</a></blockquote>
 
 
-<p>標高1365mなため、16:00を過ぎたこの時期の山は寒くなり、ダウンジャケットを準備しておいて正解でした。</p>
+<p>ここ赤城山ビジターセンターの標高は1365mなため、17:00を過ぎたこの時期は寒く、ダウンジャケットを準備しておいて正解でした。</p>
 
 <blockquote class="twitter-tweet" lang="ja"><p>標高1400mはやっぱり寒い&#10;ダウンジャケット持ってきて正解だったわ</p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584977161729093632">2015, 4月 6</a></blockquote>
 
@@ -701,7 +701,7 @@ hint3.txtに記載のあったひもかわうどんをすっかり忘れてま�
 <p><img src="/blog/resources/images//autopsy-mondai10.png" alt="autopsy-mondai10" /></p>
 
 <p>以外と簡単に問題ファイルが浮上してきました。
-削除された0バイトのファイルのファイル名が、「山名＋最高点の標高を英数字で9文字.txt」となっていました。</p>
+削除された0バイトのファイルがあり、そのファイル名は「山名＋最高点の標高を英数字で9文字.txt」となっていました。</p>
 
 <p>登山した赤城山は標高1828mなので、<strong>akagi1828</strong>がmondai10.tcのパスワードだと思われます。</p>
 
