@@ -1,0 +1,1228 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>ネットエージェント最終面接問題 Write-up エクストリームCTF編 - 犬アイコンのみっきー</title>
+  <meta name="author" content="mzyy94">
+
+  
+  <meta name="description" content="ネットエージェントのいきなり最終面接問題を解いたのでWrite-upです。 2016年度 新卒採用｜ネットエージェント株式会社 これまでmondai1からmondai9までは、mondaiとOS XやLinux、Windowsマシンが手元にあれば解く事ができていました。 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://mzyy94.com/blog/2015/04/16/netagent-mondai10">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/blog/atom.xml" rel="alternate" title="犬アイコンのみっきー" type="application/atom+xml">
+  <!-- main JS libs -->
+  <script src="/javascripts/libs/modernizr.min.js"></script>
+  <script src="/javascripts/jquery-2.0.3.min.js"></script>
+  <script src="/javascripts/libs/jquery-ui.min.js"></script>
+  <script src="/javascripts/libs/bootstrap.min.js"></script>
+  <!-- Style CSS -->
+  <link href="/stylesheets/bootstrap.css" media="screen" rel="stylesheet">
+  <link href="/stylesheets/style.css" media="screen" rel="stylesheet">
+  <link href="/stylesheets/syntax.css" media="screen" rel="stylesheet">
+  <!-- scripts -->
+  <script src="/javascripts/general.js"></script>
+  <!-- custom input -->
+  <script src="/javascripts/jquery.customInput.js"></script>
+  <script type="text/javascript" src="/javascripts/custom.js"></script>
+  <!-- Placeholders -->
+  <script type="text/javascript" src="/javascripts/jquery.powerful-placeholder.min.js"></script>
+  <!-- Lightbox prettyPhoto -->
+  <link href="/stylesheets/prettyPhoto.css" rel="stylesheet">
+  <script src="/javascripts/jquery.prettyPhoto.js"></script>
+  <!-- CarouFredSel  -->
+  <script src="/javascripts/jquery.carouFredSel-6.2.1-packed.js"></script>
+  <!-- Progress Bars -->
+  <script src="/javascripts/progressbar.js"></script>
+  <!-- Calendar -->
+  <script src="/javascripts/jquery-ui.multidatespicker.js"></script>
+  <!-- range sliders -->
+  <script src="/javascripts/jquery.slider.bundle.js"></script>
+  <script src="/javascripts/jquery.slider.js"></script>
+  <link rel="stylesheet" href="/stylesheets/jslider.css">
+  <!-- Video Player -->
+  <link href="/stylesheets/video-js.css" rel="stylesheet">
+  <script src="/javascripts/video.js"></script>
+  <!-- Scroll Bars -->
+  <script src="/javascripts/jquery.mousewheel.js"></script>
+  <script src="/javascripts/jquery.jscrollpane.min.js"></script>
+
+<!--[if lt IE 9]><script src="/javascripts/respond.min.js"></script><![endif]-->
+<!--[if gte IE 9]>
+<style type="text/css">
+	.gradient {filter: none !important;}
+</style>
+<![endif]-->
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+
+<meta property="twitter:card" content="summary" />
+<meta property="twitter:site" content="mzyy94" />
+<meta property="twitter:url" content="http://mzyy94.com/blog/2015/04/16/netagent-mondai10" />
+<meta property="twitter:title" content="ネットエージェント最終面接問題 Write-up エクストリームCTF編" />
+
+<meta property="twitter:description" content="ネットエージェントのいきなり最終面接問題を解いたのでWrite-upです。 2016年度 新卒採用｜ネットエージェント株式会社 これまでmondai1からmondai9までは、mondaiとOS XやLinux、Windowsマシンが手元にあれば解く事ができていました。
+しかしmondai10はそうはいきません。mondaiが手元にないのです。mondaiを入手しなければいけないのです。 &hellip;" />
+
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" />
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" />
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-41944495-3']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body  >
+  <div class="container">
+  <div class="content">
+  <header class="row">
+    <nav id="topmenu" class="col-sm-12" role="navigation"><ul class="dropdown clearfix boxed boxed-blue">
+    <li class="menu-level-0"><a href="/">Home</a></li>
+  <li class="menu-level-0"><a href="/blog/">Blog</a></li>
+  <li class="menu-level-0"><a href="/service/">Service</a></li>
+  <li class="menu-level-0">
+  <a href="/about/">About</a>
+  <ul class="submenu-1">
+	  <li class="menu-level-1"><a href="/about/">About me</a></li>
+	  <li class="menu-level-1"><a href="/about/license.html">License</a></li>
+  </ul>
+  </li>
+
+  <li class="menu-level-0">
+    <a>Subscribe</a>
+	<ul class="submenu-1">
+  <li class="menu-level-1"><a href="/blog/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  <li class="menu-level-1"><a href="http://cloud.feedly.com/#subscription%2Ffeed%2Fhttp%3A%2F%2Fmzyy94.com%2Fblog%2Fatom.xml" rel="subscribe-feedly" title="subscribe on Feedly">Feedly</a></li>
+  
+  </ul>
+  
+  <li class="menu-search last">
+
+	<form action="https://www.google.com/search" id="searchForm" class="menu-search-form" method="get">
+		<fieldset role="search">
+			<input type="hidden" name="q" value="site:mzyy94.com" />
+			<input type="text" name="q" value="" results="0" class="menu-search-field" placeholder="Search the website" hidefocus="true" style="outline: none;">
+			<input type="submit" value="" class="btn menu-search-submit" name="search-send" hidefocus="true" style="outline: none;">
+		</fieldset>
+	</form>
+
+  </li>
+  
+</ul>
+</nav>
+  </header>
+  <header class="col-sm-12 boxed-red" role="banner"><hgroup>
+  
+  <h1><a href="/">犬アイコンのみっきー</a></h1>
+  
+</hgroup>
+
+</header>
+    <div class="row">
+      <main class="col-sm-9">
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title boxed-green">ネットエージェント最終面接問題 Write-up エクストリームCTF編</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+<i class="glyphicon glyphicon-calendar"></i><time datetime="2015-04-16T00:13:43+09:00" pubdate data-updated="true">16 Apr 2015</time>
+        
+
+<i class="glyphicon glyphicon-folder-close"></i><span class="categories">
+  
+    <a class='category' href='/blog/categories/ctf/'>ctf</a>
+  
+</span>
+
+
+        
+
+<i class="glyphicon glyphicon-tags"></i><span class="tags">
+  
+    <a class='tag' href='/blog/tags/netagent/'>netagent</a>
+  
+</span>
+
+
+        
+		<i class="glyphicon glyphicon-comment"></i><a href="#disqus_thread"
+             data-disqus-identifier="http://mzyy94.com">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<div class="entry-content"><p>ネットエージェントのいきなり最終面接問題を解いたのでWrite-upです。</p>
+
+<ul>
+<li><a href="http://www.netagent.co.jp/recruit/newgraduates_2016.html">2016年度 新卒採用｜ネットエージェント株式会社</a></li>
+</ul>
+
+
+<p>これまでmondai1からmondai9までは、mondaiとOS XやLinux、Windowsマシンが手元にあれば解く事ができていました。
+しかしmondai10はそうはいきません。mondaiが手元にないのです。mondaiを入手しなければいけないのです。
+某所で10分で解けたと言っていた人は、きっと某せんせーみたいにマッハ20で移動できるのでしょう。</p>
+
+<p>こんな楽しい体験をさせてくれたmondaiを少しでもたくさんの人に知ってもらおうと、学内のLT大会で以下のように発表してきました。</p>
+
+<iframe src="//www.slideshare.net/slideshow/embed_code/47019316" width="425" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
+
+
+<p> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/mzyy94/ctf-coinslt" title="CTFの話 - coinsLT #10" target="_blank">CTFの話 - coinsLT #10</a> </strong> from <strong><a href="//www.slideshare.net/mzyy94" target="_blank">Yuki Mizuno</a></strong> </div></p>
+
+<p>この発表では、この記事の内容から抜粋する形で、最後のmondai10を解く楽しさと、それによって得た経験を紹介してきました。
+よろしければご覧になってみてください。</p>
+
+<p>さて、一昨々日から始まったネットエージェント最終面接問題のWrite-upもこれで最終回です。
+<a href="/blog/2015/04/15/netagent-mondai7-9/">昨日のmondai9のWrite-up</a>に続き、最後のmondai10のWrite-upです。</p>
+
+<!-- more -->
+
+
+<h1>mondai10</h1>
+
+<p>mondai9でマウントしたmondai10.tcには9枚の写真とmondai10.txtがありました。mondai10.txtには以下のように記載がありました。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>関東２ヶ所、関西２ヶ所のそれぞれの箇所にSDカードに最後の問題を隠した。今までのヒントと写真から位置を割り出せ。
+</span><span class='line'>
+</span><span class='line'>各地先着１名
+</span><span class='line'>ヒント：石の下のミンティア</span></code></pre></td></tr></table></div></figure>
+
+
+<p>関東に住んでいるので、関東のSDカードをゲットしに行こうと思いました。
+関東の2ヶ所はkanto1・kanto2と呼ばれ、どちらにしようか迷っていると、kanto2がゲットを狙われているとの情報を得たのでkanto1に行くことにしました。</p>
+
+<h2>今までのヒント</h2>
+
+<p>これまでの問題を解いていて、途中でhint[数字].txtといったファイルが幾つか一緒に出てきました。
+このhintに書かれているkanto1のヒントは以下の6つでした。</p>
+
+<ul>
+<li>com.ruckygames.gunmaapps</li>
+<li>ひもかわうどん</li>
+<li>百足</li>
+<li>×Fe</li>
+<li>!△</li>
+<li>ヤマヒゲナガケンミジンコ</li>
+</ul>
+
+
+<p>1つ目のヒントはアプリケーションBundle IDで、<strong>ぐんまのやぼう</strong>のものでした。2つ目のヒントのひもかわうどんは、群馬県の桐生名物とのことです。
+この2つから群馬県のとある場所に隠されているということが想像つきます。</p>
+
+<p>3つ目のヒントの百足と群馬県をセットにしてGoogle検索してみると、次のサイトが上位にヒットします。</p>
+
+<p><a href="http://akagi-yama.jp/archives/358">神戦「赤城と日光二荒山神戦」 | 群馬県赤城山ポータルサイト</a></p>
+
+<p>群馬県赤城山の神様が大ムカデとのことです。これによって群馬県赤城山に隠されている線が浮上します。</p>
+
+<p>4つ目のヒントは×Fe（※エックスではなくバツ）ですが、さっぱりわかりません。そのまま見るに、鉄(Fe)ではない、ということでしょうか。</p>
+
+<p>5つ目のヒントは!△で意味するところは、山頂にはない、もしくは、三角点付近ではない、ということでしょうか。これまたよくわかりません。</p>
+
+<p>6つ目のヒントはヤマヒゲナガケンミジンコで、Google検索してみるとミジンコ画像サイトばかりヒットしてよくわかりませんでした。</p>
+
+<p>これらのヒントを元にわかったことは、<strong>群馬県の赤城山</strong>に隠されているということです。
+kanto1に関する画像がまだ確認してないので見てみます。
+kanto1_1.jpgとkanto1_2.jpgのファイル情報に撮影場所の手がかりがあるかもと期待を込め、メタ情報を見てみます。</p>
+
+<p><img src="/blog/resources/images/2015/04/16/exif-infos.png" alt="exif-infos.png" /></p>
+
+<p>予想通り、SDカードを隠した場所のGPSの座標情報がEXIFに含まれているようです。OS Xのプレビュー.appで詳細情報を開いて、マップ.appにその地点を表示させてみました。</p>
+
+<p><img src="/blog/resources/images/2015/04/16/apple-map.png" alt="apple-map.png" /></p>
+
+<p>ヒントから導いた通り、隠されている場所は赤城山でまちがいないようです。</p>
+
+<p>早速、赤城山への行き方を調べてみます。</p>
+
+<p><a href="http://akagi-yama.jp/access">アクセス | 群馬県赤城山ポータルサイト</a></p>
+
+<p>公共交通機関で行く方法として、電車に乗って前橋駅もしくは中央前橋駅へ行き、そこから赤城山行きのバスに乗ればよいと示されていました。
+同じ関東だし翌日9時頃に家を出ればその日のうちに帰ってこれるだろ、と高を括り、お布団に入って熟睡し翌日に備えました。
+今思えばこの時点で<strong>エクストリームCTF</strong>が始まっていました。</p>
+
+<blockquote class="twitter-tweet" lang="ja"><p>ヤマノススメするぞといった気持ち</p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584858646346989568">2015, 4月 5</a></blockquote>
+
+
+
+
+<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=mzyy-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B00L3NPW7E" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+<h2>当日</h2>
+
+<p>ぐっすりと睡眠をとり、目覚めのコーヒーと朝食の調理パンを食べて赤城山に向かう準備を始めます。</p>
+
+<blockquote class="twitter-tweet" lang="ja"><p>とりあえず登山グッズはこんなもんか <a href="https://twitter.com/hashtag/SDcardFindingBattle?src=hash">#SDcardFindingBattle</a> <a href="http://t.co/pXQj4G5MdH">pic.twitter.com/pXQj4G5MdH</a></p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584861432895811585">2015, 4月 5</a></blockquote>
+
+
+<p>MBA,パン,水分,チョコレート,革手袋,コンパクトダウンジャケット,モバイルバッテリーにSDカードリーダーを持っていざ出発です。</p>
+
+<h3>午前の部　電車乗り換え編</h3>
+
+<blockquote class="twitter-tweet" lang="ja"><p>行くぜ関東 <a href="https://twitter.com/hashtag/SDcardFindingBattle?src=hash">#SDcardFindingBattle</a> (@ つくば駅 (Tsukuba Sta.) in つくば市, 茨城県) <a href="https://t.co/DUWnj3m167">https://t.co/DUWnj3m167</a></p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584874102009266176">2015, 4月 6</a></blockquote>
+
+
+<p>自宅の最寄駅のつくば駅からつくばエクスプレスに乗り、赤城山の最寄駅である前橋駅へ向かいます。
+つくばエクスプレスの電車の中で検索したところ経路としては、流山おおたかの森駅乗り換えで東武鉄道を使う行き方と、
+南流山乗り換えでJRを使って行く方法がありました。</p>
+
+<p><img src="/blog/resources/images/2015/04/16/train-connections.png" alt="train-connections" /></p>
+
+<p>JRでは移動距離100km以上だったので学割が使えますが、電車内での決断は以下のようになりました。</p>
+
+<blockquote class="twitter-tweet" lang="ja"><p>JRでSDカード発掘に行くつもりだったけど時間ずらすと東武の方が安いことに気づいて学割使わなんだ</p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584881057205395456">2015, 4月 6</a></blockquote>
+
+
+<p>この時は後にある過酷な乗り換えが待っていることも知らず、運賃の安さで流山おおたかの森駅での乗り換えを選択しました。</p>
+
+<blockquote class="twitter-tweet" lang="ja"><p>TX乗り換え <a href="https://twitter.com/hashtag/SDcardFindingBattle?src=hash">#SDcardFindingBattle</a> (@ つくばエクスプレス 流山おおたかの森駅 in 流山市, 千葉県) <a href="https://t.co/PTvNeocyiw">https://t.co/PTvNeocyiw</a></p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584879354540388352">2015, 4月 6</a></blockquote>
+
+
+<p>東武鉄道へと乗り換え、電車の中で前橋駅から赤城山へのバスの時刻表を調べ始めます。ここで衝撃の事実を知ることになります。</p>
+
+<blockquote class="twitter-tweet" lang="ja"><p>やべぇ登山口へのバスの本数少なすぎるw <a href="https://twitter.com/hashtag/SDcardFindingBattle?src=hash">#SDcardFindingBattle</a></p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584885349471498242">2015, 4月 6</a></blockquote>
+
+
+
+
+<blockquote class="twitter-tweet" lang="ja"><p>ちょっと！kanto1最寄り駅から1日5本しかバス出てないってどういうことおかしいでしょ！！ <a href="https://twitter.com/hashtag/SDcardFindingBattle?src=hash">#SDcardFindingBattle</a></p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584885739130716160">2015, 4月 6</a></blockquote>
+
+
+
+
+<blockquote class="twitter-tweet" lang="ja"><p>5本じゃない4本だし！！！ <a href="https://twitter.com/hashtag/SDcardFindingBattle?src=hash">#SDcardFindingBattle</a></p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584885923290030082">2015, 4月 6</a></blockquote>
+
+
+<p>衝撃です。平日の前橋駅発赤城山行きのバスは4本しかなく、4本目が最終折り返し便という記載がバス時刻表にあることを初めて知りました。</p>
+
+<p><img src="/blog/resources/images/2015/04/16/bus-table.png" alt="bus-table" /></p>
+
+<p>平日の前橋駅発富士見温泉経由赤城山行きの出発時刻は7:32、10:35、13:27、15:28の4本しかなく、15:28の便が最終折り返し便なので、なんとしてでも13:27のバスに乗らなければならない状況に立たされていることを知ります。
+悠長に電車旅を続けられる状態ではなくなりました。本数の少ない路線を乗り継いでいるため、一つでも乗り換えを間違えたり間に合わなかったりすると13:27のバスに間に合わず、そこでmondai10へのチャレンジ終了となります。</p>
+
+<p>ギリギリの乗り換えを迫られているがため、春日部駅で10:26発の久喜行きの電車が目の前で去った時は、乗り換え失敗をしたと勘違いし、焦ってこんなツイートをしていました（乗り換え案内によると10:36発の久喜行きに乗ればよいとのことでした）。</p>
+
+<blockquote class="twitter-tweet" lang="ja"><p>あかん乗り換えミスったやばいぞ <a href="https://twitter.com/hashtag/SDcardFindingBattle?src=hash">#SDcardFindingBattle</a> (@ 春日部駅 (Kasukabe Sta.) in 春日部市, 埼玉県) <a href="https://t.co/4d9tnWBHpQ">https://t.co/4d9tnWBHpQ</a></p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584890215510192129">2015, 4月 6</a></blockquote>
+
+
+<p>なんとか春日部駅での乗り換えを成功し、電車の中でこんなことを考えていました。</p>
+
+<blockquote class="twitter-tweet" lang="ja"><p>新幹線乗ればよかった感</p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584891590436454400">2015, 4月 6</a></blockquote>
+
+
+<p>運賃をできるだけ安く済ませようと、有料特急を乗り換え案内の検索条件から外していたのですが、埼玉県の大宮駅で新幹線に乗って群馬県の高崎駅へ行く経路をとれば、乗り換えも少なく、時間に余裕を持って前橋駅まで行くことができたのです。</p>
+
+<p>続く2駅も、途中2分という短い乗り換え時間でありながらも、乗り遅れることなく無事乗り換えることに成功しました。</p>
+
+<blockquote class="twitter-tweet" lang="ja"><p><a href="https://twitter.com/hashtag/SDcardFindingBattle?src=hash">#SDcardFindingBattle</a> (@ 久喜駅 (Kuki Sta.) in 久喜市, 埼玉県) <a href="https://t.co/Xm0SXXYVs7">https://t.co/Xm0SXXYVs7</a></p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584895933697159168">2015, 4月 6</a></blockquote>
+
+
+
+
+<blockquote class="twitter-tweet" lang="ja"><p>乗り換え可能時間2分しかないぞ</p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584903863565594624">2015, 4月 6</a></blockquote>
+
+
+
+
+<blockquote class="twitter-tweet" lang="ja"><p>乗り換え成功 <a href="https://twitter.com/hashtag/SDcardFindingBattle?src=hash">#SDcardFindingBattle</a> (@ 館林駅 (Tatebayashi Sta.) in 館林市, 群馬県) <a href="https://t.co/zCyWnEyjHF">https://t.co/zCyWnEyjHF</a></p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584905684585750528">2015, 4月 6</a></blockquote>
+
+
+<p>さて、普通にプラットホームを移動して乗り換えするだけでよかったのはこの館林駅まで。次の乗り換え駅である足利市駅では時間との戦いが待っているのです。</p>
+
+<p><img src="/blog/resources/images/2015/04/16/running-connection.png" alt="running-connection" /></p>
+
+<p>足利市駅での乗り換えでは、違う路線の駅間を歩いて移動しなければならないのです。この乗り換えの最大の難関は移動時間。足利市駅に11:47に到着し足利駅の発車時刻は12:05で、その間の時間は18分しかありません。徒歩での経路をiOSのマップで調べてみると、予想所要時間は18分となっています。迷ったり道を間違えたりしていたら乗り損ねてしまい、mondai10チャレンジ終了となります。</p>
+
+<blockquote class="twitter-tweet" lang="ja"><p>東武鉄道遅延情報出てないのに遅延してるクズっぽい</p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584910433590517760">2015, 4月 6</a></blockquote>
+
+
+<p>追い討ちをかけるように、東武鉄道は2分ほど足利市駅への到着が遅れていました。</p>
+
+<blockquote class="twitter-tweet" lang="ja"><p>駅間ダッシュだっ！ <a href="https://twitter.com/hashtag/SDcardFindingBattle?src=hash">#SDcardFindingBattle</a> (@ 足利市駅 (Ashikagashi Sta.) in 足利市, 栃木県) <a href="https://t.co/nvG8VXUlrI">https://t.co/nvG8VXUlrI</a></p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584910796683157504">2015, 4月 6</a></blockquote>
+
+
+<p>11:49に駅に到着し、足利駅への移動を開始します。</p>
+
+<blockquote class="twitter-tweet" lang="ja"><p>いきなり迷ってる <a href="https://twitter.com/hashtag/%E3%82%A8%E3%82%AF%E3%82%B9%E3%83%88%E3%83%AA%E3%83%BC%E3%83%A0CTF?src=hash">#エクストリームCTF</a> <a href="https://twitter.com/hashtag/SDcardFindingBattle?src=hash">#SDcardFindingBattle</a></p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584911355313917953">2015, 4月 6</a></blockquote>
+
+
+<p>駅の出口が2方向にあり、どちらに出ればいいかわからず、さらに出口から出たところで道らしき道が見当たらなかったため、2分ほど迷ってしまいました。</p>
+
+<p>iPhoneの電子コンパスを使って方角を確かめ、正しい出口から出てマップを頼りに急いで移動を開始します。</p>
+
+<p><img src="/blog/resources/images/2015/04/16/connection-map.png" alt="connection-map" /></p>
+
+<p>駅間の移動中の風景はとてものどかで、ゆっくりとした時間が流れているようでした。ゆっくりと時間が流れて欲しいと思っていたからかもしれませんが。
+橋を渡っている時に撮った渡良瀬川の風景は、特に面白みがなく自然な感じでした。</p>
+
+<blockquote class="twitter-tweet" lang="ja"><p><a href="https://twitter.com/hashtag/SDcardFindingBattle?src=hash">#SDcardFindingBattle</a> <a href="http://t.co/v9Jca4uFE4">pic.twitter.com/v9Jca4uFE4</a></p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584911834458689536">2015, 4月 6</a></blockquote>
+
+
+<p><a href="/blog/resources/images/2015/04/16/IMG_2374.JPG"><img src="/blog/resources/images/2015/04/16/IMG_2374_thumb.JPG" alt="IMG_2374.JPG" /></a>
+<a href="/blog/resources/images/2015/04/16/IMG_2375.JPG"><img src="/blog/resources/images/2015/04/16/IMG_2375_thumb.JPG" alt="IMG_2375.JPG" /></a></p>
+
+<p>のんびりと写真を撮っていたからでしょうか、駅まで残り250mの地点ですでに電車出発まで残り2分を切ってしまいました。</p>
+
+<p><img src="/blog/resources/images/2015/04/16/last_250m.png" alt="last_250m" /></p>
+
+<p>猛ダッシュするしかありません。幸い、信号のある道ではなかったので歩道を存分に走って駅に向かうことができました。</p>
+
+<blockquote class="twitter-tweet" lang="ja"><p>ギリッギリw <a href="https://twitter.com/hashtag/SDcardFindingBattle?src=hash">#SDcardFindingBattle</a> (@ 足利駅 (Ashikaga Sta.) in 足利市, 栃木県) <a href="https://t.co/tkic86CCmO">https://t.co/tkic86CCmO</a></p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584914938298261504">2015, 4月 6</a></blockquote>
+
+
+
+
+<blockquote class="twitter-tweet" lang="ja"><p>最後猛ダッシュだったわw <a href="https://twitter.com/hashtag/SDcardFindingBattle?src=hash">#SDcardFindingBattle</a></p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584915058506870784">2015, 4月 6</a></blockquote>
+
+
+
+
+<blockquote class="twitter-tweet" lang="ja"><p>あと30秒遅かったらリタイアだったわ <a href="https://twitter.com/hashtag/SDcardFindingBattle?src=hash">#SDcardFindingBattle</a></p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584915558820225025">2015, 4月 6</a></blockquote>
+
+
+<p>駅の改札を通ると高崎行き方面のホームにはすでに電車が！ふくらはぎパンパンになりながらも階段を駆け上がり、なんとか電車に間に合い乗ることができました。</p>
+
+<p>ちなみに足利駅には電車が飾ってありました。（こんなの撮影してないで急げというツッコミはなしで）</p>
+
+<p><a href="/blog/resources/images/2015/04/16/IMG_2379.JPG"><img src="/blog/resources/images/2015/04/16/IMG_2379_thumb.JPG" alt="IMG_2379.JPG" /></a></p>
+
+<p>最後の乗り換えを終え、あとは前橋駅で降りるだけとなりました。なんとか電車で赤城山最寄駅までこぎつけることができる状態となり、これにて過酷な電車乗り換え編はおしまいとなります。</p>
+
+<blockquote class="twitter-tweet" lang="ja"><p>とりあえず エクストリームCTF 午前の部 電車編 はクリアできたっぽいです</p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584918614555238401">2015, 4月 6</a></blockquote>
+
+
+<h3>昼の部　バス乗り換え編</h3>
+
+<blockquote class="twitter-tweet" lang="ja"><p>エクストリームCTF 昼の部 バス編開始です <a href="https://twitter.com/hashtag/SDcardFindingBattle?src=hash">#SDcardFindingBattle</a> (@ 前橋駅 (Maebashi Sta.) in 前橋市, 群馬県) <a href="https://t.co/djgY3NCMZ9">https://t.co/djgY3NCMZ9</a></p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584927608808288256">2015, 4月 6</a></blockquote>
+
+
+<p>へとへとになりながらも降りそびれることなく、前橋駅に到着しました。</p>
+
+<p>バスターミナルを回り、富士見温泉経由で赤城山に向かうバスを探します。</p>
+
+<blockquote class="twitter-tweet" lang="ja"><p>この13:27で行けるはず… <a href="https://twitter.com/hashtag/SDcardFindingBattle?src=hash">#SDcardFindingBattle</a> (@ 前橋駅バスターミナル in 前橋市, 群馬県) <a href="https://t.co/zRGB3P2gof">https://t.co/zRGB3P2gof</a> <a href="http://t.co/utCcwl1PVN">pic.twitter.com/utCcwl1PVN</a></p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584928918194540544">2015, 4月 6</a></blockquote>
+
+
+<p>事前に（電車内で）調べてあった13:27発のバスがありました。しかし富士見温泉終点と書いてあるこのバスで本当に赤城山へ行けるか心配になり、バス案内所へ行きどの便でいけるのかを聞いてきました。</p>
+
+<blockquote class="twitter-tweet" lang="ja"><p>心配になってバス案内所で聞いてきたら13:27の便であってた <a href="https://twitter.com/hashtag/SDcardFindingBattle?src=hash">#SDcardFindingBattle</a> <a href="http://t.co/s2Hfmuv4Jc">pic.twitter.com/s2Hfmuv4Jc</a></p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584931886155239425">2015, 4月 6</a></blockquote>
+
+
+<p>この13:27発の電車であっていたようです。一度富士見温泉で赤城山ビジターセンター行きのバスに乗り換えをする必要があるとのことでした。</p>
+
+<p>案内所にあったバス停の停車場所の地図から、SDカードがある場所に一番近いバス停を探します。Google Mapによると、赤城山ビジターセンターまで行ってしまうと大回りとなってしまうとのことで、その一つ前の赤城山大洞で降りると、山道を通って最短経路で行けるとのことでした。</p>
+
+<p><img src="/blog/resources/images/2015/04/16/bus-stop-route.png" alt="bus-stop-route" /></p>
+
+<p>時間になり、バスが来たので乗車しました。</p>
+
+<blockquote class="twitter-tweet" lang="ja"><p>バス乗った　<a href="https://twitter.com/hashtag/SDcardFindingBattle?src=hash">#SDcardFindingBattle</a></p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584934452813365248">2015, 4月 6</a></blockquote>
+
+
+<p>ここで想定していなかった事態が発生します。</p>
+
+<blockquote class="twitter-tweet" lang="ja"><p>雨降ってきたし！！！</p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584934838643195904">2015, 4月 6</a></blockquote>
+
+
+
+
+<blockquote class="twitter-tweet" lang="ja"><p>雨降るなんて聞いてないよ！！！ <a href="https://twitter.com/hashtag/SDcardFindingBattle?src=hash">#SDcardFindingBattle</a></p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584934887217500160">2015, 4月 6</a></blockquote>
+
+
+<p>天気予報では&#8221;晴れ&#8221;となっていたので雨具など用意していません。しかもバスに乗るまで20分ほど待ち時間があったので、乗車前に降りそうな予感がしていれば雨合羽を買うことすらできただけに、最悪のタイミングで雨が降ってきました。このままSDカードを見つけることができるのかと、とても不安になってきました。</p>
+
+<blockquote class="twitter-tweet" lang="ja"><p>まんがタイムきららのドキドキビジュアルコミックス以上にドキドキしてる</p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584937029898612736">2015, 4月 6</a></blockquote>
+
+
+<p>ぼーっと外を眺めていても、雨粒と曇天とでかい鳥居くらいしかなく、ぜんぜん落ち着きませんでした。</p>
+
+<blockquote class="twitter-tweet" lang="ja"><p>でかい鳥居だ <a href="http://t.co/9xRZJc8ODm">pic.twitter.com/9xRZJc8ODm</a></p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584941636108451840">2015, 4月 6</a></blockquote>
+
+
+<p>そうこうしていると富士見温泉バス停に着き、乗り換えをしました。</p>
+
+<blockquote class="twitter-tweet" lang="ja"><p><a href="https://twitter.com/hashtag/SDcardFindingBattle?src=hash">#SDcardFindingBattle</a> (@ 富士見温泉バス停) <a href="https://t.co/NDft6XwqIr">https://t.co/NDft6XwqIr</a></p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584943568017588224">2015, 4月 6</a></blockquote>
+
+
+<p>赤城山ビジターセンター行きのバスに乗ると、風景に大きな山が見えてきました。たぶん赤城山です。たぶん。</p>
+
+<p><a href="/blog/resources/images/2015/04/16/IMG_2388.JPG"><img src="/blog/resources/images/2015/04/16/IMG_2388_thumb.JPG" alt="IMG_2388.JPG" /></a>
+<a href="/blog/resources/images/2015/04/16/IMG_2391.JPG"><img src="/blog/resources/images/2015/04/16/IMG_2391_thumb.JPG" alt="IMG_2391.JPG" /></a></p>
+
+<p>バスで揺られて眠くなる中、標高1000mを越えたあたりから車窓から覗く景色が明るくなっていることに気づきます。</p>
+
+<blockquote class="twitter-tweet" lang="ja"><p>標高1000m超えた</p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584950108011110400">2015, 4月 6</a></blockquote>
+
+
+
+
+<blockquote class="twitter-tweet" lang="ja"><p>残雪があるぞ…</p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584951262354939905">2015, 4月 6</a></blockquote>
+
+
+<p>そう、残雪が景色を明るくしていたのです。また、赤城山大沼という湖は湖面が凍っていました。</p>
+
+<p><a href="/blog/resources/images/2015/04/16/IMG_2395.JPG"><img src="/blog/resources/images/2015/04/16/IMG_2395_thumb.JPG" alt="IMG_2395.JPG" /></a>
+<a href="/blog/resources/images/2015/04/16/IMG_2398.JPG"><img src="/blog/resources/images/2015/04/16/IMG_2398_thumb.JPG" alt="IMG_2398.JPG" /></a></p>
+
+<p>赤城山大洞バス停に到着し、降車します。降りるとき、バスの運転手にこう告げられました。</p>
+
+<blockquote><p>バス停が雪に埋まってるから帰りは降りた位置辺りにいれば止まるよ</p></blockquote>
+
+<p>嫌な予感しかしません。</p>
+
+<p>ここから想像をはるかに超える過酷な登山が始まります。</p>
+
+<h3>午後1　登山編</h3>
+
+<blockquote class="twitter-tweet" lang="ja"><p>さぁ、登山開始だ <a href="https://twitter.com/hashtag/SDcardFindingBattle?src=hash">#SDcardFindingBattle</a> (@ 赤城山第1スキー場 in 前橋市, 群馬県) <a href="https://t.co/tHRXadHe4S">https://t.co/tHRXadHe4S</a></p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584954825294684160">2015, 4月 6</a></blockquote>
+
+
+<p>バス停を降りてすぐのところで登山者向けの案内看板を見つけました。</p>
+
+<p><a href="/blog/resources/images/2015/04/16/IMG_2399.JPG"><img src="/blog/resources/images/2015/04/16/IMG_2399_thumb.JPG" alt="IMG_2399.JPG" /></a></p>
+
+<p>この看板の略図にある地蔵岳を越えてゆくコースを通ってSDカードの場所へと向かいます。看板の凡例にあるように、通る道は<strong>歩道</strong>となっているので比較的楽に登ることができると思いまいした。その歩道とやらはどこにあるのかとあたりを見渡すと、アスファルトで舗装された道がみつかりました。</p>
+
+<blockquote class="twitter-tweet" lang="ja"><p>どうすんだよこれ <a href="https://twitter.com/hashtag/SDcardFindingBattle?src=hash">#SDcardFindingBattle</a> <a href="http://t.co/3DeQWYKK8V">pic.twitter.com/3DeQWYKK8V</a></p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584955092714950656">2015, 4月 6</a></blockquote>
+
+
+<p>かろうじてアスファルトの道であるとわかる雪に覆われた登山道を見つけます。100mほど先を見ると、アスファルトはすべて雪に覆われ見えなくなっています。
+完全に想像していなかった事態です。春になり暖かくなってきていたので、こんなにも雪が積もっているなんて考えていませんでした。
+前日の甘い考えがここで思い出されます。</p>
+
+<blockquote class="twitter-tweet" lang="ja"><p>ヤマノススメするぞといった気持ち</p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584858646346989568">2015, 4月 5</a></blockquote>
+
+
+
+
+<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=mzyy-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B00L3NPW7E" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+
+<p>何も下調べせずに来てしまったことを強く後悔しました。
+事前にしっかりと下調べしていれば、1800m超級の山にはまだ雪が残っているというのは安易に想像がつきます。小爪アイゼン装備のブーツを持ってくることもできたのです。</p>
+
+<p>よく滑る雪道を数十メートル進み、湖の方を眺めると大きな山がこちらを見守ってくれていました。</p>
+
+<p><a href="/blog/resources/images/2015/04/16/IMG_2403.JPG"><img src="/blog/resources/images/2015/04/16/IMG_2403_thumb.JPG" alt="IMG_2403.JPG" /></a></p>
+
+<p>刻々と帰りのバスの時間が迫ってきているので、後悔はほどほどに先に進みます。</p>
+
+<blockquote class="twitter-tweet" lang="ja"><p>やばい(確信) <a href="https://twitter.com/hashtag/SDcardFindingBattle?src=hash">#SDcardFindingBattle</a> <a href="http://t.co/NsTmOr6ZL2">pic.twitter.com/NsTmOr6ZL2</a></p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584956357419241472">2015, 4月 6</a></blockquote>
+
+
+
+
+<blockquote class="twitter-tweet" lang="ja"><p>なんで沢登りせにゃならんのだw <a href="https://twitter.com/hashtag/SDcardFindingBattle?src=hash">#SDcardFindingBattle</a> <a href="http://t.co/5c72fEWBQc">pic.twitter.com/5c72fEWBQc</a></p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584958094637015040">2015, 4月 6</a></blockquote>
+
+
+<p>膝上まで沈む深い雪があるところや、雪解け水で小川ができているところを水浸しになりながらかけ進んでいきます。</p>
+
+<p><a href="/blog/resources/images/2015/04/16/IMG_2405.JPG"><img src="/blog/resources/images/2015/04/16/IMG_2405_thumb.JPG" alt="IMG_2405.JPG" /></a>
+<a href="/blog/resources/images/2015/04/16/IMG_2410.JPG"><img src="/blog/resources/images/2015/04/16/IMG_2410_thumb.JPG" alt="IMG_2410.JPG" /></a>
+<a href="/blog/resources/images/2015/04/16/IMG_2412.JPG"><img src="/blog/resources/images/2015/04/16/IMG_2412_thumb.JPG" alt="IMG_2412.JPG" /></a>
+<a href="/blog/resources/images/2015/04/16/IMG_2413.JPG"><img src="/blog/resources/images/2015/04/16/IMG_2413_thumb.JPG" alt="IMG_2413.JPG" /></a>
+<a href="/blog/resources/images/2015/04/16/IMG_2414.JPG"><img src="/blog/resources/images/2015/04/16/IMG_2414_thumb.JPG" alt="IMG_2414.JPG" /></a></p>
+
+<blockquote class="twitter-tweet" lang="ja"><p>Googleさんの案内相当険しかったですね。。これマップの地点の画像です <a href="https://twitter.com/hashtag/SDcardFindingBattle?src=hash">#SDcardFindingBattle</a> <a href="http://t.co/OthdUPcczu">pic.twitter.com/OthdUPcczu</a></p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584976426962530305">2015, 4月 6</a></blockquote>
+
+
+<p>20分ほど登ったでしょうか、地蔵岳の登山道を抜け、車道に出てきました。</p>
+
+<p><a href="/blog/resources/images/2015/04/16/IMG_2415.JPG"><img src="/blog/resources/images/2015/04/16/IMG_2415_thumb.JPG" alt="IMG_2415.JPG" /></a></p>
+
+<p>やっと雪道から解放されました。</p>
+
+<p>少し進むと小沼という湖がでてきました。</p>
+
+<p><a href="/blog/resources/images/2015/04/16/IMG_2416.JPG"><img src="/blog/resources/images/2015/04/16/IMG_2416_thumb.JPG" alt="IMG_2416.JPG" /></a>
+<a href="/blog/resources/images/2015/04/16/IMG_2417.JPG"><img src="/blog/resources/images/2015/04/16/IMG_2417_thumb.JPG" alt="IMG_2417.JPG" /></a>
+<a href="/blog/resources/images/2015/04/16/IMG_2418.JPG"><img src="/blog/resources/images/2015/04/16/IMG_2418_thumb.JPG" alt="IMG_2418.JPG" /></a>
+<a href="/blog/resources/images/2015/04/16/IMG_2419.JPG"><img src="/blog/resources/images/2015/04/16/IMG_2419_thumb.JPG" alt="IMG_2419.JPG" /></a>
+<a href="/blog/resources/images/2015/04/16/IMG_2420.JPG"><img src="/blog/resources/images/2015/04/16/IMG_2420_thumb.JPG" alt="IMG_2420.JPG" /></a></p>
+
+<p>標高1450m地点とのことです。あと一息で目的地周辺です。
+凍った湖を左手に眺めながら車道脇をてくてくと歩き進んでいきます。</p>
+
+<p><a href="/blog/resources/images/2015/04/16/IMG_2422.JPG"><img src="/blog/resources/images/2015/04/16/IMG_2422_thumb.JPG" alt="IMG_2422.JPG" /></a>
+<a href="/blog/resources/images/2015/04/16/IMG_2424.JPG"><img src="/blog/resources/images/2015/04/16/IMG_2424_thumb.JPG" alt="IMG_2424.JPG" /></a>
+<a href="/blog/resources/images/2015/04/16/IMG_2425.JPG"><img src="/blog/resources/images/2015/04/16/IMG_2425_thumb.JPG" alt="IMG_2425.JPG" /></a>
+<img src="/blog/resources/images/2015/04/16/route-to-dest.png" alt="route-to-dest.png" /></p>
+
+<p>目的地周辺まで来ました。このときiPhoneの電波は圏外となっていました。</p>
+
+<p>ここからは車道を外れて森の中へと捜索しに行きます。</p>
+
+<h3>午後2　捜索編</h3>
+
+<p>登山道が60cm超の雪まみれだったのにもかかわらず、SDカードが隠されている森は数cmの雪しかありませんでした。
+不幸中の幸いというものですね。</p>
+
+<p><a href="/blog/resources/images/2015/04/16/IMG_2428.JPG"><img src="/blog/resources/images/2015/04/16/IMG_2428_thumb.JPG" alt="IMG_2428.JPG" /></a>
+<a href="/blog/resources/images/2015/04/16/IMG_2429.JPG"><img src="/blog/resources/images/2015/04/16/IMG_2429_thumb.JPG" alt="IMG_2429.JPG" /></a>
+<a href="/blog/resources/images/2015/04/16/IMG_2431.JPG"><img src="/blog/resources/images/2015/04/16/IMG_2431_thumb.JPG" alt="IMG_2431.JPG" /></a>
+<a href="/blog/resources/images/2015/04/16/IMG_2433.JPG"><img src="/blog/resources/images/2015/04/16/IMG_2433_thumb.JPG" alt="IMG_2433.JPG" /></a></p>
+
+<p>道無き道を突き進んでいたのですが、途中で道らしきものを見つけそちらを歩き始めました。
+すると、看板とともに分岐点があらわれました。</p>
+
+<p>GPSによると、血の池方面に行けばよさそうなので、そちらへ進んでいきます。</p>
+
+<p><a href="/blog/resources/images/2015/04/16/IMG_2435.JPG"><img src="/blog/resources/images/2015/04/16/IMG_2435_thumb.JPG" alt="IMG_2435.JPG" /></a>
+<a href="/blog/resources/images/2015/04/16/IMG_2437.JPG"><img src="/blog/resources/images/2015/04/16/IMG_2437_thumb.JPG" alt="IMG_2437.JPG" /></a></p>
+
+<p>血の池に着くと、血の池にまつわる伝説と池の由来が書かれた看板がありました。
+この看板を読んでいると、すこし前に目にした単語を見つけました。
+そう、hint7.txtに記載のあった<strong>ヤマヒゲナガケンミジンコ</strong>です。
+なるほどがってん、あれはこの血の池を指していたんですね。</p>
+
+<p>血の池の中心に来て辺りを見回すと、そこは静かな森でした。まぁ森に入って来たからあたりまえなのですが。</p>
+
+<p><a href="/blog/resources/images/2015/04/16/IMG_2441.JPG"><img src="/blog/resources/images/2015/04/16/IMG_2441_thumb.JPG" alt="IMG_2441.JPG" /></a></p>
+
+<p>地図を拡大し、GPSだけを頼りにSDカードの位置まで行くと、kanto1_1.jpgに写っているのと同じような岩がたくさんある場所へと来ました。</p>
+
+<p><a href="/blog/resources/images/2015/04/16/IMG_2445.JPG"><img src="/blog/resources/images/2015/04/16/IMG_2445_thumb.JPG" alt="IMG_2445.JPG" /></a></p>
+
+<p>よーくkanto1_1.jpgと目の前の岩岩を見比べ、それらしき岩を特定しました。</p>
+
+<p><a href="/blog/resources/images/2015/04/16/IMG_2446.JPG"><img src="/blog/resources/images/2015/04/16/IMG_2446_thumb.JPG" alt="IMG_2446.JPG" /></a></p>
+
+<p>mondai10.txtによると、<em>ヒント：石の下のミンティア</em>とのことなので、石をめくってみます。</p>
+
+<p><a href="/blog/resources/images/2015/04/16/IMG_2447.JPG"><img src="/blog/resources/images/2015/04/16/IMG_2447_thumb.JPG" alt="IMG_2447.JPG" /></a>
+<a href="/blog/resources/images/2015/04/16/IMG_2449.JPG"><img src="/blog/resources/images/2015/04/16/IMG_2449_thumb.JPG" alt="IMG_2449.JPG" /></a></p>
+
+<p>ありました！ミンティアアップルフィス味です！
+気になる中身は&#8230;</p>
+
+<p><a href="/blog/resources/images/2015/04/16/IMG_2451.JPG"><img src="/blog/resources/images/2015/04/16/IMG_2451_thumb.JPG" alt="IMG_2451.JPG" /></a></p>
+
+<p><strong>待望のSDカードでした！やっとみつかりました！</strong>
+9:24につくば駅から電車に乗り、15:24に発見したのでかれこれ6時間の旅でした。
+ものすごい達成感とSDカードの中身への興味から、岩場に腰を下ろしSDカードをマウントしてみてみました。</p>
+
+<p><a href="/blog/resources/images/2015/04/16/IMG_2452.JPG"><img src="/blog/resources/images/2015/04/16/IMG_2452_thumb.JPG" alt="IMG_2452.JPG" /></a></p>
+
+<pre style="border:none; color:inherit; background-color:inherit;">
+＿人人人人人人人＿
+＞ mondai10.tc ＜
+￣Y^Y^Y^Y^Y^Y￣
+</pre>
+
+
+<p>またこの形式か！mondai9で解いたのと同じ、パスワード付きTrueCryptファイルです。
+パスワードのヒントはSDカード内にあることは容易に想像がつくので解析しようと思いましたが、
+帰りのバスが1本しかない上に、ここからバス停まで何分かかるか不明なため、解析は後回しにしてとりあえず森を抜けることにします。
+岩場のすぐ近くに県道へ抜ける道の案内看板があったので、それに従って車道へと出ます。</p>
+
+<h3>午後3　帰宅編</h3>
+
+<p><a href="/blog/resources/images/2015/04/16/IMG_2454.JPG"><img src="/blog/resources/images/2015/04/16/IMG_2454_thumb.JPG" alt="IMG_2454.JPG" /></a>
+<a href="/blog/resources/images/2015/04/16/IMG_2455.JPG"><img src="/blog/resources/images/2015/04/16/IMG_2455_thumb.JPG" alt="IMG_2455.JPG" /></a>
+<a href="/blog/resources/images/2015/04/16/IMG_2457.JPG"><img src="/blog/resources/images/2015/04/16/IMG_2457_thumb.JPG" alt="IMG_2457.JPG" /></a>
+<a href="/blog/resources/images/2015/04/16/IMG_2458.JPG"><img src="/blog/resources/images/2015/04/16/IMG_2458_thumb.JPG" alt="IMG_2458.JPG" /></a></p>
+
+<p>看板の指示通りに歩いていたら、あっさりと県道へと抜けることができ、さらに県道から血の池までの最短ルートとなる登山道の入り口の案内板がありました。
+hint7.txtのヤマヒゲナガケンミジンコから血の池が導けていれば、道無き道を進む必要もなく、この看板から血の池へ向かうことができていたかもしれません。</p>
+
+<p>車道へと出たのであとは道なりにバス停へと向かうことにします。
+行きに後者した赤城山大洞バス停へは、あの<strong>険しい登山道</strong>を再度通らないといけないため、少し遠回りになりますが、赤城山ビジターセンターへと向かいます。
+行きとは逆で、右手に小沼を眺めながら下っていきます。</p>
+
+<p><a href="/blog/resources/images/2015/04/16/IMG_2461.JPG"><img src="/blog/resources/images/2015/04/16/IMG_2461_thumb.JPG" alt="IMG_2461.JPG" /></a>
+<a href="/blog/resources/images/2015/04/16/IMG_2462.JPG"><img src="/blog/resources/images/2015/04/16/IMG_2462_thumb.JPG" alt="IMG_2462.JPG" /></a>
+<a href="/blog/resources/images/2015/04/16/IMG_2465.JPG"><img src="/blog/resources/images/2015/04/16/IMG_2465_thumb.JPG" alt="IMG_2465.JPG" /></a>
+<a href="/blog/resources/images/2015/04/16/IMG_2466.JPG"><img src="/blog/resources/images/2015/04/16/IMG_2466_thumb.JPG" alt="IMG_2466.JPG" /></a>
+<a href="/blog/resources/images/2015/04/16/IMG_2469.JPG"><img src="/blog/resources/images/2015/04/16/IMG_2469_thumb.JPG" alt="IMG_2469.JPG" /></a></p>
+
+<p>ただただ歩き進むだけだったので、何事もなく赤城山ビジターセンターに到着することができました。</p>
+
+<blockquote class="twitter-tweet" lang="ja"><p><a href="https://twitter.com/hashtag/SDcardFindingBattle?src=hash">#SDcardFindingBattle</a> (@ 赤城公園ビジターセンター in 前橋市, 群馬県) <a href="https://t.co/UE7XCVkwDv">https://t.co/UE7XCVkwDv</a> <a href="http://t.co/9EkxDzo5hO">pic.twitter.com/9EkxDzo5hO</a></p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584974440947183616">2015, 4月 6</a></blockquote>
+
+
+<p>赤城山ビジターセンターは閉まっていたので外のベンチに腰掛けました。</p>
+
+<p>ビジターセンター横に、赤城山公園に関するお得な掲示板がありました。</p>
+
+<p><a href="/blog/resources/images/2015/04/16/IMG_2477.JPG"><img src="/blog/resources/images/2015/04/16/IMG_2477_thumb.JPG" alt="IMG_2477.JPG" /></a></p>
+
+<p>急いで降りてきた会があってか、バスが来るまで1時間も余裕があったので、持って来たコーヒーと板チョコレートで休憩しました。</p>
+
+<blockquote class="twitter-tweet" lang="ja"><p>バスが来るまで1時間あるのでチョコとコーヒーで休憩 <a href="http://t.co/RfTO5ZNJA8">pic.twitter.com/RfTO5ZNJA8</a></p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584980254445305856">2015, 4月 6</a></blockquote>
+
+
+<p>標高1365mなため、16:00を過ぎたこの時期の山は寒くなり、ダウンジャケットを準備しておいて正解でした。</p>
+
+<blockquote class="twitter-tweet" lang="ja"><p>標高1400mはやっぱり寒い&#10;ダウンジャケット持ってきて正解だったわ</p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584977161729093632">2015, 4月 6</a></blockquote>
+
+
+<p>チョコレートを食べ終わり、辺りを見回すと霞がかかってきました。</p>
+
+<blockquote class="twitter-tweet" lang="ja"><p>あっやばい霞ががってきた <a href="http://t.co/BK7zs4m0L1">pic.twitter.com/BK7zs4m0L1</a></p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584976787811119105">2015, 4月 6</a></blockquote>
+
+
+
+
+<blockquote class="twitter-tweet" lang="ja"><p>雲のなかにいる <a href="http://t.co/5KVkzmPEp8">pic.twitter.com/5KVkzmPEp8</a></p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584980779408556033">2015, 4月 6</a></blockquote>
+
+
+
+
+<blockquote class="twitter-tweet" lang="ja"><p>雨も降ってきたし10m先見えないし怖い <a href="http://t.co/9mq61pmxK3">pic.twitter.com/9mq61pmxK3</a></p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584987757157617664">2015, 4月 6</a></blockquote>
+
+
+<p>雨も降ってきて、このままバスが来なかったらどうしようといった不安から、すこし怖くなりました。</p>
+
+<p>バス到着予定時刻になり、赤城山ビジターセンターバス停で待っていると定刻通りにバスがきました。</p>
+
+<blockquote class="twitter-tweet" lang="ja"><p>帰りのバス乗った！！！ これで少なくとも下山できる！！！ <a href="https://twitter.com/hashtag/SDcardFindingBattle?src=hash">#SDcardFindingBattle</a></p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584993731985551360">2015, 4月 6</a></blockquote>
+
+
+<p>帰りのバスにも乗れ、あとは電車に乗って終電までに帰ることができれば、SDカードの捜索は無事終了となります。</p>
+
+<p>しかしわざわざ群馬県まで来たからには、なにか群馬らしいことをして帰りたいなと思いました。</p>
+
+<blockquote class="twitter-tweet" lang="ja"><p>なぜかグンマーにいるのでGunmaっぽい夕食食べて帰ろうかな</p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/585002417697099777">2015, 4月 6</a></blockquote>
+
+
+<p>群馬の名産が何があるか知らなかったので有識者に聞いてみたところ、luminさんからアドバイスをいただきました。</p>
+
+<blockquote class="twitter-tweet" lang="ja"><p><a href="https://twitter.com/mzyy94">@mzyy94</a> 焼きまんじゅう、ひもかわうどん（桐生）</p>&mdash; lumin (@lumin) <a href="https://twitter.com/lumin/status/585006039528972288">2015, 4月 6</a></blockquote>
+
+
+<p><strong>あっ！！！</strong>
+hint3.txtに記載のあったひもかわうどんをすっかり忘れてました！</p>
+
+<p>前橋駅に着き、帰路の途中の駅である高崎駅付近のうどん屋さんへと向かうことを決めました。</p>
+
+<blockquote class="twitter-tweet" lang="ja"><p>駅ついたー 命があるぞー <a href="https://twitter.com/hashtag/SDcardFindingBattle?src=hash">#SDcardFindingBattle</a> (@ 前橋駅 (Maebashi Sta.) in 前橋市, 群馬県) <a href="https://t.co/8530G2c0RA">https://t.co/8530G2c0RA</a></p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/585014590695669760">2015, 4月 6</a></blockquote>
+
+
+
+
+<blockquote class="twitter-tweet" lang="ja"><p>mondai解いた時にあったひもかわうどんを食しに行かねば <a href="https://twitter.com/hashtag/SDcardFindingBattle?src=hash">#SDcardFindingBattle</a></p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/585015639519006720">2015, 4月 6</a></blockquote>
+
+
+
+
+<blockquote class="twitter-tweet" lang="ja"><p>よし、高崎のひもかわうどん屋へGo <a href="https://twitter.com/hashtag/SDcardFindingBattle?src=hash">#SDcardFindingBattle</a></p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/585017858687545344">2015, 4月 6</a></blockquote>
+
+
+
+
+<blockquote class="twitter-tweet" lang="ja"><p>食うぜひもかわうどん <a href="https://twitter.com/hashtag/SDcardFindingBattle?src=hash">#SDcardFindingBattle</a> (@ 高崎駅 (Takasaki Sta.) in 高崎市, 群馬県) <a href="https://t.co/tygSOrl8kj">https://t.co/tygSOrl8kj</a></p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/585022094821457920">2015, 4月 6</a></blockquote>
+
+
+<p>高崎駅に到着した直後にまたも雨に降られてしまいましたが、20分ほどかけてひもかわうどんを扱ううどん屋さんへと歩きました。</p>
+
+<blockquote class="twitter-tweet" lang="ja"><p>ひもかわうどん！！ (@ めんいち in 高崎市, 群馬県) <a href="https://t.co/0C5suZrS3F">https://t.co/0C5suZrS3F</a> <a href="http://t.co/4D65OYc4G3">pic.twitter.com/4D65OYc4G3</a></p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/585027483772289026">2015, 4月 6</a></blockquote>
+
+
+
+
+<blockquote class="twitter-tweet" lang="ja"><p>hint3.txt kanto1 <a href="https://twitter.com/hashtag/SDcardFindingBattle?src=hash">#SDcardFindingBattle</a> <a href="http://t.co/ATgu9JllWm">pic.twitter.com/ATgu9JllWm</a></p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/585029832964091904">2015, 4月 6</a></blockquote>
+
+
+<p>名古屋県民の舌にはきしめんを思い出させる食感で、とてもなつかしい気分になりました。</p>
+
+<p>さあ、これで群馬県に思い残すことはありません。
+行きで使わなかった学割証を使って高崎駅からJRで南流山まで行き、そこからつくばエクスプレスに乗ってつくば駅に向かって、SDカードの捜索は終了となります。</p>
+
+<blockquote class="twitter-tweet" lang="ja"><p>さらば群馬県 <a href="https://twitter.com/hashtag/SDcardFindingBattle?src=hash">#SDcardFindingBattle</a> (@ 高崎駅 (Takasaki Sta.) in 高崎市, 群馬県) <a href="https://t.co/gWMQTyhwoC">https://t.co/gWMQTyhwoC</a> <a href="http://t.co/zZ4UY6GnbL">pic.twitter.com/zZ4UY6GnbL</a></p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/585037725440565248">2015, 4月 6</a></blockquote>
+
+
+
+
+<blockquote class="twitter-tweet" lang="ja"><p>帰路のJR乗った <a href="https://twitter.com/hashtag/SDcardFindingBattle?src=hash">#SDcardFindingBattle</a></p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/585040578011762688">2015, 4月 6</a></blockquote>
+
+
+
+
+<blockquote class="twitter-tweet" lang="ja"><p>帰路の電車で原因不明の停止信号受信でパンダグラフ下ろしたそうで電車内真っ暗とかもう、もう <a href="https://twitter.com/hashtag/SDcardFindingBattle?src=hash">#SDcardFindingBattle</a></p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/585043902886846464">2015, 4月 6</a></blockquote>
+
+
+
+
+<blockquote class="twitter-tweet" lang="ja"><p>我が家に帰ってきたような安心感 <a href="https://twitter.com/hashtag/SDcardFindingBattle?src=hash">#SDcardFindingBattle</a> (@ つくば駅 (Tsukuba Sta.) in つくば市, 茨城県) <a href="https://t.co/1RrtayjBUG">https://t.co/1RrtayjBUG</a></p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/585085754847719425">2015, 4月 6</a></blockquote>
+
+
+<h2>費用</h2>
+
+<p>SDカードがあった現地まで出向きたいという方のために、参考までにつくば駅から血の池までの往復でかかった運賃を記しておきます。</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:center;">区間          </th>
+<th style="text-align:center;"> 種別  </th>
+<th style="text-align:right;"> 運賃</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">つくば→流山おおたかの森 </td>
+<td style="text-align:center;"> つくばエクスプレス </td>
+<td style="text-align:right;"> 720</td>
+</tr>
+<tr>
+<td style="text-align:center;">流山おおたかの森→足利市 </td>
+<td style="text-align:center;"> 東武鉄道 </td>
+<td style="text-align:right;"> 885</td>
+</tr>
+<tr>
+<td style="text-align:center;">足利市→足利 </td>
+<td style="text-align:center;"> 徒歩 </td>
+<td style="text-align:right;"> 0</td>
+</tr>
+<tr>
+<td style="text-align:center;">足利→前橋 </td>
+<td style="text-align:center;"> JR </td>
+<td style="text-align:right;"> 756</td>
+</tr>
+<tr>
+<td style="text-align:center;">前橋駅→富士見温泉 </td>
+<td style="text-align:center;"> 関越交通バス </td>
+<td style="text-align:right;"> 600</td>
+</tr>
+<tr>
+<td style="text-align:center;">富士見温泉→赤城山大洞</td>
+<td style="text-align:center;"> 関越交通バス </td>
+<td style="text-align:right;"> 1200</td>
+</tr>
+<tr>
+<td style="text-align:center;">赤城山ビジターセンター→富士見温泉 </td>
+<td style="text-align:center;"> 関越交通バス </td>
+<td style="text-align:right;"> 1200</td>
+</tr>
+<tr>
+<td style="text-align:center;">富士見温泉→前橋駅 </td>
+<td style="text-align:center;"> 関越交通バス </td>
+<td style="text-align:right;"> 600</td>
+</tr>
+<tr>
+<td style="text-align:center;">前橋→高崎 </td>
+<td style="text-align:center;"> JR </td>
+<td style="text-align:right;"> 195</td>
+</tr>
+<tr>
+<td style="text-align:center;">高崎→南流山 </td>
+<td style="text-align:center;"> JR(学割) </td>
+<td style="text-align:right;"> 1550</td>
+</tr>
+<tr>
+<td style="text-align:center;">南流山→つくば</td>
+<td style="text-align:center;"> つくばエクスプレス </td>
+<td style="text-align:right;"> 822</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>計8,528円でした。所要時間は、9:24につくば駅発の電車に乗って23:24につくば駅に戻ってくることから、
+ギリギリの行程で行く場合は、14時間ほどかかる（＝ほぼ丸一日）ということになります。</p>
+
+<h2>SDカードのmondai</h2>
+
+<p>SDカードを手に入れておしまいではありません。SDカードの中にあるmondai10.tcを開かないことには最終面接へ挑むことができません。
+とりあえずAutopsyにSDカードを読ませてみます。</p>
+
+<p><img src="/blog/resources/images/2015/04/16/autopsy-mondai10.png" alt="autopsy-mondai10" /></p>
+
+<p>以外と簡単に問題ファイルが浮上してきました。
+削除された0バイトのファイルのファイル名が、「山名＋最高点の標高を英数字で9文字.txt」となっていました。</p>
+
+<p>登山した赤城山は標高1828mなので、<strong>akagi1828</strong>がmondai10.tcのパスワードだと思われます。</p>
+
+<p>TrueCryptでmondai10.tcを<strong>akagi1828</strong>をパスワードとしてマウントすると、見事イメージをマウントすることができました。</p>
+
+<p><img src="/blog/resources/images/2015/04/16/mount-mondai10.png" alt="mount-mondai10" /></p>
+
+<p>マウントしたイメージには何があったでしょうか。</p>
+
+<p><img src="/blog/resources/images/2015/04/16/final-mondai.png" alt="final-mondai" /></p>
+
+<pre style="border:none; color:inherit; background-color:inherit;">
+＿人人人人人人人＿
+＞　答え.txt　＜
+￣Y^Y^Y^Y^Y^Y￣
+</pre>
+
+
+<h1>感想</h1>
+
+<p>mondai9までは日々の隙間時間を使い、少々躓きながらもなんとか時間をかけて解くことができました。
+しかし、mondai10がここまで大変であるとは思っていませんでした。
+同じ関東だからと舐めてかかっていたために、ギリギリの乗り換えや予想外の雪道に遭遇してつらい思いをしました。
+しかし、マイナビに登録してエントリーするなどの就職活動をし、一次選考と二次選考を通過して最終面接に挑む方々と比べると、
+雪道を這い上がるなど、苦労の量は比較的少ないようにも思えます。
+このようなmondaiを通して就職の機会を与えてくれたネットエージェントさんに感謝するばかりです。</p>
+
+<p>いろいろなmondaiに挑むことで、いろいろな答えを見つけるセンスを身につけられたかと思います。
+このような問題を見つけることがあれば、みなさん是非とも挑戦して技量を高めてみてください。</p>
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<script>
+var a = document.querySelectorAll('a[href$=".JPG"]')
+for(var i = 0; i < a.length; i++){a[i].target = "_blank"}
+</script>
+
+
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard"><i class="glyphicon glyphicon-user"></i><span class="fn">mzyy94</span></span>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+<i class="glyphicon glyphicon-calendar"></i><time datetime="2015-04-16T00:13:43+09:00" pubdate data-updated="true">16 Apr 2015</time>
+      
+
+<i class="glyphicon glyphicon-folder-close"></i><span class="categories">
+  
+    <a class='category' href='/blog/categories/ctf/'>ctf</a>
+  
+</span>
+
+
+      
+
+<i class="glyphicon glyphicon-tags"></i><span class="tags">
+  
+    <a class='tag' href='/blog/tags/netagent/'>netagent</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="widget-container widget-social">
+	<ul class="clearfix">
+  
+
+  <!--li class="social-twitter"><a href="https://twitter.com/intent/tweet?original_referer=http://mzyy94.com/blog/2015/04/16/netagent-mondai10/&text=ネットエージェント最終面接問題 Write-up エクストリームCTF編%20-%20犬アイコンのみっきー&tw_p=tweetbutton&url=http://mzyy94.com/blog/2015/04/16/netagent-mondai10/&via=mzyy94"><i>Tweet</i></a></li-->
+
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://mzyy94.com/blog/2015/04/16/netagent-mondai10/" data-via="mzyy94" data-counturl="http://mzyy94.com/blog/2015/04/16/netagent-mondai10/" >Tweet</a>
+  
+  
+  <!-- li class="social-google"><a href="#"><i>Google</i></a></li -->
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+  <!-- li class="social-facebook"><a href="#"><i>Facebook</i></a></li -->
+  <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+  </ul>
+</div>
+
+    
+    <div>
+      
+	  <a class="btn btn-icon-left btn-arrow-left" href="/blog/2015/04/15/netagent-mondai7-9/" title="Previous Post: ネットエージェント最終面接問題 Write-up その3"><span>ネットエージェント最終面接問題 Write-up その3</span></a>
+      
+      
+    </div>
+  </footer>
+</article>
+
+  <section class="comment">
+    <h1 class="boxed-red">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</main>
+
+<aside class="col-sm-3">
+  
+    <div class="widget-container widget-avatar boxed boxed-yellow">
+	<div class="inner">
+		<h5>mzyy94</h5>
+		<span class="subtitle">Network</span>
+		<div class="avatar">
+			<img src="/images/avatar.png" alt="avatar icon" />
+		</div>
+		<a href="/about/" class="btn btn-brown btn-follow">
+			<span>About me</span>
+		</a>
+	</div>
+</div>
+<div class="widget-container widget_calendar boxed boxed-red">
+	<div class="inner">
+		<input type="text" name="date_departure" class="inputField" id="date_departure">
+	</div>
+</div>
+<script>
+	// <![CDATA[
+	$(document).ready(function() {
+		var posts = {};
+		var datelist = [];
+		$.getJSON('/blog/posts.json', function(data){
+			var dp = data.posts;
+			for(var i = 0, limit = dp.length; i < limit; i++){
+				var date = new Date(dp[i].date);
+				posts[dp[i].date] = {title:dp[i].title,
+					url: '/blog/' + date.getFullYear() + '/' + ('0' + (date.getMonth() + 1)).slice(-2) + '/' + ('0' + date.getDate()).slice(-2) + '/' + dp[i].url + '/'}
+				datelist.push(dp[i].date);
+			}
+			assignCalendar('#date_departure');
+			refreshDate();
+		});
+
+
+		function assignCalendar(id){
+			$('<div class="calendar" />')
+				.insertAfter( $(id) )
+				.datepicker({
+					beforeShowDay: function(date){
+						var string = $.datepicker.formatDate('dd M yy', date);
+						return [ datelist.indexOf(string) != -1 ]
+					},
+					dateFormat: 'dd M yy',
+					minDate: new Date(datelist[datelist.length - 1]),
+					maxDate: new Date(),
+					maxPicks: 1,
+					altField: id,
+					firstDay: 0,
+					showOtherMonths: true,
+					onSelect: function(date){
+						window.location.href = posts[date].url;
+					},
+					onChangeMonthYear: refreshDate
+				}).prev().hide();
+		}
+
+		var month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+		function refreshDate(){
+			setTimeout(function(){
+				$('a.ui-state-default').each(function(num){
+					var yy = $(this).parent().attr('data-year');
+					var M = month[$(this).parent().attr('data-month')];
+					var dd = ('0' + $(this).text()).slice(-2);
+					var idx = dd + ' ' + M + ' ' + yy;
+					$(this).attr('data-title', posts[idx].title);
+					$(this).attr('href', posts[idx].url);
+				});
+			},10);
+		}
+	});
+	// ]]>
+</script>
+<section class="widget-container widget-recently boxed">
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/04/16/netagent-mondai10/">ネットエージェント最終面接問題 Write-up エクストリームCTF編</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/04/15/netagent-mondai7-9/">ネットエージェント最終面接問題 Write-up その3</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/04/14/netagent-mondai5-6/">ネットエージェント最終面接問題 Write-up その2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/04/13/netagent-mondai1-4/">ネットエージェント最終面接問題 Write-up その1</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/03/13/mikutter-brew-formula/">OS X向けmikutterパッケージ(Homebrew)作ったよ</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section class="widget-container widget-github boxed">
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'mzyy94',
+            count: 3,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+<div class="widget-container boxed boxed-blue">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- sidebar-small -->
+<ins class="adsbygoogle"
+	style="display:inline-block;width:120px;height:240px"
+	data-ad-client="ca-pub-5429584698977304"
+	data-ad-slot="3454316875"></ins>
+<!-- sidebar-small2 -->
+<ins class="adsbygoogle"
+	style="display:inline-block;width:120px;height:240px"
+	data-ad-client="ca-pub-5429584698977304"
+	data-ad-slot="6626453278"></ins>
+<script>
+	(adsbygoogle = window.adsbygoogle || []).push({});
+	(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'mzyy94blog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://mzyy94.com/blog/2015/04/16/netagent-mondai10/';
+        var disqus_url = 'http://mzyy94.com/blog/2015/04/16/netagent-mondai10/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+  </div>
+  <footer class="boxed-yellow" role="contentinfo"><p>
+  Copyright &copy; 2015 - mzyy94 -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> -
+  <span class="credit">Designed with <a href="http://pixelkit.com/kits/flat-ui-kit">Flat UI Kit | Modern Touch</a></span> -
+  <span>Licensed under a <a rel="license" href="http://opensource.org/licenses/mit-license.html">MIT License</a> and <a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a><span>
+</p>
+<script>
+	$(function () {
+		$("a[href^='http'], a[href^='ftp']").click(function () {
+			if ($(this).attr("target") === undefined) 
+			$(this).attr("target", "_blank");
+		});
+	});
+</script>
+
+</footer>
+  </div>
+</body>
+</html>
