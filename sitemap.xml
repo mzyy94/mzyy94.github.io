@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://mzyy94.com/blog/2015/04/26/no-shrimp-no-life/</loc>
+    <lastmod>2015-04-26T23:46:19+09:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>http://mzyy94.com/blog/2015/04/16/netagent-mondai10/</loc>
     <lastmod>2015-04-16T00:13:43+09:00</lastmod>
     <priority>0.8</priority>
@@ -137,31 +142,31 @@
   </url>
   <url>
     <loc>http://mzyy94.com/blog/archives/</loc>
-    <lastmod>2015-04-17T02:20:37+09:00</lastmod>
+    <lastmod>2015-04-26T23:49:19+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://mzyy94.com/blog/</loc>
-    <lastmod>2015-04-17T02:20:37+09:00</lastmod>
+    <lastmod>2015-04-26T23:49:19+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://mzyy94.com/</loc>
-    <lastmod>2015-04-17T02:20:37+09:00</lastmod>
+    <lastmod>2015-04-26T23:49:19+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>http://mzyy94.com/about/</loc>
-    <lastmod>2015-04-17T02:20:37+09:00</lastmod>
+    <lastmod>2015-04-26T23:49:19+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://mzyy94.com/about/license.html</loc>
-    <lastmod>2015-04-17T02:20:37+09:00</lastmod>
+    <lastmod>2015-04-26T23:49:19+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
