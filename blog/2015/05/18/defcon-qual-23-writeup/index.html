@@ -9,7 +9,7 @@
   <meta name="author" content="mzyy94">
 
   
-  <meta name="description" content="今年のDEFCON CTFの予選が5月16日午前9時から48時間開催されていました。今回はチーム********としての参加ではなく、Team ENUに派遣される形で参加してきました。 今年は、比較的やさしいBaby's First問題とPwn問題、 &hellip;">
+  <meta name="description" content="今年のDEFCON CTFの予選が5月16日午前9時から48時間開催されていました。今回はチーム********としての参加ではなく、Team Enuに派遣される形で参加してきました。 今年は、比較的やさしいBaby's First問題とPwn問題、 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -74,7 +74,7 @@
 
 <meta property="twitter:image" content="http://mzyy94.com/blog/resources/images/2015/05/18/scoreboard.png" />
 
-<meta property="twitter:description" content="今年のDEFCON CTFの予選が5月16日午前9時から48時間開催されていました。今回はチーム********としての参加ではなく、Team ENUに派遣される形で参加してきました。 今年は、比較的やさしいBaby's First問題とPwn問題、リバースエンジニアリングのジャンルに属する問題が各数問あり、加えてWebとコーディングチャレンジが1問ずつありました。 &hellip;" />
+<meta property="twitter:description" content="今年のDEFCON CTFの予選が5月16日午前9時から48時間開催されていました。今回はチーム********としての参加ではなく、Team Enuに派遣される形で参加してきました。 今年は、比較的やさしいBaby's First問題とPwn問題、リバースエンジニアリングのジャンルに属する問題が各数問あり、加えてWebとCoding Challengeが1問ずつありました。 &hellip;" />
 
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" />
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" />
@@ -195,9 +195,9 @@
 <img src="/blog/resources/images/2015/05/18/scoreboard.png" alt="article image" class="main image"/>
 
 
-<div class="entry-content"><p>今年のDEFCON CTFの予選が5月16日午前9時から48時間開催されていました。今回はチーム********としての参加ではなく、Team ENUに派遣される形で参加してきました。</p>
+<div class="entry-content"><p>今年のDEFCON CTFの予選が5月16日午前9時から48時間開催されていました。今回はチーム********としての参加ではなく、Team Enuに派遣される形で参加してきました。</p>
 
-<p>今年は、比較的やさしいBaby&#8217;s First問題とPwn問題、リバースエンジニアリングのジャンルに属する問題が各数問あり、加えてWebとコーディングチャレンジが1問ずつありました。
+<p>今年は、比較的やさしいBaby&#8217;s First問題とPwn問題、リバースエンジニアリングのジャンルに属する問題が各数問あり、加えてWebとCoding Challengeが1問ずつありました。
 複数ある問題の中でFlagをsubmitしたのは1問だけですが、いくつか正解までたどり着くところまで解けたのでWrite-upを記します。</p>
 
 <!-- more -->
@@ -281,7 +281,7 @@
 </span><span class='line'>:</span></code></pre></td></tr></table></div></figure>
 
 
-<p>pingの出力結果に含まれる<strong>% Packet</strong>が、フォーマット文字列の<em>%p</em>として解釈され、アドレスが表示されていることがわかりました。format string attackとして攻められるような感じがしましたが、他の人が取り組んでいるようなので違う方法でアプローチをしていくことにしました。</p>
+<p>pingの出力結果に含まれる<strong>% Packet</strong>が、フォーマット文字列の<em>%p</em>として解釈され、アドレスが表示されていることがわかりました。format string attack(後述)として攻められるような感じがしましたが、他の人が取り組んでいるようなので違う方法でアプローチをしていくことにしました。</p>
 
 <p>digとhostに文字列を渡した時の括りがそれぞれ違うことに注目しました。digではシングルクオートで、hostではダブルクオートでくくって引数を渡しています。
 シェル上では、ダブルクオートの文字列の中で変数を展開できます。<code>echo "$SHELL"</code>とすると<em>/bin/bash</em>と出力されるのがいい例です。今回の問題の場合は、<code>host $SHELL</code>として標準入力から渡すと、<code>host "/bin/bash"</code>として実行されると考えられます。</p>
@@ -326,8 +326,10 @@
 
 <p>変数展開されていることが確認できました。/ディレクトリがカレントディレクトリのようです。</p>
 
-<p>これができることがわかると、次に挑戦したくなるのはコマンド結果の展開です。
-ダブルクオート中に変数を展開する要領で、<em>$(コマンド)</em>としてコマンドを実行し、文字列中に出力を展開するものです。例として、<code>echo "$(uname)"</code>とすると<em>Linux</em>と返ってきます。これを用いて実行中のユーザーを確認します。</p>
+<h2>攻撃手法：OSコマンド インジェクション</h2>
+
+<p>これができることがわかると、次に挑戦したくなるのは変数中のコマンド展開によるOSコマンド インジェクションです。
+コマンド展開とは、ダブルクオート中に変数を展開するのと同じ要領で、<em>$(コマンド)</em>としてコマンドを実行し、文字列中にコマンドの出力を展開するものです。例として、<code>echo "$(uname)"</code>とすると<em>Linux</em>と返ってきます。これを用いて実行中のユーザーを確認します。</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -397,13 +399,17 @@ catのリダイレクトでflagを抜いてしまいます。</p>
 
 <p>FLAG:<code>Pretty easy eh!!~ Now let's try something hArd3r, shallwe??</code></p>
 
+<p>OSコマンドインジェクションに関連する脆弱性対策をIPAが公開してくれているので、CTFのためにも自衛のためにも一度目を通しておくことをお勧めします。</p>
+
+<p><a href="http://www.ipa.go.jp/security/awareness/vendor/programmingv2/contents/c909.html">IPA ISEC　セキュア・プログラミング講座：C/C++言語編　第10章 著名な脆弱性対策：コマンド注入攻撃対策</a></p>
+
 <h1>Babyecho</h1>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>Reading 13 bytes</span></code></pre></td></tr></table></div></figure>
 
 
-<p>標準入力で待ち受けしているので、文字列を送ると<del>そのまま</del>標準出力に的確に返してくれるプログラムにアクセスしてflagを得る問題です。</p>
+<p>標準入力で待ち受けしているので、文字列を送ると標準出力に<del>そのまま</del><em>的確に</em>返してくれるプログラムにアクセスしてflagを得る問題です。</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -461,7 +467,7 @@ catのリダイレクトでflagを抜いてしまいます。</p>
 
 <p><em>AAAA%7$p</em>を渡した状態の時、以下のようにスタック(esp)に積まれていることがわかります。</p>
 
-<p><svg width="300" height="400">
+<p><svg width="300" height="400" style="background-color: #fff">
 <g class="block" transform="translate(80,20)">
 <rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
 </rect>
@@ -539,7 +545,7 @@ IDA pro (demo)で入力待ちになるときの直前の処理を追ってみま
 
 <p>loc_8048fb6のループを見てみると、&#8221;Reading %d bytes\n&#8221;で表示されるバイト数をesp+0x10からesp+0x04にコピーしている処理があります(0x08048fcc)。printfで&#8221;Reading %d bytes\n&#8221;を表示した後、 esp+0x08に0x0aを入れ、標準入力からの読み取り上限をesp+0x10からesp+0x04にコピーしてセットし、esp+0x1cに標準入力からの値を読み取っています。</p>
 
-<p><svg width="640" height="400">
+<p><svg width="640" height="400" style="background-color: #fff">
 <g class="block" transform="translate(80,20)">
 <rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
 </rect>
@@ -613,10 +619,12 @@ IDA pro (demo)で入力待ちになるときの直前の処理を追ってみま
 <text class="comment" text-anchor="start" fill="black" dy=".35em" transform="translate(310,340)">バッファー領域</text>
 </svg></p>
 
-<p>これらの調査をもとに、バッファーに読み込むバイト数が格納されているesp+0x10の値を、esp+0x14に格納されているesp+0x1cのアドレスをもとに書き換え、読み込むバイト数の上限を書き換えて、攻撃コードを送り込む余地をつくる作戦が考えられます。
+<h2>攻撃手法：format string attack</h2>
+
+<p>これらの調査をもとに、バッファーに読み込むバイト数が格納されているesp+0x10の値を、esp+0x14に格納されているesp+0x1cのアドレスをもとに書き換え、読み込むバイト数の上限を書き換えて、format string attackで攻撃コードを送り込む余地をつくる作戦が考えられます。
 アプローチとしては以下の図のようになります。</p>
 
-<p><svg width="640" height="400">
+<p><svg width="640" height="400" style="background-color: #fff">
 <defs>
 <marker id="arrowhead" refX="2" refY="5" markerWidth="10" markerHeight="10" orient="auto">
 <path d="M 0,0 V 10 L10,5 Z" fill="black"></path>
@@ -704,7 +712,7 @@ IDA pro (demo)で入力待ちになるときの直前の処理を追ってみま
 まず1回目に、<strong>%5$10p</strong>と入力することによって、esp+10に格納されているバッファーのアドレスを取得します。</p>
 
 <p>そのアドレスから0x0bを引くことによって、バッファーの読み込みバイト数が格納されているアドレスの1バイト上位のアドレスを計算します。
-これは、一度に送ることができる文字数が制限されていることによって、<strong>自由に大きな数値を指定できないため、</strong>バッファーのバイト数格納位置の1バイト上位に文字列長を書き込む方法をとったためです。今回の最大13バイトの入力という制限下では、最大でも7までしか数値を指定できません。7をそのままバッファー読み込みバイト数に格納しても、現状の13バイトより減ってしまいます。そのため、書き込む位置を上位にずらすことで、結果的にその数値をビットシフトによる掛け算で大きくし、バイト数制限の値を拡張しています。</p>
+これは、一度に送ることができる文字数が制限されていることによって、<strong>自由に大きな数値を指定できないため、</strong>バッファーのバイト数格納位置の1バイト上位に文字列長を書き込む方法をとったためです。今回の最大13バイトの入力という制限下では、最大でも9までしか数値を指定できません。それをそのままバッファー読み込みバイト数に格納しても、現状の13バイトより減ってしまいます。そのため、書き込む位置を上位にずらすことで、結果的にその数値をビットシフトによる掛け算で大きくし、バイト数制限の値を拡張しています。</p>
 
 <p>そして2回目の入力時に、先ほど計算したアドレスへ文字数である4を、%nフォーマット文字列を使って書き込みます。これによって、現在0x0000000bとなっている読み込みバイト数を、0x0000040bに書き換えることができます。</p>
 
@@ -790,7 +798,7 @@ IDA pro (demo)で入力待ちになるときの直前の処理を追ってみま
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>1度にバッファーに読み込み可能な文字数の上限が変化しました。esp+0x10の値は、esp+0x11に4を書き込んだことから、0x0000040d、すなわち1037になっていますが、ループを繰り返すたび値のチェックがあり、1023を超える場合は1023に描き戻されているので、上限が1023 bytesになりました。</p>
+<p>1度にバッファーに読み込み可能な文字数の上限が変化しました。esp+0x10の値は、esp+0x11に4を書き込んだことから、0x0000040d、すなわち1037になるはずですが、ループを繰り返すたびに値のチェックがあり、1023を超える場合は1023に書き戻す処理があるので、上限が1023 bytesになりました。</p>
 
 <p>これだけあれば、shellcodeを送り込んで実行させることができます。サブルーチンコールの呼び出し元であるリターンアドレスを書き換え、shellcodeを実行させてフラッグを獲得しに行きます。</p>
 
@@ -928,24 +936,33 @@ IDA pro (demo)で入力待ちになるときの直前の処理を追ってみま
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
 </pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">Reading</span> <span class="mi">13</span> <span class="nb">bytes</span>
 </span><span class='line'>
 </span><span class='line'><span class="p">[</span><span class="n">DEBUG</span><span class="p">]</span> <span class="n">Buffer</span> <span class="n">address</span> <span class="o">=</span> <span class="mh">0xffbf62bc</span>
 </span><span class='line'>
 </span><span class='line'><span class="n">Reading</span> <span class="mi">1023</span> <span class="nb">bytes</span>
 </span><span class='line'>
-</span><span class='line'><span class="err">彙ｿ…拊ｿ…枌ｿ…歟ｿ…</span><span class="n">j</span><span class="n">X</span><span class="err">儚</span><span class="n">h</span><span class="o">//</span><span class="n">shh</span><span class="o">/</span><span class="nb">bin</span><span class="err">峨</span><span class="mi">1</span><span class="err">ﾉﾍ</span>\                                                                                                                                                                      <span class="err">…</span>
-</span><span class='line'>                                                                                            <span class="err"></span>                                                               <span class="err">…</span>
+</span><span class='line'><span class="err">彙ｿ…</span> <span class="err">拊ｿ…</span> <span class="err">枌ｿ…</span> <span class="err">歟ｿ…</span> <span class="n">j</span>
+</span><span class='line'><span class="n">X</span><span class="err">儚</span><span class="n">h</span><span class="o">//</span><span class="n">shh</span><span class="o">/</span><span class="nb">bin</span><span class="err">峨</span><span class="mi">1</span><span class="err">ﾉﾍ</span><span class="o">^</span>\
+</span><span class='line'><span class="err">…</span>
+</span><span class='line'>
+</span><span class='line'>                                                               <span class="err">…</span>
 </span><span class='line'><span class="n">The</span> <span class="n">flag</span> <span class="ow">is</span><span class="p">:</span> <span class="mi">1</span><span class="n">s</span> <span class="mi">1</span><span class="n">s</span> <span class="n">th3r3</span> <span class="n">th3r3</span> <span class="nd">@n</span> <span class="nd">@n</span> <span class="mi">3</span><span class="n">ch0</span> <span class="mi">3</span><span class="n">ch0</span> <span class="mi">1</span><span class="n">n</span> <span class="mi">1</span><span class="n">n</span> <span class="n">h3r3</span> <span class="n">h3r3</span><span class="err">?</span> <span class="mi">3</span><span class="n">uoiw</span><span class="err">!</span><span class="n">T0</span><span class="o">*%</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>FLAG:<code>1s 1s th3r3 th3r3 @n @n 3ch0 3ch0 1n 1n h3r3 h3r3? 3uoiw!T0*%
-</code></p>
+<p>FLAG:<code>1s 1s th3r3 th3r3 @n @n 3ch0 3ch0 1n 1n h3r3 h3r3? 3uoiw!T0*%</code></p>
+
+<p>今回の攻撃手法もIPAによって丁寧に解説及び対策が掲載されているので、詳しく知りたい場合は参考に見てみるのも良いでしょう。</p>
+
+<p><a href="http://www.ipa.go.jp/security/awareness/vendor/programmingv2/contents/c906.html">IPA ISEC　セキュア・プログラミング講座：C/C++言語編　第10章 著名な脆弱性対策：フォーマット文字列攻撃対策</a></p>
 
 <h1>その他</h1>
 
-<p>Codingchallengeという、とあるレジスタの初期状態と機械語の命令コードが送られてきて、その命令を実行した結果を送り返すという問題も解いたのですが、違う問題でglibcのアップデートをした際にマシンがクラッシュし、スナップショットの状態に戻した際に消えてしまいました。
+<p>Coding Challengeという、問題サーバーからレジスタの初期状態と機械語の命令コードが送られてきて、その命令を実行したあとのレジスタの値を送り返すという問題も解いたのですが、違う問題でglibcのアップデートをした際にマシンがクラッシュし、スナップショットの状態に戻した際に消えてしまいました。
 なのでコードがありません。</p>
 
 <p>解法としては、Pythonで以下のように処理するものを作成して実行しただけです。</p>
@@ -960,7 +977,7 @@ IDA pro (demo)で入力待ちになるときの直前の処理を追ってみま
 <li>mprotectで配列の領域を実行可能に変更</li>
 <li>asm volatile経由でレジスタの初期状態を書き込む</li>
 <li>関数ポインタを呼び出し実行</li>
-<li>ams volatile経由で実行後のレジスタの値を読み出す</li>
+<li>asm volatile経由で実行後のレジスタの値を読み出す</li>
 <li>標準出力に出力</li>
 </ol>
 </li>
