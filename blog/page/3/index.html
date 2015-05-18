@@ -9,7 +9,9 @@
   <meta name="author" content="mzyy94">
 
   
-  <meta name="description" content="いろいろな趣味がよく合うひとりぶろぐさんの記事を読んでいたときのこと。どうやらPopClipが便利らしいことを発見したので、だいぶ昔に買ったっきりで使っていなかったPopClipを活用してみることにしました。 PopClipとは PopClipに関しては、 &hellip;">
+  <meta name="description" content="Node.jsです。
+Lempel-Ziv符号化で圧縮されたファイル(.gz)のダウンロードをしようとしたときの話です。
+ブラウザからダウンロードすると、拡張子gzで保存され、それを解凍することで必要なデータを得ることができるのですが、圧縮されたファイルは解凍したあとでは不要です。 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -72,7 +74,10 @@
 <meta property="twitter:url" content="http://mzyy94.com/blog/page/3" />
 <meta property="twitter:title" content="犬アイコンのみっきー" />
 
-<meta property="twitter:description" content="いろいろな趣味がよく合うひとりぶろぐさんの記事を読んでいたときのこと。どうやらPopClipが便利らしいことを発見したので、だいぶ昔に買ったっきりで使っていなかったPopClipを活用してみることにしました。 PopClipとは PopClipに関しては、ひとりぶろぐさんの記事にて紹介されているので省略します。知っているという前提で以下、話を進めます。 Unicodeエンコード &hellip;" />
+<meta property="twitter:description" content="Node.jsです。
+Lempel-Ziv符号化で圧縮されたファイル(.gz)のダウンロードをしようとしたときの話です。
+ブラウザからダウンロードすると、拡張子gzで保存され、それを解凍することで必要なデータを得ることができるのですが、圧縮されたファイルは解凍したあとでは不要です。
+このような不要ファイルを保存することなく、目的のファイルが欲しいような状況になったので、 &hellip;" />
 
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" />
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" />
@@ -142,6 +147,75 @@
     <div class="row">
       <main class="col-sm-9">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title boxed-green"><a href="/blog/2014/02/25/dl-gunzip-with-nodejs/">Node.jsでダウンロードしながらGunzipしてmd5の計算しながら保存する奴</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+<i class="glyphicon glyphicon-calendar"></i><time datetime="2014-02-25T22:18:21+09:00" pubdate data-updated="true">25 Feb 2014</time>
+        
+
+<i class="glyphicon glyphicon-folder-close"></i><span class="categories">
+  
+    <a class='category' href='/blog/categories/nodejs/'>nodejs</a>
+  
+</span>
+
+
+        
+
+<i class="glyphicon glyphicon-tags"></i><span class="tags">
+  
+    <a class='tag' href='/blog/tags/crypto/'>crypto</a>, <a class='tag' href='/blog/tags/gunzip/'>gunzip</a>, <a class='tag' href='/blog/tags/http/'>http</a>, <a class='tag' href='/blog/tags/md5/'>md5</a>, <a class='tag' href='/blog/tags/zlib/'>zlib</a>
+  
+</span>
+
+
+        
+		<i class="glyphicon glyphicon-comment"></i><a href="/blog/2014/02/25/dl-gunzip-with-nodejs/#disqus_thread"
+             data-disqus-identifier="http://mzyy94.com/blog/2014/02/25/dl-gunzip-with-nodejs/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<img src="/blog/resources/images/2014/2/25/dl-gunzip-with-nodejs.png" alt="article image" class="main image"/>
+
+
+<div class="entry-content"><p><a href="http://nodejs.org/">Node.js</a>です。
+Lempel-Ziv符号化で圧縮されたファイル(.gz)のダウンロードをしようとしたときの話です。
+ブラウザからダウンロードすると、拡張子gzで保存され、それを解凍することで必要なデータを得ることができるのですが、圧縮されたファイルは解凍したあとでは不要です。
+このような不要ファイルを保存することなく、目的のファイルが欲しいような状況になったので、いろいろと調べて解決しました。</p>
+
+</div>
+  
+  
+    <footer>
+	<a rel="full-article" href="/blog/2014/02/25/dl-gunzip-with-nodejs/" class="btn btn-icon-left"><span>Read more</span></a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -910,6 +984,10 @@ Time Machineのバックアップ用ネットワークストレージとして�
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/05/18/defcon-qual-23-writeup/">DEFCON CTF 23予選Write-up</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/04/29/ebi-the-move/">えびの水槽引越しと環境整備と飼育について</a>
       </li>
     
@@ -923,10 +1001,6 @@ Time Machineのバックアップ用ネットワークストレージとして�
     
       <li class="post">
         <a href="/blog/2015/04/15/netagent-mondai7-9/">ネットエージェント最終面接問題 Write-up その3</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/04/14/netagent-mondai5-6/">ネットエージェント最終面接問題 Write-up その2</a>
       </li>
     
   </ul>
