@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: babyecho | 犬アイコンのみっきー]]></title>
   <link href="http://mzyy94.com/blog/tags/babyecho/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2015-05-19T23:47:37+09:00</updated>
+  <updated>2015-05-20T00:07:55+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -715,6 +715,13 @@ The flag is: 1s 1s th3r3 th3r3 @n @n 3ch0 3ch0 1n 1n h3r3 h3r3? 3uoiw!T0*%
 
 <p>Coding Challengeという、問題サーバーからレジスタの初期状態と機械語の命令コードが送られてきて、その命令を実行したあとのレジスタの値を送り返すという問題も解いたのですが、違う問題でglibcのアップデートをした際にマシンがクラッシュし、スナップショットの状態に戻した際に消えてしまいました。
 なのでコードがありません。</p>
+
+<h2>問題文</h2>
+
+<pre><code>meow
+
+catwestern_631d7907670909fc4df2defc13f2057c.quals.shallweplayaga.me
+</code></pre>
 
 <p>解法としては、Pythonで以下のように処理するものを作成して実行しただけです。</p>
 
