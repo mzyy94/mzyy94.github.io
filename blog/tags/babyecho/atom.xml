@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: babyecho | 犬アイコンのみっきー]]></title>
   <link href="http://mzyy94.com/blog/tags/babyecho/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2015-05-19T20:43:01+09:00</updated>
+  <updated>2015-05-19T23:47:37+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -28,6 +28,15 @@
 
 <h1>Babycmd</h1>
 
+<h2>問題文</h2>
+
+<pre><code>babycmd_3ad28b10e8ab283d7df81795075f600b.quals.shallweplayaga.me:15491
+
+[Download](http://downloads.notmalware.ru/babycmd_3ad28b10e8ab283d7df81795075f600b)
+</code></pre>
+
+<h2>問題</h2>
+
 <pre><code>Welcome to another Baby's First Challenge!
 Commands: ping, dig, host, exit
 : 
@@ -35,7 +44,7 @@ Commands: ping, dig, host, exit
 
 <p>pingとhostとdigコマンドが実行できるアプリケーションにアクセスして、どうにかしてflagを獲得する問題。
 逆アセンブルした結果、<em>コマンド[スペース]引数</em>として標準入力から渡すと、コマンドが( dig | ping | host | exit | help )かどうかで分岐し、引数が適切であるか、またIPアドレスかどうかをチェックし、コマンドをpopen経由で実行しているものでした。
-各コマンドは、引数がIPアドレスなのかそれ以外かで分岐し、</p>
+<code>strings</code>コマンドと<code>grep</code>で<em>%s</em>がある記述を探したところ、各コマンドは引数がIPアドレスなのかそれ以外かで分岐し、</p>
 
 <table>
 <thead>
@@ -171,6 +180,15 @@ Commands: ping, dig, host, exit
 <p><a href="http://www.ipa.go.jp/security/awareness/vendor/programmingv2/contents/c909.html">IPA ISEC　セキュア・プログラミング講座：C/C++言語編　第10章 著名な脆弱性対策：コマンド注入攻撃対策</a></p>
 
 <h1>Babyecho</h1>
+
+<h2>問題文</h2>
+
+<pre><code>babyecho_eb11fdf6e40236b1a37b7974c53b6c3d.quals.shallweplayaga.me:3232
+
+[Download](http://downloads.notmalware.ru/babyecho_eb11fdf6e40236b1a37b7974c53b6c3d)
+</code></pre>
+
+<h2>問題</h2>
 
 <pre><code>Reading 13 bytes
 </code></pre>
