@@ -610,6 +610,7 @@ IDA pro (demo)で入力待ちになるときの直前の処理を追ってみま
 <text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,260)">+0x18</text>
 <text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,300)">+0x1c</text>
 <text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,380)">+0x420</text>
+<text class="comment" text-anchor="start" fill="black" dy=".35em" transform="translate(310,40)">サブルーチンのリターンアドレス</text>
 <text class="comment" text-anchor="start" fill="black" dy=".35em" transform="translate(310,80)">&#8220;Reading %d bytes\n&#8221;で表示される数字</text>
 <text class="comment" text-anchor="start" fill="black" dy=".35em" transform="translate(310,120)">定数(0x0a)</text>
 <text class="comment" text-anchor="start" fill="black" dy=".35em" transform="translate(310,160)">定数(null)</text>
@@ -801,6 +802,105 @@ IDA pro (demo)で入力待ちになるときの直前の処理を追ってみま
 <p>1度にバッファーに読み込み可能な文字数の上限が変化しました。esp+0x10の値は、esp+0x11に4を書き込んだことから、0x0000040d、すなわち1037になるはずですが、ループを繰り返すたびに値のチェックがあり、1023を超える場合は1023に書き戻す処理があるので、上限が1023 bytesになりました。</p>
 
 <p>これだけあれば、shellcodeを送り込んで実行させることができます。サブルーチンコールの呼び出し元であるリターンアドレスを書き換え、shellcodeを実行させてフラッグを獲得しに行きます。</p>
+
+<p><svg width="640" height="400" style="background-color: #fff">
+<defs>
+<marker id="arrowhead" refX="2" refY="5" markerWidth="10" markerHeight="10" orient="auto">
+<path d="M 0,0 V 10 L10,5 Z" fill="black"></path>
+</marker>
+<marker id="pointhead" refX="5" refY="5" markerWidth="10" markerHeight="10" orient="auto">
+<circle cx="5" cy="5" r="5"/>
+</marker>
+</defs>
+<g class="block" transform="translate(80,20)">
+<rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
+</rect>
+<text text-anchor="middle" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" fill="black" transform="translate(100,20)">
+<tspan x="0" y="0" dy=".35em">0x????????</tspan>
+</text>
+</g>
+<g class="block" transform="translate(80,60)">
+<rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
+</rect>
+<text text-anchor="middle" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" fill="black" transform="translate(100,20)">
+<tspan x="0" y="0" dy=".35em">0x000003ff</tspan>
+</text>
+</g>
+<g class="block" transform="translate(80,100)">
+<rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
+</rect>
+<text text-anchor="middle" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" fill="black" transform="translate(100,20)">
+<tspan x="0" y="0" dy=".35em">0x0000000a</tspan>
+</text>
+</g>
+<g class="block" transform="translate(80,140)">
+<rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
+</rect>
+<text text-anchor="middle" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" fill="black" transform="translate(100,20)">
+<tspan x="0" y="0" dy=".35em">0x00000000</tspan>
+</text>
+</g>
+<g class="block" transform="translate(80,180)">
+<rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
+</rect>
+<text text-anchor="middle" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" fill="black" transform="translate(100,20)">
+<tspan x="0" y="0" dy=".35em">0x000003ff</tspan>
+</text>
+</g>
+<g class="block" transform="translate(80,220)">
+<rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
+</rect>
+<text text-anchor="middle" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" fill="black" transform="translate(100,20)">
+<tspan x="0" y="0" dy=".35em">addr_buf</tspan>
+</text>
+</g>
+<g class="block" transform="translate(80,260)">
+<rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
+</rect>
+<text text-anchor="middle" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" fill="black" transform="translate(100,20)">
+<tspan x="0" y="0" dy=".35em">0x00000000</tspan>
+</text>
+</g>
+<g class="block" transform="translate(80,300)">
+<path stroke="#000000" fill="none" d="M0,40V0h200v40" stroke-width="1" />
+<path stroke="#000000" fill="none" d="M0,40v40" stroke-dasharray="2" stroke-width="1" />
+<path stroke="#000000" fill="none" d="M200,40v40" stroke-dasharray="2" stroke-width="1" />
+<path stroke="#000000" fill="none" d="M0,80h200" stroke-dasharray="2" stroke-width="1" />
+<text text-anchor="middle" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" fill="black" transform="translate(100,20)">
+<tspan x="0" y="0" dy=".35em">addr_ret</tspan>
+<tspan x="0" y="20" dy=".35em">&#8221;%??c$n%??c$n&#8221;</tspan>
+<tspan x="0" y="40" dy=".35em">shellcode</tspan>
+</text>
+</g>
+<g class="arrow" transform="translate(260,40)">
+<path stroke="#000000" fill="none" d="M0,0h50v320h-42" marker-end="url(#arrowhead)" stroke-width="1" />
+</g>
+<g class="arrow" transform="translate(260,20)">
+<path stroke="#000000" fill="none" d="M0,320h10v-20h-10h35v-300h-7" marker-end="url(#arrowhead)" stroke-width="1" />
+</g>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,20)">esp</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,60)">+0x04</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,100)">+0x08</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,140)">+0x0c</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,180)">+0x10</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,220)">+0x14</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,260)">+0x18</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,300)">+0x1c</text>
+<text class="address" text-anchor="end" fill="black" font-family="Consolas, 'Courier New', Courier, Monaco, monospace" dy=".35em" transform="translate(70,380)">+0x420</text>
+<text class="comment" text-anchor="start" fill="black" dy=".35em" transform="translate(320,80)">- addr_buf - 0x20でaddr_retを求める</text>
+<text class="comment" text-anchor="start" fill="black" dy=".35em" transform="translate(320,120)">(addr_ret = リターンアドレスの格納場所)</text>
+<text class="comment" text-anchor="start" fill="black" dy=".35em" transform="translate(320,160)">- バッファーにshellcodeを書く</text>
+<g class="block" transform="translate(325,200)">
+<path stroke="#000000" fill="none" d="M0,0h-30" marker-end="url(#pointhead)" stroke-width="1" />
+<text class="comment" text-anchor="start" fill="black" dy=".35em" transform="translate(5,0)">addr_retにaddr_shellを書き込む</text>
+</g>
+<text class="comment" text-anchor="start" fill="black" dy=".35em" transform="translate(320,240)">(addr_shell = shellcodeの開始アドレス)</text>
+<g class="block" transform="translate(325,280)">
+<path stroke="#000000" fill="none" d="M0,0h-15" marker-end="url(#pointhead)" stroke-width="1" />
+<text class="comment" text-anchor="start" fill="black" dy=".35em" transform="translate(5,0)">printfからaddr_retにあるアドレスに戻る</text>
+</g>
+<text class="comment" text-anchor="start" fill="black" dy=".35em" transform="translate(320,320)">- shellcodeが実行される</text>
+</svg></p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
