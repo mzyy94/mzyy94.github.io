@@ -4,7 +4,7 @@
   <title><![CDATA[犬アイコンのみっきー]]></title>
   <link href="http://mzyy94.com/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2015-05-20T00:07:55+09:00</updated>
+  <updated>2015-05-29T19:17:10+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -3578,14 +3578,32 @@ Compressed: 70378640
 
 <h1>mikutter formula</h1>
 
-<p>前節のようにしてPull-Requestを行っている状態のBrewパッケージとして、mikutter formulaを作成しました。
-mikutterを動作させる上で必要なライブラリ等の依存関係も解決してインストールするようにできています。</p>
+<p><del>
+前節のようにしてPull-Requestを行っている状態のBrewパッケージとして、mikutter formulaを作成しました。
+mikutterを動作させる上で必要なライブラリ等の依存関係も解決してインストールするようにできています。
+</del></p>
 
-<p><a href="https://github.com/Homebrew/homebrew/pull/37642">mikutter 3.2.2 (new formula) by mzyy94 · Pull Request #37642 · Homebrew/homebrew</a></p>
+<p><del>
+<a href="https://github.com/Homebrew/homebrew/pull/37642">mikutter 3.2.2 (new formula) by mzyy94 · Pull Request #37642 · Homebrew/homebrew</a>
+</del></p>
 
-<p>このformulaがHomebrewのリポジトリにマージされればコマンド1行打ち込むだけでmikutterのインストールが完了するのですが、
+<p><del>
+このformulaがHomebrewのリポジトリにマージされればコマンド1行打ち込むだけでmikutterのインストールが完了するのですが、
 まだマージされていないので2行のコマンドを打つ必要があります。
-今までは、 tar-ballをダウンロードしてGTK+インストールしてgemインストールして&#8230; と、10行近くコマンドを打ち込まなければいけなかったので2行でも大きな進歩と言えます。</p>
+</del></p>
+
+<p><ins datetime="2015-05-29T19:02:42+09:00">訂正：homebrew側のビルドBotでMountain Lionにてエラーが出るためマージされませんでした。
+そのため、mikutterのアップデートに追従できないため、別でリポジトリを作成したのでこちらのFormulaを利用してください。</p>
+
+<ul>
+<li><a href="https://github.com/mzyy94/homebrew-mikutter">mzyy94/homebrew-mikutter</a></li>
+</ul>
+
+
+<p>こちらでも2行のコマンドでインストールできます。
+</ins></p>
+
+<p>今までは、 tar-ballをダウンロードしてGTK+インストールしてgemインストールして&#8230; と、10行近くコマンドを打ち込まなければいけなかったので2行でも大きな進歩と言えます。</p>
 
 <h1>#mikutterInstallBattle</h1>
 
@@ -3602,11 +3620,21 @@ mikutterを動作させる上で必要なライブラリ等の依存関係も解
 <p>パッケージマネージャーのHomebrewとX11アプリケーションのためのX Window SystemであるXquartzを導入しておくだけでいいです。</p>
 
 <p>あとはHomebrewのコマンドを叩くだけ。
-執筆時点(2015/3/13 10:24:33+JST)ではまだPull-Requestはマージされていないので、まずPull-Requestからformulaを引っ張ってきます。</p>
+<del>
+執筆時点(2015/3/13 10:24:33+JST)ではまだPull-Requestはマージされていないので、まずPull-Requestからformulaを引っ張ってきます。
+</del></p>
+
+<p><del>
+$ brew pull 37642
+</del></p>
+
+<p><ins datetime="2015-05-29T19:02:42+09:00">別リポジトリからのtapとして導入するため、以下のコマンドでmikutterのFormulaを取得します。</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ brew pull 37642</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ brew tap mzyy94/mikutter</span></code></pre></td></tr></table></div></figure>
 
+
+<p></ins></p>
 
 <p>無事formulaが取得できたらあとは、</p>
 
