@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: chinachu | 犬アイコンのみっきー]]></title>
   <link href="http://mzyy94.com/blog/tags/chinachu/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2015-06-21T23:24:57+09:00</updated>
+  <updated>2015-08-08T21:07:34+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -12,6 +12,169 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Chinachu PVRアドオンでRasPi2/Android TVをテレビに]]></title>
+    <link href="http://mzyy94.com/blog/2015/08/08/pvr-chinachu-addon/"/>
+    <updated>2015-08-08T20:51:33+09:00</updated>
+    <id>http://mzyy94.com/blog/2015/08/08/pvr-chinachu-addon</id>
+    <content type="html"><![CDATA[<p>暑い日が続きますね。こういう日はエアコンの効いた部屋でだらだらとテレビを見たいものです。
+しかしテレビをもっておりません。27インチのモニタを持っているのみです。</p>
+
+<p>ただ、今年２月に記事にしたように、Raspberry Pi2 + OSMC + Kodi(XBMC) + add-onで地デジの視聴環境は出来上がっており、
+だらだらとテレビを見ることができる状態にあります。</p>
+
+<ul>
+<li><a href="/blog/2015/02/16/raspberry-pi2-osmc-jp/">Raspberry Pi2にOSMC入れてKodi(旧:XBMC)日本語化するまで</a></li>
+<li><a href="/blog/2015/02/21/kodi-livetv-chinachu/">KodiとChinachuで地デジLive視聴 on Raspberry Pi2 w/ OSMC</a></li>
+<li><a href="/blog/2015/02/24/kodi-chinachu-addon/">KodiでChinachuの録画を観るAdd-on作った</a></li>
+</ul>
+
+
+<p>これでだいたい十分に地デジを視聴絵できるようになったのですが、最近Android TVを手にし、同じように上記記事のように
+地デジ視聴環境を整えて見ていたらいくつか不満が出てきました。</p>
+
+<ol>
+<li>ビデオAdd-onとテレビAdd-onを切り替えるのが面倒くさい</li>
+<li>Python製のためか、録画データJSONパースに時間がかかってる</li>
+<li>録画予約の取り消しができない</li>
+<li>Chinachu側に手を加えるのはスマートではない</li>
+</ol>
+
+
+<p>そこで思い立ってKodi/XBMC向けのテレビadd-on(PVR add-on)を作って、上記問題の解決に取り組みました。</p>
+
+<!-- more -->
+
+
+<h1>Chinachu PVR add-on</h1>
+
+<p>ということで出来上がったのがChinachu PVR add-onです。
+２月に記事にしたIPTV Simple Client Add-onと同種のPVR（Personal Video Recorder）Add-onで、
+上記記事で紹介した２つのAdd-onを複合して成り立っていた地デジ視聴環境と比べて、以下の利点があります。</p>
+
+<ol>
+<li>１つのAdd-onでLive視聴・録画視聴ともにできる</li>
+<li>より高速なJSONパースでストレスの少ないデータの読み込み</li>
+<li>録画予約のON/OFFができる</li>
+<li>Chinachuの標準APIを使っているのでChinachu側に手を加える必要なし(推奨バージョンはREADME.mdに記載)</li>
+</ol>
+
+
+<p>これらの利点を備えたPVR add-on、Chinachu PVR add-onのバージョン1.0.0が出来上がりました。</p>
+
+<h1>pvr.chinachu 1.0.0</h1>
+
+<p>Kodi/XBMCにおけるPVR Add-onのリポジトリ命名規則は習慣によって、pvr.[バックエンドの名前]となっているようです。
+なのでpvr.chinachuという名でリポジトリを立ててあります。</p>
+
+<p><a href="https://github.com/mzyy94/pvr.chinachu"><strong>mzyy94/pvr.chinachu</strong></a></p>
+
+<p>PVR Add-onは共有ライブラリの形で提供する必要があるため、Pythonで書けるビデオAdd-onとは違って各プラットフォーム向けにバイナリ形式の実行可能ファイルを提供する必要があります。
+バージョン1.0.0で提供してるバイナリファイルの対象プラットフォームはLinux amd64/arm, OS X 64bit, Android armとなっています。
+Autotools依存で作り始めたため、Windowsでのビルド環境を作るのが大変だったのでバイナリファイルの提供はしていませんが、VSプロジェクトを作ればビルドできるはずです。</p>
+
+<p>ビルド方法、インストール方法、設定項目などの説明はリポジトリのREADME.mdに記載してあります。
+注意点として、<em>現時点でKodi 15.0 Isengardにしか対応していない</em>ので、他のバージョンのKodi/XBMCでは利用できません。
+Raspberry Pi2でOSMCを利用している人は、以下の記事に目を通し、<code>sudo apt-get update &amp;&amp; sudo apt-get dist-upgrade -y</code>をしてKodi 15.0にしてから導入してください。</p>
+
+<p><a href="https://osmc.tv/2015/08/osmcs-july-update-lands-a-little-late-with-kodi-15/">OSMC » OSMC’s July update lands (a little late) with Kodi 15</a></p>
+
+<p>パブリックリリース記念(?)として、インストール方法といくつか機能を説明します。</p>
+
+<h2>インストール</h2>
+
+<p>Chinachu側はREADME.mdに記載のバージョンもしくは最新版を利用していれば、特に設定は必要ありません。
+ただ、Live視聴時のチャンネル切り替えパフォーマンスや、録画とLive視聴の衝突回避のためにも、README.mdの推奨バージョンを導入することをお勧めします。</p>
+
+<p>Kodi/XBMCでAdd-onをインストールしたことがある人は知っていると思いますが、zip圧縮されたパッケージをメニューから選択するだけで、KodiにAdd-onを追加することができます。
+自分でビルドする方は各自ビルドし、ビルド済み実行ファイルを必要とする人は、以下のページからプラットフォームにあったパッケージをダウンロードしてください。</p>
+
+<p><a href="https://github.com/mzyy94/pvr.chinachu/releases">releases - mzyy94/pvr.chinachu</a></p>
+
+<p>Kodiを起動し、zip形式のパッケージをSettings -> Add-ons -> Install from zip-file から選択し、Add-onsの階層にあるPVR clientsからChinachu PVR clientを探し出して設定を行ってください。</p>
+
+<p><img src="/blog/resources/images/2015/08/08/install-from-zip.png" alt="install from zip" /></p>
+
+<p>設定項目に関しては<a href="https://github.com/mzyy94/pvr.chinachu/wiki/configuration">wiki/configuration - mzyy94/pvr.chinachu</a>にまとめてあります。</p>
+
+<p>その後、Settings -> TV -> GeneralからEnabledにしてPVR add-onを開始してください。</p>
+
+<p><img src="/blog/resources/images/2015/08/08/enable-tv.png" alt="enable tv" /></p>
+
+<p><strong> ※Android/Android TV環境ではこのままでは動作しないことがあるので、<a href="https://github.com/mzyy94/pvr.chinachu/wiki/Android-Installation">wiki/Android-Installation - mzyy94/pvr.chinachu</a>を参考に少しいじってください。 </strong></p>
+
+<p><img src="/blog/resources/images/2015/08/08/top-menu.png" alt="top menu" /></p>
+
+<p>PVRプラグインが有効になるとKodiのメイン画面にTVの項目が現れ、Chinachuから取得したデータにアクセスできるサブ項目も現れます。
+Skinによっては録画中や録画予約済みの項目がメイン画面に表示されたりします。</p>
+
+<p>サブ項目のChannelsで各チャンネルで現在放送中の番組を、Guideでテレビ番組表を確認でき、Recordingsで録画の視聴、Timerで録画予約の確認、Searchで番組検索ができます。
+Skinごとの差異や日本語設定にしていると項目名が違いますが、似たような項目が現れると思います。
+表示言語を日本語に設定していない場合、Settings -> Appearance -> Skin -> Fontsから日本語表示に対応しているフォント（例：Arial）を選択しておかないと、文字化けして使い物にならいのでご注意を。</p>
+
+<p><img src="/blog/resources/images/2015/08/08/font-settings.png" alt="font settings" /></p>
+
+<h2>Channels</h2>
+
+<p><img src="/blog/resources/images/2015/08/08/channels-page.png" alt="channels page" /></p>
+
+<p>Chinachuから取得したチャンネルの一覧と、現在放送中の番組が表示されるページです。
+チャンネルを選択するとライブ視聴ができます。</p>
+
+<p>画像ではチャンネル横に曲ごとのアイコンをつけていますが、自動で取得するように実装していないので、
+必要であればSettings -> TV -> General -> Channel managerにてアイコンの追加ができるのでそこで追加するようにしてください。</p>
+
+<p>ちなみにここで表示されるチャンネルはGR/BS/CSと、地デジ・BS・CSを分けてグループ化してあるので、項目が多すぎる場合はメニューから表示するグループを選択することができます。</p>
+
+<p><img src="/blog/resources/images/2015/08/08/channel-manager.png" alt="channel manager" />
+<img src="/blog/resources/images/2015/08/08/channel-group.png" alt="channel group" /></p>
+
+<h2>Guide</h2>
+
+<p><img src="/blog/resources/images/2015/08/08/guide-page.png" alt="guide page" /></p>
+
+<p>Chinachuから取得した番組表情報を、チャンネルごとに表示するページです。
+テーマによっては番組のジャンルごとに色分けがされて表示されます。</p>
+
+<p>番組表形式の表示方法以外にも、いくつかメニューから表示形式を選ぶことができます。
+バージョン1.0.0では番組表の番組選択からの録画予約に対応していないので、番組情報の確認とチャンネルの切り替えだけとなります。</p>
+
+<h2>Recordings</h2>
+
+<p><img src="/blog/resources/images/2015/08/08/recordings-page.png" alt="recordings page" /></p>
+
+<p>名前の通り、録画した番組を視聴できるページです。
+選択すると再生することができます。
+デフォルト設定ではサムネイルを録画開始３０秒地点のものを表示するようにしてありますが、設定で変更できます。</p>
+
+<h2>Timer</h2>
+
+<p><img src="/blog/resources/images/2015/08/08/timer-page.png" alt="timer page" /></p>
+
+<p>タイマーと名のつくこのページでは、録画予約を確認できます。
+現バージョンでは新たに追加することはできませんが、予約のStateをActive/Inactiveにすることで、Chinachuの録画予約をSkip/Unskipできるようになっています。</p>
+
+<h2>Search</h2>
+
+<p><img src="/blog/resources/images/2015/08/08/search-page.png" alt="search page" /></p>
+
+<p>番組検索ができるページがSearchページです。
+今の所、番組タイトルのみを対象としており、かつ大文字小文字・全角半角を厳しく判定しているので、すこしでも違うとヒットしません。
+バージョン1.0.0では、検索してもできることは番組情報の表示だけなので、録画予約の設定や、
+検索ワードに関して改良の余地アリなので今後改良していきたいです。</p>
+
+<h2>オマケ</h2>
+
+<p><img src="/blog/resources/images/2015/08/08/pvr-information.png" alt="pvr information" /></p>
+
+<p>Settings -> System info -> PVR Serviceからチャンネル数や録画済み番組数、録画予約数が確認できます。</p>
+
+<h1>まとめ</h1>
+
+<p>Raspberry Pi2でもAndroid TV（一手間必要）でも快適に地デジ見れるようになったので、<a href="http://japanese.engadget.com/2015/08/06/7-5000-50-4k-q-display-4k50-upq/">チューナーなし50インチ4Kディスプレイ</a>が欲しくなってしまった。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[KodiでChinachuの録画を観るAdd-on作った]]></title>
@@ -76,7 +239,7 @@ MPEG-2 ハードウェアデコーダーを導入してあるRasPi2ではこの�
 
 <p>サムネイルカテゴリには、Chinachu APIのpreview.jpgを取得してKodiのサムネイルフォルダにキャッシュするオプションがあります。
 avconvで生成している都合上、取得には時間がかかるので必要でなければ無効のままにしておくことをお勧めします。
-また、一度サムネイルを取得し始めるとKodiを終了するまでバックグラウンドで取得し続けます。さらに、未取得のサムネイルは毎囘取得しに行きます。
+また、一度サムネイルを取得し始めるとKodiを終了するまでバックグラウンドで取得し続けます。さらに、未取得のサムネイルは毎回取得しに行きます。
 この点ご注意ください。</p>
 
 <p>サムネイルが不要になった際は、キャッシュのクリアもできます。</p>
@@ -138,9 +301,9 @@ Raspbmc改めOSMCで地デジ視聴をする方法をまとめます。</p>
 <h2>IPTV Simple Client</h2>
 
 <p>このAdd-onは、m3u形式で配信されているチャンネル配信情報と、<a href="http://wiki.xmltv.org/index.php/XMLTVFormat">XMLTV形式</a>で配信されている番組表情報を用いてネットワーク経由でテレビを視聴することができるPVRクライアントです。
-数あるプレイリストフォーマットの中でも一般的な形式であるm3uと、<a href="http://www.mythtv.org/">MythTV</a>などのテレビ視聴・録画クライアントがサポートするEPG番組表形式であるXMLTVを用いているため、テレビ放送配信側となるサーバーがサポートしていれば簡単に地デジをKodiで視聴できます。
-G
-今回テレビ放送を配信するサーバーとしてはChinachuを使いますが、残念ながら上記のm3u形式のチャンネル情報とXMLTV形式の番組表情報は提供されていません。
+数あるプレイリストフォーマットの中でも一般的な形式であるm3uと、<a href="http://www.mythtv.org/">MythTV</a>などのテレビ視聴・録画クライアントがサポートするEPG番組表形式であるXMLTVを用いているため、テレビ放送配信側となるサーバーがサポートしていれば簡単に地デジをKodiで視聴できます。</p>
+
+<p>今回テレビ放送を配信するサーバーとしてはChinachuを使いますが、残念ながら上記のm3u形式のチャンネル情報とXMLTV形式の番組表情報は提供されていません。
 なので、Chinachuに2つのファイルを追加して機能を追加することで対応するようにしました。</p>
 
 <h1>Chinachu</h1>

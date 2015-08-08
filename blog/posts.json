@@ -5,6 +5,12 @@
 	
 	"posts" : [ 
 		{
+			"date": "08 Aug 2015",
+			"title": "Chinachu PVRアドオンでRasPi2/Android TVをテレビに",
+			"url": "pvr-chinachu-addon"
+		},
+	
+		{
 			"date": "21 Jun 2015",
 			"title": "エビ水槽を新しくした",
 			"url": "ebi-new-watertank"

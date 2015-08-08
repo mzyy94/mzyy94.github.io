@@ -9,8 +9,8 @@
   <meta name="author" content="mzyy94">
 
   
-  <meta name="description" content="増税前のPCパーツ買いだめイベントに便乗して、３月中に自宅サーバーを増設しました。
-どんな構成で組み立てたのかの紹介になります。 ">
+  <meta name="description" content="SECCON 2014 横浜大会に参加してきました。
+NW,BIN,WEBと３部門の予選がありましたが、ネットワーク大好き♡なのでNWにチャレンジしました。 ネットワーク部門は10問ある問題を解いて答えを紙に書いて提出して採点された点数によって順位付けされ、 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -73,8 +73,8 @@
 <meta property="twitter:url" content="http://mzyy94.com/blog/page/3" />
 <meta property="twitter:title" content="犬アイコンのみっきー" />
 
-<meta property="twitter:description" content="増税前のPCパーツ買いだめイベントに便乗して、３月中に自宅サーバーを増設しました。
-どんな構成で組み立てたのかの紹介になります。 " />
+<meta property="twitter:description" content="SECCON 2014 横浜大会に参加してきました。
+NW,BIN,WEBと３部門の予選がありましたが、ネットワーク大好き♡なのでNWにチャレンジしました。 ネットワーク部門は10問ある問題を解いて答えを紙に書いて提出して採点された点数によって順位付けされ、成績優秀者10人が予選突破という選抜形式で行われました。 CTFにおけるネットワーク問題は年々減少傾向にある上、 &hellip;" />
 
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" />
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" />
@@ -145,6 +145,101 @@
     <div class="row">
       <main class="col-sm-9">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title boxed-green"><a href="/blog/2014/09/03/seccon2014-yokohama-2nd-day/">SECCON 2014 横浜大会NW予選 Write-up</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+<i class="glyphicon glyphicon-calendar"></i><time datetime="2014-09-03T14:40:47+09:00" pubdate data-updated="true">03 Sep 2014</time>
+        
+
+<i class="glyphicon glyphicon-folder-close"></i><span class="categories">
+  
+    <a class='category' href='/blog/categories/ctf/'>ctf</a>
+  
+</span>
+
+
+        
+
+<i class="glyphicon glyphicon-tags"></i><span class="tags">
+  
+    <a class='tag' href='/blog/tags/seccon/'>seccon</a>, <a class='tag' href='/blog/tags/seccon2014/'>seccon2014</a>
+  
+</span>
+
+
+        
+		<i class="glyphicon glyphicon-comment"></i><a href="/blog/2014/09/03/seccon2014-yokohama-2nd-day/#disqus_thread"
+             data-disqus-identifier="http://mzyy94.com/blog/2014/09/03/seccon2014-yokohama-2nd-day/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<img src="/blog/resources/images/2014/9/3/KEN.JPG" alt="article image" class="main image"/>
+
+
+<div class="entry-content"><p>SECCON 2014 横浜大会に参加してきました。
+NW,BIN,WEBと３部門の予選がありましたが、ネットワーク大好き♡なのでNWにチャレンジしました。</p>
+
+<p>ネットワーク部門は10問ある問題を解いて答えを紙に書いて提出して採点された点数によって順位付けされ、成績優秀者10人が予選突破という選抜形式で行われました。</p>
+
+<p>CTFにおけるネットワーク問題は年々減少傾向にある上、難易度を上げることが難しいとのことなので、今回は少し特殊なファイル形式で出題されていました。
+例えば以下が問題1の出題ファイルです。</p>
+
+<pre><code>Find the Key!
+
+0000  00 00 00 00 00 00 00 00  00 00 00 00 08 00 45 00   ........ ......E.
+0010  00 34 f3 ed 00 00 40 01  88 d9 7f 00 00 01 7f 00   .4....@. ........
+0020  00 01 08 00 bd c8 18 18  00 00 5a 6d 78 68 5a 33   ........ ..ZmxhZ3
+0030  74 7a 5a 57 4e 6a 62 32  35 7a 5a 57 4e 6a 62 32   tzZWNjb2 5zZWNjb2
+0040  35 39 
+</code></pre>
+
+<p>そう、いいままでのpcapファイルでの出題ではなくテキストファイルでの出題となっていたのです。</p>
+
+<p>このままでは今まで愛用してきたWiresharkおよび、tsharkでの解析ができません。
+バイナリエディタにコピペして目grepしてもいいですが、ここはpcapファイルに変換してしまいましょう。</p>
+
+<p>世の中には便利なソフトウェアが沢山あります。こんなときにもOSSが活躍します。
+テキストファイルをpcapファイルに変換するソフトウェア、その名も<code>text2pcap</code>です。
+これ、Wiresharkに付属してるんです。</p>
+
+<p>使い方は簡単、例えば問題1の出題ファイルでは、1行目の問題文を削除してHEX部分だけにしたファイル、question-01.txtを作成し、
+<code>text2pcap question-01.txt q01.pcap</code>などとすれば、Wiresharkで解析できるpcapファイルが作成されます。</p>
+
+<p>さて、このようにしてさくさくと解けるファイルが作成できればあとは画面を凝視するのみ、順々に解いていきます。</p>
+
+</div>
+  
+  
+    <footer>
+	<a rel="full-article" href="/blog/2014/09/03/seccon2014-yokohama-2nd-day/" class="btn btn-icon-left"><span>Read more</span></a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -781,84 +876,6 @@ OS Xで時々現れるBus error: 10 が現れる条件が気になったので�
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title boxed-green"><a href="/blog/2013/12/10/timemachine-with-nas4free/">NAS4FreeでTime Machineの設定するメモ</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-
-
-
-
-<i class="glyphicon glyphicon-calendar"></i><time datetime="2013-12-10T12:58:47+09:00" pubdate data-updated="true">10 Dec 2013</time>
-        
-
-<i class="glyphicon glyphicon-folder-close"></i><span class="categories">
-  
-    <a class='category' href='/blog/categories/nas4free/'>nas4free</a>
-  
-</span>
-
-
-        
-
-<i class="glyphicon glyphicon-tags"></i><span class="tags">
-  
-    <a class='tag' href='/blog/tags/mac/'>Mac</a>, <a class='tag' href='/blog/tags/nas4free/'>NAS4Free</a>, <a class='tag' href='/blog/tags/timemachine/'>TimeMachine</a>
-  
-</span>
-
-
-        
-		<i class="glyphicon glyphicon-comment"></i><a href="/blog/2013/12/10/timemachine-with-nas4free/#disqus_thread"
-             data-disqus-identifier="http://mzyy94.com/blog/2013/12/10/timemachine-with-nas4free/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-<img src="/blog/resources/images/2013/12/10/timemachine-with-nas4free.png" alt="article image" class="main image"/>
-
-
-<div class="entry-content"><p>Mavericksの登場で手元のMacBook Airをクリーンインストールしました。
-その際、バックアップから復元するような手段は取らず、必要なデータのみを移して環境を再構築しました。
-というのも、いままではTime Machineでバックアップを取っていなかったがために復元する手段がなかったのです。</p>
-
-<p>次のバージョンでもクリーンインストールする予定ではありますが、突然のデータ消失に備えてTime Machineでの定期バックアップをするようにしました。</p>
-
-<p>Time Machineのバックアップ先としては主に利用されるのは外付けドライブやTime Capsuleなどいろいろなバックアップ先があります。
-しかし、MacBook Airをポータブル端末として利用している身としては、バックアップのたびにケーブルを抜き差しするのは効率を落とすだけでなく、バックアップ中は移動ができなくなってしまうため、候補から外しました。</p>
-
-<p>ケーブルレスでTime Machineの機能を使う方法としては、無線LAN経由でネットワークストレージにバックアップする方法に限られてきてしまいます。
-Time Machineのバックアップ用ネットワークストレージとして、Appleからは<a href="http://store.apple.com/jp/product/ME177/airmac-time-capsule-2tb">AirMac Time Capsule</a>なるものが発売されていますが、これが如何せんお高い。
-主な機能としてのTime MachineのバックアップとIEEE802.11ac対応無線LANルータの２つを備えた2TBのもので29,800円するという。
-もっと多機能で安価なものを自分で構成したいという欲が湧いてきました。</p>
-
-</div>
-  
-  
-    <footer>
-	<a rel="full-article" href="/blog/2013/12/10/timemachine-with-nas4free/" class="btn btn-icon-left"><span>Read more</span></a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="tf_pagination">
   <div class="inner">
     
@@ -983,6 +1000,10 @@ Time Machineのバックアップ用ネットワークストレージとして�
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/08/08/pvr-chinachu-addon/">Chinachu PVRアドオンでRasPi2/Android TVをテレビに</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/06/21/ebi-new-watertank/">エビ水槽を新しくした</a>
       </li>
     
@@ -996,10 +1017,6 @@ Time Machineのバックアップ用ネットワークストレージとして�
     
       <li class="post">
         <a href="/blog/2015/04/26/no-shrimp-no-life/">小さなえびを飼い始めて2ヶ月が過ぎた</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/04/16/netagent-mondai10/">ネットエージェント最終面接問題 Write-up エクストリームCTF編</a>
       </li>
     
   </ul>
