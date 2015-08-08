@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: dtv | 犬アイコンのみっきー]]></title>
   <link href="http://mzyy94.com/blog/tags/dtv/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2015-08-08T21:12:45+09:00</updated>
+  <updated>2015-08-08T21:17:29+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -31,7 +31,7 @@
 </ul>
 
 
-<p>これでだいたい十分に地デジを視聴絵できるようになったのですが、最近Android TVを手にし、同じように上記記事のように
+<p>これでだいたい十分に地デジを視聴できるようになったのですが、最近Android TVを手にし、同じように上記記事のように
 地デジ視聴環境を整えて見ていたらいくつか不満が出てきました。</p>
 
 <ol>
@@ -71,7 +71,7 @@
 <p><a href="https://github.com/mzyy94/pvr.chinachu"><strong>mzyy94/pvr.chinachu</strong></a></p>
 
 <p>PVR Add-onは共有ライブラリの形で提供する必要があるため、Pythonで書けるビデオAdd-onとは違って各プラットフォーム向けにバイナリ形式の実行可能ファイルを提供する必要があります。
-バージョン1.0.0で提供してるバイナリファイルの対象プラットフォームはLinux amd64/arm, OS X 64bit, Android armとなっています。
+記事タイトルではRasPi2/Android TVとありますが、バージョン1.0.0で提供してるバイナリファイルの対象プラットフォームはLinux amd64/armv7(RasPi2含む), OS X 64bit, Android arm(TV含む)となっています。
 Autotools依存で作り始めたため、Windowsでのビルド環境を作るのが大変だったのでバイナリファイルの提供はしていませんが、VSプロジェクトを作ればビルドできるはずです。</p>
 
 <p>ビルド方法、インストール方法、設定項目などの説明はリポジトリのREADME.mdに記載してあります。
