@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://mzyy94.com/blog/2015/09/18/tductf-2015-digression/</loc>
+    <lastmod>2015-09-18T01:33:16+09:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://mzyy94.com/blog/2015/08/08/pvr-chinachu-addon/</loc>
+    <lastmod>2015-08-08T20:51:33+09:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>http://mzyy94.com/blog/2015/06/21/ebi-new-watertank/</loc>
     <lastmod>2015-06-21T16:35:31+09:00</lastmod>
     <priority>0.8</priority>
@@ -157,54 +167,54 @@
   </url>
   <url>
     <loc>http://mzyy94.com/</loc>
-    <lastmod>2015-06-21T23:24:57+09:00</lastmod>
+    <lastmod>2015-09-18T02:07:46+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>http://mzyy94.com/blog/</loc>
-    <lastmod>2015-06-21T23:24:57+09:00</lastmod>
+    <lastmod>2015-09-18T02:07:46+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://mzyy94.com/blog/archives/</loc>
-    <lastmod>2015-06-21T23:24:57+09:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>http://mzyy94.com/about/</loc>
-    <lastmod>2015-06-21T23:24:57+09:00</lastmod>
+    <lastmod>2015-09-18T02:07:46+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://mzyy94.com/service/</loc>
-    <lastmod>2015-06-21T23:24:57+09:00</lastmod>
+    <lastmod>2015-09-18T02:07:46+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://mzyy94.com/key/</loc>
-    <lastmod>2015-06-21T23:24:57+09:00</lastmod>
+    <lastmod>2015-09-18T02:07:46+09:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://mzyy94.com/about/</loc>
+    <lastmod>2015-09-18T02:07:46+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://mzyy94.com/about/license.html</loc>
-    <lastmod>2015-06-21T23:24:57+09:00</lastmod>
+    <lastmod>2015-09-18T02:07:46+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://mzyy94.com/404.html</loc>
-    <lastmod>2015-03-02T05:58:04+09:00</lastmod>
+    <lastmod>2015-03-02T06:07:14+09:00</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>http://mzyy94.com/index404.html</loc>
-    <lastmod>2015-03-02T05:58:06+09:00</lastmod>
+    <lastmod>2015-03-02T06:07:16+09:00</lastmod>
     <priority>0.6</priority>
   </url>
 </urlset>

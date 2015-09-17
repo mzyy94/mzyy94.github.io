@@ -1,0 +1,785 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>TDUCTF 2015の運営をした話 - 犬アイコンのみっきー</title>
+  <meta name="author" content="mzyy94">
+
+  
+  <meta name="description" content="みなさんご参加ありがとうございます。
+存じ上げている方もたくさんいらっしゃると思いますが、先月末の日曜日にTDUCTF 2015なるものが開催されました。 TDUCTF 2015 - connpass 前回開催が3月末にあったのですが、所要で参加できないことがわかり、 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://mzyy94.com/blog/2015/09/18/tductf-2015-digression">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/blog/atom.xml" rel="alternate" title="犬アイコンのみっきー" type="application/atom+xml">
+  <!-- main JS libs -->
+  <script src="/javascripts/libs/modernizr.min.js"></script>
+  <script src="/javascripts/jquery-2.0.3.min.js"></script>
+  <script src="/javascripts/libs/jquery-ui.min.js"></script>
+  <script src="/javascripts/libs/bootstrap.min.js"></script>
+  <!-- Style CSS -->
+  <link href="/stylesheets/bootstrap.css" media="screen" rel="stylesheet">
+  <link href="/stylesheets/style.css" media="screen" rel="stylesheet">
+  <link href="/stylesheets/syntax.css" media="screen" rel="stylesheet">
+  <link href="/stylesheets/emoji.css" media="screen" rel="stylesheet">
+  <!-- scripts -->
+  <script src="/javascripts/general.js"></script>
+  <!-- custom input -->
+  <script src="/javascripts/jquery.customInput.js"></script>
+  <script type="text/javascript" src="/javascripts/custom.js"></script>
+  <!-- Placeholders -->
+  <script type="text/javascript" src="/javascripts/jquery.powerful-placeholder.min.js"></script>
+  <!-- Lightbox prettyPhoto -->
+  <link href="/stylesheets/prettyPhoto.css" rel="stylesheet">
+  <script src="/javascripts/jquery.prettyPhoto.js"></script>
+  <!-- CarouFredSel  -->
+  <script src="/javascripts/jquery.carouFredSel-6.2.1-packed.js"></script>
+  <!-- Progress Bars -->
+  <script src="/javascripts/progressbar.js"></script>
+  <!-- Calendar -->
+  <script src="/javascripts/jquery-ui.multidatespicker.js"></script>
+  <!-- range sliders -->
+  <script src="/javascripts/jquery.slider.bundle.js"></script>
+  <script src="/javascripts/jquery.slider.js"></script>
+  <link rel="stylesheet" href="/stylesheets/jslider.css">
+  <!-- Video Player -->
+  <link href="/stylesheets/video-js.css" rel="stylesheet">
+  <script src="/javascripts/video.js"></script>
+  <!-- Scroll Bars -->
+  <script src="/javascripts/jquery.mousewheel.js"></script>
+  <script src="/javascripts/jquery.jscrollpane.min.js"></script>
+
+<!--[if lt IE 9]><script src="/javascripts/respond.min.js"></script><![endif]-->
+<!--[if gte IE 9]>
+<style type="text/css">
+	.gradient {filter: none !important;}
+</style>
+<![endif]-->
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+
+<meta property="twitter:card" content="summary" />
+<meta property="twitter:site" content="mzyy94" />
+<meta property="twitter:url" content="http://mzyy94.com/blog/2015/09/18/tductf-2015-digression" />
+<meta property="twitter:title" content="TDUCTF 2015の運営をした話" />
+
+<meta property="twitter:image" content="http://mzyy94.com/blog/resources/images/2015/09/18/tductf-frontend.png" />
+
+<meta property="twitter:description" content="みなさんご参加ありがとうございます。
+存じ上げている方もたくさんいらっしゃると思いますが、先月末の日曜日にTDUCTF 2015なるものが開催されました。 TDUCTF 2015 - connpass 前回開催が3月末にあったのですが、所要で参加できないことがわかり、悔しさからネットワーク系のCTF問題を作って提供しました。 メインスライド from nomuken そのとき運営陣の@ &hellip;" />
+
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" />
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" />
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-41944495-3']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body  >
+  <div class="container">
+  <div class="content">
+  <header class="row">
+    <nav id="topmenu" class="col-sm-12" role="navigation"><ul class="dropdown clearfix boxed boxed-blue">
+    <li class="menu-level-0"><a href="/">Home</a></li>
+  <li class="menu-level-0"><a href="/blog/">Blog</a></li>
+  <li class="menu-level-0"><a href="/service/">Service</a></li>
+  <li class="menu-level-0">
+  <a href="/about/">About</a>
+  <ul class="submenu-1">
+	  <li class="menu-level-1"><a href="/about/">About me</a></li>
+	  <li class="menu-level-1"><a href="/about/license.html">License</a></li>
+	  <li class="menu-level-1"><a href="/key/">Keys / Signatures</a></li>
+  </ul>
+  </li>
+
+  <li class="menu-level-0">
+    <a>Subscribe</a>
+	<ul class="submenu-1">
+  <li class="menu-level-1"><a href="/blog/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  <li class="menu-level-1"><a href="http://cloud.feedly.com/#subscription%2Ffeed%2Fhttp%3A%2F%2Fmzyy94.com%2Fblog%2Fatom.xml" rel="subscribe-feedly" title="subscribe on Feedly">Feedly</a></li>
+  
+  </ul>
+  
+  <li class="menu-search last">
+
+	<form action="https://www.google.com/search" id="searchForm" class="menu-search-form" method="get">
+		<fieldset role="search">
+			<input type="hidden" name="q" value="site:mzyy94.com" />
+			<input type="text" name="q" value="" results="0" class="menu-search-field" placeholder="Search the website" hidefocus="true" style="outline: none;">
+			<input type="submit" value="" class="btn menu-search-submit" name="search-send" hidefocus="true" style="outline: none;">
+		</fieldset>
+	</form>
+
+  </li>
+  
+</ul>
+</nav>
+  </header>
+  <header class="col-sm-12 boxed-red" role="banner"><hgroup>
+  
+  <h1><a href="/">犬アイコンのみっきー</a></h1>
+  
+</hgroup>
+
+</header>
+    <div class="row">
+      <main class="col-sm-9">
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title boxed-green">TDUCTF 2015の運営をした話</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+<i class="glyphicon glyphicon-calendar"></i><time datetime="2015-09-18T01:33:16+09:00" pubdate data-updated="true">18 Sep 2015</time>
+        
+
+<i class="glyphicon glyphicon-folder-close"></i><span class="categories">
+  
+    <a class='category' href='/blog/categories/ctf/'>ctf</a>
+  
+</span>
+
+
+        
+
+<i class="glyphicon glyphicon-tags"></i><span class="tags">
+  
+    <a class='tag' href='/blog/tags/electron/'>electron</a>, <a class='tag' href='/blog/tags/lepusctf/'>lepusctf</a>, <a class='tag' href='/blog/tags/react/'>react</a>, <a class='tag' href='/blog/tags/tductf/'>tductf</a>
+  
+</span>
+
+
+        
+		<i class="glyphicon glyphicon-comment"></i><a href="#disqus_thread"
+             data-disqus-identifier="http://mzyy94.com">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<img src="/blog/resources/images/2015/09/18/tductf-frontend.png" alt="article image" class="main image"/>
+
+
+<div class="entry-content"><p>みなさんご参加ありがとうございます。
+存じ上げている方もたくさんいらっしゃると思いますが、先月末の日曜日にTDUCTF 2015なるものが開催されました。</p>
+
+<p><a href="http://connpass.com/event/17306/"><strong>TDUCTF 2015 - connpass</strong></a></p>
+
+<p>前回開催が3月末にあったのですが、所要で参加できないことがわかり、悔しさからネットワーク系のCTF問題を作って提供しました。</p>
+
+<iframe src="//www.slideshare.net/slideshow/embed_code/key/FxTJmR5D9IePUk?startSlide=14" width="425" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
+
+
+<p> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/nomuken/ss-46568790" title="メインスライド" target="_blank">メインスライド</a> </strong> from <strong><a href="//www.slideshare.net/nomuken" target="_blank">nomuken</a></strong> </div></p>
+
+<p>そのとき運営陣の@nomuken氏からの「次回は問題作成だけではなく運営陣に加わっていっしょに盛り上げよう」との提案を受け、
+今回TDUCTF 2015にて運営側に立つこととなりました。</p>
+
+<p>さて、具体的に運営として何をしてきたかの記録を以下に述べますが、後半には問題のネタバレなどを含んでおります。ご注意ください。</p>
+
+<!-- more -->
+
+
+<h1>フロントエンドアプリケーションの作成</h1>
+
+<p>TDU CTF 2014 Satellite in ConoHaが無事終了し、次回開催に向けての話が始まりだした時に運営の方々の仲間に入り、どのようにして準備していくかなどの議論をはじめました。
+その議論の最初の議題は毎度フルスクラッチなスコアサーバーをどうしようかというものでした。
+常設CTFや有志で行われてるオンサイトCTFで<em>イケてるスコアサーバー</em>を見かけないのを悲しく思い、Web開発全然得意じゃないのにも関わらず、</p>
+
+<p><strong>「俺がイケてるCTFスコアサーバー作るよ」</strong></p>
+
+<p>などと言ってしまいました。</p>
+
+<p>すんなりと「お、じゃあお願いするね」と言われて開発することになったのですが、イケてるスコアサーバーはWebフロントエンド部分のことを指しており、
+サーバーサイドは別で他のメンバーが開発する、分業となりました。</p>
+
+<p>さて、困った。作ると言い出したものの最近のWebのトレンド知らないしTwitter Bootstrap・jQueryアレルギーだしどうしたものか、と。</p>
+
+<p>まだ開催まで時間あるしとりあえずトレンド調査だけしておこうと思い、いろいろ調べるだけ調べて放置していました。</p>
+
+<p>時は流れ、TDUCTF 2015開催２週間前。</p>
+
+<p>Slackに流れる「フロントエンドの進捗どうですか？」の文字列。
+手元のソースコードリポジトリで<code>git log</code>をしてみたところ、</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>fatal: bad default revision 'HEAD'</span></code></pre></td></tr></table></div></figure>
+
+
+<p>アカン。</p>
+
+<p>その日から睡眠時間を削り、圧倒的進捗率を叩き出すべく腱鞘炎になりながらもコードを書き続けました。</p>
+
+<p>コミットはゼロでも頭の中に構想は練ってあったので、あとはキーボードを叩きまくるだけという状態になっていたものの、
+時間が足りない上に睡眠不足でタイポするわで結構大変でした。</p>
+
+<p>トレンド調査で、<a href="https://facebook.github.io/react/">React</a>+<a href="https://facebook.github.io/flux/">Flux</a>の構造を軸に、見た目は<a href="http://semantic-ui.com/">Semantic UI 2</a>で整え、<a href="http://electron.atom.io/">Electron</a>で単一アプリケーション化するのがモダンでイケてる感じであるとわかったので、これらを用いて組み立てていくことにしました。
+Electronでアプリケーション化したのは、「今までにないイケてるCTFスコアサーバー」の形を実現する目的に加えて、「マルチブラウザ対応に追われる時間をゼロにする」目的もありました。結果として、Internet Explorer（CTF参加者に利用者はいるのだろうか？）などのへの対応のためにバッドノウハウを使わなくて済みました。</p>
+
+<p>途中Flux部分にしっくりくるものがなく、<a href="http://rackt.github.io/redux/">Redux</a>に変更するまでに時間を要したものの、2週間ぶっ通しの突貫工事でなんとか、開催までに&#8221;形にする&#8221;ことができ、参加者に楽しんでいたくことができたと思います。</p>
+
+<p>開催までは非公開で管理していたのですが、オープンソースで公開するとの話があったので、現在はGitHubにて公開しています。</p>
+
+<p><a href="https://github.com/lepus-ctf/lepus-frontend/">lepus-ctf/lepus-frontend · GitHub</a></p>
+
+<p>詳しい開発秘話はしないので、苦労は上記リポジトリのコミットログから察してください。</p>
+
+<h1>問題作成</h1>
+
+<p>CTFの主軸となる問題作成に関しての話です。
+ネタバレが含まれるので問題を解きたい人はお気をつけを。</p>
+
+<p>CTFの運営として参加しているので、問題の作成はほぼ必須なのですが、なにせフロントエンドアプリケーションの作成に追われていて、
+「案はあるけど作ってる暇がない」ということとなってしまい、少ししか用意できませんでした。
+問題案などはストックできてるので次回開催時に登場する予定です。</p>
+
+<p>用意した問題は一部を除いて以下のサイトで公開しています。</p>
+
+<p><a href="http://ctf.mzyy94.com">ctf.mzyy94.com</a></p>
+
+<p>問題の作成意図と簡単な想定解法を紹介します。
+あと、TDUCTF 2015は初心者歓迎を掲げて開催してたので、プロ向けの問題はあまりありません。</p>
+
+<h2>Keygenerator</h2>
+
+<p><a href="http://ctf.mzyy94.com/q/TDUCTF2015-BIN200/">http://ctf.mzyy94.com/q/TDUCTF2015-BIN200/</a></p>
+
+<p>問題文: 実行してフラッグをゲットせよ！</p>
+
+<p>この問題は、与えられた実行ファイルを実行しろというものです。
+libprintkey.soという自作共有ライブラリとkey_generatorという実行アプリケーションが渡されるのですが、
+普通にアプリケーションを実行したりデバッグしてもフラグは得られません。</p>
+
+<p>作成意図としては、「共有ライブラリも単体実行可能」という点に気づいて、
+問題文の「実行して」のとおりに共有ライブラリに実行可能フラグを立てて、
+<code>./libprintkey.so</code>とすれば、フラグが出力されるようになっていました。</p>
+
+<p>gdbなどでkey_generatorをデバッグしてた方から、「あるべきところにフラグがないがどういうことなのか？」という質問がありましたが、
+すいません、そっちじゃなかったんです。</p>
+
+<p>単純に実行してフラグを得られるため初期の想定では100点問題になるとしていたのですが、
+配点会議でライブラリの単体実行するポイントに気づかない人も多いかもしれないとのことで、200点に引き上げられました。</p>
+
+<h2>devnull</h2>
+
+<p><a href="http://ctf.mzyy94.com/q/TDUCTF2015-BIN250/">http://ctf.mzyy94.com/q/TDUCTF2015-BIN250/</a></p>
+
+<p>問題文: Usage: ./devnull > /dev/null</p>
+
+<p>実行すると、標準出力を/dev/nullにリダイレクトしてくれとUsageが出てきて、
+そのとおりに実行すると、/dev/nullにフラグが出力されるというものです。</p>
+
+<p>リダイレクト先をパスで判定しているので、/dev/nullを適当なブロックファイルに差し替えるか、
+gdbでブレイクポイントを仕掛けたり、ltraceとかで処理を追って、出力される部分を覗き見できればフラグが得られます。</p>
+
+<p>gdbの使い方に慣れてほしいという願いを込めて作っていたので、想定していた解法は以下のとおりです。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ gdb ./devnull
+</span><span class='line'>(gdb) b printf
+</span><span class='line'>(gdb) r &gt; /dev/null
+</span><span class='line'>(gdb) i r
+</span><span class='line'>(gdb) x/s $rsi</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>「名前が変えられいるってことで間違いないな」</h2>
+
+<p><a href="http://ctf.mzyy94.com/q/TDUCTF2015-MISC200/">http://ctf.mzyy94.com/q/TDUCTF2015-MISC200/</a></p>
+
+<p>問題文: password:password</p>
+
+<p>問題には拡張子がjpgのファイルが付属しています(JPEGファイルとは言っていない)。</p>
+
+<p>CTFに必要なググり力を問うための問題で、問題タイトルを検索ワードにググると、
+「ほこ×たてのハッキング対決に関する記事がいくつかヒットします。
+ほこ×たて内では 「名前が変えられいるってことで間違いないな」は「TrueCryptoで暗号化されている」のことを指しているという記事が見つかるので、
+添付のファイルをTrueCryptoを用いてパスワードにpasswordを指定してマウントすると、フラグが出てきます。</p>
+
+<h2>Portscan</h2>
+
+<p><a href="http://ctf.mzyy94.com/q/TDUCTF2015-NW500/">http://ctf.mzyy94.com/q/TDUCTF2015-NW500/</a></p>
+
+<p>問題文: ポートスキャンが仕掛けられた！ん？何かメッセージがついてきているぞ？</p>
+
+<p>UDPポートスキャンを観測したpcapファイルが渡されます。
+UDPのペイロードに1バイトずつメッセージがついてきてるのでそれを抽出してあげるとフラグが取得できる問題です。</p>
+
+<p>この問題は、WiresharkのFollow UDP Streamですぐに答えが出るようではひねりがないと思い、
+tcpdumpやtsharkのオプションを覗いたり他のパケット解析ツールを使ってほしいという想いを込めて作成しました。
+なので、Wiresharkで解くことはほとんど不可能です。</p>
+
+<p>想定していた解答方法は以下のとおりです。
+最初は100点くらいの配点にしようとしていたのですが、配点会議で「これはわからん」と言われ急遽500点まで引き上げられました。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">printf</span> <span class="k">$(</span>tcpdump -r secretmsg.pcap -x <span class="s1">&#39;udp&#39;</span> <span class="p">|</span> grep 0x0010 <span class="p">|</span> perl -pe<span class="s1">&#39;s/^.*(..)00 0000\n$/\\x\1/&#39;</span><span class="k">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Lucky 7</h2>
+
+<p>この問題はサーバーにアクセスするタイプのネットワーク問題なのでオンサイトでしか用意しておらず、現在は公開していません。
+問題内容は、netcatでアクセスすると以下のような表示が返ってくるものです。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>Challenge!
+</span><span class='line'><span class="m">2187123</span> !<span class="o">=</span> 77777777
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>左辺にある数字が77777777と等しくなるようにアクセスするとフラグが降ってくるのではないかとピンとくる人もいれば、
+ランダムに変化するからBruteforceで解こうする人もいたりと、サーバーを監視していてなるほどと感じることが多かったです。
+この左辺の数字は、サーバー側が<code>Challenge!</code>を返す際のAcknowledge Numberになっており、ここが77777777になっていないためにエラーが返されているのです。
+Wiresharkなどで監視しながらアクセスしていたひとは、この関連性がわかったとおもいます。</p>
+
+<p>Sequential Numberをいじれるhping3やScapyに触れてもらおうという願いを込めて作成しました。
+解法としてはそれらを用いて、3-way handshakeが終了した時点のSequential Number(= サーバーがChallenge!を返す際のAcknowledge Number)が77777777になるようにコネクションを張り始めるようにすれば、フラグが返ってくるというものでした。</p>
+
+<h2>moneyscript</h2>
+
+<p><a href="http://ctf.mzyy94.com/q/TDUCTF2015-MISC400/">http://ctf.mzyy94.com/q/TDUCTF2015-MISC400/</a></p>
+
+<p>問題文: 6a29585444557b426974636f696e21426974636f696e21426974636f696e217d</p>
+
+<p>moneyscriptシリーズの1問目です。こちらは簡単な方です。
+moneyscriptのmoneyが指すのはBitcoinで、このシリーズの問題はBitcoin Scriptを実行して答えを得る問題となっています。
+1問目は優しめに作ってあり、適当にデコードすればフラグが得られるよになっていますが、Bitcoin Scriptとは何かを理解してほしく作成しました。</p>
+
+<p>Googleで検索するとBitcoin ScriptのWikiがヒットします。</p>
+
+<p><a href="https://en.bitcoin.it/wiki/Script">Script - Bitcoin Wiki</a></p>
+
+<p>このWikiにしたがって問題文のBitcoin Scriptが意味するところを先頭から照らしていくと、</p>
+
+<ul>
+<li>0x6a = OP_RETURN</li>
+<li>0x29 = 41バイト確保</li>
+</ul>
+
+
+<p>それ以降は文字列となっています。</p>
+
+<p>なので、適当にデコードするだけでフラグが出てきてしましますが、Bitcoin Scriptの仕組みを知ってもらえたらとおもい、作成しました。</p>
+
+<h2>moneyscript!!!</h2>
+
+<p><a href="http://ctf.mzyy94.com/q/TDUCTF2015-MISC600/">http://ctf.mzyy94.com/q/TDUCTF2015-MISC600/</a></p>
+
+<p>問題文は上記リンクから閲覧ください。</p>
+
+<p>こちらは難しい方のBitcoin Script問題です。
+先ほどのWikiにアクセスできていれば、照らしあわせて脳内で実行すればいいのですが、
+少々骨の折れるものなので、Bitcoin Scriptを扱えるアプリケーションを使う必要が出てきます。</p>
+
+<p>任意のアプリケーションを使って解いてもらえればいいのですが、
+Node.jsのモジュールに、<a href="http://bitcore.io/">bitcore</a>というモジュールがあるので、それを用いて以下のように実行するなどして、フラグを取得できます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">bitcore</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;bitcore&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">Script</span> <span class="o">=</span> <span class="nx">bitcore</span><span class="p">.</span><span class="nx">Script</span><span class="p">;</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">code</span> <span class="o">=</span> <span class="s1">&#39;4c0155828f635e76937367595294687b736b7c6c938f618fa76b4c0222ea6c&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">buffer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Buffer</span><span class="p">(</span><span class="nx">code</span><span class="p">,</span> <span class="s1">&#39;hex&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">interpreter</span> <span class="o">=</span> <span class="nx">Script</span><span class="p">.</span><span class="nx">Interpreter</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">interpreter</span><span class="p">.</span><span class="nx">script</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Script</span><span class="p">(</span><span class="nx">buffer</span><span class="p">);</span>
+</span><span class='line'><span class="nx">interpreter</span><span class="p">.</span><span class="nx">evaluate</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">first_stack</span> <span class="o">=</span> <span class="nx">interpreter</span><span class="p">.</span><span class="nx">stack</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">hex_string</span> <span class="o">=</span> <span class="nx">first_stack</span><span class="p">.</span><span class="nx">toJSON</span><span class="p">().</span><span class="nx">data</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="nx">x</span><span class="p">.</span><span class="nx">toString</span><span class="p">(</span><span class="mi">16</span><span class="p">);</span>
+</span><span class='line'><span class="p">})</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">flag</span> <span class="o">=</span> <span class="s1">&#39;TDU{&#39;</span> <span class="o">+</span> <span class="nx">hex_string</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;}&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">flag</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>開催について</h1>
+
+<p>フロントエンドアプリケーションの作成がギリギリだったがために、RESTサーバーのテストが十分にできず、運営陣には多くの迷惑をかけてしまいました。
+また、フロントエンドアプリケーション側もテストが追いつかず、バグだらけで配布してしまったがために、当日は問題の添付ファイルが破損していたり、
+カウントダウンが正常に機能しないなどのバグを発生させてしまい、参加者各位にも大変に迷惑をかけてしまいました。
+その節は申し訳ありませんでした。</p>
+
+<p>TDUCTF 2015終了後、反省会をオンラインで開催していた頃に「TDUCTF」という名称を変更しようという話が立ち上がり、
+よくわらかないテンションでドメインから何から整え新名称に改称しました。</p>
+
+<blockquote class="twitter-tweet" lang="ja"><p lang="ja" dir="ltr">TDUCTFからLepusCTFの移行で面白いのは4&#10;・新名称考案&#10;・サーバー確保&#10;・ドメイン取得&#10;・GitHub移行&#10;・Webサイト作成&#10;・アイコン作成&#10;・Twitter移行&#10;を4時間以内でやったというところ <a href="https://twitter.com/hashtag/lepusctf?src=hash">#lepusctf</a></p>&mdash; 友利奈緒 (@mzyy94) <a href="https://twitter.com/mzyy94/status/638606548818726912">2015, 9月 1</a></blockquote>
+
+
+<p> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></p>
+
+<p>ということなので、今後はTDUCTFあらため、<a href="http://lepus-ctf.org/">LepusCTF</a>をよろしくお願いします。</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard"><i class="glyphicon glyphicon-user"></i><span class="fn">mzyy94</span></span>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+<i class="glyphicon glyphicon-calendar"></i><time datetime="2015-09-18T01:33:16+09:00" pubdate data-updated="true">18 Sep 2015</time>
+      
+
+<i class="glyphicon glyphicon-folder-close"></i><span class="categories">
+  
+    <a class='category' href='/blog/categories/ctf/'>ctf</a>
+  
+</span>
+
+
+      
+
+<i class="glyphicon glyphicon-tags"></i><span class="tags">
+  
+    <a class='tag' href='/blog/tags/electron/'>electron</a>, <a class='tag' href='/blog/tags/lepusctf/'>lepusctf</a>, <a class='tag' href='/blog/tags/react/'>react</a>, <a class='tag' href='/blog/tags/tductf/'>tductf</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="widget-container widget-social">
+	<ul class="clearfix">
+  
+
+  <!--li class="social-twitter"><a href="https://twitter.com/intent/tweet?original_referer=http://mzyy94.com/blog/2015/09/18/tductf-2015-digression/&text=TDUCTF 2015の運営をした話%20-%20犬アイコンのみっきー&tw_p=tweetbutton&url=http://mzyy94.com/blog/2015/09/18/tductf-2015-digression/&via=mzyy94"><i>Tweet</i></a></li-->
+
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://mzyy94.com/blog/2015/09/18/tductf-2015-digression/" data-via="mzyy94" data-counturl="http://mzyy94.com/blog/2015/09/18/tductf-2015-digression/" >Tweet</a>
+  
+  
+  <!-- li class="social-google"><a href="#"><i>Google</i></a></li -->
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+  <!-- li class="social-facebook"><a href="#"><i>Facebook</i></a></li -->
+  <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+  </ul>
+</div>
+
+    
+    <div>
+      
+	  <a class="btn btn-icon-left btn-arrow-left" href="/blog/2015/08/08/pvr-chinachu-addon/" title="Previous Post: Kodi Chinachu PVRアドオンでRasPi2/Android TVをテレビに"><span>Kodi Chinachu PVRアドオンでRasPi2/Android TVをテレビに</span></a>
+      
+      
+    </div>
+  </footer>
+</article>
+
+  <section class="comment">
+    <h1 class="boxed-red">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</main>
+
+<aside class="col-sm-3">
+  
+    <div class="widget-container widget-avatar boxed boxed-yellow">
+	<div class="inner">
+		<h5>mzyy94</h5>
+		<span class="subtitle">Network</span>
+		<div class="avatar">
+			<img src="/images/avatar.png" alt="avatar icon" />
+		</div>
+		<a href="/about/" class="btn btn-brown btn-follow">
+			<span>About me</span>
+		</a>
+	</div>
+</div>
+<div class="widget-container widget_calendar boxed boxed-red">
+	<div class="inner">
+		<input type="text" name="date_departure" class="inputField" id="date_departure">
+	</div>
+</div>
+<script>
+	// <![CDATA[
+	$(document).ready(function() {
+		var posts = {};
+		var datelist = [];
+		$.getJSON('/blog/posts.json', function(data){
+			var dp = data.posts;
+			for(var i = 0, limit = dp.length; i < limit; i++){
+				var date = new Date(dp[i].date);
+				posts[dp[i].date] = {title:dp[i].title,
+					url: '/blog/' + date.getFullYear() + '/' + ('0' + (date.getMonth() + 1)).slice(-2) + '/' + ('0' + date.getDate()).slice(-2) + '/' + dp[i].url + '/'}
+				datelist.push(dp[i].date);
+			}
+			assignCalendar('#date_departure');
+			refreshDate();
+		});
+
+
+		function assignCalendar(id){
+			$('<div class="calendar" />')
+				.insertAfter( $(id) )
+				.datepicker({
+					beforeShowDay: function(date){
+						var string = $.datepicker.formatDate('dd M yy', date);
+						return [ datelist.indexOf(string) != -1 ]
+					},
+					dateFormat: 'dd M yy',
+					minDate: new Date(datelist[datelist.length - 1]),
+					maxDate: new Date(),
+					maxPicks: 1,
+					altField: id,
+					firstDay: 0,
+					showOtherMonths: true,
+					onSelect: function(date){
+						window.location.href = posts[date].url;
+					},
+					onChangeMonthYear: refreshDate
+				}).prev().hide();
+		}
+
+		var month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+		function refreshDate(){
+			setTimeout(function(){
+				$('a.ui-state-default').each(function(num){
+					var yy = $(this).parent().attr('data-year');
+					var M = month[$(this).parent().attr('data-month')];
+					var dd = ('0' + $(this).text()).slice(-2);
+					var idx = dd + ' ' + M + ' ' + yy;
+					$(this).attr('data-title', posts[idx].title);
+					$(this).attr('href', posts[idx].url);
+				});
+			},10);
+		}
+	});
+	// ]]>
+</script>
+<section class="widget-container widget-recently boxed">
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/09/18/tductf-2015-digression/">TDUCTF 2015の運営をした話</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/08/08/pvr-chinachu-addon/">Kodi Chinachu PVRアドオンでRasPi2/Android TVをテレビに</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/06/21/ebi-new-watertank/">エビ水槽を新しくした</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/05/18/defcon-qual-23-writeup/">DEFCON CTF 23予選 Write-up (解説付き(すこし))</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/04/29/ebi-the-move/">えびの水槽引越しと環境整備と飼育について</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section class="widget-container widget-github boxed">
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'mzyy94',
+            count: 3,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+<div class="widget-container boxed boxed-blue">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- sidebar-small -->
+<ins class="adsbygoogle"
+	style="display:inline-block;width:120px;height:240px"
+	data-ad-client="ca-pub-5429584698977304"
+	data-ad-slot="3454316875"></ins>
+<!-- sidebar-small2 -->
+<ins class="adsbygoogle"
+	style="display:inline-block;width:120px;height:240px"
+	data-ad-client="ca-pub-5429584698977304"
+	data-ad-slot="6626453278"></ins>
+<script>
+	(adsbygoogle = window.adsbygoogle || []).push({});
+	(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'mzyy94blog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://mzyy94.com/blog/2015/09/18/tductf-2015-digression/';
+        var disqus_url = 'http://mzyy94.com/blog/2015/09/18/tductf-2015-digression/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+  </div>
+  <footer class="boxed-yellow" role="contentinfo"><p>
+  Copyright &copy; 2015 - mzyy94 -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> -
+  <span class="credit">Designed with <a href="http://pixelkit.com/kits/flat-ui-kit">Flat UI Kit | Modern Touch</a></span> -
+  <span>Licensed under a <a rel="license" href="http://opensource.org/licenses/mit-license.html">MIT License</a> and <a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a><span>
+</p>
+<script>
+	$(function () {
+		$("a[href^='http'], a[href^='ftp']").click(function () {
+			if ($(this).attr("target") === undefined) 
+			$(this).attr("target", "_blank");
+		});
+	});
+</script>
+
+</footer>
+  </div>
+</body>
+</html>

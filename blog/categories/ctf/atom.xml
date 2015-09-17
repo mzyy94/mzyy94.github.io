@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ctf | 犬アイコンのみっきー]]></title>
   <link href="http://mzyy94.com/blog/categories/ctf/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2015-06-21T23:24:57+09:00</updated>
+  <updated>2015-09-18T02:07:46+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -12,6 +12,258 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[TDUCTF 2015の運営をした話]]></title>
+    <link href="http://mzyy94.com/blog/2015/09/18/tductf-2015-digression/"/>
+    <updated>2015-09-18T01:33:16+09:00</updated>
+    <id>http://mzyy94.com/blog/2015/09/18/tductf-2015-digression</id>
+    <content type="html"><![CDATA[<p>みなさんご参加ありがとうございます。
+存じ上げている方もたくさんいらっしゃると思いますが、先月末の日曜日にTDUCTF 2015なるものが開催されました。</p>
+
+<p><a href="http://connpass.com/event/17306/"><strong>TDUCTF 2015 - connpass</strong></a></p>
+
+<p>前回開催が3月末にあったのですが、所要で参加できないことがわかり、悔しさからネットワーク系のCTF問題を作って提供しました。</p>
+
+<iframe src="//www.slideshare.net/slideshow/embed_code/key/FxTJmR5D9IePUk?startSlide=14" width="425" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
+
+
+<p> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/nomuken/ss-46568790" title="メインスライド" target="_blank">メインスライド</a> </strong> from <strong><a href="//www.slideshare.net/nomuken" target="_blank">nomuken</a></strong> </div></p>
+
+<p>そのとき運営陣の@nomuken氏からの「次回は問題作成だけではなく運営陣に加わっていっしょに盛り上げよう」との提案を受け、
+今回TDUCTF 2015にて運営側に立つこととなりました。</p>
+
+<p>さて、具体的に運営として何をしてきたかの記録を以下に述べますが、後半には問題のネタバレなどを含んでおります。ご注意ください。</p>
+
+<!-- more -->
+
+
+<h1>フロントエンドアプリケーションの作成</h1>
+
+<p>TDU CTF 2014 Satellite in ConoHaが無事終了し、次回開催に向けての話が始まりだした時に運営の方々の仲間に入り、どのようにして準備していくかなどの議論をはじめました。
+その議論の最初の議題は毎度フルスクラッチなスコアサーバーをどうしようかというものでした。
+常設CTFや有志で行われてるオンサイトCTFで<em>イケてるスコアサーバー</em>を見かけないのを悲しく思い、Web開発全然得意じゃないのにも関わらず、</p>
+
+<p><strong>「俺がイケてるCTFスコアサーバー作るよ」</strong></p>
+
+<p>などと言ってしまいました。</p>
+
+<p>すんなりと「お、じゃあお願いするね」と言われて開発することになったのですが、イケてるスコアサーバーはWebフロントエンド部分のことを指しており、
+サーバーサイドは別で他のメンバーが開発する、分業となりました。</p>
+
+<p>さて、困った。作ると言い出したものの最近のWebのトレンド知らないしTwitter Bootstrap・jQueryアレルギーだしどうしたものか、と。</p>
+
+<p>まだ開催まで時間あるしとりあえずトレンド調査だけしておこうと思い、いろいろ調べるだけ調べて放置していました。</p>
+
+<p>時は流れ、TDUCTF 2015開催２週間前。</p>
+
+<p>Slackに流れる「フロントエンドの進捗どうですか？」の文字列。
+手元のソースコードリポジトリで<code>git log</code>をしてみたところ、</p>
+
+<pre><code>fatal: bad default revision 'HEAD'
+</code></pre>
+
+<p>アカン。</p>
+
+<p>その日から睡眠時間を削り、圧倒的進捗率を叩き出すべく腱鞘炎になりながらもコードを書き続けました。</p>
+
+<p>コミットはゼロでも頭の中に構想は練ってあったので、あとはキーボードを叩きまくるだけという状態になっていたものの、
+時間が足りない上に睡眠不足でタイポするわで結構大変でした。</p>
+
+<p>トレンド調査で、<a href="https://facebook.github.io/react/">React</a>+<a href="https://facebook.github.io/flux/">Flux</a>の構造を軸に、見た目は<a href="http://semantic-ui.com/">Semantic UI 2</a>で整え、<a href="http://electron.atom.io/">Electron</a>で単一アプリケーション化するのがモダンでイケてる感じであるとわかったので、これらを用いて組み立てていくことにしました。
+Electronでアプリケーション化したのは、「今までにないイケてるCTFスコアサーバー」の形を実現する目的に加えて、「マルチブラウザ対応に追われる時間をゼロにする」目的もありました。結果として、Internet Explorer（CTF参加者に利用者はいるのだろうか？）などのへの対応のためにバッドノウハウを使わなくて済みました。</p>
+
+<p>途中Flux部分にしっくりくるものがなく、<a href="http://rackt.github.io/redux/">Redux</a>に変更するまでに時間を要したものの、2週間ぶっ通しの突貫工事でなんとか、開催までに&#8221;形にする&#8221;ことができ、参加者に楽しんでいたくことができたと思います。</p>
+
+<p>開催までは非公開で管理していたのですが、オープンソースで公開するとの話があったので、現在はGitHubにて公開しています。</p>
+
+<p><a href="https://github.com/lepus-ctf/lepus-frontend/">lepus-ctf/lepus-frontend · GitHub</a></p>
+
+<p>詳しい開発秘話はしないので、苦労は上記リポジトリのコミットログから察してください。</p>
+
+<h1>問題作成</h1>
+
+<p>CTFの主軸となる問題作成に関しての話です。
+ネタバレが含まれるので問題を解きたい人はお気をつけを。</p>
+
+<p>CTFの運営として参加しているので、問題の作成はほぼ必須なのですが、なにせフロントエンドアプリケーションの作成に追われていて、
+「案はあるけど作ってる暇がない」ということとなってしまい、少ししか用意できませんでした。
+問題案などはストックできてるので次回開催時に登場する予定です。</p>
+
+<p>用意した問題は一部を除いて以下のサイトで公開しています。</p>
+
+<p><a href="http://ctf.mzyy94.com">ctf.mzyy94.com</a></p>
+
+<p>問題の作成意図と簡単な想定解法を紹介します。
+あと、TDUCTF 2015は初心者歓迎を掲げて開催してたので、プロ向けの問題はあまりありません。</p>
+
+<h2>Keygenerator</h2>
+
+<p><a href="http://ctf.mzyy94.com/q/TDUCTF2015-BIN200/">http://ctf.mzyy94.com/q/TDUCTF2015-BIN200/</a></p>
+
+<p>問題文: 実行してフラッグをゲットせよ！</p>
+
+<p>この問題は、与えられた実行ファイルを実行しろというものです。
+libprintkey.soという自作共有ライブラリとkey_generatorという実行アプリケーションが渡されるのですが、
+普通にアプリケーションを実行したりデバッグしてもフラグは得られません。</p>
+
+<p>作成意図としては、「共有ライブラリも単体実行可能」という点に気づいて、
+問題文の「実行して」のとおりに共有ライブラリに実行可能フラグを立てて、
+<code>./libprintkey.so</code>とすれば、フラグが出力されるようになっていました。</p>
+
+<p>gdbなどでkey_generatorをデバッグしてた方から、「あるべきところにフラグがないがどういうことなのか？」という質問がありましたが、
+すいません、そっちじゃなかったんです。</p>
+
+<p>単純に実行してフラグを得られるため初期の想定では100点問題になるとしていたのですが、
+配点会議でライブラリの単体実行するポイントに気づかない人も多いかもしれないとのことで、200点に引き上げられました。</p>
+
+<h2>devnull</h2>
+
+<p><a href="http://ctf.mzyy94.com/q/TDUCTF2015-BIN250/">http://ctf.mzyy94.com/q/TDUCTF2015-BIN250/</a></p>
+
+<p>問題文: Usage: ./devnull > /dev/null</p>
+
+<p>実行すると、標準出力を/dev/nullにリダイレクトしてくれとUsageが出てきて、
+そのとおりに実行すると、/dev/nullにフラグが出力されるというものです。</p>
+
+<p>リダイレクト先をパスで判定しているので、/dev/nullを適当なブロックファイルに差し替えるか、
+gdbでブレイクポイントを仕掛けたり、ltraceとかで処理を追って、出力される部分を覗き見できればフラグが得られます。</p>
+
+<p>gdbの使い方に慣れてほしいという願いを込めて作っていたので、想定していた解法は以下のとおりです。</p>
+
+<pre><code>$ gdb ./devnull
+(gdb) b printf
+(gdb) r &gt; /dev/null
+(gdb) i r
+(gdb) x/s $rsi
+</code></pre>
+
+<h2>「名前が変えられいるってことで間違いないな」</h2>
+
+<p><a href="http://ctf.mzyy94.com/q/TDUCTF2015-MISC200/">http://ctf.mzyy94.com/q/TDUCTF2015-MISC200/</a></p>
+
+<p>問題文: password:password</p>
+
+<p>問題には拡張子がjpgのファイルが付属しています(JPEGファイルとは言っていない)。</p>
+
+<p>CTFに必要なググり力を問うための問題で、問題タイトルを検索ワードにググると、
+「ほこ×たてのハッキング対決に関する記事がいくつかヒットします。
+ほこ×たて内では 「名前が変えられいるってことで間違いないな」は「TrueCryptoで暗号化されている」のことを指しているという記事が見つかるので、
+添付のファイルをTrueCryptoを用いてパスワードにpasswordを指定してマウントすると、フラグが出てきます。</p>
+
+<h2>Portscan</h2>
+
+<p><a href="http://ctf.mzyy94.com/q/TDUCTF2015-NW500/">http://ctf.mzyy94.com/q/TDUCTF2015-NW500/</a></p>
+
+<p>問題文: ポートスキャンが仕掛けられた！ん？何かメッセージがついてきているぞ？</p>
+
+<p>UDPポートスキャンを観測したpcapファイルが渡されます。
+UDPのペイロードに1バイトずつメッセージがついてきてるのでそれを抽出してあげるとフラグが取得できる問題です。</p>
+
+<p>この問題は、WiresharkのFollow UDP Streamですぐに答えが出るようではひねりがないと思い、
+tcpdumpやtsharkのオプションを覗いたり他のパケット解析ツールを使ってほしいという想いを込めて作成しました。
+なので、Wiresharkで解くことはほとんど不可能です。</p>
+
+<p>想定していた解答方法は以下のとおりです。
+最初は100点くらいの配点にしようとしていたのですが、配点会議で「これはわからん」と言われ急遽500点まで引き上げられました。</p>
+
+<pre><code class="bash">printf $(tcpdump -r secretmsg.pcap -x 'udp' | grep 0x0010 | perl -pe's/^.*(..)00 0000\n$/\\x\1/')
+</code></pre>
+
+<h2>Lucky 7</h2>
+
+<p>この問題はサーバーにアクセスするタイプのネットワーク問題なのでオンサイトでしか用意しておらず、現在は公開していません。
+問題内容は、netcatでアクセスすると以下のような表示が返ってくるものです。</p>
+
+<pre><code>Challenge!
+2187123 != 77777777
+</code></pre>
+
+<p>左辺にある数字が77777777と等しくなるようにアクセスするとフラグが降ってくるのではないかとピンとくる人もいれば、
+ランダムに変化するからBruteforceで解こうする人もいたりと、サーバーを監視していてなるほどと感じることが多かったです。
+この左辺の数字は、サーバー側が<code>Challenge!</code>を返す際のAcknowledge Numberになっており、ここが77777777になっていないためにエラーが返されているのです。
+Wiresharkなどで監視しながらアクセスしていたひとは、この関連性がわかったとおもいます。</p>
+
+<p>Sequential Numberをいじれるhping3やScapyに触れてもらおうという願いを込めて作成しました。
+解法としてはそれらを用いて、3-way handshakeが終了した時点のSequential Number(= サーバーがChallenge!を返す際のAcknowledge Number)が77777777になるようにコネクションを張り始めるようにすれば、フラグが返ってくるというものでした。</p>
+
+<h2>moneyscript</h2>
+
+<p><a href="http://ctf.mzyy94.com/q/TDUCTF2015-MISC400/">http://ctf.mzyy94.com/q/TDUCTF2015-MISC400/</a></p>
+
+<p>問題文: 6a29585444557b426974636f696e21426974636f696e21426974636f696e217d</p>
+
+<p>moneyscriptシリーズの1問目です。こちらは簡単な方です。
+moneyscriptのmoneyが指すのはBitcoinで、このシリーズの問題はBitcoin Scriptを実行して答えを得る問題となっています。
+1問目は優しめに作ってあり、適当にデコードすればフラグが得られるよになっていますが、Bitcoin Scriptとは何かを理解してほしく作成しました。</p>
+
+<p>Googleで検索するとBitcoin ScriptのWikiがヒットします。</p>
+
+<p><a href="https://en.bitcoin.it/wiki/Script">Script - Bitcoin Wiki</a></p>
+
+<p>このWikiにしたがって問題文のBitcoin Scriptが意味するところを先頭から照らしていくと、</p>
+
+<ul>
+<li>0x6a = OP_RETURN</li>
+<li>0x29 = 41バイト確保</li>
+</ul>
+
+
+<p>それ以降は文字列となっています。</p>
+
+<p>なので、適当にデコードするだけでフラグが出てきてしましますが、Bitcoin Scriptの仕組みを知ってもらえたらとおもい、作成しました。</p>
+
+<h2>moneyscript!!!</h2>
+
+<p><a href="http://ctf.mzyy94.com/q/TDUCTF2015-MISC600/">http://ctf.mzyy94.com/q/TDUCTF2015-MISC600/</a></p>
+
+<p>問題文は上記リンクから閲覧ください。</p>
+
+<p>こちらは難しい方のBitcoin Script問題です。
+先ほどのWikiにアクセスできていれば、照らしあわせて脳内で実行すればいいのですが、
+少々骨の折れるものなので、Bitcoin Scriptを扱えるアプリケーションを使う必要が出てきます。</p>
+
+<p>任意のアプリケーションを使って解いてもらえればいいのですが、
+Node.jsのモジュールに、<a href="http://bitcore.io/">bitcore</a>というモジュールがあるので、それを用いて以下のように実行するなどして、フラグを取得できます。</p>
+
+<pre><code class="javascript">var bitcore = require('bitcore');
+var Script = bitcore.Script;
+var code = '4c0155828f635e76937367595294687b736b7c6c938f618fa76b4c0222ea6c';
+
+var buffer = new Buffer(code, 'hex');
+var interpreter = Script.Interpreter();
+
+interpreter.script = new Script(buffer);
+interpreter.evaluate();
+
+var first_stack = interpreter.stack.pop();
+var hex_string = first_stack.toJSON().data.map(function(x) {
+    return x.toString(16);
+})
+
+var flag = 'TDU{' + hex_string.join('') + '}';
+
+console.log(flag);
+</code></pre>
+
+<h1>開催について</h1>
+
+<p>フロントエンドアプリケーションの作成がギリギリだったがために、RESTサーバーのテストが十分にできず、運営陣には多くの迷惑をかけてしまいました。
+また、フロントエンドアプリケーション側もテストが追いつかず、バグだらけで配布してしまったがために、当日は問題の添付ファイルが破損していたり、
+カウントダウンが正常に機能しないなどのバグを発生させてしまい、参加者各位にも大変に迷惑をかけてしまいました。
+その節は申し訳ありませんでした。</p>
+
+<p>TDUCTF 2015終了後、反省会をオンラインで開催していた頃に「TDUCTF」という名称を変更しようという話が立ち上がり、
+よくわらかないテンションでドメインから何から整え新名称に改称しました。</p>
+
+<blockquote class="twitter-tweet" lang="ja"><p lang="ja" dir="ltr">TDUCTFからLepusCTFの移行で面白いのは4&#10;・新名称考案&#10;・サーバー確保&#10;・ドメイン取得&#10;・GitHub移行&#10;・Webサイト作成&#10;・アイコン作成&#10;・Twitter移行&#10;を4時間以内でやったというところ <a href="https://twitter.com/hashtag/lepusctf?src=hash">#lepusctf</a></p>&mdash; 友利奈緒 (@mzyy94) <a href="https://twitter.com/mzyy94/status/638606548818726912">2015, 9月 1</a></blockquote>
+
+
+<p> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></p>
+
+<p>ということなので、今後はTDUCTFあらため、<a href="http://lepus-ctf.org/">LepusCTF</a>をよろしくお願いします。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[DEFCON CTF 23予選 Write-up (解説付き(すこし))]]></title>
@@ -2295,367 +2547,6 @@ Compressed: 70362268
 
 
 <p>明日はmondai7からmondai9までのWrite-upを公開する予定です。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[ネットエージェント最終面接問題 Write-up その1]]></title>
-    <link href="http://mzyy94.com/blog/2015/04/13/netagent-mondai1-4/"/>
-    <updated>2015-04-13T14:08:49+09:00</updated>
-    <id>http://mzyy94.com/blog/2015/04/13/netagent-mondai1-4</id>
-    <content type="html"><![CDATA[<p>恒例のネットエージェントのいきなり最終面接問題が3月末に公開されました。</p>
-
-<ul>
-<li><a href="http://www.netagent.co.jp/recruit/newgraduates_2016.html">2016年度 新卒採用｜ネットエージェント株式会社</a></li>
-</ul>
-
-
-<p>ネットニュースサイトにも取り上げられ（<a href="http://nlab.itmedia.co.jp/nl/articles/1503/30/news143.html">「解けたらいきなり最終面接」 ネットエージェント、今年も新卒向けに“難問”出題 - ねとらぼ</a>）、盛り上がりを見せていたあのmondaiです。
-2016年新卒として、書類審査や2次選考を飛ばして最終面接を受けられるということなので本腰を入れて取り組んでみました。
-このいきなり最終面接問題に関しては、全問正解しなければ回答の公開をしてはいけないとのことだったので察しがつくと思いますが、なんとかすべての問題をクリアできました。
-これらmondaiを解いてきた過程をWrite-upとして残すことにしたので、興味がある方はご覧ください。</p>
-
-<p>この記事ではmondai1からmondai4までの回答を掲載しています。</p>
-
-<!-- more -->
-
-
-<h1>mondai1</h1>
-
-<pre><code>選考過程を縮めたい方に問題を用意いたしました。問題に答えると最終面接から始められます。 
-※２０１６年３月卒業予定の方以外も挑戦していただけますが、採用対象とはなりません。
-問題：LzYxMDIvcGouaGJwLy86cHR0aA==
-</code></pre>
-
-<p>BASE64でエンコードされた文字列を渡されるので、ちょちょっとコマンドを打つと逆さまになったURLがでてきます。</p>
-
-<p>なので<code>rev</code>コマンドを噛ませて逆順にしてアクセス可能なURLが表示されたらmondai1はおしまいです。</p>
-
-<pre><code class="sh">$ echo LzYxMDIvcGouaGJwLy86cHR0aA== | base64 -D | rev
-</code></pre>
-
-<!--
-http://pbh.jp/2016/
--->
-
-
-<h1>modai2</h1>
-
-<p>mondai1の答えのURLにアクセスするとzip圧縮されたファイルを入手でき、そのファイルを展開するとmondai2.txtとzip形式の圧縮ファイルがあります。mondai2.txtの内容は以下の通りでした。</p>
-
-<pre><code>2016の平方根の小数点以下2016桁目から20桁をパスワードにしました。
-</code></pre>
-
-<p>大きな有効数字の平方根を扱えるコマンドが*nix系システムには存在します。そう<code>bc</code>コマンドです。</p>
-
-<p>この<code>bc</code>コマンドを用いて小数点以下2035桁(2015番目から20桁)の2016の平方根を計算させます。
-<code>bc</code>コマンドによる出力は、適当な桁数で折り返しがあるので<code>perl</code>の正規表現を用いて削り、<code>tail</code>で終端から20バイトを取り出します。</p>
-
-<pre><code class="sh">$ echo 'scale=2015+20;sqrt(2016)' | bc | perl -pe's/\\?\n//' | tail -c20
-</code></pre>
-
-<!--
-74571026133060730881
--->
-
-
-<p>これをパスワードとして入力すればmondai3.zipを解凍できます。</p>
-
-<pre><code>$ 7z x mondai3.zip 
-
-7-Zip [64] 9.20  Copyright (c) 1999-2010 Igor Pavlov  2010-11-18
-p7zip Version 9.20 (locale=utf8,Utf16=on,HugeFiles=on,4 CPUs)
-
-Processing archive: mondai3.zip
-
-Extracting  hint3.txt
-Enter password (will not be echoed) :
-
-Extracting  mondai3.txt
-Extracting  mondai4.zip
-
-Everything is Ok
-
-Files: 3
-Size:       70392202
-Compressed: 70392736
-</code></pre>
-
-<!--
-
-$ 7za x mondai3.zip -p74571026133060730881
-
-7-Zip (a) [64] 9.38 beta  Copyright (c) 1999-2014 Igor Pavlov  2015-01-03
-p7zip Version 9.38.1 (locale=ja_JP.UTF-8,Utf16=on,HugeFiles=on,4 CPUs)
-
-Processing archive: mondai3.zip
-
-Extracting  hint3.txt
-Extracting  mondai3.txt
-Extracting  mondai4.zip
-
-Everything is Ok
-
-Files: 3
-Size:       70392202
-Compressed: 70392736
-
--->
-
-
-<h1>mondai3</h1>
-
-<p>mondai3.txtの中身は以下の通り。</p>
-
-<pre><code>ハッシュパスワード問題
-答え：３つの答えをつなげて
-
-0f1aae8b8398c20f81e1c36e349a7880c9234c63
-01821f5469967540a5a774197463e8c4d658f588
-264f39cab871e4cfd65b3a002f7255888bb5ed97
-</code></pre>
-
-<p>パスワードを3つに分割してSHA1ハッシュを生成したものが記されており、それらの元の文字列を探し出せばいいというもの。広いWebの世界には単純な単語のハッシュ化前後のテーブルが存在し、手軽に利用できるものに
-<a href="http://www.hashkiller.co.uk/sha1-decrypter.aspx">SHA1 Decrypter - SHA1 Decryption, Free SHA1 Decryptor, Online SHA1 Cracker, SHA1 Security</a>などがあります。このサイトに問題のハッシュ値をペーストして探索をかけると1秒足らずでハッシュ化前の数値を返してくれます。</p>
-
-<p><img src="/blog/resources/images//hashkiller.png" alt="hashkiller.png" /></p>
-
-<p>ここで得られた単語をそのままくっつけてパスワードに指定すると、mondai4.zipが解凍できます。</p>
-
-<pre><code class="sh">$ 7z x mondai4.zip
-
-7-Zip [64] 9.20  Copyright (c) 1999-2010 Igor Pavlov  2010-11-18
-p7zip Version 9.20 (locale=utf8,Utf16=on,HugeFiles=on,4 CPUs)
-
-Processing archive: mondai4.zip
-
-Extracting  hint4.txt
-Enter password (will not be echoed) :
-
-Extracting  mondai4.png
-Extracting  mondai5.zip
-
-Everything is Ok
-
-Files: 3
-Size:       70391846
-Compressed: 70391891
-</code></pre>
-
-<!--
-$ 7za x mondai4.zip -ptokyouenoline
-
-7-Zip (a) [64] 9.38 beta  Copyright (c) 1999-2014 Igor Pavlov  2015-01-03
-p7zip Version 9.38.1 (locale=ja_JP.UTF-8,Utf16=on,HugeFiles=on,4 CPUs)
-
-Processing archive: mondai4.zip
-
-Extracting  hint4.txt
-Extracting  mondai4.png
-Extracting  mondai5.zip
-
-Everything is Ok
-
-Files: 3
-Size:       70391846
-Compressed: 70391891
-
--->
-
-
-<h1>mondai4</h1>
-
-<p><img src="/blog/resources/images//mondai4.png" alt="mondai4.png" />
-mondai4.pngはヒエログリフが書かれた画像です。ヒエログリフを読解できなければ問題文すら読めない状況なので、ヒエログリフ学習サイトを探して学びます。以下のサイトを参考に3分ほどで学びました。</p>
-
-<ul>
-<li><a href="http://www004.upp.so-net.ne.jp/anubis/j50/jp50.html">日本語五十音をヒエログリフで表現</a></li>
-</ul>
-
-
-<p>ヒエログリフを学び終わると、すらすらと画像の文字が読めるようになるので、日本語に起こします。</p>
-
-<pre><code>のらかちいくち　てちのちんちもちみら　もにみちもにみら　もにとちのにみちもちい　のらもらま
-</code></pre>
-
-<p>ぱっと見で平仮名で換字式暗号化された英文もしくはローマ字の文だと想像がつきます。ここで適当な文節として二言目の「てちのちんちもちみら」をGoogleで検索してみると、上位にヒットしたものにこの暗号の手がかりがでてきます。</p>
-
-<p><img src="/blog/resources/images//techinochi-search.png" alt="techinochi-search.png" /></p>
-
-<p>日本語キーボードのかな入力モードにしてローマ字の文を打った文は、母音に位置する「ら」や「ち」が多く登場することから、この暗号方式はカナ入力のままのローマ字打ちだと断定しました。
-しかし英字キーボードユーザーなので、かなが印刷されたキーボードを持っていません。仕方なしにWikimediaでそれっぽい画像を拾ってきて、平仮名⇆アルファベット変換を行うと、上記の平仮名文字列は以下のように変換できます。</p>
-
-<pre><code>kotaeha wakayamano minamino misakinamae komoji
-</code></pre>
-
-<p>「答えは和歌山の南の岬名前小文字」とのことです。早速Googleマップを開いて和歌山県の南にある岬を探します。</p>
-
-<p><img src="/blog/resources/images//wakayama-map.png" alt="wakayama-map.png" /></p>
-
-<p>探すと潮岬（読み：しおのみさき）が和歌山の南部にある岬なので、これをアルファベット小文字にしてパスワードにして回答終了…だとおもってました。
-<strong>shionomisaki</strong>としてタイプしてもパスワードが間違っていると言われ、解凍できません。「もしや違う岬なのかな？」と思い、和歌山の岬をいろいろ調べて同じように入力しても開きません。もうだめ&#8230;と心折れそうになってしまったので、あとはBruteForceに任せようと、次のような適当なスクリプトを書いて放置しました。</p>
-
-<pre><code class="ruby">#!/usr/bin/env ruby
-
-# kana 50 components
-vowel5 = ['a', 'i', 'u', 'e', 'o']
-consonant5 = ['k', 's', 'sh', 't', 'ch', 'n', 'h', 'm', 'r', 'g', 'z', 'j', 'd', 'b', 'p']
-vowel3 = ['a', 'u', 'o']
-consonant3 = ['y', 'ky', 'sy', 'ts', 'ny', 'hy', 'by', 'gy', 'py', 'w']
-
-
-# kana list
-list = ['']
-
-for v in vowel5 do
-    list.push v
-end
-
-for c in consonant5 do
-    for v in vowel5 do
-        list.push c + v
-        list.push c[0] + c + v
-    end
-end
-
-for c in consonant3 do
-    for v in vowel3 do
-        list.push c + v
-        list.push c[0] + c + v
-    end
-end
-
-list.push 'nn'
-
-
-locker = Mutex::new
-
-# Wordlist generator
-queue = []
-Thread.start {
-    q = ['','','','','','']
-    for p0 in list do
-        for p1 in list do
-            for p2 in list do
-                for p3 in list do
-                    for p4 in list do
-                        for p5 in list do
-                            q[5] = p5
-                            qq = q.join
-                            unless qq =~ /^(.)\1/ then
-                                locker.synchronize { queue.push qq }
-                            end
-                        end
-                        q[4] = p4
-                    end
-                    q[3] = p3
-                end
-                q[2] = p2
-            end
-            q[1] = p1
-        end
-        q[0] = p0
-    end
-}
-
-
-
-# Password cracker
-puts 'Cracking...'
-thread_count = 128
-threads = []
-found = false
-thread_count.times do |i|
-    threads &lt;&lt; Thread.start {
-        loop do
-            break if found
-            break unless queue
-            pass = locker.synchronize { queue.shift } + "misaki"
-            t = system "7za x -p#{pass} -so mondai5.zip &gt; /dev/null 2&gt; /dev/null"
-            if t then
-                found = true
-                puts '## PASS FOUND ##'
-                open("pass.txt", "a") {|f| f.puts pass }
-                puts 'pass saved.'
-            end
-        end
-    }
-end
-
-
-threads.each { |th| th.join }
-</code></pre>
-
-<p>1時間ほどお風呂に入って放置していたら、答えが吐き出されていました。
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span><span class="nb">time</span> ./solver.rb
-</span><span class='line'>Cracking...&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;h2&gt;PASS FOUND&lt;/h2&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;pass saved.&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;real    16m44.573s
-</span><span class='line'>user    30m36.171s
-</span><span class='line'>sys     18m7.269s
-</span></code></pre></td></tr></table></div></figure></p>
-
-<p>潮岬（読み：しおのみさき）の「潮」の字を「うしお」と読み違えて（？）パスワードに設定していたようです。</p>
-
-<p>このパスワードを入力することでmondai5.zipを展開することができました。</p>
-
-<pre><code>$ 7z x mondai5.zip
-
-7-Zip [64] 9.20  Copyright (c) 1999-2010 Igor Pavlov  2010-11-18
-p7zip Version 9.20 (locale=utf8,Utf16=on,HugeFiles=on,4 CPUs)
-
-Processing archive: mondai5.zip
-
-Extracting  hint5.txt
-Enter password (will not be echoed) :
-
-Extracting  mondai5
-Extracting  mondai6.zip
-
-Everything is Ok
-
-Files: 3
-Size:       70380412
-Compressed: 70378640
-</code></pre>
-
-<!--
-
-$ 7za x mondai5.zip -pushiomisaki
-
-7-Zip (a) [64] 9.38 beta  Copyright (c) 1999-2014 Igor Pavlov  2015-01-03
-p7zip Version 9.38.1 (locale=ja_JP.UTF-8,Utf16=on,HugeFiles=on,4 CPUs)
-
-Processing archive: mondai5.zip
-
-Extracting  hint5.txt
-Extracting  mondai5
-Extracting  mondai6.zip
-
-Everything is Ok
-
-Files: 3
-Size:       70380412
-Compressed: 70378640
-
--->
-
-
-<p>mondai5以降のWrite-upは明日公開します。</p>
 ]]></content>
   </entry>
   

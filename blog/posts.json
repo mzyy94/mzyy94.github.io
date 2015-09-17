@@ -5,6 +5,18 @@
 	
 	"posts" : [ 
 		{
+			"date": "18 Sep 2015",
+			"title": "TDUCTF 2015の運営をした話",
+			"url": "tductf-2015-digression"
+		},
+	
+		{
+			"date": "08 Aug 2015",
+			"title": "Kodi Chinachu PVRアドオンでRasPi2/Android TVをテレビに",
+			"url": "pvr-chinachu-addon"
+		},
+	
+		{
 			"date": "21 Jun 2015",
 			"title": "エビ水槽を新しくした",
 			"url": "ebi-new-watertank"
