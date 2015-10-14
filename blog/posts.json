@@ -5,6 +5,12 @@
 	
 	"posts" : [ 
 		{
+			"date": "14 Oct 2015",
+			"title": "絵文字コミッが続けてみて有用だと感じた絵文字まとめ",
+			"url": "emoji-commit-message"
+		},
+	
+		{
 			"date": "18 Sep 2015",
 			"title": "TDUCTF 2015の運営をした話",
 			"url": "tductf-2015-digression"

@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: git | 犬アイコンのみっきー]]></title>
+  <link href="http://mzyy94.com/blog/categories/git/atom.xml" rel="self"/>
+  <link href="http://mzyy94.com/"/>
+  <updated>2015-10-14T19:37:26+09:00</updated>
+  <id>http://mzyy94.com/</id>
+  <author>
+    <name><![CDATA[mzyy94]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[絵文字コミッが続けてみて有用だと感じた絵文字まとめ]]></title>
+    <link href="http://mzyy94.com/blog/2015/10/14/emoji-commit-message/"/>
+    <updated>2015-10-14T19:39:47+09:00</updated>
+    <id>http://mzyy94.com/blog/2015/10/14/emoji-commit-message</id>
+    <content type="html"><![CDATA[<p>みなさんは絵文字コミットというものをご存知でしょうか？
+プロ生い人のサイトでも以下のように紹介されており、知っている人も多いと思いますが、GitHubで絵文字に置換される特定のワードをコミットメッセージに追加し、
+ぱっと見でどういった種類の変更があったのかに気づきやすいようにするものです。</p>
+
+<p><a href="http://pronama.azurewebsites.net/2015/06/20/github-emoji-commit-message/">GitHub で絵文字入りコミットメッセージを活用しているプロジェクトを調べてみた | プログラミング生放送</a></p>
+
+<p>少し前から興味があったのですが、GitLabやBitBucketでプライベートなリポジトリで開発してるものでは絵文字として表示されないため、なかなか導入する機会がありませんでした。
+先々月にブログで記事にしたKodi用Chinachu PVRクライアントadd-onの作成をパブリックなリポジトリで開発しようと思い立ったとき、
+いい機会だと感じたので初期コミットから絵文字コミットメッセージを導入し始めました。</p>
+
+<p><a href="https://github.com/mzyy94/pvr.chinachu/">mzyy94/pvr.chinachu - GitHub</a></p>
+
+<p>コミットを続けていたら開発版ブランチが100コミットに近づいてきたので、いままで使ってきた絵文字コミットをまとめてみました。</p>
+
+<!-- more -->
+
+
+<h1>絵文字コミット</h1>
+
+<h2>導入</h2>
+
+<p>まず、GitHubでどのような文字列が絵文字に置換されるかですが、インターネット上の対応表を掲載しているサイトを見て対応付けしていました。
+そのなかでも以下のサイトが特に見やすく、選択するとクリップボードにコピーされるので愛用していました。</p>
+
+<p><a href="http://www.emoji-cheat-sheet.com/">Emoji cheat sheet for GitHub, Basecamp and other services</a></p>
+
+<p>GitHubでは、コロンで挟む形で記述した文字列が対応する絵文字に変換されるようになっています。
+絵文字コミットはパッと見て何を指しているかがわかるようにする目的で導入したため、コロンの間の文字列とミスマッチなものもあります。
+反義語になるようなことは避けていますが、理解しがたいものも混ざってしまう点を導入時には覚悟しておかなければなりません。</p>
+
+<h2>一覧</h2>
+
+<p>以下のようにして、用いた絵文字を列挙して、どのような用途で使用したかを一覧にまとめました。</p>
+
+<pre><code class="sh">$ git log --oneline | grep -o ':\w\+:' | sort -u
+</code></pre>
+
+<p>今回のプロジェクトはPVR(Personal Video Recorder：ビデオレコーダー)を中心とするものなので、予約録画や番組視聴に関する絵文字コミットメッセージも多く導入しました。
+それらに関しては一般的なプロジェクトにはそのままでは利用できないものであるため、末尾にまとめておきます。</p>
+
+<h3>一般的な用途</h3>
+
+<h4>バグ関連</h4>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:center;"> 絵文字</th>
+<th style="text-align:center;">   絵文字置換文字列         </th>
+<th style="text-align:left;"> 用途                                                      </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;"><img src="https://raw.githubusercontent.com/arvida/emoji-cheat-sheet.com/master/public/graphics/emojis/bug.png" alt="🐛" width="24" height="24" /> </td>
+<td style="text-align:center;"> :bug:                      </td>
+<td style="text-align:left;"> バグFixの時に用いる                                       </td>
+</tr>
+<tr>
+<td style="text-align:center;"><img src="https://raw.githubusercontent.com/arvida/emoji-cheat-sheet.com/master/public/graphics/emojis/bangbang.png" alt="‼️" width="24" height="24" /> </td>
+<td style="text-align:center;"> :bangbang:                 </td>
+<td style="text-align:left;"> バグとは言い切れないけど何か悪いものを正しく修正した時    </td>
+</tr>
+</tbody>
+</table>
+
+
+<h4>コメントしづらい変更</h4>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:center;"> 絵文字</th>
+<th style="text-align:center;">   絵文字置換文字列         </th>
+<th style="text-align:left;"> 用途                                                      </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;"><img src="https://raw.githubusercontent.com/arvida/emoji-cheat-sheet.com/master/public/graphics/emojis/ok.png" alt="🆗" width="24" height="24" /> </td>
+<td style="text-align:center;"> :ok:                       </td>
+<td style="text-align:left;"> なにかokな変更                                            </td>
+</tr>
+<tr>
+<td style="text-align:center;"><img src="https://raw.githubusercontent.com/arvida/emoji-cheat-sheet.com/master/public/graphics/emojis/cool.png" alt="🆒" width="24" height="24" /> </td>
+<td style="text-align:center;"> :cool:                     </td>
+<td style="text-align:left;"> なにかcoolな変更                                          </td>
+</tr>
+</tbody>
+</table>
+
+
+<h4>ファイル追加・削除・新規作成・移動</h4>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:center;"> 絵文字</th>
+<th style="text-align:center;">   絵文字置換文字列         </th>
+<th style="text-align:left;"> 用途                                                      </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;"><img src="https://raw.githubusercontent.com/arvida/emoji-cheat-sheet.com/master/public/graphics/emojis/new.png" alt="🆕" width="24" height="24" /> </td>
+<td style="text-align:center;"> :new:                      </td>
+<td style="text-align:left;"> ファイルの追加。主に新規作成したタイミングで。            </td>
+</tr>
+<tr>
+<td style="text-align:center;"><img src="https://raw.githubusercontent.com/arvida/emoji-cheat-sheet.com/master/public/graphics/emojis/fire.png" alt="🔥" width="24" height="24" /> </td>
+<td style="text-align:center;"> :fire:                     </td>
+<td style="text-align:left;"> ファイルの削除。ソースコードの大半を削除した場合もこれ。  </td>
+</tr>
+<tr>
+<td style="text-align:center;"><img src="https://raw.githubusercontent.com/arvida/emoji-cheat-sheet.com/master/public/graphics/emojis/inbox_tray.png" alt="📥" width="24" height="24" /> </td>
+<td style="text-align:center;"> :inbox_tray:               </td>
+<td style="text-align:left;"> ファイルの移動。他プロジェクトのファイルを持ってきた時とか</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4>ドキュメントやライセンス関連</h4>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:center;"> 絵文字</th>
+<th style="text-align:center;">   絵文字置換文字列         </th>
+<th style="text-align:left;"> 用途                                                      </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;"><img src="https://raw.githubusercontent.com/arvida/emoji-cheat-sheet.com/master/public/graphics/emojis/copyright.png" alt="©" width="24" height="24" /> </td>
+<td style="text-align:center;"> :copyright:                </td>
+<td style="text-align:left;"> ライセンスの変更や追加。ライセンスファイルに関して。      </td>
+</tr>
+<tr>
+<td style="text-align:center;"><img src="https://raw.githubusercontent.com/arvida/emoji-cheat-sheet.com/master/public/graphics/emojis/globe_with_meridians.png" alt="🌐" width="24" height="24" /> </td>
+<td style="text-align:center;"> :globe_with_meridians:     </td>
+<td style="text-align:left;"> 多言語対応ツールの設定や言語リソースの変更                </td>
+</tr>
+<tr>
+<td style="text-align:center;"><img src="https://raw.githubusercontent.com/arvida/emoji-cheat-sheet.com/master/public/graphics/emojis/pencil.png" alt="✏️" width="24" height="24" /> </td>
+<td style="text-align:center;"> :pencil:                   </td>
+<td style="text-align:left;"> ドキュメントの変更。主にREADME                            </td>
+</tr>
+</tbody>
+</table>
+
+
+<h4>ビルドやデプロイ関係</h4>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:center;"> 絵文字</th>
+<th style="text-align:center;">   絵文字置換文字列         </th>
+<th style="text-align:left;"> 用途                                                      </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;"><img src="https://raw.githubusercontent.com/arvida/emoji-cheat-sheet.com/master/public/graphics/emojis/wrench.png" alt="🔧" width="24" height="24" /> </td>
+<td style="text-align:center;"> :wrench:                   </td>
+<td style="text-align:left;"> ビルドやデプロイの全般的な変更                            </td>
+</tr>
+<tr>
+<td style="text-align:center;"><img src="https://raw.githubusercontent.com/arvida/emoji-cheat-sheet.com/master/public/graphics/emojis/package.png" alt="📦" width="24" height="24" /> </td>
+<td style="text-align:center;"> :package:                  </td>
+<td style="text-align:left;"> パッケージングに関する変更                                </td>
+</tr>
+<tr>
+<td style="text-align:center;"><img src="https://raw.githubusercontent.com/arvida/emoji-cheat-sheet.com/master/public/graphics/emojis/apple.png" alt="🍎" width="24" height="24" /> </td>
+<td style="text-align:center;"> :apple:                    </td>
+<td style="text-align:left;"> OS XやiOSなどApple製品を対象とするのビルド関連変更        </td>
+</tr>
+<tr>
+<td style="text-align:center;"><img src="https://raw.githubusercontent.com/arvida/emoji-cheat-sheet.com/master/public/graphics/emojis/computer.png" alt="💻" width="24" height="24" /> </td>
+<td style="text-align:center;"> :computer:                         </td>
+<td style="text-align:left;"> Deploy tagert system. Some processor              </td>
+</tr>
+<tr>
+<td style="text-align:center;"><img src="https://raw.githubusercontent.com/arvida/emoji-cheat-sheet.com/master/public/graphics/emojis/space_invader.png" alt="👾" width="24" height="24" /> </td>
+<td style="text-align:center;"> :space_invader:            </td>
+<td style="text-align:left;"> Android向けのビルド関連変更                               </td>
+</tr>
+</tbody>
+</table>
+
+
+<h4>Gitバージョン管理</h4>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:center;"> 絵文字</th>
+<th style="text-align:center;">   絵文字置換文字列         </th>
+<th style="text-align:left;"> 用途                                                      </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;"><img src="https://raw.githubusercontent.com/arvida/emoji-cheat-sheet.com/master/public/graphics/emojis/arrow_right_hook.png" alt="↪️" width="24" height="24" /> </td>
+<td style="text-align:center;"> :arrow_right_hook:         </td>
+<td style="text-align:left;"> ブランチをマージしたり、Pull-Requestを取り込んだ時        </td>
+</tr>
+<tr>
+<td style="text-align:center;"><img src="https://raw.githubusercontent.com/arvida/emoji-cheat-sheet.com/master/public/graphics/emojis/up.png" alt="🆙" width="24" height="24" /> </td>
+<td style="text-align:center;"> :up:                       </td>
+<td style="text-align:left;"> プロダクトのバージョンアップ。git tagとする時             </td>
+</tr>
+<tr>
+<td style="text-align:center;"><img src="https://raw.githubusercontent.com/arvida/emoji-cheat-sheet.com/master/public/graphics/emojis/no_entry_sign.png" alt="🚫" width="24" height="24" /> </td>
+<td style="text-align:center;"> :no_entry_sign:            </td>
+<td style="text-align:left;"> トラッキングしない時に。.gitignoreの変更時                </td>
+</tr>
+</tbody>
+</table>
+
+
+<h4>依存関係</h4>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:center;"> 絵文字</th>
+<th style="text-align:center;">   絵文字置換文字列         </th>
+<th style="text-align:left;"> 用途                                                      </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;"><img src="https://raw.githubusercontent.com/arvida/emoji-cheat-sheet.com/master/public/graphics/emojis/arrow_heading_up.png" alt="⤴️" width="24" height="24" /> </td>
+<td style="text-align:center;"> :arrow_heading_up:         </td>
+<td style="text-align:left;"> 依存ライブラリや依存ツールのバージョンをあげる時。        </td>
+</tr>
+<tr>
+<td style="text-align:center;"><img src="https://raw.githubusercontent.com/arvida/emoji-cheat-sheet.com/master/public/graphics/emojis/arrow_down.png" alt="⤵️" width="24" height="24" /> </td>
+<td style="text-align:center;"> :arrow_down:               </td>
+<td style="text-align:left;"> 依存ライブラリや依存ツールのバージョンを下げた時。        </td>
+</tr>
+</tbody>
+</table>
+
+
+<h4>数回使用したものの、ボツになったやつ</h4>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:center;"> 絵文字</th>
+<th style="text-align:center;">   絵文字置換文字列         </th>
+<th style="text-align:left;"> 用途                                                      </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;"><img src="https://raw.githubusercontent.com/arvida/emoji-cheat-sheet.com/master/public/graphics/emojis/arrows_counterclockwise.png" alt="🔄" width="24" height="24" /> </td>
+<td style="text-align:center;"> :arrows_counterclockwise:  </td>
+<td style="text-align:left;">  データのリロードに関する時など。長くて使いづらい。       </td>
+</tr>
+<tr>
+<td style="text-align:center;"><img src="https://raw.githubusercontent.com/arvida/emoji-cheat-sheet.com/master/public/graphics/emojis/arrow_upper_left.png" alt="↖️" width="24" height="24" /> </td>
+<td style="text-align:center;"> :arrow_upper_left:         </td>
+<td style="text-align:left;"> バージョニングに関する変更とか。出番がもうない。          </td>
+</tr>
+<tr>
+<td style="text-align:center;"><img src="https://raw.githubusercontent.com/arvida/emoji-cheat-sheet.com/master/public/graphics/emojis/arrow_upper_right.png" alt="↗️" width="24" height="24" /> </td>
+<td style="text-align:center;"> :arrow_upper_right:        </td>
+<td style="text-align:left;"> なにかイケてる修正した時に使った。今は:ok:とか:cool:が担当</td>
+</tr>
+<tr>
+<td style="text-align:center;"><img src="https://raw.githubusercontent.com/arvida/emoji-cheat-sheet.com/master/public/graphics/emojis/warning.png" alt="⚠️" width="24" height="24" /> </td>
+<td style="text-align:center;"> :warning:                  </td>
+<td style="text-align:left;"> Includeガード関連。こんないい絵文字をこう使ったのは痛いミス</td>
+</tr>
+<tr>
+<td style="text-align:center;"><img src="https://raw.githubusercontent.com/arvida/emoji-cheat-sheet.com/master/public/graphics/emojis/point_left.png" alt="👈" width="24" height="24" /> </td>
+<td style="text-align:center;"> :point_left:               </td>
+<td style="text-align:left;"> コメント関連に使用した。再度登場する機会がない。          </td>
+</tr>
+<tr>
+<td style="text-align:center;"><img src="https://raw.githubusercontent.com/arvida/emoji-cheat-sheet.com/master/public/graphics/emojis/bomb.png" alt="💣" width="24" height="24" /> </td>
+<td style="text-align:center;"> :bomb:                     </td>
+<td style="text-align:left;"> リモートのファイル削除に関して。たぶん疲れてたんだと思う。</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4>Chinachu PVR クライアント向けの独自記号</h4>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:center;"> 絵文字</th>
+<th style="text-align:center;">   絵文字置換文字列         </th>
+<th style="text-align:left;"> 用途                                                      </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;"><img src="https://raw.githubusercontent.com/arvida/emoji-cheat-sheet.com/master/public/graphics/emojis/1234.png" alt="🔢" width="24" height="24" /> </td>
+<td style="text-align:center;"> :1234:                     </td>
+<td style="text-align:left;"> テレビのチャンネルに関する変更                            </td>
+</tr>
+<tr>
+<td style="text-align:center;"><img src="https://raw.githubusercontent.com/arvida/emoji-cheat-sheet.com/master/public/graphics/emojis/city_sunrise.png" alt="🌇" width="24" height="24" /> </td>
+<td style="text-align:center;"> :city_sunrise:             </td>
+<td style="text-align:left;"> 録画データのサムネイルに関する変更                        </td>
+</tr>
+<tr>
+<td style="text-align:center;"><img src="https://raw.githubusercontent.com/arvida/emoji-cheat-sheet.com/master/public/graphics/emojis/hourglass.png" alt="⌛️" width="24" height="24" /> </td>
+<td style="text-align:center;"> :hourglass:                </td>
+<td style="text-align:left;"> 録画予約に関する変更                                      </td>
+</tr>
+<tr>
+<td style="text-align:center;"><img src="https://raw.githubusercontent.com/arvida/emoji-cheat-sheet.com/master/public/graphics/emojis/vhs.png" alt="📼" width="24" height="24" /> </td>
+<td style="text-align:center;"> :vhs:                      </td>
+<td style="text-align:left;"> 録画済み番組に関する変更                                  </td>
+</tr>
+<tr>
+<td style="text-align:center;"><img src="https://raw.githubusercontent.com/arvida/emoji-cheat-sheet.com/master/public/graphics/emojis/red_circle.png" alt="🔴" width="24" height="24" /> </td>
+<td style="text-align:center;"> :red_circle:               </td>
+<td style="text-align:left;"> テレビ番組の録画に関する変更                              </td>
+</tr>
+<tr>
+<td style="text-align:center;"><img src="https://raw.githubusercontent.com/arvida/emoji-cheat-sheet.com/master/public/graphics/emojis/tv.png" alt="📺" width="24" height="24" /> </td>
+<td style="text-align:center;"> :tv:                       </td>
+<td style="text-align:left;"> リアルタイム視聴に関する変更                              </td>
+</tr>
+<tr>
+<td style="text-align:center;"><img src="https://raw.githubusercontent.com/arvida/emoji-cheat-sheet.com/master/public/graphics/emojis/page_facing_up.png" alt="📄" width="24" height="24" /> </td>
+<td style="text-align:center;"> :page_facing_up:           </td>
+<td style="text-align:left;"> ログ出力に関する変更                                      </td>
+</tr>
+<tr>
+<td style="text-align:center;"><img src="https://raw.githubusercontent.com/arvida/emoji-cheat-sheet.com/master/public/graphics/emojis/repeat.png" alt="🔁" width="24" height="24" /> </td>
+<td style="text-align:center;"> :repeat:                   </td>
+<td style="text-align:left;"> サーバーのデータを定期的に取得する部分の変更              </td>
+</tr>
+<tr>
+<td style="text-align:center;"><img src="https://raw.githubusercontent.com/arvida/emoji-cheat-sheet.com/master/public/graphics/emojis/clock1.png" alt="🕐" width="24" height="24" /> </td>
+<td style="text-align:center;"> :clock1:                   </td>
+<td style="text-align:left;"> 録画予約に関する変更のコミットで間違えて使った。          </td>
+</tr>
+</tbody>
+</table>
+
+
+<h2>まとめ</h2>
+
+<p>視認性は向上するも、絵文字一文字に対して多いと20文字以上もコミットメッセージを消費してしまうのが難点。
+また、「窓」の絵文字がないため、Windows向けバイナリを作成する機運が高まらないのも問題だと感じました（要出典）。</p>
+
+<p>しかし視認性が向上した利点は大きく、GitHubでのコミットログ一覧を流し見するだけで目的のコミットを見つけることができる点はとても良いことであると感ます。</p>
+]]></content>
+  </entry>
+  
+</feed>
