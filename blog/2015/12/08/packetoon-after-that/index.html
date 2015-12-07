@@ -1,0 +1,662 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>実践イカパケット解析のスライドテーマ - 犬アイコンのみっきー</title>
+  <meta name="author" content="mzyy94">
+
+  
+  <meta name="description" content="この記事はSplatoon Advent Calendarの8日目の記事です。 こんにちは、ウデマエA+のボーイです。昨日のmzsmさんの記事末尾にこんなことが書いてありました。 明日のSplatoon Advent Calendarは、Wii &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://mzyy94.com/blog/2015/12/08/packetoon-after-that">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/blog/atom.xml" rel="alternate" title="犬アイコンのみっきー" type="application/atom+xml">
+  <!-- main JS libs -->
+  <script src="/javascripts/libs/modernizr.min.js"></script>
+  <script src="/javascripts/jquery-2.0.3.min.js"></script>
+  <script src="/javascripts/libs/jquery-ui.min.js"></script>
+  <script src="/javascripts/libs/bootstrap.min.js"></script>
+  <!-- Style CSS -->
+  <link href="/stylesheets/bootstrap.css" media="screen" rel="stylesheet">
+  <link href="/stylesheets/style.css" media="screen" rel="stylesheet">
+  <link href="/stylesheets/syntax.css" media="screen" rel="stylesheet">
+  <link href="/stylesheets/emoji.css" media="screen" rel="stylesheet">
+  <!-- scripts -->
+  <script src="/javascripts/general.js"></script>
+  <!-- custom input -->
+  <script src="/javascripts/jquery.customInput.js"></script>
+  <script type="text/javascript" src="/javascripts/custom.js"></script>
+  <!-- Placeholders -->
+  <script type="text/javascript" src="/javascripts/jquery.powerful-placeholder.min.js"></script>
+  <!-- Lightbox prettyPhoto -->
+  <link href="/stylesheets/prettyPhoto.css" rel="stylesheet">
+  <script src="/javascripts/jquery.prettyPhoto.js"></script>
+  <!-- CarouFredSel  -->
+  <script src="/javascripts/jquery.carouFredSel-6.2.1-packed.js"></script>
+  <!-- Progress Bars -->
+  <script src="/javascripts/progressbar.js"></script>
+  <!-- Calendar -->
+  <script src="/javascripts/jquery-ui.multidatespicker.js"></script>
+  <!-- range sliders -->
+  <script src="/javascripts/jquery.slider.bundle.js"></script>
+  <script src="/javascripts/jquery.slider.js"></script>
+  <link rel="stylesheet" href="/stylesheets/jslider.css">
+  <!-- Video Player -->
+  <link href="/stylesheets/video-js.css" rel="stylesheet">
+  <script src="/javascripts/video.js"></script>
+  <!-- Scroll Bars -->
+  <script src="/javascripts/jquery.mousewheel.js"></script>
+  <script src="/javascripts/jquery.jscrollpane.min.js"></script>
+
+<!--[if lt IE 9]><script src="/javascripts/respond.min.js"></script><![endif]-->
+<!--[if gte IE 9]>
+<style type="text/css">
+	.gradient {filter: none !important;}
+</style>
+<![endif]-->
+  <!--Fonts from Google"s Web font directory at https://google.com/webfonts -->
+
+<meta property="twitter:card" content="summary" />
+<meta property="twitter:site" content="mzyy94" />
+<meta property="twitter:url" content="http://mzyy94.com/blog/2015/12/08/packetoon-after-that" />
+<meta property="twitter:title" content="実践イカパケット解析のスライドテーマ" />
+
+<meta property="twitter:image" content="http://mzyy94.com/blog/resources/images/2015/12/08/slidoon.png" />
+
+<meta property="twitter:description" content="この記事はSplatoon Advent Calendarの8日目の記事です。 こんにちは、ウデマエA+のボーイです。昨日のmzsmさんの記事末尾にこんなことが書いてありました。 明日のSplatoon Advent Calendarは、Wii Uを柚子胡椒まみれにして故障させてしまうという不運にもめげずにイカパケット解析をした話をみっきー氏が書いてくれるようです。 &hellip;" />
+
+<link href="https://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" />
+<link href="https://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" />
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-41944495-3']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body  >
+  <div class="container">
+  <div class="content">
+  <header class="row">
+    <nav id="topmenu" class="col-sm-12" role="navigation"><ul class="dropdown clearfix boxed boxed-blue">
+    <li class="menu-level-0"><a href="/">Home</a></li>
+  <li class="menu-level-0"><a href="/blog/">Blog</a></li>
+  <li class="menu-level-0"><a href="/service/">Service</a></li>
+  <li class="menu-level-0">
+  <a href="/about/">About</a>
+  <ul class="submenu-1">
+	  <li class="menu-level-1"><a href="/about/">About me</a></li>
+	  <li class="menu-level-1"><a href="/about/license.html">License</a></li>
+	  <li class="menu-level-1"><a href="/key/">Keys / Signatures</a></li>
+  </ul>
+  </li>
+
+  <li class="menu-level-0">
+    <a>Subscribe</a>
+	<ul class="submenu-1">
+  <li class="menu-level-1"><a href="/blog/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  <li class="menu-level-1"><a href="http://cloud.feedly.com/#subscription%2Ffeed%2Fhttp%3A%2F%2Fmzyy94.com%2Fblog%2Fatom.xml" rel="subscribe-feedly" title="subscribe on Feedly">Feedly</a></li>
+  
+  </ul>
+  
+  <li class="menu-search last">
+
+	<form action="https://www.google.com/search" id="searchForm" class="menu-search-form" method="get">
+		<fieldset role="search">
+			<input type="hidden" name="q" value="site:mzyy94.com" />
+			<input type="text" name="q" value="" results="0" class="menu-search-field" placeholder="Search the website" hidefocus="true" style="outline: none;">
+			<input type="submit" value="" class="btn menu-search-submit" name="search-send" hidefocus="true" style="outline: none;">
+		</fieldset>
+	</form>
+
+  </li>
+  
+</ul>
+</nav>
+  </header>
+  <header class="col-sm-12 boxed-red" role="banner"><hgroup>
+  
+  <h1><a href="/">犬アイコンのみっきー</a></h1>
+  
+</hgroup>
+
+</header>
+    <div class="row">
+      <main class="col-sm-9">
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title boxed-green">実践イカパケット解析のスライドテーマ</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+<i class="glyphicon glyphicon-calendar"></i><time datetime="2015-12-08T02:06:35+09:00" pubdate data-updated="true">08 Dec 2015</time>
+        
+
+<i class="glyphicon glyphicon-folder-close"></i><span class="categories">
+  
+    <a class='category' href='/blog/categories/etc/'>etc</a>
+  
+</span>
+
+
+        
+
+<i class="glyphicon glyphicon-tags"></i><span class="tags">
+  
+    <a class='tag' href='/blog/tags/ika/'>ika</a>, <a class='tag' href='/blog/tags/packetoon/'>packetoon</a>, <a class='tag' href='/blog/tags/splatoon/'>splatoon</a>
+  
+</span>
+
+
+        
+		<i class="glyphicon glyphicon-comment"></i><a href="#disqus_thread"
+             data-disqus-identifier="http://mzyy94.com">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<img src="/blog/resources/images/2015/12/08/slidoon.png" alt="article image" class="main image"/>
+
+
+<div class="entry-content"><p>この記事は<a href="http://www.adventar.org/calendars/801">Splatoon Advent Calendar</a>の8日目の記事です。</p>
+
+<p>こんにちは、ウデマエA+のボーイです。昨日の<a href="http://mzsm.me/2015/12/07/splatoon-advent-calendar-2015-ikadenwa-webrtc/">mzsmさんの記事</a>末尾にこんなことが書いてありました。</p>
+
+<blockquote><p> 明日のSplatoon Advent Calendarは、Wii Uを柚子胡椒まみれにして故障させてしまうという不運にもめげずにイカパケット解析をした話をみっきー氏が書いてくれるようです。</p></blockquote>
+
+<p>大変にハードルを上げるバトンタッチを受けて少々困惑気味です。
+というのも、イカパケット解析の話をするという内容で<del>煽りイカ</del>紹介していただいたのですが、いろいろあって今回イカパケット解析の話は出てこないからです。
+期待していたみなさま、ごめんなさい。</p>
+
+<p>実践イカパケット解析が何かわからない方々へ、詳しくはイカのスライドをご覧になってください。</p>
+
+<iframe src="//www.slideshare.net/slideshow/embed_code/key/41a5AKyCSyVAid" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
+
+
+<p> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/mzyy94/packetoon" title="実践イカパケット解析" target="_blank">実践イカパケット解析</a> </strong> from <strong><a href="//www.slideshare.net/mzyy94" target="_blank">Yuki Mizuno</a></strong> </div></p>
+
+<p>このスライドを公開したところ、各所にていろいろな反響がありました。
+技術的な批評がたくさんあるなか、非技術的な反応もありました。
+その中でも多かったのがイカのような反応です。</p>
+
+<blockquote><p>恐ろしくスライドのデザインクオリティが高いw</p>
+
+<p>このスライドテンプレートほしい。</p></blockquote>
+
+<p>是非ともこの期待に応えたいと思ったので、Splatoonっぽいスライドテーマを作成し、公開しました。</p>
+
+<!-- more -->
+
+
+<h1>Splatoonっぽいスライドテーマ</h1>
+
+<p>イカのリポジトリにて公開しています。</p>
+
+<p><a href="https://github.com/mzyy94/Slidoon"><strong>mzyy94/Slidoon</strong></a></p>
+
+<p>主にOS XでKeynoteを使ってスライドを作っているため、Advent Calendar 8日目までにはKeynote向けのテーマしか作成できていませんが、
+みなさんの反応によってはPowerPoint用のものも作成しようかと思っております。</p>
+
+<h2>Slidoonテーマの作成について</h2>
+
+<p>「スライドテーマ公開しました。」だけではAdvent Calendarの記事としてあまりにも内容が無さすぎるため、Splatoonっぽいスライドテーマ作成についていろいろと述べていきいます。</p>
+
+<h3>Splatoonっぽい色</h3>
+
+<h4>背景色</h4>
+
+<p>Splatoonはあの鮮やかなインクの色が楽しさを引き立てている重要な役割を担っています。
+だからと言って、スライド全体をSplatoonのゲームパッケージのようなオレンジと青のようなビビッドな色で染めるのも聴講者の目を痛める原因となるだけなので、落ち着いた色をベースに使う必要があります。
+どこかにSplatoonっぽいけど落ち着いた色を使って見せるよい参考資料はないかと探していたところ、任天堂のSplatoon公式サイトに行き当たりました。</p>
+
+<p><a href="https://www.nintendo.co.jp/wiiu/agmj/battle/index.html">Splatoon（スプラトゥーン） | ナワバリバトル</a></p>
+
+<p>トップページはパッケージと同じオレンジと青の鮮やかな色使いで注目させるようになっていましたが、説明の多いナワバリバトルの紹介ページでは、グレーの落ち着いた背景を用いていました。
+一目見て、彩度の高い色を使っているわけではないのに、ものすごくSplatoonをイメージするのにしっくりくると感じました。
+それもそのはず、インクを塗る前のステージの地面は大抵暗い色であるからです(マヒマヒを除く)。</p>
+
+<p>これは使えるぞ！と思い、カラーピッカーを取り出し、採色しました。
+RGBで、ベースのグレーは #2A2A2A、水玉模様のグレーは #212121であることがわかりました。</p>
+
+<p>手作業で楕円の図形を追加してはサイズを調整し、カラーを #212121 にすることでなんとか背景を作り上げることができました。
+一見スライドの背景は一枚のイラストに見えますが、実はグループ化した楕円の集まりなんです。</p>
+
+<p><img src="/blog/resources/images/2015/12/08/slidoon-background.png" alt="楕円の集まり" /></p>
+
+<h4>インクの色</h4>
+
+<p>ベースが落ち着いた色であるからには、強調すべきところに鮮やかインクカラーを用いたいところです。
+そして、どんな色が使われているか知るるために、実際のゲーム画面から採色してみたいと思いました。
+そんなときに役立ったのが、<a href="https://blog.fetus.jp/201512/30.html">一昨日のSplatoon Advent Calendarの記事</a>で紹介のあった、<a href="https://stat.ink/">stat.ink</a>です。
+Splatoonの戦績を集計するのに加えて、最終結果の画面のキャプチャ画像も一緒に登録できているため、<a href="https://stat.ink/u/mzyy94">自分の結果</a>をひとつずつチェックしがてらカラーピッカー片手に色を集めていきます。
+随分とたくさんの色があつまったのですが、Keynoteのカラーテーマの登録数はベース6色バリエーション4パターンの24色を登録するようにできていたので、似た色を排除、足りないバリエーションの色を自分で考えて24色揃えました。
+また、グラデーションも扱えるようになっていたので、24色からハイカラになるようなグラデーションの組み合わせを6種作成しました。</p>
+
+<p><img src="/blog/resources/images/2015/12/08/slidoon-colortheme.png" alt="カラーテーマ" /></p>
+
+<p>どうやってカラーテーマの色を変更するのかがわからず長い時間躓いていましたが、現在の塗りつぶしの部分から下のカラーパレットにドラッグアンドドロップすると変えることができました。</p>
+
+<h3>イラスト</h3>
+
+<h4>イカのイラスト</h4>
+
+<p>Splatoon = イカ なので、スライドに刺激を加えるためにイカのイラストが使いたい欲がでてきました。
+しかしながらデザインセンスが皆無なため、最初に作成したイラストは散々な出来でした。（Slidoonのika4フォルダに†闇†が潜んでる)</p>
+
+<p>ひとまず公式サイトなどで大体のイカの形を把握し、デザインセンスがなくても誤魔化せるようベクター形式で作成することにしました。
+といってもドローイングソフトウェアを持っていなかったので、<a href="https://geo.itunes.apple.com/jp/app/graphic/id404705039?mt=12&amp;at=1l3v4mQ">Autodesk Graphic</a>を購入しました(3,600円)。</p>
+
+<p>高価なソフトウェアを買ったおかげか、いくらかましなイラストができたので、実践イカパケット解析のスライドに散りばめる形で利用しました。
+使いたい人がいるかどうかはわかりませんが、Slidoonのsquid8フォルダにPNG画像があります。</p>
+
+<h4>インクの飛び散り</h4>
+
+<p>インクの飛び散りイラストは絶対にどこかで使いたい！と思っていたのでスライド作成に必須のイラストでした。
+実践イカパケット解析のスライドの箇条書き部分に登場しています。</p>
+
+<p>デザインセンスがないため最初はCCライセンスのものを探してきて利用していたのですが、せっかくテーマを作成するのだからライセンスが混ざるのは管理しにくいと思ったので、この記事を執筆開始する前に3時間かけて自作しました。
+3時間かけて出来上がったのがイカのイラストです。</p>
+
+<p><img src="/blog/resources/images/2015/12/08/splatter.png" alt="3時間の成果" /></p>
+
+<p>「は？こんなイラスト作るのに3時間もかかったの？」　とお思いもしれませんが、すいません、デザインセンスが皆無なのでほんとに3時間かかりました。</p>
+
+<p>出来上がったこのインク飛び散りイラストは、Slidoonの箇条書き部分に適用しています。</p>
+
+<h4>Finishの帯</h4>
+
+<p>実践イカパケット解析の発表の際は、最後のスライドを説明し終えたらゲームさながらの左右からFinish帯が張られるアニメーションで終了する凝ったギミックを導入していました。
+このFinishのイラストも作成したものです。
+といっても「Finish!」の文字デザインまで含めてではなく、文字はProject Paintballのフォントを利用しました。</p>
+
+<p><a href="http://fizzystack.web.fc2.com/paintball-ja.html">プロジェクト・ペイントボール スプラトゥーン風アルファベットフォント</a></p>
+
+<p>この利用規約にもあるように、Inkscapeでの掻き起しであるものの、任天堂の著作物のコピーに該当する可能性があるため、Finishの帯に関しても非営利での利用を強制させられます。
+なのでSlidoonのライセンスも<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">CC BY-NC-SA 4.0</a>になっていますが、このバナーを削除いただければ<a href="https://creativecommons.org/licenses/by-sa/4.0/deed.ja">CC BY-SA 4.0</a>としてお使いいただけます。</p>
+
+<h3>フォント</h3>
+
+<p>実践イカパケット解析のスライドでは英数字記号のフォントに<a href="http://fizzystack.web.fc2.com/paintball-ja.html">Project Paintball</a>、ひらがなとかたかなに<a href="http://aramugi.com/?page_id=807">イカモドキ</a>、漢字に<a href="https://www.google.com/get/noto/">Noto Sans CJK JP</a>の極太字を利用しています。
+ライセンスの都合でこれらのフォントを同梱できないため、SlidoonではフォントをNoto Sans CJK JPを導入してある環境向けにテーマのベースフォントを指定しています。</p>
+
+<p>実際に実践イカパケット解析のスライドもNoto Sans CJK JPをベースとしたフォントテーマで文字を入力し、ひらがなかたかなの部分を手動でイカモドキに変更、英数字記号を手動でProject Paintballに変更する形で作成してきました。
+そのため、文字にこだわる方はそのようにして作成していただくか、Fontforge等で上記3フォントを合成したフォントを用いるなりで対処してください。</p>
+
+<p>また、Splatoonで実際に使われているフォントは取扱説明書によると、フォントワークス株式会社のフォントを利用しているようで、探してみたところロウディEBを利用しているようでした。</p>
+
+<p><a href="http://fontworks.co.jp/font/catch/rowdy/EB.html">ロウディ EB | キャッチ | 書体を選ぶ | FONTWORKS</a></p>
+
+<blockquote class="twitter-tweet" lang="ja"><p lang="ja" dir="ltr">SplatoonのフォントはフォントワークスのロウディEBか&#10;<a href="https://t.co/KjnMGhtsm6">https://t.co/KjnMGhtsm6</a> <a href="https://t.co/2MYBNp1CVm">pic.twitter.com/2MYBNp1CVm</a></p>&mdash; 【ピュア】友利奈緒 (@mzyy94) <a href="https://twitter.com/mzyy94/status/662520841326845952">2015, 11月 6</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<p>すでにこのフォントを持っている方は、お手数ですがSlidoonのNoto Sans CJK JPのフォント指定を全てそちらに変更いただくと、よりSplatoonっぽいスライドが作成できるかと思います。</p>
+
+<p>また、学生の方はフォントワークス社のフォントが非商用利用で4年間利用できるライセンスが5000円+税で契約できるので、イカしたスライドが作りたいならば契約をお勧めします。</p>
+
+<p><a href="http://store.sbtlets.jp/sbtletsst/">SBT LETSストア 学生向け｜トップページ</a></p>
+
+<h2>まとめ</h2>
+
+<p>実践イカパケット解析のスライドを作成する時間のほうがパケットを解析する時間より長くなってしまったので、ぜひともこの努力を無駄にしないためにもSlidoonテーマをみんな使って欲しいです。。。</p>
+
+<hr />
+
+<p>さて、以上がSplatoon Advent Calendar 8日目の記事でした。
+前日・前々日と技術的な話が続いていましたが箸休めになったでしょうか。</p>
+
+<p>明日は<a href="https://twitter.com/holygrail">HoryGrail</a>さんのウデマエS+を目指す話です。
+煽りイカは好きじゃないのでハードルは上げず、このままバトンタッチします。</p>
+
+<p>それでは、マンメンミ！</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard"><i class="glyphicon glyphicon-user"></i><span class="fn">mzyy94</span></span>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+<i class="glyphicon glyphicon-calendar"></i><time datetime="2015-12-08T02:06:35+09:00" pubdate data-updated="true">08 Dec 2015</time>
+      
+
+<i class="glyphicon glyphicon-folder-close"></i><span class="categories">
+  
+    <a class='category' href='/blog/categories/etc/'>etc</a>
+  
+</span>
+
+
+      
+
+<i class="glyphicon glyphicon-tags"></i><span class="tags">
+  
+    <a class='tag' href='/blog/tags/ika/'>ika</a>, <a class='tag' href='/blog/tags/packetoon/'>packetoon</a>, <a class='tag' href='/blog/tags/splatoon/'>splatoon</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="widget-container widget-social">
+	<ul class="clearfix">
+  
+
+  <!--li class="social-twitter"><a href="https://twitter.com/intent/tweet?original_referer=http://mzyy94.com/blog/2015/12/08/packetoon-after-that/&text=実践イカパケット解析のスライドテーマ%20-%20犬アイコンのみっきー&tw_p=tweetbutton&url=http://mzyy94.com/blog/2015/12/08/packetoon-after-that/&via=mzyy94"><i>Tweet</i></a></li-->
+
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://mzyy94.com/blog/2015/12/08/packetoon-after-that/" data-via="mzyy94" data-counturl="http://mzyy94.com/blog/2015/12/08/packetoon-after-that/" >Tweet</a>
+  
+  
+  <!-- li class="social-google"><a href="#"><i>Google</i></a></li -->
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+  <!-- li class="social-facebook"><a href="#"><i>Facebook</i></a></li -->
+  <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+  </ul>
+</div>
+
+    
+    <div>
+      
+	  <a class="btn btn-icon-left btn-arrow-left" href="/blog/2015/12/01/tomorinao/" title="Previous Post: 友利奈緒「いままでとこれから」"><span>友利奈緒「いままでとこれから」</span></a>
+      
+      
+    </div>
+  </footer>
+</article>
+
+  <section class="comment">
+    <h1 class="boxed-red">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</main>
+
+<aside class="col-sm-3">
+  
+    <div class="widget-container widget-avatar boxed boxed-yellow">
+	<div class="inner">
+		<h5>mzyy94</h5>
+		<span class="subtitle">Network</span>
+		<div class="avatar">
+			<img src="/images/avatar.png" alt="avatar icon" />
+		</div>
+		<a href="/about/" class="btn btn-brown btn-follow">
+			<span>About me</span>
+		</a>
+	</div>
+</div>
+<div class="widget-container widget_calendar boxed boxed-red">
+	<div class="inner">
+		<input type="text" name="date_departure" class="inputField" id="date_departure">
+	</div>
+</div>
+<script>
+	// <![CDATA[
+	$(document).ready(function() {
+		var posts = {};
+		var datelist = [];
+		$.getJSON('/blog/posts.json', function(data){
+			var dp = data.posts;
+			for(var i = 0, limit = dp.length; i < limit; i++){
+				var date = new Date(dp[i].date);
+				posts[dp[i].date] = {title:dp[i].title,
+					url: '/blog/' + date.getFullYear() + '/' + ('0' + (date.getMonth() + 1)).slice(-2) + '/' + ('0' + date.getDate()).slice(-2) + '/' + dp[i].url + '/'}
+				datelist.push(dp[i].date);
+			}
+			assignCalendar('#date_departure');
+			refreshDate();
+		});
+
+
+		function assignCalendar(id){
+			$('<div class="calendar" />')
+				.insertAfter( $(id) )
+				.datepicker({
+					beforeShowDay: function(date){
+						var string = $.datepicker.formatDate('dd M yy', date);
+						return [ datelist.indexOf(string) != -1 ]
+					},
+					dateFormat: 'dd M yy',
+					minDate: new Date(datelist[datelist.length - 1]),
+					maxDate: new Date(),
+					maxPicks: 1,
+					altField: id,
+					firstDay: 0,
+					showOtherMonths: true,
+					onSelect: function(date){
+						window.location.href = posts[date].url;
+					},
+					onChangeMonthYear: refreshDate
+				}).prev().hide();
+		}
+
+		var month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+		function refreshDate(){
+			setTimeout(function(){
+				$('a.ui-state-default').each(function(num){
+					var yy = $(this).parent().attr('data-year');
+					var M = month[$(this).parent().attr('data-month')];
+					var dd = ('0' + $(this).text()).slice(-2);
+					var idx = dd + ' ' + M + ' ' + yy;
+					$(this).attr('data-title', posts[idx].title);
+					$(this).attr('href', posts[idx].url);
+				});
+			},10);
+		}
+	});
+	// ]]>
+</script>
+<section class="widget-container widget-recently boxed">
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/12/08/packetoon-after-that/">実践イカパケット解析のスライドテーマ</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/12/01/tomorinao/">友利奈緒「いままでとこれから」</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/10/14/emoji-commit-message/">GitHubで絵文字コミットを続けてみて有用だったEmojiまとめ</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/09/18/tductf-2015-digression/">TDUCTF 2015の運営をした話</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/08/08/pvr-chinachu-addon/">Kodi Chinachu PVRアドオンでRasPi2/Android TVをテレビに</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section class="widget-container widget-github boxed">
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'mzyy94',
+            count: 3,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+<div class="widget-container boxed boxed-blue">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- sidebar-small -->
+<ins class="adsbygoogle"
+	style="display:inline-block;width:120px;height:240px"
+	data-ad-client="ca-pub-5429584698977304"
+	data-ad-slot="3454316875"></ins>
+<!-- sidebar-small2 -->
+<ins class="adsbygoogle"
+	style="display:inline-block;width:120px;height:240px"
+	data-ad-client="ca-pub-5429584698977304"
+	data-ad-slot="6626453278"></ins>
+<script>
+	(adsbygoogle = window.adsbygoogle || []).push({});
+	(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'mzyy94blog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://mzyy94.com/blog/2015/12/08/packetoon-after-that/';
+        var disqus_url = 'http://mzyy94.com/blog/2015/12/08/packetoon-after-that/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+  </div>
+  <footer class="boxed-yellow" role="contentinfo"><p>
+  Copyright &copy; 2015 - mzyy94 -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> -
+  <span class="credit">Designed with <a href="http://pixelkit.com/kits/flat-ui-kit">Flat UI Kit | Modern Touch</a></span> -
+  <span>Licensed under a <a rel="license" href="https://opensource.org/licenses/mit-license.html">MIT License</a> and <a rel="license" href="https://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" src="https://i.creativecommons.org/l/by/3.0/80x15.png" /></a><span>
+</p>
+<script>
+	$(function () {
+		$("a[href^='http'], a[href^='ftp']").click(function () {
+			if ($(this).attr("target") === undefined) 
+			$(this).attr("target", "_blank");
+		});
+	});
+</script>
+
+</footer>
+  </div>
+</body>
+</html>

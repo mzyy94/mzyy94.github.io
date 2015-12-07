@@ -4,7 +4,7 @@
   <title><![CDATA[犬アイコンのみっきー]]></title>
   <link href="http://mzyy94.com/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2015-12-02T09:52:48+09:00</updated>
+  <updated>2015-12-08T02:06:33+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -12,6 +12,167 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[実践イカパケット解析のスライドテーマ]]></title>
+    <link href="http://mzyy94.com/blog/2015/12/08/packetoon-after-that/"/>
+    <updated>2015-12-08T02:06:35+09:00</updated>
+    <id>http://mzyy94.com/blog/2015/12/08/packetoon-after-that</id>
+    <content type="html"><![CDATA[<p>この記事は<a href="http://www.adventar.org/calendars/801">Splatoon Advent Calendar</a>の8日目の記事です。</p>
+
+<p>こんにちは、ウデマエA+のボーイです。昨日の<a href="http://mzsm.me/2015/12/07/splatoon-advent-calendar-2015-ikadenwa-webrtc/">mzsmさんの記事</a>末尾にこんなことが書いてありました。</p>
+
+<blockquote><p> 明日のSplatoon Advent Calendarは、Wii Uを柚子胡椒まみれにして故障させてしまうという不運にもめげずにイカパケット解析をした話をみっきー氏が書いてくれるようです。</p></blockquote>
+
+<p>大変にハードルを上げるバトンタッチを受けて少々困惑気味です。
+というのも、イカパケット解析の話をするという内容で<del>煽りイカ</del>紹介していただいたのですが、いろいろあって今回イカパケット解析の話は出てこないからです。
+期待していたみなさま、ごめんなさい。</p>
+
+<p>実践イカパケット解析が何かわからない方々へ、詳しくはイカのスライドをご覧になってください。</p>
+
+<iframe src="//www.slideshare.net/slideshow/embed_code/key/41a5AKyCSyVAid" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
+
+
+<p> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/mzyy94/packetoon" title="実践イカパケット解析" target="_blank">実践イカパケット解析</a> </strong> from <strong><a href="//www.slideshare.net/mzyy94" target="_blank">Yuki Mizuno</a></strong> </div></p>
+
+<p>このスライドを公開したところ、各所にていろいろな反響がありました。
+技術的な批評がたくさんあるなか、非技術的な反応もありました。
+その中でも多かったのがイカのような反応です。</p>
+
+<blockquote><p>恐ろしくスライドのデザインクオリティが高いw</p>
+
+<p>このスライドテンプレートほしい。</p></blockquote>
+
+<p>是非ともこの期待に応えたいと思ったので、Splatoonっぽいスライドテーマを作成し、公開しました。</p>
+
+<!-- more -->
+
+
+<h1>Splatoonっぽいスライドテーマ</h1>
+
+<p>イカのリポジトリにて公開しています。</p>
+
+<p><a href="https://github.com/mzyy94/Slidoon"><strong>mzyy94/Slidoon</strong></a></p>
+
+<p>主にOS XでKeynoteを使ってスライドを作っているため、Advent Calendar 8日目までにはKeynote向けのテーマしか作成できていませんが、
+みなさんの反応によってはPowerPoint用のものも作成しようかと思っております。</p>
+
+<h2>Slidoonテーマの作成について</h2>
+
+<p>「スライドテーマ公開しました。」だけではAdvent Calendarの記事としてあまりにも内容が無さすぎるため、Splatoonっぽいスライドテーマ作成についていろいろと述べていきいます。</p>
+
+<h3>Splatoonっぽい色</h3>
+
+<h4>背景色</h4>
+
+<p>Splatoonはあの鮮やかなインクの色が楽しさを引き立てている重要な役割を担っています。
+だからと言って、スライド全体をSplatoonのゲームパッケージのようなオレンジと青のようなビビッドな色で染めるのも聴講者の目を痛める原因となるだけなので、落ち着いた色をベースに使う必要があります。
+どこかにSplatoonっぽいけど落ち着いた色を使って見せるよい参考資料はないかと探していたところ、任天堂のSplatoon公式サイトに行き当たりました。</p>
+
+<p><a href="https://www.nintendo.co.jp/wiiu/agmj/battle/index.html">Splatoon（スプラトゥーン） | ナワバリバトル</a></p>
+
+<p>トップページはパッケージと同じオレンジと青の鮮やかな色使いで注目させるようになっていましたが、説明の多いナワバリバトルの紹介ページでは、グレーの落ち着いた背景を用いていました。
+一目見て、彩度の高い色を使っているわけではないのに、ものすごくSplatoonをイメージするのにしっくりくると感じました。
+それもそのはず、インクを塗る前のステージの地面は大抵暗い色であるからです(マヒマヒを除く)。</p>
+
+<p>これは使えるぞ！と思い、カラーピッカーを取り出し、採色しました。
+RGBで、ベースのグレーは #2A2A2A、水玉模様のグレーは #212121であることがわかりました。</p>
+
+<p>手作業で楕円の図形を追加してはサイズを調整し、カラーを #212121 にすることでなんとか背景を作り上げることができました。
+一見スライドの背景は一枚のイラストに見えますが、実はグループ化した楕円の集まりなんです。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2015/12/08/slidoon-background.png" alt="楕円の集まり" /></p>
+
+<h4>インクの色</h4>
+
+<p>ベースが落ち着いた色であるからには、強調すべきところに鮮やかインクカラーを用いたいところです。
+そして、どんな色が使われているか知るるために、実際のゲーム画面から採色してみたいと思いました。
+そんなときに役立ったのが、<a href="https://blog.fetus.jp/201512/30.html">一昨日のSplatoon Advent Calendarの記事</a>で紹介のあった、<a href="https://stat.ink/">stat.ink</a>です。
+Splatoonの戦績を集計するのに加えて、最終結果の画面のキャプチャ画像も一緒に登録できているため、<a href="https://stat.ink/u/mzyy94">自分の結果</a>をひとつずつチェックしがてらカラーピッカー片手に色を集めていきます。
+随分とたくさんの色があつまったのですが、Keynoteのカラーテーマの登録数はベース6色バリエーション4パターンの24色を登録するようにできていたので、似た色を排除、足りないバリエーションの色を自分で考えて24色揃えました。
+また、グラデーションも扱えるようになっていたので、24色からハイカラになるようなグラデーションの組み合わせを6種作成しました。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2015/12/08/slidoon-colortheme.png" alt="カラーテーマ" /></p>
+
+<p>どうやってカラーテーマの色を変更するのかがわからず長い時間躓いていましたが、現在の塗りつぶしの部分から下のカラーパレットにドラッグアンドドロップすると変えることができました。</p>
+
+<h3>イラスト</h3>
+
+<h4>イカのイラスト</h4>
+
+<p>Splatoon = イカ なので、スライドに刺激を加えるためにイカのイラストが使いたい欲がでてきました。
+しかしながらデザインセンスが皆無なため、最初に作成したイラストは散々な出来でした。（Slidoonのika4フォルダに†闇†が潜んでる)</p>
+
+<p>ひとまず公式サイトなどで大体のイカの形を把握し、デザインセンスがなくても誤魔化せるようベクター形式で作成することにしました。
+といってもドローイングソフトウェアを持っていなかったので、<a href="https://geo.itunes.apple.com/jp/app/graphic/id404705039?mt=12&amp;at=1l3v4mQ">Autodesk Graphic</a>を購入しました(3,600円)。</p>
+
+<p>高価なソフトウェアを買ったおかげか、いくらかましなイラストができたので、実践イカパケット解析のスライドに散りばめる形で利用しました。
+使いたい人がいるかどうかはわかりませんが、Slidoonのsquid8フォルダにPNG画像があります。</p>
+
+<h4>インクの飛び散り</h4>
+
+<p>インクの飛び散りイラストは絶対にどこかで使いたい！と思っていたのでスライド作成に必須のイラストでした。
+実践イカパケット解析のスライドの箇条書き部分に登場しています。</p>
+
+<p>デザインセンスがないため最初はCCライセンスのものを探してきて利用していたのですが、せっかくテーマを作成するのだからライセンスが混ざるのは管理しにくいと思ったので、この記事を執筆開始する前に3時間かけて自作しました。
+3時間かけて出来上がったのがイカのイラストです。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2015/12/08/splatter.png" alt="3時間の成果" /></p>
+
+<p>「は？こんなイラスト作るのに3時間もかかったの？」　とお思いもしれませんが、すいません、デザインセンスが皆無なのでほんとに3時間かかりました。</p>
+
+<p>出来上がったこのインク飛び散りイラストは、Slidoonの箇条書き部分に適用しています。</p>
+
+<h4>Finishの帯</h4>
+
+<p>実践イカパケット解析の発表の際は、最後のスライドを説明し終えたらゲームさながらの左右からFinish帯が張られるアニメーションで終了する凝ったギミックを導入していました。
+このFinishのイラストも作成したものです。
+といっても「Finish!」の文字デザインまで含めてではなく、文字はProject Paintballのフォントを利用しました。</p>
+
+<p><a href="http://fizzystack.web.fc2.com/paintball-ja.html">プロジェクト・ペイントボール スプラトゥーン風アルファベットフォント</a></p>
+
+<p>この利用規約にもあるように、Inkscapeでの掻き起しであるものの、任天堂の著作物のコピーに該当する可能性があるため、Finishの帯に関しても非営利での利用を強制させられます。
+なのでSlidoonのライセンスも<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">CC BY-NC-SA 4.0</a>になっていますが、このバナーを削除いただければ<a href="https://creativecommons.org/licenses/by-sa/4.0/deed.ja">CC BY-SA 4.0</a>としてお使いいただけます。</p>
+
+<h3>フォント</h3>
+
+<p>実践イカパケット解析のスライドでは英数字記号のフォントに<a href="http://fizzystack.web.fc2.com/paintball-ja.html">Project Paintball</a>、ひらがなとかたかなに<a href="http://aramugi.com/?page_id=807">イカモドキ</a>、漢字に<a href="https://www.google.com/get/noto/">Noto Sans CJK JP</a>の極太字を利用しています。
+ライセンスの都合でこれらのフォントを同梱できないため、SlidoonではフォントをNoto Sans CJK JPを導入してある環境向けにテーマのベースフォントを指定しています。</p>
+
+<p>実際に実践イカパケット解析のスライドもNoto Sans CJK JPをベースとしたフォントテーマで文字を入力し、ひらがなかたかなの部分を手動でイカモドキに変更、英数字記号を手動でProject Paintballに変更する形で作成してきました。
+そのため、文字にこだわる方はそのようにして作成していただくか、Fontforge等で上記3フォントを合成したフォントを用いるなりで対処してください。</p>
+
+<p>また、Splatoonで実際に使われているフォントは取扱説明書によると、フォントワークス株式会社のフォントを利用しているようで、探してみたところロウディEBを利用しているようでした。</p>
+
+<p><a href="http://fontworks.co.jp/font/catch/rowdy/EB.html">ロウディ EB | キャッチ | 書体を選ぶ | FONTWORKS</a></p>
+
+<blockquote class="twitter-tweet" lang="ja"><p lang="ja" dir="ltr">SplatoonのフォントはフォントワークスのロウディEBか&#10;<a href="https://t.co/KjnMGhtsm6">https://t.co/KjnMGhtsm6</a> <a href="https://t.co/2MYBNp1CVm">pic.twitter.com/2MYBNp1CVm</a></p>&mdash; 【ピュア】友利奈緒 (@mzyy94) <a href="https://twitter.com/mzyy94/status/662520841326845952">2015, 11月 6</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<p>すでにこのフォントを持っている方は、お手数ですがSlidoonのNoto Sans CJK JPのフォント指定を全てそちらに変更いただくと、よりSplatoonっぽいスライドが作成できるかと思います。</p>
+
+<p>また、学生の方はフォントワークス社のフォントが非商用利用で4年間利用できるライセンスが5000円+税で契約できるので、イカしたスライドが作りたいならば契約をお勧めします。</p>
+
+<p><a href="http://store.sbtlets.jp/sbtletsst/">SBT LETSストア 学生向け｜トップページ</a></p>
+
+<h2>まとめ</h2>
+
+<p>実践イカパケット解析のスライドを作成する時間のほうがパケットを解析する時間より長くなってしまったので、ぜひともこの努力を無駄にしないためにもSlidoonテーマをみんな使って欲しいです。。。</p>
+
+<hr />
+
+<p>さて、以上がSplatoon Advent Calendar 8日目の記事でした。
+前日・前々日と技術的な話が続いていましたが箸休めになったでしょうか。</p>
+
+<p>明日は<a href="https://twitter.com/holygrail">HoryGrail</a>さんのウデマエS+を目指す話です。
+煽りイカは好きじゃないのでハードルは上げず、このままバトンタッチします。</p>
+
+<p>それでは、マンメンミ！</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[友利奈緒「いままでとこれから」]]></title>
@@ -5565,145 +5726,6 @@ tmuxで分割し、上下のコンソールで同時にエンコードを開始�
 <h1>まとめ</h1>
 
 <p>動画再生時間の3分の1程度でエンコードができるQSVはLinuxでもすごい。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Intel QSVのH.264エンコードをLinuxで！]]></title>
-    <link href="http://mzyy94.com/blog/2015/01/30/intel-qsv-on-linux/"/>
-    <updated>2015-01-30T22:22:03+09:00</updated>
-    <id>http://mzyy94.com/blog/2015/01/30/intel-qsv-on-linux</id>
-    <content type="html"><![CDATA[<p><a href="http://mzyy94.com/blog/2014/12/12/kvm-intel-hd-graphics-passthrough/">前回の記事</a>から1ヶ月以上空いてしまいました。遅ればせながらで申し訳ありません。続編です。
-Intel QSVは高速にある程度の画質のエンコードできてよいです。とても。</p>
-
-<p>今回はKVMでIntel HD Graphicsをパススルーした仮装マシン上に、SDKのインストールとカーネルモジュールのインストール、そしてffmpegでのQSVによるH.264エンコードができる環境づくりまでの手順をご紹介します。
-<del>これが意外と骨が折れる作業だったので同じような思いをせぬよう、ご熟読ください。</del>（書き直す前の文章です。書き直した理由は後述。）</p>
-
-<!-- more -->
-
-
-<h1>Intel Media Server Studio (Intel Media SDK)</h1>
-
-<p>前回の記事で紹介したIntel Media Server Studio(以下、IMSS。旧Intel Media SDK)のインストールをします。
-IMSSはIntel Developer Zoneのメンバーになってから、<a href="https://software.intel.com/en-us/intel-media-server-studio">こちら</a>へアクセスすることでダウンロードできます。
-メンバー登録時と同じメールアドレスを指定するとダウンロードリンクが送られてくるので、アクセスしてfor Linuxの方をダウンロードします。</p>
-
-<p><img src="http://mzyy94.com/blog/resources/images/2015/01/30/IMSS-download.png" alt="IMSS donwload page" /></p>
-
-<p>執筆時点での最新版は2015 R3です。この2015 R3を対象にインストールを進めていきます。(12月中旬に2015 R2を対象にした記事を書き終わっていたのだけれど、公開し損ねてる間にバージョンアップがあったため最初から書き直してるなんて言えない。。)</p>
-
-<p>IMSS 2015 R3から対応OSはCentOSとSLESの2種類のみとなったので、どちらか好きな方を選んでインストールしてください。以下にはCentOS 7での様子を載せます。</p>
-
-<h2>Intel Media SDK Install</h2>
-
-<p>IMSSをダウンロードし回答すると、下図のように幾つかアーカイブの入ったディレクトリが展開されます。そこにあるSDKをインストールすることでQSVを利用することができるようになります。</p>
-
-<p><img src="http://mzyy94.com/blog/resources/images/2015/01/30/IMSS-step-1.png" alt="IMSS step 1" /></p>
-
-<p>このSDKのアーカイブを展開すると下図のように、インストール手順の書かれたPDFファイルとOSごとにディレクトリで分けられたドライバがでてきます。</p>
-
-<p><img src="http://mzyy94.com/blog/resources/images/2015/01/30/IMSS-step-2.png" alt="IMSS step 2" /></p>
-
-<p>今回はCentOS 7なので、CentOSディレクトリに移動し、PDFに記載のインストール手順を踏むだけでいいはずなんですが、幾つか依存関係にあるパッケージが必要になります。これがなくてインストールコケまくったので下表にまとめておきます。<code>yum install</code>などでインストールしてください。</p>
-
-<table>
-<thead>
-<tr>
-<th style="text-align:center;">パッケージ名 </th>
-<th style="text-align:left;"> 簡易説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center;">mesa-dri-drivers </td>
-<td style="text-align:left;"> グラフィックデバイスドライバ</td>
-</tr>
-<tr>
-<td style="text-align:center;">redhat-lsb </td>
-<td style="text-align:left;"> lsb_releaseでOS情報取得したいらしい</td>
-</tr>
-<tr>
-<td style="text-align:center;">wget </td>
-<td style="text-align:left;"> あのダウンロードするやつ</td>
-</tr>
-<tr>
-<td style="text-align:center;">net-tools </td>
-<td style="text-align:left;"> ネットワーク設定するアレ</td>
-</tr>
-</tbody>
-</table>
-
-
-<p>そしてあとは手順通りにインストールすればいいだけ。だと思ってたんですが、そのままインストールすると、ファイルやディレクトリが足りない（？）というエラーで怒られてしまいます。
-見た感じインストールスクリプトのバグのようですが、一般環境向けのGeneric SDKが用意されているので、これを先にインストールしてからOS SpecificなSDKで上書きすることで、正常にインストールすることができるようです。</p>
-
-<p>なので、SDKのディレクトリにあるGenericディレクトリに移動し、ぽつりと存在するアーカイブを展開します。</p>
-
-<p><img src="http://mzyy94.com/blog/resources/images/2015/01/30/IMSS-step-3.png" alt="IMSS step 3" /></p>
-
-<p>展開されたファイルの中にあるシェルスクリプトを管理者権限で実行し、Generic SDKをインストールします。</p>
-
-<p><img src="http://mzyy94.com/blog/resources/images/2015/01/30/IMSS-step-4.png" alt="IMSS step 4" /></p>
-
-<p>この作業で必要なディレクトリとファイルが作成されるので、次にOS固有のドライバとSDKをインストールします。</p>
-
-<p>SDKのディレクトリに戻り、さらにCentOSのディレクトリに移動しファイルを確認すると、以下のようになっているはずです。</p>
-
-<p><img src="http://mzyy94.com/blog/resources/images/2015/01/30/IMSS-step-5.png" alt="IMSS step 5" /></p>
-
-<p>　
-ここではファイルの展開等は行わず、PDF記載の通りにユーザーをvideoグループに追加して、<code>/MSS</code>ディレクトリを作成してそこにファイルをコピーしてカレントディレクトリも移動し、インストール関連ファイルの入ったアーカイブを展開してでてくるSDKのインストールスクリプトを実行します。下図のninnikuはカレントユーザー名なので適当に<code>$(whoami)</code>に置換してください。</p>
-
-<p><img src="http://mzyy94.com/blog/resources/images/2015/01/30/IMSS-step-6.png" alt="IMSS step 6" /></p>
-
-<p>SDKのインストールが成功すると、下図のようになり、再起動を促されるのでひとまず再起動します。</p>
-
-<p><img src="http://mzyy94.com/blog/resources/images/2015/01/30/IMSS-step-7.png" alt="IMSS step 7" /></p>
-
-<p>再起動後、再度<code>/MSS</code>へ移動して、下図のようにドライバの組み込まれたカーネルをビルドします。</p>
-
-<p><img src="http://mzyy94.com/blog/resources/images/2015/01/30/IMSS-step-8.png" alt="IMSS step 8" /></p>
-
-<p>正常に終了すると以下のようになります。</p>
-
-<p><img src="http://mzyy94.com/blog/resources/images/2015/01/30/IMSS-step-9.png" alt="IMSS step 9" /></p>
-
-<p>指定された場所<code>./rpmbuild/RPMS/</code>に移動すると<code>x86_64</code>ディレクトリがさらにあるのでそこに移動し、ここにあるQSVドライバが組み込まれたカーネルカーネルをインストールします。しかし今回使用しているCentOS 7では、QSVドライバが組み込まれたカーネルより新しいカーネルがインストールされていたため、QSVドライバ付きカーネルのインストールを拒否されてしまいました。
-古いバージョンであることを重々承知した上でインストールするため、<code>--oldpackage</code>オプションを追加してインストールし、再起動してドライバのインストールは終了です。</p>
-
-<p><img src="http://mzyy94.com/blog/resources/images/2015/01/30/IMSS-step-10.png" alt="IMSS step 10" /></p>
-
-<p>再起動後、<code>lsmod | grep i915</code>として、以下のように幾つか該当があれば、ドライバが動作していることを確認できます。</p>
-
-<p><img src="http://mzyy94.com/blog/resources/images/2015/01/30/IMSS-step-11.png" alt="IMSS step 11" /></p>
-
-<p>これで終わりかと思いきや、インストールスクリプトのバグなのか、ライブラリのリンク先が間違っており、実際にSDKを利用するときにリンクできずにプログラムが起動しない、などが発生してしまいます。</p>
-
-<p>なので、下記スクリプトを実行してライブラリのパスを再設定してください。</p>
-
-<p><code>sudo bash -c '(ldconfig -p -N | grep intel.mediasdk) || echo "/opt/intel/mediasdk/lib64" &gt;&gt; /etc/ld.so.conf.d/intel-mediasdk.conf &amp;&amp; ldconfig'</code></p>
-
-<h1>H264_QSV codec for FFmpeg</h1>
-
-<p>さて、IMSSのインストールができたのでSDKを利用する代表的なプログラムとして、QSVによるH.264エンコードをしましょう。</p>
-
-<p>前回の記事で紹介した<a href="https://github.com/shenhailuanma/qsv-ffmpeg-codec">qsv_ffmpeg_codec</a>はIntel Media SDKの対応バージョンが古く、導入に手間がかかるのでIMSS 2014 R3対応版としてフォークしました。下記リポジトリに置いてあります。</p>
-
-<p><em><a href="https://github.com/mzyy94/qsv_h264-ffmpeg">mzyy94/h264_qsv-ffmpeg</a></em></p>
-
-<p>ここからクローンし、ディレクトリ下にある<code>./setup.sh</code>を実行して、FFmpeg-2.2ディレクトリに移動して<code>make</code>して、インストールください。</p>
-
-<p>このコーデック、QSVによるH.264へのエンコードはしっかりとできるのですが、<strong>MPEG-TSファイルのエンコードはエラーになります</strong>。原因は、TSの仕組みゆえの、ライブラリの関数<code>MFXVideoENCODE_EncodeFrameAsync</code>に渡される引数によるものというところまではわかったのですが、修正にはほぼ全ての処理を書き換えないといけない手間がかかるので、MPEG-TSから一度RAWファイルを抽出し、パイプ等を使ってQSVコーデックに渡してエンコードしてください。</p>
-
-<p>実行方法の例としては、
-<code>ffmpeg -i in.avi -acodec copy -vcodec h264_qsv -b:v 2000k -y -sar 16:9 -s 1280x720 -r 30000/1001 -bufsize 20000k -maxrate 25000k out.mp4</code>
-のようにHDサイズにリサイズして変換することができます。</p>
-
-<p>せっかくなのでベンチマークとして、<a href="http://www.bigbuckbunny.org">Big Buck Bunny</a>をエンコードしようと思ったのですが、残念ながら執筆中にダウンロードが終わらなかったのでまたの機会に追記する形で公開しようと思います。</p>
-
-<h1>まとめ</h1>
-
-<p>LinuxでもQSVできる。</p>
 ]]></content>
   </entry>
   
