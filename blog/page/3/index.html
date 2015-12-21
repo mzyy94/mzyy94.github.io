@@ -9,8 +9,8 @@
   <meta name="author" content="mzyy94">
 
   
-  <meta name="description" content="前回の記事から1ヶ月以上空いてしまいました。遅ればせながらで申し訳ありません。続編です。
-Intel QSVは高速にある程度の画質のエンコードできてよいです。とても。 今回はKVMでIntel HD Graphicsをパススルーした仮装マシン上に、 &hellip;">
+  <meta name="description" content="先日の記事、でLinuxでH.264の動画をエンコードできることを紹介しました。
+そのベンチマークをとってみました。QSVでのエンコードとlibx264を用いたエンコードの比較となります。 今回エンコード時間の比較に用いた動画は以下のものを利用しました。 Big Buck Bunny ここの、 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -73,8 +73,8 @@ Intel QSVは高速にある程度の画質のエンコードできてよいで�
 <meta property="twitter:url" content="http://mzyy94.com/blog/page/3" />
 <meta property="twitter:title" content="犬アイコンのみっきー" />
 
-<meta property="twitter:description" content="前回の記事から1ヶ月以上空いてしまいました。遅ればせながらで申し訳ありません。続編です。
-Intel QSVは高速にある程度の画質のエンコードできてよいです。とても。 今回はKVMでIntel HD Graphicsをパススルーした仮装マシン上に、SDKのインストールとカーネルモジュールのインストール、そしてffmpegでのQSVによるH. &hellip;" />
+<meta property="twitter:description" content="先日の記事、でLinuxでH.264の動画をエンコードできることを紹介しました。
+そのベンチマークをとってみました。QSVでのエンコードとlibx264を用いたエンコードの比較となります。 今回エンコード時間の比較に用いた動画は以下のものを利用しました。 Big Buck Bunny ここの、big_buck_bunny_1080p_surround. &hellip;" />
 
 <link href="https://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" />
 <link href="https://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" />
@@ -145,6 +145,109 @@ Intel QSVは高速にある程度の画質のエンコードできてよいで�
     <div class="row">
       <main class="col-sm-9">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title boxed-green"><a href="/blog/2015/01/31/qsv-x264-linux-battle/">LinuxでQSVとH.264のエンコード対決</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+<i class="glyphicon glyphicon-calendar"></i><time datetime="2015-01-31T19:23:04+09:00" pubdate data-updated="true">31 Jan 2015</time>
+        
+
+<i class="glyphicon glyphicon-folder-close"></i><span class="categories">
+  
+    <a class='category' href='/blog/categories/linux/'>linux</a>
+  
+</span>
+
+
+        
+
+<i class="glyphicon glyphicon-tags"></i><span class="tags">
+  
+    <a class='tag' href='/blog/tags/ffmpeg/'>ffmpeg</a>, <a class='tag' href='/blog/tags/qsv/'>qsv</a>, <a class='tag' href='/blog/tags/x264/'>x264</a>
+  
+</span>
+
+
+        
+		<i class="glyphicon glyphicon-comment"></i><a href="/blog/2015/01/31/qsv-x264-linux-battle/#disqus_thread"
+             data-disqus-identifier="http://mzyy94.com/blog/2015/01/31/qsv-x264-linux-battle/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<div class="entry-content"><p>先日の記事、でLinuxでH.264の動画をエンコードできることを紹介しました。
+そのベンチマークをとってみました。QSVでのエンコードとlibx264を用いたエンコードの比較となります。</p>
+
+<p>今回エンコード時間の比較に用いた動画は以下のものを利用しました。</p>
+
+<p><em><a href="http://www.bigbuckbunny.org">Big Buck Bunny</a></em></p>
+
+<p><img src="/blog/resources/images/2015/01/31/big-buck-bunny.png" alt="Big Buck Bunny" /></p>
+
+<p>ここの、<code>big_buck_bunny_1080p_surround.avi</code>を以下の表のオプションでLibx264とQSVでのエンコードで変換し、比較をしてみました。</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:center;">項目 </th>
+<th style="text-align:center;"> 値</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">音声コーデック</td>
+<td style="text-align:center;"> コピー</td>
+</tr>
+<tr>
+<td style="text-align:center;">ビットレート</td>
+<td style="text-align:center;">2000kbps</td>
+</tr>
+<tr>
+<td style="text-align:center;">サイズ</td>
+<td style="text-align:center;"> 1280x720</td>
+</tr>
+<tr>
+<td style="text-align:center;">フレームレート</td>
+<td style="text-align:center;"> 29.97</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>このオプションで起動すると、<strong>ffmpeg -i big_buck_bunny_1080p_surround.avi -acodec copy -vcodec コーデック -b:v 2000k -s 1280x720 -r 30000/1001 -y 出力ファイル</strong>という起動オプションになります。</p>
+
+</div>
+  
+  
+    <footer>
+	<a rel="full-article" href="/blog/2015/01/31/qsv-x264-linux-battle/" class="btn btn-icon-left"><span>Read more</span></a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -812,76 +915,6 @@ Lempel-Ziv符号化で圧縮されたファイル(.gz)のダウンロードを�
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title boxed-green"><a href="/blog/2014/02/04/qi-battery-203z/">Qiで203Zを充電できるようにしてみた</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-
-
-
-
-<i class="glyphicon glyphicon-calendar"></i><time datetime="2014-02-04T08:47:16+09:00" pubdate data-updated="true">04 Feb 2014</time>
-        
-
-<i class="glyphicon glyphicon-folder-close"></i><span class="categories">
-  
-    <a class='category' href='/blog/categories/review/'>review</a>
-  
-</span>
-
-
-        
-
-<i class="glyphicon glyphicon-tags"></i><span class="tags">
-  
-    <a class='tag' href='/blog/tags/203z/'>203z</a>, <a class='tag' href='/blog/tags/qi/'>qi</a>
-  
-</span>
-
-
-        
-		<i class="glyphicon glyphicon-comment"></i><a href="/blog/2014/02/04/qi-battery-203z/#disqus_thread"
-             data-disqus-identifier="http://mzyy94.com/blog/2014/02/04/qi-battery-203z/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-<img src="/blog/resources/images/2014/2/4/DSC08069.JPG" alt="article image" class="main image"/>
-
-
-<div class="entry-content"><p>Qiという無接点充電の<em>事実上</em>標準規格なものがありまして、それを利用したモバイルルータの充電をしてみましたという日記です。</p>
-
-<p>デバイスをQiにて充電するには、Qi給電の機能をもとからもっているデバイスを購入するか、もしくは非対応デバイスをQi対応にさせるかの2択しかありません。</p>
-
-<p>今回Qi対応にしたいデバイスはモバイルルータのSoftBank 203Zです。出先でMac/iPadその他機器でインターネットに接続するために利用しているものです。バッテリーは結構もつのですが、それでも毎日充電しなければ一日中使うような日には持ちません。あの小さな小さなmicorUSBに毎晩のように上下を間違えて刺すこと数十日。さすがにうっとうしくなってきたのでmicroUSBを使わず充電できる方法を探りました。</p>
-
-</div>
-  
-  
-    <footer>
-	<a rel="full-article" href="/blog/2014/02/04/qi-battery-203z/" class="btn btn-icon-left"><span>Read more</span></a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="tf_pagination">
   <div class="inner">
     
@@ -1006,6 +1039,10 @@ Lempel-Ziv符号化で圧縮されたファイル(.gz)のダウンロードを�
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/12/21/linux-qsv-encode/">クリスマスなのでLinuxでQSVエンコードする</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/12/08/packetoon-after-that/">実践イカパケット解析のスライドテーマ</a>
       </li>
     
@@ -1019,10 +1056,6 @@ Lempel-Ziv符号化で圧縮されたファイル(.gz)のダウンロードを�
     
       <li class="post">
         <a href="/blog/2015/09/18/tductf-2015-digression/">TDUCTF 2015の運営をした話</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/08/08/pvr-chinachu-addon/">Kodi Chinachu PVRアドオンでRasPi2/Android TVをテレビに</a>
       </li>
     
   </ul>

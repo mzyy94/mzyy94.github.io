@@ -1,0 +1,737 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>クリスマスなのでLinuxでQSVエンコードする - 犬アイコンのみっきー</title>
+  <meta name="author" content="mzyy94">
+
+  
+  <meta name="description" content="こちらはDTV Advent Calendar 21日目の記事です。 みなさん録画データの管理はどうしていますか？
+視聴したら消す人もいれば、視聴しても残しておく人、視聴してない詰みTSがたくさんある人、いろいろあると思います。
+残しておけば不慮の事故がない限り、いつでも見返すことができますが、 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://mzyy94.com/blog/2015/12/21/linux-qsv-encode">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/blog/atom.xml" rel="alternate" title="犬アイコンのみっきー" type="application/atom+xml">
+  <!-- main JS libs -->
+  <script src="/javascripts/libs/modernizr.min.js"></script>
+  <script src="/javascripts/jquery-2.0.3.min.js"></script>
+  <script src="/javascripts/libs/jquery-ui.min.js"></script>
+  <script src="/javascripts/libs/bootstrap.min.js"></script>
+  <!-- Style CSS -->
+  <link href="/stylesheets/bootstrap.css" media="screen" rel="stylesheet">
+  <link href="/stylesheets/style.css" media="screen" rel="stylesheet">
+  <link href="/stylesheets/syntax.css" media="screen" rel="stylesheet">
+  <link href="/stylesheets/emoji.css" media="screen" rel="stylesheet">
+  <!-- scripts -->
+  <script src="/javascripts/general.js"></script>
+  <!-- custom input -->
+  <script src="/javascripts/jquery.customInput.js"></script>
+  <script type="text/javascript" src="/javascripts/custom.js"></script>
+  <!-- Placeholders -->
+  <script type="text/javascript" src="/javascripts/jquery.powerful-placeholder.min.js"></script>
+  <!-- Lightbox prettyPhoto -->
+  <link href="/stylesheets/prettyPhoto.css" rel="stylesheet">
+  <script src="/javascripts/jquery.prettyPhoto.js"></script>
+  <!-- CarouFredSel  -->
+  <script src="/javascripts/jquery.carouFredSel-6.2.1-packed.js"></script>
+  <!-- Progress Bars -->
+  <script src="/javascripts/progressbar.js"></script>
+  <!-- Calendar -->
+  <script src="/javascripts/jquery-ui.multidatespicker.js"></script>
+  <!-- range sliders -->
+  <script src="/javascripts/jquery.slider.bundle.js"></script>
+  <script src="/javascripts/jquery.slider.js"></script>
+  <link rel="stylesheet" href="/stylesheets/jslider.css">
+  <!-- Video Player -->
+  <link href="/stylesheets/video-js.css" rel="stylesheet">
+  <script src="/javascripts/video.js"></script>
+  <!-- Scroll Bars -->
+  <script src="/javascripts/jquery.mousewheel.js"></script>
+  <script src="/javascripts/jquery.jscrollpane.min.js"></script>
+
+<!--[if lt IE 9]><script src="/javascripts/respond.min.js"></script><![endif]-->
+<!--[if gte IE 9]>
+<style type="text/css">
+	.gradient {filter: none !important;}
+</style>
+<![endif]-->
+  <!--Fonts from Google"s Web font directory at https://google.com/webfonts -->
+
+<meta property="twitter:card" content="summary" />
+<meta property="twitter:site" content="mzyy94" />
+<meta property="twitter:url" content="http://mzyy94.com/blog/2015/12/21/linux-qsv-encode" />
+<meta property="twitter:title" content="クリスマスなのでLinuxでQSVエンコードする" />
+
+<meta property="twitter:image" content="http://mzyy94.com/blog/resources/images/2015/12/21/ffmpeg-cmd.png" />
+
+<meta property="twitter:description" content="こちらはDTV Advent Calendar 21日目の記事です。 みなさん録画データの管理はどうしていますか？
+視聴したら消す人もいれば、視聴しても残しておく人、視聴してない詰みTSがたくさんある人、いろいろあると思います。
+残しておけば不慮の事故がない限り、いつでも見返すことができますが、どんどんとHDDの空き容量が少なくなっていくのが現実です。 &hellip;" />
+
+<link href="https://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" />
+<link href="https://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" />
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-41944495-3']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body  >
+  <div class="container">
+  <div class="content">
+  <header class="row">
+    <nav id="topmenu" class="col-sm-12" role="navigation"><ul class="dropdown clearfix boxed boxed-blue">
+    <li class="menu-level-0"><a href="/">Home</a></li>
+  <li class="menu-level-0"><a href="/blog/">Blog</a></li>
+  <li class="menu-level-0"><a href="/service/">Service</a></li>
+  <li class="menu-level-0">
+  <a href="/about/">About</a>
+  <ul class="submenu-1">
+	  <li class="menu-level-1"><a href="/about/">About me</a></li>
+	  <li class="menu-level-1"><a href="/about/license.html">License</a></li>
+	  <li class="menu-level-1"><a href="/key/">Keys / Signatures</a></li>
+  </ul>
+  </li>
+
+  <li class="menu-level-0">
+    <a>Subscribe</a>
+	<ul class="submenu-1">
+  <li class="menu-level-1"><a href="/blog/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  <li class="menu-level-1"><a href="http://cloud.feedly.com/#subscription%2Ffeed%2Fhttp%3A%2F%2Fmzyy94.com%2Fblog%2Fatom.xml" rel="subscribe-feedly" title="subscribe on Feedly">Feedly</a></li>
+  
+  </ul>
+  
+  <li class="menu-search last">
+
+	<form action="https://www.google.com/search" id="searchForm" class="menu-search-form" method="get">
+		<fieldset role="search">
+			<input type="hidden" name="q" value="site:mzyy94.com" />
+			<input type="text" name="q" value="" results="0" class="menu-search-field" placeholder="Search the website" hidefocus="true" style="outline: none;">
+			<input type="submit" value="" class="btn menu-search-submit" name="search-send" hidefocus="true" style="outline: none;">
+		</fieldset>
+	</form>
+
+  </li>
+  
+</ul>
+</nav>
+  </header>
+  <header class="col-sm-12 boxed-red" role="banner"><hgroup>
+  
+  <h1><a href="/">犬アイコンのみっきー</a></h1>
+  
+</hgroup>
+
+</header>
+    <div class="row">
+      <main class="col-sm-9">
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title boxed-green">クリスマスなのでLinuxでQSVエンコードする</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+<i class="glyphicon glyphicon-calendar"></i><time datetime="2015-12-21T23:58:29+09:00" pubdate data-updated="true">21 Dec 2015</time>
+        
+
+<i class="glyphicon glyphicon-folder-close"></i><span class="categories">
+  
+    <a class='category' href='/blog/categories/linux/'>linux</a>
+  
+</span>
+
+
+        
+
+<i class="glyphicon glyphicon-tags"></i><span class="tags">
+  
+    <a class='tag' href='/blog/tags/ffmpeg/'>ffmpeg</a>, <a class='tag' href='/blog/tags/imss/'>imss</a>, <a class='tag' href='/blog/tags/qsv/'>qsv</a>, <a class='tag' href='/blog/tags/xeon/'>xeon</a>
+  
+</span>
+
+
+        
+		<i class="glyphicon glyphicon-comment"></i><a href="#disqus_thread"
+             data-disqus-identifier="http://mzyy94.com">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<img src="/blog/resources/images/2015/12/21/ffmpeg-cmd.png" alt="article image" class="main image"/>
+
+
+<div class="entry-content"><p>こちらは<a href="http://www.adventar.org/calendars/835">DTV Advent Calendar</a> 21日目の記事です。</p>
+
+<p>みなさん録画データの管理はどうしていますか？
+視聴したら消す人もいれば、視聴しても残しておく人、視聴してない詰みTSがたくさんある人、いろいろあると思います。
+残しておけば不慮の事故がない限り、いつでも見返すことができますが、どんどんとHDDの空き容量が少なくなっていくのが現実です。
+私は録画データは変換せずに取って置く人間なので、Disk fullで録画失敗した回数は数知れず、これまで2年間で10TB超の録画が溜まっています。
+年末の大掃除も兼ねて、いくつか録画データを削除したくもなかなか踏み切れず、結局空き容量は一つも増えていません。</p>
+
+<p>これでは年始の相棒スペシャルが録画できないので、録画データを消さずに空き容量を増やさなければなりません。
+そこで考えられるのが動画のエンコード。DTV Advent Calendar経由でこの記事に他取り付いた人にとっては当たり前のことかもしれませんが、録画データをH.264エンコードして保管することにしました。</p>
+
+<p>そこで検討する必要があるのがエンコード方法。
+地デジにおいてはx264を用いたソフトウェアエンコードが一般的なようですが、他にもNVidia製GPUを用いたnvencやIntel CPUに搭載のグラフィックプロセッサによるQuick Sync Video(QSV)などがあります。
+Linuxにおいてはffmpeg/x264のソフトウェアエンコードの方法ばかりがWebに蔓延する中、他の方法はほとんど取り上げられていません。寂しいです。</p>
+
+<p>前置きが長くなりましたが、LinuxでQSVエンコードする方法をご紹介します。</p>
+
+<!-- more -->
+
+
+<h1>FFmpegによるLinuxでのQSVエンコード</h1>
+
+<p>今年の頭に書いた記事でもLinuxでのQSVを取り上げました(参照: <a href="https://mzyy94.com/blog/2015/01/30/intel-qsv-on-linux/">Intel QSVのH.264エンコードをLinuxで！ - 犬アイコンのみっきー</a>)。しかしあれから約１年が経ち、いろいろと変わってきたので
+環境の再構築とパッケージの修正などを行いました。
+QSVエンコード環境の導入に関して必要なエンコーダーは、自分で用意する必要もなくなり、QSVを利用できる環境も大きく変わりました。</p>
+
+<p>今回紹介するバージョンでは以下の環境でのみ動作します。</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:center;">  項目名</th>
+<th style="text-align:center;"> 対応環境 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">  CPU   </td>
+<td style="text-align:center;"> Haswell/Broadwell Core iシリーズ, Xeon E3 v3/v4 with GPU </td>
+</tr>
+<tr>
+<td style="text-align:center;">  OS    </td>
+<td style="text-align:center;"> CentOS 7.1 </td>
+</tr>
+</tbody>
+</table>
+
+
+<h2>環境構築</h2>
+
+<p>今回構成するシステムは下図のようになっています。</p>
+
+<p><img src="/blog/resources/images/2015/12/21/recording-server.png" width="640" height="480"></p>
+
+<p>PT3とUSB ICカードリーダーをパススルーした<a href="https://github.com/kanreisa/Chinachu">Chinachu</a>環境に加えて、Intel HD GraphicsをパススルーしたQSVエンコード用のCentOSを<a href="https://pve.proxmox.com/">ProxMox VE</a>の上で動作させています。
+今回はQSVのお話なのでChinachuの環境構築の紹介はしません。</p>
+
+<h3>Intel HD Graphics Pass-through</h3>
+
+<p>昨年のLinux Advent CalendarにてIntel HD Graphics Pass-throughを取り上げましたが(参照：<a href="https://mzyy94.com/blog/2014/12/12/kvm-intel-hd-graphics-passthrough/">KVMでQSVするためIntel HD Graphicsパススルーするー</a>)、あれから1年が経ち色々と変わってきている部分があります。
+1年前は<a href="https://www.proxmox.com/">ProxMox</a> 3.2で構築していた仮想マシンも今では4.1となり、自前でカーネルをビルドする必要がなくなったことが大きな違いです。
+そのため、ProxMoxのカーネルはそのままに、Pass-through機能を有効にする設定をいじるだけでIntel HD Graphicsのパススルーができます。</p>
+
+<p>前回の方法では自前ビルドのカーネルで有効にしていたIOMMUの機能が、ProxMox 4.1の標準カーネルではデフォルト無効になっているので、有効にしてあげるように起動時パラメータを指定します。
+root権限で以下のように実行し、IOMMUを有効化します。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># sed -i -e 's/\(GRUB_CMDLINE_LINUX="\)\(.*"\)/\1intel_iommu=on \2/' /etc/default/grub
+</span><span class='line'># grub-mkconfig -o /boot/grub/grub.cfg
+</span><span class='line'># reboot</span></code></pre></td></tr></table></div></figure>
+
+
+<p>IOMMUが有効になれば、あとは仮想マシンの設定ファイルにIntel HD Graphicsをパススルーする記述を加えるのみです。
+全体的には以下のようなPorxMox仮想マシン設定ファイルが出来上がりました。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>bios: ovmf
+</span><span class='line'>boot: cdn
+</span><span class='line'>bootdisk: sata0
+</span><span class='line'>cores: 4
+</span><span class='line'>cpu: host
+</span><span class='line'>hostpci0: 00:02.0,pcie=1,rombar=on,x-vga=on
+</span><span class='line'>ide2: iso-image:iso/CentOS-7-x86_64-Minimal.iso,media=cdrom
+</span><span class='line'>machine: q35
+</span><span class='line'>memory: 4096
+</span><span class='line'>name: QSV
+</span><span class='line'>net0: e1000=66:63:63:25:51:27,bridge=vmbr0
+</span><span class='line'>numa: 0
+</span><span class='line'>ostype: l26
+</span><span class='line'>sata0: local:115/vm-115-disk-1.qcow2,size=32G
+</span><span class='line'>serial0: socket
+</span><span class='line'>smbios1: uuid=4b9f905b-66a5-4858-b1db-914bfd369aeb
+</span><span class='line'>sockets: 1</span></code></pre></td></tr></table></div></figure>
+
+
+<p>CentOSにてQSV対応カーネルをビルドする都合上、4コア割り当てていますが環境構築後は1コアに変更しても十分なパフォーマンスが発揮できます。
+あとはこのパススルーした仮想マシンにCentOS 7.1をインストールし、QSVエンコード環境を作っていきます。
+仮想マシンであろうがなかろうが続くQSV環境の導入に関する話で行うことは全く一緒なので、素のCentOS 7.1で行っているものとして読んでください。</p>
+
+<h2>Intel Media Server Studio</h2>
+
+<p>今年の頭に書いた記事でもIntel Media Server Studio(以下、MSS)を紹介しましたが、当時は数千ドルする有償SDKのみの公開だったため、試用期間しか利用できず、導入方法とエンコードの実験を行うだけでした。
+しかし、今年9月にMSSのアップデートがあり、バージョンR6の登場とともに無償のCommunity Editionが公開され、私的利用の範囲で無期限で利用することができるようになりました。
+今回はそれを導入し、QSVによる動画のH.264エンコードを行います。</p>
+
+<p><a href="https://software.intel.com/en-us/intel-media-server-studio">Intel® Media Server Studio | Intel® Developer Zone</a></p>
+
+<p><img src="/blog/resources/images/2015/12/21/get-mss.png" alt="Get Intel Media Server Studio" /></p>
+
+<p>手順は前に紹介した時のものとあまり大きくは変わらないのですが、今回もMSSのインストールスクリプトに少々バグがあります。
+文字でつらつらと説明するのも読者側からすればめんどくさいの一言で嫌われてしまう記事になってしまうので、MSSのインストールスクリプトを用意しました。</p>
+
+<p><a href="https://github.com/mzyy94/QSV-on-Linux"><strong>mzyy94/QSV-on-Linux on GitHub</strong></a></p>
+
+<p>README.mdを読み、スクリプトの内容を確認し、MSSを用意したら以下のようにコマンドを叩くとインストールされます。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ ./install-MSS.sh</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>FFmpegによるQSVエンコード</h2>
+
+<p>FFmpegもバージョンアップがあり、昨日2015/12/20にバージョン2.8.4が公開されました。
+この1年のバージョンアップの間に標準でQSVエンコーダーが搭載され手動で追加する必要がなくなりました。
+しかし今回導入したMSS 2015 R6では必要なファイルが不足しているため、いくつか手を加えなければいけません。
+これもまた何をするかを事細かに説明するよりかはスクリプト実行で導入できた方が楽なので、よしなにしてくれるものを用意してあります。</p>
+
+<p>先ほどのリポジトリに移動し、以下のようにすることでQSVに対応したFFmpegができあがります。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ ./build-ffmpeg.sh</span></code></pre></td></tr></table></div></figure>
+
+
+<p>他のエンコーダー/デコーダーが必要な場合は適宜修正して導入してください。</p>
+
+<h2>地デジをエンコード</h2>
+
+<p>DTV(Digital TeleVision = デジタルテレビ放送) Advent Calendarのネタなので、地上デジタル放送の録画TSファイルをエンコードしてやっと完結です。
+ということで、2015/12/19放映のご注文はうさぎですか??第11羽をエンコードしてみます。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ ffmpeg -y -i gr23608-18yd.m2ts -f mp4 -vcodec h264_qsv -vprofile main -level 4.1 -s 1280x720 -r 24 -q 20 -acodec copy gochiusa11.mp4</span></code></pre></td></tr></table></div></figure>
+
+
+<p>と、エンコードしてみたものの、ProxMox 4.xのバグらしいものを踏んでしまい、ホストOSがｶｰﾈﾙﾊﾟﾆｯｸになってしまったために、エンコードが終了しませんでした。
+後日ベアメタルマシンに導入して試してみます。</p>
+
+<h3>結果</h3>
+
+<p>約9分でQSVによるH.264エンコードが終わりました。</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:center;"> 項目 </th>
+<th style="text-align:center;"> 元ファイル </th>
+<th style="text-align:center;"> 変換後ファイル </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;"> 長さ </td>
+<td style="text-align:center;"> 29:56 </td>
+<td style="text-align:center;"> 29:56(カットなし) </td>
+</tr>
+<tr>
+<td style="text-align:center;"> ファイルサイズ </td>
+<td style="text-align:center;"> 1963490988 bytes (1.87GB) </td>
+<td style="text-align:center;"> 62257131 bytes (594MB)  </td>
+</tr>
+<tr>
+<td style="text-align:center;"> 解像度 </td>
+<td style="text-align:center;"> 1440x1088 </td>
+<td style="text-align:center;"> 1280x738 </td>
+</tr>
+<tr>
+<td style="text-align:center;"> フレームレート </td>
+<td style="text-align:center;"> 29.97 </td>
+<td style="text-align:center;"> 24.00 </td>
+</tr>
+<tr>
+<td style="text-align:center;"> 動画コーデック </td>
+<td style="text-align:center;"> MPEG-2 </td>
+<td style="text-align:center;"> H.264 </td>
+</tr>
+<tr>
+<td style="text-align:center;"> 音声コーデック </td>
+<td style="text-align:center;"> AAC </td>
+<td style="text-align:center;"> AAC(無変換) </td>
+</tr>
+</tbody>
+</table>
+
+
+<h4>元ファイル(MPEG-2)</h4>
+
+<p><a href="/blog/resources/images/2015/12/21/syaro-original.png"><img src="/blog/resources/images/2015/12/21/syaro-original.png" alt="シャロシコ Original" /></a></p>
+
+<h4>変換後ファイル(H.264)</h4>
+
+<p><a href="/blog/resources/images/2015/12/21/syaro-qsv.png"><img src="/blog/resources/images/2015/12/21/syaro-qsv.png" alt="シャロシコ QSV" /></a></p>
+
+<hr />
+
+<p>以上、DTV Advent Calendar 21日目の記事でした。
+明日は<a href="https://twitter.com/rndomhack">rndomhack</a>さんです。</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard"><i class="glyphicon glyphicon-user"></i><span class="fn">mzyy94</span></span>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+<i class="glyphicon glyphicon-calendar"></i><time datetime="2015-12-21T23:58:29+09:00" pubdate data-updated="true">21 Dec 2015</time>
+      
+
+<i class="glyphicon glyphicon-folder-close"></i><span class="categories">
+  
+    <a class='category' href='/blog/categories/linux/'>linux</a>
+  
+</span>
+
+
+      
+
+<i class="glyphicon glyphicon-tags"></i><span class="tags">
+  
+    <a class='tag' href='/blog/tags/ffmpeg/'>ffmpeg</a>, <a class='tag' href='/blog/tags/imss/'>imss</a>, <a class='tag' href='/blog/tags/qsv/'>qsv</a>, <a class='tag' href='/blog/tags/xeon/'>xeon</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="widget-container widget-social">
+	<ul class="clearfix">
+  
+
+  <!--li class="social-twitter"><a href="https://twitter.com/intent/tweet?original_referer=http://mzyy94.com/blog/2015/12/21/linux-qsv-encode/&text=クリスマスなのでLinuxでQSVエンコードする%20-%20犬アイコンのみっきー&tw_p=tweetbutton&url=http://mzyy94.com/blog/2015/12/21/linux-qsv-encode/&via=mzyy94"><i>Tweet</i></a></li-->
+
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://mzyy94.com/blog/2015/12/21/linux-qsv-encode/" data-via="mzyy94" data-counturl="http://mzyy94.com/blog/2015/12/21/linux-qsv-encode/" >Tweet</a>
+  
+  
+  <!-- li class="social-google"><a href="#"><i>Google</i></a></li -->
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+  <!-- li class="social-facebook"><a href="#"><i>Facebook</i></a></li -->
+  <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+  </ul>
+</div>
+
+    
+    <div>
+      
+	  <a class="btn btn-icon-left btn-arrow-left" href="/blog/2015/12/08/packetoon-after-that/" title="Previous Post: 実践イカパケット解析のスライドテーマ"><span>実践イカパケット解析のスライドテーマ</span></a>
+      
+      
+    </div>
+  </footer>
+</article>
+
+  <section class="comment">
+    <h1 class="boxed-red">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</main>
+
+<aside class="col-sm-3">
+  
+    <div class="widget-container widget-avatar boxed boxed-yellow">
+	<div class="inner">
+		<h5>mzyy94</h5>
+		<span class="subtitle">Network</span>
+		<div class="avatar">
+			<img src="/images/avatar.png" alt="avatar icon" />
+		</div>
+		<a href="/about/" class="btn btn-brown btn-follow">
+			<span>About me</span>
+		</a>
+	</div>
+</div>
+<div class="widget-container widget_calendar boxed boxed-red">
+	<div class="inner">
+		<input type="text" name="date_departure" class="inputField" id="date_departure">
+	</div>
+</div>
+<script>
+	// <![CDATA[
+	$(document).ready(function() {
+		var posts = {};
+		var datelist = [];
+		$.getJSON('/blog/posts.json', function(data){
+			var dp = data.posts;
+			for(var i = 0, limit = dp.length; i < limit; i++){
+				var date = new Date(dp[i].date);
+				posts[dp[i].date] = {title:dp[i].title,
+					url: '/blog/' + date.getFullYear() + '/' + ('0' + (date.getMonth() + 1)).slice(-2) + '/' + ('0' + date.getDate()).slice(-2) + '/' + dp[i].url + '/'}
+				datelist.push(dp[i].date);
+			}
+			assignCalendar('#date_departure');
+			refreshDate();
+		});
+
+
+		function assignCalendar(id){
+			$('<div class="calendar" />')
+				.insertAfter( $(id) )
+				.datepicker({
+					beforeShowDay: function(date){
+						var string = $.datepicker.formatDate('dd M yy', date);
+						return [ datelist.indexOf(string) != -1 ]
+					},
+					dateFormat: 'dd M yy',
+					minDate: new Date(datelist[datelist.length - 1]),
+					maxDate: new Date(),
+					maxPicks: 1,
+					altField: id,
+					firstDay: 0,
+					showOtherMonths: true,
+					onSelect: function(date){
+						window.location.href = posts[date].url;
+					},
+					onChangeMonthYear: refreshDate
+				}).prev().hide();
+		}
+
+		var month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+		function refreshDate(){
+			setTimeout(function(){
+				$('a.ui-state-default').each(function(num){
+					var yy = $(this).parent().attr('data-year');
+					var M = month[$(this).parent().attr('data-month')];
+					var dd = ('0' + $(this).text()).slice(-2);
+					var idx = dd + ' ' + M + ' ' + yy;
+					$(this).attr('data-title', posts[idx].title);
+					$(this).attr('href', posts[idx].url);
+				});
+			},10);
+		}
+	});
+	// ]]>
+</script>
+<section class="widget-container widget-recently boxed">
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/12/21/linux-qsv-encode/">クリスマスなのでLinuxでQSVエンコードする</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/12/08/packetoon-after-that/">実践イカパケット解析のスライドテーマ</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/12/01/tomorinao/">友利奈緒「いままでとこれから」</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/10/14/emoji-commit-message/">GitHubで絵文字コミットを続けてみて有用だったEmojiまとめ</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/09/18/tductf-2015-digression/">TDUCTF 2015の運営をした話</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section class="widget-container widget-github boxed">
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'mzyy94',
+            count: 3,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+<div class="widget-container boxed boxed-blue">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- sidebar-small -->
+<ins class="adsbygoogle"
+	style="display:inline-block;width:120px;height:240px"
+	data-ad-client="ca-pub-5429584698977304"
+	data-ad-slot="3454316875"></ins>
+<!-- sidebar-small2 -->
+<ins class="adsbygoogle"
+	style="display:inline-block;width:120px;height:240px"
+	data-ad-client="ca-pub-5429584698977304"
+	data-ad-slot="6626453278"></ins>
+<script>
+	(adsbygoogle = window.adsbygoogle || []).push({});
+	(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'mzyy94blog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://mzyy94.com/blog/2015/12/21/linux-qsv-encode/';
+        var disqus_url = 'http://mzyy94.com/blog/2015/12/21/linux-qsv-encode/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+  </div>
+  <footer class="boxed-yellow" role="contentinfo"><p>
+  Copyright &copy; 2015 - mzyy94 -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> -
+  <span class="credit">Designed with <a href="http://pixelkit.com/kits/flat-ui-kit">Flat UI Kit | Modern Touch</a></span> -
+  <span>Licensed under a <a rel="license" href="https://opensource.org/licenses/mit-license.html">MIT License</a> and <a rel="license" href="https://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" src="https://i.creativecommons.org/l/by/3.0/80x15.png" /></a><span>
+</p>
+<script>
+	$(function () {
+		$("a[href^='http'], a[href^='ftp']").click(function () {
+			if ($(this).attr("target") === undefined) 
+			$(this).attr("target", "_blank");
+		});
+	});
+</script>
+
+</footer>
+  </div>
+</body>
+</html>

@@ -9,7 +9,9 @@
   <meta name="author" content="mzyy94">
 
   
-  <meta name="description" content="この記事はSplatoon Advent Calendarの8日目の記事です。 こんにちは、ウデマエA+のボーイです。昨日のmzsmさんの記事末尾にこんなことが書いてありました。 明日のSplatoon Advent Calendarは、Wii &hellip;">
+  <meta name="description" content="こちらはDTV Advent Calendar 21日目の記事です。 みなさん録画データの管理はどうしていますか？
+視聴したら消す人もいれば、視聴しても残しておく人、視聴してない詰みTSがたくさんある人、いろいろあると思います。
+残しておけば不慮の事故がない限り、いつでも見返すことができますが、 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -72,7 +74,9 @@
 <meta property="twitter:url" content="http://mzyy94.com/blog" />
 <meta property="twitter:title" content="犬アイコンのみっきー" />
 
-<meta property="twitter:description" content="この記事はSplatoon Advent Calendarの8日目の記事です。 こんにちは、ウデマエA+のボーイです。昨日のmzsmさんの記事末尾にこんなことが書いてありました。 明日のSplatoon Advent Calendarは、Wii Uを柚子胡椒まみれにして故障させてしまうという不運にもめげずにイカパケット解析をした話をみっきー氏が書いてくれるようです。 &hellip;" />
+<meta property="twitter:description" content="こちらはDTV Advent Calendar 21日目の記事です。 みなさん録画データの管理はどうしていますか？
+視聴したら消す人もいれば、視聴しても残しておく人、視聴してない詰みTSがたくさんある人、いろいろあると思います。
+残しておけば不慮の事故がない限り、いつでも見返すことができますが、どんどんとHDDの空き容量が少なくなっていくのが現実です。 &hellip;" />
 
 <link href="https://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" />
 <link href="https://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" />
@@ -143,6 +147,87 @@
     <div class="row">
       <main class="col-sm-9">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title boxed-green"><a href="/blog/2015/12/21/linux-qsv-encode/">クリスマスなのでLinuxでQSVエンコードする</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+<i class="glyphicon glyphicon-calendar"></i><time datetime="2015-12-21T23:58:29+09:00" pubdate data-updated="true">21 Dec 2015</time>
+        
+
+<i class="glyphicon glyphicon-folder-close"></i><span class="categories">
+  
+    <a class='category' href='/blog/categories/linux/'>linux</a>
+  
+</span>
+
+
+        
+
+<i class="glyphicon glyphicon-tags"></i><span class="tags">
+  
+    <a class='tag' href='/blog/tags/ffmpeg/'>ffmpeg</a>, <a class='tag' href='/blog/tags/imss/'>imss</a>, <a class='tag' href='/blog/tags/qsv/'>qsv</a>, <a class='tag' href='/blog/tags/xeon/'>xeon</a>
+  
+</span>
+
+
+        
+		<i class="glyphicon glyphicon-comment"></i><a href="/blog/2015/12/21/linux-qsv-encode/#disqus_thread"
+             data-disqus-identifier="http://mzyy94.com/blog/2015/12/21/linux-qsv-encode/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<img src="/blog/resources/images/2015/12/21/ffmpeg-cmd.png" alt="article image" class="main image"/>
+
+
+<div class="entry-content"><p>こちらは<a href="http://www.adventar.org/calendars/835">DTV Advent Calendar</a> 21日目の記事です。</p>
+
+<p>みなさん録画データの管理はどうしていますか？
+視聴したら消す人もいれば、視聴しても残しておく人、視聴してない詰みTSがたくさんある人、いろいろあると思います。
+残しておけば不慮の事故がない限り、いつでも見返すことができますが、どんどんとHDDの空き容量が少なくなっていくのが現実です。
+私は録画データは変換せずに取って置く人間なので、Disk fullで録画失敗した回数は数知れず、これまで2年間で10TB超の録画が溜まっています。
+年末の大掃除も兼ねて、いくつか録画データを削除したくもなかなか踏み切れず、結局空き容量は一つも増えていません。</p>
+
+<p>これでは年始の相棒スペシャルが録画できないので、録画データを消さずに空き容量を増やさなければなりません。
+そこで考えられるのが動画のエンコード。DTV Advent Calendar経由でこの記事に他取り付いた人にとっては当たり前のことかもしれませんが、録画データをH.264エンコードして保管することにしました。</p>
+
+<p>そこで検討する必要があるのがエンコード方法。
+地デジにおいてはx264を用いたソフトウェアエンコードが一般的なようですが、他にもNVidia製GPUを用いたnvencやIntel CPUに搭載のグラフィックプロセッサによるQuick Sync Video(QSV)などがあります。
+Linuxにおいてはffmpeg/x264のソフトウェアエンコードの方法ばかりがWebに蔓延する中、他の方法はほとんど取り上げられていません。寂しいです。</p>
+
+<p>前置きが長くなりましたが、LinuxでQSVエンコードする方法をご紹介します。</p>
+
+</div>
+  
+  
+    <footer>
+	<a rel="full-article" href="/blog/2015/12/21/linux-qsv-encode/" class="btn btn-icon-left"><span>Read more</span></a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -852,92 +937,6 @@ MacBook Airとコーヒーと犬が描かれていたアイコンをここ数年
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title boxed-green"><a href="/blog/2015/04/16/netagent-mondai10/">ネットエージェント最終面接問題 Write-up エクストリームCTF編</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-
-
-
-
-<i class="glyphicon glyphicon-calendar"></i><time datetime="2015-04-16T00:13:43+09:00" pubdate data-updated="true">16 Apr 2015</time>
-        
-
-<i class="glyphicon glyphicon-folder-close"></i><span class="categories">
-  
-    <a class='category' href='/blog/categories/ctf/'>ctf</a>
-  
-</span>
-
-
-        
-
-<i class="glyphicon glyphicon-tags"></i><span class="tags">
-  
-    <a class='tag' href='/blog/tags/netagent/'>netagent</a>
-  
-</span>
-
-
-        
-		<i class="glyphicon glyphicon-comment"></i><a href="/blog/2015/04/16/netagent-mondai10/#disqus_thread"
-             data-disqus-identifier="http://mzyy94.com/blog/2015/04/16/netagent-mondai10/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-
-<div class="entry-content"><p>ネットエージェントのいきなり最終面接問題を解いたのでWrite-upです。</p>
-
-<ul>
-<li><a href="http://www.netagent.co.jp/recruit/newgraduates_2016.html">2016年度 新卒採用｜ネットエージェント株式会社</a></li>
-</ul>
-
-
-<p>これまでmondai1からmondai9までは、mondaiとOS XやLinux、Windowsマシンが手元にあれば解く事ができていました。
-しかしmondai10はそうはいきません。mondaiが手元にないのです。mondaiを入手しなければいけないのです。
-某所で10分で解けたと言っていた人は、きっと某せんせーみたいにマッハ20で移動できるのでしょう。</p>
-
-<p>ところで、こんな楽しい体験をさせてくれたmondaiを少しでもたくさんの人に知ってもらおうと、学内のLT大会で以下のように発表してきました。</p>
-
-<iframe src="//www.slideshare.net/slideshow/embed_code/47019316" width="425" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
-
-
-<p> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/mzyy94/ctf-coinslt" title="CTFの話 - coinsLT #10" target="_blank">CTFの話 - coinsLT #10</a> </strong> from <strong><a href="//www.slideshare.net/mzyy94" target="_blank">Yuki Mizuno</a></strong> </div></p>
-
-<p>この発表では、この記事の内容から抜粋する形で、最後のmondai10を解く楽しさと、それによって得た経験を紹介してきました。
-よろしければご覧になってみてください。</p>
-
-<p>さて、一昨々日から始まったネットエージェント最終面接問題のWrite-upもこれで最終回です。
-<a href="/blog/2015/04/15/netagent-mondai7-9/">昨日のmondai9のWrite-up</a>に続き、最後のmondai10のWrite-upです。</p>
-
-</div>
-  
-  
-    <footer>
-	<a rel="full-article" href="/blog/2015/04/16/netagent-mondai10/" class="btn btn-icon-left"><span>Read more</span></a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="tf_pagination">
   <div class="inner">
     
@@ -1060,6 +1059,10 @@ MacBook Airとコーヒーと犬が描かれていたアイコンをここ数年
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/12/21/linux-qsv-encode/">クリスマスなのでLinuxでQSVエンコードする</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/12/08/packetoon-after-that/">実践イカパケット解析のスライドテーマ</a>
       </li>
     
@@ -1073,10 +1076,6 @@ MacBook Airとコーヒーと犬が描かれていたアイコンをここ数年
     
       <li class="post">
         <a href="/blog/2015/09/18/tductf-2015-digression/">TDUCTF 2015の運営をした話</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/08/08/pvr-chinachu-addon/">Kodi Chinachu PVRアドオンでRasPi2/Android TVをテレビに</a>
       </li>
     
   </ul>

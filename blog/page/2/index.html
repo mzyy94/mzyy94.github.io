@@ -9,7 +9,7 @@
   <meta name="author" content="mzyy94">
 
   
-  <meta name="description" content="あのネットエージェントのいきなり最終面接問題を解いたのでWrite-upを書きました。 2016年度 新卒採用｜ネットエージェント株式会社 これまでのmondaiはLinuxやOS Xがあれば解くことができていましたが、mondai7からはWindowsの実行ファイル形式やMicrosoft &hellip;">
+  <meta name="description" content="ネットエージェントのいきなり最終面接問題を解いたのでWrite-upです。 2016年度 新卒採用｜ネットエージェント株式会社 これまでmondai1からmondai9までは、mondaiとOS XやLinux、Windowsマシンが手元にあれば解く事ができていました。 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -72,7 +72,8 @@
 <meta property="twitter:url" content="http://mzyy94.com/blog/page/2" />
 <meta property="twitter:title" content="犬アイコンのみっきー" />
 
-<meta property="twitter:description" content="あのネットエージェントのいきなり最終面接問題を解いたのでWrite-upを書きました。 2016年度 新卒採用｜ネットエージェント株式会社 これまでのmondaiはLinuxやOS Xがあれば解くことができていましたが、mondai7からはWindowsの実行ファイル形式やMicrosoft Officeドキュメントが登場したりと、そろそろWindowsがない環境には手厳しい問題となってきました &hellip;" />
+<meta property="twitter:description" content="ネットエージェントのいきなり最終面接問題を解いたのでWrite-upです。 2016年度 新卒採用｜ネットエージェント株式会社 これまでmondai1からmondai9までは、mondaiとOS XやLinux、Windowsマシンが手元にあれば解く事ができていました。
+しかしmondai10はそうはいきません。mondaiが手元にないのです。mondaiを入手しなければいけないのです。 &hellip;" />
 
 <link href="https://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" />
 <link href="https://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" />
@@ -143,6 +144,92 @@
     <div class="row">
       <main class="col-sm-9">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title boxed-green"><a href="/blog/2015/04/16/netagent-mondai10/">ネットエージェント最終面接問題 Write-up エクストリームCTF編</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+<i class="glyphicon glyphicon-calendar"></i><time datetime="2015-04-16T00:13:43+09:00" pubdate data-updated="true">16 Apr 2015</time>
+        
+
+<i class="glyphicon glyphicon-folder-close"></i><span class="categories">
+  
+    <a class='category' href='/blog/categories/ctf/'>ctf</a>
+  
+</span>
+
+
+        
+
+<i class="glyphicon glyphicon-tags"></i><span class="tags">
+  
+    <a class='tag' href='/blog/tags/netagent/'>netagent</a>
+  
+</span>
+
+
+        
+		<i class="glyphicon glyphicon-comment"></i><a href="/blog/2015/04/16/netagent-mondai10/#disqus_thread"
+             data-disqus-identifier="http://mzyy94.com/blog/2015/04/16/netagent-mondai10/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+
+<div class="entry-content"><p>ネットエージェントのいきなり最終面接問題を解いたのでWrite-upです。</p>
+
+<ul>
+<li><a href="http://www.netagent.co.jp/recruit/newgraduates_2016.html">2016年度 新卒採用｜ネットエージェント株式会社</a></li>
+</ul>
+
+
+<p>これまでmondai1からmondai9までは、mondaiとOS XやLinux、Windowsマシンが手元にあれば解く事ができていました。
+しかしmondai10はそうはいきません。mondaiが手元にないのです。mondaiを入手しなければいけないのです。
+某所で10分で解けたと言っていた人は、きっと某せんせーみたいにマッハ20で移動できるのでしょう。</p>
+
+<p>ところで、こんな楽しい体験をさせてくれたmondaiを少しでもたくさんの人に知ってもらおうと、学内のLT大会で以下のように発表してきました。</p>
+
+<iframe src="//www.slideshare.net/slideshow/embed_code/47019316" width="425" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
+
+
+<p> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/mzyy94/ctf-coinslt" title="CTFの話 - coinsLT #10" target="_blank">CTFの話 - coinsLT #10</a> </strong> from <strong><a href="//www.slideshare.net/mzyy94" target="_blank">Yuki Mizuno</a></strong> </div></p>
+
+<p>この発表では、この記事の内容から抜粋する形で、最後のmondai10を解く楽しさと、それによって得た経験を紹介してきました。
+よろしければご覧になってみてください。</p>
+
+<p>さて、一昨々日から始まったネットエージェント最終面接問題のWrite-upもこれで最終回です。
+<a href="/blog/2015/04/15/netagent-mondai7-9/">昨日のmondai9のWrite-up</a>に続き、最後のmondai10のWrite-upです。</p>
+
+</div>
+  
+  
+    <footer>
+	<a rel="full-article" href="/blog/2015/04/16/netagent-mondai10/" class="btn btn-icon-left"><span>Read more</span></a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -794,109 +881,6 @@ Raspbmc改めOSMCで地デジ視聴をする方法をまとめます。</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title boxed-green"><a href="/blog/2015/01/31/qsv-x264-linux-battle/">LinuxでQSVとH.264のエンコード対決</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-
-
-
-
-<i class="glyphicon glyphicon-calendar"></i><time datetime="2015-01-31T19:23:04+09:00" pubdate data-updated="true">31 Jan 2015</time>
-        
-
-<i class="glyphicon glyphicon-folder-close"></i><span class="categories">
-  
-    <a class='category' href='/blog/categories/linux/'>linux</a>
-  
-</span>
-
-
-        
-
-<i class="glyphicon glyphicon-tags"></i><span class="tags">
-  
-    <a class='tag' href='/blog/tags/ffmpeg/'>ffmpeg</a>, <a class='tag' href='/blog/tags/qsv/'>qsv</a>, <a class='tag' href='/blog/tags/x264/'>x264</a>
-  
-</span>
-
-
-        
-		<i class="glyphicon glyphicon-comment"></i><a href="/blog/2015/01/31/qsv-x264-linux-battle/#disqus_thread"
-             data-disqus-identifier="http://mzyy94.com/blog/2015/01/31/qsv-x264-linux-battle/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-
-<div class="entry-content"><p>先日の記事、でLinuxでH.264の動画をエンコードできることを紹介しました。
-そのベンチマークをとってみました。QSVでのエンコードとlibx264を用いたエンコードの比較となります。</p>
-
-<p>今回エンコード時間の比較に用いた動画は以下のものを利用しました。</p>
-
-<p><em><a href="http://www.bigbuckbunny.org">Big Buck Bunny</a></em></p>
-
-<p><img src="/blog/resources/images/2015/01/31/big-buck-bunny.png" alt="Big Buck Bunny" /></p>
-
-<p>ここの、<code>big_buck_bunny_1080p_surround.avi</code>を以下の表のオプションでLibx264とQSVでのエンコードで変換し、比較をしてみました。</p>
-
-<table>
-<thead>
-<tr>
-<th style="text-align:center;">項目 </th>
-<th style="text-align:center;"> 値</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center;">音声コーデック</td>
-<td style="text-align:center;"> コピー</td>
-</tr>
-<tr>
-<td style="text-align:center;">ビットレート</td>
-<td style="text-align:center;">2000kbps</td>
-</tr>
-<tr>
-<td style="text-align:center;">サイズ</td>
-<td style="text-align:center;"> 1280x720</td>
-</tr>
-<tr>
-<td style="text-align:center;">フレームレート</td>
-<td style="text-align:center;"> 29.97</td>
-</tr>
-</tbody>
-</table>
-
-
-<p>このオプションで起動すると、<strong>ffmpeg -i big_buck_bunny_1080p_surround.avi -acodec copy -vcodec コーデック -b:v 2000k -s 1280x720 -r 30000/1001 -y 出力ファイル</strong>という起動オプションになります。</p>
-
-</div>
-  
-  
-    <footer>
-	<a rel="full-article" href="/blog/2015/01/31/qsv-x264-linux-battle/" class="btn btn-icon-left"><span>Read more</span></a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="tf_pagination">
   <div class="inner">
     
@@ -1021,6 +1005,10 @@ Raspbmc改めOSMCで地デジ視聴をする方法をまとめます。</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/12/21/linux-qsv-encode/">クリスマスなのでLinuxでQSVエンコードする</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/12/08/packetoon-after-that/">実践イカパケット解析のスライドテーマ</a>
       </li>
     
@@ -1034,10 +1022,6 @@ Raspbmc改めOSMCで地デジ視聴をする方法をまとめます。</p>
     
       <li class="post">
         <a href="/blog/2015/09/18/tductf-2015-digression/">TDUCTF 2015の運営をした話</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/08/08/pvr-chinachu-addon/">Kodi Chinachu PVRアドオンでRasPi2/Android TVをテレビに</a>
       </li>
     
   </ul>
