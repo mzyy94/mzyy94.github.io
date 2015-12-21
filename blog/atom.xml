@@ -4,7 +4,7 @@
   <title><![CDATA[犬アイコンのみっきー]]></title>
   <link href="http://mzyy94.com/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2015-12-22T00:12:19+09:00</updated>
+  <updated>2015-12-22T00:23:02+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -181,7 +181,7 @@ root権限で以下のように実行し、IOMMUを有効化します。</p>
 
 
 <p>と、エンコードしてみたものの、ProxMox 4.xのバグらしいものを踏んでしまい、ホストOSがｶｰﾈﾙﾊﾟﾆｯｸになってしまったために、エンコードが終了しませんでした。
-後日ベアメタルマシンに導入して試してみます。</p>
+なので投稿日の夕方になってベアメタルマシンに導入して試しています（故にAdvent Calendarに間に合わなカッタ）。</p>
 
 <h3>結果</h3>
 
