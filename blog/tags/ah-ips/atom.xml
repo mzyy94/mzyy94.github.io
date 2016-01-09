@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: ah-ips | 犬アイコンのみっきー]]></title>
+  <link href="http://mzyy94.com/blog/tags/ah-ips/atom.xml" rel="self"/>
+  <link href="http://mzyy94.com/"/>
+  <updated>2016-01-10T05:00:10+09:00</updated>
+  <id>http://mzyy94.com/</id>
+  <author>
+    <name><![CDATA[mzyy94]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[42インチのAH-IPS 4Kディスプレイ買ってみた]]></title>
+    <link href="http://mzyy94.com/blog/2016/01/10/42inch-4k-display/"/>
+    <updated>2016-01-10T05:00:00+09:00</updated>
+    <id>http://mzyy94.com/blog/2016/01/10/42inch-4k-display</id>
+    <content type="html"><![CDATA[<p>年が明け、2016年。27インチのWQHD(2560x1440)ディスプレイを使い続けていたものの、情報量が少ないことが気になり始めました。
+2年ほど前から使い始めていたDELLのU2713HM自体には大きな不満もなかったものの、巷で聞こえる「4Kはいいぞ」の声に触発されて徐々に不満を感じ始めました。
+年も変わるのでこの機にがらっと入れ替えてしまおうと思い、WQHDからUHD(4K)に買い換えました。</p>
+
+<p>年末年始を費やして情報を集め、とある4Kディスプレイを買うまでの話、買ったあとの満足度を伝えていきます。</p>
+
+<!-- more -->
+
+
+<h2>情報量の多い4K</h2>
+
+<p>4Kディスプレイはいろいろなメーカーが展開しており、いくつも選択肢があります。
+しかし、多くのメーカーが販売している4Kディスプレイのサイズは27から32インチと、
+解像度の割には小さなサイズのものしかバリエーションを取り揃えてなかったりします。
+27インチWQHDディスプレイで情報量不足を感じていたのにもかかわらず、
+同じサイズで4Kを出されても目を酷使しないと情報量が解像度分だけ大きくなることはありません。
+27インチで4Kということは、
+せっかく4Kにしても27インチに10ピクセルのフォントサイズでははっきり見えたものではありません（※個人の感想です）。</p>
+
+<p>27インチでWQHDなので今までは109ppiありました。この密度に慣れてしまったので、
+109ppi前後の密度の4Kディスプレイに交換しないと情報量は増えないのです（※個人の感想です）。
+109ppi前後の画素密度で4Kディスプレイを求めるとなると、サイズは41インチ前後となります。
+そのため、41インチ前後に対象を絞って4Kディスプレイを探し始めました。</p>
+
+<h2>41インチ前後の4Kディスプレイ</h2>
+
+<p>41インチ前後の4Kディスプレイで日本でトップに位置する売り上げを叩き出しているものに、Philipsの<a href="http://www.amazon.co.jp/PHILIPS-40%E5%9E%8B4K%E5%AF%BE%E5%BF%9C%E3%83%AF%E3%82%A4%E3%83%89%E6%B6%B2%E6%99%B6%E3%83%87%E3%82%A3%E3%82%B9%E3%83%97%E3%83%AC%E3%82%A4-5%E5%B9%B4%E9%96%93%E3%83%95%E3%83%AB%E4%BF%9D%E8%A8%BC-BDM4065UC-11/dp/B00P9VXD9A/ref=sr_1_1?ie=UTF8&amp;qid=1452263864&amp;sr=8-1&amp;tag=mzyy-22">BDM4065UC/11</a>があります。</p>
+
+<p><a rel="nofollow" href="http://www.amazon.co.jp/gp/product/B00P9VXD9A/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=B00P9VXD9A&linkCode=as2&tag=mzyy-22"><img border="0" src="http://ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B00P9VXD9A&Format=_SL250_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22" ></a><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=mzyy-22&l=as2&o=9&a=B00P9VXD9A" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></p>
+
+<p>2014年からのロングセラー商品となっており、購入の決め手となるのはなんといっても価格。40インチサイズの情報量の多い4Kディスプレイを7万円台で購入できるとあって、長くコンスタントに売れている機種のようです。しかし、少し気になる点がありました。パネルの種類です。</p>
+
+<h2>目に優しい4Kディスプレイ</h2>
+
+<p>液晶ディスプレイのパネルにはいくつか種類があります。詳しいパネルの違いに関しては、古い記事ですが以下のサイトにて詳しく紹介されています。</p>
+
+<p><a href="http://www.eizo.co.jp/eizolibrary/other/itmedia01_04/">第4回 TN？VA？IPS？──液晶パネル駆動方式の仕組みと特徴を知ろう | EIZO株式会社</a></p>
+
+<p>FHD(1920x1080)ディスプレイが出揃い始めた頃、TNパネルやIPSパネルの良し悪しで議論が相次いでいましたが、程なくしてほとんどのパネルがIPSへと収束していきました。
+4Kディスプレイもで始めた頃はTNパネル・IPSパネル両種が市場に出回っていましたが、現在はIPSに落ち着いているようです。
+しかしこれは、4Kディスプレイ市場の過半数を占める27から32インチ帯での話です。
+41インチ前後の4Kディスプレイでは話が変わってきます。
+このサイズ帯では、ほとんどがVAパネルとなっているのです。
+VAパネルも年々進化を遂げており、視野角などの問題もほとんど解消されているようです。</p>
+
+<p>パネルの種類はそれぞれの好みが分かれる点ですが、DELLのIPSパネルを使い続けていて目に優しく疲れにくかったため、IPSパネルを採用する4Kディスプレイを購入したく思いました。
+ここで日本国内で販売・購入できる41インチ前後の4Kディスプレイを並べてみます。</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:center;">型番 </th>
+<th style="text-align:center;"> メーカー </th>
+<th style="text-align:center;"> サイズ </th>
+<th style="text-align:center;"> パネル </th>
+<th style="text-align:center;"> 発売日</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;"><a href="http://www.amazon.co.jp/gp/product/B018T5WQPE/ref=as_li_ss_tl?ie=UTF8&amp;camp=247&amp;creative=7399&amp;creativeASIN=B018T5WQPE&amp;linkCode=as2&amp;tag=mzyy-22">LCD-M4K401XVB</a> </td>
+<td style="text-align:center;"> I-O DATA </td>
+<td style="text-align:center;"> 39.5インチ </td>
+<td style="text-align:center;"> VA </td>
+<td style="text-align:center;">2015/12/25</td>
+</tr>
+<tr>
+<td style="text-align:center;"><a href="http://www.amazon.co.jp/gp/product/B012LTUJDA/ref=as_li_ss_tl?ie=UTF8&amp;camp=247&amp;creative=7399&amp;creativeASIN=B012LTUJDA&amp;linkCode=as2&amp;tag=mzyy-22">X4070UHS</a> </td>
+<td style="text-align:center;"> iiyama </td>
+<td style="text-align:center;"> 40インチ </td>
+<td style="text-align:center;"> MVA </td>
+<td style="text-align:center;"> 2015/7/27</td>
+</tr>
+<tr>
+<td style="text-align:center;"><a href="http://www.amazon.co.jp/gp/product/B00P9VXD9A/ref=as_li_ss_tl?ie=UTF8&amp;camp=247&amp;creative=7399&amp;creativeASIN=B00P9VXD9A&amp;linkCode=as2&amp;tag=mzyy-22">BDM4065UC/11</a> </td>
+<td style="text-align:center;"> Philips </td>
+<td style="text-align:center;"> 40インチ </td>
+<td style="text-align:center;"> VA </td>
+<td style="text-align:center;"> 2014/12/27</td>
+</tr>
+<tr>
+<td style="text-align:center;"><a href="http://www.amazon.co.jp/gp/product/B011AODN62/ref=as_li_ss_tl?ie=UTF8&amp;camp=247&amp;creative=7399&amp;creativeASIN=B011AODN62&amp;linkCode=as2&amp;tag=mzyy-22">D431US</a> </td>
+<td style="text-align:center;"> DOSHISHA </td>
+<td style="text-align:center;"> 43インチ </td>
+<td style="text-align:center;"> VA </td>
+<td style="text-align:center;"> 2015/7/27</td>
+</tr>
+<tr>
+<td style="text-align:center;"><a href="http://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3198126&amp;pid=883920088&amp;vc_url=http%3A%2F%2Fonline.nojima.co.jp%2Fcommodity%2F1%2F0479960004685%2F">EFK-43M4KD</a> </td>
+<td style="text-align:center;"> nojima </td>
+<td style="text-align:center;"> 43インチ </td>
+<td style="text-align:center;"> IPS </td>
+<td style="text-align:center;"> 2015/11/15</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>前途の通り、大半がVAパネルとなっています。昨年の暮れに発売されたnojimaの製品が国内販売されている41インチ前後の4Kディスプレイで唯一のIPSパネルになります。
+しかし、購入者レビューを漁ってみたところ、妥協する点が多く感じた上に、せっかくの<em>広大なサイズを生かした機能</em>が搭載されていないことが大きなマイナスポイントとなっています。</p>
+
+<h2>広大なサイズを生かした様々な機能</h2>
+
+<p>41インチ級4Kディスプレイをの広大なピクセルをすべて使い、一つの映像を表示するだけでも十分に多くの情報を表示・閲覧できます。
+そこに加えて他の映像を追加して表示させてると、広さゆえより快適になるのではないでしょうか。
+例えるなら、27インチWQHDにもう一枚27インチWQHDディスプレイを買い足し、デュアルディスプレイにして二つの映像を表示することで、快適度が随分とあがります。
+同じように快適度をあげられる機能が、いくつかの大型のディスプレイには4Kに限らず搭載されており、仕組みとしては1枚のディスプレイを分割し擬似的に複数のディスプレイとして表示させるものとなっています。
+Picture by Pictureや、Picture in Pictureと呼ばれる機能です。
+41インチ級のディスプレイを購入する上で、これらは個人的に欠かせない機能となっていました。</p>
+
+<h3>Picture by Picture (PbP)</h3>
+
+<p><img src="/blog/resources/images/2016/01/10/PbP.png" alt="Picture by Picture" /></p>
+
+<p>1枚のディスプレイを縦や横に分割して表示する機能です。
+ディスプレイに備わっている映像入力ポートからの入力を2つ選択し、
+左右または上下もしくはその両方に分割された擬似的な複数の画面にそれぞれ映像を出力できるものです。
+2画面分割に限らず、3画面、4画面の分割をサポートしているものもあります。
+これによって、ベゼル幅0mmの狭額縁のディスプレイでデュアルディスプレイをしているような感覚になります。</p>
+
+<h3>Picture in Picture (PiP)</h3>
+
+<p><img src="/blog/resources/images/2016/01/10/PiP.png" alt="Picture in Picture" /></p>
+
+<p>一つの映像の上に小画面を表示し、ながら作業ができるものです。
+これもまたディスプレイの映像入力ポートからメインと小画面の映像を選択し、表示させるものです。
+大画面を必要とする作業をしながらテレビを見たいときなどに便利な機能です。</p>
+
+<h2>海外の41インチ級4Kディスプレイ</h2>
+
+<p>これまでに述べてきた新規購入する4Kディスプレイに求める特徴は、</p>
+
+<ul>
+<li>109ppi以上 = 41インチ前後</li>
+<li>IPS/AH-IPSパネル採用</li>
+<li>PiP/PbPが可能</li>
+</ul>
+
+
+<p>です。
+一つ目の条件から、国内で購入できるものは先の一覧にあるとおり5種類しかありません。2つ目の条件で絞るとnojimaのEFK-43M4KDしか残りません。3つ目の条件をも当てはめると、それすらも消えてしまします。
+日本で販売されている製品の中からでは希望の4Kディスプレイは見つけられないという結論が出ました。</p>
+
+<p>なので日本で販売されている製品に限らず、海外でのみ販売されているような4Kディスプレイにまで視野を広げて考えることにしました。
+海外の4K液晶情報は情報はなかなかWebにはまとめられておらず、条件に合うものを見つけるのに苦労しましたが、いくつかのメーカーの製品がヒットしました。</p>
+
+<h3>Crossover 434K IPS Final</h3>
+
+<p><a href="http://rover.ebay.com/rover/1/711-53200-19255-0/1?icep_ff3=9&amp;pub=5575151077&amp;toolid=10001&amp;campid=5337802045&amp;customid=&amp;icep_uq=434K+IPS+Final&amp;icep_sellerId=&amp;icep_ex_kw=&amp;icep_sortBy=12&amp;icep_catId=80053&amp;icep_minPrice=&amp;icep_maxPrice=&amp;ipn=psmain&amp;icep_vectorid=229466&amp;kwid=902099&amp;mtid=824&amp;kw=lg"><strong>Crossover 434K IPS Final</strong></a></p>
+
+<p>上記3条件全てに合致しているCrossover社の43インチ4Kディスプレイです。
+日本語で書かれている仕様が見つからなかったので、Google翻訳で訳した製品仕様は以下のようになっていました。</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:center;">項目 </th>
+<th style="text-align:left;"> 機能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">サイズ</td>
+<td style="text-align:left;"> 43インチ</td>
+</tr>
+<tr>
+<td style="text-align:center;">パネル</td>
+<td style="text-align:left;"> AH-IPS</td>
+</tr>
+<tr>
+<td style="text-align:center;">解像度</td>
+<td style="text-align:left;"> 3840x2160 60Hz</td>
+</tr>
+<tr>
+<td style="text-align:center;">応答時間 </td>
+<td style="text-align:left;"> 5ms</td>
+</tr>
+<tr>
+<td style="text-align:center;">視野角</td>
+<td style="text-align:left;"> 上下左右178°</td>
+</tr>
+<tr>
+<td style="text-align:center;">DisplayPort入力 </td>
+<td style="text-align:left;"> 2 (Ver1.2)</td>
+</tr>
+<tr>
+<td style="text-align:center;">HDMI入力 </td>
+<td style="text-align:left;"> 3 (Ver2.0)</td>
+</tr>
+<tr>
+<td style="text-align:center;">VGA入力 </td>
+<td style="text-align:left;"> 1</td>
+</tr>
+<tr>
+<td style="text-align:center;">PbP </td>
+<td style="text-align:left;"> ◯(2画面,3画面,4画面)</td>
+</tr>
+<tr>
+<td style="text-align:center;">PiP </td>
+<td style="text-align:left;"> ◯</td>
+</tr>
+<tr>
+<td style="text-align:center;">USBハブ </td>
+<td style="text-align:left;"> ×</td>
+</tr>
+</tbody>
+</table>
+
+
+<h3>WasabiMango UHD420 REAL4K HDMI 2.0</h3>
+
+<p><a href="http://rover.ebay.com/rover/1/711-53200-19255-0/1?icep_ff3=2&amp;pub=5575151077&amp;toolid=10001&amp;campid=5337802045&amp;customid=&amp;icep_item=131556558528&amp;ipn=psmain&amp;icep_vectorid=229466&amp;kwid=902099&amp;mtid=824&amp;kw=lg"><strong>UHD420 REAL4K HDMI 2.0</strong></a></p>
+
+<p>Crossover社の製品に似た、WasabiMango社の42インチサイズの4Kディスプレイです。
+これもまた日本語で書かれている仕様が見つからなかったので、Google翻訳で訳した製品仕様は以下のようになっていました。</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:center;">項目 </th>
+<th style="text-align:left;"> 機能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">サイズ</td>
+<td style="text-align:left;"> 42インチ</td>
+</tr>
+<tr>
+<td style="text-align:center;">パネル</td>
+<td style="text-align:left;"> AH-IPS</td>
+</tr>
+<tr>
+<td style="text-align:center;">解像度</td>
+<td style="text-align:left;"> 3840x2160 60Hz</td>
+</tr>
+<tr>
+<td style="text-align:center;">応答時間 </td>
+<td style="text-align:left;"> 5ms</td>
+</tr>
+<tr>
+<td style="text-align:center;">視野角</td>
+<td style="text-align:left;"> 上下左右178°</td>
+</tr>
+<tr>
+<td style="text-align:center;">DisplayPort入力 </td>
+<td style="text-align:left;"> 1 (Ver1.2)</td>
+</tr>
+<tr>
+<td style="text-align:center;">HDMI入力 </td>
+<td style="text-align:left;"> 4 (Ver2.0 x2, Ver1.4 x2)</td>
+</tr>
+<tr>
+<td style="text-align:center;">VGA入力 </td>
+<td style="text-align:left;"> 1</td>
+</tr>
+<tr>
+<td style="text-align:center;">PbP </td>
+<td style="text-align:left;"> ◯(2画面,3画面,4画面)</td>
+</tr>
+<tr>
+<td style="text-align:center;">PiP </td>
+<td style="text-align:left;"> ◯</td>
+</tr>
+<tr>
+<td style="text-align:center;">USBハブ </td>
+<td style="text-align:left;"> ◯ (USB 3.0x3)</td>
+</tr>
+</tbody>
+</table>
+
+
+<h2>UHD420 REAL4K HDMI 2.0購入</h2>
+
+<p>上記2製品どちらも希望を満たすスペックだった上に見た目も酷似していたため、どちらを選んでも満足度は同じであろうと思っていたのですが、前者はeBayに在庫がなかったため、後者のUHD 420 REAL4K HDMI 2.0を購入しました。
+在庫があり最安だった<a href="http://rover.ebay.com/rover/1/711-53200-19255-0/1?icep_ff3=2&amp;pub=5575151077&amp;toolid=10001&amp;campid=5337802045&amp;customid=&amp;icep_item=131556558528&amp;ipn=psmain&amp;icep_vectorid=229466&amp;kwid=902099&amp;mtid=824&amp;kw=lg">送料込み489英ポンドの品</a>を発注し、PayPalで送金後2日足らずで届きました。eBayのポンド→円レートと商品受取時の関税支払いを合わせて88,200円でした。</p>
+
+<h3>箱サイズ</h3>
+
+<p>プチプチを剥がすときにすこし破損してしまいましたが、箱のサイズはこのくらい</p>
+
+<p><img src="/blog/resources/images/2016/01/10/box-size.jpg" alt="Box size" /></p>
+
+<p>上に乗ってるのはきんいろモザイクのBlu-rayディスクケースとペットボトル（サイズ感伝わってくれっ</p>
+
+<h3>付属品</h3>
+
+<p>そして付属品</p>
+
+<p><img src="/blog/resources/images/2016/01/10/display-accessories.jpg" alt="Display accessories" /></p>
+
+<p>電源ケーブル・HDMIケーブル・Displayportケーブル・USB 3.0ケーブル(オス-オス)・ネジ6本・説明書、そして画像には写ってないですが、ディスプレイの足が入っていました。
+付属品のネジはおそらくディスプレイに足を取り付けるためのものだと思うんですが、ディスプレイに空いている足取り付け用のネジ穴に入れてもガバガバで取り付けられませんでした。
+測ってみたところ、付属していたネジはM4x10mmで、ディスプレイに空いている足取り付け用のネジ穴はM5径でした。そりゃ全然合わないわけだ。
+M5ネジは近場で買える代物だったので、問い合わせすることなく近所のホームセンターに買いに行き、M5x15mm + ナット + ワッシャー各4個入りを買ってきました。
+M5x10mmは売ってなかったので、ネジが奥まで入る長さにナットで調節しながら足を止めたらしっかりと安定して固定することができました。</p>
+
+<h3>ポート類</h3>
+
+<p>入力ポート・出力ポート</p>
+
+<p><img src="/blog/resources/images/2016/01/10/display-input.jpg" alt="display input" />
+<img src="/blog/resources/images/2016/01/10/usb-output.jpg" alt="usb output" /></p>
+
+<p>USBハブの入力がtype-Aである点が少々気になったり。
+サービスUSBポート経由でファームウェアのアップデートができるとの噂があったり。</p>
+
+<h3>設置</h3>
+
+<p>でかさ比較</p>
+
+<p><img src="/blog/resources/images/2016/01/10/display-size.jpg" alt="display relative size" /></p>
+
+<p>右に写ってるのがMacBook Air 11インチで左に写ってるのがWii U ゲームパッドです（サイズ感伝わってくれっ！）
+一言で大きさを表現すると、<strong>広げた新聞紙くらい</strong>。
+ちなみにこの写真を撮るときにiPhoneのカメラ越しにディスプレイを見てみましたが、ちらつきはなくフリッカーフリーのようです。</p>
+
+<h2>MacBook Air Mid2013の外部出力</h2>
+
+<p>3年前のMacBook Airにこの4Kディスプレイをつないだところ、1920x1080として認識されてしまいました。
+せっかくの4Kを一切生かしきれていない状態だったので、出力解像度を書き換えてシステムに認識されているサイズ以上の出力をできるようにするソフトウェアを導入しました。</p>
+
+<p><a href="http://www.madrau.com/">SwitchResX - The Most Versatile Tool For Controlling Screen Resolutions On Your Mac</a></p>
+
+<p>これで出力解像度に4Kを追加すれば動くぞ！っと意気揚々に設定をいじって書き込んでみましたが、対応させられませんとのエラーが。
+画面出力を司るシステムのフレームワークを書き換えたりカーネルモジュールを入れ替えたりなども試してみましたが、どれを用いても4K画質を出力させるまでには至りませんでした。
+これでは何のために買ったのやら…と途方にくれていましたが、よくよく考えればPbPでテレビを映しながら作業ができるようにPbP/PiP機能付きのものを買っていたので、4K全画面表示させる必要はないのです。
+左半分をメインに、右にサブのWindowsとゲームもしくはテレビを上下に分けて表示できれば十分なのです。これらはディスプレイの設定をいじって3画面PbPにし、それぞれの映像入力を指定するだけで分割できます。</p>
+
+<p>3画面分割にすると、メインの画面解像度は4Kの半分となり、1920x2160になります。OS X標準ではこの解像度を出すことはできないので、先ほど導入したSwitchResXを用いて、1920x2160の出力設定を追加します。</p>
+
+<p><img src="/blog/resources/images/2016/01/10/additional-resolution.png" alt="additional resolution" /></p>
+
+<p>再起動すると、以下のように1920x2160の解像度が追加されます。</p>
+
+<p><img src="/blog/resources/images/2016/01/10/1920x2160.png" alt="1920x2160" /></p>
+
+<p>＼じゃーん／</p>
+
+<p><img src="/blog/resources/images/2016/01/10/3-pbp.jpg" alt="3-pbp" /></p>
+
+<h2>まとめ</h2>
+
+<p>4Kはいいぞ。</p>
+]]></content>
+  </entry>
+  
+</feed>
