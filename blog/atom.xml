@@ -4,7 +4,7 @@
   <title><![CDATA[犬アイコンのみっきー]]></title>
   <link href="http://mzyy94.com/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2016-07-04T20:35:33+09:00</updated>
+  <updated>2016-07-05T07:29:05+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -12,6 +12,135 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[RockstorにChinachuを詰め込んで録画NAS作ろ]]></title>
+    <link href="http://mzyy94.com/blog/2016/07/05/chinachu-rockon/"/>
+    <updated>2016-07-05T00:07:31+09:00</updated>
+    <id>http://mzyy94.com/blog/2016/07/05/chinachu-rockon</id>
+    <content type="html"><![CDATA[<p><a href="https://mzyy94.com/blog/2016/07/04/do-you-know-rockstor/">昨日紹介したRockstor</a>というNAS用OS、とても便利で快適に使っています。
+今まで低消費電力で非力なマシンで動作させていたNASもCore i5で動作するようになり、
+もっといろいろとやらせてみたくなりました。
+余裕がありそうなので、録画サーバの役割も担ってもらい、録画NASとして我が家で働いてもらいます。</p>
+
+<h2>Rockstor</h2>
+
+<p>昨日の記事でいろいろと紹介しましたが、見る気がない人・ちょっとだけ知っているから見ない人向けにRockstorとは何ぞやを説明すると、
+CentOSベースのBtrfsを採用したDockerが載ったNAS用OSです。Dockerが載ってるのはアプリケーションをコンテナの中で
+実行させることができるようにする仕組みであるRock-onsのためのものであり、このRock-onsを利用することで
+標準でリストアップされてるRock-onであれば、ボタン一つでアプリケーションをインストールすることが可能なのです。
+ここで強調したいのは、<em>標準でリストアップされているものであればボタン一つでインストール</em>できるという話で、
+標準でリストアップされていないものはボタン操作に加えて<strong>数行のコマンド操作をするだけでインストールができる</strong>といった
+隠れた拡張性があるという点です。</p>
+
+<h2>Chinachu</h2>
+
+<p>さて、話題を変えて録画といえばの話。録画といえば過去いろいろなところで何度も紹介しているLinux向けDVR（Digital Video Recorder)
+アプリケーションである<a href="https://github.com/kanreisa/Chinachu">Chinachu</a>が快適で使い勝手がよいと評判です。
+動作させてからの操作は快適なのですが、動作させるまでがいろいろと面倒くさかったりします。
+例えば地上デジタル放送・衛星放送キャプチャボードであるPT3のドライバの導入。初回はもちろんのこと、OSのアップグレードごとに
+カーネルモジュールをビルドしてインストールしてなどと、
+録画環境を構築する前段階で難しい処理が挟まるのが少々玉に瑕です。
+しかし、ドライバなどの環境を整えた後のChinachu自体のセットアップはある程度簡単にできるようになっています。
+それどころか、チューナー管理アプリケーションのMirakurun連携とB-CASカードの読み込みまで含めたChinachuの動作環境を、
+<strong>Dockerに押し込めてコマンド一発ですべて仕上がる</strong>ようにしたリポジトリがあるくらいに簡単です。</p>
+
+<p><a href="https://github.com/h-mineta/docker-mirakurun-chinachu">h-mineta/docker-mirakurun-chinachu: All in one Mirakurun &amp; Chinachu</a></p>
+
+<h2>PT3 DVBドライバ</h2>
+
+<p>みなが苦労するPT3のドライバの導入作業あれこれに終止符を打つかのように、Linuxカーネルが標準でPT3のドライバを搭載してきました。
+DVB(Digital Video Broadcasting)ドライバと呼ばれるそれは、チューナーからの信号をスペシャルファイル経由で簡易に取り出せる機能を
+もったもので、このドライバが有効化されているディストリビューションでは先述のようなPT3ドライバの導入に苦戦しなくても放送波を取得
+できるようになっているのです。なんとこのドライバ、<strong>Rockstorでは標準で有効</strong>になっており、PT3をマシンに搭載するだけで動作するのです！</p>
+
+<h2>Chinachu Rock-on</h2>
+
+<p>セクションタイトルを見て気づいている人も多いと思いますが、これまでに挙げた3つの事柄が組み合わさって、数行のコマンド入力とクリックだけで動作させられるChinachu rock-onが出来上がってしまいます。</p>
+
+<ol>
+<li>新しいRock-onは実は自由に追加できる</li>
+<li>ChinachuのDockerイメージがある</li>
+<li>PT3のドライバは導入済み</li>
+</ol>
+
+
+<p>これらをいい感じにまとめてRock-onを作成しました。</p>
+
+<p><a href="https://github.com/mzyy94/Chinachu-rockon"><strong>mzyy94/Chinachu-rockon</strong></a></p>
+
+<p>Rock-onはJSONで書かれたRock-onファイルの記述形式に沿った形で自作することで、新たなRock-onを作り上げることができるようになっています。
+- Ref. <a href="https://github.com/rockstor/rockon-registry">https://github.com/rockstor/rockon-registry</a></p>
+
+<p>ここのREADMEにあるように、決まった形で書くことでポートの転送や共有ディレクトリの設定、
+Docker hubのイメージ取得を自動化し、アプリケーションを実行できます。</p>
+
+<p>ChinachuのDockerfileがあるので、これをDVB版のPT3ドライバで動作するように書き換え、かつRock-onのファイル共有方法に適した方法で設定ファイルなどを管理できるように変更してDocker hubにプッシュしてRock-onを完成させました。</p>
+
+<h2>Chinachu Rock-on のインストール</h2>
+
+<p>大前提として、RockstorをインストールしたマシンにPT3とSmartCardリーダーが接続されていることとして話を進めます。</p>
+
+<p>冒頭でも述べたように、標準でリストアップされているRock-onであればボタン一つで起動できますが、リストアップされていないものに関してはコマンド入力が必要となります。
+この点において、Rock-onsは超お手軽と手放しで喜べない部分ではありますが、普通にChinachuをセットアップするよりは数倍は楽になっていると思うので我慢してください。
+Chinachu-rockonのリポジトリのREADMEにも書いてありますが、必要な作業は</p>
+
+<ol>
+<li>chinachu.jsonをダウンロード</li>
+<li>rock-ons metastoreディレクトリを作成</li>
+<li>Rockstorにchinachu.jsonを転送</li>
+<li>Rock-onサービスが起動してなかったら起動する</li>
+<li>Rock-onsのUpdateをする</li>
+<li>Chinachuとチューナ管理アプリケーションのMirakurunの設定場所と録画の保存先の共有ディレクトリを作成する</li>
+<li>Chinachu Rock-onを起動する</li>
+</ol>
+
+
+<p>となっています。
+chinachu.jsonは<a href="https://github.com/mzyy94/Chinachu-rockon/releases">こちら</a>にあるので適当にダウンロードしてもらって、
+ダウンロードしたディレクトリで以下のコマンドを実行するとステップ3まで終了します。your-rockstor-ipはRockstorに割り当てられたIPアドレスに変更して、パスワードを求められたらRockstorのrootパスワードを入力して実行してください。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ssh root@your-rockstor-ip mkdir /opt/rockstor/rockons-metastore
+</span><span class='line'>scp chinachu.json root@your-rockstor-ip:/opt/rockstor/rockons-metastore</span></code></pre></td></tr></table></div></figure>
+
+
+<p>そしてRock-onsのサービスが起動してなかったら起動し、その後Updateボタンを押すと、Chinachuがリストアップされてきます。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2016/07/05/chinachu-rockon-listed.png" alt="Listed up" /></p>
+
+<p>Rock-onsの一覧にChinachuが現れてもあわててインストールせずに、
+ChinachuとMirakurunの設定ファイルと録画を保存する共有ディレクトリを作成します。
+ここで重要なのは、Chinachu関連のディレクトリとMirakurun関連のディレクトリは必ず別の共有ディレクトリを作成する必要があるというところです。
+ChinachuのデータとMirakurunのデータが衝突してうまく動作しなくなります。
+逆を言えば、Chinachuの設定とデータは同じディレクトリにしてもいいですし、Mirakurunの設定とデータベースも同じディレクトリにしてOKです。
+また、録画ファイル保存ディレクトリは大容量必要ですが、それ以外は1GBもあれば十分でしょう。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2016/07/05/created-shares.png" alt="Created share" /></p>
+
+<p>共有ディレクトリの作成が済んだらChinachuのインストールをしましょう。
+インストールといっても設定する項目はほとんどなく、設定する必要のあるのは以下の5つの共有ディレクトリの指定だけです。</p>
+
+<ul>
+<li><strong>[Chinachu Config Storage]</strong> Chinachuの設定ファイル保存ディレクトリ</li>
+<li><strong>[Chinachu Data Storag]</strong> Chinachuのデータ保存ディレクトリ</li>
+<li><strong>[Mirakurun Config Storage]</strong> Mirakurunの設定ファイル保存ディレクトリ</li>
+<li><strong>[Mirakurun Database Storage]</strong> Mirakurunのデータベース保存ディレクトリ</li>
+<li><strong>[Recording Storage]</strong> 録画ファイル保存ディレクトリ</li>
+</ul>
+
+
+<p>それぞれ先ほど作成した共有ディレクトリを指定し、ポート番号の設定はデフォルトのままでステップを進めていき、インストールは完了です。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2016/07/05/install-step-1.png" alt="Install step 1" />
+<img src="http://mzyy94.com/blog/resources/images/2016/07/05/install-step-2.png" alt="Install step 2" />
+<img src="http://mzyy94.com/blog/resources/images/2016/07/05/install-step-3.png" alt="Install step 3" /></p>
+
+<p>チャンネル設定などが適当なのでChinachuとMirakurunの設定ファイルを保存した共有ディレクトリにあるchannels.ymlやconfig.jsonを編集してChinachuを再起動させて完成です。
+録画ファイル保存ディレクトリをAFPで共有したり、各々のChinachuライフを快適にお過ごしください。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[NAS用OSにRockstorという選択]]></title>
@@ -5966,103 +6095,6 @@ $ brew pull 37642
 
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[KodiでChinachuの録画を観るAdd-on作った]]></title>
-    <link href="http://mzyy94.com/blog/2015/02/24/kodi-chinachu-addon/"/>
-    <updated>2015-02-24T19:28:35+09:00</updated>
-    <id>http://mzyy94.com/blog/2015/02/24/kodi-chinachu-addon</id>
-    <content type="html"><![CDATA[<p>Raspberry Pi2でKodi（旧：XBMC)が快適に動き、地デジのLIVE視聴環境として優れているので、
-Chinachuの本領である録画した動画の視聴したみが高まってきました。</p>
-
-<p>Kodiには簡単にAdd-onが作れる仕組みがあり、動画や音楽のコンテンツを独自で配信・管理する仕組みがつくれます。
-Chinachuには録画ファイルの情報とストリーミング視聴ができるREST APIが搭載されているので、
-これを叩いてKodiで動画コンテンツを視聴できるAdd-onを作ったのでお知らせいたします。</p>
-
-<!-- more -->
-
-
-<h1>Kodi/XBMC Add-on</h1>
-
-<p>KodiではPythonを用いてGUIやコンテンツを操るAdd-onを作成できるようになっています。
-Add-on作成に関する情報は<a href="http://kodi.wiki/view/Add-on_development">Add-on development - Kodi</a>にあるので、作成はそこまで難しくないです。
-コンテンツ管理プラグインの他にも、スキンやバックグラウンドサービスも同じAdd-onの構造で作成できるので興味がある人は作ってみてください。</p>
-
-<h1>Chinachu client add-on</h1>
-
-<p>ChinachuのREST APIを叩いて動画を取得してコンテンツ一覧に表示、再生、そしてChinachuサーバー上の録画データを削除できるAdd-onを作成しました。</p>
-
-<p><strong><a href="https://github.com/mzyy94/plugin.video.chinachu">https://github.com/mzyy94/plugin.video.chinachu</a></strong></p>
-
-<p>Releaseのページからダウンロードして設定のアドオンからzipファイルからインストールでインストールしてください。
-その後、有効なアドオンの一覧からビデオアドオンにあるChinachu clientを探し、設定を開いてChinachuの動くサーバーのアドレスとその他オプションを設定すると利用できるようになります。</p>
-
-<h2>使い方</h2>
-
-<p>利用方法は、Kodiトップにあるビデオメニューの中のビデオアドオンからChinachu clientを起動するだけです。</p>
-
-<p><img src="http://mzyy94.com/blog/resources/images/2015/02/24/launch-chinachu-client.png" alt="Launch Chinachu client" /></p>
-
-<p>一覧の動画を選択した状態で右クリックを押すかメニューを表示すると、メニュー中に削除の項目があります。
-これを選択すると、確認ダイアログ表示の後、Chinachuで管理されている<strong>録画ファイルと録画情報の両方を削除</strong>します。
-キャンセルはできないのでご注意を。</p>
-
-<p><img src="http://mzyy94.com/blog/resources/images/2015/02/24/deletion-dialog.png" alt="File deletion" /></p>
-
-<h2>設定</h2>
-
-<p><img src="http://mzyy94.com/blog/resources/images/2015/02/24/configuration-window.png" alt="Configuratoin window" /></p>
-
-<p>Chinachu clientには幾つか設定を設けてあります。</p>
-
-<h3>基本</h3>
-
-<p>基本となるChinachuのURLの設定は必須です。Chinachu-WUIのAPIを叩くので、プロトコルとポート番号を含めたURLを設定してください。</p>
-
-<p><img src="http://mzyy94.com/blog/resources/images/2015/02/24/general-configuration.png" alt="General configuratoin" /></p>
-
-<h3>ストリーミング</h3>
-
-<p>ストリーミングカテゴリにはChinachu WUIでストリーミングする際に指定するものと同じ感覚で設定してください。
-MPEG-2 ハードウェアデコーダーを導入してあるRasPi2ではこのオプションは未設定の方が良いと思います。</p>
-
-<h3>サムネイル</h3>
-
-<p>サムネイルカテゴリには、Chinachu APIのpreview.jpgを取得してKodiのサムネイルフォルダにキャッシュするオプションがあります。
-avconvで生成している都合上、取得には時間がかかるので必要でなければ無効のままにしておくことをお勧めします。
-また、一度サムネイルを取得し始めるとKodiを終了するまでバックグラウンドで取得し続けます。さらに、未取得のサムネイルは毎回取得しに行きます。
-この点ご注意ください。</p>
-
-<p>サムネイルが不要になった際は、キャッシュのクリアもできます。</p>
-
-<h3>動画情報</h3>
-
-<p>動画情報カテゴリでは、動画情報に関する細かなオプションがあります。</p>
-
-<p>エピソード番号を強制的に指定オプションは、一部のテーマ向けの設定です。
-放送日がエピソード番号が指定されていないと表示されないテーマがあるため、放送日が表示されない動画がある場合は有効にしてください。
-このオプションが有効の場合、バラエティ番組など連続したエピソードがない放送にエピソード番号に1を指定します。</p>
-
-<p>チャンネル名を表示する場所を選択するオプションも、一部のテーマ向けの設定です。
-通常、チャンネル名はスタジオとして動画情報に登録されている場合、動画の詳細情報に表示されるのですが、テーマによってはスタジオを表示しないものがあるようです。
-チャンネル名が表示されないなと思ったらこのオプションをいじってみてください。</p>
-
-<h2>動作してる図</h2>
-
-<p>こんなかんじです。
-スキンは一番上はConfluenceで他はTitanです。</p>
-
-<p><img src="http://mzyy94.com/blog/resources/images/2015/02/24/preview1.png" alt="Preview1" />
-<img src="http://mzyy94.com/blog/resources/images/2015/02/24/preview2.png" alt="Preview2" />
-<img src="http://mzyy94.com/blog/resources/images/2015/02/24/preview3.png" alt="Preview3" />
-<img src="http://mzyy94.com/blog/resources/images/2015/02/24/preview4.png" alt="Preview4" />
-<img src="http://mzyy94.com/blog/resources/images/2015/02/24/preview5.png" alt="Preview5" /></p>
-
-<h1>まとめ</h1>
-
-<p>Raspberry Pi2は買いである</p>
 ]]></content>
   </entry>
   

@@ -5,6 +5,12 @@
 	
 	"posts" : [ 
 		{
+			"date": "05 Jul 2016",
+			"title": "RockstorにChinachuを詰め込んで録画NAS作ろ",
+			"url": "chinachu-rockon"
+		},
+	
+		{
 			"date": "04 Jul 2016",
 			"title": "NAS用OSにRockstorという選択",
 			"url": "do-you-know-rockstor"
