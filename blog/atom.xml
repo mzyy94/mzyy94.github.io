@@ -4,7 +4,7 @@
   <title><![CDATA[犬アイコンのみっきー]]></title>
   <link href="http://mzyy94.com/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2016-01-10T08:54:57+09:00</updated>
+  <updated>2016-07-04T20:35:33+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -12,6 +12,105 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[NAS用OSにRockstorという選択]]></title>
+    <link href="http://mzyy94.com/blog/2016/07/04/do-you-know-rockstor/"/>
+    <updated>2016-07-04T20:12:14+09:00</updated>
+    <id>http://mzyy94.com/blog/2016/07/04/do-you-know-rockstor</id>
+    <content type="html"><![CDATA[<p>みなさんはNASのOSとして何を使っていますか？
+FreeNAS、OpenMediaVault、巷にはいくつもOSSのNAS用OSがあります。
+なにを選んだらいいのでしょう？</p>
+
+<p>少し前までは非力なAtomサーバ機にNAS4Freeを入れて使っていましたが、PCでゲームをすることが
+ほとんどなくなったので、GameStreamサーバ(旧メインサーバー)を解体してNASとして稼働させることにしました。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2014/4/6/Servers.jpg" alt="図：古いマシン構成の図" /></p>
+
+<p>NAS4Freeを使っていた理由はAtomサーバ機に搭載されている256MBフラッシュメモリにOSが焼き込め、
+ある程度長期の運用に向いているだろうという直感で決めていました。</p>
+
+<p>旧GameStreamサーバを解体したため、GPUは取り外したもののSandy世代のi5が載っており、
+今までのAtom 330とは段違いの性能があります。
+せっかくなのでココは冒険と、RockstorなるNAS用OSを導入してみました。</p>
+
+<!-- more -->
+
+
+<h2>Rockstorとは</h2>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2016/07/04/rockstor-dashboard.png" alt="Dashboard" /></p>
+
+<p><a href="http://rockstor.com/">Rockstor</a>とは、Rockstor, Inc.が開発・サポートをしているオープンソースの
+NAS用OSです。多々あるNAS用OSと同じWebからの操作形態となっていますが、機能を盛り込みすぎて
+ごたごたしている今どきのNAS用OSの操作画面とは真逆を行っていて、簡潔さと美しさで
+UXの面では他を抜いて抜群に優れているインターフェースです。操作性のために情報量を犠牲にしていることは決してなく、
+ダッシュボードに表示される情報は見ているだけでもうっとりくるような仕上がりとなっています。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2016/07/04/rockstor-services.png" alt="Services" /></p>
+
+<p>NAS用OSとうたっているだけあって、標準でSFTP・SMB・AFPなどのファイル共有プロトコル
+のサービスがインストールされていて、共有するフォルダを選択するだけでNASと化すすぐれものです。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2016/07/04/rockstor-shares.png" alt="Shares" /></p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2016/07/04/rockstor-file-sharing.png" alt="File sharing" /></p>
+
+<p>ベースとなるOSは、古くからNAS用OSのトップを走ってきたFreeNASを中心とした
+FreeBSDベースとは違って、そこからフォークしたOpenMediaVaultと同じLinuxベースとなっています。
+OpenMediaVaultがDebianディストリビューションをベースとしている中、このRockstorはCentOSをベースと
+しています。個人的なLinuxディストリビューションの宗派はDebianなので、ベースOSの違いで
+このRockstorを選んだわけではさらさらなく、Rockstorに搭載されている
+FreeNASに負けず劣らずの強力な機能に惹かれてしまったのです。</p>
+
+<h2>Btrfsの採用</h2>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2016/07/04/rockstor-pools.png" alt="Pools" /></p>
+
+<p>FreeNASはFreeBSDの血を色濃く残しており、ファイルシステムはZFSを標準としています。
+FreeNASを使っていたころ、ZFSのRAID-Zに<del>親を殺されて</del>ディスクを抹消されてからいい印象がなかったため、
+NAS4FreeではUFSで運用していました。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2016/07/04/rockstor-snapshot.png" alt="Snap shot" /></p>
+
+<p>UFSではスナップショットの作成がままならなかったり、冗長性の面で不安なこともあり、なにかそういった点で
+特徴のあるファイルシステムが使いたいところでした。その希望にぴたりとあてはまっていたのがこのRockstor
+が採用するBtrfs。詳しいことはよくわからないですが、とにかくすごいのです。どれくらいすごいのか
+言葉で表すのは難しいのですが、ファイルを書き込むときにプラッタにしみこんでいく感覚が伝わってくると思います。
+<del>くわしい情報は<a href="https://twitter.com/naota344">こちら</a>から。</del></p>
+
+<h3>インストール時のハードディスク指定注意</h3>
+
+<p>Btrfsをベースとしていますが、標準のオートパーティション分割ではLVMを構成してしまってインストール後の起動でBtrfsにインストールしろと怒られるので、インストール時のストレージ選択でI will configure partitioning.を選ぶといいです。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2016/07/04/install-manual-partitioning1.png" alt="Install into btrfs" />
+<img src="http://mzyy94.com/blog/resources/images/2016/07/04/install-manual-partitioning2.png" alt="Install into btrfs" /></p>
+
+<h2>Rock-onsという名のDockerアプリケーション環境</h2>
+
+<p>Rockstorの旨みはBtrfs採用でファイル共有ができるNASというところにとどまりません。
+アプリケーションの追加を手軽に行うRock-onsと呼ばれる機能があるのです。
+Rock-onsは、アプリケーションをDockerコンテナで実行し、Rockstorの環境を汚すことなく
+様々な機能を<strong>ボタン一つで</strong>追加する機能です。
+FreeNASにもJailとしてアプリケーションをコンテナに押し込む方法がありますが、コマンド入力が多々必要だったり、
+そもそも設定するためにメニューを探してはさまざまな情報を入力させられるなど、手軽とは言い難いものです。
+対してRock-onsは、あらかじめRock-onsレジストリに登録されたアプリケーションしか標準では実行できないものの、
+登録されているアプリケーションであればボタン一つでポチポチと進めていくだけでアプリケーションを動作
+させることができるのです。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2016/07/04/rockstor-rockons.png" alt="Rock-ons" /></p>
+
+<p>例えばGitLab CE Rock-onでは、リポジトリの保存先などを設定していくだけで、
+Rock-ons上、すなわちNASのDocker上で軽々とGitLab CEを動作させることができます。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2016/07/04/rockstor-rockons-installed.png" alt="Rock-ons installed" /></p>
+
+<h2>まとめ</h2>
+
+<p>Webからの操作では自由度に制限があるものの、これくらい手軽でないとせっかくNAS用OSとして登場
+してきているのにCentOSを素手で触ったほうがマシと感じることもあるでしょう。Rockstor、めんどくさがり家のあなたにどうですか？</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[42インチのAH-IPS 4Kディスプレイ買ってみた]]></title>
@@ -5964,125 +6063,6 @@ avconvで生成している都合上、取得には時間がかかるので必�
 <h1>まとめ</h1>
 
 <p>Raspberry Pi2は買いである</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[KodiとChinachuで地デジLive視聴 on Raspberry Pi2 w/ OSMC]]></title>
-    <link href="http://mzyy94.com/blog/2015/02/21/kodi-livetv-chinachu/"/>
-    <updated>2015-02-21T07:02:43+09:00</updated>
-    <id>http://mzyy94.com/blog/2015/02/21/kodi-livetv-chinachu</id>
-    <content type="html"><![CDATA[<p>どうも、Raspberry Pi2で遊ぶ毎日が続いております。
-Raspberry Pi model B（2ではない）にRaspbmcを入れて昨年の夏頃からChinachu経由で地上デジタル放送を視聴する環境を構築していたのですが、
-いかんせんスペックが低く、チャンネル切り替え時などにもたついていました。</p>
-
-<p>Raspberry Pi2が発売され、従来の6倍のパフォーマンスが発揮できるようになり、もたつきがなく不便しなくなってきたので、
-Raspbmc改めOSMCで地デジ視聴をする方法をまとめます。</p>
-
-<!-- more -->
-
-
-<h1>PVRクライアント</h1>
-
-<p>Kodi(旧:XBMC)にはテレビ放送を視聴するためのPVRクライアントという機能があります。
-テレビ放送の配信携帯に合わせていくつかPVRクライアントがAdd-onとして提供されていますが、汎用的につかえるものに
-<a href="https://github.com/afedchin/xbmc-addon-iptvsimple/">XBMC IPTV Simple Client</a>というものがあります。</p>
-
-<p>XBMCからKodiに名称変更した際に、Kodi本体にこれらのPVRクライアントはあらかじめバンドルされるようになり、
-これまでは各自ビルドしてインストールしていたのが、設定して有効化するだけで使えるようになっています。
-もちろんこのIPTV Simple Clientもバンドルされています。これを使って地デジを視聴する環境を構築します。</p>
-
-<h2>IPTV Simple Client</h2>
-
-<p>このAdd-onは、m3u形式で配信されているチャンネル配信情報と、<a href="http://wiki.xmltv.org/index.php/XMLTVFormat">XMLTV形式</a>で配信されている番組表情報を用いてネットワーク経由でテレビを視聴することができるPVRクライアントです。
-数あるプレイリストフォーマットの中でも一般的な形式であるm3uと、<a href="http://www.mythtv.org/">MythTV</a>などのテレビ視聴・録画クライアントがサポートするEPG番組表形式であるXMLTVを用いているため、テレビ放送配信側となるサーバーがサポートしていれば簡単に地デジをKodiで視聴できます。</p>
-
-<p>今回テレビ放送を配信するサーバーとしてはChinachuを使いますが、残念ながら上記のm3u形式のチャンネル情報とXMLTV形式の番組表情報は提供されていません。
-なので、Chinachuに2つのファイルを追加して機能を追加することで対応するようにしました。</p>
-
-<h1>Chinachu</h1>
-
-<p>数ある地デジ録画管理ソフトウェアの中でもモダンなデザインで、使い勝手がよくREST APIを提供している素敵なソフトウェアです。
-Chinachuは番組の録画・再生が主な機能とされていますが、現在放送中の番組の視聴にも対応しており、APIを経由することでいろいろなクライアントから再生することができます。
-しかし、前途の通りChinachuが提供するAPIでは、IPTV Simple Clientが対応するm3u形式のプレイリストやXMLTV形式の番組表情報は取得できません。
-幸いなことに、ChinachuへのAPIの追加は難しくなく、Chinachuが動作するディレクトリ直下にある<strong>api</strong>ディレクトリにAPIリソース情報とスクリプトを配置することで必要なAPIを追加することができます。</p>
-
-<p>IPTV Simple Clientに必要な、</p>
-
-<ul>
-<li>m3u形式でのチャンネル配信情報</li>
-<li>XMLTV形式での番組表情報</li>
-</ul>
-
-
-<p>の二つをAPIで提供するファイルを作りました。
-以下からダウンロードしてapiディレクトリのファイルをChinachuのapiディレクトリに放り込んでください。</p>
-
-<p><em><a href="https://github.com/mzyy94/Chinachu-IPTV-API-addon">https://github.com/mzyy94/Chinachu-IPTV-API-addon</a></em></p>
-
-<p>これを導入すると、</p>
-
-<ul>
-<li><code>/api/iptv/channel.m3u8</code>にチャンネル配信情報</li>
-<li><code>/api/iptv/epg.xml</code>にXMLTV情報</li>
-</ul>
-
-
-<p>が提供されるようになります。</p>
-
-<h1>KodiでSimple IPTV Clientの設定</h1>
-
-<p>サーバー側の準備は整ったのでKodiの方の設定をします。前回の記事で日本語化したRaspberry Pi2で動くOSMC上のKodiでの設定方法になります。</p>
-
-<p>上記の通り、KodiにはPVRクライアントが導入されているので、Add-on管理から設定をして有効化するだけで準備ができます。</p>
-
-<p>まず、設定のAdd-onの中にある無効なアドオンからPVR Simple IPTV Clientを探して選択し、設定画面を開きます。</p>
-
-<p><img src="http://mzyy94.com/blog/resources/images/2015/02/21/disabled-addons.png" alt="Disabled add-ons" />
-<img src="http://mzyy94.com/blog/resources/images/2015/02/21/iptv-simple-client-addon.png" alt="IPTV Simple client" /></p>
-
-<p>設定画面にあるM3UプレイリストのURLとXMLTV URLにChinachuのWUIが動作するURLに続けて、下図のように設定します。
-各自環境に合わせて<code>chinachu:10772</code>の部分を書き換えてください。</p>
-
-<p><img src="http://mzyy94.com/blog/resources/images/2015/02/21/addon-configure1.png" alt="Add-on configure1" />
-<img src="http://mzyy94.com/blog/resources/images/2015/02/21/addon-configure2.png" alt="Add-on configure2" /></p>
-
-<p>設定を終えたらSimple IPTV Clientの<strong>有効</strong>を選択して有効にし、Kodiの全体の設定にあるLive TV設定に移動してLCD有効(誤訳？)すると、
-トップの画像のようにライブTVの項目が現れ、PVRが利用できるようになります。</p>
-
-<p><img src="http://mzyy94.com/blog/resources/images/2015/02/21/enable-pvr.png" alt="Enable PVR" /></p>
-
-<p>m3uプレイリストとしてAPIが提供するチャンネルは、Chinachuの設定ファイルに記載の通りの順番でサブチャンネル含め配信しているので、
-後日紹介するであろうリモコンを使ってチャンネル切り替えを行う場合は、Live TV設定のチャンネルマネージャーからグループ管理を行って、
-不要なチャンネルを隠すことでリモコンでの操作に適したチャンネルのみを切り替え可能にできます。</p>
-
-<p><img src="http://mzyy94.com/blog/resources/images/2015/02/21/channel-manager1.png" alt="Channel Manager1" />
-<img src="http://mzyy94.com/blog/resources/images/2015/02/21/channel-manager2.png" alt="Channel Manager2" />
-<img src="http://mzyy94.com/blog/resources/images/2015/02/21/channel-manager3.png" alt="Channel Manager3" /></p>
-
-<p>ここまで終わった状態で、Kodiのトップに移動するとライブTVの項目が増えているはずです。これを選択すると、デフォルトではEPG番組表が表示されます。
-Kodi上でキーボードのEを押すと同じようにEPG番組表が表示されます。</p>
-
-<p><img src="http://mzyy94.com/blog/resources/images/2015/02/21/pvr-epg.png" alt="PVR EPG view" /></p>
-
-<p>ここで、バックスペースキーを押すとチャンネル一覧を表示するメニューが現れるので、そちらに切り替えると現在放送中の番組情報が表示されます。
-もしくはキーボードのHを押すことでチャンネル一覧が表示できます。</p>
-
-<p><img src="http://mzyy94.com/blog/resources/images/2015/02/21/pvr-channel.png" alt="PVR Channel view" /></p>
-
-<p>ここで好きなようにチャンネルを切り替え、地デジを観ることができます。</p>
-
-<h1>まとめ</h1>
-
-<p>MPEG-2ライセンスを導入してあるRaspberry Pi2だとサクサク地デジが見られる。</p>
-
-<blockquote class="twitter-tweet"><p>Raspberry Pi 2での地デジ視聴時の負荷&#10;HWデコーダー有効にするとフレームドロップなしでCPU負荷はほぼゼロ <a href="http://t.co/rAzv7eCTGW">pic.twitter.com/rAzv7eCTGW</a></p>&mdash; 犬みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/565610656809091072">February 11, 2015</a></blockquote>
-
-
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-
-
 ]]></content>
   </entry>
   

@@ -9,8 +9,9 @@
   <meta name="author" content="mzyy94">
 
   
-  <meta name="description" content="年が明け、2016年。27インチのWQHD(2560x1440)ディスプレイを使い続けていたものの、情報量が少ないことが気になり始めました。
-2年ほど前から使い始めていたDELLのU2713HM自体には大きな不満もなかったものの、巷で聞こえる「4Kはいいぞ」 &hellip;">
+  <meta name="description" content="みなさんはNASのOSとして何を使っていますか？
+FreeNAS、OpenMediaVault、巷にはいくつもOSSのNAS用OSがあります。
+なにを選んだらいいのでしょう？ 少し前までは非力なAtomサーバ機にNAS4Freeを入れて使っていましたが、PCでゲームをすることが &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -73,9 +74,10 @@
 <meta property="twitter:url" content="http://mzyy94.com/blog" />
 <meta property="twitter:title" content="犬アイコンのみっきー" />
 
-<meta property="twitter:description" content="年が明け、2016年。27インチのWQHD(2560x1440)ディスプレイを使い続けていたものの、情報量が少ないことが気になり始めました。
-2年ほど前から使い始めていたDELLのU2713HM自体には大きな不満もなかったものの、巷で聞こえる「4Kはいいぞ」の声に触発されて徐々に不満を感じ始めました。
-年も変わるのでこの機にがらっと入れ替えてしまおうと思い、WQHDからUHD(4K) &hellip;" />
+<meta property="twitter:description" content="みなさんはNASのOSとして何を使っていますか？
+FreeNAS、OpenMediaVault、巷にはいくつもOSSのNAS用OSがあります。
+なにを選んだらいいのでしょう？ 少し前までは非力なAtomサーバ機にNAS4Freeを入れて使っていましたが、PCでゲームをすることが
+ほとんどなくなったので、GameStreamサーバ(旧メインサーバー)を解体してNASとして稼働させることにしました &hellip;" />
 
 <link href="https://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" />
 <link href="https://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" />
@@ -146,6 +148,86 @@
     <div class="row">
       <main class="col-sm-9">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title boxed-green"><a href="/blog/2016/07/04/do-you-know-rockstor/">NAS用OSにRockstorという選択</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+<i class="glyphicon glyphicon-calendar"></i><time datetime="2016-07-04T20:12:14+09:00" pubdate data-updated="true">04 Jul 2016</time>
+        
+
+<i class="glyphicon glyphicon-folder-close"></i><span class="categories">
+  
+    <a class='category' href='/blog/categories/linux/'>linux</a>
+  
+</span>
+
+
+        
+
+<i class="glyphicon glyphicon-tags"></i><span class="tags">
+  
+    <a class='tag' href='/blog/tags/btrfs/'>btrfs</a>, <a class='tag' href='/blog/tags/docker/'>docker</a>, <a class='tag' href='/blog/tags/nas/'>nas</a>, <a class='tag' href='/blog/tags/rockstor/'>rockstor</a>
+  
+</span>
+
+
+        
+		<i class="glyphicon glyphicon-comment"></i><a href="/blog/2016/07/04/do-you-know-rockstor/#disqus_thread"
+             data-disqus-identifier="http://mzyy94.com/blog/2016/07/04/do-you-know-rockstor/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<img src="/blog/resources/images/2016/07/04/rockstor-disks.png" alt="article image" class="main image"/>
+
+
+<div class="entry-content"><p>みなさんはNASのOSとして何を使っていますか？
+FreeNAS、OpenMediaVault、巷にはいくつもOSSのNAS用OSがあります。
+なにを選んだらいいのでしょう？</p>
+
+<p>少し前までは非力なAtomサーバ機にNAS4Freeを入れて使っていましたが、PCでゲームをすることが
+ほとんどなくなったので、GameStreamサーバ(旧メインサーバー)を解体してNASとして稼働させることにしました。</p>
+
+<p><img src="/blog/resources/images/2014/4/6/Servers.jpg" alt="図：古いマシン構成の図" /></p>
+
+<p>NAS4Freeを使っていた理由はAtomサーバ機に搭載されている256MBフラッシュメモリにOSが焼き込め、
+ある程度長期の運用に向いているだろうという直感で決めていました。</p>
+
+<p>旧GameStreamサーバを解体したため、GPUは取り外したもののSandy世代のi5が載っており、
+今までのAtom 330とは段違いの性能があります。
+せっかくなのでココは冒険と、RockstorなるNAS用OSを導入してみました。</p>
+
+</div>
+  
+  
+    <footer>
+	<a rel="full-article" href="/blog/2016/07/04/do-you-know-rockstor/" class="btn btn-icon-left"><span>Read more</span></a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -863,76 +945,6 @@ Linuxにおいてはffmpeg/x264のソフトウェアエンコードの方法ば�
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title boxed-green"><a href="/blog/2015/04/29/ebi-the-move/">えびの水槽引越しと環境整備と飼育について</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-
-
-
-
-<i class="glyphicon glyphicon-calendar"></i><time datetime="2015-04-29T15:03:01+09:00" pubdate data-updated="true">29 Apr 2015</time>
-        
-
-<i class="glyphicon glyphicon-folder-close"></i><span class="categories">
-  
-    <a class='category' href='/blog/categories/shrimp/'>shrimp</a>
-  
-</span>
-
-
-        
-
-<i class="glyphicon glyphicon-tags"></i><span class="tags">
-  
-    <a class='tag' href='/blog/tags/charm/'>charm</a>, <a class='tag' href='/blog/tags/muji/'>muji</a>, <a class='tag' href='/blog/tags/shrimp/'>shrimp</a>
-  
-</span>
-
-
-        
-		<i class="glyphicon glyphicon-comment"></i><a href="/blog/2015/04/29/ebi-the-move/#disqus_thread"
-             data-disqus-identifier="http://mzyy94.com/blog/2015/04/29/ebi-the-move/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-<img src="/blog/resources/images/2015/04/29/new-ebipot.jpg" alt="article image" class="main image"/>
-
-
-<div class="entry-content"><p>小さくてかわいいピクシーシュリンプ（以下、えび）</p>
-
-<p>かわいいえび特集第2弾です。</p>
-
-<p>2月の寒い時期を乗り越えたえびたちは月が変わり3月に引越しをしました。引越しとともにえびの飼育環境の見直しや飼育設備の調整を行ったので、まとめることにしました。</p>
-
-</div>
-  
-  
-    <footer>
-	<a rel="full-article" href="/blog/2015/04/29/ebi-the-move/" class="btn btn-icon-left"><span>Read more</span></a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="tf_pagination">
   <div class="inner">
     
@@ -1055,6 +1067,10 @@ Linuxにおいてはffmpeg/x264のソフトウェアエンコードの方法ば�
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/07/04/do-you-know-rockstor/">NAS用OSにRockstorという選択</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/01/10/42inch-4k-display/">42インチのAH-IPS 4Kディスプレイ買ってみた</a>
       </li>
     
@@ -1068,10 +1084,6 @@ Linuxにおいてはffmpeg/x264のソフトウェアエンコードの方法ば�
     
       <li class="post">
         <a href="/blog/2015/12/01/tomorinao/">友利奈緒「いままでとこれから」</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/10/14/emoji-commit-message/">GitHubで絵文字コミットを続けてみて有用だったEmojiまとめ</a>
       </li>
     
   </ul>

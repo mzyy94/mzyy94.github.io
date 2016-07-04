@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://mzyy94.com/blog/2016/07/04/do-you-know-rockstor/</loc>
+    <lastmod>2016-07-04T20:12:14+09:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>http://mzyy94.com/blog/2016/01/10/42inch-4k-display/</loc>
     <lastmod>2016-01-10T05:00:00+09:00</lastmod>
     <priority>0.8</priority>
@@ -192,43 +197,43 @@
   </url>
   <url>
     <loc>http://mzyy94.com/</loc>
-    <lastmod>2016-01-10T08:54:57+09:00</lastmod>
+    <lastmod>2016-07-04T20:35:33+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>http://mzyy94.com/blog/</loc>
-    <lastmod>2016-01-10T08:54:57+09:00</lastmod>
+    <lastmod>2016-07-04T20:35:33+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://mzyy94.com/blog/archives/</loc>
-    <lastmod>2016-01-10T08:54:57+09:00</lastmod>
+    <lastmod>2016-07-04T20:35:33+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://mzyy94.com/about/</loc>
-    <lastmod>2016-01-10T08:54:57+09:00</lastmod>
+    <lastmod>2016-07-04T20:35:33+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://mzyy94.com/service/</loc>
-    <lastmod>2016-01-10T08:54:57+09:00</lastmod>
+    <lastmod>2016-07-04T20:35:33+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://mzyy94.com/key/</loc>
-    <lastmod>2016-01-10T08:54:57+09:00</lastmod>
+    <lastmod>2016-07-04T20:35:33+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://mzyy94.com/about/license.html</loc>
-    <lastmod>2016-01-10T08:54:57+09:00</lastmod>
+    <lastmod>2016-07-04T20:35:33+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>

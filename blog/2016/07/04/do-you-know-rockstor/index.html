@@ -1,0 +1,605 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>NAS用OSにRockstorという選択 - 犬アイコンのみっきー</title>
+  <meta name="author" content="mzyy94">
+
+  
+  <meta name="description" content="みなさんはNASのOSとして何を使っていますか？
+FreeNAS、OpenMediaVault、巷にはいくつもOSSのNAS用OSがあります。
+なにを選んだらいいのでしょう？ 少し前までは非力なAtomサーバ機にNAS4Freeを入れて使っていましたが、PCでゲームをすることが &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://mzyy94.com/blog/2016/07/04/do-you-know-rockstor">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/blog/atom.xml" rel="alternate" title="犬アイコンのみっきー" type="application/atom+xml">
+  <!-- main JS libs -->
+  <script src="/javascripts/libs/modernizr.min.js"></script>
+  <script src="/javascripts/jquery-2.0.3.min.js"></script>
+  <script src="/javascripts/libs/jquery-ui.min.js"></script>
+  <script src="/javascripts/libs/bootstrap.min.js"></script>
+  <!-- Style CSS -->
+  <link href="/stylesheets/bootstrap.css" media="screen" rel="stylesheet">
+  <link href="/stylesheets/style.css" media="screen" rel="stylesheet">
+  <link href="/stylesheets/syntax.css" media="screen" rel="stylesheet">
+  <link href="/stylesheets/emoji.css" media="screen" rel="stylesheet">
+  <!-- scripts -->
+  <script src="/javascripts/general.js"></script>
+  <!-- custom input -->
+  <script src="/javascripts/jquery.customInput.js"></script>
+  <script type="text/javascript" src="/javascripts/custom.js"></script>
+  <!-- Placeholders -->
+  <script type="text/javascript" src="/javascripts/jquery.powerful-placeholder.min.js"></script>
+  <!-- Lightbox prettyPhoto -->
+  <link href="/stylesheets/prettyPhoto.css" rel="stylesheet">
+  <script src="/javascripts/jquery.prettyPhoto.js"></script>
+  <!-- CarouFredSel  -->
+  <script src="/javascripts/jquery.carouFredSel-6.2.1-packed.js"></script>
+  <!-- Progress Bars -->
+  <script src="/javascripts/progressbar.js"></script>
+  <!-- Calendar -->
+  <script src="/javascripts/jquery-ui.multidatespicker.js"></script>
+  <!-- range sliders -->
+  <script src="/javascripts/jquery.slider.bundle.js"></script>
+  <script src="/javascripts/jquery.slider.js"></script>
+  <link rel="stylesheet" href="/stylesheets/jslider.css">
+  <!-- Video Player -->
+  <link href="/stylesheets/video-js.css" rel="stylesheet">
+  <script src="/javascripts/video.js"></script>
+  <!-- Scroll Bars -->
+  <script src="/javascripts/jquery.mousewheel.js"></script>
+  <script src="/javascripts/jquery.jscrollpane.min.js"></script>
+
+<!--[if lt IE 9]><script src="/javascripts/respond.min.js"></script><![endif]-->
+<!--[if gte IE 9]>
+<style type="text/css">
+	.gradient {filter: none !important;}
+</style>
+<![endif]-->
+  <!--Fonts from Google"s Web font directory at https://google.com/webfonts -->
+
+<meta property="twitter:card" content="summary" />
+<meta property="twitter:site" content="mzyy94" />
+<meta property="twitter:url" content="http://mzyy94.com/blog/2016/07/04/do-you-know-rockstor" />
+<meta property="twitter:title" content="NAS用OSにRockstorという選択" />
+
+<meta property="twitter:image" content="http://mzyy94.com/blog/resources/images/2016/07/04/rockstor-disks.png" />
+
+<meta property="twitter:description" content="みなさんはNASのOSとして何を使っていますか？
+FreeNAS、OpenMediaVault、巷にはいくつもOSSのNAS用OSがあります。
+なにを選んだらいいのでしょう？ 少し前までは非力なAtomサーバ機にNAS4Freeを入れて使っていましたが、PCでゲームをすることが
+ほとんどなくなったので、GameStreamサーバ(旧メインサーバー)を解体してNASとして稼働させることにしました &hellip;" />
+
+<link href="https://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" />
+<link href="https://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" />
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-41944495-3']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body  >
+  <div class="container">
+  <div class="content">
+  <header class="row">
+    <nav id="topmenu" class="col-sm-12" role="navigation"><ul class="dropdown clearfix boxed boxed-blue">
+    <li class="menu-level-0"><a href="/">Home</a></li>
+  <li class="menu-level-0"><a href="/blog/">Blog</a></li>
+  <li class="menu-level-0"><a href="/service/">Service</a></li>
+  <li class="menu-level-0">
+  <a href="/about/">About</a>
+  <ul class="submenu-1">
+	  <li class="menu-level-1"><a href="/about/">About me</a></li>
+	  <li class="menu-level-1"><a href="/about/license.html">License</a></li>
+	  <li class="menu-level-1"><a href="/key/">Keys / Signatures</a></li>
+  </ul>
+  </li>
+
+  <li class="menu-level-0">
+    <a>Subscribe</a>
+	<ul class="submenu-1">
+  <li class="menu-level-1"><a href="/blog/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  <li class="menu-level-1"><a href="http://cloud.feedly.com/#subscription%2Ffeed%2Fhttp%3A%2F%2Fmzyy94.com%2Fblog%2Fatom.xml" rel="subscribe-feedly" title="subscribe on Feedly">Feedly</a></li>
+  
+  </ul>
+  
+  <li class="menu-search last">
+
+	<form action="https://www.google.com/search" id="searchForm" class="menu-search-form" method="get">
+		<fieldset role="search">
+			<input type="hidden" name="q" value="site:mzyy94.com" />
+			<input type="text" name="q" value="" results="0" class="menu-search-field" placeholder="Search the website" hidefocus="true" style="outline: none;">
+			<input type="submit" value="" class="btn menu-search-submit" name="search-send" hidefocus="true" style="outline: none;">
+		</fieldset>
+	</form>
+
+  </li>
+  
+</ul>
+</nav>
+  </header>
+  <header class="col-sm-12 boxed-red" role="banner"><hgroup>
+  
+  <h1><a href="/">犬アイコンのみっきー</a></h1>
+  
+</hgroup>
+
+</header>
+    <div class="row">
+      <main class="col-sm-9">
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title boxed-green">NAS用OSにRockstorという選択</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+<i class="glyphicon glyphicon-calendar"></i><time datetime="2016-07-04T20:12:14+09:00" pubdate data-updated="true">04 Jul 2016</time>
+        
+
+<i class="glyphicon glyphicon-folder-close"></i><span class="categories">
+  
+    <a class='category' href='/blog/categories/linux/'>linux</a>
+  
+</span>
+
+
+        
+
+<i class="glyphicon glyphicon-tags"></i><span class="tags">
+  
+    <a class='tag' href='/blog/tags/btrfs/'>btrfs</a>, <a class='tag' href='/blog/tags/docker/'>docker</a>, <a class='tag' href='/blog/tags/nas/'>nas</a>, <a class='tag' href='/blog/tags/rockstor/'>rockstor</a>
+  
+</span>
+
+
+        
+		<i class="glyphicon glyphicon-comment"></i><a href="#disqus_thread"
+             data-disqus-identifier="http://mzyy94.com">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<img src="/blog/resources/images/2016/07/04/rockstor-disks.png" alt="article image" class="main image"/>
+
+
+<div class="entry-content"><p>みなさんはNASのOSとして何を使っていますか？
+FreeNAS、OpenMediaVault、巷にはいくつもOSSのNAS用OSがあります。
+なにを選んだらいいのでしょう？</p>
+
+<p>少し前までは非力なAtomサーバ機にNAS4Freeを入れて使っていましたが、PCでゲームをすることが
+ほとんどなくなったので、GameStreamサーバ(旧メインサーバー)を解体してNASとして稼働させることにしました。</p>
+
+<p><img src="/blog/resources/images/2014/4/6/Servers.jpg" alt="図：古いマシン構成の図" /></p>
+
+<p>NAS4Freeを使っていた理由はAtomサーバ機に搭載されている256MBフラッシュメモリにOSが焼き込め、
+ある程度長期の運用に向いているだろうという直感で決めていました。</p>
+
+<p>旧GameStreamサーバを解体したため、GPUは取り外したもののSandy世代のi5が載っており、
+今までのAtom 330とは段違いの性能があります。
+せっかくなのでココは冒険と、RockstorなるNAS用OSを導入してみました。</p>
+
+<!-- more -->
+
+
+<h2>Rockstorとは</h2>
+
+<p><img src="/blog/resources/images/2016/07/04/rockstor-dashboard.png" alt="Dashboard" /></p>
+
+<p><a href="http://rockstor.com/">Rockstor</a>とは、Rockstor, Inc.が開発・サポートをしているオープンソースの
+NAS用OSです。多々あるNAS用OSと同じWebからの操作形態となっていますが、機能を盛り込みすぎて
+ごたごたしている今どきのNAS用OSの操作画面とは真逆を行っていて、簡潔さと美しさで
+UXの面では他を抜いて抜群に優れているインターフェースです。操作性のために情報量を犠牲にしていることは決してなく、
+ダッシュボードに表示される情報は見ているだけでもうっとりくるような仕上がりとなっています。</p>
+
+<p><img src="/blog/resources/images/2016/07/04/rockstor-services.png" alt="Services" /></p>
+
+<p>NAS用OSとうたっているだけあって、標準でSFTP・SMB・AFPなどのファイル共有プロトコル
+のサービスがインストールされていて、共有するフォルダを選択するだけでNASと化すすぐれものです。</p>
+
+<p><img src="/blog/resources/images/2016/07/04/rockstor-shares.png" alt="Shares" /></p>
+
+<p><img src="/blog/resources/images/2016/07/04/rockstor-file-sharing.png" alt="File sharing" /></p>
+
+<p>ベースとなるOSは、古くからNAS用OSのトップを走ってきたFreeNASを中心とした
+FreeBSDベースとは違って、そこからフォークしたOpenMediaVaultと同じLinuxベースとなっています。
+OpenMediaVaultがDebianディストリビューションをベースとしている中、このRockstorはCentOSをベースと
+しています。個人的なLinuxディストリビューションの宗派はDebianなので、ベースOSの違いで
+このRockstorを選んだわけではさらさらなく、Rockstorに搭載されている
+FreeNASに負けず劣らずの強力な機能に惹かれてしまったのです。</p>
+
+<h2>Btrfsの採用</h2>
+
+<p><img src="/blog/resources/images/2016/07/04/rockstor-pools.png" alt="Pools" /></p>
+
+<p>FreeNASはFreeBSDの血を色濃く残しており、ファイルシステムはZFSを標準としています。
+FreeNASを使っていたころ、ZFSのRAID-Zに<del>親を殺されて</del>ディスクを抹消されてからいい印象がなかったため、
+NAS4FreeではUFSで運用していました。</p>
+
+<p><img src="/blog/resources/images/2016/07/04/rockstor-snapshot.png" alt="Snap shot" /></p>
+
+<p>UFSではスナップショットの作成がままならなかったり、冗長性の面で不安なこともあり、なにかそういった点で
+特徴のあるファイルシステムが使いたいところでした。その希望にぴたりとあてはまっていたのがこのRockstor
+が採用するBtrfs。詳しいことはよくわからないですが、とにかくすごいのです。どれくらいすごいのか
+言葉で表すのは難しいのですが、ファイルを書き込むときにプラッタにしみこんでいく感覚が伝わってくると思います。
+<del>くわしい情報は<a href="https://twitter.com/naota344">こちら</a>から。</del></p>
+
+<h3>インストール時のハードディスク指定注意</h3>
+
+<p>Btrfsをベースとしていますが、標準のオートパーティション分割ではLVMを構成してしまってインストール後の起動でBtrfsにインストールしろと怒られるので、インストール時のストレージ選択でI will configure partitioning.を選ぶといいです。</p>
+
+<p><img src="/blog/resources/images/2016/07/04/install-manual-partitioning1.png" alt="Install into btrfs" />
+<img src="/blog/resources/images/2016/07/04/install-manual-partitioning2.png" alt="Install into btrfs" /></p>
+
+<h2>Rock-onsという名のDockerアプリケーション環境</h2>
+
+<p>Rockstorの旨みはBtrfs採用でファイル共有ができるNASというところにとどまりません。
+アプリケーションの追加を手軽に行うRock-onsと呼ばれる機能があるのです。
+Rock-onsは、アプリケーションをDockerコンテナで実行し、Rockstorの環境を汚すことなく
+様々な機能を<strong>ボタン一つで</strong>追加する機能です。
+FreeNASにもJailとしてアプリケーションをコンテナに押し込む方法がありますが、コマンド入力が多々必要だったり、
+そもそも設定するためにメニューを探してはさまざまな情報を入力させられるなど、手軽とは言い難いものです。
+対してRock-onsは、あらかじめRock-onsレジストリに登録されたアプリケーションしか標準では実行できないものの、
+登録されているアプリケーションであればボタン一つでポチポチと進めていくだけでアプリケーションを動作
+させることができるのです。</p>
+
+<p><img src="/blog/resources/images/2016/07/04/rockstor-rockons.png" alt="Rock-ons" /></p>
+
+<p>例えばGitLab CE Rock-onでは、リポジトリの保存先などを設定していくだけで、
+Rock-ons上、すなわちNASのDocker上で軽々とGitLab CEを動作させることができます。</p>
+
+<p><img src="/blog/resources/images/2016/07/04/rockstor-rockons-installed.png" alt="Rock-ons installed" /></p>
+
+<h2>まとめ</h2>
+
+<p>Webからの操作では自由度に制限があるものの、これくらい手軽でないとせっかくNAS用OSとして登場
+してきているのにCentOSを素手で触ったほうがマシと感じることもあるでしょう。Rockstor、めんどくさがり家のあなたにどうですか？</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard"><i class="glyphicon glyphicon-user"></i><span class="fn">mzyy94</span></span>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+<i class="glyphicon glyphicon-calendar"></i><time datetime="2016-07-04T20:12:14+09:00" pubdate data-updated="true">04 Jul 2016</time>
+      
+
+<i class="glyphicon glyphicon-folder-close"></i><span class="categories">
+  
+    <a class='category' href='/blog/categories/linux/'>linux</a>
+  
+</span>
+
+
+      
+
+<i class="glyphicon glyphicon-tags"></i><span class="tags">
+  
+    <a class='tag' href='/blog/tags/btrfs/'>btrfs</a>, <a class='tag' href='/blog/tags/docker/'>docker</a>, <a class='tag' href='/blog/tags/nas/'>nas</a>, <a class='tag' href='/blog/tags/rockstor/'>rockstor</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="widget-container widget-social">
+	<ul class="clearfix">
+  
+
+  <!--li class="social-twitter"><a href="https://twitter.com/intent/tweet?original_referer=http://mzyy94.com/blog/2016/07/04/do-you-know-rockstor/&text=NAS用OSにRockstorという選択%20-%20犬アイコンのみっきー&tw_p=tweetbutton&url=http://mzyy94.com/blog/2016/07/04/do-you-know-rockstor/&via=mzyy94"><i>Tweet</i></a></li-->
+
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://mzyy94.com/blog/2016/07/04/do-you-know-rockstor/" data-via="mzyy94" data-counturl="http://mzyy94.com/blog/2016/07/04/do-you-know-rockstor/" >Tweet</a>
+  
+  
+  <!-- li class="social-google"><a href="#"><i>Google</i></a></li -->
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+  <!-- li class="social-facebook"><a href="#"><i>Facebook</i></a></li -->
+  <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+  </ul>
+</div>
+
+    
+    <div>
+      
+	  <a class="btn btn-icon-left btn-arrow-left" href="/blog/2016/01/10/42inch-4k-display/" title="Previous Post: 42インチのAH-IPS 4Kディスプレイ買ってみた"><span>42インチのAH-IPS 4Kディスプレイ買ってみた</span></a>
+      
+      
+    </div>
+  </footer>
+</article>
+
+  <section class="comment">
+    <h1 class="boxed-red">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</main>
+
+<aside class="col-sm-3">
+  
+    <div class="widget-container widget-avatar boxed boxed-yellow">
+	<div class="inner">
+		<h5>mzyy94</h5>
+		<span class="subtitle">Network</span>
+		<div class="avatar">
+			<img src="/images/avatar.png" alt="avatar icon" />
+		</div>
+		<a href="/about/" class="btn btn-brown btn-follow">
+			<span>About me</span>
+		</a>
+	</div>
+</div>
+<div class="widget-container widget_calendar boxed boxed-red">
+	<div class="inner">
+		<input type="text" name="date_departure" class="inputField" id="date_departure">
+	</div>
+</div>
+<script>
+	// <![CDATA[
+	$(document).ready(function() {
+		var posts = {};
+		var datelist = [];
+		$.getJSON('/blog/posts.json', function(data){
+			var dp = data.posts;
+			for(var i = 0, limit = dp.length; i < limit; i++){
+				var date = new Date(dp[i].date);
+				posts[dp[i].date] = {title:dp[i].title,
+					url: '/blog/' + date.getFullYear() + '/' + ('0' + (date.getMonth() + 1)).slice(-2) + '/' + ('0' + date.getDate()).slice(-2) + '/' + dp[i].url + '/'}
+				datelist.push(dp[i].date);
+			}
+			assignCalendar('#date_departure');
+			refreshDate();
+		});
+
+
+		function assignCalendar(id){
+			$('<div class="calendar" />')
+				.insertAfter( $(id) )
+				.datepicker({
+					beforeShowDay: function(date){
+						var string = $.datepicker.formatDate('dd M yy', date);
+						return [ datelist.indexOf(string) != -1 ]
+					},
+					dateFormat: 'dd M yy',
+					minDate: new Date(datelist[datelist.length - 1]),
+					maxDate: new Date(),
+					maxPicks: 1,
+					altField: id,
+					firstDay: 0,
+					showOtherMonths: true,
+					onSelect: function(date){
+						window.location.href = posts[date].url;
+					},
+					onChangeMonthYear: refreshDate
+				}).prev().hide();
+		}
+
+		var month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+		function refreshDate(){
+			setTimeout(function(){
+				$('a.ui-state-default').each(function(num){
+					var yy = $(this).parent().attr('data-year');
+					var M = month[$(this).parent().attr('data-month')];
+					var dd = ('0' + $(this).text()).slice(-2);
+					var idx = dd + ' ' + M + ' ' + yy;
+					$(this).attr('data-title', posts[idx].title);
+					$(this).attr('href', posts[idx].url);
+				});
+			},10);
+		}
+	});
+	// ]]>
+</script>
+<section class="widget-container widget-recently boxed">
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/07/04/do-you-know-rockstor/">NAS用OSにRockstorという選択</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/01/10/42inch-4k-display/">42インチのAH-IPS 4Kディスプレイ買ってみた</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/12/21/linux-qsv-encode/">クリスマスなのでLinuxでQSVエンコードする</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/12/08/packetoon-after-that/">実践イカパケット解析のスライドテーマ</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/12/01/tomorinao/">友利奈緒「いままでとこれから」</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section class="widget-container widget-github boxed">
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'mzyy94',
+            count: 3,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+<div class="widget-container boxed boxed-blue">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- sidebar-small -->
+<ins class="adsbygoogle"
+	style="display:inline-block;width:120px;height:240px"
+	data-ad-client="ca-pub-5429584698977304"
+	data-ad-slot="3454316875"></ins>
+<!-- sidebar-small2 -->
+<ins class="adsbygoogle"
+	style="display:inline-block;width:120px;height:240px"
+	data-ad-client="ca-pub-5429584698977304"
+	data-ad-slot="6626453278"></ins>
+<script>
+	(adsbygoogle = window.adsbygoogle || []).push({});
+	(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'mzyy94blog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://mzyy94.com/blog/2016/07/04/do-you-know-rockstor/';
+        var disqus_url = 'http://mzyy94.com/blog/2016/07/04/do-you-know-rockstor/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+  </div>
+  <footer class="boxed-yellow" role="contentinfo"><p>
+  Copyright &copy; 2016 - mzyy94 -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> -
+  <span class="credit">Designed with <a href="http://pixelkit.com/kits/flat-ui-kit">Flat UI Kit | Modern Touch</a></span> -
+  <span>Licensed under a <a rel="license" href="https://opensource.org/licenses/mit-license.html">MIT License</a> and <a rel="license" href="https://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" src="https://i.creativecommons.org/l/by/3.0/80x15.png" /></a><span>
+</p>
+<script>
+	$(function () {
+		$("a[href^='http'], a[href^='ftp']").click(function () {
+			if ($(this).attr("target") === undefined) 
+			$(this).attr("target", "_blank");
+		});
+	});
+</script>
+
+</footer>
+  </div>
+</body>
+</html>

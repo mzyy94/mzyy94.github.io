@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: btrfs | 犬アイコンのみっきー]]></title>
+  <link href="http://mzyy94.com/blog/tags/btrfs/atom.xml" rel="self"/>
+  <link href="http://mzyy94.com/"/>
+  <updated>2016-07-04T20:35:33+09:00</updated>
+  <id>http://mzyy94.com/</id>
+  <author>
+    <name><![CDATA[mzyy94]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[NAS用OSにRockstorという選択]]></title>
+    <link href="http://mzyy94.com/blog/2016/07/04/do-you-know-rockstor/"/>
+    <updated>2016-07-04T20:12:14+09:00</updated>
+    <id>http://mzyy94.com/blog/2016/07/04/do-you-know-rockstor</id>
+    <content type="html"><![CDATA[<p>みなさんはNASのOSとして何を使っていますか？
+FreeNAS、OpenMediaVault、巷にはいくつもOSSのNAS用OSがあります。
+なにを選んだらいいのでしょう？</p>
+
+<p>少し前までは非力なAtomサーバ機にNAS4Freeを入れて使っていましたが、PCでゲームをすることが
+ほとんどなくなったので、GameStreamサーバ(旧メインサーバー)を解体してNASとして稼働させることにしました。</p>
+
+<p><img src="/blog/resources/images/2014/4/6/Servers.jpg" alt="図：古いマシン構成の図" /></p>
+
+<p>NAS4Freeを使っていた理由はAtomサーバ機に搭載されている256MBフラッシュメモリにOSが焼き込め、
+ある程度長期の運用に向いているだろうという直感で決めていました。</p>
+
+<p>旧GameStreamサーバを解体したため、GPUは取り外したもののSandy世代のi5が載っており、
+今までのAtom 330とは段違いの性能があります。
+せっかくなのでココは冒険と、RockstorなるNAS用OSを導入してみました。</p>
+
+<!-- more -->
+
+
+<h2>Rockstorとは</h2>
+
+<p><img src="/blog/resources/images/2016/07/04/rockstor-dashboard.png" alt="Dashboard" /></p>
+
+<p><a href="http://rockstor.com/">Rockstor</a>とは、Rockstor, Inc.が開発・サポートをしているオープンソースの
+NAS用OSです。多々あるNAS用OSと同じWebからの操作形態となっていますが、機能を盛り込みすぎて
+ごたごたしている今どきのNAS用OSの操作画面とは真逆を行っていて、簡潔さと美しさで
+UXの面では他を抜いて抜群に優れているインターフェースです。操作性のために情報量を犠牲にしていることは決してなく、
+ダッシュボードに表示される情報は見ているだけでもうっとりくるような仕上がりとなっています。</p>
+
+<p><img src="/blog/resources/images/2016/07/04/rockstor-services.png" alt="Services" /></p>
+
+<p>NAS用OSとうたっているだけあって、標準でSFTP・SMB・AFPなどのファイル共有プロトコル
+のサービスがインストールされていて、共有するフォルダを選択するだけでNASと化すすぐれものです。</p>
+
+<p><img src="/blog/resources/images/2016/07/04/rockstor-shares.png" alt="Shares" /></p>
+
+<p><img src="/blog/resources/images/2016/07/04/rockstor-file-sharing.png" alt="File sharing" /></p>
+
+<p>ベースとなるOSは、古くからNAS用OSのトップを走ってきたFreeNASを中心とした
+FreeBSDベースとは違って、そこからフォークしたOpenMediaVaultと同じLinuxベースとなっています。
+OpenMediaVaultがDebianディストリビューションをベースとしている中、このRockstorはCentOSをベースと
+しています。個人的なLinuxディストリビューションの宗派はDebianなので、ベースOSの違いで
+このRockstorを選んだわけではさらさらなく、Rockstorに搭載されている
+FreeNASに負けず劣らずの強力な機能に惹かれてしまったのです。</p>
+
+<h2>Btrfsの採用</h2>
+
+<p><img src="/blog/resources/images/2016/07/04/rockstor-pools.png" alt="Pools" /></p>
+
+<p>FreeNASはFreeBSDの血を色濃く残しており、ファイルシステムはZFSを標準としています。
+FreeNASを使っていたころ、ZFSのRAID-Zに<del>親を殺されて</del>ディスクを抹消されてからいい印象がなかったため、
+NAS4FreeではUFSで運用していました。</p>
+
+<p><img src="/blog/resources/images/2016/07/04/rockstor-snapshot.png" alt="Snap shot" /></p>
+
+<p>UFSではスナップショットの作成がままならなかったり、冗長性の面で不安なこともあり、なにかそういった点で
+特徴のあるファイルシステムが使いたいところでした。その希望にぴたりとあてはまっていたのがこのRockstor
+が採用するBtrfs。詳しいことはよくわからないですが、とにかくすごいのです。どれくらいすごいのか
+言葉で表すのは難しいのですが、ファイルを書き込むときにプラッタにしみこんでいく感覚が伝わってくると思います。
+<del>くわしい情報は<a href="https://twitter.com/naota344">こちら</a>から。</del></p>
+
+<h3>インストール時のハードディスク指定注意</h3>
+
+<p>Btrfsをベースとしていますが、標準のオートパーティション分割ではLVMを構成してしまってインストール後の起動でBtrfsにインストールしろと怒られるので、インストール時のストレージ選択でI will configure partitioning.を選ぶといいです。</p>
+
+<p><img src="/blog/resources/images/2016/07/04/install-manual-partitioning1.png" alt="Install into btrfs" />
+<img src="/blog/resources/images/2016/07/04/install-manual-partitioning2.png" alt="Install into btrfs" /></p>
+
+<h2>Rock-onsという名のDockerアプリケーション環境</h2>
+
+<p>Rockstorの旨みはBtrfs採用でファイル共有ができるNASというところにとどまりません。
+アプリケーションの追加を手軽に行うRock-onsと呼ばれる機能があるのです。
+Rock-onsは、アプリケーションをDockerコンテナで実行し、Rockstorの環境を汚すことなく
+様々な機能を<strong>ボタン一つで</strong>追加する機能です。
+FreeNASにもJailとしてアプリケーションをコンテナに押し込む方法がありますが、コマンド入力が多々必要だったり、
+そもそも設定するためにメニューを探してはさまざまな情報を入力させられるなど、手軽とは言い難いものです。
+対してRock-onsは、あらかじめRock-onsレジストリに登録されたアプリケーションしか標準では実行できないものの、
+登録されているアプリケーションであればボタン一つでポチポチと進めていくだけでアプリケーションを動作
+させることができるのです。</p>
+
+<p><img src="/blog/resources/images/2016/07/04/rockstor-rockons.png" alt="Rock-ons" /></p>
+
+<p>例えばGitLab CE Rock-onでは、リポジトリの保存先などを設定していくだけで、
+Rock-ons上、すなわちNASのDocker上で軽々とGitLab CEを動作させることができます。</p>
+
+<p><img src="/blog/resources/images/2016/07/04/rockstor-rockons-installed.png" alt="Rock-ons installed" /></p>
+
+<h2>まとめ</h2>
+
+<p>Webからの操作では自由度に制限があるものの、これくらい手軽でないとせっかくNAS用OSとして登場
+してきているのにCentOSを素手で触ったほうがマシと感じることもあるでしょう。Rockstor、めんどくさがり家のあなたにどうですか？</p>
+]]></content>
+  </entry>
+  
+</feed>
