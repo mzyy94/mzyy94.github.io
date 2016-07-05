@@ -5,6 +5,12 @@
 	
 	"posts" : [ 
 		{
+			"date": "06 Jul 2016",
+			"title": "1万円台の格安Intel X540-T2 10GbEを買ってみた",
+			"url": "hello-10gbe-nic"
+		},
+	
+		{
 			"date": "05 Jul 2016",
 			"title": "RockstorにChinachuを詰め込んで録画NAS作ろ",
 			"url": "chinachu-rockon"

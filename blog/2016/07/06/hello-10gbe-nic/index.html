@@ -1,0 +1,1013 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>1万円台の格安Intel X540-T2 10GbEを買ってみた - 犬アイコンのみっきー</title>
+  <meta name="author" content="mzyy94">
+
+  
+  <meta name="description" content="事の発端はこちらのツイート Amazonに出品されてる激安X540-T2（19000円）って本物なの、大丈夫なの&mdash; ゆずはら (@yuzuhara) 2016年7月4日 同じこと思っててまだ買えずにいる https://t.co/424csKrtVR&mdash; ハイスクール・ &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://mzyy94.com/blog/2016/07/06/hello-10gbe-nic">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/blog/atom.xml" rel="alternate" title="犬アイコンのみっきー" type="application/atom+xml">
+  <!-- main JS libs -->
+  <script src="/javascripts/libs/modernizr.min.js"></script>
+  <script src="/javascripts/jquery-2.0.3.min.js"></script>
+  <script src="/javascripts/libs/jquery-ui.min.js"></script>
+  <script src="/javascripts/libs/bootstrap.min.js"></script>
+  <!-- Style CSS -->
+  <link href="/stylesheets/bootstrap.css" media="screen" rel="stylesheet">
+  <link href="/stylesheets/style.css" media="screen" rel="stylesheet">
+  <link href="/stylesheets/syntax.css" media="screen" rel="stylesheet">
+  <link href="/stylesheets/emoji.css" media="screen" rel="stylesheet">
+  <!-- scripts -->
+  <script src="/javascripts/general.js"></script>
+  <!-- custom input -->
+  <script src="/javascripts/jquery.customInput.js"></script>
+  <script type="text/javascript" src="/javascripts/custom.js"></script>
+  <!-- Placeholders -->
+  <script type="text/javascript" src="/javascripts/jquery.powerful-placeholder.min.js"></script>
+  <!-- Lightbox prettyPhoto -->
+  <link href="/stylesheets/prettyPhoto.css" rel="stylesheet">
+  <script src="/javascripts/jquery.prettyPhoto.js"></script>
+  <!-- CarouFredSel  -->
+  <script src="/javascripts/jquery.carouFredSel-6.2.1-packed.js"></script>
+  <!-- Progress Bars -->
+  <script src="/javascripts/progressbar.js"></script>
+  <!-- Calendar -->
+  <script src="/javascripts/jquery-ui.multidatespicker.js"></script>
+  <!-- range sliders -->
+  <script src="/javascripts/jquery.slider.bundle.js"></script>
+  <script src="/javascripts/jquery.slider.js"></script>
+  <link rel="stylesheet" href="/stylesheets/jslider.css">
+  <!-- Video Player -->
+  <link href="/stylesheets/video-js.css" rel="stylesheet">
+  <script src="/javascripts/video.js"></script>
+  <!-- Scroll Bars -->
+  <script src="/javascripts/jquery.mousewheel.js"></script>
+  <script src="/javascripts/jquery.jscrollpane.min.js"></script>
+
+<!--[if lt IE 9]><script src="/javascripts/respond.min.js"></script><![endif]-->
+<!--[if gte IE 9]>
+<style type="text/css">
+	.gradient {filter: none !important;}
+</style>
+<![endif]-->
+  <!--Fonts from Google"s Web font directory at https://google.com/webfonts -->
+
+<meta property="twitter:card" content="summary" />
+<meta property="twitter:site" content="mzyy94" />
+<meta property="twitter:url" content="http://mzyy94.com/blog/2016/07/06/hello-10gbe-nic" />
+<meta property="twitter:title" content="1万円台の格安Intel X540-T2 10GbEを買ってみた" />
+
+<meta property="twitter:image" content="http://mzyy94.com/blog/resources/images/2016/07/06/card-face.jpg" />
+
+<meta property="twitter:description" content="事の発端はこちらのツイート Amazonに出品されてる激安X540-T2（19000円）って本物なの、大丈夫なの&mdash; ゆずはら (@yuzuhara) 2016年7月4日 同じこと思っててまだ買えずにいる https://t.co/424csKrtVR&mdash; ハイスクール・フリートが生きがい (@mzyy94) 2016年7月4日 この低価格NICはずっと気になっていて、 &hellip;" />
+
+<link href="https://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" />
+<link href="https://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" />
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-41944495-3']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body  >
+  <div class="container">
+  <div class="content">
+  <header class="row">
+    <nav id="topmenu" class="col-sm-12" role="navigation"><ul class="dropdown clearfix boxed boxed-blue">
+    <li class="menu-level-0"><a href="/">Home</a></li>
+  <li class="menu-level-0"><a href="/blog/">Blog</a></li>
+  <li class="menu-level-0"><a href="/service/">Service</a></li>
+  <li class="menu-level-0">
+  <a href="/about/">About</a>
+  <ul class="submenu-1">
+	  <li class="menu-level-1"><a href="/about/">About me</a></li>
+	  <li class="menu-level-1"><a href="/about/license.html">License</a></li>
+	  <li class="menu-level-1"><a href="/key/">Keys / Signatures</a></li>
+  </ul>
+  </li>
+
+  <li class="menu-level-0">
+    <a>Subscribe</a>
+	<ul class="submenu-1">
+  <li class="menu-level-1"><a href="/blog/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  <li class="menu-level-1"><a href="http://cloud.feedly.com/#subscription%2Ffeed%2Fhttp%3A%2F%2Fmzyy94.com%2Fblog%2Fatom.xml" rel="subscribe-feedly" title="subscribe on Feedly">Feedly</a></li>
+  
+  </ul>
+  
+  <li class="menu-search last">
+
+	<form action="https://www.google.com/search" id="searchForm" class="menu-search-form" method="get">
+		<fieldset role="search">
+			<input type="hidden" name="q" value="site:mzyy94.com" />
+			<input type="text" name="q" value="" results="0" class="menu-search-field" placeholder="Search the website" hidefocus="true" style="outline: none;">
+			<input type="submit" value="" class="btn menu-search-submit" name="search-send" hidefocus="true" style="outline: none;">
+		</fieldset>
+	</form>
+
+  </li>
+  
+</ul>
+</nav>
+  </header>
+  <header class="col-sm-12 boxed-red" role="banner"><hgroup>
+  
+  <h1><a href="/">犬アイコンのみっきー</a></h1>
+  
+</hgroup>
+
+</header>
+    <div class="row">
+      <main class="col-sm-9">
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title boxed-green">1万円台の格安Intel X540-T2 10GbEを買ってみた</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+<i class="glyphicon glyphicon-calendar"></i><time datetime="2016-07-06T02:45:50+09:00" pubdate data-updated="true">06 Jul 2016</time>
+        
+
+
+        
+
+
+        
+		<i class="glyphicon glyphicon-comment"></i><a href="#disqus_thread"
+             data-disqus-identifier="http://mzyy94.com">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<img src="/blog/resources/images/2016/07/06/card-face.jpg" alt="article image" class="main image"/>
+
+
+<div class="entry-content"><p>事の発端はこちらのツイート</p>
+
+<blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">Amazonに出品されてる激安X540-T2（19000円）って本物なの、大丈夫なの</p>&mdash; ゆずはら (@yuzuhara) <a href="https://twitter.com/yuzuhara/status/749804710530392065">2016年7月4日</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">同じこと思っててまだ買えずにいる <a href="https://t.co/424csKrtVR">https://t.co/424csKrtVR</a></p>&mdash; ハイスクール・フリートが生きがい (@mzyy94) <a href="https://twitter.com/mzyy94/status/749821436919885824">2016年7月4日</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<p>この低価格NICはずっと気になっていて、ほしいものリストにもずっと突っ込んでありました。
+<img src="/blog/resources/images/2016/07/06/wishlist.png" alt="Wishlistの画像" /></p>
+
+<p>突っ込んだ当時の価格からずいぶんと安くなり、2016/07/04時点で2万円を切っていたので、以下のような煽りも受けたついでに2枚買ってみました。</p>
+
+<blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">買って確かめてくれよ（懇願 <a href="https://t.co/bWfXoO153O">https://t.co/bWfXoO153O</a></p>&mdash; ゆずはら (@yuzuhara) <a href="https://twitter.com/yuzuhara/status/749824378876022784">2016年7月4日</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<p>買って挙動を確かめてみたレポートです。</p>
+
+<p><a href="https://www.amazon.co.jp/intel-X540T2-X540-T2/dp/B0077CS9UM/ref=sr_1_1?ie=UTF8&amp;qid=1467713812&amp;sr=8-1&amp;tag=mzyy-22">Amazon.co.jp： intel X540-T2: パソコン・周辺機器</a></p>
+
+<!-- more -->
+
+
+<h1>Intel X540-T2</h1>
+
+<p><img src="/blog/resources/images/2016/07/06/x540-t2.jpg" alt="NICの画像 form Intel" /></p>
+
+<p><a href="http://ark.intel.com/ja/products/58954/Intel-Ethernet-Converged-Network-Adapter-X540-T2">Intel® Ethernet Converged Network Adapter X540-T2 仕様</a></p>
+
+<p>一般のご家庭向けのデュアルポート10GbE NICです。
+ark intelの希望カスタマー価格を見ると<em>$508.00 - $513.00</em>とあるように、執筆時の為替レートで考えても5万円は下らない代物です。
+2012年発売から時が立っており、今年のQ1に後継となるX550-T2が発売されていることを考えると、価格が下がるのは納得ですが、
+コンシューマー向けではない機器であるためそこまで値下がりは期待できないと思われていました。</p>
+
+<p>それがついに1万円台で買えるとあって、これから一般のご家庭に急速に広まっていくNICの一つになることは間違いなしです。</p>
+
+<p><a href="https://www.amazon.co.jp/intel-X540T2-X540-T2/dp/B0077CS9UM/ref=sr_1_1?ie=UTF8&amp;qid=1467713812&amp;sr=8-1&amp;tag=mzyy-22">Amazon.co.jp： intel X540-T2: パソコン・周辺機器</a></p>
+
+<h1>購入＆到着</h1>
+
+<p>購入を煽られてクレジットカードの締日を確認し、ポイント還元率の計算と締日が遠いカードの認証情報の登録を行って1時間ほど立ったあとにアマゾンポチｗ！</p>
+
+<blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">買いました <a href="https://t.co/QauGkl8eQw">https://t.co/QauGkl8eQw</a></p>&mdash; ハイスクール・フリートが生きがい (@mzyy94) <a href="https://twitter.com/mzyy94/status/749832787960602624">2016年7月4日</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<p>14時頃に発注して翌日12時頃に到着しました。さすがAmazonプライム当日配送ですね。
+<a href="https://www.amazon.co.jp/gp/student/signup/info?ie=UTF8&amp;refcust=52XVQXJMNAJOBLJATNIVFHOBBI&amp;ref_type=generic&amp;ref=amzn_st_jp_ref_generic">Amazonプライムの入会はこちら</a></p>
+
+<p><img src="/blog/resources/images/2016/07/06/amazon-prime.jpg" alt="箱の画像" /></p>
+
+<p>Twitterでは「この安さ、偽物じゃないか？」と噂されていましたが、Intelロゴはちゃんとしたものでした。</p>
+
+<p><img src="/blog/resources/images/2016/07/06/intel-haitteru.jpg" alt="Intelロゴの画像" /></p>
+
+<p><a href="https://www.amazon.co.jp/intel-X540T2-X540-T2/dp/B0077CS9UM/ref=sr_1_1?ie=UTF8&amp;qid=1467713812&amp;sr=8-1&amp;tag=mzyy-22">Amazon.co.jp： intel X540-T2: パソコン・周辺機器</a></p>
+
+<h1>セットアップ</h1>
+
+<h2>環境</h2>
+
+<p>以下の、A及びBの2台のマシンに導入しました。</p>
+
+<p>A: 仮想マシン動かしてるやつ</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left;"> パーツ </th>
+<th style="text-align:left;"> 種類</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;"> CPU     </td>
+<td style="text-align:left;"> Intel Xeon E3-1245v3 3.4GHz</td>
+</tr>
+<tr>
+<td style="text-align:left;"> Memory  </td>
+<td style="text-align:left;"> ECC DDR3-1600 16GB (8GB x 2)</td>
+</tr>
+<tr>
+<td style="text-align:left;"> PCIe </td>
+<td style="text-align:left;"> PCI Express 3.0</td>
+</tr>
+<tr>
+<td style="text-align:left;"> OS </td>
+<td style="text-align:left;"> ProxMox 4.2 (Debian Jessie 8.2)</td>
+</tr>
+<tr>
+<td style="text-align:left;"> バージョン </td>
+<td style="text-align:left;"> 4.4.6-1-pve</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>B: NAS</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left;"> パーツ </th>
+<th style="text-align:left;"> 種類</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;"> CPU     </td>
+<td style="text-align:left;"> Intel Core i5-2405S 2.5GHz</td>
+</tr>
+<tr>
+<td style="text-align:left;"> Memory  </td>
+<td style="text-align:left;"> DDR3-1600 16GB (8GB x 2)</td>
+</tr>
+<tr>
+<td style="text-align:left;"> PCIe </td>
+<td style="text-align:left;"> PCI Express 2.0</td>
+</tr>
+<tr>
+<td style="text-align:left;"> OS </td>
+<td style="text-align:left;"> Rockstor 3.8-14 (CentOS 7.2)</td>
+</tr>
+<tr>
+<td style="text-align:left;"> バージョン </td>
+<td style="text-align:left;"> 4.6.0-1.el7.elrepo.x86_64</td>
+</tr>
+</tbody>
+</table>
+
+
+<h3>NOTE: PCI Express 2.0とPIC Express 2.1の違いについて</h3>
+
+<p>X540-T2はPCI Express 2.1以上の拡張カードスロットに対応しているため、Bの構成は非対応となっています。
+マイナーバージョンアップ程度の変更ですが、3.0に盛り込む予定であった多くの機能をIntelが打診して無理やり2.1として出させたこともあって<em>[要出典]</em>、
+数少ないPCI Express 2.1インターフェースを要求するこのNICもその追加機能を多く使っていると考えられます。</p>
+
+<p>出典？：<a href="http://pc.watch.impress.co.jp/docs/news/event/380216.html">【イベントレポート】【PCI-SIG Developers Conference 2010レポート】 PCIe Specificationの詳細 - PC Watch</a></p>
+
+<p>ただ、PCI Expressには下位互換性がサポートされているため、最高のパフォーマンスは出せないにしろ、動作すると予想されるため、Bの構成でも利用してみます。</p>
+
+<h2>接続</h2>
+
+<p>X540-T2と同時購入した<em><a href="https://www.amazon.co.jp/gp/product/B00ID1S8ZW/ref=oh_aui_detailpage_o00_s00?ie=UTF8&amp;tag=mzyy-22">こたつみたいなCAT7 LANケーブル</a></em>をそれぞれのポートに接続してこんな感じでつなげてみました。</p>
+
+<p><img src="/blog/resources/images/2016/07/06/connected.jpg" alt="つなげた図" /></p>
+
+<p><a href="https://www.amazon.co.jp/intel-X540T2-X540-T2/dp/B0077CS9UM/ref=sr_1_1?ie=UTF8&amp;qid=1467713812&amp;sr=8-1&amp;tag=mzyy-22">Amazon.co.jp： intel X540-T2: パソコン・周辺機器</a></p>
+
+<h2>認識</h2>
+
+<p>とりあえずカーネルで標準で読み込まれてたドライバで認識しました。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[root@rockstor ~]# lspci -d 8086: | grep Ethernet
+</span><span class='line'>01:00.0 Ethernet controller: Intel Corporation Ethernet Controller 10-Gigabit X540-AT2 (rev 01)
+</span><span class='line'>01:00.1 Ethernet controller: Intel Corporation Ethernet Controller 10-Gigabit X540-AT2 (rev 01)
+</span><span class='line'>[root@rockstor ~]#</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[root@rockstor ~]# lspci -k -s 01:00
+</span><span class='line'>01:00.0 Ethernet controller: Intel Corporation Ethernet Controller 10-Gigabit X540-AT2 (rev 01)
+</span><span class='line'>        Subsystem: Intel Corporation Ethernet Converged Network Adapter X540-T2
+</span><span class='line'>        Kernel driver in use: ixgbe
+</span><span class='line'>01:00.1 Ethernet controller: Intel Corporation Ethernet Controller 10-Gigabit X540-AT2 (rev 01)
+</span><span class='line'>        Subsystem: Intel Corporation Ethernet Converged Network Adapter X540-T2
+</span><span class='line'>        Kernel driver in use: ixgbe
+</span><span class='line'>[root@rockstor ~]#</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[root@rockstor ~]# modinfo ixgbe | head -6
+</span><span class='line'>filename:       /lib/modules/4.6.0-1.el7.elrepo.x86_64/kernel/drivers/net/ethernet/intel/ixgbe/ixgbe.ko
+</span><span class='line'>version:        4.2.1-k
+</span><span class='line'>license:        GPL
+</span><span class='line'>description:    Intel(R) 10 Gigabit PCI Express Network Driver
+</span><span class='line'>author:         Intel Corporation, &lt;linux.nics@intel.com&gt;
+</span><span class='line'>srcversion:     E252348AB8BA33BA57DD40B
+</span><span class='line'>[root@rockstor ~]#</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>root@pve:~# modinfo ixgbe | head -6
+</span><span class='line'>filename:       /lib/modules/4.4.6-1-pve/kernel/drivers/net/ethernet/intel/ixgbe/ixgbe.ko
+</span><span class='line'>version:        4.3.15
+</span><span class='line'>license:        GPL
+</span><span class='line'>description:    Intel(R) 10 Gigabit PCI Express Network Driver
+</span><span class='line'>author:         Intel Corporation, &lt;linux.nics@intel.com&gt;
+</span><span class='line'>srcversion:     7AED484083B2C5B86424A3A
+</span><span class='line'>root@pve:~#</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Rockstor(CentOS 7.2)ではバージョン4.2.1、ProxMox(Debian 8.2)ではバージョン4.3.15のようですね</p>
+
+<h3>ドライバ導入</h3>
+
+<p>そのままで認識してくれましたが、せっかくなので最新のドライバを導入します。
+執筆時点の最新のドライバは4.3.15なので、ProxMoxは最新版が搭載されているようです。
+Rockstorのドライバをアップデートするため、
+Intelから最新のドライバを拾ってきて、<code>tar xf &amp;&amp; make &amp;&amp; make install</code>するだけの簡単なお仕事でした。</p>
+
+<p><a href="https://downloadcenter.intel.com/download/14687/PCI-E-10-Linux-">Download Network Adapter Driver for PCI-E<em> Intel® 10 Gigabit Ethernet Network Connections under Linux</em></a></p>
+
+<h1>検証</h1>
+
+<p>こんなに安くてはたしてしっかり動くのか、そこが問題です。</p>
+
+<h2>検証環境</h2>
+
+<p>構成は前章のセットアップの節に同じ。
+Aの仮想マシン動かしてるやつをクライアント、BのNASをサーバとします。
+IPアドレスは、Aを172.28.0.2/24、Bを172.28.0.3/24として設定します。</p>
+
+<h2>検証内容</h2>
+
+<h3>単線通信速度測定</h3>
+
+<p>iperf3を使って片方のポートに接続したLANケーブルで通信してTCPによる転送速度を測定します。
+5回測定して偏りがなければ、3回目の結果を例としてあげます。</p>
+
+<h3>リンクアグリゲーション通信速度測定</h3>
+
+<p>デュアルポートを束ねてリンクアグリゲーションし、論理20Gbpsを構成してiperf3で通信速度を測定します。
+リンクアグリゲーションの構成方法はクライアント・サーバともに同じとし、クライアント側での設定例を以下に示します。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>root@pve:~# modprobe bonding
+</span><span class='line'>root@pve:~# ip addr add 172.28.0.3/24 brd + dev bond0
+</span><span class='line'>root@pve:~# ifenslave bond0 eth2 eth3
+</span><span class='line'>root@pve:~# ip link set dev bond0 up
+</span><span class='line'>root@pve:~# ip link dev bond0</span></code></pre></td></tr></table></div></figure>
+
+
+<p>5回測定して偏りがなければ、3回目の結果を例としてあげます。</p>
+
+<h3>消費電力</h3>
+
+<p>AのXeonマシンにおいて、以下の4状態を10秒間ワットチェッカーで測定した結果の平均値を求めます。</p>
+
+<ul>
+<li>X540-T2未搭載でのアイドル時消費電力</li>
+<li>X540-T2搭載した状態でのアイドル時消費電力</li>
+<li>X540-T2搭載した状態でiperf3単線通信速度測定時の消費電力</li>
+<li>X540-T2搭載した状態でiperf3リンクアグリゲーション通信速度測定時の消費電力</li>
+</ul>
+
+
+<h2>結果</h2>
+
+<h3>単線通信速度測定</h3>
+
+<p>iperf3で5回計測した結果、偏りは生じませんでした。
+平均的な数値としては、単線では帯域幅が<strong>9.38Gbps</strong>出るといった結果となりました。
+以下に、3回目の結果を示します。</p>
+
+<h4>クライアント側</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>root@pve:~# iperf3 -c 172.28.0.2 0B 172.28.0.3
+</span><span class='line'>Connecting to host 172.28.0.2, port 5201
+</span><span class='line'>[  4] local 172.28.0.3 port 59914 connected to 172.28.0.2 port 5201
+</span><span class='line'>[ ID] Interval           Transfer     Bandwidth       Retr  Cwnd
+</span><span class='line'>[  4]   0.00-1.00   sec  1.10 GBytes  9.41 Gbits/sec   10    624 KBytes
+</span><span class='line'>[  4]   1.00-2.00   sec  1.09 GBytes  9.40 Gbits/sec    0    672 KBytes
+</span><span class='line'>[  4]   2.00-3.00   sec  1.09 GBytes  9.40 Gbits/sec    0    676 KBytes
+</span><span class='line'>[  4]   3.00-4.00   sec  1.09 GBytes  9.36 Gbits/sec    0    687 KBytes
+</span><span class='line'>[  4]   4.00-5.00   sec  1.09 GBytes  9.41 Gbits/sec    0    694 KBytes
+</span><span class='line'>[  4]   5.00-6.00   sec  1.09 GBytes  9.41 Gbits/sec    7    615 KBytes
+</span><span class='line'>[  4]   6.00-7.00   sec  1.08 GBytes  9.31 Gbits/sec   11    609 KBytes
+</span><span class='line'>[  4]   7.00-8.00   sec  1.06 GBytes  9.11 Gbits/sec    0    755 KBytes
+</span><span class='line'>[  4]   8.00-9.00   sec  1.04 GBytes  8.95 Gbits/sec    0    860 KBytes
+</span><span class='line'>[  4]   9.00-10.00  sec  1.05 GBytes  9.01 Gbits/sec    0    887 KBytes
+</span><span class='line'>- - - - - - - - - - - - - - - - - - - - - - - - -
+</span><span class='line'>[ ID] Interval           Transfer     Bandwidth       Retr
+</span><span class='line'>[  4]   0.00-10.00  sec  10.8 GBytes  9.28 Gbits/sec   28             sender
+</span><span class='line'>[  4]   0.00-10.00  sec  10.8 GBytes  9.27 Gbits/sec                  receiver
+</span><span class='line'>
+</span><span class='line'>iperf Done.</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>サーバ側</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[root@rockstor ~]# iperf3 -s -B 172.28.0.2
+</span><span class='line'>-----------------------------------------------------------
+</span><span class='line'>Server listening on 5201
+</span><span class='line'>-----------------------------------------------------------
+</span><span class='line'>Accepted connection from 172.28.0.3, port 59912
+</span><span class='line'>[  5] local 172.28.0.2 port 5201 connected to 172.28.0.3 port 59914
+</span><span class='line'>[ ID] Interval           Transfer     Bandwidth
+</span><span class='line'>[  5]   0.00-1.00   sec  1.05 GBytes  9.03 Gbits/sec
+</span><span class='line'>[  5]   1.00-2.00   sec  1.09 GBytes  9.39 Gbits/sec
+</span><span class='line'>[  5]   2.00-3.00   sec  1.09 GBytes  9.40 Gbits/sec
+</span><span class='line'>[  5]   3.00-4.00   sec  1.09 GBytes  9.36 Gbits/sec
+</span><span class='line'>[  5]   4.00-5.00   sec  1.10 GBytes  9.41 Gbits/sec
+</span><span class='line'>[  5]   5.00-6.00   sec  1.09 GBytes  9.40 Gbits/sec
+</span><span class='line'>[  5]   6.00-7.00   sec  1.09 GBytes  9.34 Gbits/sec
+</span><span class='line'>[  5]   7.00-8.00   sec  1.06 GBytes  9.11 Gbits/sec
+</span><span class='line'>[  5]   8.00-9.00   sec  1.04 GBytes  8.93 Gbits/sec
+</span><span class='line'>[  5]   9.00-10.00  sec  1.05 GBytes  9.00 Gbits/sec
+</span><span class='line'>[  5]  10.00-10.04  sec  43.1 MBytes  9.41 Gbits/sec
+</span><span class='line'>- - - - - - - - - - - - - - - - - - - - - - - - -
+</span><span class='line'>[ ID] Interval           Transfer     Bandwidth
+</span><span class='line'>[  5]   0.00-10.04  sec  0.00 Bytes  0.00 bits/sec                  sender
+</span><span class='line'>[  5]   0.00-10.04  sec  10.8 GBytes  9.24 Gbits/sec                  receiver</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>リンクアグリゲーション通信速度測定</h3>
+
+<p>iperf3で5回計測した結果、偏りは生じませんでした。
+平均的な数値としては、リンクアグリゲーションでは帯域幅が<strong>14.4Gbps</strong>出るといった結果となりました。
+以下に、3回目の結果を示します。</p>
+
+<h4>クライアント側</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>root@pve:~# iperf3 -c 172.28.0.2 -B 172.28.0.3
+</span><span class='line'>Connecting to host 172.28.0.2, port 5201
+</span><span class='line'>[  4] local 172.28.0.3 port 54549 connected to 172.28.0.2 port 5201
+</span><span class='line'>[ ID] Interval           Transfer     Bandwidth       Retr  Cwnd
+</span><span class='line'>[  4]   0.00-1.00   sec  1.67 GBytes  14.3 Gbits/sec    9    677 KBytes
+</span><span class='line'>[  4]   1.00-2.00   sec  1.68 GBytes  14.5 Gbits/sec    0    682 KBytes
+</span><span class='line'>[  4]   2.00-3.00   sec  1.69 GBytes  14.5 Gbits/sec  165    684 KBytes
+</span><span class='line'>[  4]   3.00-4.00   sec  1.72 GBytes  14.8 Gbits/sec    2    773 KBytes
+</span><span class='line'>[  4]   4.00-5.00   sec  1.66 GBytes  14.2 Gbits/sec  106    557 KBytes
+</span><span class='line'>[  4]   5.00-6.00   sec  1.62 GBytes  13.9 Gbits/sec   29    472 KBytes
+</span><span class='line'>[  4]   6.00-7.00   sec  1.68 GBytes  14.5 Gbits/sec   15    840 KBytes
+</span><span class='line'>[  4]   7.00-8.00   sec  1.63 GBytes  14.0 Gbits/sec   42    587 KBytes
+</span><span class='line'>[  4]   8.00-9.00   sec  1.66 GBytes  14.2 Gbits/sec   94    710 KBytes
+</span><span class='line'>[  4]   9.00-10.00  sec  1.62 GBytes  13.9 Gbits/sec   15    710 KBytes
+</span><span class='line'>- - - - - - - - - - - - - - - - - - - - - - - - -
+</span><span class='line'>[ ID] Interval           Transfer     Bandwidth       Retr
+</span><span class='line'>[  4]   0.00-10.00  sec  16.6 GBytes  14.3 Gbits/sec  477             sender
+</span><span class='line'>[  4]   0.00-10.00  sec  16.6 GBytes  14.3 Gbits/sec                  receiver
+</span><span class='line'>
+</span><span class='line'>iperf Done.</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>サーバ側</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[root@rockstor ~]# iperf3 -s -B 172.28.0.2
+</span><span class='line'>-----------------------------------------------------------
+</span><span class='line'>Server listening on 5201
+</span><span class='line'>-----------------------------------------------------------
+</span><span class='line'>Accepted connection from 172.28.0.3, port 54615
+</span><span class='line'>[  5] local 172.28.0.2 port 5201 connected to 172.28.0.3 port 54549
+</span><span class='line'>[ ID] Interval           Transfer     Bandwidth
+</span><span class='line'>[  5]   0.00-1.00   sec  1.60 GBytes  13.8 Gbits/sec
+</span><span class='line'>[  5]   1.00-2.00   sec  1.68 GBytes  14.4 Gbits/sec
+</span><span class='line'>[  5]   2.00-3.00   sec  1.69 GBytes  14.5 Gbits/sec
+</span><span class='line'>[  5]   3.00-4.00   sec  1.72 GBytes  14.8 Gbits/sec
+</span><span class='line'>[  5]   4.00-5.00   sec  1.66 GBytes  14.2 Gbits/sec
+</span><span class='line'>[  5]   5.00-6.00   sec  1.62 GBytes  13.9 Gbits/sec
+</span><span class='line'>[  5]   6.00-7.00   sec  1.67 GBytes  14.3 Gbits/sec
+</span><span class='line'>[  5]   7.00-8.00   sec  1.64 GBytes  14.1 Gbits/sec
+</span><span class='line'>[  5]   8.00-9.00   sec  1.66 GBytes  14.2 Gbits/sec
+</span><span class='line'>[  5]   9.00-10.00  sec  1.62 GBytes  13.9 Gbits/sec
+</span><span class='line'>[  5]  10.00-10.04  sec  62.2 MBytes  14.1 Gbits/sec
+</span><span class='line'>- - - - - - - - - - - - - - - - - - - - - - - - -
+</span><span class='line'>[ ID] Interval           Transfer     Bandwidth
+</span><span class='line'>[  5]   0.00-10.04  sec  0.00 Bytes  0.00 bits/sec                  sender
+</span><span class='line'>[  5]   0.00-10.04  sec  16.6 GBytes  14.2 Gbits/sec                  receiver</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>消費電力</h3>
+
+<p>4状態における消費電力は以下の通りとなりました。</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">状態</th>
+<th style="text-align:right;">消費電力</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;"> 未搭載アイドル時</td>
+<td style="text-align:right;"> 38 W</td>
+</tr>
+<tr>
+<td style="text-align:left;"> 搭載済みアイドル時 </td>
+<td style="text-align:right;"> 51 W</td>
+</tr>
+<tr>
+<td style="text-align:left;"> 単線通信時 </td>
+<td style="text-align:right;"> 63 W</td>
+</tr>
+<tr>
+<td style="text-align:left;"> リンクアグリゲーション通信時 </td>
+<td style="text-align:right;"> 68 W</td>
+</tr>
+</tbody>
+</table>
+
+
+<h1>まとめ</h1>
+
+<p>X540-T2は買いである。</p>
+
+<p><a href="https://www.amazon.co.jp/intel-X540T2-X540-T2/dp/B0077CS9UM/ref=sr_1_1?ie=UTF8&amp;qid=1467713812&amp;sr=8-1&amp;tag=mzyy-22">Amazon.co.jp： intel X540-T2: パソコン・周辺機器</a></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard"><i class="glyphicon glyphicon-user"></i><span class="fn">mzyy94</span></span>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+<i class="glyphicon glyphicon-calendar"></i><time datetime="2016-07-06T02:45:50+09:00" pubdate data-updated="true">06 Jul 2016</time>
+      
+
+
+      
+
+
+    </p>
+    
+      <div class="widget-container widget-social">
+	<ul class="clearfix">
+  
+
+  <!--li class="social-twitter"><a href="https://twitter.com/intent/tweet?original_referer=http://mzyy94.com/blog/2016/07/06/hello-10gbe-nic/&text=1万円台の格安Intel X540-T2 10GbEを買ってみた%20-%20犬アイコンのみっきー&tw_p=tweetbutton&url=http://mzyy94.com/blog/2016/07/06/hello-10gbe-nic/&via=mzyy94"><i>Tweet</i></a></li-->
+
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://mzyy94.com/blog/2016/07/06/hello-10gbe-nic/" data-via="mzyy94" data-counturl="http://mzyy94.com/blog/2016/07/06/hello-10gbe-nic/" >Tweet</a>
+  
+  
+  <!-- li class="social-google"><a href="#"><i>Google</i></a></li -->
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+  <!-- li class="social-facebook"><a href="#"><i>Facebook</i></a></li -->
+  <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+  </ul>
+</div>
+
+    
+    <div>
+      
+	  <a class="btn btn-icon-left btn-arrow-left" href="/blog/2016/07/05/chinachu-rockon/" title="Previous Post: RockstorにChinachuを詰め込んで録画NAS作ろ"><span>RockstorにChinachuを詰め込んで録画NAS作ろ</span></a>
+      
+      
+    </div>
+  </footer>
+</article>
+
+  <section class="comment">
+    <h1 class="boxed-red">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</main>
+
+<aside class="col-sm-3">
+  
+    <div class="widget-container widget-avatar boxed boxed-yellow">
+	<div class="inner">
+		<h5>mzyy94</h5>
+		<span class="subtitle">Network</span>
+		<div class="avatar">
+			<img src="/images/avatar.png" alt="avatar icon" />
+		</div>
+		<a href="/about/" class="btn btn-brown btn-follow">
+			<span>About me</span>
+		</a>
+	</div>
+</div>
+<div class="widget-container widget_calendar boxed boxed-red">
+	<div class="inner">
+		<input type="text" name="date_departure" class="inputField" id="date_departure">
+	</div>
+</div>
+<script>
+	// <![CDATA[
+	$(document).ready(function() {
+		var posts = {};
+		var datelist = [];
+		$.getJSON('/blog/posts.json', function(data){
+			var dp = data.posts;
+			for(var i = 0, limit = dp.length; i < limit; i++){
+				var date = new Date(dp[i].date);
+				posts[dp[i].date] = {title:dp[i].title,
+					url: '/blog/' + date.getFullYear() + '/' + ('0' + (date.getMonth() + 1)).slice(-2) + '/' + ('0' + date.getDate()).slice(-2) + '/' + dp[i].url + '/'}
+				datelist.push(dp[i].date);
+			}
+			assignCalendar('#date_departure');
+			refreshDate();
+		});
+
+
+		function assignCalendar(id){
+			$('<div class="calendar" />')
+				.insertAfter( $(id) )
+				.datepicker({
+					beforeShowDay: function(date){
+						var string = $.datepicker.formatDate('dd M yy', date);
+						return [ datelist.indexOf(string) != -1 ]
+					},
+					dateFormat: 'dd M yy',
+					minDate: new Date(datelist[datelist.length - 1]),
+					maxDate: new Date(),
+					maxPicks: 1,
+					altField: id,
+					firstDay: 0,
+					showOtherMonths: true,
+					onSelect: function(date){
+						window.location.href = posts[date].url;
+					},
+					onChangeMonthYear: refreshDate
+				}).prev().hide();
+		}
+
+		var month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+		function refreshDate(){
+			setTimeout(function(){
+				$('a.ui-state-default').each(function(num){
+					var yy = $(this).parent().attr('data-year');
+					var M = month[$(this).parent().attr('data-month')];
+					var dd = ('0' + $(this).text()).slice(-2);
+					var idx = dd + ' ' + M + ' ' + yy;
+					$(this).attr('data-title', posts[idx].title);
+					$(this).attr('href', posts[idx].url);
+				});
+			},10);
+		}
+	});
+	// ]]>
+</script>
+<section class="widget-container widget-recently boxed">
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/07/06/hello-10gbe-nic/">1万円台の格安Intel X540-T2 10GbEを買ってみた</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/07/05/chinachu-rockon/">RockstorにChinachuを詰め込んで録画NAS作ろ</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/07/04/do-you-know-rockstor/">NAS用OSにRockstorという選択</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/01/10/42inch-4k-display/">42インチのAH-IPS 4Kディスプレイ買ってみた</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/12/21/linux-qsv-encode/">クリスマスなのでLinuxでQSVエンコードする</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section class="widget-container widget-github boxed">
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'mzyy94',
+            count: 3,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+<div class="widget-container boxed boxed-blue">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- sidebar-small -->
+<ins class="adsbygoogle"
+	style="display:inline-block;width:120px;height:240px"
+	data-ad-client="ca-pub-5429584698977304"
+	data-ad-slot="3454316875"></ins>
+<!-- sidebar-small2 -->
+<ins class="adsbygoogle"
+	style="display:inline-block;width:120px;height:240px"
+	data-ad-client="ca-pub-5429584698977304"
+	data-ad-slot="6626453278"></ins>
+<script>
+	(adsbygoogle = window.adsbygoogle || []).push({});
+	(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'mzyy94blog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://mzyy94.com/blog/2016/07/06/hello-10gbe-nic/';
+        var disqus_url = 'http://mzyy94.com/blog/2016/07/06/hello-10gbe-nic/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+  </div>
+  <footer class="boxed-yellow" role="contentinfo"><p>
+  Copyright &copy; 2016 - mzyy94 -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> -
+  <span class="credit">Designed with <a href="http://pixelkit.com/kits/flat-ui-kit">Flat UI Kit | Modern Touch</a></span> -
+  <span>Licensed under a <a rel="license" href="https://opensource.org/licenses/mit-license.html">MIT License</a> and <a rel="license" href="https://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" src="https://i.creativecommons.org/l/by/3.0/80x15.png" /></a><span>
+</p>
+<script>
+	$(function () {
+		$("a[href^='http'], a[href^='ftp']").click(function () {
+			if ($(this).attr("target") === undefined) 
+			$(this).attr("target", "_blank");
+		});
+	});
+</script>
+
+</footer>
+  </div>
+</body>
+</html>

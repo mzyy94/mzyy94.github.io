@@ -4,7 +4,7 @@
   <title><![CDATA[犬アイコンのみっきー]]></title>
   <link href="http://mzyy94.com/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2016-07-05T07:29:05+09:00</updated>
+  <updated>2016-07-06T03:27:15+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -12,6 +12,542 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[1万円台の格安Intel X540-T2 10GbEを買ってみた]]></title>
+    <link href="http://mzyy94.com/blog/2016/07/06/hello-10gbe-nic/"/>
+    <updated>2016-07-06T02:45:50+09:00</updated>
+    <id>http://mzyy94.com/blog/2016/07/06/hello-10gbe-nic</id>
+    <content type="html"><![CDATA[<p>事の発端はこちらのツイート</p>
+
+<blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">Amazonに出品されてる激安X540-T2（19000円）って本物なの、大丈夫なの</p>&mdash; ゆずはら (@yuzuhara) <a href="https://twitter.com/yuzuhara/status/749804710530392065">2016年7月4日</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">同じこと思っててまだ買えずにいる <a href="https://t.co/424csKrtVR">https://t.co/424csKrtVR</a></p>&mdash; ハイスクール・フリートが生きがい (@mzyy94) <a href="https://twitter.com/mzyy94/status/749821436919885824">2016年7月4日</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<p>この低価格NICはずっと気になっていて、ほしいものリストにもずっと突っ込んでありました。
+<img src="http://mzyy94.com/blog/resources/images/2016/07/06/wishlist.png" alt="Wishlistの画像" /></p>
+
+<p>突っ込んだ当時の価格からずいぶんと安くなり、2016/07/04時点で2万円を切っていたので、以下のような煽りも受けたついでに2枚買ってみました。</p>
+
+<blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">買って確かめてくれよ（懇願 <a href="https://t.co/bWfXoO153O">https://t.co/bWfXoO153O</a></p>&mdash; ゆずはら (@yuzuhara) <a href="https://twitter.com/yuzuhara/status/749824378876022784">2016年7月4日</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<p>買って挙動を確かめてみたレポートです。</p>
+
+<p><a href="https://www.amazon.co.jp/intel-X540T2-X540-T2/dp/B0077CS9UM/ref=sr_1_1?ie=UTF8&amp;qid=1467713812&amp;sr=8-1&amp;tag=mzyy-22">Amazon.co.jp： intel X540-T2: パソコン・周辺機器</a></p>
+
+<!-- more -->
+
+
+<h1>Intel X540-T2</h1>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2016/07/06/x540-t2.jpg" alt="NICの画像 form Intel" /></p>
+
+<p><a href="http://ark.intel.com/ja/products/58954/Intel-Ethernet-Converged-Network-Adapter-X540-T2">Intel® Ethernet Converged Network Adapter X540-T2 仕様</a></p>
+
+<p>一般のご家庭向けのデュアルポート10GbE NICです。
+ark intelの希望カスタマー価格を見ると<em>$508.00 - $513.00</em>とあるように、執筆時の為替レートで考えても5万円は下らない代物です。
+2012年発売から時が立っており、今年のQ1に後継となるX550-T2が発売されていることを考えると、価格が下がるのは納得ですが、
+コンシューマー向けではない機器であるためそこまで値下がりは期待できないと思われていました。</p>
+
+<p>それがついに1万円台で買えるとあって、これから一般のご家庭に急速に広まっていくNICの一つになることは間違いなしです。</p>
+
+<p><a href="https://www.amazon.co.jp/intel-X540T2-X540-T2/dp/B0077CS9UM/ref=sr_1_1?ie=UTF8&amp;qid=1467713812&amp;sr=8-1&amp;tag=mzyy-22">Amazon.co.jp： intel X540-T2: パソコン・周辺機器</a></p>
+
+<h1>購入＆到着</h1>
+
+<p>購入を煽られてクレジットカードの締日を確認し、ポイント還元率の計算と締日が遠いカードの認証情報の登録を行って1時間ほど立ったあとにアマゾンポチｗ！</p>
+
+<blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">買いました <a href="https://t.co/QauGkl8eQw">https://t.co/QauGkl8eQw</a></p>&mdash; ハイスクール・フリートが生きがい (@mzyy94) <a href="https://twitter.com/mzyy94/status/749832787960602624">2016年7月4日</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<p>14時頃に発注して翌日12時頃に到着しました。さすがAmazonプライム当日配送ですね。
+<a href="https://www.amazon.co.jp/gp/student/signup/info?ie=UTF8&amp;refcust=52XVQXJMNAJOBLJATNIVFHOBBI&amp;ref_type=generic&amp;ref=amzn_st_jp_ref_generic">Amazonプライムの入会はこちら</a></p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2016/07/06/amazon-prime.jpg" alt="箱の画像" /></p>
+
+<p>Twitterでは「この安さ、偽物じゃないか？」と噂されていましたが、Intelロゴはちゃんとしたものでした。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2016/07/06/intel-haitteru.jpg" alt="Intelロゴの画像" /></p>
+
+<p><a href="https://www.amazon.co.jp/intel-X540T2-X540-T2/dp/B0077CS9UM/ref=sr_1_1?ie=UTF8&amp;qid=1467713812&amp;sr=8-1&amp;tag=mzyy-22">Amazon.co.jp： intel X540-T2: パソコン・周辺機器</a></p>
+
+<h1>セットアップ</h1>
+
+<h2>環境</h2>
+
+<p>以下の、A及びBの2台のマシンに導入しました。</p>
+
+<p>A: 仮想マシン動かしてるやつ</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left;"> パーツ </th>
+<th style="text-align:left;"> 種類</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;"> CPU     </td>
+<td style="text-align:left;"> Intel Xeon E3-1245v3 3.4GHz</td>
+</tr>
+<tr>
+<td style="text-align:left;"> Memory  </td>
+<td style="text-align:left;"> ECC DDR3-1600 16GB (8GB x 2)</td>
+</tr>
+<tr>
+<td style="text-align:left;"> PCIe </td>
+<td style="text-align:left;"> PCI Express 3.0</td>
+</tr>
+<tr>
+<td style="text-align:left;"> OS </td>
+<td style="text-align:left;"> ProxMox 4.2 (Debian Jessie 8.2)</td>
+</tr>
+<tr>
+<td style="text-align:left;"> バージョン </td>
+<td style="text-align:left;"> 4.4.6-1-pve</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>B: NAS</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left;"> パーツ </th>
+<th style="text-align:left;"> 種類</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;"> CPU     </td>
+<td style="text-align:left;"> Intel Core i5-2405S 2.5GHz</td>
+</tr>
+<tr>
+<td style="text-align:left;"> Memory  </td>
+<td style="text-align:left;"> DDR3-1600 16GB (8GB x 2)</td>
+</tr>
+<tr>
+<td style="text-align:left;"> PCIe </td>
+<td style="text-align:left;"> PCI Express 2.0</td>
+</tr>
+<tr>
+<td style="text-align:left;"> OS </td>
+<td style="text-align:left;"> Rockstor 3.8-14 (CentOS 7.2)</td>
+</tr>
+<tr>
+<td style="text-align:left;"> バージョン </td>
+<td style="text-align:left;"> 4.6.0-1.el7.elrepo.x86_64</td>
+</tr>
+</tbody>
+</table>
+
+
+<h3>NOTE: PCI Express 2.0とPIC Express 2.1の違いについて</h3>
+
+<p>X540-T2はPCI Express 2.1以上の拡張カードスロットに対応しているため、Bの構成は非対応となっています。
+マイナーバージョンアップ程度の変更ですが、3.0に盛り込む予定であった多くの機能をIntelが打診して無理やり2.1として出させたこともあって<em>[要出典]</em>、
+数少ないPCI Express 2.1インターフェースを要求するこのNICもその追加機能を多く使っていると考えられます。</p>
+
+<p>出典？：<a href="http://pc.watch.impress.co.jp/docs/news/event/380216.html">【イベントレポート】【PCI-SIG Developers Conference 2010レポート】 PCIe Specificationの詳細 - PC Watch</a></p>
+
+<p>ただ、PCI Expressには下位互換性がサポートされているため、最高のパフォーマンスは出せないにしろ、動作すると予想されるため、Bの構成でも利用してみます。</p>
+
+<h2>接続</h2>
+
+<p>X540-T2と同時購入した<em><a href="https://www.amazon.co.jp/gp/product/B00ID1S8ZW/ref=oh_aui_detailpage_o00_s00?ie=UTF8&amp;tag=mzyy-22">こたつみたいなCAT7 LANケーブル</a></em>をそれぞれのポートに接続してこんな感じでつなげてみました。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2016/07/06/connected.jpg" alt="つなげた図" /></p>
+
+<p><a href="https://www.amazon.co.jp/intel-X540T2-X540-T2/dp/B0077CS9UM/ref=sr_1_1?ie=UTF8&amp;qid=1467713812&amp;sr=8-1&amp;tag=mzyy-22">Amazon.co.jp： intel X540-T2: パソコン・周辺機器</a></p>
+
+<h2>認識</h2>
+
+<p>とりあえずカーネルで標準で読み込まれてたドライバで認識しました。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[root@rockstor ~]# lspci -d 8086: | grep Ethernet
+</span><span class='line'>01:00.0 Ethernet controller: Intel Corporation Ethernet Controller 10-Gigabit X540-AT2 (rev 01)
+</span><span class='line'>01:00.1 Ethernet controller: Intel Corporation Ethernet Controller 10-Gigabit X540-AT2 (rev 01)
+</span><span class='line'>[root@rockstor ~]#</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[root@rockstor ~]# lspci -k -s 01:00
+</span><span class='line'>01:00.0 Ethernet controller: Intel Corporation Ethernet Controller 10-Gigabit X540-AT2 (rev 01)
+</span><span class='line'>        Subsystem: Intel Corporation Ethernet Converged Network Adapter X540-T2
+</span><span class='line'>        Kernel driver in use: ixgbe
+</span><span class='line'>01:00.1 Ethernet controller: Intel Corporation Ethernet Controller 10-Gigabit X540-AT2 (rev 01)
+</span><span class='line'>        Subsystem: Intel Corporation Ethernet Converged Network Adapter X540-T2
+</span><span class='line'>        Kernel driver in use: ixgbe
+</span><span class='line'>[root@rockstor ~]#</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[root@rockstor ~]# modinfo ixgbe | head -6
+</span><span class='line'>filename:       /lib/modules/4.6.0-1.el7.elrepo.x86_64/kernel/drivers/net/ethernet/intel/ixgbe/ixgbe.ko
+</span><span class='line'>version:        4.2.1-k
+</span><span class='line'>license:        GPL
+</span><span class='line'>description:    Intel(R) 10 Gigabit PCI Express Network Driver
+</span><span class='line'>author:         Intel Corporation, &lt;linux.nics@intel.com&gt;
+</span><span class='line'>srcversion:     E252348AB8BA33BA57DD40B
+</span><span class='line'>[root@rockstor ~]#</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>root@pve:~# modinfo ixgbe | head -6
+</span><span class='line'>filename:       /lib/modules/4.4.6-1-pve/kernel/drivers/net/ethernet/intel/ixgbe/ixgbe.ko
+</span><span class='line'>version:        4.3.15
+</span><span class='line'>license:        GPL
+</span><span class='line'>description:    Intel(R) 10 Gigabit PCI Express Network Driver
+</span><span class='line'>author:         Intel Corporation, &lt;linux.nics@intel.com&gt;
+</span><span class='line'>srcversion:     7AED484083B2C5B86424A3A
+</span><span class='line'>root@pve:~#</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Rockstor(CentOS 7.2)ではバージョン4.2.1、ProxMox(Debian 8.2)ではバージョン4.3.15のようですね</p>
+
+<h3>ドライバ導入</h3>
+
+<p>そのままで認識してくれましたが、せっかくなので最新のドライバを導入します。
+執筆時点の最新のドライバは4.3.15なので、ProxMoxは最新版が搭載されているようです。
+Rockstorのドライバをアップデートするため、
+Intelから最新のドライバを拾ってきて、<code>tar xf &amp;&amp; make &amp;&amp; make install</code>するだけの簡単なお仕事でした。</p>
+
+<p><a href="https://downloadcenter.intel.com/download/14687/PCI-E-10-Linux-">Download Network Adapter Driver for PCI-E<em> Intel® 10 Gigabit Ethernet Network Connections under Linux</em></a></p>
+
+<h1>検証</h1>
+
+<p>こんなに安くてはたしてしっかり動くのか、そこが問題です。</p>
+
+<h2>検証環境</h2>
+
+<p>構成は前章のセットアップの節に同じ。
+Aの仮想マシン動かしてるやつをクライアント、BのNASをサーバとします。
+IPアドレスは、Aを172.28.0.2/24、Bを172.28.0.3/24として設定します。</p>
+
+<h2>検証内容</h2>
+
+<h3>単線通信速度測定</h3>
+
+<p>iperf3を使って片方のポートに接続したLANケーブルで通信してTCPによる転送速度を測定します。
+5回測定して偏りがなければ、3回目の結果を例としてあげます。</p>
+
+<h3>リンクアグリゲーション通信速度測定</h3>
+
+<p>デュアルポートを束ねてリンクアグリゲーションし、論理20Gbpsを構成してiperf3で通信速度を測定します。
+リンクアグリゲーションの構成方法はクライアント・サーバともに同じとし、クライアント側での設定例を以下に示します。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>root@pve:~# modprobe bonding
+</span><span class='line'>root@pve:~# ip addr add 172.28.0.3/24 brd + dev bond0
+</span><span class='line'>root@pve:~# ifenslave bond0 eth2 eth3
+</span><span class='line'>root@pve:~# ip link set dev bond0 up
+</span><span class='line'>root@pve:~# ip link dev bond0</span></code></pre></td></tr></table></div></figure>
+
+
+<p>5回測定して偏りがなければ、3回目の結果を例としてあげます。</p>
+
+<h3>消費電力</h3>
+
+<p>AのXeonマシンにおいて、以下の4状態を10秒間ワットチェッカーで測定した結果の平均値を求めます。</p>
+
+<ul>
+<li>X540-T2未搭載でのアイドル時消費電力</li>
+<li>X540-T2搭載した状態でのアイドル時消費電力</li>
+<li>X540-T2搭載した状態でiperf3単線通信速度測定時の消費電力</li>
+<li>X540-T2搭載した状態でiperf3リンクアグリゲーション通信速度測定時の消費電力</li>
+</ul>
+
+
+<h2>結果</h2>
+
+<h3>単線通信速度測定</h3>
+
+<p>iperf3で5回計測した結果、偏りは生じませんでした。
+平均的な数値としては、単線では帯域幅が<strong>9.38Gbps</strong>出るといった結果となりました。
+以下に、3回目の結果を示します。</p>
+
+<h4>クライアント側</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>root@pve:~# iperf3 -c 172.28.0.2 0B 172.28.0.3
+</span><span class='line'>Connecting to host 172.28.0.2, port 5201
+</span><span class='line'>[  4] local 172.28.0.3 port 59914 connected to 172.28.0.2 port 5201
+</span><span class='line'>[ ID] Interval           Transfer     Bandwidth       Retr  Cwnd
+</span><span class='line'>[  4]   0.00-1.00   sec  1.10 GBytes  9.41 Gbits/sec   10    624 KBytes
+</span><span class='line'>[  4]   1.00-2.00   sec  1.09 GBytes  9.40 Gbits/sec    0    672 KBytes
+</span><span class='line'>[  4]   2.00-3.00   sec  1.09 GBytes  9.40 Gbits/sec    0    676 KBytes
+</span><span class='line'>[  4]   3.00-4.00   sec  1.09 GBytes  9.36 Gbits/sec    0    687 KBytes
+</span><span class='line'>[  4]   4.00-5.00   sec  1.09 GBytes  9.41 Gbits/sec    0    694 KBytes
+</span><span class='line'>[  4]   5.00-6.00   sec  1.09 GBytes  9.41 Gbits/sec    7    615 KBytes
+</span><span class='line'>[  4]   6.00-7.00   sec  1.08 GBytes  9.31 Gbits/sec   11    609 KBytes
+</span><span class='line'>[  4]   7.00-8.00   sec  1.06 GBytes  9.11 Gbits/sec    0    755 KBytes
+</span><span class='line'>[  4]   8.00-9.00   sec  1.04 GBytes  8.95 Gbits/sec    0    860 KBytes
+</span><span class='line'>[  4]   9.00-10.00  sec  1.05 GBytes  9.01 Gbits/sec    0    887 KBytes
+</span><span class='line'>- - - - - - - - - - - - - - - - - - - - - - - - -
+</span><span class='line'>[ ID] Interval           Transfer     Bandwidth       Retr
+</span><span class='line'>[  4]   0.00-10.00  sec  10.8 GBytes  9.28 Gbits/sec   28             sender
+</span><span class='line'>[  4]   0.00-10.00  sec  10.8 GBytes  9.27 Gbits/sec                  receiver
+</span><span class='line'>
+</span><span class='line'>iperf Done.</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>サーバ側</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[root@rockstor ~]# iperf3 -s -B 172.28.0.2
+</span><span class='line'>-----------------------------------------------------------
+</span><span class='line'>Server listening on 5201
+</span><span class='line'>-----------------------------------------------------------
+</span><span class='line'>Accepted connection from 172.28.0.3, port 59912
+</span><span class='line'>[  5] local 172.28.0.2 port 5201 connected to 172.28.0.3 port 59914
+</span><span class='line'>[ ID] Interval           Transfer     Bandwidth
+</span><span class='line'>[  5]   0.00-1.00   sec  1.05 GBytes  9.03 Gbits/sec
+</span><span class='line'>[  5]   1.00-2.00   sec  1.09 GBytes  9.39 Gbits/sec
+</span><span class='line'>[  5]   2.00-3.00   sec  1.09 GBytes  9.40 Gbits/sec
+</span><span class='line'>[  5]   3.00-4.00   sec  1.09 GBytes  9.36 Gbits/sec
+</span><span class='line'>[  5]   4.00-5.00   sec  1.10 GBytes  9.41 Gbits/sec
+</span><span class='line'>[  5]   5.00-6.00   sec  1.09 GBytes  9.40 Gbits/sec
+</span><span class='line'>[  5]   6.00-7.00   sec  1.09 GBytes  9.34 Gbits/sec
+</span><span class='line'>[  5]   7.00-8.00   sec  1.06 GBytes  9.11 Gbits/sec
+</span><span class='line'>[  5]   8.00-9.00   sec  1.04 GBytes  8.93 Gbits/sec
+</span><span class='line'>[  5]   9.00-10.00  sec  1.05 GBytes  9.00 Gbits/sec
+</span><span class='line'>[  5]  10.00-10.04  sec  43.1 MBytes  9.41 Gbits/sec
+</span><span class='line'>- - - - - - - - - - - - - - - - - - - - - - - - -
+</span><span class='line'>[ ID] Interval           Transfer     Bandwidth
+</span><span class='line'>[  5]   0.00-10.04  sec  0.00 Bytes  0.00 bits/sec                  sender
+</span><span class='line'>[  5]   0.00-10.04  sec  10.8 GBytes  9.24 Gbits/sec                  receiver</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>リンクアグリゲーション通信速度測定</h3>
+
+<p>iperf3で5回計測した結果、偏りは生じませんでした。
+平均的な数値としては、リンクアグリゲーションでは帯域幅が<strong>14.4Gbps</strong>出るといった結果となりました。
+以下に、3回目の結果を示します。</p>
+
+<h4>クライアント側</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>root@pve:~# iperf3 -c 172.28.0.2 -B 172.28.0.3
+</span><span class='line'>Connecting to host 172.28.0.2, port 5201
+</span><span class='line'>[  4] local 172.28.0.3 port 54549 connected to 172.28.0.2 port 5201
+</span><span class='line'>[ ID] Interval           Transfer     Bandwidth       Retr  Cwnd
+</span><span class='line'>[  4]   0.00-1.00   sec  1.67 GBytes  14.3 Gbits/sec    9    677 KBytes
+</span><span class='line'>[  4]   1.00-2.00   sec  1.68 GBytes  14.5 Gbits/sec    0    682 KBytes
+</span><span class='line'>[  4]   2.00-3.00   sec  1.69 GBytes  14.5 Gbits/sec  165    684 KBytes
+</span><span class='line'>[  4]   3.00-4.00   sec  1.72 GBytes  14.8 Gbits/sec    2    773 KBytes
+</span><span class='line'>[  4]   4.00-5.00   sec  1.66 GBytes  14.2 Gbits/sec  106    557 KBytes
+</span><span class='line'>[  4]   5.00-6.00   sec  1.62 GBytes  13.9 Gbits/sec   29    472 KBytes
+</span><span class='line'>[  4]   6.00-7.00   sec  1.68 GBytes  14.5 Gbits/sec   15    840 KBytes
+</span><span class='line'>[  4]   7.00-8.00   sec  1.63 GBytes  14.0 Gbits/sec   42    587 KBytes
+</span><span class='line'>[  4]   8.00-9.00   sec  1.66 GBytes  14.2 Gbits/sec   94    710 KBytes
+</span><span class='line'>[  4]   9.00-10.00  sec  1.62 GBytes  13.9 Gbits/sec   15    710 KBytes
+</span><span class='line'>- - - - - - - - - - - - - - - - - - - - - - - - -
+</span><span class='line'>[ ID] Interval           Transfer     Bandwidth       Retr
+</span><span class='line'>[  4]   0.00-10.00  sec  16.6 GBytes  14.3 Gbits/sec  477             sender
+</span><span class='line'>[  4]   0.00-10.00  sec  16.6 GBytes  14.3 Gbits/sec                  receiver
+</span><span class='line'>
+</span><span class='line'>iperf Done.</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>サーバ側</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[root@rockstor ~]# iperf3 -s -B 172.28.0.2
+</span><span class='line'>-----------------------------------------------------------
+</span><span class='line'>Server listening on 5201
+</span><span class='line'>-----------------------------------------------------------
+</span><span class='line'>Accepted connection from 172.28.0.3, port 54615
+</span><span class='line'>[  5] local 172.28.0.2 port 5201 connected to 172.28.0.3 port 54549
+</span><span class='line'>[ ID] Interval           Transfer     Bandwidth
+</span><span class='line'>[  5]   0.00-1.00   sec  1.60 GBytes  13.8 Gbits/sec
+</span><span class='line'>[  5]   1.00-2.00   sec  1.68 GBytes  14.4 Gbits/sec
+</span><span class='line'>[  5]   2.00-3.00   sec  1.69 GBytes  14.5 Gbits/sec
+</span><span class='line'>[  5]   3.00-4.00   sec  1.72 GBytes  14.8 Gbits/sec
+</span><span class='line'>[  5]   4.00-5.00   sec  1.66 GBytes  14.2 Gbits/sec
+</span><span class='line'>[  5]   5.00-6.00   sec  1.62 GBytes  13.9 Gbits/sec
+</span><span class='line'>[  5]   6.00-7.00   sec  1.67 GBytes  14.3 Gbits/sec
+</span><span class='line'>[  5]   7.00-8.00   sec  1.64 GBytes  14.1 Gbits/sec
+</span><span class='line'>[  5]   8.00-9.00   sec  1.66 GBytes  14.2 Gbits/sec
+</span><span class='line'>[  5]   9.00-10.00  sec  1.62 GBytes  13.9 Gbits/sec
+</span><span class='line'>[  5]  10.00-10.04  sec  62.2 MBytes  14.1 Gbits/sec
+</span><span class='line'>- - - - - - - - - - - - - - - - - - - - - - - - -
+</span><span class='line'>[ ID] Interval           Transfer     Bandwidth
+</span><span class='line'>[  5]   0.00-10.04  sec  0.00 Bytes  0.00 bits/sec                  sender
+</span><span class='line'>[  5]   0.00-10.04  sec  16.6 GBytes  14.2 Gbits/sec                  receiver</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>消費電力</h3>
+
+<p>4状態における消費電力は以下の通りとなりました。</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">状態</th>
+<th style="text-align:right;">消費電力</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;"> 未搭載アイドル時</td>
+<td style="text-align:right;"> 38 W</td>
+</tr>
+<tr>
+<td style="text-align:left;"> 搭載済みアイドル時 </td>
+<td style="text-align:right;"> 51 W</td>
+</tr>
+<tr>
+<td style="text-align:left;"> 単線通信時 </td>
+<td style="text-align:right;"> 63 W</td>
+</tr>
+<tr>
+<td style="text-align:left;"> リンクアグリゲーション通信時 </td>
+<td style="text-align:right;"> 68 W</td>
+</tr>
+</tbody>
+</table>
+
+
+<h1>まとめ</h1>
+
+<p>X540-T2は買いである。</p>
+
+<p><a href="https://www.amazon.co.jp/intel-X540T2-X540-T2/dp/B0077CS9UM/ref=sr_1_1?ie=UTF8&amp;qid=1467713812&amp;sr=8-1&amp;tag=mzyy-22">Amazon.co.jp： intel X540-T2: パソコン・周辺機器</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[RockstorにChinachuを詰め込んで録画NAS作ろ]]></title>
@@ -5912,189 +6448,6 @@ $ brew pull 37642
 
 
 <p>どれも電源やLANケーブル用を接続するには加工が必要となりますが、上3つの素材はポリプロピレンなので加工は意外と簡単です。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[柚子胡椒でサーバーを壊さないために]]></title>
-    <link href="http://mzyy94.com/blog/2015/03/06/yuzu-trouble/"/>
-    <updated>2015-03-06T18:05:49+09:00</updated>
-    <id>http://mzyy94.com/blog/2015/03/06/yuzu-trouble</id>
-    <content type="html"><![CDATA[<blockquote class="twitter-tweet" lang="ja"><p>【急募】PCIスロットに詰まった柚子胡椒を取り除く方法</p>&mdash; えびみっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/573719000464556033">2015, 3月 6</a></blockquote>
-
-
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-
-<p>柚子胡椒を部屋中にぶちまけたところ、メンテナンス中だったサーバーのマザーボードに降りかかり、あろうことか柚子胡椒がPCIeスロットに入り込んでいました。
-すでにそのような経験のある人には不要な記事かもしれませんが、Twitter経由で得られた、柚子胡椒とサーバーをお持ちのみなさまによる解決案と対策をまとめました。</p>
-
-<!-- more -->
-
-
-<h1>事の経緯</h1>
-
-<blockquote class="twitter-tweet" lang="ja"><p>柚子胡椒のチューブの出が悪い&#10;↓&#10;振って出やすくする&#10;↓&#10;キャップ閉め忘れる&#10;↓&#10;部屋中に柚子胡椒が飛び散る&#10;↓&#10;メンテナンス中のサーバーに降りかかってる&#10;↓&#10;PCIスロットに詰まってる</p>&mdash; えびみっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/573719406284398592">2015, 3月 6</a></blockquote>
-
-
-<p>柚子胡椒を出したかっただけなのです。</p>
-
-<p>追記：ここにまとめられているようです。</p>
-
-<p><a href="http://togetter.com/li/791586">柚子胡椒スロット - Togetterまとめ</a></p>
-
-<h1>解決案</h1>
-
-<p>柚子胡椒を取り除く解決案がいくつか寄せられたのでご紹介します。</p>
-
-<h2>吹き付ける</h2>
-
-<blockquote class="twitter-tweet" data-conversation="none" lang="ja"><p><a href="https://twitter.com/mzyy94">@mzyy94</a> ふつうにエアダスターとかでは</p>&mdash; 日替わりデトックス (@polamjag) <a href="https://twitter.com/polamjag/status/573721418392727552">2015, 3月 6</a></blockquote>
-
-
-<blockquote class="twitter-tweet" data-conversation="none" lang="ja"><p><a href="https://twitter.com/mzyy94">@mzyy94</a> マジレスすると逆さまにして下からブレーキクリーナーを吹いて流すくらいですかねー&#10;ある程度は爪楊枝や紙で取っておくといいでしょう</p>&mdash; タモ＝サーン (@tamosan) <a href="https://twitter.com/tamosan/status/573721435580956672">2015, 3月 6</a></blockquote>
-
-
-<p>エアダスターは手持ちを切らしていてトライできず。ブレーキクリーナーは持ってなかったので試せなかったのですが、油分の多い調味料がスロットに入った場合は効果的かもしれません。</p>
-
-<h2>吸う</h2>
-
-<blockquote class="twitter-tweet" data-conversation="none" lang="ja"><p><a href="https://twitter.com/mzyy94">@mzyy94</a> 単なる思い付きで確証はないですがハンダ吸い取り器とか使えませんかね</p>&mdash; ゆーいちろー@沈降中 (@Yuichiro_S) <a href="https://twitter.com/Yuichiro_S/status/573721963736096768">2015, 3月 6</a></blockquote>
-
-
-<blockquote class="twitter-tweet" data-conversation="none" lang="ja"><p><a href="https://twitter.com/mzyy94">@mzyy94</a> 掃除機で吸えば……</p>&mdash; 堀石 廉 (@Holyithylene) <a href="https://twitter.com/Holyithylene/status/573720291160944641">2015, 3月 6</a></blockquote>
-
-
-<blockquote class="twitter-tweet" data-conversation="none" lang="ja"><p><a href="https://twitter.com/mzyy94">@mzyy94</a> 「急いで口で吸え！」とか自分が知らないネタを言ってみる</p>&mdash; 赤井太一 (@CM_cube) <a href="https://twitter.com/CM_cube/status/573720661647982592">2015, 3月 6</a></blockquote>
-
-
-<blockquote class="twitter-tweet" data-conversation="none" lang="ja"><p><a href="https://twitter.com/mzyy94">@mzyy94</a> 電源入れてあっためたらとんでも無いことになりそう・・・！　うーん、、掃除機で吸い出して、その後なんとか拭き取るってのもあるけど錆びちゃいそうですよね・・・吹かないと。</p>&mdash; salexkidd (@salexkidd) <a href="https://twitter.com/salexkidd/status/573722031193116673">2015, 3月 6</a></blockquote>
-
-
-<blockquote class="twitter-tweet" data-conversation="none" lang="ja"><p><a href="https://twitter.com/mzyy94">@mzyy94</a> まず大きな塊はストローで吸い取れませんか</p>&mdash; Koike (@kichi_robo) <a href="https://twitter.com/kichi_robo/status/573721080570888194">2015, 3月 6</a></blockquote>
-
-
-<!--blockquote class="twitter-tweet" lang="ja"><p>水吸うパーツもあるからなあ。掃除機で吸う→乾かす→エアダスターアンド掃除機でさらに吸う とかでよかった気もする <a href="https://twitter.com/hashtag/%E6%9F%9A%E5%AD%90%E8%83%A1%E6%A4%92?src=hash">#柚子胡椒</a></p>&mdash; \m (@m43net) <a href="https://twitter.com/m43net/status/573743610425815041">2015, 3月 6</a></blockquote-->
-
-
-<p>一番多かった解決案です。吸引力でなんとかなる調味料もあるかもしれませんが、PCIスロットに潜む柚子胡椒はあの半固体感と適度な粘性によって、半田吸い取り機での吸引は効果ゼロでした。あと手元にある掃除機はルンバだけなので、掃除機チャレンジはできませんでした。</p>
-
-<h2>洗い流す</h2>
-
-<blockquote class="twitter-tweet" data-conversation="none" lang="ja"><p><a href="https://twitter.com/mzyy94">@mzyy94</a> もう、マザーボードはずして水洗いしか。バックアップバッテリーはずすの忘れないように。</p>&mdash; 堀石 廉 (@Holyithylene) <a href="https://twitter.com/Holyithylene/status/573721583505661952">2015, 3月 6</a></blockquote>
-
-
-<blockquote class="twitter-tweet" data-conversation="none" lang="ja"><p><a href="https://twitter.com/mzyy94">@mzyy94</a> <a href="https://twitter.com/takauke">@takauke</a> 純アルコールに漬け込んでみてはいかがですかね？</p>&mdash; いとー@東京 (@transistor) <a href="https://twitter.com/transistor/status/573723431113334784">2015, 3月 6</a></blockquote>
-
-
-<blockquote class="twitter-tweet" data-conversation="none" lang="ja"><p><a href="https://twitter.com/mzyy94">@mzyy94</a> 最終手段としては、CMOS電池外す⇒中性洗剤で洗う⇒水道水でよくすすぐ&#10;⇒純水ですすぐ⇒エタノール漬けで脱水⇒よく乾燥させるくらいですかね？</p>&mdash; 桜庭ねむ＠醤油屋L０L1エンジニア (@sakuraba_nemu) <a href="https://twitter.com/sakuraba_nemu/status/573724225879441409">2015, 3月 6</a></blockquote>
-
-
-<p>今回採用したケースです。塩分と油分の含まれる柚子胡椒には中性洗剤を溶いた純水（純水の定義については後述）が効果的であるという目論見のもと、この解決案を採用しました。乾燥にはアルコール（エタノール）を使用するというのがマザボ水洗い界隈には定石のようです。</p>
-
-<h1>トラブル対処の図</h1>
-
-<blockquote class="twitter-tweet" lang="ja"><p>TLの皆様からの貴重な解決法の提供を受け&#10;・純水使用&#10;・中性洗剤使用&#10;・歯ブラシは危険&#10;・エタノールで水分揮発&#10;を実践してみます。各位貴重な情報ありがとうございます。 <a href="http://t.co/z6TDweZYOL">pic.twitter.com/z6TDweZYOL</a></p>&mdash; PCI柚子胡椒職人 (@mzyy94) <a href="https://twitter.com/mzyy94/status/573728196991918080">2015, 3月 6</a></blockquote>
-
-
-<h1>注意点</h1>
-
-<h2>純水と精製水は違う</h2>
-
-<blockquote class="twitter-tweet" lang="ja"><p>純水と超純水はちがうっすよ，PCI柚胡椒氏．．．</p>&mdash; じとめすきー (@jitomesky) <a href="https://twitter.com/jitomesky/status/573729225326247936">2015, 3月 6</a></blockquote>
-
-
-<p>手元にあった純水は、サーバーで飼っていたえびの汽水濃度を調節するものです。また、純水≠精製水であり、電子機器の洗浄に用いられるのは超純水というものであるそうです。慌てふためいていたのですっかり「純水＝純水という名の水」と勘違いしてしまい、純水(精製水ではない)を使ってしまいました。</p>
-
-<blockquote class="twitter-tweet" lang="ja"><p>&gt;&gt; 半導体などの電子部品や電子回路の基板、更には液晶パネルに使うガラスなどの製造工程で使う洗浄水には、ごく微量の不純物が残っていても製品の品質に重大な影響を及ぼすため、純水から純度を更に上げた超純水を用いる必要がある。</p>&mdash; じとめすきー (@jitomesky) <a href="https://twitter.com/jitomesky/status/573728845771071488">2015, 3月 6</a></blockquote>
-
-
-<p>薬局で「精製水」と記載のあるあるものを利用するのが、一般家庭での基板洗浄には最適だそうです。</p>
-
-<h2>歯ブラシでこする</h2>
-
-<blockquote class="twitter-tweet" data-conversation="none" lang="ja"><p><a href="https://twitter.com/mzyy94">@mzyy94</a> マジレスすると歯ブラシはやめておいたほうがいいっす。ホコリとろうとしてやったら中のピンが大変なことに…（AGPスロットだったけど）</p>&mdash; salexkidd (@salexkidd) <a href="https://twitter.com/salexkidd/status/573720752198840320">2015, 3月 6</a></blockquote>
-
-
-<p>確かに細かいピンが並んでるPCIeスロットは下手に歯ブラシでこすると傷つけたりピン折れたりしそうなので、たとえ柚子胡椒が入り込んでもおっしゃる通りやめておきましょう。</p>
-
-<h2>つけ置き</h2>
-
-<blockquote class="twitter-tweet" data-conversation="none" lang="ja"><p><a href="https://twitter.com/mzyy94">@mzyy94</a> 失礼します。精製水の方が良いのはその通りですが、水道水で洗う人もいて、通常なんてことはないのでこの際気にしないで良いのでは。柚子胡椒はちゃんと落とさないと腐蝕の原因になると思いますが。買い出しに行って水に漬けっぱなしの方が心配。</p>&mdash; アキ (@Jaguaimo) <a href="https://twitter.com/Jaguaimo/status/573741851758366720">2015, 3月 6</a></blockquote>
-
-
-<p>密かに隠れている柚子胡椒成分が染み出している場合なども考えると、つけ置きは良くないということですね。常識的に考えてもマザーボードをつけ置きするなんてこと聞いたことないですし、やめておくのが得策です。</p>
-
-<h1>先駆者の言葉</h1>
-
-<blockquote class="twitter-tweet" lang="ja"><p>PCIもPCIeもそんなチャチな節点じゃないよ。LGAも</p>&mdash; ふぁるす (@sushi514) <a href="https://twitter.com/sushi514/status/573738766453473280">2015, 3月 6</a></blockquote>
-
-
-<h1>対策</h1>
-
-<blockquote class="twitter-tweet" lang="ja"><p>俺も柚子胡椒を振る時はちゃんとキャップ閉めよう</p>&mdash; やまじゅん (@MtJune11) <a href="https://twitter.com/MtJune11/status/573737721786593280">2015, 3月 6</a></blockquote>
-
-
-<p>以上です。</p>
-
-<h1>おすすめ柚子胡椒</h1>
-
-<h2>瓶入り</h2>
-
-<blockquote class="twitter-tweet" data-conversation="none" lang="ja"><p><a href="https://twitter.com/mzyy94">@mzyy94</a> 柚子胡椒はびん入りのがあるので、アキバの日本百貨店あたりでGetできるかと。あっちのほーが色々便利かもよ？</p>&mdash; タモ＝サーン (@tamosan) <a href="https://twitter.com/tamosan/status/573781580545593345">2015, 3月 6</a></blockquote>
-
-
-<p>瓶入りなので振ってPCIスロットに詰まるという事故が防げます。</p>
-
-<h2>ゆずすこ</h2>
-
-<blockquote class="twitter-tweet" lang="ja"><p>福岡土産でもらった覚えがあるけど、柚子胡椒にお酢を加えてタバスコ風にしたYUZUSCO（ゆずすこ）っていう調味料があるよ</p>&mdash; mzsm (@mzsm_j) <a href="https://twitter.com/mzsm_j/status/573736798838484992">2015, 3月 6</a></blockquote>
-
-
-<blockquote class="twitter-tweet" lang="ja"><p>液体の柚子胡椒「ゆずすこ」 ゆずすこ [楽天] <a href="http://t.co/dRvymRSKzH">http://t.co/dRvymRSKzH</a> <a href="https://twitter.com/hashtag/RakutenIchiba?src=hash">#RakutenIchiba</a> <a href="http://t.co/2xHIh09Xpe">pic.twitter.com/2xHIh09Xpe</a></p>&mdash; mzsm (@mzsm_j) <a href="https://twitter.com/mzsm_j/status/573738420742193152">2015, 3月 6</a></blockquote>
-
-
-<blockquote class="twitter-tweet" data-conversation="none" lang="ja"><p><a href="https://twitter.com/tamosan">@tamosan</a> <a href="https://twitter.com/mzyy94">@mzyy94</a> <a href="http://t.co/juLQl708Lx">http://t.co/juLQl708Lx</a>　あとはゆずすこ なんてものも…</p>&mdash; greenz(修験者) (@greenz_greenz) <a href="https://twitter.com/greenz_greenz/status/573782317505757185">2015, 3月 6</a></blockquote>
-
-
-<p>酢が入った液体の柚子胡椒もあるようです。これなら粘性が低そうなので取り除きやすいかもしれません。</p>
-
-<h2>赤いゆずこしょう</h2>
-
-<blockquote class="twitter-tweet" lang="ja"><p>赤もありました：高山物産 の 高山さんの赤いゆずごしょう（柚子胡椒赤）120g を Amazon でチェック！ <a href="http://t.co/MOULMnZQO8">http://t.co/MOULMnZQO8</a></p>&mdash; 対テロ戦争 (@syuu1228) <a href="https://twitter.com/syuu1228/status/573740978680393728">2015, 3月 6</a></blockquote>
-
-
-<p>赤い柚子胡椒もあるそうです。これならマザーボードに詰まっても見つけやすく、取り残しの心配が減りますね。</p>
-
-<h2>S&amp;B柚子こしょう40g</h2>
-
-<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=mzyy-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B0084J95W8" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
-
-<p>今回登場した柚子胡椒です。PCIスロットに入りやすいのでご注意ください。</p>
-
-<h1>まとめ</h1>
-
-<blockquote class="twitter-tweet" lang="ja"><p>柚子胡椒のためになんで野口3枚も飛ばさにゃならんのだ。。</p>&mdash; PCI柚子胡椒職人 (@mzyy94) <a href="https://twitter.com/mzyy94/status/573765816887345152">2015, 3月 6</a></blockquote>
-
-
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-
-
-
-<blockquote class="twitter-tweet" lang="ja"><p>@各位&#10;&#10;届きましたのでご報告です <a href="http://t.co/NEzVslGQpf">pic.twitter.com/NEzVslGQpf</a></p>&mdash; PCI柚子胡椒職人 (@mzyy94) <a href="https://twitter.com/mzyy94/status/573999511258861569">2015, 3月 7</a></blockquote>
-
-
-
-
-<blockquote class="twitter-tweet" lang="ja"><p>@贈り物をして下さった方々&#10;&#10;最高の調味料各種を確認いたしました。 <a href="http://t.co/P5rxR8xkkP">pic.twitter.com/P5rxR8xkkP</a></p>&mdash; PCI柚子胡椒職人 (@mzyy94) <a href="https://twitter.com/mzyy94/status/574001187554390016">2015, 3月 7</a></blockquote>
-
-
-
-
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
 ]]></content>
   </entry>
   
