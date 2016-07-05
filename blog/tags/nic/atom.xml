@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: nic | 犬アイコンのみっきー]]></title>
   <link href="http://mzyy94.com/blog/tags/nic/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2016-07-06T03:29:42+09:00</updated>
+  <updated>2016-07-06T04:12:41+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -253,9 +253,8 @@ IPアドレスは、Aを172.28.0.2/24、Bを172.28.0.3/24として設定しま�
 
 <pre><code>root@pve:~# modprobe bonding
 root@pve:~# ip addr add 172.28.0.3/24 brd + dev bond0
-root@pve:~# ifenslave bond0 eth2 eth3
 root@pve:~# ip link set dev bond0 up
-root@pve:~# ip link dev bond0
+root@pve:~# ifenslave bond0 eth2 eth3
 </code></pre>
 
 <p>5回測定して偏りがなければ、3回目の結果を例としてあげます。</p>

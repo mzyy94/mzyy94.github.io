@@ -467,12 +467,10 @@ IPアドレスは、Aを172.28.0.2/24、Bを172.28.0.3/24として設定しま�
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-<span class='line-number'>5</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>root@pve:~# modprobe bonding
 </span><span class='line'>root@pve:~# ip addr add 172.28.0.3/24 brd + dev bond0
-</span><span class='line'>root@pve:~# ifenslave bond0 eth2 eth3
 </span><span class='line'>root@pve:~# ip link set dev bond0 up
-</span><span class='line'>root@pve:~# ip link dev bond0</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'>root@pve:~# ifenslave bond0 eth2 eth3</span></code></pre></td></tr></table></div></figure>
 
 
 <p>5回測定して偏りがなければ、3回目の結果を例としてあげます。</p>
