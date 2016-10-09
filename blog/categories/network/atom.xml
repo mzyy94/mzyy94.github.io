@@ -4,7 +4,7 @@
   <title><![CDATA[Category: network | 犬アイコンのみっきー]]></title>
   <link href="http://mzyy94.com/blog/categories/network/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2016-07-07T08:26:26+09:00</updated>
+  <updated>2016-10-09T15:57:07+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -12,6 +12,239 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[一般のご家庭向けEAP-SIM認証Wi-Fi]]></title>
+    <link href="http://mzyy94.com/blog/2016/10/09/household-eap-sim-wifi/"/>
+    <updated>2016-10-09T16:00:00+09:00</updated>
+    <id>http://mzyy94.com/blog/2016/10/09/household-eap-sim-wifi</id>
+    <content type="html"><![CDATA[<p>ご家庭のWi-Fi、まだパスワード認証ですか？</p>
+
+<p>こんにちは。陽炎型航洋直接教育艦 晴風の艦長、岬明乃です。
+昨日開催された<a href="http://www.kernelvm.org/">カーネル／VM探検隊</a>で、晴風の艦内無線LANの構築をした話をしてきました。</p>
+
+<p><a href="http://www.slideshare.net/mzyy94/subscriber-identity-module-66892458">http://www.slideshare.net/mzyy94/subscriber-identity-module-66892458</a>&#8220;>http://www.slideshare.net/mzyy94/subscriber-identity-module-66892458&#8221;>http://www.slideshare.net/mzyy94/subscriber-identity-module-66892458</a></a></p>
+
+<p>発表枠は手軽な20分だったこともあり、聞いていて飽きてしまうであろう詳細な構成方法などを省いたため、構築についての手順を書き記しておきます。</p>
+
+<!-- more -->
+
+
+<h1>実習期間中の艦内無線LAN事情</h1>
+
+<p>晴風クラスに限らず、横須賀女子海洋学校の1年次の実習では30人前後の船員を乗せて航海に出ます。
+艦の仲間のネットワークアクセスを管理するため、艦内無線LANでは802.1XによるWPA2エンタープライズ認証を設けるのがルールとなっています。
+802.1X認証の方法は特に学校からの指定はなく、みんな好きなRADIUSサーバを建てて認証基盤を構築しています。
+これも実習の一環というわけです。</p>
+
+<p>晴風では、FreeRADIUSを採用し、EAP-TLSでみんなのユーザ名とパスワードをセットして使ってもらうつもりでした。
+しかしです。このご時世、パスワードなる脆弱なものを利用するのは少数派なのです。
+そこで主計科の子たちと一緒に考えた末、EAP-SIMによるパスワードレス認証を導入することとなりました。</p>
+
+<h1>晴風艦内EAP-SIM認証Wi-Fi構築</h1>
+
+<p>さて、実際に構築した手順を説明していきます。</p>
+
+<h2>SIMカードの読み込み下準備</h2>
+
+<p>ここで必要になるハードウェアは、PC/SCカードリーダとICカードアダプタ、SIMカード変換アダプタです。</p>
+
+<p><a href="https://www.amazon.co.jp/Gemalto-%E3%82%B8%E3%82%A7%E3%83%A0%E3%82%A2%E3%83%AB%E3%83%88-IC%E3%82%AB%E3%83%BC%E3%83%89%E3%83%AA%E3%83%BC%E3%83%80%E3%83%BB%E3%83%A9%E3%82%A4%E3%82%BF-%E5%AF%BE%E5%BF%9C%E4%BD%8F%E5%9F%BA%E3%82%AB%E3%83%BC%E3%83%89%E7%94%A8PC-HWP119316/dp/B003XF2JJY/ref=as_li_ss_il?s=computers&ie=UTF8&qid=1475987930&sr=1-2&keywords=gemalto+%E3%82%AB%E3%83%BC%E3%83%89%E3%83%AA%E3%83%BC%E3%83%80&linkCode=li3&tag=mzyy-22&linkId=9d64adcf0113625ebf4f506686687dc6" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B003XF2JJY&Format=_SL250_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22" ></a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=mzyy-22&l=li3&o=9&a=B003XF2JJY" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></p>
+
+<p><a href="https://www.amazon.co.jp/gp/product/B00G1BJ5TY//ref=as_li_ss_il?&linkCode=li3&tag=mzyy-22&linkId=513e6f72dde319e4cdba6dc2aa22683a" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B00G1BJ5TY&Format=_SL250_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22" ></a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=mzyy-22&l=li3&o=9&a=B00G1BJ5TY" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></p>
+
+<p><a href="https://www.amazon.co.jp/Nano-MicroSIM-%E5%A4%89%E6%8F%9B%E3%82%A2%E3%83%80%E3%83%97%E3%82%BF-4%E7%82%B9%E3%82%BB%E3%83%83%E3%83%88-%E3%83%9B%E3%83%AF%E3%82%A4%E3%83%88/dp/B00PESJ072/ref=as_li_ss_il?s=electronics&ie=UTF8&qid=1475988345&sr=1-8&keywords=nanoSIM%E5%A4%89%E6%8F%9B%E3%82%A2%E3%83%80%E3%83%97%E3%82%BF%E3%83%BC&linkCode=li3&tag=mzyy-22&linkId=ffdb8e98f3f5b5db08bb78437cd00fc2" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B00PESJ072&Format=_SL250_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22" ></a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=mzyy-22&l=li3&o=9&a=B00PESJ072" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></p>
+
+<p>必要なソフトウェアは、</p>
+
+<ul>
+<li><a href="https://pcsclite.alioth.debian.org/pcsclite.html">PCSC Lite</a></li>
+<li><a href="https://github.com/LudovicRousseau/pyscard">pyscard</a></li>
+<li><a href="https://github.com/mzyy94/pysim">pySIM</a></li>
+</ul>
+
+
+<p>です。よしなにインストールしてくれればいいのですが、依存関係がごにょっとしてるのでDebianでのセットアップ例を挙げておきます。</p>
+
+<pre><code>$ sudo apt-get install pcscd pcsc-tools libccid libpcsclite-dev
+$ sudo apt-get install python python-setuptools python-serial python-dev swig git
+$ mkdir -p ~/.cache/
+$ cd ~/.cache/
+$ curl -O http://ludovic.rousseau.free.fr/softwares/pcsc-tools/smartcard_list.txt
+$ git clone https://github.com/LudovicRousseau/pyscard /tmp/pyscard
+$ cd /tmp/pyscard
+$ sudo python setup.py build_ext install
+$ git clone https://github.com/mzyy94/pysim ~/pysim &amp;&amp; cd ~/pysim
+</code></pre>
+
+<h2>SIMへのアクセスの確認</h2>
+
+<p>スライドで発表した通り、SIMにはいろいろな情報が詰まっています。
+ICCIDやIMSIを確認してみたい場合は、pySIMの<code>pySim-read.py</code>を実行してみてください。情報がだばぁっとでてこれば成功です。
+このとき、上記のGemaltoのICカードリーダを使っている場合は、<code>-p 0</code>オプションをつけることでリーダから読み込むことができます。</p>
+
+<h2>FreeRADIUSのEAP-SIM設定</h2>
+
+<p>発表スライドでは、simtriplets.datに認証情報を書き込む方法を記しました。
+この方法は、Debianで<code>apt-get install freeradius</code>で入るバージョンやFreeRADIUSの標準ビルド設定では無効化されています。
+晴風では多くの艦員のSIM認証情報を書き込むため、FreeRADIUSをソースからビルドしてsimtripletsの読み込みを有効化していました。</p>
+
+<p>しかし、ご家庭では30を超える認証情報を追加することはほとんどないだろうということで、一般的なFreeRADIUSのユーザ設定と同じ方法を紹介します。</p>
+
+<h3>EAP-SIM有効化</h3>
+
+<p>EAP-SIMは標準では無効化されているので、これを有効化します。
+有効化といっても大層なことはせず、設定ファイル<code>/etc/freeradius/eap.conf</code>に2行追加するだけですけどね。</p>
+
+<pre><code class="diff">diff --git a/eap.conf b/eap.conf
+index 797130d..435f7e6 100644
+--- a/eap.conf
++++ b/eap.conf
+@@ -15,6 +15,8 @@
+ #  See experimental.conf for documentation.
+ #
+        eap {
++               sim {
++               }
+                #  Invoke the default supported EAP type when
+                #  EAP-Identity response is received.
+                #
+</code></pre>
+
+<p>有効化ついでにsecretも変えておくとわかりやすくていいですね。</p>
+
+<pre><code class="diff">diff --git a/clients.conf b/clients.conf
+index d5b1f74..036e053 100644
+--- a/clients.conf
++++ b/clients.conf
+@@ -98,7 +98,7 @@ client localhost {
+        #  The default secret below is only for testing, and should
+        #  not be used in any real environment.
+        #
+-       secret          = testing123
++       secret          = eap-sim
+
+        #
+        #  Old-style clients do not send a Message-Authenticator
+</code></pre>
+
+<h3>EAP-SIM認証情報の設定</h3>
+
+<p>発表でも述べた通り、SIMの仕様書にあるコマンドを送ってチャレンジする認証情報を生成しなければいけません。
+加えて、得た情報をFreeRADIUSのusersファイルの書式にしたがって編集する必要があります。
+EAP-SIMのリクエストの仕様上、IMSIからHNIを推定してMCCとMNCを特定してユーザ名を作り上げるのは正直言って面倒です。</p>
+
+<p>なのでコマンド一発でusersファイルが作成できるツールを<a href="https://github.com/mzyy94/pysim/">https://github.com/mzyy94/pysim/</a>に同梱してあります。
+<code>./pySim-gen-eapsim-user.py</code>をバシっと叩いて一瞬でusersファイルを作れます。</p>
+
+<pre><code>~/pysim$ ./pySim-gen-eapsim-user.py -p 0 | sudo tee -a /etc/freeradius/users
+# IMSI: 440103152044102
+# NTT DoCoMo Kansai Inc.
+1440103152044102@wlan.mnc010.mcc440.3gppnetwork.org  Auth-Type := EAP, EAP-Type := SIM
+        EAP-Sim-Rand1 = 0x6d58e5afebffe3f480738f104a74afb8,
+        EAP-Sim-SRES1 = 0xbd952f43,
+        EAP-Sim-KC1 = 0x610f35c9208e1448,
+        EAP-Sim-Rand2 = 0xc22413df2efea1e70197ea58519a72f0,
+        EAP-Sim-SRES2 = 0x90f003a1,
+        EAP-Sim-KC2 = 0x095001424f8fb62a,
+        EAP-Sim-Rand3 = 0x60a5dc16de844884dea914cd41113477,
+        EAP-Sim-SRES3 = 0xff0444b3,
+        EAP-Sim-KC3 = 0xcff6d25c04ab4474,
+</code></pre>
+
+<h2>無線LAN APの設定</h2>
+
+<p>ここはみんな自前の無線LAN環境があると思うので、一例としてEAP-SIM認証が最低限動作するhostapdの構成を記しておきます。
+詳しい設定項目などは、<a href="https://wiki.gentoo.org/wiki/Hostapd">Hostapd - Gentoo Wiki</a> をご参照ください。
+また、<a href="https://www.amazon.co.jp/%E3%83%A4%E3%83%9E%E3%83%8F-Yamaha-WLX202-%EF%BC%BB%E7%84%A1%E7%B7%9ALAN%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%EF%BC%BD/dp/B01D2QBF02/ref=as_li_ss_tl?ie=UTF8&amp;qid=1475994913&amp;sr=8-1&amp;keywords=wlx202&amp;linkCode=ll1&amp;tag=mzyy-22&amp;linkId=367f85f6bf22e56c6ab5521d89450c6d">WLX 202</a>など、
+お手持ちの無線LAN APで外部RADIUSサーバに対応しているものをお持ちであれば、FreeRADIUSのアドレスの指定とsecretの設定をすることで利用できるでしょう。</p>
+
+<h3>hostapdの設定</h3>
+
+<p>必要なツールのインストール<code>apt-get install hostapd bridge-utils</code>。
+そして、<strong>/etc/network/interfaces</strong>をこんな感じに。</p>
+
+<pre><code>source /etc/network/interfaces.d/*
+
+auto lo
+iface lo inet loopback
+
+allow-hotplug eth0
+iface eth0 inet manual
+
+allow-hotplug wlan0
+iface wlan0 inet manual
+
+auto br0
+iface br0 inet dhcp
+bridge_ports eth0
+</code></pre>
+
+<p>で、<strong>/etc/hostapd/hostapd.conf</strong>をこう。</p>
+
+<pre><code>interface=wlan0
+bridge=br0
+driver=nl80211
+
+ctrl_interface=/var/run/hostapd
+ctrl_interface_group=0
+
+ssid=EAP-SIM_AP
+
+hw_mode=g
+channel=8
+
+eap_server=0 # Disable embedded eap server
+
+# WPA2 Enterprise
+wpa=2
+ieee8021x=1
+wpa_key_mgmt=WPA-EAP
+rsn_pairwise=CCMP
+
+# RADIUS authentication
+auth_algs=1
+auth_server_addr=127.0.0.1
+auth_server_port=1812
+auth_server_shared_secret=eap-sim
+</code></pre>
+
+<h2>自宅EAP-SIM無線LANアクセスポイントへの接続</h2>
+
+<p>あとは<code>hostapd</code>を立ち上げて接続するだけ！とお思いでしょうが、残念ならがクライアント側にAPの登録が必要となることがあります。
+iOSでは、WPA2 EnterpriseのアクセスポイントをデフォルトでEAP-TLSとして認識し、加えてiPhone/iPad側でEAP-SIMとして接続させる方法がありません。
+立ち上げたAPがEAP-SIM認証であることを教え込むために、構成プロファイルを作成する必要があります。</p>
+
+<p><img src="/blog/resources/images/2016/10/09/apple-configurator2.png" alt="apple configurator2" /></p>
+
+<p>macOSが動く環境をお持ちの方は、<a href="https://itunes.apple.com/jp/app/apple-configurator-2/id1037126344?mt=12">Apple Configurator 2</a>で上図のように作成するか、
+もしくは<em>EAP-SIM_AP</em>向けに作った以下の構成プロファイル（XMLファイル）のAP名を変更したものをiOSデバイスにインストールして準備完了です。</p>
+
+<p><a href="/blog/resources/data/2016/10/09/EAP-SIM_AP.mobileconfig">EAP-SIM_AP.mobileconfig</a></p>
+
+<p>最後にお待ちかね、<code>hostapd /etc/hostapd/hostapd.conf</code>で起動させて接続してみましょう！</p>
+
+<pre><code>$ sudo hostapd /etc/hostapd/hostapd.conf
+Configuration file: /etc/hostapd/hostapd.conf
+Using interface wlan0 with hwaddr dc:fb:02:9b:11:ef and ssid "EAP-SIM_AP"
+wlan0: RADIUS Authentication server 127.0.0.1:1812
+wlan0: interface state UNINITIALIZED-&gt;ENABLED
+wlan0: AP-ENABLED
+wlan0: STA f4:0f:24:ea:95:13 IEEE 802.11: authenticated
+wlan0: STA f4:0f:24:ea:95:13 IEEE 802.11: associated (aid 1)
+wlan0: CTRL-EVENT-EAP-STARTED f4:0f:24:ea:95:13
+wlan0: CTRL-EVENT-EAP-PROPOSED-METHOD vendor=0 method=1
+wlan0: STA f4:0f:24:ea:95:13 WPA: pairwise key handshake completed (RSN)
+wlan0: AP-STA-CONNECTED f4:0f:24:ea:95:13
+wlan0: STA f4:0f:24:ea:95:13 RADIUS: starting accounting session 57F9E33F-00000000
+wlan0: STA f4:0f:24:ea:95:13 IEEE 802.1X: authenticated - EAP type: 18 (SIM)
+</code></pre>
+
+<h1>まとめ</h1>
+
+<p>海の仲間は家族だから！</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[1万円台の格安Intel X540-T2 10GbEを買ってみた]]></title>
@@ -160,7 +393,7 @@ ark intelの希望カスタマー価格を見ると<em>$508.00 - $513.00</em>と
 </table>
 
 
-<h3>NOTE: PCI Express 2.0とPIC Express 2.1の違いについて</h3>
+<h3>NOTE: PCI Express 2.0とPCI Express 2.1の違いについて</h3>
 
 <p>X540-T2はPCI Express 2.1以上の拡張カードスロットに対応しているため、Bの構成は非対応となっています。
 マイナーバージョンアップ程度の変更ですが、3.0に盛り込む予定であった多くの機能をIntelが打診して無理やり2.1として出させたこともあって<em>[要出典]</em>、

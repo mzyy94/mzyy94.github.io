@@ -4,7 +4,7 @@
   <title><![CDATA[犬アイコンのみっきー]]></title>
   <link href="http://mzyy94.com/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2016-07-07T08:26:26+09:00</updated>
+  <updated>2016-10-09T15:57:07+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -12,6 +12,349 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[一般のご家庭向けEAP-SIM認証Wi-Fi]]></title>
+    <link href="http://mzyy94.com/blog/2016/10/09/household-eap-sim-wifi/"/>
+    <updated>2016-10-09T16:00:00+09:00</updated>
+    <id>http://mzyy94.com/blog/2016/10/09/household-eap-sim-wifi</id>
+    <content type="html"><![CDATA[<p>ご家庭のWi-Fi、まだパスワード認証ですか？</p>
+
+<p>こんにちは。陽炎型航洋直接教育艦 晴風の艦長、岬明乃です。
+昨日開催された<a href="http://www.kernelvm.org/">カーネル／VM探検隊</a>で、晴風の艦内無線LANの構築をした話をしてきました。</p>
+
+<iframe src="https://www.slideshare.net/slideshow/embed_code/key/BGDboydffkwEnw" width="427" height="356" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
+
+
+<p> <div style="margin-bottom:5px"> <strong> <a href="https://www.slideshare.net/mzyy94/subscriber-identity-module-66892458" title="Subscriber Identity Module" target="_blank">Subscriber Identity Module</a> </strong> from <strong><a target="_blank" href="http://www.slideshare.net/mzyy94">Yuki Mizuno</a></strong> </div></p>
+
+<p>発表枠は手軽な20分だったこともあり、聞いていて飽きてしまうであろう詳細な構成方法などを省いたため、構築についての手順を書き記しておきます。</p>
+
+<!-- more -->
+
+
+<h1>実習期間中の艦内無線LAN事情</h1>
+
+<p>晴風クラスに限らず、横須賀女子海洋学校の1年次の実習では30人前後の船員を乗せて航海に出ます。
+艦の仲間のネットワークアクセスを管理するため、艦内無線LANでは802.1XによるWPA2エンタープライズ認証を設けるのがルールとなっています。
+802.1X認証の方法は特に学校からの指定はなく、みんな好きなRADIUSサーバを建てて認証基盤を構築しています。
+これも実習の一環というわけです。</p>
+
+<p>晴風では、FreeRADIUSを採用し、EAP-TLSでみんなのユーザ名とパスワードをセットして使ってもらうつもりでした。
+しかしです。このご時世、パスワードなる脆弱なものを利用するのは少数派なのです。
+そこで主計科の子たちと一緒に考えた末、EAP-SIMによるパスワードレス認証を導入することとなりました。</p>
+
+<h1>晴風艦内EAP-SIM認証Wi-Fi構築</h1>
+
+<p>さて、実際に構築した手順を説明していきます。</p>
+
+<h2>SIMカードの読み込み下準備</h2>
+
+<p>ここで必要になるハードウェアは、PC/SCカードリーダとICカードアダプタ、SIMカード変換アダプタです。</p>
+
+<p><a href="https://www.amazon.co.jp/Gemalto-%E3%82%B8%E3%82%A7%E3%83%A0%E3%82%A2%E3%83%AB%E3%83%88-IC%E3%82%AB%E3%83%BC%E3%83%89%E3%83%AA%E3%83%BC%E3%83%80%E3%83%BB%E3%83%A9%E3%82%A4%E3%82%BF-%E5%AF%BE%E5%BF%9C%E4%BD%8F%E5%9F%BA%E3%82%AB%E3%83%BC%E3%83%89%E7%94%A8PC-HWP119316/dp/B003XF2JJY/ref=as_li_ss_il?s=computers&ie=UTF8&qid=1475987930&sr=1-2&keywords=gemalto+%E3%82%AB%E3%83%BC%E3%83%89%E3%83%AA%E3%83%BC%E3%83%80&linkCode=li3&tag=mzyy-22&linkId=9d64adcf0113625ebf4f506686687dc6" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B003XF2JJY&Format=_SL250_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22" ></a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=mzyy-22&l=li3&o=9&a=B003XF2JJY" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></p>
+
+<p><a href="https://www.amazon.co.jp/gp/product/B00G1BJ5TY//ref=as_li_ss_il?&linkCode=li3&tag=mzyy-22&linkId=513e6f72dde319e4cdba6dc2aa22683a" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B00G1BJ5TY&Format=_SL250_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22" ></a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=mzyy-22&l=li3&o=9&a=B00G1BJ5TY" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></p>
+
+<p><a href="https://www.amazon.co.jp/Nano-MicroSIM-%E5%A4%89%E6%8F%9B%E3%82%A2%E3%83%80%E3%83%97%E3%82%BF-4%E7%82%B9%E3%82%BB%E3%83%83%E3%83%88-%E3%83%9B%E3%83%AF%E3%82%A4%E3%83%88/dp/B00PESJ072/ref=as_li_ss_il?s=electronics&ie=UTF8&qid=1475988345&sr=1-8&keywords=nanoSIM%E5%A4%89%E6%8F%9B%E3%82%A2%E3%83%80%E3%83%97%E3%82%BF%E3%83%BC&linkCode=li3&tag=mzyy-22&linkId=ffdb8e98f3f5b5db08bb78437cd00fc2" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B00PESJ072&Format=_SL250_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22" ></a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=mzyy-22&l=li3&o=9&a=B00PESJ072" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></p>
+
+<p>必要なソフトウェアは、</p>
+
+<ul>
+<li><a href="https://pcsclite.alioth.debian.org/pcsclite.html">PCSC Lite</a></li>
+<li><a href="https://github.com/LudovicRousseau/pyscard">pyscard</a></li>
+<li><a href="https://github.com/mzyy94/pysim">pySIM</a></li>
+</ul>
+
+
+<p>です。よしなにインストールしてくれればいいのですが、依存関係がごにょっとしてるのでDebianでのセットアップ例を挙げておきます。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo apt-get install pcscd pcsc-tools libccid libpcsclite-dev
+</span><span class='line'>$ sudo apt-get install python python-setuptools python-serial python-dev swig git
+</span><span class='line'>$ mkdir -p ~/.cache/
+</span><span class='line'>$ cd ~/.cache/
+</span><span class='line'>$ curl -O http://ludovic.rousseau.free.fr/softwares/pcsc-tools/smartcard_list.txt
+</span><span class='line'>$ git clone https://github.com/LudovicRousseau/pyscard /tmp/pyscard
+</span><span class='line'>$ cd /tmp/pyscard
+</span><span class='line'>$ sudo python setup.py build_ext install
+</span><span class='line'>$ git clone https://github.com/mzyy94/pysim ~/pysim && cd ~/pysim</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>SIMへのアクセスの確認</h2>
+
+<p>スライドで発表した通り、SIMにはいろいろな情報が詰まっています。
+ICCIDやIMSIを確認してみたい場合は、pySIMの<code>pySim-read.py</code>を実行してみてください。情報がだばぁっとでてこれば成功です。
+このとき、上記のGemaltoのICカードリーダを使っている場合は、<code>-p 0</code>オプションをつけることでリーダから読み込むことができます。</p>
+
+<h2>FreeRADIUSのEAP-SIM設定</h2>
+
+<p>発表スライドでは、simtriplets.datに認証情報を書き込む方法を記しました。
+この方法は、Debianで<code>apt-get install freeradius</code>で入るバージョンやFreeRADIUSの標準ビルド設定では無効化されています。
+晴風では多くの艦員のSIM認証情報を書き込むため、FreeRADIUSをソースからビルドしてsimtripletsの読み込みを有効化していました。</p>
+
+<p>しかし、ご家庭では30を超える認証情報を追加することはほとんどないだろうということで、一般的なFreeRADIUSのユーザ設定と同じ方法を紹介します。</p>
+
+<h3>EAP-SIM有効化</h3>
+
+<p>EAP-SIMは標準では無効化されているので、これを有効化します。
+有効化といっても大層なことはせず、設定ファイル<code>/etc/freeradius/eap.conf</code>に2行追加するだけですけどね。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='diff'><span class='line'><span class="gh">diff --git a/eap.conf b/eap.conf</span>
+</span><span class='line'><span class="gh">index 797130d..435f7e6 100644</span>
+</span><span class='line'><span class="gd">--- a/eap.conf</span>
+</span><span class='line'><span class="gi">+++ b/eap.conf</span>
+</span><span class='line'><span class="gu">@@ -15,6 +15,8 @@</span>
+</span><span class='line'> #  See experimental.conf for documentation.
+</span><span class='line'> #
+</span><span class='line'>        eap {
+</span><span class='line'><span class="gi">+               sim {</span>
+</span><span class='line'><span class="gi">+               }</span>
+</span><span class='line'>                #  Invoke the default supported EAP type when
+</span><span class='line'>                #  EAP-Identity response is received.
+</span><span class='line'>                #
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>有効化ついでにsecretも変えておくとわかりやすくていいですね。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='diff'><span class='line'><span class="gh">diff --git a/clients.conf b/clients.conf</span>
+</span><span class='line'><span class="gh">index d5b1f74..036e053 100644</span>
+</span><span class='line'><span class="gd">--- a/clients.conf</span>
+</span><span class='line'><span class="gi">+++ b/clients.conf</span>
+</span><span class='line'><span class="gu">@@ -98,7 +98,7 @@ client localhost {</span>
+</span><span class='line'>        #  The default secret below is only for testing, and should
+</span><span class='line'>        #  not be used in any real environment.
+</span><span class='line'>        #
+</span><span class='line'><span class="gd">-       secret          = testing123</span>
+</span><span class='line'><span class="gi">+       secret          = eap-sim</span>
+</span><span class='line'>
+</span><span class='line'>        #
+</span><span class='line'>        #  Old-style clients do not send a Message-Authenticator
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>EAP-SIM認証情報の設定</h3>
+
+<p>発表でも述べた通り、SIMの仕様書にあるコマンドを送ってチャレンジする認証情報を生成しなければいけません。
+加えて、得た情報をFreeRADIUSのusersファイルの書式にしたがって編集する必要があります。
+EAP-SIMのリクエストの仕様上、IMSIからHNIを推定してMCCとMNCを特定してユーザ名を作り上げるのは正直言って面倒です。</p>
+
+<p>なのでコマンド一発でusersファイルが作成できるツールを<a href="https://github.com/mzyy94/pysim/">https://github.com/mzyy94/pysim/</a>に同梱してあります。
+<code>./pySim-gen-eapsim-user.py</code>をバシっと叩いて一瞬でusersファイルを作れます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='diff'><span class='line'>~/pysim$ ./pySim-gen-eapsim-user.py -p 0 | sudo tee -a /etc/freeradius/users
+</span><span class='line'># IMSI: 440103152044102
+</span><span class='line'># NTT DoCoMo Kansai Inc.
+</span><span class='line'>1440103152044102@wlan.mnc010.mcc440.3gppnetwork.org  Auth-Type := EAP, EAP-Type := SIM
+</span><span class='line'>        EAP-Sim-Rand1 = 0x6d58e5afebffe3f480738f104a74afb8,
+</span><span class='line'>        EAP-Sim-SRES1 = 0xbd952f43,
+</span><span class='line'>        EAP-Sim-KC1 = 0x610f35c9208e1448,
+</span><span class='line'>        EAP-Sim-Rand2 = 0xc22413df2efea1e70197ea58519a72f0,
+</span><span class='line'>        EAP-Sim-SRES2 = 0x90f003a1,
+</span><span class='line'>        EAP-Sim-KC2 = 0x095001424f8fb62a,
+</span><span class='line'>        EAP-Sim-Rand3 = 0x60a5dc16de844884dea914cd41113477,
+</span><span class='line'>        EAP-Sim-SRES3 = 0xff0444b3,
+</span><span class='line'>        EAP-Sim-KC3 = 0xcff6d25c04ab4474,
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>無線LAN APの設定</h2>
+
+<p>ここはみんな自前の無線LAN環境があると思うので、一例としてEAP-SIM認証が最低限動作するhostapdの構成を記しておきます。
+詳しい設定項目などは、<a href="https://wiki.gentoo.org/wiki/Hostapd">Hostapd - Gentoo Wiki</a> をご参照ください。
+また、<a href="https://www.amazon.co.jp/%E3%83%A4%E3%83%9E%E3%83%8F-Yamaha-WLX202-%EF%BC%BB%E7%84%A1%E7%B7%9ALAN%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%EF%BC%BD/dp/B01D2QBF02/ref=as_li_ss_tl?ie=UTF8&amp;qid=1475994913&amp;sr=8-1&amp;keywords=wlx202&amp;linkCode=ll1&amp;tag=mzyy-22&amp;linkId=367f85f6bf22e56c6ab5521d89450c6d">WLX 202</a>など、
+お手持ちの無線LAN APで外部RADIUSサーバに対応しているものをお持ちであれば、FreeRADIUSのアドレスの指定とsecretの設定をすることで利用できるでしょう。</p>
+
+<h3>hostapdの設定</h3>
+
+<p>必要なツールのインストール<code>apt-get install hostapd bridge-utils</code>。
+そして、<strong>/etc/network/interfaces</strong>をこんな感じに。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='diff'><span class='line'>source /etc/network/interfaces.d/*
+</span><span class='line'>
+</span><span class='line'>auto lo
+</span><span class='line'>iface lo inet loopback
+</span><span class='line'>
+</span><span class='line'>allow-hotplug eth0
+</span><span class='line'>iface eth0 inet manual
+</span><span class='line'>
+</span><span class='line'>allow-hotplug wlan0
+</span><span class='line'>iface wlan0 inet manual
+</span><span class='line'>
+</span><span class='line'>auto br0
+</span><span class='line'>iface br0 inet dhcp
+</span><span class='line'>bridge_ports eth0
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>で、<strong>/etc/hostapd/hostapd.conf</strong>をこう。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class='diff'><span class='line'>interface=wlan0
+</span><span class='line'>bridge=br0
+</span><span class='line'>driver=nl80211
+</span><span class='line'>
+</span><span class='line'>ctrl_interface=/var/run/hostapd
+</span><span class='line'>ctrl_interface_group=0
+</span><span class='line'>
+</span><span class='line'>ssid=EAP-SIM_AP
+</span><span class='line'>
+</span><span class='line'>hw_mode=g
+</span><span class='line'>channel=8
+</span><span class='line'>
+</span><span class='line'>eap_server=0 # Disable embedded eap server
+</span><span class='line'>
+</span><span class='line'># WPA2 Enterprise
+</span><span class='line'>wpa=2
+</span><span class='line'>ieee8021x=1
+</span><span class='line'>wpa_key_mgmt=WPA-EAP
+</span><span class='line'>rsn_pairwise=CCMP
+</span><span class='line'>
+</span><span class='line'># RADIUS authentication
+</span><span class='line'>auth_algs=1
+</span><span class='line'>auth_server_addr=127.0.0.1
+</span><span class='line'>auth_server_port=1812
+</span><span class='line'>auth_server_shared_secret=eap-sim
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>自宅EAP-SIM無線LANアクセスポイントへの接続</h2>
+
+<p>あとは<code>hostapd</code>を立ち上げて接続するだけ！とお思いでしょうが、残念ならがクライアント側にAPの登録が必要となることがあります。
+iOSでは、WPA2 EnterpriseのアクセスポイントをデフォルトでEAP-TLSとして認識し、加えてiPhone/iPad側でEAP-SIMとして接続させる方法がありません。
+立ち上げたAPがEAP-SIM認証であることを教え込むために、構成プロファイルを作成する必要があります。</p>
+
+<p><img src="http://mzyy94.com/blog/resources/images/2016/10/09/apple-configurator2.png" alt="apple configurator2" /></p>
+
+<p>macOSが動く環境をお持ちの方は、<a href="https://itunes.apple.com/jp/app/apple-configurator-2/id1037126344?mt=12">Apple Configurator 2</a>で上図のように作成するか、
+もしくは<em>EAP-SIM_AP</em>向けに作った以下の構成プロファイル（XMLファイル）のAP名を変更したものをiOSデバイスにインストールして準備完了です。</p>
+
+<p><a href="http://mzyy94.com/blog/resources/data/2016/10/09/EAP-SIM_AP.mobileconfig">EAP-SIM_AP.mobileconfig</a></p>
+
+<p>最後にお待ちかね、<code>hostapd /etc/hostapd/hostapd.conf</code>で起動させて接続してみましょう！</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='diff'><span class='line'>$ sudo hostapd /etc/hostapd/hostapd.conf
+</span><span class='line'>Configuration file: /etc/hostapd/hostapd.conf
+</span><span class='line'>Using interface wlan0 with hwaddr dc:fb:02:9b:11:ef and ssid &quot;EAP-SIM_AP&quot;
+</span><span class='line'>wlan0: RADIUS Authentication server 127.0.0.1:1812
+</span><span class='line'>wlan0: interface state UNINITIALIZED-&gt;ENABLED
+</span><span class='line'>wlan0: AP-ENABLED
+</span><span class='line'>wlan0: STA f4:0f:24:ea:95:13 IEEE 802.11: authenticated
+</span><span class='line'>wlan0: STA f4:0f:24:ea:95:13 IEEE 802.11: associated (aid 1)
+</span><span class='line'>wlan0: CTRL-EVENT-EAP-STARTED f4:0f:24:ea:95:13
+</span><span class='line'>wlan0: CTRL-EVENT-EAP-PROPOSED-METHOD vendor=0 method=1
+</span><span class='line'>wlan0: STA f4:0f:24:ea:95:13 WPA: pairwise key handshake completed (RSN)
+</span><span class='line'>wlan0: AP-STA-CONNECTED f4:0f:24:ea:95:13
+</span><span class='line'>wlan0: STA f4:0f:24:ea:95:13 RADIUS: starting accounting session 57F9E33F-00000000
+</span><span class='line'>wlan0: STA f4:0f:24:ea:95:13 IEEE 802.1X: authenticated - EAP type: 18 (SIM)
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>まとめ</h1>
+
+<p>海の仲間は家族だから！</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[1万円台の格安Intel X540-T2 10GbEを買ってみた]]></title>
@@ -160,7 +503,7 @@ ark intelの希望カスタマー価格を見ると<em>$508.00 - $513.00</em>と
 </table>
 
 
-<h3>NOTE: PCI Express 2.0とPIC Express 2.1の違いについて</h3>
+<h3>NOTE: PCI Express 2.0とPCI Express 2.1の違いについて</h3>
 
 <p>X540-T2はPCI Express 2.1以上の拡張カードスロットに対応しているため、Bの構成は非対応となっています。
 マイナーバージョンアップ程度の変更ですが、3.0に盛り込む予定であった多くの機能をIntelが打診して無理やり2.1として出させたこともあって<em>[要出典]</em>、
@@ -6302,153 +6645,6 @@ $ brew pull 37642
 <h1>日本語入力</h1>
 
 <p>日本語入力はインストールしたての状態ではできないので各自ぐぐってがんばってください。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[無印良品で買えるRaspberry Pi2にぴったりのケース]]></title>
-    <link href="http://mzyy94.com/blog/2015/03/09/muji-raspberry-pi-enclosure/"/>
-    <updated>2015-03-09T12:09:04+09:00</updated>
-    <id>http://mzyy94.com/blog/2015/03/09/muji-raspberry-pi-enclosure</id>
-    <content type="html"><![CDATA[<p>Raspberry Pi2を発売日に2つ注文したものの、ケースを準備していなかったので手軽に買えるRaspberry Piにぴったりの入れ物はないかと
-近所のショッピングモールを回ったところ、無印良品に寸法ぴったりのケースがいつくか売られていたので購入してみました。</p>
-
-<!-- more -->
-
-
-<h1>ポリプロピレンフタ付石けん置き・大</h1>
-
-<p>無印良品ネットストア価格：税込350円</p>
-
-<p><a href="http://www.muji.net/store/cmdty/detail/4548718640850">http://www.muji.net/store/cmdty/detail/4548718640850</a></p>
-
-<ul>
-<li>寸法：約７０×１０５×３５ｍｍ</li>
-<li>素材：ポリプロピレン</li>
-</ul>
-
-
-<p><img src="http://mzyy94.com/blog/resources/images/2015/03/09/muji-soapcase-1.jpg" alt="muji-soapcase-1" /></p>
-
-<p>1つ目は寸法がRaspberry Piのために作られたかと感じるほどにピッタリサイズの石鹸ケース。本当にピッタリサイズです。</p>
-
-<p><img src="http://mzyy94.com/blog/resources/images/2015/03/09/muji-soapcase-2.jpg" alt="muji-soapcase-2" /></p>
-
-<p>スポンジ付きで、ケース内に収めた時の安定性・可搬性は抜群です。</p>
-
-<p><img src="http://mzyy94.com/blog/resources/images/2015/03/09/muji-soapcase-3.jpg" alt="muji-soapcase-3" />
-<img src="http://mzyy94.com/blog/resources/images/2015/03/09/muji-soapcase-4.jpg" alt="muji-soapcase-4" /></p>
-
-<p>ただ、エッジが尖っているRaspberry Pi 1 model B（プラスではない）は引っかかってしまい、格納できませんでした。</p>
-
-<h1>ポリプロピレンペンケース（横型）　大</h1>
-
-<p>無印良品ネットストア価格：税込263円</p>
-
-<p><a href="http://www.muji.net/store/cmdty/detail/4547315371297">http://www.muji.net/store/cmdty/detail/4547315371297</a></p>
-
-<ul>
-<li>寸法：約１７０×５１×２０ｍｍ</li>
-<li>素材：ポリプロピレン</li>
-</ul>
-
-
-<p><img src="http://mzyy94.com/blog/resources/images/2015/03/09/muji-pencase-1.jpg" alt="muji-pencase-1" /></p>
-
-<p>奥行きがRaspberry Piにピッタリで横幅がRaspberry Pi 二台分のケース。2台同時に持ち運んだり格納する際に利用したいケースです。</p>
-
-<p><img src="http://mzyy94.com/blog/resources/images/2015/03/09/muji-pencase-2.jpg" alt="muji-pencase-2" />
-<img src="http://mzyy94.com/blog/resources/images/2015/03/09/muji-pencase-3.jpg" alt="muji-pencase-3" /></p>
-
-<h1>ポリプロピレン救急用品ケース</h1>
-
-<p>無印良品ネットストア価格：税込231円</p>
-
-<p><a href="http://www.muji.net/store/cmdty/detail/4945247506822">http://www.muji.net/store/cmdty/detail/4945247506822</a></p>
-
-<ul>
-<li>寸法：約７５×１１０×４６ｍｍ</li>
-<li>素材：ポリプロピレン</li>
-</ul>
-
-
-<p><img src="http://mzyy94.com/blog/resources/images/2015/03/09/muji-facase-1.jpg" alt="muji-facase-1" /></p>
-
-<p>奥行き・幅・高さともにゆとりのあるケース。いろいろな部品を装着したRaspberry Piに適しています。</p>
-
-<p><img src="http://mzyy94.com/blog/resources/images/2015/03/09/muji-facase-2.jpg" alt="muji-facase-2" />
-<img src="http://mzyy94.com/blog/resources/images/2015/03/09/muji-facase-3.jpg" alt="muji-facase-3" /></p>
-
-<p>ちなみに石鹸ケースがぴったりおさまります。</p>
-
-<p><img src="http://mzyy94.com/blog/resources/images/2015/03/09/muji-facase-4.jpg" alt="muji-facase-4" /></p>
-
-<h1>アクリルケース用・ベロア内箱仕切・縦・グレー</h1>
-
-<p>無印良品ネットストア価格：税込600円</p>
-
-<p><a href="http://www.muji.net/store/cmdty/detail/4945247381009">http://www.muji.net/store/cmdty/detail/4945247381009</a></p>
-
-<ul>
-<li>寸法：約幅１６×奥行１２×高さ２．５ｃｍ</li>
-<li>素材：？？</li>
-</ul>
-
-
-<p><img src="http://mzyy94.com/blog/resources/images/2015/03/09/muji-innercase-1.jpg" alt="muji-innercase-1" /></p>
-
-<p>平置きで2台格納できるケース。蓋がないので可搬性はゼロですがポンと置いておく分には手軽で机の上に一つ置いておくとよい品です。</p>
-
-<p><img src="http://mzyy94.com/blog/resources/images/2015/03/09/muji-innercase-2.jpg" alt="muji-innercase-2" /></p>
-
-<p><img src="http://mzyy94.com/blog/resources/images/2015/03/09/muji-innercase-3.jpg" alt="muji-innercase-3" /></p>
-
-<h1>まとめ</h1>
-
-<table>
-<thead>
-<tr>
-<th style="text-align:center;">商品名</th>
-<th style="text-align:center;">サイズ</th>
-<th style="text-align:center;">加工</th>
-<th style="text-align:center;">可搬性</th>
-<th style="text-align:right;">価格</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center;">石けん置き・大</td>
-<td style="text-align:center;">ぴったり</td>
-<td style="text-align:center;">容易</td>
-<td style="text-align:center;">◎スポンジ付き</td>
-<td style="text-align:right;">350</td>
-</tr>
-<tr>
-<td style="text-align:center;">ペンケース・大</td>
-<td style="text-align:center;">2個分</td>
-<td style="text-align:center;">容易</td>
-<td style="text-align:center;">○2個で安定</td>
-<td style="text-align:right;">263</td>
-</tr>
-<tr>
-<td style="text-align:center;">救急用品ケース</td>
-<td style="text-align:center;">余裕あり</td>
-<td style="text-align:center;">容易</td>
-<td style="text-align:center;">△上下に動く</td>
-<td style="text-align:right;">231</td>
-</tr>
-<tr>
-<td style="text-align:center;">ベロア内箱仕切</td>
-<td style="text-align:center;">2個分</td>
-<td style="text-align:center;">厳しい</td>
-<td style="text-align:center;">×蓋なし</td>
-<td style="text-align:right;">600</td>
-</tr>
-</tbody>
-</table>
-
-
-<p>どれも電源やLANケーブル用を接続するには加工が必要となりますが、上3つの素材はポリプロピレンなので加工は意外と簡単です。</p>
 ]]></content>
   </entry>
   

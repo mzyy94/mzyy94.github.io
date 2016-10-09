@@ -5,6 +5,12 @@
 	
 	"posts" : [ 
 		{
+			"date": "09 Oct 2016",
+			"title": "一般のご家庭向けEAP-SIM認証Wi-Fi",
+			"url": "household-eap-sim-wifi"
+		},
+	
+		{
 			"date": "06 Jul 2016",
 			"title": "1万円台の格安Intel X540-T2 10GbEを買ってみた",
 			"url": "hello-10gbe-nic"
