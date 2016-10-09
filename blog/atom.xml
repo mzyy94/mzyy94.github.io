@@ -4,7 +4,7 @@
   <title><![CDATA[犬アイコンのみっきー]]></title>
   <link href="http://mzyy94.com/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2016-10-09T15:57:07+09:00</updated>
+  <updated>2016-10-09T19:56:12+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -79,7 +79,7 @@
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>$ sudo apt-get install pcscd pcsc-tools libccid libpcsclite-dev
-</span><span class='line'>$ sudo apt-get install python python-setuptools python-serial python-dev swig git
+</span><span class='line'>$ sudo apt-get install python python-setuptools python-serial python-dev swig git curl
 </span><span class='line'>$ mkdir -p ~/.cache/
 </span><span class='line'>$ cd ~/.cache/
 </span><span class='line'>$ curl -O http://ludovic.rousseau.free.fr/softwares/pcsc-tools/smartcard_list.txt

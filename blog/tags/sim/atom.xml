@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: sim | 犬アイコンのみっきー]]></title>
   <link href="http://mzyy94.com/blog/tags/sim/atom.xml" rel="self"/>
   <link href="http://mzyy94.com/"/>
-  <updated>2016-10-09T15:57:07+09:00</updated>
+  <updated>2016-10-09T19:56:12+09:00</updated>
   <id>http://mzyy94.com/</id>
   <author>
     <name><![CDATA[mzyy94]]></name>
@@ -67,7 +67,7 @@
 <p>です。よしなにインストールしてくれればいいのですが、依存関係がごにょっとしてるのでDebianでのセットアップ例を挙げておきます。</p>
 
 <pre><code>$ sudo apt-get install pcscd pcsc-tools libccid libpcsclite-dev
-$ sudo apt-get install python python-setuptools python-serial python-dev swig git
+$ sudo apt-get install python python-setuptools python-serial python-dev swig git curl
 $ mkdir -p ~/.cache/
 $ cd ~/.cache/
 $ curl -O http://ludovic.rousseau.free.fr/softwares/pcsc-tools/smartcard_list.txt
