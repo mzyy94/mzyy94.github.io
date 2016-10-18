@@ -1,0 +1,18 @@
+<div class="widget-container widget-social">
+	<ul class="clearfix">
+  {% if site.twitter_tweet_button %}
+
+  <!--li class="social-twitter"><a href="https://twitter.com/intent/tweet?original_referer={{ site.url }}{{ page.url }}&text={{ page.title }}%20-%20{{ site.title }}&tw_p=tweetbutton&url={{ site.url }}{{ page.url }}&via={{ site.twitter_user }}"><i>Tweet</i></a></li-->
+
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="{{ site.url }}{{ page.url }}" data-via="{{ site.twitter_user }}" data-counturl="{{ site.url }}{{ page.url }}" >Tweet</a>
+  {% endif %}
+  {% if site.google_plus_one %}
+  <!-- li class="social-google"><a href="#"><i>Google</i></a></li -->
+  <div class="g-plusone" data-size="{{ site.google_plus_one_size }}"></div>
+  {% endif %}
+  {% if site.facebook_like %}
+  <!-- li class="social-facebook"><a href="#"><i>Facebook</i></a></li -->
+  <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  {% endif %}
+  </ul>
+</div>

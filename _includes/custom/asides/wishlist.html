@@ -1,0 +1,53 @@
+<section class="widget-container widget-recently boxed">
+	<h1>Wishlist</h1>
+	<div class="carouFredsel">
+		<div class="inner">
+			<ul id="carouFredsel-1">
+				<li>
+				<div class="carousel-image">
+					<a href="http://www.amazon.co.jp/BeagleBoard-org-BB-BBLK-00-BeagleBone-Black/dp/B00CHHMZ9S/ref=wl_it_dp_o_pC_nS_nC?ie=UTF8&colid=1HE845FB3VZWO&coliid=I2UFD2FHRYKPPJ" data-rel="prettyPhoto" title="">
+						<img src="http://ecx.images-amazon.com/images/I/51-3AoEy2TL._SL110_.jpg" alt="" />
+					</a>
+				</div>
+				</li>
+				<li>
+				<div class="carousel-image">
+					<a href="http://www.amazon.co.jp/dp/B009QWUF6M/ref=wl_it_dp_o_pC_nS_nC?ie=UTF8&colid=1HE845FB3VZWO&coliid=I2OX7O91QV2ES" data-rel="prettyPhoto" title="">
+						<img src="http://ecx.images-amazon.com/images/I/51UsRlUVe3L._SL160_.jpg" alt="" />
+					</a>
+				</div>
+				</li>
+				<li>
+				<div class="carousel-image">
+					<a href="http://www.amazon.co.jp/dp/B008N06N1E/ref=wl_it_dp_v_S_nC/376-8960667-8115842?ie=UTF8&colid=1HE845FB3VZWO&coliid=ICZOGB5SMZ9F1" data-rel="prettyPhoto" title="">
+						<img src="http://ecx.images-amazon.com/images/I/41f0wR7QDBL._SL160_.jpg" alt="" />
+					</a>
+				</div>
+				</li>
+			</ul>
+			<a id="carousel-prev-1" class="prev" href="#">‹</a>
+			<a id="carousel-next-1" class="next" href="#">›</a>
+		</div>
+	</div>
+</section>
+<script>
+	// <![CDATA[
+	$(document).ready(function($) {
+		$('#carouFredsel-1').carouFredSel({
+			next : "#carousel-next-1",
+			prev : "#carousel-prev-1",
+			auto: false,
+			scroll: {items : 1}
+		});
+
+		$(window).resize(function() {
+			$('#carouFredsel-1').carouFredSel({
+				next : "#carousel-next-1",
+				prev : "#carousel-prev-1",
+				auto: false,
+				scroll: {items : 1}
+			});
+		})
+	});
+	// ]]>
+</script>

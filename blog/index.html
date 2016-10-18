@@ -1,0 +1,45 @@
+---
+layout: default
+---
+
+<main class="col-sm-9">
+  {% assign index = true %}
+  {% for post in paginator.posts %}
+  {% assign content = post.content %}
+    <article>
+      {% include article.html %}
+    </article>
+  {% endfor %}
+  <div class="tf_pagination">
+  <div class="inner">
+    {% if paginator.previous_page %}
+	<a class="page_prev" href="{{paginator.previous_page_path}}"><span></span></a>
+    {% endif %}
+
+	{% if paginator.total_pages > 1 %}
+	  {% if paginator.total_pages < 20 %}
+		{% for page in (1..paginator.total_pages) %}
+			{% capture url %}{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}{% endcapture %}
+		  {% if page == 1 %}
+		    {% assign url = "/blog/" %}
+		  {% endif %}
+		  {% if page != paginator.page %}
+		    <a href="{{url}}" class="page-numbers">{{page}}</a>
+		  {% else %}
+		    <span class="page-numbers page_current">{{page}}</span>
+		  {% endif %}
+		{% endfor %}
+	  {% endif %}
+	{% endif %}
+
+    {% if paginator.next_page %}
+	<a class="page_next" href="{{paginator.next_page_path}}"><span></span></a>
+    {% endif %}
+  </div>
+  </div>
+</main>
+<aside class="col-sm-3">
+  {% for aside in site.default_asides %}
+    {% include {{aside}} %}
+  {% endfor %}
+</aside>

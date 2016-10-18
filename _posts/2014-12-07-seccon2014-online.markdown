@@ -1,0 +1,266 @@
+---
+layout: post
+title: "SECCON2014 Online英語版予選 Write-up"
+date: 2014-12-07 17:59:06 +0900
+comments: true
+categories: ctf
+tag: seccon seccon2014
+topimg: /blog/resources/images/2014/12/7/SECCON2014Online_en.png
+---
+
+昨日12月6日午前9時（日本時間）から12月7日午後5時までの32時間耐久CTFが行われたので参加してみました。
+あまり活躍できずでしたがチャレンジしたもののまとめを記します。
+
+<!-- more -->
+
+# Get the key (Network 100)
+
+![Get the key pcap file opened](/blog/resources/images/2014/12/7/NW100-1.png)
+配布されたパケットからキーの手がかりを探すというもの。
+これはNWの基本問題だったので解説することはほとんどないです。
+Wiresharkで開いてWebサイトのログイン情報が出るのでそれでアクセスしておしまい。
+
+![Get the key WebSite login](/blog/resources/images/2014/12/7/NW100-2.png)
+![NW100Flag](/blog/resources/images/2014/12/7/NW100Flag.png)
+
+# Reverseit (Bin 100)
+
+なにやら配られたファイルを反転しろというもの。
+バイト列反転、ビット反転いろいろな反転方法を試したところ、
+4bitごとに反転してあげるとJPEG画像に早変わり。
+
+![BIN100Flag](/blog/resources/images/2014/12/7/BIN100Flag.jpg)
+
+画像中のFLAGも左右反転してるので眼で見て脳内反転しておしまい。
+
+
+```C
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <unistd.h>
+
+int main(int argc, char const* argv[])
+{
+	int in, out;
+	if ((in = open("Reverseit", O_RDONLY)) != -1) {
+		struct stat st;
+		int i;
+		char buf[2];
+
+		out = open("reversed", O_RDWR|O_CREAT, 0666);
+		stat("Reverseit", &st);
+		for (i = st.st_size - 1; i >= 0; --i) {
+			lseek(in, i, SEEK_SET);
+			read(in, buf, 1);
+			buf[0] = (buf[0] & 0x0f << 4) | ((buf[0] & 0xf0) >> 4);
+			write(out, buf, 1);
+		}
+	}
+	return 0;
+}
+```
+
+
+# SECCON Wars: The Flag Awakens (QR 300)
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/1pC56S17-_A" frameborder="0" allowfullscreen></iframe>
+
+新ジャンルQRからの出題。
+[YouTubeの動画](http://youtu.be/1pC56S17-_A)を見ろとの指令のみが与えられた問題。
+
+![SECCON Wars QR code movie](/blog/resources/images/2014/12/7/QR300-1.png)
+
+よーく見るとSECCONのバナーが出るときに動画の下の方にQRコードが流れているのでそれをスキャンすればよさそう。
+
+手順としては動画をまずローカルに引っ張り出して、QRコードの出現する54秒の時点から7秒間を16fpsで連番画像として抜き出します。
+ファイル情報を確認すると320x240ピクセルなので、目視で下部3ピクセルに表示されてると仮定して、320x3ピクセルの画像に切り出します。
+あとはこれを連結してノイズを減らして色反転すると、
+
+![QR300 Flag](/blog/resources/images/2014/12/7/QR300Flag.jpg)
+
+このようなQRコードが得られ、スキャンしてFLAGをゲットできます。
+
+```
+ffmpeg -i SECCON_WARS.mp4 -ss 54 -t 7 -r 16 -f image2 %04d.jpg
+identify 0001.jpg
+convert *.jpg -crop '320x3+0+237' qr_%04d.jpg
+convert -append qr_*.jpg qr_appended.jpg
+convert -median 3 -negate qr_appended.jpg qr.jpg
+```
+
+# The Golden Gate (Programming 400)
+
+![The Golden Gate](/blog/resources/images/2014/12/7/GoldenGate.jpg)
+
+自作ハードウェアエンコーダーの写真があって、それによってエンコードされた文字`BQDykmgZ0I6SaQnq4o/iEONudetXdPJdpl1UVSlU69oZOtvqnHfinOpcEfIjXy9okkVpsuw2kpKS==`をデコードしてくれとのこと。
+このハードウェアエンコーダーはユニーバーサル基板上に作られていて、絡み合うジャンパ線がどう繋がっているのかをしっかり把握できれば回路図を起こすのは以外と簡単。
+
+![Handwriting Circuit](/blog/resources/images/2014/12/7/TGG-1.jpg)
+
+7400のNANDゲートによって入力から出力までの間は、2入力NANDの結果をさらにその2入力でそれぞれNANDし、それらをNANDするという、何度もNANDする処理が入ってるだけでした。
+要するにXORです。
+
+よって、プログラムは簡潔にできあがり、難なくFLAGを手に入れることができると思いました。
+
+...思いました。
+
+残念ながら時間中にFLAGは得られませんでした。
+
+
+一点、デコードすべき文がなんなのかがわからなかったことがあります。BASE64にしては文字数が合わないのです。
+そして、どのタクトスイッチがどのbitをさしているのか、アノード・カソードどちらなのか写真からよくわからない、など、躓く点が多かったのです。
+
+
+SECCONは終わってしまいましたが、ヒントが出され、入力と出力とが対応付けられるようになりました。
+<iframe width="560" height="315" src="https://www.youtube.com/embed/kaDjypSndMk" frameborder="0" allowfullscreen></iframe>
+
+タクトスイッチによる入力が一部反転できてなかったようです。
+
+入力文を正規のBASE64にして実行してみると、しっかりとgzipのデータとなり、フラッグを得られました。
+```
+echo "BQDykmgZ0I6SaQnq4o/iEONudetXdPJdpl1UVSlU69oZOtvqnHfinOpcEfIjXy9okkVpsuw2kpKS" | openssl base64 -d > input
+gcc goldengate.c -o gg
+./gg input
+file out
+gzip -S .gz -d -c out
+```
+
+```C
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <unistd.h>
+
+
+#define B(y) ((*buf >> (y)) & 1)
+
+unsigned char nand(unsigned char a, unsigned char b) {
+	if (a == 1 && b == 1) {
+		return 0;
+	}
+	return 1;
+}
+
+unsigned char xor(unsigned char a, unsigned char b) {
+	return nand(nand(nand(a, b), a), nand(b, nand(a, b)));
+}
+
+void encoder(unsigned char *buf) {
+	unsigned char a4 = xor(B(1)^1, B(6)^1);
+	unsigned char a6 = xor(B(3), B(1)^1);
+	unsigned char a5 = xor(a6, B(5));
+	unsigned char g1 = xor(B(5), B(7));
+	unsigned char a0 = xor(g1, B(0)^1);
+	unsigned char a2 = xor(B(2),1);
+	unsigned char g2 = xor(B(2), B(1)^1);
+	unsigned char a1 = xor(a2, g2);
+	unsigned char a3 = xor(g1, g2);
+	unsigned char a7 = xor(B(4)^1, g2);
+	int t =
+		((a7 << 7) & 128) |
+		((a6 << 6) & 64) |
+		((a5 << 5) & 32) |
+		((a4 << 4) & 16) |
+		((a3 << 3) & 8) |
+		((a2 << 2) & 4) |
+		((a1 << 1) & 2) |
+		((a0 << 0) & 1);
+	*buf = ((unsigned char)t ^ 0xff);
+}
+
+
+int main(int argc, char const* argv[])
+{
+	int in;
+	int out;
+	struct stat st;
+	unsigned char buf[1 + 1];
+	char name[8];
+	int i, j;
+	unsigned char table[256];
+	unsigned char c;
+
+	if (argc != 2) {
+		return 1;
+	}
+
+	// create table
+	for (i = c = 0; i < 256; c = ++i) {
+		encoder(&c);
+		table[(int)c] = ((unsigned char)i & 0xff);
+	}
+
+	if ((in = open(argv[1], O_RDONLY)) != -1) {
+		stat(argv[1], &st);
+		out = open("out", O_RDWR|O_CREAT, 0666);
+
+		for (i = 0; i < st.st_size; i++) {
+			read(in, buf, 1);
+			buf[0] = table[buf[0]];
+			write(out, buf, 1);
+		}
+
+		close(out);
+		close(in);
+	}
+	return 0;
+}
+```
+
+# QR (Easy) (QR 100)
+
+![QR Cake](/blog/resources/images/2014/12/7/QRCake.jpg)
+
+昨年のSECCON 2013オンライン予選でも出題された、データビットの部分だけ残ってるQRコードを解析するという問題。
+今回はパンケーキに焼いて食べてしまったようです。
+
+おなじみ[英語版WikipediaのQRコード解説ページ](http://en.wikipedia.org/wiki/QR_code)のデータ配置図を元にデータビットを埋めていくだけです。
+今回のフラッグの形式は`SECCON{XXXXXXX}`なので、最初の6文字が"SECCON"になるようなマスクを[QRコードの解説サイト](http://www.swetake.com/qrcode/qr5.html)を見ながら特定すると、マスクパターンは001であることがわかります。
+
+![QR Cake](/blog/resources/images/2014/12/7/QR100-1.png)
+
+あとは淡々とビットを解析して行って得たFLAGは、
+
+<pre>
+0010 : 英数モード
+000000110 : 6文字
+10011111010 : 'SE'
+01000101000 : 'CC'
+10001001111 : 'ON'
+0100 : 8bitバイトモード
+00010010 : 18文字
+01111011 : '{'
+01010000 : 'P'
+01010011 : 'S'
+01110111 : 'w'
+01011101 : ']'
+01010001 : 'Q'
+00111001 : '9'
+01100100 : 'd'
+00111001 : '9'
+01000111 : 'G'
+01101010 : 'j'
+01001011 : 'K'
+01010100 : 'T'
+01100100 : 'd'
+01000100 : 'D'
+00111000 : '8'
+01001000 : 'H'
+01111101 : '}'
+0101
+11
+</pre>
+
+`SECCON{PSw]Q9d9GjKTdD8H}`
+しかし__Incorrect.__
+
+骨の折れる作業で再度トライする気にはならなかったのですが、
+今になって見返してみると間違ってるビットを発見。
+正解は`SECCON{PSwIQ9d9GjKTdD8H}`;
+
+
+
+## おしまい
+
+チーム合計で2500点でした(´Д` )

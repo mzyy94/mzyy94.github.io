@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>{% if page.title %}{% if site.titlecase %}{{ page.title | titlecase }}{% else %}{{ page.title }}{% endif %} - {% endif %}{{ site.title }}</title>
+  <meta name="author" content="{{ site.author }}">
+
+  {% capture description %}{% if page.description %}{{ page.description }}{% else %}{{ content | raw_content }}{% endif %}{% endcapture %}
+  <meta name="description" content="{{ description | strip_html | condense_spaces | truncate:150 }}">
+  {% if page.keywords %}<meta name="keywords" content="{{ page.keywords }}">{% endif %}
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  {% capture canonical %}{{ site.url }}{% if site.permalink contains '.html' %}{{ page.url }}{% else %}{{ page.url | remove:'index.html' | strip_slash }}{% endif %}{% endcapture %}
+  <link rel="canonical" href="{{ canonical }}">
+  <link href="/assets/images/favicon.png" rel="shortcut icon">
+  <link href="/assets/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="{{ site.subscribe_rss }}" rel="alternate" title="{{site.title}}" type="application/atom+xml">
+  <!-- main JS libs -->
+  <script src="/assets/javascripts/libs/modernizr.min.js"></script>
+  <script src="/assets/javascripts/jquery-2.0.3.min.js"></script>
+  <script src="/assets/javascripts/libs/jquery-ui.min.js"></script>
+  <script src="/assets/javascripts/libs/bootstrap.min.js"></script>
+  <!-- Style CSS -->
+  <link href="/assets/stylesheets/bootstrap.css" media="screen" rel="stylesheet">
+  <link href="/assets/stylesheets/style.css" media="screen" rel="stylesheet">
+  <link href="/assets/stylesheets/syntax.css" media="screen" rel="stylesheet">
+  <link href="/assets/stylesheets/emoji.css" media="screen" rel="stylesheet">
+  <!-- scripts -->
+  <script src="/assets/javascripts/general.js"></script>
+  <!-- custom input -->
+  <script src="/assets/javascripts/jquery.customInput.js"></script>
+  <script type="text/javascript" src="/assets/javascripts/custom.js"></script>
+  <!-- Placeholders -->
+  <script type="text/javascript" src="/assets/javascripts/jquery.powerful-placeholder.min.js"></script>
+  <!-- Lightbox prettyPhoto -->
+  <link href="/assets/stylesheets/prettyPhoto.css" rel="stylesheet">
+  <script src="/assets/javascripts/jquery.prettyPhoto.js"></script>
+  <!-- CarouFredSel  -->
+  <script src="/assets/javascripts/jquery.carouFredSel-6.2.1-packed.js"></script>
+  <!-- Progress Bars -->
+  <script src="/assets/javascripts/progressbar.js"></script>
+  <!-- Calendar -->
+  <script src="/assets/javascripts/jquery-ui.multidatespicker.js"></script>
+  <!-- range sliders -->
+  <script src="/assets/javascripts/jquery.slider.bundle.js"></script>
+  <script src="/assets/javascripts/jquery.slider.js"></script>
+  <link rel="stylesheet" href="/assets/stylesheets/jslider.css">
+  <!-- Video Player -->
+  <link href="/assets/stylesheets/video-js.css" rel="stylesheet">
+  <script src="/assets/javascripts/video.js"></script>
+  <!-- Scroll Bars -->
+  <script src="/assets/javascripts/jquery.mousewheel.js"></script>
+  <script src="/assets/javascripts/jquery.jscrollpane.min.js"></script>
+
+<!--[if lt IE 9]><script src="/assets/javascripts/respond.min.js"></script><![endif]-->
+<!--[if gte IE 9]>
+<style type="text/css">
+	.gradient {filter: none !important;}
+</style>
+<![endif]-->
+  {% include custom/head.html %}
+  {% include google_analytics.html %}
+</head>
+{% capture root_url %}{{ site.root | strip_slash }}{% endcapture %}
+<body {% if page.body_id %} id="{{ page.body_id }}" {% endif %} >
+  <div class="container">
+  <div class="content">
+  <header class="row">
+    <nav id="topmenu" class="col-sm-12" role="navigation">{% include navigation.html %}</nav>
+  </header>
+  <header class="col-sm-12 boxed-red" role="banner">{% include header.html %}</header>
+    <div class="row">
+      {{ content | expand_urls: root_url }}
+    </div>
+  {% include after_footer.html %}
+  </div>
+  <footer class="boxed-yellow" role="contentinfo">{% include footer.html %}</footer>
+  </div>
+</body>
+</html>

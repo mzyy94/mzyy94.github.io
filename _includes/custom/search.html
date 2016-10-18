@@ -1,0 +1,7 @@
+	<form action="{{ site.simple_search }}" id="searchForm" class="menu-search-form" method="get">
+		<fieldset role="search">
+			<input type="hidden" name="as_sitesearch" value="{{ site.url | shorthand_url }}" />
+			<input type="text" name="as_q" value="" results="0" class="menu-search-field" placeholder="Search the website" hidefocus="true" style="outline: none;">
+			<input type="submit" value="" class="btn menu-search-submit" name="search-send" hidefocus="true" style="outline: none;">
+		</fieldset>
+	</form>

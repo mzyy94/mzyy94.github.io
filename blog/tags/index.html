@@ -1,0 +1,65 @@
+---
+layout: page
+title: Tags
+footer: false
+---
+
+<style>
+.tag:not(:target), .tag:target h1.tagName {
+    display: none;
+}
+.tag.visible:not(:target) {
+    display: block;
+}
+.tagName {
+    border-bottom: 1px solid #666;
+}
+.tag:target {
+    display: block;
+    border-bottom: none;
+}
+</style>
+<noscript>
+<style>
+.tag {
+    display: block !important;
+}
+</style>
+</noscript>
+{% for tag in site.tags %}
+<div id="{{tag[0]}}" class="tag">
+<h1 class="tagName">{{tag[0]}}</h1>
+{% for post in tag[1] %}
+{% capture this_year %}{{ post.date | date: "%Y" }}{% endcapture %}
+{% unless year == this_year %}
+  {% assign year = this_year %}
+  <h2>{{ year }}</h2>
+{% endunless %}
+<article>
+  {% include archive_post.html %}
+</article>
+{% endfor %}
+</div>
+{% endfor %}
+<script>
+$(function(){
+    if (window.location.hash != "") {
+        $('.entry-title').text("Tag: " + window.location.hash.replace(/^#/, ''));
+        setTimeout(function() {
+            $(window).scrollTop(0);
+        }, 1);
+    } else {
+        $('.tag').addClass('visible');
+    }
+    $(window).on('hashchange', function(){
+        $('.visible').removeClass('visible');
+        if (window.location.hash != "") {
+            $('.entry-title').text("Tag: " + window.location.hash.replace(/^#/, ''));
+            $(window).scrollTop(0);
+        } else {
+            $('.entry-title').text("Tags");
+            $('.tag').addClass('visible');
+        }
+    });
+});
+</script>

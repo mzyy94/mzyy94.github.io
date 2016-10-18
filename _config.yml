@@ -1,0 +1,122 @@
+# ----------------------- #
+#      Main Configs       #
+# ----------------------- #
+
+url: https://mzyy94.com
+baseurl: "/"
+title: 犬アイコンのみっきー
+locale: "ja-JP"
+subtitle:
+author: mzyy94
+simple_search: https://www.google.com/search
+description:
+
+# Default date format is "ordinal" (resulting in "July 22nd 2007")
+# You can customize the format as defined in
+# http://www.ruby-doc.org/core-1.9.2/Time.html#method-i-strftime
+# Additionally, %o will give you the ordinal representation of the day
+date_format: "ordinal"
+
+# RSS / Email (optional) subscription links (change if using something like Feedburner)
+subscribe_rss: /blog/atom.xml
+subscribe_email:
+# RSS feeds can list your email address if you like
+email:
+
+# ----------------------- #
+#    Jekyll & Plugins     #
+# ----------------------- #
+
+# If publishing to a subdirectory as in http://site.com/project set 'root: /project'
+root: ""
+permalink: /blog/:year/:month/:day/:title/
+relative_permalinks: false
+#source: source
+destination: public
+#plugins: plugins
+code_dir: downloads/code
+category_dir: blog/categories
+tag_dir: blog/tags
+markdown: kramdown
+kramdown:
+  input: GFM
+  auto_ids: true
+  hard_wrap: false
+  enable_coderay: false
+  syntax_highlighter: rouge
+  smart_quotes: quot,quot,apos,apos
+  syntax_highlighter_opts:
+    span:
+      line_numbers: false
+    block:
+      line_numbers: true
+      start_line: 1
+highlighter: rouge
+lsi: false
+
+paginate: 10          # Posts per page on the blog index
+paginate_path: "/blog/page/:num"  # Directory base for pagination URLs eg. /posts/2/
+recent_posts: 5       # Posts in the sidebar Recent Posts section
+excerpt_link: "Read more"  # "Continue reading" link text at the bottom of excerpted articles
+excerpt_separator: "<!-- more -->"
+
+titlecase: false       # Converts page and post titles to titlecase
+
+# list each of the sidebar modules you want to include, in the order you want them to appear.
+# To add custom asides, create files in /source/_includes/custom/asides/ and add them to the list like 'custom/asides/custom_aside_name.html'
+default_asides: [custom/asides/about.html, custom/asides/calendar.html, asides/recent_posts.html, asides/github.html, custom/asides/ads.html]
+# Each layout uses the default asides, but they can have their own asides instead. Simply uncomment the lines below
+# and add an array with the asides you want to use.
+# blog_index_asides:
+# post_asides:
+# page_asides:
+
+# ----------------------- #
+#   3rd Party Settings    #
+# ----------------------- #
+# Gem
+gems:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-paginate
+  - jekyll-gist
+
+# Exclude
+exclude: ['README.md', 'CNAME', 'LICENSE']
+
+# Github repositories
+github_user: mzyy94
+github_repo_count: 3
+github_show_profile_link: false
+github_skip_forks: true
+
+# Twitter
+twitter_user: mzyy94
+twitter_tweet_button: true
+
+# Google +1
+google_plus_one: true
+google_plus_one_size: medium
+
+# Google Plus Profile
+# Hidden: No visible button, just add author information to search results
+googleplus_user:
+googleplus_hidden: false
+
+# Pinboard
+pinboard_user:
+pinboard_count: 3
+
+# Delicious
+delicious_user:
+delicious_count: 3
+
+# Disqus Comments
+disqus_short_name: mzyy94blog
+disqus_show_comment_count: true
+
+# Google Analytics
+google_analytics_tracking_id: UA-41944495-3
+
+# Facebook Like
+facebook_like: true

@@ -1,0 +1,18 @@
+---
+layout: null
+---
+{
+	"title" : "{{ site.title | cdata_escape }}",
+	"url"   : "{{ site.url }}",
+	"author": "{{ site.author | strip_html }}",
+	{% if site.email %}
+	"email" : "{{ site.email }}",
+	{% endif %}
+	"posts" : [ {% for post in site.posts %}
+		{
+			"date": "{{ post.date | date_to_string }}",
+			"title": "{% if site.titlecase %}{{ post.title | titlecase | cdata_escape }}{% else %}{{ post.title | cdata_escape }}{% endif %}",
+			"url": "{{ post.url | split:"/" | last }}"
+		}{% if forloop.last == false %},{% endif %}
+	{% endfor %}]
+}
