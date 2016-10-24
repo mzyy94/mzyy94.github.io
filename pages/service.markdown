@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Service"
-permalink: "/service"
+permalink: "/service/"
 comments: false
 sharing: false
 footer: false
