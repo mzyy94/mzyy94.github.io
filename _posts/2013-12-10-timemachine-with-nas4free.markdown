@@ -45,17 +45,17 @@ __たまたま__自宅にAcer Aspire H340なるサーバー用のマシンが転
 
 
 
-##NAS4Freeのインストール
+## NAS4Freeのインストール
 ダウンロードしたx8664のイメージをCDに焼き、ブートして起動してEmbeddedインストールするだけです。
 このEmbeddedインストールではイメージファイルを書き込むもので、256MBに収まる用にできています。
 FreeNASも同じくEmbededインストールをサポートしていますが、2GBの容量が必要とのことですので断念しました。
 
-##起動
+## 起動
 ネットワークの設定をして起動し、[nas4free.local](http://nas4free.local)にアクセスします。
 
-##設定
+## 設定
 
-###ディスクの設定
+### ディスクの設定
 
 NAS4Freeが起動したら
 
@@ -72,7 +72,7 @@ NAS4Freeが起動したら
 ![alt](/blog/resources/images/2013/12/10/NAS4Free-3.png)
 
 
-###AFPの設定
+### AFPの設定
 Services->AFPにて、
 
 1. SettingsタブをEnableにし、 Enable local user authentication. にチェックしてサービスを開始し、

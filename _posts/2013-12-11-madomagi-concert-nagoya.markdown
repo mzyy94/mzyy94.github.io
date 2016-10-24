@@ -15,7 +15,7 @@ topimg: /blog/resources/images/2013/12/11/madomagi-concert-nagoya.jpg
 
 <!-- more -->
 
-##会場
+## 会場
 ![alt](/blog/resources/images/2013/12/11/madocon-1.jpg)
 ![alt](/blog/resources/images/2013/12/11/madocon-2.jpg)
 ![alt](/blog/resources/images/2013/12/11/madocon-3.jpg)
@@ -33,7 +33,7 @@ topimg: /blog/resources/images/2013/12/11/madomagi-concert-nagoya.jpg
 との謳い文句が誇大ではないというのが実際、ハープの調律の際に感じ取れました。
 
 
-##客数
+## 客数
 事前に販売されていたチケットは完売で、予定されていた席はほぼ埋まっている様子でした。
 空席はほぼなかったと見て取れました。
 
@@ -45,7 +45,7 @@ topimg: /blog/resources/images/2013/12/11/madomagi-concert-nagoya.jpg
 とつぶやき、急遽当日券を用意してくださっていました。
 
 
-##客層
+## 客層
 中学生らしき制服を着た男の子からおばあちゃん世代の方まで幅広い層の客が集まっている印象でした。
 この手のイベントでは男性が多いという勝手な想像があったのですが、
 辺りを見渡してみると、男女比ほぼ半々のようですごい幅広い客層が集まっていると感じました。
@@ -53,7 +53,7 @@ topimg: /blog/resources/images/2013/12/11/madomagi-concert-nagoya.jpg
 特に珍しいと思ったのが、親子連れで来ている客が数組いたことです。
 アニメだからというこだわりを持たず、オーケストラ・コンサートを純粋に聴きに来ている方も多いのではという雑感をいだきました。
 
-##物販
+## 物販
 会場ではまどか☆マギカ関連グッズの販売をしていました。
 
 ローソンHMV関連グッズが多い中、コンサート限定パンフレットの販売もしておりました。
@@ -68,7 +68,7 @@ topimg: /blog/resources/images/2013/12/11/madomagi-concert-nagoya.jpg
 ![alt](/blog/resources/images/2013/12/11/madocon-7.jpg)
 ![alt](/blog/resources/images/2013/12/11/madocon-8.jpg)
 
-##ホール内
+## ホール内
 名古屋公演の特別演出として、他の会場にはない【スクリーン・コンサート形式】という演出をすると[公式サイト](http://www.aim-vil.com/sponsor/madoka-concert/12-11-%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%85%AC%E6%BC%94/)に記載がありました。
 説明では、
 > オーケストラの生演奏＋名場面をスクリーンに投影（静止画）！
@@ -92,7 +92,7 @@ topimg: /blog/resources/images/2013/12/11/madomagi-concert-nagoya.jpg
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
-##演奏
+## 演奏
 
 この名古屋公演は19:00開演で、開演５分前には鈴が鳴り始まる旨を合図していました。
 その合図の後、暁美ほむら役の斎藤千和さんが場内アナウンスで注意事項等の連絡をしていました。
@@ -122,17 +122,17 @@ topimg: /blog/resources/images/2013/12/11/madomagi-concert-nagoya.jpg
 
 奏でられたすべての曲に感想を書いていても長くだらだらと続いていくだけなので、特に印象に残った曲をピックアップして感想を書いていきます。
 
-####a human bullet
+#### a human bullet
 典型的なエレキギターやドラムが響きわたっていて元気になる曲でした。
-####Confessio
+#### Confessio
 トーンチャイムによる柔らかな音色と鍵盤打楽器によるメロディーに安らぎを感じる曲でした。
-####Witch world #2
+#### Witch world #2
 二人のしっかりとしたコーラスが曲の注目を寄せ付け、それと強調して奏でられる楽器の音色とがとてもバランスよく、聴き応えがありました。
-####she is a witch
+#### she is a witch
 Which world #2に続いて演奏されたのがこの曲。男性コーラス人も参加した全体のコーラスが他の楽曲とは比べ物にならないほどの迫力あり、テンポも軽快で前半の〆として、後半の演奏に期待させる終わり方でした。
-####Symposium magarum
+#### Symposium magarum
 劇中でもオーケストラとして演奏されるシーンで登場した曲なので、実際にオーケストラコンサートで演奏されると、もうそれは涙が出てもおかしくない感動がえられました。
-####mother and daughter
+#### mother and daughter
 とてもきれいでしなやかな演奏でした。ピアノソロで奏でる曲はいくつかあったのですが、これは映像とともに劇中のシーンの感動をさらに思い起こさせる演奏であったため、特に心に残っています。
 
 
@@ -161,7 +161,7 @@ Which world #2に続いて演奏されたのがこの曲。男性コーラス人
 
 
 
-###コンサート・プログラム
+### コンサート・プログラム
 引用元：[AIM VILLAGE 劇場版魔法少女まどか☆マギカ オーケストラ・コンサート コンサート・プログラム](http://www.aim-vil.com/sponsor/madoka-concert/%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0/)
 
 1. Sis puella magica! [<i class="glyphicon glyphicon-music"></i>](https://itunes.apple.com/jp/album/sis-puella-magica!/id575591707?i=575591878&uo=4&at=1l3v4mQ)
@@ -204,6 +204,3 @@ Which world #2に続いて演奏されたのがこの曲。男性コーラス人
 38. Taenia memoriae [<i class="glyphicon glyphicon-music"></i>]()
 39. Pergo pugnare  [<i class="glyphicon glyphicon-music"></i>]()
 40. ひかりふる [<i class="glyphicon glyphicon-music"></i>](https://itunes.apple.com/jp/album/hikarifuru/id573784184?i=573784186&uo=4&at=1l3v4mQ)
-
-
-

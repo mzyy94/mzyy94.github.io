@@ -26,7 +26,7 @@ RSSを消化してたときのこと。
 
 この惨状を目にした60分後、手元にはこんなものが出来上がっていました。
 
-###[Honda 3D - WebGL Demo (Beta)](http://mzyy94.com/HONDA-3D-WebGL-demo/)
+### [Honda 3D - WebGL Demo (Beta)](http://mzyy94.com/HONDA-3D-WebGL-demo/)
 {% raw %}
 <span>※Chrome 33向けです。</span><br>
 <span>※※RAMとCPU使用率と通信量を膨大に使うので開く際はご注意ください</span>
@@ -44,7 +44,7 @@ RSSを消化してたときのこと。
 
 せっかくつくったので解説させてください。
 
-#トップページ
+# トップページ
 
 上：拙作デモサイト　下：本家サイト
 
@@ -69,7 +69,7 @@ CSS3の技術が詰まったパネルをもう少し詳しく見てみましょ�
 ```
 
 
-#3D ビュー
+# 3D ビュー
 
 ここのシーンを見せるためにHondaはFlashを試用したというのは安易に想定できますが、せっかくなのでHTML5の技術を使って欲しかったです。
 ということで、HTML5の新技術であるWebGLを利用してモデルを表示するようにしました。
@@ -82,7 +82,7 @@ WebGLで3Dモデルを表示するには、表示するための3Dデータが�
 そこで、three.jsで扱える形式に変換する必要があります。
 今回は3Dモデリング界では名高い[Blender](http://www.blender.org/)を利用しました。
 
-##3Dモデルデータを変換する
+## 3Dモデルデータを変換する
 
 BlenderでSTL形式をthree.jsで扱える形式に変換する方法はそこまで難しいことではありません。
 Blenderは標準でSTL形式を扱えるので、three.jsで使えるよう、
@@ -114,7 +114,7 @@ Addonsタブにある検索ボックスでthreejsとして検索して出てく�
 ![blender](/blog/resources/images/2014/2/13/blender-5.png)
 ![blender](/blog/resources/images/2014/2/13/blender-6.png)
 
-##3Dモデルデータを表示する
+## 3Dモデルデータを表示する
 上：拙作デモサイト　下：本家サイト
 
 ![demo](/blog/resources/images/2014/2/13/demo-3dview.png)

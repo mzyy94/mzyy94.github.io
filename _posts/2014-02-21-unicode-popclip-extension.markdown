@@ -10,19 +10,19 @@ topimg: /blog/resources/images/2014/2/21/UnicodeEncode_popclipext.png
 
 いろいろな趣味がよく合う[ひとりぶろぐ](http://hitoriblog.com/)さんの記事を読んでいたときのこと。どうやら[PopClip](https://itunes.apple.com/jp/app/popclip/id445189367?mt=12&uo=4&at=1l3v4mQ)が便利らしいことを[発見](http://hitoriblog.com/?p=22987)したので、だいぶ昔に買ったっきりで使っていなかったPopClipを活用してみることにしました。
 
-#PopClipとは
+# PopClipとは
 PopClipに関しては、[ひとりぶろぐさんの記事](http://hitoriblog.com/?p=22987)にて紹介されているので省略します。知っているという前提で以下、話を進めます。
 
-#Unicodeエンコード
+# Unicodeエンコード
 最近なにかとマイブームなUnicode。CSSのcontentプロパティで記号を表示したり、JavaScriptで難読化したりなど、よく使う割には毎回ブラウザ上でコンソールを拡げていました。この手間を解決する手段として、せっかくなのでPopClipの拡張機能を利用しようと思います。
 
 <!-- more -->
 
-#PopClip拡張機能
+# PopClip拡張機能
 PopClipが人気なのは、iOSライクなコピー＆ペーストができるからではなく、PopClip拡張機能で選択テキストなどに対する便利な機能が実現できるかららしい[_要出典_]。
 PopClip拡張機能を作るための手順に関しては、さっきからよく登場する[ひとりぶろぐさんの記事](http://hitoriblog.com/?p=22987)にて説明があるので、読んで作っていきます。
 
-##UnicodeEncode.popclipext
+## UnicodeEncode.popclipext
 
 ![UnicodeEncode_popclipext](/blog/resources/images/2014/2/21/UnicodeEncode_popclipext.gif)
 
@@ -35,7 +35,7 @@ __作るの意外と大変だった__
 
 さらっとサンプルのソースコードを読んだ限り、簡単にできるものだとおもったのですが、いろいろと問題がありました。
 
-###LANG環境変数問題
+### LANG環境変数問題
 一つ目の問題は、LANG環境変数。
 おなじみシステムのローケルを設定する環境変数ですが、日本語を扱うときのこのロケールがいろいろと厄介なものでした。
 OS X Mavericksで日本語環境でターミナルを起動する際は、標準でLANG=ja_JP.UTF-8に設定されています。この状態で、日本語を扱うときには特に問題ないのですが、LANG=Cのときだと厄介なことになることがあるのです。
@@ -48,7 +48,7 @@ PopClip拡張機能は、起動時にLANG環境変数を引き継ぐことなく
 
 解決策として、`export LANG=en_US.UTF-8`と、UTF-8ロケールに設定しました。
 
-###濁点文字分離問題
+### 濁点文字分離問題
 まず、以下の例をみてください。
 
 ![Problem2](/blog/resources/images/2014/2/21/problem2.gif)
@@ -62,5 +62,5 @@ OS XではUTF-8を扱う文字コードが２種存在します。`iconv -l | gr
 
 この問題は`iconv -f UTF-8-MAC -t UTF-8`とすることで解決しました。
 
-#PopClip拡張機能を作りたかっただけだったのに
+# PopClip拡張機能を作りたかっただけだったのに
 PopClipがロケール環境変数を引き継いでいなかったおかげでLANG=CでのUTF-8の文字の扱いがわかり、PopClipがUTF-8-MACとしてテキストを渡してくれていたおかげでOS XでのUTF-8の取り扱いに関して知識を得ることができて、結果的にいい経験になりました。ありがとう、PopClip。
