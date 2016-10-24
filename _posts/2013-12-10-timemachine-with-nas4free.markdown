@@ -3,8 +3,8 @@ layout: post
 title: "NAS4FreeでTime Machineの設定するメモ"
 date: 2013-12-10 12:58:47 +0900
 comments: true
-category: NAS4Free
-tags: NAS4Free TimeMachine Mac
+category: nas4free
+tags: nas4free timemachine mac
 topimg: /blog/resources/images/2013/12/10/timemachine-with-nas4free.png
 ---
 
@@ -70,7 +70,7 @@ NAS4Freeが起動したら
 ![alt](/blog/resources/images/2013/12/10/NAS4Free-1.png)
 ![alt](/blog/resources/images/2013/12/10/NAS4Free-2.png)
 ![alt](/blog/resources/images/2013/12/10/NAS4Free-3.png)
-                      
+
 
 ###AFPの設定
 Services->AFPにて、
@@ -78,7 +78,7 @@ Services->AFPにて、
 1. SettingsタブをEnableにし、 Enable local user authentication. にチェックしてサービスを開始し、
 2. Shareタブで、
 
---- 
+---
 
 * Name: 適当な名前
 * Comment: 適当なコメント
@@ -103,4 +103,3 @@ Services->AFPにて、
 
 
 設定方法と、NASの紹介でした。
-

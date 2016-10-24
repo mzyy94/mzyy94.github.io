@@ -3,7 +3,7 @@ layout: post
 title: "自宅サーバーを増やした"
 date: 2014-04-06 23:10:36 +0900
 comments: true
-category: Server
+category: server
 tags: xeon server
 topimg: /blog/resources/images/2014/4/6/DSC08148.JPG
 ---

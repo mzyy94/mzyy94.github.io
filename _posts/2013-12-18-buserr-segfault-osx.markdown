@@ -3,14 +3,14 @@ layout: post
 title: "OS Xで再現されるBus error: 10の原因探ってみた"
 date: 2013-12-18 12:48:12 +0900
 comments: true
-category: C
+category: c
 tags: bus_error segmentation_fault osx
 topimg: /blog/resources/images/2013/12/18/buserr-segfault-osx.png
 ---
 Cです。
 
 アプリケーションの例外でおこるSegmetion fault: 11 はよく目にするのですが、
-OS Xで時々現れるBus error: 10 が現れる条件が気になったのでごちゃごちゃいじって探してみました。 
+OS Xで時々現れるBus error: 10 が現れる条件が気になったのでごちゃごちゃいじって探してみました。
 
 こういう情報はどこかインターネットにあるのだと思ったのですが、
 [Segmentation FaultとBus Errorの違いとMac - Togetterまとめ](http://togetter.com/li/253717)

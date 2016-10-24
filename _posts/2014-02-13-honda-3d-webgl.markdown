@@ -3,8 +3,8 @@ layout: post
 title: "Honda 3DのサイトがFlashだったときの症例"
 date: 2014-02-13 19:03:54 +0900
 comments: true
-category: Web
-tags: HTML5 CSS3 WebGL three.js
+category: web
+tags: html5 css3 webgl three.js
 topimg: /blog/resources/images/2014/2/13/honda-3d-diff.png
 ---
 
@@ -133,4 +133,3 @@ Addonsタブにある検索ボックスでthreejsとして検索して出てく�
 [https://gist.github.com/mzyy94/8974444](https://gist.github.com/mzyy94/8974444)
 
 以上、Anti-Flashをこじらせた人の症例でした。
-
