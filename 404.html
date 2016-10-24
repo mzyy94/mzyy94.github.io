@@ -6,7 +6,14 @@
 <h1>Not Found</h1>
 <p>The requested URL <span id="path"></span> was not found on this server.</p>
 <hr>
-<address>Apache/2.2.22 (Debian) Server at mzyy94.com Port 80</address>
+<address>Apache/2.4.23 (Debian) Server at mzyy94.com Port 80</address>
 <script>
-document.getElementById('path').innerHTML=window.location.pathname; document.body.style.visibility="visible"</script>
+if (location.pathname.match('/blog/tags/') || location.pathname.match('/blog/categories/')) {
+    var hash = '#' + location.pathname.split('/')[3]
+    var pathname = location.pathname.split('/').filter(function(_, i){return i < 3}).join('/')
+    location.href = location.protocol + '//' + location.host + pathname + hash
+}
+document.getElementById('path').innerHTML=window.location.pathname;document.body.style.visibility="visible";
+</script>
+<noscript><style>body {visibility: visible;}</style></noscript>
 </body></html>
