@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Keys / Signatures"
-permalink: "/key"
+permalink: "/key/"
 comments: false
 sharing: false
 footer: false
