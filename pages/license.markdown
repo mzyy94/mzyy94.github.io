@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "License"
-permalink: "/about/license"
+permalink: "/about/license/"
 comments: false
 sharing: false
 footer: false
