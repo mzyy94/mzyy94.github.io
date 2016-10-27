@@ -73,11 +73,11 @@ mondai9でマウントしたmondai10.tcには9枚の写真とmondai10.txtがあ�
 kanto1に関する画像がまだ確認してないので見てみます。
 kanto1_1.jpgとkanto1_2.jpgのファイル情報に撮影場所の手がかりがあるかもと期待を込め、メタ情報を見てみます。
 
-![exif-infos.png](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/exif-infos.png)
+![exif-infos.png](/blog/resources/images/2015/04/16/exif-infos.png)
 
 予想通り、SDカードを隠した場所のGPSの座標情報がEXIFに含まれているようです。OS Xのプレビュー.appで詳細情報を開いて、マップ.appにその地点を表示させてみました。
 
-![apple-map.png](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/apple-map.png)
+![apple-map.png](/blog/resources/images/2015/04/16/apple-map.png)
 
 ヒントから導いた通り、隠されている場所は赤城山でまちがいないようです。
 
@@ -116,7 +116,7 @@ MBA,パン,水分,チョコレート,革手袋,コンパクトダウンジャケ
 つくばエクスプレスの電車の中で検索したところ経路としては、流山おおたかの森駅乗り換えで東武鉄道を使う行き方と、
 南流山乗り換えでJRを使って行く方法がありました。
 
-![train-connections](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/train-connections.png)
+![train-connections](/blog/resources/images/2015/04/16/train-connections.png)
 
 JRでは移動距離100km以上だったので学割が使えますが、電車内での決断は以下のようになりました。
 
@@ -137,7 +137,7 @@ JRでは移動距離100km以上だったので学割が使えますが、電車�
 
 衝撃です。平日の前橋駅発赤城山行きのバスは4本しかなく、4本目が最終折り返し便という記載がバス時刻表にあることを初めて知りました。
 
-![bus-table](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/bus-table.png)
+![bus-table](/blog/resources/images/2015/04/16/bus-table.png)
 
 平日の前橋駅発富士見温泉経由赤城山行きの出発時刻は7:32、10:35、13:27、15:28の4本しかなく、15:28の便が最終折り返し便なので、なんとしてでも13:27のバスに乗らなければならない状況に立たされていることを知ります。
 悠長に電車旅を続けられる状態ではなくなりました。本数の少ない路線を乗り継いでいるため、一つでも乗り換えを間違えたり間に合わなかったりすると13:27のバスに間に合わず、そこでmondai10へのチャレンジ終了となります。
@@ -167,7 +167,7 @@ JRでは移動距離100km以上だったので学割が使えますが、電車�
 さて、普通にプラットホームを移動して乗り換えするだけでよかったのはこの館林駅まで。次の乗り換え駅である足利市駅では時間との戦いが待っているのです。
 
 
-![running-connection](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/running-connection.png)
+![running-connection](/blog/resources/images/2015/04/16/running-connection.png)
 
 
 足利市駅での乗り換えでは、違う路線の駅間を歩いて移動しなければならないのです。この乗り換えの最大の難関は移動時間。足利市駅に11:47に到着し足利駅の発車時刻は12:05で、その間の時間は18分しかありません。徒歩での経路をiOSのマップで調べてみると、予想所要時間は18分となっています。迷ったり道を間違えたりしていたら乗り損ねてしまい、mondai10チャレンジ終了となります。
@@ -191,7 +191,7 @@ JRでは移動距離100km以上だったので学割が使えますが、電車�
 iPhoneの電子コンパスを使って方角を確かめ、正しい出口から出てマップを頼りに急いで移動を開始します。
 
 
-![connection-map](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/connection-map.png)
+![connection-map](/blog/resources/images/2015/04/16/connection-map.png)
 
 
 駅間の移動中の風景はとてものどかで、ゆっくりとした時間が流れているようでした。ゆっくりと時間が流れて欲しいと思っていたからかもしれませんが。
@@ -200,12 +200,12 @@ iPhoneの電子コンパスを使って方角を確かめ、正しい出口か�
 <blockquote class="twitter-tweet" lang="ja"><p><a href="https://twitter.com/hashtag/SDcardFindingBattle?src=hash">#SDcardFindingBattle</a> <a href="http://t.co/v9Jca4uFE4">pic.twitter.com/v9Jca4uFE4</a></p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584911834458689536">2015, 4月 6</a></blockquote>
 
 
-[![IMG_2374.JPG](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2374_thumb.JPG)](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2374.JPG)
-[![IMG_2375.JPG](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2375_thumb.JPG)](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2375.JPG)
+[![IMG_2374.JPG](/blog/resources/images/2015/04/16/IMG_2374.JPG)
+[![IMG_2375.JPG](/blog/resources/images/2015/04/16/IMG_2375.JPG)
 
 のんびりと写真を撮っていたからでしょうか、駅まで残り250mの地点ですでに電車出発まで残り2分を切ってしまいました。
 
-![last_250m](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/last_250m.png)
+![last_250m](/blog/resources/images/2015/04/16/last_250m.png)
 
 猛ダッシュするしかありません。幸い、信号のある道ではなかったので歩道を存分に走って駅に向かうことができました。
 
@@ -222,7 +222,7 @@ iPhoneの電子コンパスを使って方角を確かめ、正しい出口か�
 
 ちなみに足利駅には電車が飾ってありました。（こんなの撮影してないで急げというツッコミはなしで）
 
-[![IMG_2379.JPG](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2379_thumb.JPG)](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2379.JPG)
+[![IMG_2379.JPG](/blog/resources/images/2015/04/16/IMG_2379.JPG)
 
 
 最後の乗り換えを終え、あとは前橋駅で降りるだけとなりました。なんとか電車で赤城山最寄駅までこぎつけることができる状態となり、これにて過酷な電車乗り換え編はおしまいとなります。
@@ -251,7 +251,7 @@ iPhoneの電子コンパスを使って方角を確かめ、正しい出口か�
 
 案内所にあったバス停の停車場所の地図から、SDカードがある場所に一番近いバス停を探します。Google Mapによると、赤城山ビジターセンターまで行ってしまうと大回りとなってしまうとのことで、その一つ前の赤城山大洞で降りると、山道を通って最短経路で行けるとのことでした。
 
-![bus-stop-route](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/bus-stop-route.png)
+![bus-stop-route](/blog/resources/images/2015/04/16/bus-stop-route.png)
 
 
 時間になり、バスが来たので乗車しました。
@@ -285,8 +285,8 @@ iPhoneの電子コンパスを使って方角を確かめ、正しい出口か�
 赤城山ビジターセンター行きのバスに乗ると、風景に大きな山が見えてきました。たぶん赤城山です。たぶん。
 
 
-[![IMG_2388.JPG](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2388_thumb.JPG)](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2388.JPG)
-[![IMG_2391.JPG](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2391_thumb.JPG)](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2391.JPG)
+[![IMG_2388.JPG](/blog/resources/images/2015/04/16/IMG_2388.JPG)
+[![IMG_2391.JPG](/blog/resources/images/2015/04/16/IMG_2391.JPG)
 
 
 バスで揺られて眠くなる中、標高1000mを越えたあたりから車窓から覗く景色が明るくなっていることに気づきます。
@@ -297,8 +297,8 @@ iPhoneの電子コンパスを使って方角を確かめ、正しい出口か�
 
 そう、残雪が景色を明るくしていたのです。また、赤城山大沼という湖は湖面が凍っていました。
 
-[![IMG_2395.JPG](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2395_thumb.JPG)](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2395.JPG)
-[![IMG_2398.JPG](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2398_thumb.JPG)](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2398.JPG)
+[![IMG_2395.JPG](/blog/resources/images/2015/04/16/IMG_2395.JPG)
+[![IMG_2398.JPG](/blog/resources/images/2015/04/16/IMG_2398.JPG)
 
 赤城山大洞バス停に到着し、降車します。降りるとき、バスの運転手にこう告げられました。
 
@@ -314,7 +314,7 @@ iPhoneの電子コンパスを使って方角を確かめ、正しい出口か�
 
 バス停を降りてすぐのところで登山者向けの案内看板を見つけました。
 
-[![IMG_2399.JPG](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2399_thumb.JPG)](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2399.JPG)
+[![IMG_2399.JPG](/blog/resources/images/2015/04/16/IMG_2399.JPG)
 
 この看板の略図にある地蔵岳を越えてゆくコースを通ってSDカードの場所へと向かいます。看板の凡例にあるように、通る道は**歩道**となっているので比較的楽に登ることができると思いまいした。その歩道とやらはどこにあるのかとあたりを見渡すと、アスファルトで舗装された道がみつかりました。
 
@@ -335,7 +335,7 @@ iPhoneの電子コンパスを使って方角を確かめ、正しい出口か�
 
 よく滑る雪道を数十メートル進み、湖の方を眺めると大きな山がこちらを見守ってくれていました。
 
-[![IMG_2403.JPG](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2403_thumb.JPG)](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2403.JPG)
+[![IMG_2403.JPG](/blog/resources/images/2015/04/16/IMG_2403.JPG)
 
 
 刻々と帰りのバスの時間が迫ってきているので、後悔はほどほどに先に進みます。
@@ -347,35 +347,35 @@ iPhoneの電子コンパスを使って方角を確かめ、正しい出口か�
 
 膝上まで沈む深い雪があるところや、雪解け水で小川ができているところを水浸しになりながらかけ進んでいきます。
 
-[![IMG_2405.JPG](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2405_thumb.JPG)](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2405.JPG)
-[![IMG_2410.JPG](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2410_thumb.JPG)](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2410.JPG)
-[![IMG_2412.JPG](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2412_thumb.JPG)](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2412.JPG)
-[![IMG_2413.JPG](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2413_thumb.JPG)](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2413.JPG)
-[![IMG_2414.JPG](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2414_thumb.JPG)](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2414.JPG)
+[![IMG_2405.JPG](/blog/resources/images/2015/04/16/IMG_2405.JPG)
+[![IMG_2410.JPG](/blog/resources/images/2015/04/16/IMG_2410.JPG)
+[![IMG_2412.JPG](/blog/resources/images/2015/04/16/IMG_2412.JPG)
+[![IMG_2413.JPG](/blog/resources/images/2015/04/16/IMG_2413.JPG)
+[![IMG_2414.JPG](/blog/resources/images/2015/04/16/IMG_2414.JPG)
 
 <blockquote class="twitter-tweet" lang="ja"><p>Googleさんの案内相当険しかったですね。。これマップの地点の画像です <a href="https://twitter.com/hashtag/SDcardFindingBattle?src=hash">#SDcardFindingBattle</a> <a href="http://t.co/OthdUPcczu">pic.twitter.com/OthdUPcczu</a></p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584976426962530305">2015, 4月 6</a></blockquote>
 
 20分ほど登ったでしょうか、地蔵岳の登山道を抜け、車道に出てきました。
 
-[![IMG_2415.JPG](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2415_thumb.JPG)](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2415.JPG)
+[![IMG_2415.JPG](/blog/resources/images/2015/04/16/IMG_2415.JPG)
 
 やっと雪道から解放されました。
 
 少し進むと小沼という湖がでてきました。
 
-[![IMG_2416.JPG](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2416_thumb.JPG)](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2416.JPG)
-[![IMG_2417.JPG](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2417_thumb.JPG)](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2417.JPG)
-[![IMG_2418.JPG](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2418_thumb.JPG)](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2418.JPG)
-[![IMG_2419.JPG](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2419_thumb.JPG)](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2419.JPG)
-[![IMG_2420.JPG](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2420_thumb.JPG)](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2420.JPG)
+[![IMG_2416.JPG](/blog/resources/images/2015/04/16/IMG_2416.JPG)
+[![IMG_2417.JPG](/blog/resources/images/2015/04/16/IMG_2417.JPG)
+[![IMG_2418.JPG](/blog/resources/images/2015/04/16/IMG_2418.JPG)
+[![IMG_2419.JPG](/blog/resources/images/2015/04/16/IMG_2419.JPG)
+[![IMG_2420.JPG](/blog/resources/images/2015/04/16/IMG_2420.JPG)
 
 標高1450m地点とのことです。あと一息で目的地周辺です。
 凍った湖を左手に眺めながら車道脇をてくてくと歩き進んでいきます。
 
-[![IMG_2422.JPG](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2422_thumb.JPG)](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2422.JPG)
-[![IMG_2424.JPG](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2424_thumb.JPG)](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2424.JPG)
-[![IMG_2425.JPG](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2425_thumb.JPG)](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2425.JPG)
-![route-to-dest.png](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/route-to-dest.png)
+[![IMG_2422.JPG](/blog/resources/images/2015/04/16/IMG_2422.JPG)
+[![IMG_2424.JPG](/blog/resources/images/2015/04/16/IMG_2424.JPG)
+[![IMG_2425.JPG](/blog/resources/images/2015/04/16/IMG_2425.JPG)
+![route-to-dest.png](/blog/resources/images/2015/04/16/route-to-dest.png)
 
 目的地周辺まで来ました。このときiPhoneの電波は圏外となっていました。
 
@@ -386,18 +386,18 @@ iPhoneの電子コンパスを使って方角を確かめ、正しい出口か�
 登山道が60cm超の雪まみれだったのにもかかわらず、SDカードが隠されている森は数cmの雪しかありませんでした。
 不幸中の幸いというものですね。
 
-[![IMG_2428.JPG](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2428_thumb.JPG)](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2428.JPG)
-[![IMG_2429.JPG](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2429_thumb.JPG)](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2429.JPG)
-[![IMG_2431.JPG](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2431_thumb.JPG)](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2431.JPG)
-[![IMG_2433.JPG](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2433_thumb.JPG)](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2433.JPG)
+[![IMG_2428.JPG](/blog/resources/images/2015/04/16/IMG_2428.JPG)
+[![IMG_2429.JPG](/blog/resources/images/2015/04/16/IMG_2429.JPG)
+[![IMG_2431.JPG](/blog/resources/images/2015/04/16/IMG_2431.JPG)
+[![IMG_2433.JPG](/blog/resources/images/2015/04/16/IMG_2433.JPG)
 
 道無き道を突き進んでいたのですが、途中で道らしきものを見つけそちらを歩き始めました。
 すると、看板とともに分岐点があらわれました。
 
 GPSによると、血の池方面に行けばよさそうなので、そちらへ進んでいきます。
 
-[![IMG_2435.JPG](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2435_thumb.JPG)](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2435.JPG)
-[![IMG_2437.JPG](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2437_thumb.JPG)](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2437.JPG)
+[![IMG_2435.JPG](/blog/resources/images/2015/04/16/IMG_2435.JPG)
+[![IMG_2437.JPG](/blog/resources/images/2015/04/16/IMG_2437.JPG)
 
 血の池に着くと、血の池にまつわる伝説と池の由来が書かれた看板がありました。
 この看板を読んでいると、すこし前に目にした単語を見つけました。
@@ -406,22 +406,22 @@ GPSによると、血の池方面に行けばよさそうなので、そちら�
 
 血の池の中心に来て辺りを見回すと、そこは静かな森でした。まぁ森に入って来たからあたりまえなのですが。
 
-[![IMG_2441.JPG](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2441_thumb.JPG)](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2441.JPG)
+[![IMG_2441.JPG](/blog/resources/images/2015/04/16/IMG_2441.JPG)
 
 
 地図を拡大し、GPSだけを頼りにSDカードの位置まで行くと、kanto1_1.jpgに写っているのと同じような岩がたくさんある場所へと来ました。
 
-[![IMG_2445.JPG](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2445_thumb.JPG)](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2445.JPG)
+[![IMG_2445.JPG](/blog/resources/images/2015/04/16/IMG_2445.JPG)
 
 
 よーくkanto1_1.jpgと目の前の岩岩を見比べ、それらしき岩を特定しました。
 
-[![IMG_2446.JPG](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2446_thumb.JPG)](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2446.JPG)
+[![IMG_2446.JPG](/blog/resources/images/2015/04/16/IMG_2446.JPG)
 
 mondai10.txtによると、*ヒント：石の下のミンティア*とのことなので、石をめくってみます。
 
-[![IMG_2447.JPG](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2447_thumb.JPG)](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2447.JPG)
-[![IMG_2449.JPG](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2449_thumb.JPG)](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2449.JPG)
+[![IMG_2447.JPG](/blog/resources/images/2015/04/16/IMG_2447.JPG)
+[![IMG_2449.JPG](/blog/resources/images/2015/04/16/IMG_2449.JPG)
 
 ありました！ミンティアアップルフィズ味です！
 
@@ -429,13 +429,13 @@ mondai10.txtによると、*ヒント：石の下のミンティア*とのこと
 
 気になる中身は...
 
-[![IMG_2451.JPG](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2451_thumb.JPG)](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2451.JPG)
+[![IMG_2451.JPG](/blog/resources/images/2015/04/16/IMG_2451.JPG)
 
 **待望のSDカードでした！やっとみつかりました！**
 9:24につくば駅から電車に乗り、15:24に発見したのでかれこれ6時間の旅でした。
 ものすごい達成感とSDカードの中身への興味から、岩場に腰を下ろしSDカードをマウントしてみてみました。
 
-[![IMG_2452.JPG](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2452_thumb.JPG)](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2452.JPG)
+[![IMG_2452.JPG](/blog/resources/images/2015/04/16/IMG_2452.JPG)
 
 <pre style="border:none; color:inherit; background-color:inherit;">
 ＿人人人人人人人＿
@@ -451,10 +451,10 @@ mondai10.txtによると、*ヒント：石の下のミンティア*とのこと
 
 ### 午後3　帰宅編
 
-[![IMG_2454.JPG](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2454_thumb.JPG)](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2454.JPG)
-[![IMG_2455.JPG](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2455_thumb.JPG)](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2455.JPG)
-[![IMG_2457.JPG](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2457_thumb.JPG)](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2457.JPG)
-[![IMG_2458.JPG](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2458_thumb.JPG)](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2458.JPG)
+[![IMG_2454.JPG](/blog/resources/images/2015/04/16/IMG_2454.JPG)
+[![IMG_2455.JPG](/blog/resources/images/2015/04/16/IMG_2455.JPG)
+[![IMG_2457.JPG](/blog/resources/images/2015/04/16/IMG_2457.JPG)
+[![IMG_2458.JPG](/blog/resources/images/2015/04/16/IMG_2458.JPG)
 
 看板の指示通りに歩いていたら、あっさりと県道へと抜けることができ、さらに県道から血の池までの最短ルートとなる登山道の入り口の案内板がありました。
 hint7.txtのヤマヒゲナガケンミジンコから血の池が導けていれば、道無き道を進む必要もなく、この看板から血の池へ向かうことができていたかもしれません。
@@ -463,11 +463,11 @@ hint7.txtのヤマヒゲナガケンミジンコから血の池が導けてい�
 行きに降車した赤城山大洞バス停へは、あの**険しい登山道**を再度通らないといけないため、少し遠回りになりますが、赤城山ビジターセンターへと向かいます。
 行きとは逆で、右手に小沼を眺めながら下っていきます。
 
-[![IMG_2461.JPG](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2461_thumb.JPG)](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2461.JPG)
-[![IMG_2462.JPG](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2462_thumb.JPG)](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2462.JPG)
-[![IMG_2465.JPG](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2465_thumb.JPG)](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2465.JPG)
-[![IMG_2466.JPG](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2466_thumb.JPG)](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2466.JPG)
-[![IMG_2469.JPG](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2469_thumb.JPG)](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2469.JPG)
+[![IMG_2461.JPG](/blog/resources/images/2015/04/16/IMG_2461.JPG)
+[![IMG_2462.JPG](/blog/resources/images/2015/04/16/IMG_2462.JPG)
+[![IMG_2465.JPG](/blog/resources/images/2015/04/16/IMG_2465.JPG)
+[![IMG_2466.JPG](/blog/resources/images/2015/04/16/IMG_2466.JPG)
+[![IMG_2469.JPG](/blog/resources/images/2015/04/16/IMG_2469.JPG)
 
 ただただ歩き進むだけだったので、何事もなく赤城山ビジターセンターに到着することができました。
 
@@ -477,7 +477,7 @@ hint7.txtのヤマヒゲナガケンミジンコから血の池が導けてい�
 
 ビジターセンター横に、赤城山公園に関するお得な掲示板がありました。
 
-[![IMG_2477.JPG](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2477_thumb.JPG)](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/IMG_2477.JPG)
+[![IMG_2477.JPG](/blog/resources/images/2015/04/16/IMG_2477.JPG)
 
 急いで降りてきた甲斐があってか、バスが来るまで1時間も余裕があったので、持って来たコーヒーと板チョコレートで休憩しました。
 
@@ -572,7 +572,7 @@ SDカードを手に入れておしまいではありません。SDカードの�
 とりあえずAutopsyにSDカードを読ませてみます。
 
 
-![autopsy-mondai10](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/autopsy-mondai10.png)
+![autopsy-mondai10](/blog/resources/images/2015/04/16/autopsy-mondai10.png)
 
 意外と簡単に問題ファイルが浮上してきました。
 削除された0バイトのファイルがあり、そのファイル名は「山名＋最高点の標高を英数字で９文字.txt」となっていました。
@@ -582,12 +582,12 @@ SDカードを手に入れておしまいではありません。SDカードの�
 TrueCryptでmondai10.tcを**akagi1828**をパスワードとしてマウントすると、見事イメージをマウントすることができました。
 
 
-![mount-mondai10](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/mount-mondai10.png)
+![mount-mondai10](/blog/resources/images/2015/04/16/mount-mondai10.png)
 
 
 マウントしたイメージには何があったでしょうか。
 
-![final-mondai](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/final-mondai.png)
+![final-mondai](/blog/resources/images/2015/04/16/final-mondai.png)
 
 <pre style="border:none; color:inherit; background-color:inherit;">
 ＿人人人人人人人＿

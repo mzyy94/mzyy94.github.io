@@ -34,7 +34,7 @@ Wiresharkで開いてWebサイトのログイン情報が出るのでそれで�
 画像中のFLAGも左右反転してるので眼で見て脳内反転しておしまい。
 
 
-```C
+```c
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
@@ -125,7 +125,7 @@ file out
 gzip -S .gz -d -c out
 ```
 
-```C
+```c
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/stat.h>

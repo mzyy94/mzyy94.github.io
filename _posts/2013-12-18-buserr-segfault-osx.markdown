@@ -48,7 +48,6 @@ OS X Mavericsなので、デバッガはgdbではなくlldbを用いました。
 disassembleした結果が面白いことになっています。
 処理が違うのがわかりますが、ここでアセンブラをみてみます。
 <script src="https://gist.github.com/mzyy94/8017712.js"></script>
-<script src="https://gist.github.com/mzyy94/8017515.js"></script>
 
 アセンブラのコードでは、switch文中のcaseにあたるの部分が、上から順に
 

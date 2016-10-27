@@ -217,7 +217,7 @@ qrcode.png: PNG image data, 123 x 123, 4-bit grayscale, non-interlaced
 さすがImageMagick難なく変換できたすごい！
 簡単に開ける形式の画像ファイルができたので開いてみます。
 
-![qrcode.png](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/qrcode.png)
+![qrcode.png](/blog/resources/images/2015/04/14/qrcode.png)
 
 [半分食べられてしまったパンケーキ](/blog/2014/12/07/seccon2014-online/)ではなく、普通のQRコードでした。
 
@@ -237,7 +237,7 @@ $ echo BCcENQQxBEMEQAQwBEgEOgQw | nkf -mB -W16B
 
 何やらロシア語らしきものが出てきます。意味を調べると、ロシアの絵本のキャラクターとのことです。
 
-![Cheburashka.jpg](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/Cheburashka.jpg)
+![Cheburashka.jpg](/blog/resources/images/2015/04/14/Cheburashka.jpg)
 
 
 これ以上解くものがなくなったので、これがmondai5の答えのようです。しかし`7z`コマンドで解凍を試みても、パスワードが違うと言われる始末です。
@@ -245,7 +245,7 @@ $ echo BCcENQQxBEMEQAQwBEgEOgQw | nkf -mB -W16B
 p7zipの`7z`コマンドによる非ASCII文字パスワード付き7zipの解凍・圧縮は、環境によって正しく処理されないということを、以前日本語パスワードをセットしたときに経験したのを思い出し、本家7zipの`7z.exe`を使って解凍をしてみます。
 
 
-```sh
+```
 $ wine 7z.exe x mondai6.zip
 
 7-Zip [64] 9.35 beta  Copyright (c) 1999-2014 Igor Pavlov  2014-12-07
@@ -304,7 +304,7 @@ http://49.212.84.208/cgi-bin/hode7hb376dgeas6df783gr4/mondai6.cgi
 ```
 実際にこのURLにアクセスしに行くと、次のようなレスポンスを得られました。
 
-```sh
+```
 $ curl -v http://49.212.84.208/cgi-bin/hode7hb376dgeas6df783gr4/mondai6.cgi
 * Hostname was NOT found in DNS cache
 *   Trying 49.212.84.208...
@@ -313,7 +313,7 @@ $ curl -v http://49.212.84.208/cgi-bin/hode7hb376dgeas6df783gr4/mondai6.cgi
 > User-Agent: curl/7.37.1
 > Host: 49.212.84.208
 > Accept: */*
-> 
+>
 < HTTP/1.1 200 OK
 < Date: Tue, 07 Apr 2015 08:20:21 GMT
 * Server Apache/2.2.3 (CentOS) is not blacklisted
@@ -321,7 +321,7 @@ $ curl -v http://49.212.84.208/cgi-bin/hode7hb376dgeas6df783gr4/mondai6.cgi
 < Connection: close
 < Transfer-Encoding: chunked
 < Content-Type: text/html; charset=utf-8
-< 
+<
 { [data not shown]
 
 * Closing connection 0
@@ -335,7 +335,7 @@ MIPS R4000を搭載したデバイスでアクセスすればいいのかな？�
 Googleで「MIPS R4000 デバイス」で検索し、MIPS R4000搭載のデバイスを探してみました。
 
 
-![mips-r4000-search.png](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/mips-r4000-search.png)
+![mips-r4000-search.png](/blog/resources/images/2015/04/14/mips-r4000-search.png)
 
 検索結果1ページ目によると、PSPに搭載されているとの情報がいくつかヒットしていました。
 早速PSPのブラウザからアクセスする際に送られるUser-Agentを調べてみます。
@@ -350,7 +350,7 @@ Mozilla/4.0 (PSP PlayStation Portable); 2.00)
 
 早速このUAで先ほどのURLにアクセスしてみます。
 
-```sh
+```
 $ curl -v -A 'Mozilla/4.0 (PSP PlayStation Portable); 2.00)' http://49.212.84.208/cgi-bin/hode7hb376dgeas6df783gr4/mondai6.cgi
 * Hostname was NOT found in DNS cache
 *   Trying 49.212.84.208...
@@ -377,7 +377,7 @@ $ curl -v -A 'Mozilla/4.0 (PSP PlayStation Portable); 2.00)' http://49.212.84.20
 
 先ほどのレスポンスの一部文字が"?"となっているので、ルーマニア語を許容するヘッダーを付加すると表示が変わるかもしれないと思い、Accept-Languageにルーマニア語を指定してアクセスしてみました。
 
-```sh
+```
 $ curl -v -H 'Accept-Language: ro-RO' -A 'Mozilla/4.0 (PSP PlayStation Portable); 2.00)' http://49.212.84.208/cgi-bin/hode7hb376dgeas6df783gr4/mondai6.cgi
 * Hostname was NOT found in DNS cache
 *   Trying 49.212.84.208...
@@ -403,7 +403,7 @@ $ curl -v -H 'Accept-Language: ro-RO' -A 'Mozilla/4.0 (PSP PlayStation Portable)
 
 表示が変わり、mondai6の答えが出てきました。mondai7.zipのパスワードに指定して解凍してmondai6はおしまいです。
 
-```sh
+```
 $ 7z x mondai7.zip
 
 7-Zip [64] 9.20  Copyright (c) 1999-2010 Igor Pavlov  2010-11-18

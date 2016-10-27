@@ -29,56 +29,56 @@ normal.exe: PE32 executable for MS Windows (GUI) Intel 80386 32-bit
 
 今回はIDA Pro(demo)を使って解析してみます。
 
-![normal-ida1.png](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/normal-ida1.png)
+![normal-ida1.png](/blog/resources/images/2015/04/15/normal-ida1.png)
 
 IDAに解析させて表示を見てみると、おもむろに正解を表示するらしい*aCorrectKeyIsS*がみつかります。
 ここまで来る過程をアセンブリ表示で追っていくことにします。
 
-![normal-ida2.png](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/normal-ida2.png)
+![normal-ida2.png](/blog/resources/images/2015/04/15/normal-ida2.png)
 
-*aCorrectKeyIsS*はsprintfで渡されるテンプレート文字列で、そこにコマンドライン引数が埋め込められるようにいなっているようです。
-このことから、normal.exeにキー候補の文字列をコマンドライン引数として渡して実行し、なにか判定があり、それが正しい場合に**Correct! KEY is : **に続いてその文字列が表示されるようになっていることがわかります。
+*aCorrectKeyIsS* はsprintfで渡されるテンプレート文字列で、そこにコマンドライン引数が埋め込められるようにいなっているようです。
+このことから、normal.exeにキー候補の文字列をコマンドライン引数として渡して実行し、なにか判定があり、それが正しい場合に **Correct! KEY is :** に続いてその文字列が表示されるようになっていることがわかります。
 
-![normal-ida3.png](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/normal-ida3.png)
+![normal-ida3.png](/blog/resources/images/2015/04/15/normal-ida3.png)
 
 すこし遡ってみると、キーが表示される部分のサブルーチンへ来る前に、なにやら条件分岐があります。
-コマンドライン第一引数の文字長をstrlenでチェックし、0x0A(=10)と比較し、合致しない場合に**Try Again!**と表示する処理がみつかりました。
+コマンドライン第一引数の文字長をstrlenでチェックし、0x0A(=10)と比較し、合致しない場合に **Try Again!** と表示する処理がみつかりました。
 このことから、キーは10文字長であることがわかります。
 
 
-![normal-ida4.png](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/normal-ida4.png)
+![normal-ida4.png](/blog/resources/images/2015/04/15/normal-ida4.png)
 
-キーが表示される直前に行われる処理を見てみると、サブルーチン*sub_4011C0*を呼んだ戻り値が0の場合、**Try Again!**の表示をさせるようになっています。
-*sub_4011C0*にはコマンドライン引数を渡しているので、この引数が何か特定の文字列と比較されていると推測できます。
+キーが表示される直前に行われる処理を見てみると、サブルーチン *sub_4011C0* を呼んだ戻り値が0の場合、 **Try Again!** の表示をさせるようになっています。
+ *sub_4011C0* にはコマンドライン引数を渡しているので、この引数が何か特定の文字列と比較されていると推測できます。
 
-![normal-ida5.png](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/normal-ida5.png)
+![normal-ida5.png](/blog/resources/images/2015/04/15/normal-ida5.png)
 
 
-サブルーチン*sub_4011C0*のはじめの方では、ループインデックス（以下、i）を0にしたりと、forループの初期化が行われている様子がつかめます。このループの中の処理を見てみます。
+サブルーチン *sub_4011C0* のはじめの方では、ループインデックス（以下、i）を0にしたりと、forループの初期化が行われている様子がつかめます。このループの中の処理を見てみます。
 
-![normal-ida6.png](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/normal-ida6.png)
+![normal-ida6.png](/blog/resources/images/2015/04/15/normal-ida6.png)
 
 このforループでは、iが0x0A(=10)になるまでループが回れば1を、途中でbreakが発生すれば0をサブルーチン呼び出し元に返すような処理をしています。
 途中でbreakが発生する条件は、ループ内で呼ばれる*sub_401170*の戻り値と謎の配列*dword_40C068*の比較が偽である場合となっています。
-要するに、このループがi=10になるまで回らないと呼び出し元に0が返され、**Try Again!**が表示されるということです。
+要するに、このループがi=10になるまで回らないと呼び出し元に0が返され、 **Try Again!** が表示されるということです。
 
 コマンドライン引数のi番目の文字が引数として渡されて呼び出されている*sub_401170*を見てみます。
 
-![normal-ida7.png](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/normal-ida7.png)
+![normal-ida7.png](/blog/resources/images/2015/04/15/normal-ida7.png)
 
-*sub_401170*はサブルーチンの引数で与えられた文字（＝コマンドライン引数のi番目の文字）が、謎の文字列**"efyTUwxqrY..."**の中の何番目に出てくるかを、forループを回して一つずつチェックしているようです。そしてサブルーチンの戻り値として、謎の文字列の何番目に引数の文字が現れたかを呼び出し元に返しています。
+*sub_401170*はサブルーチンの引数で与えられた文字（＝コマンドライン引数のi番目の文字）が、謎の文字列 **"efyTUwxqrY..."** の中の何番目に出てくるかを、forループを回して一つずつチェックしているようです。そしてサブルーチンの戻り値として、謎の文字列の何番目に引数の文字が現れたかを呼び出し元に返しています。
 
-![normal-ida8.png](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/normal-ida8.png)
+![normal-ida8.png](/blog/resources/images/2015/04/15/normal-ida8.png)
 
 謎の配列*dword_40C068*の中身を見に行くと、unsignled long型の配列として、数値が格納されていました。
-先のサブルーチン*sub_4011C0*のループ内では、コマンドライン引数のi番目の文字を*sub_401170*に渡し、謎の文字列の何番目に出現するかを取得し、その値とこの*dword_40C068*のi番目の数値を比較して、同じであればループを継続するという処理でした。
+先のサブルーチン *sub_4011C0* のループ内では、コマンドライン引数のi番目の文字を *sub_401170* に渡し、謎の文字列の何番目に出現するかを取得し、その値とこの *dword_40C068* のi番目の数値を比較して、同じであればループを継続するという処理でした。
 
 ここまでの調査を基にまとめると、このプログラムの処理は簡易的に以下のようになっていることがわかります。
 
 - コマンドライン引数に与えられた文字列があり、
 - その文字列は10文字であり、
-- その文字列の1文字1文字が謎の文字列**"efyTUwxqrY..."**の何番目に位置するかを調べていて、
-- その位置がすべて謎の配列*dword_40C068*に定義されたもの同じであれば**Correct! Key is :**に続けて引数を表示する
+- その文字列の1文字1文字が謎の文字列 **"efyTUwxqrY..."** の何番目に位置するかを調べていて、
+- その位置がすべて謎の配列 *dword_40C068* に定義されたもの同じであれば **Correct! Key is :** に続けて引数を表示する
 
 なので逆に考えると、謎の文字列の中の、謎の配列に定義されている場所の文字を抽出すればキーが見つかるということです。
 パパッと以下のようなものを書いてキーを抽出します。
@@ -105,7 +105,7 @@ $ ruby mondai7.rb
 
 試しにnormal.exeの引数に、このコードを実行して得られたキーを与えて実行してみたところ、以下のようになりました。
 
-![TochuKasou.png](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/TochuKasou.png)
+![TochuKasou.png](/blog/resources/images/2015/04/15/TochuKasou.png)
 
 この文字列を与えてmondai8.zipを解凍してmondai7は終了です。
 
@@ -164,20 +164,20 @@ TrueCrypt pass:mondai8
 mondai8.tcはTrueCryptファイルで、開くためのパスワードはmondai8であるとのことです。そしてこのmondai8の答えは漢字8文字ということでしょう。
 TrueCryptでmondai8.tcをマウントして中を見てみました。
 
-![mondai8-files.png](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/mondai8-files.png)
+![mondai8-files.png](/blog/resources/images/2015/04/15/mondai8-files.png)
 
 
 こういったCTF系の問題でイメージファイルが配布されるときは、フォレンジック問題であると相場が決まっているので、TrueCryptでマウントしたらAutopsyで調査します。
 
-![autopsy.png](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/autopsy.png)
+![autopsy.png](/blog/resources/images/2015/04/15/autopsy.png)
 
 マウントした際に表示されていたファイルになかった「今日の本.xlsx」という削除されたファイルが見つかりました。怪しいですね。
 復元してファイルを開いてみます。
 
 
-![todaysbook1.png](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/todaysbook1.png)
-![todaysbook2.png](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/todaysbook2.png)
-![todaysbook3.png](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/todaysbook3.png)
+![todaysbook1.png](/blog/resources/images/2015/04/15/todaysbook1.png)
+![todaysbook2.png](/blog/resources/images/2015/04/15/todaysbook2.png)
+![todaysbook3.png](/blog/resources/images/2015/04/15/todaysbook3.png)
 
 シート1にはアルファベットと2つの数字が書かれた行があり、シート2には、[青空文庫の奇談クラブ](http://www.aozora.gr.jp/cards/001670/card56113.html)からコピーされたであろう本の内容が書かれていました。
 
@@ -187,7 +187,7 @@ Excel Onlineの印刷機能でシート2をHTML形式にし、保存したのち
 シート1を基に、アルファベット**"password"**に対応する行から文字を抽出するコードを書きました。
 
 
-![print-book.png](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/print-book.png)
+![print-book.png](/blog/resources/images/2015/04/15/print-book.png)
 
 ```ruby
 #!/usr/bin/env ruby
@@ -280,29 +280,29 @@ mondai9.pkt: tcpdump capture file (little-endian) - version 2.4 (Ethernet, captu
 また、拡張子pktはWindowsの関連付けでは、Wiresharkで開けるファイルとなっています。
 早速Wiresharkで見てみます。
 
-![mondai9-wireshark1.png](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/mondai9-wireshark1.png)
+![mondai9-wireshark1.png](/blog/resources/images/2015/04/15/mondai9-wireshark1.png)
 
 ざっと目を通した感じ、`tcpdump -f 'tcp port 80'`によって、fast-uploader.comにアクセスしている様子をキャプチャしたもののようです。
 
-![mondai9-wireshark2.png](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/mondai9-wireshark2.png)
+![mondai9-wireshark2.png](/blog/resources/images/2015/04/15/mondai9-wireshark2.png)
 
 httpリクエストで絞り込むと、POSTメソッドによってファイルを幾つかアップロードしているようです。
 
-![mondai9-wireshark3.png](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/mondai9-wireshark3.png)
+![mondai9-wireshark3.png](/blog/resources/images/2015/04/15/mondai9-wireshark3.png)
 
 アップロードしたファイルを抽出しようとメニューのHTTP objectから抽出を試みたのですが、Wiresharkでは*multipart/form-data*としてPOSTされたデータ中のファイルはうまく取り出せないようなので、NetworkMinerを使います。
 
-![mondai9-networkminer.png](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/mondai9-networkminer.png)
+![mondai9-networkminer.png](/blog/resources/images/2015/04/15/mondai9-networkminer.png)
 
 NetworkMinerで4つのアップロードされたファイルを抽出したところ、文字化けした2つのExcelファイルと1つのWordファイル、パスワードのかかったzipファイルがありました。
 パスワードをクラックするとWordファイルが出てきたので、4つのOfficeファイルを開いてみました。
 
-![office-files.png](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/office-files.png)
+![office-files.png](/blog/resources/images/2015/04/15/office-files.png)
 
 どのOfficeファイルにも文字の記入はなく、答えらしきものがみつかりません。
 ファイル名で検索してみたりいろいろしたあと、ファイルのメタ情報を詮索してみることにしたところ、文字化けしたWordファイルにそれらしきものがあることに気づきました。
 
-![word-property.png](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/word-property.png)
+![word-property.png](/blog/resources/images/2015/04/15/word-property.png)
 
 
 これパスワードとしてmondai10.tcをTrueCryptでマウントしてみたところ、開くことができました。

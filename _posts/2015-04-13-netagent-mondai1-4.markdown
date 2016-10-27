@@ -22,10 +22,9 @@ tags: netagent
 
 # mondai1
 ```
-選考過程を縮めたい方に問題を用意いたしました。問題に答えると最終面接から始められます。 
+選考過程を縮めたい方に問題を用意いたしました。問題に答えると最終面接から始められます。
 ※２０１６年３月卒業予定の方以外も挑戦していただけますが、採用対象とはなりません。
 問題：LzYxMDIvcGouaGJwLy86cHR0aA==
-
 ```
 
 BASE64でエンコードされた文字列を渡されるので、ちょちょっとコマンドを打つと逆さまになったURLがでてきます。
@@ -67,7 +66,7 @@ $ echo 'scale=2015+20;sqrt(2016)' | bc | perl -pe's/\\?\n//' | tail -c20
 これをパスワードとして入力すればmondai3.zipを解凍できます。
 
 ```
-$ 7z x mondai3.zip 
+$ 7z x mondai3.zip
 
 7-Zip [64] 9.20  Copyright (c) 1999-2010 Igor Pavlov  2010-11-18
 p7zip Version 9.20 (locale=utf8,Utf16=on,HugeFiles=on,4 CPUs)
@@ -353,4 +352,3 @@ Compressed: 70378640
 -->
 
 mondai5以降のWrite-upは明日公開します。
-
