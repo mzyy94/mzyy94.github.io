@@ -55,14 +55,6 @@ $(document).ready(function() {
 
 
 	// Repository loader
-	if (!window.jXHR){
-		var jxhr = document.createElement('script');
-		jxhr.type = 'text/javascript';
-		jxhr.src = '{{ root_url}}/assets/javascripts/libs/jXHR.js';
-		var s = document.getElementsByTagName('script')[0];
-		s.parentNode.insertBefore(jxhr, s);
-	}
-
 	github.showRepos({
 		user: '{{site.github_user}}',
 		count: {{site.github_repo_count}},
