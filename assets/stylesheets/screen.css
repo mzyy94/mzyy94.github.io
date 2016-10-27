@@ -367,3 +367,19 @@ article h2 {
 article h3 {
     border-bottom: 1px dotted #ddd;
 }
+
+
+/*
+EmojiSymbols Font (c)blockworks - Kenichi Kaneko
+http://emojisymbols.com/
+*/
+@font-face {
+	font-family: "EmojiSymbols";
+	src: url('/assets/fonts/EmojiSymbols-Regular.woff') format('woff');
+	text-decoration: none;
+	font-style: normal;
+}
+.emj {
+	font-family: "EmojiSymbols";
+	line-height: 1;
+}
