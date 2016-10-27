@@ -1,134 +1,80 @@
-jQuery(document).ready(function(){
-	tfuse_custom_form();
-    loginFormValidator();
-});
-
-function tfuse_custom_form(){
-	var my_error;
-	var url = jQuery("input[name=temp_url]").attr('value');
-	jQuery("#send").bind("click", function(){
-
-	my_error = false;
-	jQuery("#commentForm input, #commentForm textarea, #commentForm select").each(function(i)
-	{
-				var surrounding_element = jQuery(this);
-				var value 				= jQuery(this).val();
-				var check_for 			= jQuery(this).attr("id");
-				var required 			= jQuery(this).hasClass("required");
-
-				if(check_for == "email"){
-					surrounding_element.removeClass("error valid");
-					baseclases = surrounding_element.attr("class");
-					if(!value.match(/^\w[\w|\.|\-]+@\w[\w|\.|\-]+\.[a-zA-Z]{2,4}$/)){
-						surrounding_element.attr("class",baseclases).addClass("error");
-						my_error = true;
-					}else{
-						surrounding_element.attr("class",baseclases).addClass("valid");
-					}
-				}
-
-				if(check_for == "message"){
-					surrounding_element.removeClass("error valid");
-					baseclases = surrounding_element.attr("class");
-					if(value == "" || value == "Hi how are you?"){
-						surrounding_element.attr("class",baseclases).addClass("error");
-						my_error = true;
-					}else{
-						surrounding_element.attr("class",baseclases).addClass("valid");
-					}
-				}
-
-				if(required && check_for != "email" && check_for != "message"){
-					surrounding_element.removeClass("error valid");
-					baseclases = surrounding_element.attr("class");
-					if(value == ""){
-						surrounding_element.attr("class",baseclases).addClass("error");
-						my_error = true;
-					}else{
-						surrounding_element.attr("class",baseclases).addClass("valid");
-					}
-				}
-
-
-			   if(jQuery("#commentForm input,#commentForm textarea,#commentForm select").length  == i+1){
-					if(my_error == false){
-						document.commentForm.submit();
-                        /*
-                        jQuery(".ajax_form").slideUp(400);
-
-						var $datastring = "ajax=true";
-						jQuery(".ajax_form input, .ajax_form select").each(function(i)
-						{
-							var $name = jQuery(this).attr('name');
-							var $value = encodeURIComponent(jQuery(this).attr('value'));
-							$datastring = $datastring + "&" + $name + "=" + $value;
-						});
-
-
-						jQuery(".ajax_form #send").fadeOut(100);
-
-						jQuery.ajax({
-						   type: "POST",
-						   url: "./sendmail.php",
-						   data: $datastring,
-						   success: function(response){
-						   jQuery(".ajax_form").before("<div class='ajaxresponse' style='display: none;'></div>");
-						   jQuery(".ajaxresponse").html(response).slideDown(400);
-						   jQuery(".ajax_form #send").fadeIn(400);
-						   jQuery(".ajax_form input, .ajax_form textarea, .ajax_form radio, .ajax_form select").val("");
-							   }
-							});
-						*/
-						}
-				}
-
-			});
-			return false;
+---
+layout: null
+---
+$(document).ready(function() {
+	// Calendar loader
+	var posts = {};
+	var datelist = [];
+	$.getJSON('/blog/posts.json', function(data){
+		var dp = data.posts;
+		for(var i = 0, limit = dp.length; i < limit; i++){
+			var date = new Date(dp[i].date);
+			posts[dp[i].date] = {title:dp[i].title,
+				url: '/blog/' + date.getFullYear() + '/' + ('0' + (date.getMonth() + 1)).slice(-2) + '/' + ('0' + date.getDate()).slice(-2) + '/' + dp[i].url + '/'}
+			datelist.push(dp[i].date);
+		}
+		assignCalendar('#date_departure');
+		refreshDate();
 	});
-}
 
-function loginFormValidator(){
-    var login_error;
-    var loginform = jQuery('#loginform');
-    jQuery("#login-submit").bind("click", function(){
+	function assignCalendar(id){
+		$('<div class="calendar" />')
+			.insertAfter( $(id) )
+			.datepicker({
+				beforeShowDay: function(date){
+					var string = $.datepicker.formatDate('dd M yy', date);
+					return [ datelist.indexOf(string) != -1 ]
+				},
+				dateFormat: 'dd M yy',
+				minDate: new Date(datelist[datelist.length - 1]),
+				maxDate: new Date(),
+				maxPicks: 1,
+				altField: id,
+				firstDay: 0,
+				showOtherMonths: true,
+				onSelect: function(date){
+					window.location.href = posts[date].url;
+				},
+				onChangeMonthYear: refreshDate
+			}).prev().hide();
+	}
 
-        login_error = false;
-        jQuery("#loginform input").each(function(i)
-        {
-            var surrounding_element = jQuery(this);
-            var value 				= jQuery(this).val();
-            var check_for 			= jQuery(this).attr("id");
-            var required 			= jQuery(this).hasClass("required");
+	var month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+	function refreshDate(){
+		setTimeout(function(){
+			$('a.ui-state-default').each(function(num){
+				var yy = $(this).parent().attr('data-year');
+				var M = month[$(this).parent().attr('data-month')];
+				var dd = ('0' + $(this).text()).slice(-2);
+				var idx = dd + ' ' + M + ' ' + yy;
+				$(this).attr('data-title', posts[idx].title);
+				$(this).attr('href', posts[idx].url);
+			});
+		},10);
+	}
 
-            if(check_for == "user_login"){
-                surrounding_element.parent().removeClass("error valid");
-                baseclases = surrounding_element.attr("class");
-                if(!value.match(/^\w[\w|\.|\-]+@\w[\w|\.|\-]+\.[a-zA-Z]{2,4}$/)){
-                    surrounding_element.parent().addClass("error");
-                    login_error = true;
-                }else{
-                    surrounding_element.parent().addClass("valid");
-                }
-            }
 
-            if(required && check_for != "user_login"){
-                surrounding_element.parent().removeClass("error valid");
-                baseclases = surrounding_element.attr("class");
-                if(value.length <= 5){
-                    surrounding_element.parent().addClass("error");
-                    login_error = true;
-                }else{
-                    surrounding_element.parent().addClass("valid");
-                }
-            }
+	// Repository loader
+	if (!window.jXHR){
+		var jxhr = document.createElement('script');
+		jxhr.type = 'text/javascript';
+		jxhr.src = '{{ root_url}}/assets/javascripts/libs/jXHR.js';
+		var s = document.getElementsByTagName('script')[0];
+		s.parentNode.insertBefore(jxhr, s);
+	}
 
-            if(jQuery("#loginform input").length  == i+1){
-                if(login_error == false){
-                    loginform.submit();
-                }
-            }
+	github.showRepos({
+		user: '{{site.github_user}}',
+		count: {{site.github_repo_count}},
+		skip_forks: {{site.github_skip_forks}},
+		target: '#gh_repos'
+	});
 
-        });
-        return false;
-    });
-}
+
+	// Link target setter
+	$("a[href^='http'], a[href^='ftp']").click(function () {
+		if ($(this).attr("target") === undefined)
+		$(this).attr("target", "_blank");
+	});
+
+});
