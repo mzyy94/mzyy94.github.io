@@ -208,11 +208,6 @@ jQuery(document).ready(function() {
         }
     });
 
-// Placeholders
-    if($("[placeholder]").size() > 0){
-        $.Placeholder.init({ color : "#7b8a97" });
-    }
-
 // Weather
     $('.weather-forecast li a').click(function() {
         var day = $(this).attr('id');
