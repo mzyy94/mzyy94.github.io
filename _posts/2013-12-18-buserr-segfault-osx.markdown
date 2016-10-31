@@ -28,26 +28,26 @@ OS Xで時々現れるBus error: 10 が現れる条件が気になったので�
 しかし、記憶クラスを変えると出される例外がある程度固定されるようです。
 
 まず、以下のようなコードを書いて例外が発生した状態を調べました。
-<script src="https://gist.github.com/mzyy94/8016375.js"></script>
+<script async src="https://gist.github.com/mzyy94/8016375.js"></script>
 
 結果は以下の通りとなりました。
-<script src="https://gist.github.com/mzyy94/8017126.js"></script>
+<script async src="https://gist.github.com/mzyy94/8017126.js"></script>
 
 staticで宣言した変数に対してのアクセスでおこる例外はBus errorとなっています。
 
 そこで、次のようなコードを利用し、デバッガで探ってみました。
-<script src="https://gist.github.com/mzyy94/8017103.js"></script>
+<script async src="https://gist.github.com/mzyy94/8017103.js"></script>
 
 OS X Mavericsなので、デバッガはgdbではなくlldbを用いました。
 0,1,2,3の引数を与えてデバッグした結果は以下の通りになりました。
-<script src="https://gist.github.com/mzyy94/8017373.js"></script>
+<script async src="https://gist.github.com/mzyy94/8017373.js"></script>
 
 この結果から、引数をそれぞれ与えたときのエラーメッセージはどれもEXC_BAD_ACCESSで、
 このメッセージの中のエラーコードが1もしくは2ということで分かれています。例外は、2がSIGBUSで1がSIGSEGVであるようです。
 
 disassembleした結果が面白いことになっています。
 処理が違うのがわかりますが、ここでアセンブラをみてみます。
-<script src="https://gist.github.com/mzyy94/8017712.js"></script>
+<script async src="https://gist.github.com/mzyy94/8017712.js"></script>
 
 アセンブラのコードでは、switch文中のcaseにあたるの部分が、上から順に
 

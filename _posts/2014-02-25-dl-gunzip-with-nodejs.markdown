@@ -24,7 +24,7 @@ Node.jsの標準モジュールには、zlibがあり、require()で取り込む
 以下、ソースコードになります。
 引数に拡張子gzのファイルのURLを渡し実行することで、解凍されたファイルを保存できます。
 
-<script src="https://gist.github.com/mzyy94/9209459.js"></script>
+<script async src="https://gist.github.com/mzyy94/9209459.js"></script>
 
 20行目の`res.pipe(gunzip).pipe(output);`にてhttp.getで得られたストリームを`zlib.createGunzip()`で作成したgunzipオブジェクトにパイプで渡し、処理されたものを、`fs.createWriteStream()`で作成されたoutputオブジェクトにさらにパイプすることで不要なファイルを保存することなく、ダウンロードしながら解凍し、保存しています。
 

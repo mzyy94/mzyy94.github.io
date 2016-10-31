@@ -133,11 +133,8 @@ tags: yuzu kosho
 # まとめ
 
 <blockquote class="twitter-tweet" lang="ja"><p>柚子胡椒のためになんで野口3枚も飛ばさにゃならんのだ。。</p>&mdash; PCI柚子胡椒職人 (@mzyy94) <a href="https://twitter.com/mzyy94/status/573765816887345152">2015, 3月 6</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
 <blockquote class="twitter-tweet" lang="ja"><p>@各位&#10;&#10;届きましたのでご報告です <a href="http://t.co/NEzVslGQpf">pic.twitter.com/NEzVslGQpf</a></p>&mdash; PCI柚子胡椒職人 (@mzyy94) <a href="https://twitter.com/mzyy94/status/573999511258861569">2015, 3月 7</a></blockquote>
 
 <blockquote class="twitter-tweet" lang="ja"><p>@贈り物をして下さった方々&#10;&#10;最高の調味料各種を確認いたしました。 <a href="http://t.co/P5rxR8xkkP">pic.twitter.com/P5rxR8xkkP</a></p>&mdash; PCI柚子胡椒職人 (@mzyy94) <a href="https://twitter.com/mzyy94/status/574001187554390016">2015, 3月 7</a></blockquote>
-
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>

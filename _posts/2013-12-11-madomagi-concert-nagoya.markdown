@@ -85,11 +85,8 @@ topimg: /blog/resources/images/2013/12/11/madomagi-concert-nagoya.jpg
 奏者の方が演奏前に舞台風景に関して写真付きでつぶやいておられました。
 
 <blockquote class="twitter-tweet" lang="ja"><p>まどか☆マギカオーケストラの名古屋公演。いよいよ今日の夜です。&#10;とっても素晴らしい響きのホールですよ！ <a href="http://t.co/qeL6D8Jgak">pic.twitter.com/qeL6D8Jgak</a></p>&mdash; 待山 一生 (@machiyamaissei) <a href="https://twitter.com/machiyamaissei/statuses/410479386731618304">2013, 12月 10</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 <blockquote class="twitter-tweet" lang="ja"><p>朝からパーカッションパートの方々と優雅な朝食済ませて、ホール入り。&#10;大好きなアニメの演奏を、素晴らしいホールや素敵なオーケストラ、指揮者、そして楽しい仲間と出来るって、それはとっても嬉しいなって。 <a href="http://t.co/3FEE0zlhGX">pic.twitter.com/3FEE0zlhGX</a></p>&mdash; 待山 一生 (@machiyamaissei) <a href="https://twitter.com/machiyamaissei/statuses/410582767705944064">2013, 12月 11</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 <blockquote class="twitter-tweet" lang="ja"><p>まもなく、魔法少女まどか☆マギカのオーケストラコンサート名古屋公演です。視覚と聴覚の両方で、魔法少女たちの物語を感じてください。<a href="https://twitter.com/search?q=%23madoka_magica&amp;src=hash">#madoka_magica</a> <a href="http://t.co/m2sZlhFQL4">pic.twitter.com/m2sZlhFQL4</a></p>&mdash; 待山 一生 (@machiyamaissei) <a href="https://twitter.com/machiyamaissei/statuses/410691793655578625">2013, 12月 11</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
 ## 演奏
@@ -154,7 +151,6 @@ Which world #2に続いて演奏されたのがこの曲。男性コーラス人
 
 公演終了後、主催会社のツイッターでは場内の様子がつぶやかれていました。
 <blockquote class="twitter-tweet" lang="en"><p>名古屋公演は無事終了しました！ホールからの撤収も完了しました。ご来場下さった全てのお客様に感謝申し上げます！&#10;ありがとうございました！！ <a href="http://t.co/EoFnAmimi2">pic.twitter.com/EoFnAmimi2</a></p>&mdash; 株式会社アイムビレッジ (@AimVil_MusicDiv) <a href="https://twitter.com/AimVil_MusicDiv/statuses/410771901640749056">December 11, 2013</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
 以上、劇場版 魔法少女まどか☆マギカ オーケストラ・コンサートに行ってきた感想でした。
