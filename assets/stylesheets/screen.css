@@ -1,3 +1,11 @@
+---
+layout: null
+---
+
+{% include stylesheets/bootstrap.css %}
+{% include stylesheets/style.css %}
+{% include stylesheets/syntax.css %}
+
 article p img {
     max-width: 100%;
     border: 3px solid rgba(0,0,0,0.6);
