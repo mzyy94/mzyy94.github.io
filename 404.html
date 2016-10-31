@@ -12,8 +12,9 @@ if (location.pathname.match('/blog/tags/') || location.pathname.match('/blog/cat
     var hash = '#' + location.pathname.split('/')[3]
     var pathname = location.pathname.split('/').filter(function(_, i){return i < 3}).join('/')
     location.href = location.protocol + '//' + location.host + pathname + hash
+} else {
+    document.getElementById('path').innerHTML=window.location.pathname;document.body.style.visibility="visible";
 }
-document.getElementById('path').innerHTML=window.location.pathname;document.body.style.visibility="visible";
 </script>
 <noscript><style>body {visibility: visible;}</style></noscript>
 </body></html>
