@@ -41,25 +41,3 @@ footer: false
 {% endfor %}
 </div>
 {% endfor %}
-<script>
-$(function(){
-    if (window.location.hash != "") {
-        $('.entry-title').text("Category: " + window.location.hash.replace(/^#/, ''));
-        setTimeout(function() {
-            $(window).scrollTop(0);
-        }, 1);
-    } else {
-        $('.category').addClass('visible');
-    }
-    $(window).on('hashchange', function(){
-        $('.visible').removeClass('visible');
-        if (window.location.hash != "") {
-            $('.entry-title').text("Category: " + window.location.hash.replace(/^#/, ''));
-            $(window).scrollTop(0);
-        } else {
-            $('.entry-title').text("Categorys");
-            $('.category').addClass('visible');
-        }
-    });
-});
-</script>

@@ -69,4 +69,34 @@ $(document).ready(function() {
 		$(this).attr("target", "_blank");
 	});
 
+	// Tag category loader
+	if (location.pathname.match('/blog/tags/') || location.pathname.match('/blog/categories/')) {
+		var title = []
+		if (location.pathname.match('/blog/tags/')) {
+			title[0] = "Tag: ";
+			title[1] = "Tags";
+		} else {
+			title[0] = "Category: ";
+			title[1] = "Categories";
+		}
+
+		if (window.location.hash != "") {
+			$('.entry-title').text(title[0] + window.location.hash.replace(/^#/, ''));
+			setTimeout(function() {
+				$(window).scrollTop(0);
+			}, 1);
+		} else {
+			$('.tag, .category').addClass('visible');
+		}
+		$(window).on('hashchange', function(){
+			$('.visible').removeClass('visible');
+			if (window.location.hash != "") {
+				$('.entry-title').text(title[0] + window.location.hash.replace(/^#/, ''));
+				$(window).scrollTop(0);
+			} else {
+				$('.entry-title').text(title[1]);
+				$('.tag, .category').addClass('visible');
+			}
+		});
+	}
 });
