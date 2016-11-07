@@ -29,39 +29,7 @@
   <!-- Calendar -->
   <script defer src="/assets/javascripts/jquery-ui.multidatespicker.js"></script>
   <script defer src="/assets/javascripts/github.js"></script>
-  <script> // Font Loader
-  function fontLoader(e){
-      var body = document.body || document.getElementsByTagName("body")[0];
-
-      var span = document.createElement("span");
-      span.style.fontFamily = "'游ゴシック'";
-      span.style.fontSize = "72px";
-      span.style.color = "rgba(0,0,0,0)";
-      span.innerText = "あのイーハトーヴォのすきとおった風";
-
-      body.appendChild(span);
-      var defaultWidth = span.offsetWidth;
-      var defaunltHeight = span.offsetHeight;
-      body.removeChild(span);
-
-      span.style.fontFamily = "'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', '游ゴシック'";
-      body.appendChild(span);
-      var isHiraginoInstalled = span.offsetWidth - defaultWidth || span.offsetHeight - defaunltHeight;
-      body.removeChild(span);
-
-      if (!isHiraginoInstalled) {
-          document.removeEventListener("DOMContentLoaded", fontLoader);
-          var script = document.createElement("script");
-          script.src = "//typesquare.com/accessor/script/typesquare.js?ccT9yMS9KSY%3D";
-          body.appendChild(script);
-          var script2 = document.createElement("script");
-          script2.innerText = "document.dispatchEvent(new Event('DOMContentLoaded'));";
-          body.appendChild(script2);
-      }
-  }
-  document.addEventListener("DOMContentLoaded", fontLoader);
-  </script>
-
+  <script src="//typesquare.com/accessor/script/typesquare.js?ccT9yMS9KSY%3D"></script>
 <!--[if lt IE 9]><script src="/assets/javascripts/respond.min.js"></script><![endif]-->
 <!--[if gte IE 9]>
 <style type="text/css">
