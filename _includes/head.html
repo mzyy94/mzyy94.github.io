@@ -32,11 +32,12 @@
   <script>
   var canvas = document.createElement("canvas");
   var ctx = canvas.getContext("2d");
-  var text = "あのイーハトーヴォのすきとおった風";
-  ctx.font = "72px '游ゴシック'";
+  var text = "あのイーハトーヴォのすきとおった風abcdefgHIJKLMN";
+  ctx.font = "72px monospace";
   var defaultWidth = ctx.measureText(text).width;
-  ctx.font = "72px 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', '游ゴシック'";
-  var isHiraginoInstalled = ctx.measureText(text).width - defaultWidth;
+  ctx.font = "72px 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', monospace";
+  var isHiraginoInstalled = ctx.measureText(text).width !== defaultWidth;
+  delete canvas;
 
   if (!isHiraginoInstalled) {
       var script = document.createElement("script");
