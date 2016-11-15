@@ -30,35 +30,22 @@
   <script defer src="/assets/javascripts/jquery-ui.multidatespicker.js"></script>
   <script defer src="/assets/javascripts/github.js"></script>
   <script>
-  document.addEventListener("DOMContentLoaded", function __check_hiragino() {
-      document.removeEventListener("DOMContentLoaded", __check_hiragino)
-      var body = document.body;
+  var canvas = document.createElement("canvas");
+  var ctx = canvas.getContext("2d");
+  var text = "あのイーハトーヴォのすきとおった風";
+  ctx.font = "72px '游ゴシック'";
+  var defaultWidth = ctx.measureText(text).width;
+  ctx.font = "72px 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', '游ゴシック'";
+  var isHiraginoInstalled = ctx.measureText(text).width - defaultWidth;
 
-      var span = document.createElement("span");
-      span.style.fontFamily = "'游ゴシック'";
-      span.style.fontSize = "72px";
-      span.style.color = "rgba(0,0,0,0)";
-      span.innerText = "あのイーハトーヴォのすきとおった風";
-
-      body.appendChild(span);
-      var defaultWidth = span.offsetWidth;
-      var defaunltHeight = span.offsetHeight;
-      body.removeChild(span);
-
-      span.style.fontFamily = "'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', '游ゴシック'";
-      body.appendChild(span);
-      var isHiraginoInstalled = span.offsetWidth - defaultWidth || span.offsetHeight - defaunltHeight;
-      body.removeChild(span);
-
-      if (!isHiraginoInstalled) {
-          var script = document.createElement("script");
-          script.src = "//typesquare.com/accessor/script/typesquare.js?ccT9yMS9KSY%3D";
-          document.head.appendChild(script);
-          script.onload = function() {
-              document.dispatchEvent(new Event("DOMContentLoaded"));
-          }
+  if (!isHiraginoInstalled) {
+      var script = document.createElement("script");
+      script.src = "//typesquare.com/accessor/script/typesquare.js?ccT9yMS9KSY%3D";
+      document.head.appendChild(script);
+      script.onload = function() {
+          document.dispatchEvent(new Event("DOMContentLoaded"));
       }
-  })
+  }
   </script>
 <!--[if lt IE 9]><script src="/assets/javascripts/respond.min.js"></script><![endif]-->
 <!--[if gte IE 9]>
