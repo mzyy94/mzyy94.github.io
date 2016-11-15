@@ -30,14 +30,35 @@
   <script defer src="/assets/javascripts/jquery-ui.multidatespicker.js"></script>
   <script defer src="/assets/javascripts/github.js"></script>
   <script>
-  if (navigator.userAgent.indexOf("Macintosh") === -1 && navigator.userAgent.indexOf("iPhone") === -1) {
-      var script = document.createElement("script");
-      script.src = "//typesquare.com/accessor/script/typesquare.js?ccT9yMS9KSY%3D";
-      document.head.appendChild(script);
-      script.onload = function() {
-          document.dispatchEvent(new Event("DOMContentLoaded"));
+  document.addEventListener("DOMContentLoaded", function __check_hiragino() {
+      document.removeEventListener("DOMContentLoaded", __check_hiragino)
+      var body = document.body;
+
+      var span = document.createElement("span");
+      span.style.fontFamily = "'游ゴシック'";
+      span.style.fontSize = "72px";
+      span.style.color = "rgba(0,0,0,0)";
+      span.innerText = "あのイーハトーヴォのすきとおった風";
+
+      body.appendChild(span);
+      var defaultWidth = span.offsetWidth;
+      var defaunltHeight = span.offsetHeight;
+      body.removeChild(span);
+
+      span.style.fontFamily = "'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', '游ゴシック'";
+      body.appendChild(span);
+      var isHiraginoInstalled = span.offsetWidth - defaultWidth || span.offsetHeight - defaunltHeight;
+      body.removeChild(span);
+
+      if (!isHiraginoInstalled) {
+          var script = document.createElement("script");
+          script.src = "//typesquare.com/accessor/script/typesquare.js?ccT9yMS9KSY%3D";
+          document.head.appendChild(script);
+          script.onload = function() {
+              document.dispatchEvent(new Event("DOMContentLoaded"));
+          }
       }
-  }
+  })
   </script>
 <!--[if lt IE 9]><script src="/assets/javascripts/respond.min.js"></script><![endif]-->
 <!--[if gte IE 9]>
