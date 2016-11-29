@@ -17,25 +17,26 @@ topimg: /blog/resources/images/2016/07/05/chinachu-rockon-installed.png
 
 ## Rockstor
 昨日の記事でいろいろと紹介しましたが、見る気がない人・ちょっとだけ知っているから見ない人向けにRockstorとは何ぞやを説明すると、
-CentOSベースのBtrfsを採用したDockerが載ったNAS用OSです。Dockerが載ってるのはアプリケーションをコンテナの中で
-実行させることができるようにする仕組みであるRock-onsのためのものであり、このRock-onsを利用することで
-標準でリストアップされてるRock-onであれば、ボタン一つでアプリケーションをインストールすることが可能なのです。
+CentOSベースのBtrfsを採用したDockerが載ったNAS用OSです。
+Dockerが載ってるのはアプリケーションをコンテナの中で実行させることができるようにする仕組みであるRock-onsのためのものであり、
+このRock-onsを利用することで標準でリストアップされてるRock-onであれば、
+ボタン一つでアプリケーションをインストールすることが可能なのです。
 ここで強調したいのは、*標準でリストアップされているものであればボタン一つでインストール*できるという話で、
-標準でリストアップされていないものはボタン操作に加えて**数行のコマンド操作をするだけでインストールができる**といった
-隠れた拡張性があるという点です。
+標準でリストアップされていないものはボタン操作に加えて
+**数行のコマンド操作をするだけでインストールができる**といった隠れた拡張性があるという点です。
 
 ## Chinachu
 さて、話題を変えて録画といえばの話。録画といえば過去いろいろなところで何度も紹介しているLinux向けDVR（Digital Video Recorder)
 アプリケーションである[Chinachu](https://github.com/kanreisa/Chinachu)が快適で使い勝手がよいと評判です。
 動作させてからの操作は快適なのですが、動作させるまでがいろいろと面倒くさかったりします。
-例えば地上デジタル放送・衛星放送キャプチャボードであるPT3のドライバの導入。初回はもちろんのこと、OSのアップグレードごとに
-カーネルモジュールをビルドしてインストールしてなどと、
+例えば地上デジタル放送・衛星放送キャプチャボードであるPT3のドライバの導入。
+初回はもちろんのこと、OSのアップグレードごとにカーネルモジュールをビルドしてインストールしてなどと、
 録画環境を構築する前段階で難しい処理が挟まるのが少々玉に瑕です。
 しかし、ドライバなどの環境を整えた後のChinachu自体のセットアップはある程度簡単にできるようになっています。
 それどころか、チューナー管理アプリケーションのMirakurun連携とB-CASカードの読み込みまで含めたChinachuの動作環境を、
 **Dockerに押し込めてコマンド一発ですべて仕上がる**ようにしたリポジトリがあるくらいに簡単です。
 
-[h-mineta/docker-mirakurun-chinachu: All in one Mirakurun & Chinachu](https://github.com/h-mineta/docker-mirakurun-chinachu)
+[Chinachu/docker-mirakurun-chinachu: All in one Mirakurun & Chinachu](https://github.com/Chinachu/docker-mirakurun-chinachu)
 
 ## PT3 DVBドライバ
 みなが苦労するPT3のドライバの導入作業あれこれに終止符を打つかのように、Linuxカーネルが標準でPT3のドライバを搭載してきました。
@@ -82,11 +83,15 @@ Chinachu-rockonのリポジトリのREADMEにも書いてありますが、必�
 
 となっています。
 chinachu.jsonは[こちら](https://github.com/mzyy94/Chinachu-rockon/releases)にあるので適当にダウンロードしてもらって、
-ダウンロードしたディレクトリで以下のコマンドを実行するとステップ3まで終了します。your-rockstor-ipはRockstorに割り当てられたIPアドレスに変更して、パスワードを求められたらRockstorのrootパスワードを入力して実行してください。
+ダウンロードしたディレクトリで以下のコマンドを実行するとステップ3まで終了します。
+your-rockstor-ipはRockstorに割り当てられたIPアドレスに変更して、
+パスワードを求められたらRockstorのrootパスワードを入力して実行してください。
+
 ```
 ssh root@your-rockstor-ip mkdir /opt/rockstor/rockons-metastore
 scp chinachu.json root@your-rockstor-ip:/opt/rockstor/rockons-metastore
 ```
+
 そしてRock-onsのサービスが起動してなかったら起動し、その後Updateボタンを押すと、Chinachuがリストアップされてきます。
 
 ![Listed up](/blog/resources/images/2016/07/05/chinachu-rockon-listed.png)
