@@ -9,6 +9,8 @@ topimg: /blog/resources/images/2016/12/01/colmar.jpg
 ---
 
 ご注文はコルマールですか？
+はい、コルマールです。
+これは[ごちうさ Advent Calendar 2016 - Adventar](http://www.adventar.org/calendars/1384)の1日目の記事です。
 
 ラビットハウスのある街の舞台は所説あり、いくつか挙げられている中でもアルザス地方のコルマールは有名な街です。
 石畳のきれいな街、ココアちゃんが喜んでアルバイトをしそうな雰囲気があるところです。
