@@ -43,7 +43,7 @@ topimg: /blog/resources/images/2016/12/01/colmar.jpg
 指定席と自由席がありますが、日本の新幹線のように指定席車両というものはなく、すきな座席を指定することができます。
 空いている席は基本自由席ですが、指定席として予約されている場合は、席の上に予約区間が表示されてます。
 そういった座席しか空いていない場合は、その区間では予約した人に席を受け渡す形となります。
-予約区間が表示されていないときはほとんどの場合自由席です。一部例外として、機器の故障で予約されていても予約区間が表示されていなことがあるようです。
+予約区間が表示されていないときはほとんどの場合自由席です。一部例外として、機器の故障で予約されていても予約区間が表示されていないことがあるようです。
 
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">ドイツの電車は予約区間ランプが付いていない席と、付いていても予約区間外だったら自由に座れる</p>&mdash; はいふり@3日目東v-14a (@mzyy94) <a href="https://twitter.com/mzyy94/status/709698139230437377">2016年3月15日</a></blockquote>
 
@@ -70,7 +70,7 @@ topimg: /blog/resources/images/2016/12/01/colmar.jpg
 ## TER (Train Express Regional)
 
 フランスに入ったのでここからはフランス国鉄のTERでコルマールへ向かいます。
-世界ブランドのクレジットカードを持っていれば、券売機で切符を購入でます。
+世界ブランドのクレジットカードを持っていれば、券売機で切符を購入できます。
 ひとつ注意しないといけないのが、切符を買ったら乗車前に駅にある黄色い箱に挿入して時刻印を押すことを忘れないようにすることです。
 日本みたいに改札があるわけではないので、入場時刻の記録をする必要があるのです。
 
@@ -85,7 +85,7 @@ topimg: /blog/resources/images/2016/12/01/colmar.jpg
 
 # コルマールという街並み
 
-パステルカラーの木組みの建物に石畳と、まさに言葉通り*異国*を感じさせる街です。
+パステルカラーの木組みの建物に石畳と、まさに言葉通り**異国**を感じさせる街です。
 聖地かどうか関係なしに、一度訪れて雰囲気を感じておいて損はないでしょう。
 
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">HDR撮影したコルマール <a href="https://twitter.com/hashtag/%E3%83%86%E3%82%A3%E3%83%83%E3%83%94%E3%83%BC%E3%81%A8%E5%B7%A1%E3%82%8B%E3%82%B3%E3%83%AB%E3%83%9E%E3%83%BC%E3%83%AB?src=hash">#ティッピーと巡るコルマール</a> <a href="https://t.co/a0ETjlbczr">pic.twitter.com/a0ETjlbczr</a></p>&mdash; はいふり@3日目東v-14a (@mzyy94) <a href="https://twitter.com/mzyy94/status/709391850843598848">2016年3月14日</a></blockquote>
@@ -143,7 +143,7 @@ topimg: /blog/resources/images/2016/12/01/colmar.jpg
 
 [アルザスの町々の中でも 最高にアルザスらしいコルマールへ！ by Office de tourisme de Colmar - issuu](https://issuu.com/otcolmar/docs/doc_d_appel__ja__web_page)
 
-[PDF](http://colmar.ingenie.fr/documents/documentation/documentation-APPEL16-JA.pdf)
+[\[PDF\]](http://colmar.ingenie.fr/documents/documentation/documentation-APPEL16-JA.pdf)
 
 
 また、コルマールへ行く人にはとても役に立つ観光地図も日本語で用意されています。
