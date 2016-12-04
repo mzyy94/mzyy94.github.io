@@ -5,7 +5,7 @@ date: 2016-12-05 00:00:01 +0900
 comments: true
 categories: anime
 tags: manga time kirara dokidoki visual html5
-topimg: /blog/resources/images/2016/12/05/dokidokivisual.png
+topimg: /blog/resources/images/2016/12/05/dokidokivisual.jpg
 ---
 
 [まんがタイムきらら Advent Calendar 2016 - Adventar](http://www.adventar.org/calendars/1454) 5日目の記事にようこそ！
