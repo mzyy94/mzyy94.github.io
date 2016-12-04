@@ -170,7 +170,7 @@ topimg: /blog/resources/images/2016/12/05/dokidokivisual.jpg
  文字コード | UTF-8
  jQuery | 1.8.3
  OGP | なし
- IEサポート | なし
+ IEサポート | html5.js
  リソース配置位置 | /css, /lib, /js, /assets
  viewport | width=device-width
  noscript | なし
