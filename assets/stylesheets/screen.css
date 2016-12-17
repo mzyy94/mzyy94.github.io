@@ -275,11 +275,11 @@ a[href^="http"] i.glyphicon-music {
     border-bottom: 1px solid #aaa;
 }
 
-body>footer {
+body footer[role=contentinfo] {
     text-align: center;
 }
 
-body>footer span {
+body footer[role=contentinfo] span {
     white-space: nowrap;
 }
 
