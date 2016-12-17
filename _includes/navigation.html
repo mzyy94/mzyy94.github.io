@@ -1,8 +1,25 @@
 <ul class="dropdown clearfix boxed boxed-blue">
-  {% include custom/navigation.html %}
+    <li class="menu-level-0"><a href="{{ root_url }}/">Home</a></li>
+    <li class="menu-level-0">
+    <a href="{{ root_url }}/blog/">Blog</a>
+    <ul class="submenu-1">
+        <li class="menu-level-1"><a href="{{ root_url }}/blog/archives/">Archive</a></li>
+        <li class="menu-level-1"><a href="{{ root_url }}/blog/categories/">Category</a></li>
+        <li class="menu-level-1"><a href="{{ root_url }}/blog/tags/">Tag</a></li>
+    </ul>
+    </li>
+    <li class="menu-level-0"><a href="{{ root_url }}/service/">Service</a></li>
+    <li class="menu-level-0">
+    <a href="{{ root_url }}/about/">About</a>
+    <ul class="submenu-1">
+        <li class="menu-level-1"><a href="{{ root_url }}/about/">About me</a></li>
+        <li class="menu-level-1"><a href="{{ root_url }}/about/license/">License</a></li>
+        <li class="menu-level-1"><a href="{{ root_url }}/key/">Keys / Signatures</a></li>
+    </ul>
+    </li>
   <li class="menu-level-0">
     <a>Subscribe</a>
-	<ul class="submenu-1">
+    <ul class="submenu-1">
   <li class="menu-level-1"><a href="{{ site.subscribe_rss }}" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
   <li class="menu-level-1"><a href="http://cloud.feedly.com/#subscription%2Ffeed%2Fhttp%3A%2F%2Fmzyy94.com%2Fblog%2Fatom.xml" rel="subscribe-feedly" title="subscribe on Feedly">Feedly</a></li>
   {% if site.subscribe_email %}
@@ -11,7 +28,13 @@
   </ul>
   {% if site.simple_search %}
   <li class="menu-search last">
-{% include custom/search.html %}
+      <form action="{{ site.simple_search }}" id="searchForm" class="menu-search-form" method="get">
+          <fieldset role="search">
+              <input type="hidden" name="as_sitesearch" value="{{ site.url | shorthand_url }}" />
+              <input type="text" name="as_q" value="" results="0" class="menu-search-field" placeholder="Search the website" hidefocus="true" style="outline: none;">
+              <input type="submit" value="" class="btn menu-search-submit" name="search-send" hidefocus="true" style="outline: none;">
+          </fieldset>
+      </form>
   </li>
   {% endif %}
 </ul>
