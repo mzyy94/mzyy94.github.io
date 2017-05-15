@@ -81,6 +81,7 @@ gems:
   - jekyll-sitemap
   - jekyll-paginate
   - jekyll-gist
+  - jemoji
 
 # Exclude
 exclude: ['README.md', 'CNAME', 'LICENSE']

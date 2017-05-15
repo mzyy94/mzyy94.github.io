@@ -11,6 +11,10 @@ article p img {
     border: 3px solid rgba(0,0,0,0.6);
 }
 
+article p img.emoji {
+    border: none;
+}
+
 .content>header {
     padding: 0
 }
