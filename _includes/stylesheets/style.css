@@ -65,6 +65,8 @@ body {
 	line-height: 1; }
 ol, ul {
 	list-style: none; }
+article ol, article ul {
+	list-style: circle; }
 blockquote, q {
 	quotes: none; }
 blockquote:before, blockquote:after, q:before, q:after {
