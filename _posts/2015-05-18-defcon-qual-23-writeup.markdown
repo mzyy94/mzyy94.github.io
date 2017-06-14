@@ -204,7 +204,7 @@ Reading 13 bytes
 *AAAA%7$p*を渡した状態の時、以下のようにスタック(esp)に積まれていることがわかります。
 
 
-<svg width="300" height="400" style="background-color: #fff">
+<svg width="300" height="400" viewBox="0 0 300 400" style="background-color: #fff">
 <g class="block" transform="translate(80,20)">
 <rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
 </rect>
@@ -284,7 +284,7 @@ IDA pro (demo)で入力待ちになるときの直前の処理を追ってみま
 
 loc_8048fb6のループを見てみると、"Reading %d bytes\n"で表示されるバイト数をesp+0x10からesp+0x04にコピーしている処理があります(0x08048fcc)。printfで"Reading %d bytes\n"を表示した後、 esp+0x08に0x0aを入れ、標準入力からの読み取り上限をesp+0x10からesp+0x04にコピーしてセットし、esp+0x1cに標準入力からの値を読み取っています。
 
-<svg width="640" height="400" style="background-color: #fff">
+<svg width="640" height="400" viewBox="0 0 640 400" style="background-color: #fff">
 <g class="block" transform="translate(80,20)">
 <rect rx="0" ry="0" width="200" height="40" fill="none" stroke="#000000" stroke-width="1">
 </rect>
@@ -365,7 +365,7 @@ loc_8048fb6のループを見てみると、"Reading %d bytes\n"で表示され�
 これらの調査をもとに、バッファーに読み込むバイト数が格納されているesp+0x10の値を、esp+0x14に格納されているesp+0x1cのアドレスをもとに書き換え、読み込むバイト数の上限を書き換えて、format string attackで攻撃コードを送り込む余地をつくる作戦が考えられます。
 アプローチとしては以下の図のようになります。
 
-<svg width="640" height="400" style="background-color: #fff">
+<svg width="640" height="400" viewBox="0 0 640 400" style="background-color: #fff">
 <defs>
 <marker id="arrowhead" refX="2" refY="5" markerWidth="10" markerHeight="10" orient="auto">
 <path d="M 0,0 V 10 L10,5 Z" fill="black"></path>
@@ -510,7 +510,7 @@ Reading 1023 bytes
 
 これだけあれば、shellcodeを送り込んで実行させることができます。サブルーチンコールの呼び出し元であるリターンアドレスを書き換え、shellcodeを実行させてフラッグを獲得しに行きます。
 
-<svg width="640" height="400" style="background-color: #fff">
+<svg width="640" height="400" viewBox="0 0 640 400" style="background-color: #fff">
 <defs>
 <marker id="arrowhead" refX="2" refY="5" markerWidth="10" markerHeight="10" orient="auto">
 <path d="M 0,0 V 10 L10,5 Z" fill="black"></path>
