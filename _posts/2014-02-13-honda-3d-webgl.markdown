@@ -3,9 +3,9 @@ layout: post
 title: "Honda 3DのサイトがFlashだったときの症例"
 date: 2014-02-13 19:03:54 +0900
 comments: true
-category: web
+categories: web
 tags: html5 css3 webgl three.js
-topimg: /blog/resources/images/2014/2/13/honda-3d-diff.png
+image: /blog/resources/images/2014/2/13/honda-3d-diff.png
 ---
 
 RSSを消化してたときのこと。

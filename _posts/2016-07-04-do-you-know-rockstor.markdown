@@ -5,7 +5,7 @@ date: 2016-07-04 20:12:14 +0900
 comments: true
 categories: linux
 tags: docker rockstor btrfs nas
-topimg: /blog/resources/images/2016/07/04/rockstor-disks.png
+image: /blog/resources/images/2016/07/04/rockstor-disks.png
 ---
 
 みなさんはNASのOSとして何を使っていますか？

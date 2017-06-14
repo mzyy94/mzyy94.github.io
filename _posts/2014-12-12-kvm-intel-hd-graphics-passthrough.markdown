@@ -5,7 +5,7 @@ date: 2014-12-12 23:59:49 +0900
 comments: true
 categories: linux
 tags: kvm qsv kernel
-topimg:
+image:
 ---
 
 この記事は[Linux Advent Calendar 2014](http://qiita.com/advent-calendar/2014/linux) 12日目の記事です。

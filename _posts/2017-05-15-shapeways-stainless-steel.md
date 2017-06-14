@@ -5,7 +5,7 @@ date: 2017-05-15 21:48:08 +0900
 comments: true
 categories: 3dprint
 tags: metal stainless steel kemono-friends ﾏｶｾﾃ
-topimg: /blog/resources/images/2017/05/15/boss-6.jpg
+image: /blog/resources/images/2017/05/15/boss-6.jpg
 ---
 
 :scream_cat: **すっごーい！なにこれなにこれ？ボスがこんなに！どうやったの！**

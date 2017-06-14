@@ -5,7 +5,7 @@ date: 2015-04-26 23:46:19 +0900
 comments: true
 categories: shrimp
 tags: shrimp
-topimg: /blog/resources/images/2015/04/26/shrimp-bottle.jpg
+image: /blog/resources/images/2015/04/26/shrimp-bottle.jpg
 ---
 
 先日、久々にアイコンを大幅に変更しました。

@@ -18,8 +18,8 @@
     {% endunless %}
   </header>
 {% endunless %}
-{% if page.topimg or post.topimg %}
-<img src="{%if post.topimg %}{{ post.topimg }}{% else %}{{ page.topimg }}{% endif %}" alt="article image" class="main image"/>
+{% if page.image or post.image %}
+<img src="{%if post.image %}{{ post.image }}{% else %}{{ page.image }}{% endif %}" alt="article image" class="main image"/>
 {% endif %}
 {% if index %}
 <div class="entry-content">{{ post.excerpt }}</div>

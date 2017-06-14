@@ -5,7 +5,7 @@ date: 2015-02-16 20:05:56 +0900
 comments: true
 categories: raspberry-pi
 tags: osmc kodi
-topimg: /blog/resources/images/2015/02/16/raspi2.jpg
+image: /blog/resources/images/2015/02/16/raspi2.jpg
 ---
 
 今月頭の発表で一気に盛り上がりを見せた[Raspberry Pi 2 Model B](http://www.raspberrypi.org/products/raspberry-pi-2-model-b/)。もちろん発売日に購入しました。

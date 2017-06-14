@@ -5,7 +5,7 @@ date: 2015-04-29 15:03:01 +0900
 comments: true
 categories: shrimp
 tags: shrimp muji charm
-topimg: /blog/resources/images/2015/04/29/new-ebipot.jpg
+image: /blog/resources/images/2015/04/29/new-ebipot.jpg
 ---
 
 小さくてかわいいピクシーシュリンプ（以下、えび）

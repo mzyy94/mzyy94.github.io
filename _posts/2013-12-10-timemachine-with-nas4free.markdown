@@ -3,9 +3,9 @@ layout: post
 title: "NAS4FreeでTime Machineの設定するメモ"
 date: 2013-12-10 12:58:47 +0900
 comments: true
-category: nas4free
+categories: nas4free
 tags: nas4free timemachine mac
-topimg: /blog/resources/images/2013/12/10/timemachine-with-nas4free.png
+image: /blog/resources/images/2013/12/10/timemachine-with-nas4free.png
 ---
 
 Mavericksの登場で手元のMacBook Airをクリーンインストールしました。

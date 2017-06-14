@@ -5,7 +5,7 @@ date: 2015-05-18 23:45:04 +0900
 comments: true
 categories: ctf
 tags: defcon babycmd babyecho
-topimg: /blog/resources/images/2015/05/18/scoreboard.png
+image: /blog/resources/images/2015/05/18/scoreboard.png
 ---
 
 今年のDEFCON CTFの予選が5月16日午前9時から48時間開催されていました。今回はチーム********としての参加ではなく、Team Enuに派遣される形で参加してきました。

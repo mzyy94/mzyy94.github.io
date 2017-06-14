@@ -5,7 +5,7 @@ date: 2015-03-09 12:09:04 +0900
 comments: true
 categories: raspberry-pi
 tags: muji enclosure case
-topimg: /blog/resources/images/2015/03/09/muji-case.jpg
+image: /blog/resources/images/2015/03/09/muji-case.jpg
 ---
 
 Raspberry Pi2を発売日に2つ注文したものの、ケースを準備していなかったので手軽に買えるRaspberry Piにぴったりの入れ物はないかと

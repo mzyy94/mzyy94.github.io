@@ -5,7 +5,7 @@ date: 2015-02-24 19:28:35 +0900
 comments: true
 categories: raspberry-pi
 tags: kodi osmc chinachu
-topimg: /blog/resources/images/2015/02/24/addon-info.png
+image: /blog/resources/images/2015/02/24/addon-info.png
 ---
 
 Raspberry Pi2でKodi（旧：XBMC)が快適に動き、地デジのLIVE視聴環境として優れているので、

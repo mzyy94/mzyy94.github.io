@@ -5,7 +5,7 @@ date: 2015-12-08 02:06:35 +0900
 comments: true
 categories: etc
 tags: splatoon packetoon ika
-topimg: /blog/resources/images/2015/12/08/slidoon.png
+image: /blog/resources/images/2015/12/08/slidoon.png
 ---
 
 

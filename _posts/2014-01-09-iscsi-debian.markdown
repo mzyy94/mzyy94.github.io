@@ -3,9 +3,9 @@ layout: post
 title: "debianでiscsi target/initiator動作させるメモ"
 date: 2014-01-09 13:45:08 +0900
 comments: true
-category: network
+categories: network
 tags: iscsi debian
-topimg: /blog/resources/images/2014/1/9/debian-iscsi.png
+image: /blog/resources/images/2014/1/9/debian-iscsi.png
 ---
 Linux上でのiSCSIパケット収集のためにVirtual Boxで作成した、Debian 7.0.0にiSCSI initiatorとtargetを入れたときのメモを起こしておきます。
 

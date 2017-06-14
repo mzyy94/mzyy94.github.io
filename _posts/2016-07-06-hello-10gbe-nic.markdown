@@ -5,7 +5,7 @@ date: 2016-07-06 03:24:50 +0900
 comments: true
 categories: network
 tags: 10gbe nic x540-t2
-topimg: /blog/resources/images/2016/07/06/card-face.jpg
+image: /blog/resources/images/2016/07/06/card-face.jpg
 ---
 
 

@@ -5,7 +5,7 @@ date: 2016-12-24 01:00:00 +0900
 comments: true
 categories: web
 tags: webgl webvr html5 three.js
-topimg: /blog/resources/images/2016/12/24/out-of-playarea.png
+image: /blog/resources/images/2016/12/24/out-of-playarea.png
 ---
 
 

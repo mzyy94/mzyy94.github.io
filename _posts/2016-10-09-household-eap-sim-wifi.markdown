@@ -5,7 +5,7 @@ date: 2016-10-09 16:00:00 +0900
 comments: true
 categories: network
 tags: eap-sim 802.1x sim
-topimg: /blog/resources/images/2016/10/09/slide1.jpg
+image: /blog/resources/images/2016/10/09/slide1.jpg
 ---
 
 ご家庭のWi-Fi、まだパスワード認証ですか？

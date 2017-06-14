@@ -5,7 +5,7 @@ date: 2016-07-05 00:07:31 +0900
 comments: true
 categories: linux
 tags: chinachu docker rockstor pt3 nas
-topimg: /blog/resources/images/2016/07/05/chinachu-rockon-installed.png
+image: /blog/resources/images/2016/07/05/chinachu-rockon-installed.png
 ---
 
 [昨日紹介したRockstor](https://mzyy94.com/blog/2016/07/04/do-you-know-rockstor/)というNAS用OS、とても便利で快適に使っています。

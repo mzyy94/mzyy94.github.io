@@ -5,7 +5,7 @@ date: 2017-02-04 11:15:00 +0900
 comments: true
 categories: kodi
 tags: chinachu dtv kodi osmc pvr
-topimg: /blog/resources/images/2017/02/04/pvr.chinachu-fanart.png
+image: /blog/resources/images/2017/02/04/pvr.chinachu-fanart.png
 ---
 
 KodiとChinachuがシームレスに連携し、快適に地デジが視聴できるアドオン Harekaze for Kodi(pvr.chinachu) をKodi 17 Krypton

@@ -5,7 +5,7 @@ date: 2016-01-10 05:00:00 +0900
 comments: true
 categories: goods
 tags: 4k ips ah-ips display
-topimg: /blog/resources/images/2016/01/10/42inch-splatoon.jpg
+image: /blog/resources/images/2016/01/10/42inch-splatoon.jpg
 ---
 
 年が明け、2016年。27インチのWQHD(2560x1440)ディスプレイを使い続けていたものの、情報量が少ないことが気になり始めました。

@@ -5,7 +5,7 @@ date: 2016-12-25 01:00:00 +0900
 comments: true
 categories: graphic
 tags: kamieshi haihuri
-topimg: /blog/resources/images/2016/12/25/kamie.png
+image: /blog/resources/images/2016/12/25/kamie.png
 ---
 
 この記事は[神絵師 Advent Calendar 2016 - Adventar](http://www.adventar.org/calendars/1831)の25日目を飾るにふさわしい記事です。

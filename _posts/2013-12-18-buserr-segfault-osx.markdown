@@ -3,9 +3,9 @@ layout: post
 title: "OS Xで再現されるBus error: 10の原因探ってみた"
 date: 2013-12-18 12:48:12 +0900
 comments: true
-category: c
+categories: c
 tags: bus_error segmentation_fault osx
-topimg: /blog/resources/images/2013/12/18/buserr-segfault-osx.png
+image: /blog/resources/images/2013/12/18/buserr-segfault-osx.png
 ---
 Cです。
 

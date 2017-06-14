@@ -3,9 +3,9 @@ layout: post
 title: "blogを建ててみた"
 date: 2013-12-07 18:22:11 +0900
 comments: true
-category: html
+categories: html
 tags: html5 css3 gh-pages
-topimg: /blog/resources/images/2013/12/07/create-new-blog.png
+image: /blog/resources/images/2013/12/07/create-new-blog.png
 ---
 
 いままで情報を発信する場として、確かなものが周りになかったので新年に向けて新しくブログを作成しました。

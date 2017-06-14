@@ -3,9 +3,9 @@ layout: post
 title: "JavaScriptの記号だけで'1'を作るコードゴルフ"
 date: 2014-01-22 11:02:22 +0900
 comments: true
-category: javascript
+categories: javascript
 tags: codegolf
-topimg: /blog/resources/images/2014/1/22/javascript-one-codegolf.png
+image: /blog/resources/images/2014/1/22/javascript-one-codegolf.png
 ---
 
 CodeIQでお正月チャレンジをしていた時に遭遇した問題を解決するために、いろいろと試行錯誤したことがありました。

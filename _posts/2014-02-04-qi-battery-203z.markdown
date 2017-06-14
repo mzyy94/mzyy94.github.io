@@ -3,9 +3,9 @@ layout: post
 title: "Qiで203Zを充電できるようにしてみた"
 date: 2014-02-04 08:47:16 +0900
 comments: true
-category: review
+categories: review
 tags: qi 203z
-topimg: /blog/resources/images/2014/2/4/DSC08069.JPG
+image: /blog/resources/images/2014/2/4/DSC08069.JPG
 ---
 
 Qiという無接点充電の_事実上_標準規格なものがありまして、それを利用したモバイルルータの充電をしてみましたという日記です。

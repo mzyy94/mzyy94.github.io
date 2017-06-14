@@ -5,7 +5,7 @@ date: 2015-10-14 19:39:47 +0900
 comments: true
 categories: git
 tags: emoji git github
-topimg: /blog/resources/images/2015/10/14/emoji-commit-log.png
+image: /blog/resources/images/2015/10/14/emoji-commit-log.png
 ---
 
 

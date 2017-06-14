@@ -3,9 +3,9 @@ layout: post
 title: "Unicode形式に変換するPopClipのExtensionを作りたかっただけだったのに"
 date: 2014-02-21 17:46:27 +0900
 comments: true
-category: bash
+categories: bash
 tags: popclip bash unicode utf-8
-topimg: /blog/resources/images/2014/2/21/UnicodeEncode_popclipext.png
+image: /blog/resources/images/2014/2/21/UnicodeEncode_popclipext.png
 ---
 
 いろいろな趣味がよく合う[ひとりぶろぐ](http://hitoriblog.com/)さんの記事を読んでいたときのこと。どうやら[PopClip](https://itunes.apple.com/jp/app/popclip/id445189367?mt=12&uo=4&at=1l3v4mQ)が便利らしいことを[発見](http://hitoriblog.com/?p=22987)したので、だいぶ昔に買ったっきりで使っていなかったPopClipを活用してみることにしました。
