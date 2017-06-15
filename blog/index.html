@@ -2,44 +2,73 @@
 layout: default
 ---
 
-<main class="col-sm-9">
-  {% assign index = true %}
-  {% for post in paginator.posts %}
-  {% assign content = post.content %}
-    <article>
-      {% include article.html %}
-    </article>
-  {% endfor %}
-  <div class="tf_pagination">
-  <div class="inner">
-    {% if paginator.previous_page %}
-	<a class="page_prev" href="{{paginator.previous_page_path}}"><span></span></a>
+<div class="columns">
+  <main class="column col-9 col-md-12" lang="{{ site.lang }}">
+    <div class="text-right">
+{% assign feedicon = site.static_files | where: "assets", true | where: "basename", "feed-icon" | first %}
+      <a href='http://cloud.feedly.com/#subscription%2Ffeed%2F{{ site.feed.path | absolute_url | cgi_escape }}' target='blank'><img id='feedlyFollow' src='http://s3.feedly.com/img/follows/feedly-follow-logo-black_2x.png' alt='follow us in feedly' width='28' height='28'></a>
+      <a href="{{ site.feed.path | relative_url }}"><img src="{{ feedicon.path }}" alt="feed icon"></a> 
+    </div>
+    <div class="columns">
+      {% for post in paginator.posts %}
+      <section class="column col-6 col-sm-12">
+        <div class="card mt-10 mb-10">
+          <header class="card-header">
+            <h4 class="card-title text-bold"><a href="{{ post.url | relative_url}}">{{ post.title }}</a></h4>
+            <h6 class="card-subtitle">
+                {{ post.date | date_to_string }} /
+                {% for category in post.categories %}
+                <a href="#">{{ category }}</a>
+                {% endfor %}
+            </h6>
+          </header>
+          {% if post.image %}
+          <div class="card-image">
+            <img src="{{ post.image }}" class="img-responsive">
+          </div>
+          {% endif %}
+          <article class="card-body">
+            {{ post.excerpt }}
+          </article>
+          <footer class="card-footer text-right">
+            <a rel="full-article" href="{{ post.url | relative_url }}" class="btn btn-primary"><span>{{ site.excerpt_link | default: "More" }}</span> <i class="icon icon-forward"></i></a>
+          </footer>
+        </div>
+      </section>
+      {% endfor %}
+    </div>
+
+    {% if paginator.total_pages > 1 %}
+    <ul class="column col-12 pagination">
+      <li class="page-item">
+        {% if paginator.previous_page %}
+        <a href="{{paginator.previous_page_path | relative_url }}">Previous</a>
+        {% else %}
+        <a href="#" disabled tabindex="-1">Previous</a>
+        {% endif %}
+      </li>
+
+      {% for page in (1..paginator.total_pages) %}
+      <li class="page-item{% if page == paginator.page %} active{% endif %}">
+        {% if page == 1 %}
+        <a href="{{ '/' | relative_url }}">{{ page }}</a>
+        {% else %}
+        <a href="{{ site.paginate_path | relative_url | replace: ':num', page }}">{{ page }}</a>
+        {% endif %}
+      </li>
+      {% endfor %}
+
+      <li class="page-item">
+        {% if paginator.next_page %}
+        <a href="{{paginator.next_page_path | relative_url}}">Next</a> {% else %}
+        <a href="#" disabled tabindex="-1">Next</a> {% endif %}
+      </li>
+    </ul>
     {% endif %}
 
-	{% if paginator.total_pages > 1 %}
-	  {% if paginator.total_pages < 20 %}
-		{% for page in (1..paginator.total_pages) %}
-			{% capture url %}{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}{% endcapture %}
-		  {% if page == 1 %}
-		    {% assign url = "/blog/" %}
-		  {% endif %}
-		  {% if page != paginator.page %}
-		    <a href="{{url}}" class="page-numbers">{{page}}</a>
-		  {% else %}
-		    <span class="page-numbers page_current">{{page}}</span>
-		  {% endif %}
-		{% endfor %}
-	  {% endif %}
-	{% endif %}
-
-    {% if paginator.next_page %}
-	<a class="page_next" href="{{paginator.next_page_path}}"><span></span></a>
-    {% endif %}
+  </main>
+  <div class="divider-vert hide-md padding-0"></div>
+  <div class="column col-3 col-md-12">
+    {% include sidebar.html %}
   </div>
-  </div>
-</main>
-<aside class="col-sm-3">
-  {% for aside in site.default_asides %}
-    {% include {{aside}} %}
-  {% endfor %}
-</aside>
+</div>

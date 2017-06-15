@@ -1,70 +1,24 @@
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="ja"><!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  <title>{% if page.title %}{% if site.titlecase %}{{ page.title | titlecase }}{% else %}{{ page.title }}{% endif %} - {% endif %}{{ site.title }}</title>
-  <meta name="author" content="{{ site.author }}">
-
-  {% capture description %}{% if page.description %}{{ page.description }}{% else %}{{ content | raw_content }}{% endif %}{% endcapture %}
-  <meta name="description" content="{{ description | strip_html | condense_spaces | truncate:150 }}">
-  {% if page.keywords %}<meta name="keywords" content="{{ page.keywords }}">{% endif %}
-
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  {% capture canonical %}{{ site.url }}{% if site.permalink contains '.html' %}{{ page.url }}{% else %}{{ page.url | remove:'index.html' | strip_slash }}{% endif %}{% endcapture %}
-  <link rel="canonical" href="{{ canonical }}">
-  <link href="/assets/images/favicon.png" rel="icon">
-  <link href="{{ site.subscribe_rss }}" rel="alternate" title="{{site.title}}" type="application/atom+xml">
-  <!-- main JS libs -->
-  <script defer src="/assets/javascripts/jquery-3.1.1.min.js"></script>
-  <script defer src="/assets/javascripts/libs/jquery-ui-1.12.1-custom.min.js"></script>
-  <script defer src="/assets/javascripts/libs/bootstrap.min.js"></script>
-  <!-- Style CSS -->
-  <link href="/assets/stylesheets/screen.css" media="screen, projection" rel="stylesheet">
-  <!-- Calendar -->
-  <script defer src="/assets/javascripts/jquery-ui.multidatespicker.js"></script>
-  <script defer src="/assets/javascripts/github.js"></script>
-  <script>
-  var canvas = document.createElement("canvas");
-  var ctx = canvas.getContext("2d");
-  var text = "あのイーハトーヴォのすきとおった風abcdefgHIJKLMN";
-  ctx.font = "72px monospace";
-  var defaultWidth = ctx.measureText(text).width;
-  ctx.font = "72px 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', monospace";
-  var isHiraginoInstalled = ctx.measureText(text).width !== defaultWidth;
-  delete canvas;
-
-  if (!isHiraginoInstalled) {
-      var script = document.createElement("script");
-      script.src = "//typesquare.com/accessor/script/typesquare.js?ccT9yMS9KSY%3D";
-      document.head.appendChild(script);
-      script.onload = function() {
-          document.dispatchEvent(new Event("DOMContentLoaded"));
-      }
-  }
-  </script>
-<!--[if lt IE 9]><script src="/assets/javascripts/respond.min.js"></script><![endif]-->
-<!--[if gte IE 9]>
-<style type="text/css">
-	.gradient {filter: none !important;}
-</style>
-<![endif]-->
-<!--Fonts from Google"s Web font directory at https://google.com/webfonts -->
-{% if site.twitter_user %}
-<meta property="twitter:card" content="summary" />
-<meta property="twitter:site" content="{{ site.twitter_user }}" />
-<meta property="twitter:url" content="{% if canonical %}{{ canonical }}{% else %}{{ site.url }}{% endif %}" />
-<meta property="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}" />
-{% if page.image or post.image %}
-<meta property="twitter:image" content="{{site.url}}{%if post.image %}{{ post.image }}{% else %}{{ page.image }}{% endif %}" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="icon" type="image/x-icon" href="">
+  <link rel="apple-touch-icon" href="">
+  {% seo %}
+  {% feed_meta %}
+{% assign asset_files = site.static_files | where: "assets", true %}
+{% for file in asset_files %}
+{% if file.extname == '.css' %}
+  {% if file.basename == 'noscript' %}
+  <noscript>
+  <link rel="stylesheet" href="{{ file.path | relative_url }}">
+  </noscript>
+  {% else %}
+  <link rel="stylesheet" href="{{ file.path | relative_url }}">
+  {% endif %}
+{% elsif file.extname == '.js' %}
+  <script src="{{ file.path | relative_url }}"></script>
 {% endif %}
-<meta property="twitter:description" content="{{ description | strip_html | condense_spaces | truncate:200 }}" />
-{% endif %}
-<link href="https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i|PT+Serif:400,400i,700,700i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
-  {% include google_analytics.html %}
+{% endfor %}
 </head>

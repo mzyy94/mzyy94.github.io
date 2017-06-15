@@ -1,33 +1,44 @@
 ---
 layout: page
-sidebar: false
-footer: false
-share: false
 ---
-<style>
-.row a img {
-	max-width: 100%;
-	margin: 20px auto;
-}
-</style>
-<h2>Web sites</h2>
-<div class="row">
-	<a href="https://tomorinao.pro"><img class="col-sm-4" src="previews/tomorinao.pro.png"></a>
-	<a href="https://harekaze.org"><img class="col-sm-4" src="previews/harekaze.org.png"></a>
-	<a href="https://splashworks.jp"><img class="col-sm-4" src="previews/splashworks.jp.png"></a>
-</div>
-<div class="row">
-	<a href="https://harekaze.org/KokoWalk-iOS"><img class="col-sm-4" src="previews/harekaze.org_kokowalk-ios.png"></a>
-	<a href="https://xn--n8j037p.mzyy94.com"><img class="col-sm-4" src="previews/xn--n8j037p.mzyy94.com.png"></a>
-	<a href="https://yokunaine.mzyy94.com"><img class="col-sm-4" src="previews/yokunaine.mzyy94.com.png"></a>
-</div>
-<div class="row">
-	<a href="https://xn--0cktc7c2a.xn--q9jyb4c/"><img class="col-sm-4" src="previews/friends-minna.png"></a>
-</div>
-<h2>Presentation slides</h2>
-<div class="row">
-	<a href="http://www.slideshare.net/mzyy94/games-on-linux-kernelvm1"><img class="col-sm-3" src="previews/no-game-no-life.png"></a>
-	<a href="http://www.slideshare.net/mzyy94/packetoon"><img class="col-sm-3" src="previews/packetoon.png"></a>
-	<a href="http://www.slideshare.net/mzyy94/ss-63199765"><img class="col-sm-3" src="previews/packetoon-alpha.png"></a>
-	<a href="http://www.slideshare.net/mzyy94/subscriber-identity-module-66892458"><img class="col-sm-3" src="previews/subscriber-identity-module.png"></a>
-</div>
+
+<main class="container">
+  <h2>Web sites</h2>
+  <div class="columns">
+    {% for extsite in site.data.top.sites %}
+    <a class="parallax column col-4 col-sm-12" href="{{ extsite.url }}">
+      <div class="parallax-top-left"></div>
+      <div class="parallax-top-right"></div>
+      <div class="parallax-bottom-left"></div>
+      <div class="parallax-bottom-right"></div>
+      <div class="parallax-content">
+        <div class="parallax-front">
+          <h2>{{ extsite.name }}</h2>
+        </div>
+        <div class="parallax-back">
+          <img src="{{ extsite.image }}" class="img-responsive rounded" alt="{{ extsite.name }}" />
+        </div>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+  <h2>Presentations</h2>
+  <div class="columns">
+    {% for presentation in site.data.top.presentations %}
+    <a class="parallax column col-3 col-sm-12" href="{{ presentation.url }}">
+      <div class="parallax-top-left"></div>
+      <div class="parallax-top-right"></div>
+      <div class="parallax-bottom-left"></div>
+      <div class="parallax-bottom-right"></div>
+      <div class="parallax-content">
+        <div class="parallax-front">
+          <h2>{{ presentation.name }}</h2>
+        </div>
+        <div class="parallax-back">
+          <img src="{{ presentation.image }}" class="img-responsive rounded" alt="{{ presentation.name }}" />
+        </div>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</main>

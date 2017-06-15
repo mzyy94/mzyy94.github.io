@@ -1,18 +1,62 @@
-{% capture root_url %}{{ site.root | strip_slash }}{% endcapture %}
+<!DOCTYPE html>
+<html>
 {% include head.html %}
-<body {% if page.body_id %} id="{{ page.body_id }}" {% endif %} >
-  <div class="container">
-  <div class="content">
-  <header class="row">
-    <nav id="topmenu" class="col-sm-12" role="navigation">{% include navigation.html %}</nav>
-  </header>
-  <header class="col-sm-12 boxed-red" role="banner">{% include header.html %}</header>
-    <div class="row">
-      {{ content | expand_urls: root_url }}
+<body class="container grid-1280">
+  <div class="colmuns mt-10 mb-10">
+    <div class="column">
+      <header class="navbar">
+        <section class="navbar-section">
+          <a href="{{ '/' | relative_url }}" class="navbar-brand mr-10">{{ site.title }}</a>
+          {% for page in site.data.pages %}
+          {% if page.submenu %}
+          <div class="dropdown">
+            <div class="btn-group">
+          {% endif %}
+              <a href="{{ page.url }}" class="btn btn-link">{{ page.title }}</a>
+          {% if page.submenu %}
+              <a class="btn btn-link dropdown-toggle" tabindex="0"><i class="icon icon-caret"></i></a>
+              <ul class="menu">
+                {% for menu in page.submenu %}
+                <li class="menu-item">
+                  <a href="{{ menu.url }}">
+                    {{ menu.title }}
+                  </a>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+          {% endif %}
+          {% endfor %}
+        </section>
+        <section class="navbar-section">
+          <form class="input-group input-inline" method="get" action="{{ site.search_engine }}">
+            <input class="form-input" type="text" placeholder="Search" name="as_q">
+            <input type="hidden" name="as_sitesearch" value="{{ site.url | shorthand_url }}" >
+            <button type="submit" class="btn btn-primary input-group-btn">Search</button>
+          </form>
+        </section>
+      </header>
     </div>
-  {% include after_footer.html %}
   </div>
-  <footer class="boxed-yellow" role="contentinfo">{% include footer.html %}</footer>
+  {{ content | replace: '<table>', '<table class="table table-striped mt-10 mb-10">' | replace: '<pre class="highlight">', '<pre class="highlight code">' }}
+  <div class="columns">
+    <div class="column">
+      <footer class="text-center">
+        Copyright &copy; {{ site.time | date: "%Y" }} {{ site.author }} {{ site.title }} - Powered by <a href="https://github.com/myyy94/stainless">Stainless</a>
+      </footer>
+    </div>
   </div>
+  {% if site.google_analytics_tracking_id %}
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', '{{ site.google_analytics_tracking_id }}', 'auto');
+    ga('send', 'pageview');
+  </script>
+  {% endif %}
 </body>
 </html>

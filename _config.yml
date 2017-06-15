@@ -3,41 +3,21 @@
 # ----------------------- #
 
 url: https://mzyy94.com
-baseurl: "/"
+baseurl: ""
 title: 犬アイコンのみっきー
-locale: "ja-JP"
 subtitle:
-author: mzyy94
-simple_search: https://www.google.com/search
 description:
-
-# Default date format is "ordinal" (resulting in "July 22nd 2007")
-# You can customize the format as defined in
-# http://www.ruby-doc.org/core-1.9.2/Time.html#method-i-strftime
-# Additionally, %o will give you the ordinal representation of the day
-date_format: "ordinal"
-timezone: Asia/Tokyo
-
-# RSS / Email (optional) subscription links (change if using something like Feedburner)
-subscribe_rss: /blog/atom.xml
-subscribe_email:
-# RSS feeds can list your email address if you like
-email:
+author: mzyy94
 
 # ----------------------- #
-#    Jekyll & Plugins     #
+#     Link & Markdown     #
 # ----------------------- #
 
-# If publishing to a subdirectory as in http://site.com/project set 'root: /project'
-root: ""
+baseurl: ""
 permalink: /blog/:year/:month/:day/:title/
 relative_permalinks: false
-#source: source
-destination: public
-#plugins: plugins
-code_dir: downloads/code
-category_dir: blog/categories
-tag_dir: blog/tags
+aboutme:
+  url: /about/
 markdown: kramdown
 kramdown:
   input: GFM
@@ -45,80 +25,97 @@ kramdown:
   hard_wrap: false
   enable_coderay: false
   syntax_highlighter: rouge
-  smart_quotes: quot,quot,apos,apos
-  syntax_highlighter_opts:
-    span:
-      line_numbers: false
-    block:
-      line_numbers: true
-      start_line: 1
+  entity_output:  as_char
+  toc_levels:     1..6
+  smart_quotes:   lsquo,rsquo,ldquo,rdquo
+  footnote_nr:    1
 highlighter: rouge
 lsi: false
 
-paginate: 10          # Posts per page on the blog index
-paginate_path: "/blog/page/:num"  # Directory base for pagination URLs eg. /posts/2/
-recent_posts: 5       # Posts in the sidebar Recent Posts section
-excerpt_link: "Read more"  # "Continue reading" link text at the bottom of excerpted articles
+# ----------------------- #
+#    Paginate & Excerpt   #
+# ----------------------- #
+
+paginate: 10
+paginate_path: "/blog/page/:num"
+excerpt_link: "Read more"
 excerpt_separator: "<!-- more -->"
+recent_posts: 5
 
-titlecase: false       # Converts page and post titles to titlecase
+# ----------------------- #
+#      Locale & Date      #
+# ----------------------- #
 
-# list each of the sidebar modules you want to include, in the order you want them to appear.
-# To add custom asides, create files in /source/_includes/custom/asides/ and add them to the list like 'custom/asides/custom_aside_name.html'
-default_asides: [asides/about.html, asides/calendar.html, asides/recent_posts.html, asides/github.html, asides/ads.html]
-# Each layout uses the default asides, but they can have their own asides instead. Simply uncomment the lines below
-# and add an array with the asides you want to use.
-# blog_index_asides:
-# post_asides:
-# page_asides:
+lang: ja
+date_format: "ordinal"
+timezone: Asia/Tokyo
+
+# ----------------------- #
+#  RSS & Search & Comment #
+# ----------------------- #
+
+search_engine: https://www.google.com/search
+feed:
+  path: /blog/atom.xml
+disqus_short_name: mzyy94blog
+
+# ----------------------- #
+#        Generate         #
+# ----------------------- #
+
+exclude:
+  - README.md
+  - CNAME
+  - LICENSE
+  - Gemfile
+  - Gemfile.lock
+
+# ----------------------- #
+#        Defaults         #
+# ----------------------- #
+# for assets
+defaults:
+  - scope:
+      path: "assets"
+    values:
+      assets: true
+
+# ----------------------- #
+#        SNS Share        #
+# ----------------------- #
+
+twitter_share_button: true
+hatena_bookmark_button: true
+google_plus_button: true
+facebook_like_button: true
+pocket_save_button: true
+
+# ----------------------- #
+#       Analytics         #
+# ----------------------- #
+
+google_analytics_tracking_id: UA-41944495-3
 
 # ----------------------- #
 #   3rd Party Settings    #
 # ----------------------- #
-# Gem
 gems:
-  - jekyll-feed
-  - jekyll-sitemap
+  - jekyll-avatar
   - jekyll-paginate
+  - jekyll-seo-tag
+  - jekyll-mentions
+  - jekyll-sitemap
+  - jekyll-feed
   - jekyll-gist
+  - jekyll-default-layout
+  - jekyll-optional-front-matter
+  - jekyll-redirect-from
   - jemoji
 
-# Exclude
-exclude: ['README.md', 'CNAME', 'LICENSE']
-
+# Mentions
+jekyll-mentions: https://twitter.com
 # Github repositories
-github_user: mzyy94
-github_repo_count: 3
-github_show_profile_link: false
-github_skip_forks: true
-
-# Twitter
-twitter_user: mzyy94
-twitter_tweet_button: true
-
-# Google +1
-google_plus_one: true
-google_plus_one_size: medium
-
-# Google Plus Profile
-# Hidden: No visible button, just add author information to search results
-googleplus_user:
-googleplus_hidden: false
-
-# Pinboard
-pinboard_user:
-pinboard_count: 3
-
-# Delicious
-delicious_user:
-delicious_count: 3
-
-# Disqus Comments
-disqus_short_name: mzyy94blog
-disqus_show_comment_count: true
-
-# Google Analytics
-google_analytics_tracking_id: UA-41944495-3
-
-# Facebook Like
-facebook_like: true
+repository: mzyy94/stainless
+# SEO tag
+twitter:
+  username: mzyy94

@@ -1,0 +1,18 @@
+- title: Blog
+  url: /blog
+  submenu:
+    - title: Archive
+      url: /blog/archive/
+    - title: Tags
+      url: /blog/tags/
+    - title: Categories
+      url: /blog/categories/
+- title: About
+  url: /about/
+  submenu:
+    - title: About
+      url: /about/
+    - title: Key
+      url: /key/
+    - title: License
+      url: /license/

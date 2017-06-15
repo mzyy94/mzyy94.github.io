@@ -1,0 +1,72 @@
+html, body {
+  height: 100%;
+}
+
+article img, article svg {
+  max-width: 100%;
+}
+
+pre, pre code, pre code * {
+  font-family: "Lucida Console", Monaco, monospace !important;
+}
+
+.calendar {
+  min-width: auto;
+}
+
+.sticky-top-10 {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 10px;
+}
+
+.padding-0 {
+  padding: 0;
+}
+
+.pagination {
+  justify-content: center;
+}
+
+.card-image img {
+  width: 100%;
+}
+
+.card-body h1, .card-body h2, .card-body h3, .card-body h4, .card-body h5, .card-body h6 {
+  font-size: 2rem;
+  margin: 0.5rem auto;
+}
+
+.card-body ol li, .card-body ul li {
+  margin-top: 0;
+}
+
+.card-body p {
+  line-height: normal;
+}
+
+.parallax {
+  z-index: 10;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.flex.empty {
+  height: 80%;
+  align-items: center;
+  justify-content: center;
+}
+
+[id^=___plusone] {
+  width:65px !important;
+}
+
+.fb_iframe_widget > span {
+  vertical-align: baseline !important;
+}
+
+.pocket-btn {
+  display: inline-block;
+}

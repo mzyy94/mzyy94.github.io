@@ -1,8 +1,0 @@
-{% capture categories %}{% if post %}{{ post.categories }}{% else %}{{ page.categories }}{% endif %}{% endcapture %}
-{% if categories %}
-<i class="glyphicon glyphicon-folder-close"></i><span class="categories">
-  {% for category in categories %}
-  <a class="category" href="/blog/categories/#{{category}}" hidefocus="true" style="outline: none;">{{category}}</a>
-  {% endfor %}
-</span>
-{% endif %}

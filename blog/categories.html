@@ -1,0 +1,60 @@
+---
+title: Categories
+id: categories
+layout: default
+---
+
+<style>
+  .filter .filter-tag#tag-all:checked ~ .filter-nav .chip[for="tag-all"],
+{% for category in site.categories %}
+  .filter .filter-tag#tag-{{ category[0] | slugify }}:checked ~ .filter-nav .chip[for="tag-{{ category[0] | slugify }}"]{% if forloop.last == false %},{% endif %}
+{% endfor %} {
+  background: #5764c6;
+  color: #fff;
+}
+{% for category in site.categories %}
+  .filter .filter-tag#tag-{{ category[0] | slugify }}:checked ~ .filter-body .column:not([data-tag~="tag-{{ category[0] | slugify }}"]){% if forloop.last == false %},{% endif %}
+{% endfor %} {
+  display: none;
+}
+</style>
+
+<div class="columns">
+  <main class="column col-9 col-md-12" lang="{{ site.lang }}">
+    <div class="columns">
+      <div class="column col-12">
+        <h1>{{ page.title }}</h1>
+        <div class="filter">
+          <input type="radio" id="tag-all" class="filter-tag" name="filter-radio" hidden="" checked="">
+          {% for category in site.categories %}
+          <input type="radio" id="tag-{{ category[0] | slugify }}" class="filter-tag" name="filter-radio" hidden="">
+          {% endfor %}
+
+          <div class="filter-nav">
+            <label class="chip cursor-pointer" for="tag-all">All</label>
+            {% for category in site.categories %}
+            <label class="chip cursor-pointer" for="tag-{{ category[0] | slugify }}">{{ category[0] }}</label>
+            {% endfor %}
+          </div>
+          <div class="filter-body columns">
+          {% for post in site.posts %}
+            <div class="column col-4" data-tag="tag-{{ post.categories[0] | slugify }}">
+              <div class="filter-item card">
+                <div class="card-header">
+                  <a class="card-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+                  <div class="card-subtitle">{{ post.categories[0] }}</div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div class="divider-vert hide-md padding-0"></div>
+  <div class="column col-3 col-md-12">
+    {% include sidebar.html %}
+  </div>
+</div>
+

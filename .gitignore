@@ -3,4 +3,5 @@
 .sass-cache
 .gist-cache
 _stash
+_site
 public

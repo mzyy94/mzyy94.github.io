@@ -1,20 +1,18 @@
-<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
-<html><head>
-<title>404 Not Found</title>
-<style>body {visibility: hidden;}</style>
-</head><body>
-<h1>Not Found</h1>
-<p>The requested URL <span id="path"></span> was not found on this server.</p>
-<hr>
-<address>Apache/2.4.23 (Debian) Server at mzyy94.com Port 80</address>
-<script>
-if (location.pathname.match('/blog/tags/') || location.pathname.match('/blog/categories/')) {
-    var hash = '#' + location.pathname.split('/')[3]
-    var pathname = location.pathname.split('/').filter(function(_, i){return i < 3}).join('/')
-    location.href = location.protocol + '//' + location.host + pathname + hash
-} else {
-    document.getElementById('path').innerHTML=window.location.pathname;document.body.style.visibility="visible";
-}
-</script>
-<noscript><style>body {visibility: visible;}</style></noscript>
-</body></html>
+---
+title: 404 Not Found
+layout: default
+---
+<main class="flex empty">
+  <section class="empty">
+    <div class="empty-icon">
+      <i class="icon icon-message"></i>
+    </div>
+    <h4 class="empty-title">404 Not Found</h4>
+    <p class="empty-subtitle">Find posts here.</p>
+    <form class="empty-action input-group input-inline" method="get" action="{{ site.search_engine }}">
+      <input class="form-input" type="text" placeholder="Search" name="as_q">
+      <input type="hidden" name="as_sitesearch" value="{{ site.url | shorthand_url }}" >
+      <button type="submit" class="btn btn-primary input-group-btn">Search</button>
+    </form>
+  </section>
+</main>

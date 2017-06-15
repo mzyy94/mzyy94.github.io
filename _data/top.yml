@@ -1,0 +1,35 @@
+sites:
+  - name: TomoriNao.pro
+    url: https://tomorinao.pro
+    image: previews/tomorinao.pro.png
+  - name: Harekaze.org
+    url: https://harekaze.org
+    image: previews/harekaze.org.png
+  - name: splashworks.jp
+    url: https://splashworks.jp
+    image: previews/splashworks.jp.png
+  - name: KokoWalk-iOS
+    url: https://harekaze.org/KokoWalk-iOS
+    image: previews/harekaze.org_kokowalk-ios.png
+  - name: 渋い.mzyy94.com
+    url: https://xn--n8j037p.mzyy94.com
+    image: previews/xn--n8j037p.mzyy94.com.png
+  - name: yokunaine
+    url: https://yokunaine.mzyy94.com
+    image: previews/yokunaine.mzyy94.com.png
+  - name: フレンズ.みんな
+    url: https://xn--0cktc7c2a.xn--q9jyb4c/
+    image: previews/friends-minna.png
+presentations:
+  - 
+    url: http://www.slideshare.net/mzyy94/games-on-linux-kernelvm1
+    image: previews/no-game-no-life.png
+  - 
+    url: http://www.slideshare.net/mzyy94/packetoon
+    image: previews/packetoon.png
+  - 
+    url: http://www.slideshare.net/mzyy94/ss-63199765
+    image: previews/packetoon-alpha.png
+  - 
+    url: http://www.slideshare.net/mzyy94/subscriber-identity-module-66892458
+    image: previews/subscriber-identity-module.png
