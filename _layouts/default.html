@@ -58,5 +58,20 @@
     ga('send', 'pageview');
   </script>
   {% endif %}
+  <script>
+  var loadcss = function(file) {
+    var load = requestAnimationFrame || mozRequestAnimationFrame ||
+      webkitRequestAnimationFrame || msRequestAnimationFrame || function(c) {window.addEventListener('load', c)};
+    load(function() {
+      var l = document.createElement('link'); l.rel = 'stylesheet';
+      l.href = file;
+      var h = document.getElementsByTagName('head')[0]; h.parentNode.insertBefore(l, h);
+    })
+  };
+  {% assign defered_css = site.static_files | where: "defered_css", true %}
+  {% for css in defered_css %}
+  loadcss("{{ css.path | relative_url }}");
+  {% endfor %}
+  </script>
 </body>
 </html>

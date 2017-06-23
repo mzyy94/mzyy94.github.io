@@ -87,6 +87,16 @@ defaults:
       assets: true
       index: 2
   - scope:
+      path: "assets/stylesheets/spectre-icons.min.css"
+    values:
+      assets: false
+      defered_css: true
+  - scope:
+      path: "assets/stylesheets/syntax.css"
+    values:
+      assets: false
+      defered_css: true
+  - scope:
       path: ""
       type: "posts"
     values:
