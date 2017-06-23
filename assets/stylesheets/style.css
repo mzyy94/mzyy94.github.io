@@ -70,3 +70,9 @@ pre, pre code, pre code * {
 .pocket-btn {
   display: inline-block;
 }
+
+@media screen and (max-width: 840px) {
+  .tooltip::after {
+    display: none !important;
+  }
+}
