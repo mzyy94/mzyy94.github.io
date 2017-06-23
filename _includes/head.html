@@ -7,7 +7,7 @@
   <link rel="apple-touch-icon" href="">
   {% seo %}
   {% feed_meta %}
-{% assign asset_files = site.static_files | where: "assets", true %}
+{% assign asset_files = site.static_files | where: "assets", true | sort: 'index' %}
 {% for file in asset_files %}
 {% if file.extname == '.css' %}
   {% if file.basename == 'noscript' %}
@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="{{ file.path | relative_url }}">
   {% endif %}
 {% elsif file.extname == '.js' %}
-  <script src="{{ file.path | relative_url }}"></script>
+  <script defer src="{{ file.path | relative_url }}"></script>
 {% endif %}
 {% endfor %}
 </head>

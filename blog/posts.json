@@ -1,0 +1,11 @@
+---
+---
+{
+  "posts": [{% for post in site.posts %}
+    {
+      "date": { {{ post.date | date: '"y": %Y, "m":%-m, "d":%-d' }} },
+      "title": "{{ post.title | cdata_escape }}",
+      "url": "{{ post.url | relative_url }}"
+    }{% if forloop.last == false %},{% endif %}{% endfor %}
+  ]
+}

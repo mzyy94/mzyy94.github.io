@@ -80,6 +80,12 @@ defaults:
       path: "assets"
     values:
       assets: true
+      index: 1
+  - scope:
+      path: "assets/javascript/main.js"
+    values:
+      assets: true
+      index: 2
   - scope:
       path: ""
       type: "posts"
