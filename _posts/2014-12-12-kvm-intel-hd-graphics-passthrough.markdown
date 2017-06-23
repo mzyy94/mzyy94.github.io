@@ -1,8 +1,6 @@
 ---
-layout: post
 title: "KVMでQSVするためIntel HD Graphicsパススルーするー"
 date: 2014-12-12 23:59:49 +0900
-comments: true
 categories: linux
 tags: kvm qsv kernel
 image:

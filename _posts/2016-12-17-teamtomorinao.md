@@ -1,8 +1,6 @@
 ---
-layout: post
 title: "Team TomoriNaoのサイトの秘密"
 date: 2016-12-17 17:00:00 +0900
-comments: true
 categories: html
 tags: svg css3 html5 smil
 image: /blog/resources/images/2016/12/17/tomorinao.pro.png

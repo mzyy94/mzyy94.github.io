@@ -1,8 +1,6 @@
 ---
-layout: post
 title: "JavaScriptの記号だけで'1'を作るコードゴルフ"
 date: 2014-01-22 11:02:22 +0900
-comments: true
 categories: javascript
 tags: codegolf
 image: /blog/resources/images/2014/1/22/javascript-one-codegolf.png

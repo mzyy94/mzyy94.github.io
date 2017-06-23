@@ -75,12 +75,16 @@ exclude:
 # ----------------------- #
 #        Defaults         #
 # ----------------------- #
-# for assets
 defaults:
   - scope:
       path: "assets"
     values:
       assets: true
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: post
 
 # ----------------------- #
 #        SNS Share        #

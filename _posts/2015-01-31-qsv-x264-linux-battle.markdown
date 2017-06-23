@@ -1,8 +1,6 @@
 ---
-layout: post
 title: "LinuxでQSVとH.264のエンコード対決"
 date: 2015-01-31 19:23:04 +0900
-comments: true
 categories: linux
 tags: ffmpeg qsv x264
 ---

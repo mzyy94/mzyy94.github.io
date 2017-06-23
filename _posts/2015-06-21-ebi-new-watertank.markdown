@@ -1,8 +1,6 @@
 ---
-layout: post
 title: "エビ水槽を新しくした"
 date: 2015-06-21 16:35:31 +0900
-comments: true
 categories:  shrimp
 tags: charm shrimp
 image: /blog/resources/images/2015/06/21/ebi-new-watertank.jpg

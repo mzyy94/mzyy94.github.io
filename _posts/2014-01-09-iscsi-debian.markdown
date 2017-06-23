@@ -1,8 +1,6 @@
 ---
-layout: post
 title: "debianでiscsi target/initiator動作させるメモ"
 date: 2014-01-09 13:45:08 +0900
-comments: true
 categories: network
 tags: iscsi debian
 image: /blog/resources/images/2014/1/9/debian-iscsi.png

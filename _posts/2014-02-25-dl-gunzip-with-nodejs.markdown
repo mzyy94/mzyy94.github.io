@@ -1,8 +1,6 @@
 ---
-layout: post
 title: "Node.jsでダウンロードしながらGunzipしてmd5の計算しながら保存する奴"
 date: 2014-02-25 22:18:21 +0900
-comments: true
 categories: nodejs
 tags: zlib gunzip crypto md5 http
 image: /blog/resources/images/2014/2/25/dl-gunzip-with-nodejs.png

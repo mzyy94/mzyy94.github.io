@@ -1,8 +1,6 @@
 ---
-layout: post
 title: "柚子胡椒でサーバーを壊さないために"
 date: 2015-03-06 18:05:49 +0900
-comments: true
 categories: misc
 tags: yuzu kosho
 ---

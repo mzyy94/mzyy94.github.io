@@ -1,8 +1,6 @@
 ---
-layout: post
 title: "友利奈緒「いままでとこれから」"
 date: 2015-12-01 19:33:05 +0900
-comments: true
 categories: tomorinao
 tags: tomorinao
 image: /blog/resources/images/2015/12/01/tomorinao.jpg

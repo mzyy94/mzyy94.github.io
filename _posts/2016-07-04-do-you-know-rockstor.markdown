@@ -1,8 +1,6 @@
 ---
-layout: post
 title: "NAS用OSにRockstorという選択"
 date: 2016-07-04 20:12:14 +0900
-comments: true
 categories: linux
 tags: docker rockstor btrfs nas
 image: /blog/resources/images/2016/07/04/rockstor-disks.png

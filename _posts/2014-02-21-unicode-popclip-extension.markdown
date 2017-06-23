@@ -1,8 +1,6 @@
 ---
-layout: post
 title: "Unicode形式に変換するPopClipのExtensionを作りたかっただけだったのに"
 date: 2014-02-21 17:46:27 +0900
-comments: true
 categories: bash
 tags: popclip bash unicode utf-8
 image: /blog/resources/images/2014/2/21/UnicodeEncode_popclipext.png

@@ -1,8 +1,6 @@
 ---
-layout: post
 title: "小さなえびを飼い始めて2ヶ月が過ぎた"
 date: 2015-04-26 23:46:19 +0900
-comments: true
 categories: shrimp
 tags: shrimp
 image: /blog/resources/images/2015/04/26/shrimp-bottle.jpg

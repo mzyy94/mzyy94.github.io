@@ -1,8 +1,6 @@
 ---
-layout: post
 title: "KodiでChinachuの録画を観るAdd-on作った"
 date: 2015-02-24 19:28:35 +0900
-comments: true
 categories: raspberry-pi
 tags: kodi osmc chinachu
 image: /blog/resources/images/2015/02/24/addon-info.png

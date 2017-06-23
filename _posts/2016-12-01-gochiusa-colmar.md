@@ -1,8 +1,6 @@
 ---
-layout: post
 title: "コルマールのひと時"
 date: 2016-12-01 00:00:01 +0900
-comments: true
 categories: trip
 tags: france gochiusa colmar elsass
 image: /blog/resources/images/2016/12/01/colmar.jpg

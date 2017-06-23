@@ -1,8 +1,6 @@
 ---
-layout: post
 title: "まどマギコンサート名古屋行ってきた"
 date: 2013-12-11 23:50:50 +0900
-comments: true
 draft: true
 categories: dialy
 tags: anime madomagi concert

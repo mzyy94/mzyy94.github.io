@@ -1,8 +1,6 @@
 ---
-layout: post
 title: "GTX 1070とKaby Lake i5で新しくメインPC組んだ"
 date: 2017-6-17 17:25:29 +0900
-comments: true
 categories: gadget
 tags: gpu pc dnn
 image: /blog/resources/images/2017/06/17/zbox-en1070k.jpg

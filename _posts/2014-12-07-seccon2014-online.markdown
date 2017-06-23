@@ -1,8 +1,6 @@
 ---
-layout: post
 title: "SECCON2014 Online英語版予選 Write-up"
 date: 2014-12-07 17:59:06 +0900
-comments: true
 categories: ctf
 tags: seccon seccon2014
 image: /blog/resources/images/2014/12/7/SECCON2014Online_en.png

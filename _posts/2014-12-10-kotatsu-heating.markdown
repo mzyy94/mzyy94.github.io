@@ -1,8 +1,6 @@
 ---
-layout: post
 title: "サーバーの発熱でこたつを温める"
 date: 2014-12-10 00:02:35 +0900
-comments: true
 categories: server
 tags: kotatsu
 image: /blog/resources/images/2014/12/10/kotatsu.jpg

@@ -1,8 +1,6 @@
 ---
-layout: post
 title: "ネットエージェント最終面接問題 Write-up その2"
 date: 2015-04-14 00:05:14 +0900
-comments: true
 categories: ctf
 tags: netagent
 ---
