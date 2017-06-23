@@ -24,7 +24,8 @@ layout: default
           </header>
           {% if post.image %}
           <div class="card-image">
-            <img src="{{ post.image }}" class="img-responsive">
+            {% assign image_ext = post.image | split: "." | last | prepend: "." %}
+            <img src="{{ post.image | replace: image_ext, '-small' | append: image_ext }}" class="img-responsive">
           </div>
           {% endif %}
           <article class="card-body">
