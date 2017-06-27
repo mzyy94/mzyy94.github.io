@@ -3,8 +3,8 @@ title: "debianでiscsi target/initiator動作させるメモ"
 date: 2014-01-09 13:45:08 +0900
 categories: network
 tags: iscsi debian
-image: /blog/resources/images/2014/1/9/debian-iscsi.png
 ---
+
 Linux上でのiSCSIパケット収集のためにVirtual Boxで作成した、Debian 7.0.0にiSCSI initiatorとtargetを入れたときのメモを起こしておきます。
 
 <!-- more -->
@@ -30,13 +30,15 @@ Debian 7.0.0| Debian 7.0.0
 
 iSCSIに関するパッケージは以下のとおり。targetはiscsitargetとiscsitarget-dkms、イニシエータはopen-iscsiとなっています。
 
-<code class="code">root@debian:~# aptitude search iscsi
+```
+root@debian:~# aptitude search iscsi
 p   iscsitarget                                            - iSCSI Enterprise Target userland tools
 p   iscsitarget-dkms                                       - iSCSI Enterprise Target kernel module source - dkms version
 p   libiscsi-bin                                           - iSCSI client shared library - utilities
 p   libiscsi-dev                                           - iSCSI client shared library
 p   libiscsi1                                              - iSCSI client shared library
-p   open-iscsi                                             - High performance, transport independent iSCSI implementation</code>
+p   open-iscsi                                             - High performance, transport independent iSCSI implementation
+```
 
 まずサーバーとなるターゲットのインストールから。
 rootで`aptitude install iscsitarget iscsitarget-dkms`としてパッケージインストールして下記のとおりに設定し、iSCSIターゲットを有効にします。
@@ -51,23 +53,29 @@ rootで`aptitude install iscsitarget iscsitarget-dkms`としてパッケージ�
 iSCSIターゲットの設定書式は設定ファイルにもサンプルがありますが、最小限の記述は以下の様な形式になります。
 ここではfileioタイプを用い、単一ファイルをあたかもSCSIデバイスとして利用する方法を取ります。
 
-<code class="code">Target iqn.yyyy-mm.&lt;reversed domain name&gt;[:identifier]
-   Lun 0 Path=&lt;image file path&gt;,Type=fileio,ScsiId=&lt;id&gt;,ScsiSN=&lt;sn&gt;</code>
+```
+Target iqn.yyyy-mm.&lt;reversed domain name&gt;[:identifier]
+   Lun 0 Path=&lt;image file path&gt;,Type=fileio,ScsiId=&lt;id&gt;,ScsiSN=&lt;sn&gt;
+```
 
 各所で紹介されている記事にはScsiIDやScsiSNを指定していないものもありましたが、open-iscsi 2.0.873@Debian 7.0.0ではSCSIデバイスとして認識されないのでちゃんとつけておきましょう（これがわからず1時間くらい考えこんでた）。
 
 Pathで指定するファイルは`dd if=/dev/zero of=/disk.img bs=1 count=0 seek=10G`などで適当につくってしまいましょう。
 今回はこのように設定しました。
 
-<code class="code">Target iqn.2014-01.localhost:fileio.test
-   Lun 0 Path=/root/disk.img,Type=fileio,ScsiId=test,ScsiSN=test</code>
+```
+Target iqn.2014-01.localhost:fileio.test
+   Lun 0 Path=/root/disk.img,Type=fileio,ScsiId=test,ScsiSN=test
+```
 
 ここまででターゲットの設定は終わりなので、サービスを再起動します。
 
-<code class="code">root@debian:~# service iscsitarget restart
+```
+root@debian:~# service iscsitarget restart
 Removing iSCSI enterprise target devices: :.
 Starting iSCSI enterprise target service:.
-.</code>
+.
+```
 
 エラーに関しては多くは出力されないので、`dmesg | tail`で確認するなりした方がいいと思います。
 正常に動作しているかどうかは`neststat -a | grep iscsi`や`lsof -i:3260`で状態をみて判断します。
@@ -80,7 +88,9 @@ Starting iSCSI enterprise target service:.
 
 iscsiadmに関して詳しいことはmanを見るとして、今回繋げるためには以下のようにして簡単ログインしてしまいましょう。
 
-<code class="code">root@debian:~# iscsiadm -m discovery -t sendtargets -p 127.0.0.1 -l</code>
+```
+root@debian:~# iscsiadm -m discovery -t sendtargets -p 127.0.0.1 -l
+```
 
 オプションに関して詳しいことはmanをみてもらうとして、今回使ったオプションは次のような意味を持っています。
 
@@ -96,7 +106,8 @@ sendtargets|準iSCSIプロトコルを用いているターゲット探索
 
 これで接続し、ちゃんとSCSIデバイスとして認識できていればdmesgに以下のように出ます。
 
-<code class="code">[ 6484.501041] scsi3 : iSCSI Initiator over TCP/IP
+```
+[ 6484.501041] scsi3 : iSCSI Initiator over TCP/IP
 [ 6484.764505] scsi 3:0:0:0: Direct-Access     IET      VIRTUAL-DISK     0    PQ: 0 ANSI: 4
 [ 6484.765289] sd 3:0:0:0: [sdb] 2097152 512-byte logical blocks: (1.07 GB/1.00 GiB)
 [ 6484.765325] sd 3:0:0:0: [sdb] Write Protect is off
@@ -104,13 +115,15 @@ sendtargets|準iSCSIプロトコルを用いているターゲット探索
 [ 6484.765389] sd 3:0:0:0: [sdb] Write cache: disabled, read cache: enabled, doesn't support DPO or FUA
 [ 6484.766030]  sdb: unknown partition table
 [ 6484.766303] sd 3:0:0:0: [sdb] Attached SCSI disk
-[ 6484.766417] sd 3:0:0:0: Attached scsi generic sg2 type 0</code>
+[ 6484.766417] sd 3:0:0:0: Attached scsi generic sg2 type 0
+```
 
 こんなかんじの出力があれば、大体検討はつくと思いますが、/dev/sdbにiSCSIターゲットがSCSIデバイスとして認識されています。
 このブロックデバイスをパーティショニングし、フォーマットし、マウントすることで実際にディスクとして利用することが出来ます。
 こんなかんじです。
 
-<pre class="code">root@debian:~# fdisk /dev/sdb
+```
+root@debian:~# fdisk /dev/sdb
 Device contains neither a valid DOS partition table, nor Sun, SGI or OSF disklabel
 Building a new DOS disklabel with disk identifier 0x86017ce7.
 Changes will remain in memory only, until you decide to write them.
@@ -168,11 +181,16 @@ tmpfs                                                    50M  240K   50M   1% /r
 /dev/disk/by-uuid/f5aa3b2c-46ae-4b43-8191-1173de38f1d8   19G 1022M   17G   6% /
 tmpfs                                                   5.0M     0  5.0M   0% /run/lock
 tmpfs                                                   276M     0  276M   0% /run/shm
-/dev/sdb1                                              1007M   18M  939M   2% /root/mount</pre>
+/dev/sdb1                                              1007M   18M  939M   2% /root/mount
+```
 
 
 あとはマウントしたディレクトリに対して好き放題アクセスしたら、切り離しておきます。
-<code class="code">root@debian:~# iscsiadm -m session -u</code>
+
+```
+root@debian:~# iscsiadm -m session -u
+```
+
 オプションは、
 
 Option | Sense
