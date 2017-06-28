@@ -76,3 +76,7 @@ pre, pre code, pre code * {
     display: none !important;
   }
 }
+
+p {
+  text-indent: 1em;
+}
