@@ -75,6 +75,11 @@ pre, pre code, pre code * {
   .tooltip::after {
     display: none !important;
   }
+  table {
+    overflow-x: auto;
+    display: block;
+    white-space: nowrap;
+  }
 }
 
 p {
