@@ -6,17 +6,19 @@ layout: page
   <h2>Web sites</h2>
   <div class="columns">
     {% for extsite in site.data.top.sites %}
-    <a class="parallax column col-4 col-sm-12" href="{{ extsite.url }}">
-      <div class="parallax-top-left"></div>
-      <div class="parallax-top-right"></div>
-      <div class="parallax-bottom-left"></div>
-      <div class="parallax-bottom-right"></div>
-      <div class="parallax-content">
-        <div class="parallax-front">
-          <h2>{{ extsite.name }}</h2>
-        </div>
-        <div class="parallax-back">
-          <img src="{{ extsite.image }}" class="img-responsive rounded" alt="{{ extsite.name }}" />
+    <a class="column col-4 col-sm-12" href="{{ extsite.url }}">
+      <div class="parallax">
+        <div class="parallax-top-left"></div>
+        <div class="parallax-top-right"></div>
+        <div class="parallax-bottom-left"></div>
+        <div class="parallax-bottom-right"></div>
+        <div class="parallax-content">
+          <div class="parallax-front">
+            <h2>{{ extsite.name }}</h2>
+          </div>
+          <div class="parallax-back">
+            <img src="{{ extsite.image }}" class="img-responsive rounded" alt="{{ extsite.name }}" />
+          </div>
         </div>
       </div>
     </a>
@@ -25,17 +27,19 @@ layout: page
   <h2>Presentations</h2>
   <div class="columns">
     {% for presentation in site.data.top.presentations %}
-    <a class="parallax column col-3 col-sm-12" href="{{ presentation.url }}">
-      <div class="parallax-top-left"></div>
-      <div class="parallax-top-right"></div>
-      <div class="parallax-bottom-left"></div>
-      <div class="parallax-bottom-right"></div>
-      <div class="parallax-content">
-        <div class="parallax-front">
-          <h2>{{ presentation.name }}</h2>
-        </div>
-        <div class="parallax-back">
-          <img src="{{ presentation.image }}" class="img-responsive rounded" alt="{{ presentation.name }}" />
+    <a class="column col-3 col-sm-12" href="{{ presentation.url }}">
+      <div class="parallax">
+        <div class="parallax-top-left"></div>
+        <div class="parallax-top-right"></div>
+        <div class="parallax-bottom-left"></div>
+        <div class="parallax-bottom-right"></div>
+        <div class="parallax-content">
+          <div class="parallax-front">
+            <h2>{{ presentation.name }}</h2>
+          </div>
+          <div class="parallax-back">
+            <img src="{{ presentation.image }}" class="img-responsive rounded" alt="{{ presentation.name }}" />
+          </div>
         </div>
       </div>
     </a>
