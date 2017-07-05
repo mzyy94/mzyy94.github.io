@@ -1,8 +1,8 @@
 ---
 title: "OS X向けmikutterパッケージ(Homebrew)作ったよ"
 date: 2015-03-13 10:48:00 +0900
-categories: mikutter
-tags: brew
+categories: misc
+tags: brew mikutter
 image: /blog/resources/images/2015/03/13/mikutter-brew.png
 ---
 

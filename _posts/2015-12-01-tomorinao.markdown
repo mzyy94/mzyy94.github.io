@@ -1,7 +1,7 @@
 ---
 title: "友利奈緒「いままでとこれから」"
 date: 2015-12-01 19:33:05 +0900
-categories: tomorinao
+categories: misc
 tags: tomorinao
 image: /blog/resources/images/2015/12/01/tomorinao.jpg
 ---

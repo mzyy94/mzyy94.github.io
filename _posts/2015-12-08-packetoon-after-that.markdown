@@ -1,7 +1,7 @@
 ---
 title: "実践イカパケット解析のスライドテーマ"
 date: 2015-12-08 02:06:35 +0900
-categories: etc
+categories: misc
 tags: splatoon packetoon ika
 image: /blog/resources/images/2015/12/08/slidoon.png
 ---
