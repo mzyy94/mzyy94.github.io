@@ -31,7 +31,7 @@ image: /blog/resources/images/2017/07/05/surface_ergonomic_keyboard.jpg
 
 ### Sculpt Ergonomic Keyboard
 
-<a href="https://www.amazon.co.jp/dp/B00EN3DSS6/ref=as_li_ss_il?ie=UTF8&linkCode=li3&tag=mzyy-22&linkId=48dce6f009c07a4e7a8371be9ecbde41" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B00EN3DSS6&Format=_SL250_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22" ></a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=mzyy-22&l=li3&o=9&a=B00EN3DSS6" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+<a href="https://www.amazon.co.jp/dp/B00EN3DSS6/ref=as_li_ss_il?ie=UTF8&linkCode=li3&tag=mzyy-22&linkId=48dce6f009c07a4e7a8371be9ecbde41" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B00EN3DSS6&Format=_SL500_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22" ></a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=mzyy-22&l=li3&o=9&a=B00EN3DSS6" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
 
 
 これらの条件を満たしたキーボードとして、数年前から気になっていたのが[Sculpt Ergonomic Keyboard](https://www.amazon.co.jp/dp/B00EN3DSS6)。
@@ -43,7 +43,7 @@ image: /blog/resources/images/2017/07/05/surface_ergonomic_keyboard.jpg
 
 そして昨年下旬に __米Microsoft__ がSculpt Ergonomic Keyboardの後継にあたるSurface Ergonomic Keyboardを発売しました。
 
-<a href="https://www.amazon.co.jp/Surface-Ergonomic-%E3%82%AD%E3%83%BC%E3%83%9C%E3%83%BC%E3%83%89-%E8%8B%B1%E5%AD%97%E3%82%AD%E3%83%BC%E9%85%8D%E5%88%97/dp/B06VXX3H45/ref=as_li_ss_il?s=computers&ie=UTF8&qid=1499255587&sr=1-2&keywords=surface+ergonomic&linkCode=li3&tag=mzyy-22&linkId=e554f68dca6cc622c330a4ab5aca9807" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B06VXX3H45&Format=_SL250_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22" ></a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=mzyy-22&l=li3&o=9&a=B06VXX3H45" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+<a href="https://www.amazon.co.jp/Surface-Ergonomic-%E3%82%AD%E3%83%BC%E3%83%9C%E3%83%BC%E3%83%89-%E8%8B%B1%E5%AD%97%E3%82%AD%E3%83%BC%E9%85%8D%E5%88%97/dp/B06VXX3H45/ref=as_li_ss_il?s=computers&ie=UTF8&qid=1499255587&sr=1-2&keywords=surface+ergonomic&linkCode=li3&tag=mzyy-22&linkId=e554f68dca6cc622c330a4ab5aca9807" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B06VXX3H45&Format=_SL500_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22" ></a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=mzyy-22&l=li3&o=9&a=B06VXX3H45" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
 
 重要なこだわりポイントは満たしているものの、テンキーがありコンパクトさに欠けるのが短所ではありますが、
 Sculpt Ergonomic Keyboardのようなチープなキートップや「ッターン！」を邪魔するエンターキーの右のマイナーなキーがなかったりと、
@@ -51,7 +51,7 @@ Sculpt Ergonomic Keyboardのようなチープなキートップや「ッター�
 加えて高く評価したいのが、Alcantara素材を採用したリストレストが一体となっている点。
 机と手首の接地面が気になってしかたない体質なので、家でも職場でもアームレストを使っているので、このこだわりの一体型リストレストはとても好感が持てます。
 
-<a href="https://www.amazon.co.jp/%E3%82%B5%E3%83%B3%E3%83%AF%E3%82%B5%E3%83%97%E3%83%A9%E3%82%A4-TOK-MU3NBK-%E3%82%AD%E3%83%BC%E3%83%9C%E3%83%BC%E3%83%89%E7%94%A8%E4%BD%8E%E5%8F%8D%E7%99%BA%E3%83%AA%E3%82%B9%E3%83%88%E3%83%AC%E3%82%B9%E3%83%88-%E3%83%96%E3%83%A9%E3%83%83%E3%82%AF/dp/B00OAZ7U8G/ref=as_li_ss_il?ie=UTF8&qid=1498639868&sr=8-1&linkCode=li2&tag=mzyy-22&linkId=1312514322859ce904b44df375686e53" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B00OAZ7U8G&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22" ></a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=mzyy-22&l=li2&o=9&a=B00OAZ7U8G" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+<a href="https://www.amazon.co.jp/%E3%82%B5%E3%83%B3%E3%83%AF%E3%82%B5%E3%83%97%E3%83%A9%E3%82%A4-TOK-MU3NBK-%E3%82%AD%E3%83%BC%E3%83%9C%E3%83%BC%E3%83%89%E7%94%A8%E4%BD%8E%E5%8F%8D%E7%99%BA%E3%83%AA%E3%82%B9%E3%83%88%E3%83%AC%E3%82%B9%E3%83%88-%E3%83%96%E3%83%A9%E3%83%83%E3%82%AF/dp/B00OAZ7U8G/ref=as_li_ss_il?ie=UTF8&qid=1498639868&sr=8-1&linkCode=li2&tag=mzyy-22&linkId=1312514322859ce904b44df375686e53" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B00OAZ7U8G&Format=_SL500_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22" ></a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=mzyy-22&l=li2&o=9&a=B00OAZ7U8G" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
 
 [Amazon \| サンワサプライ キーボード用低反発リストレスト(ブラック) TOK-MU3NBK \| パソコン・周辺機器 \| パソコン・周辺機器 通販](https://www.amazon.co.jp/%E3%82%B5%E3%83%B3%E3%83%AF%E3%82%B5%E3%83%97%E3%83%A9%E3%82%A4-TOK-MU3NBK-%E3%82%AD%E3%83%BC%E3%83%9C%E3%83%BC%E3%83%89%E7%94%A8%E4%BD%8E%E5%8F%8D%E7%99%BA%E3%83%AA%E3%82%B9%E3%83%88%E3%83%AC%E3%82%B9%E3%83%88-%E3%83%96%E3%83%A9%E3%83%83%E3%82%AF/dp/B00OAZ7U8G/ref=sr_1_1?ie=UTF8&tag=mzyy-22&qid=1498639868&sr=8-1)
 
