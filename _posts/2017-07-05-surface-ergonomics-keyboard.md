@@ -34,7 +34,7 @@ image: /blog/resources/images/2017/07/05/surface_ergonomic_keyboard.jpg
 <a href="https://www.amazon.co.jp/dp/B00EN3DSS6/ref=as_li_ss_il?ie=UTF8&linkCode=li3&tag=mzyy-22&linkId=48dce6f009c07a4e7a8371be9ecbde41" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B00EN3DSS6&Format=_SL500_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22" ></a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=mzyy-22&l=li3&o=9&a=B00EN3DSS6" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
 
 
-これらの条件を満たしたキーボードとして、数年前から気になっていたのが[Sculpt Ergonomic Keyboard](https://www.amazon.co.jp/dp/B00EN3DSS6)。
+これらの条件を満たしたキーボードとして、数年前から気になっていたのが[Sculpt Ergonomic Keyboard](https://www.amazon.co.jp/dp/B00EN3DSS6/ref=as_li_ss_il?ie=UTF8&linkCode=li3&tag=mzyy-22&linkId=48dce6f009c07a4e7a8371be9ecbde41)。
 しかし店頭で実物を触ってみると、キートップが変に丸みがかっており思いのほかチープであったのと、エンターキーの右にあるマイナーなキーのせいで「ッターン！」が失敗することが気になったため、
 よりよい物が登場するのを待っていました。
 
