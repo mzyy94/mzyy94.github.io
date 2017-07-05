@@ -4,7 +4,6 @@ html, body {
 
 article img, article svg {
   max-width: 100%;
-  margin-left: -1em;
 }
 
 pre, pre code, pre code * {
@@ -83,6 +82,6 @@ pre, pre code, pre code * {
   }
 }
 
-p {
-  text-indent: 1em;
+p::first-letter {
+  padding-left: 1em;
 }
