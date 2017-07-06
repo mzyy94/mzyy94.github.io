@@ -100,7 +100,7 @@ MacBook AirのmacOS Sierraで常用していたのですが、[前回の記事](
 このときはMacBook Air側のBluetoothの不調を疑い、PRAMとNVRAMリセットとメニューバーのBluetoothからデバッグ⇒Bluetoothモジュールをリセット で初期化を行いました。
 そして再度ペアリングを試みるも、周辺のBluetooth機器一覧には表示されるもののPINの入力ダイアログが表示されず、ペアリングができない状況になってしまいました。
 
-原因を探るため、Bluettoth HCIをキャプチャしたところ、次のようにConnectionコマンドが失敗していることがわかりました。
+原因を探るため、Bluetooth HCIをキャプチャしたところ、次のようにConnectionコマンドが失敗していることがわかりました。
 
 <pre class="highlight code"><code>
 Frame 31: 28 bytes on wire (224 bits), 28 bytes captured (224 bits)
@@ -257,6 +257,7 @@ macOSでは、以下のように認識されました。
 
 昨年1月に4Kディスプレイを導入し作業環境の拡大を行い、今年1月にFull HDディスプレイを追加して広大な作業場を確保しました。
 そして今回キーボードを新調して理想の作業環境を手に入れることができました。
+/Vlue
 
 ![Desktop](/blog/resources/images/2017/07/05/desktop.jpg)
 
