@@ -198,8 +198,8 @@ iPhoneの電子コンパスを使って方角を確かめ、正しい出口か�
 <blockquote class="twitter-tweet" lang="ja"><p><a href="https://twitter.com/hashtag/SDcardFindingBattle?src=hash">#SDcardFindingBattle</a> <a href="http://t.co/v9Jca4uFE4">pic.twitter.com/v9Jca4uFE4</a></p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584911834458689536">2015, 4月 6</a></blockquote>
 
 
-[![IMG_2374.JPG](/blog/resources/images/2015/04/16/IMG_2374.JPG)
-[![IMG_2375.JPG](/blog/resources/images/2015/04/16/IMG_2375.JPG)
+![IMG_2374.JPG](/blog/resources/images/2015/04/16/IMG_2374.JPG)
+![IMG_2375.JPG](/blog/resources/images/2015/04/16/IMG_2375.JPG)
 
 のんびりと写真を撮っていたからでしょうか、駅まで残り250mの地点ですでに電車出発まで残り2分を切ってしまいました。
 
@@ -210,7 +210,7 @@ iPhoneの電子コンパスを使って方角を確かめ、正しい出口か�
 <blockquote class="twitter-tweet" lang="ja"><p>ギリッギリw <a href="https://twitter.com/hashtag/SDcardFindingBattle?src=hash">#SDcardFindingBattle</a> (@ 足利駅 (Ashikaga Sta.) in 足利市, 栃木県) <a href="https://t.co/tkic86CCmO">https://t.co/tkic86CCmO</a></p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584914938298261504">2015, 4月 6</a></blockquote>
 
 
-<blockquote class="twitter-tweet" lang="ja"><p>最後猛ダッシュだったわw <a href="https://twitter.com/hashtag/SDcardFindingBattle?src=hash">#SDcardFindingBattle</a></p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584915058506870784">2015, 4月 6</a></blockquote>
+<blockquote class="twitter-tweet" lang="ja"><p>最後猛ダッシュだったわw <a href="https://twitter.com/hashtag/SDcardFindingBattle?src=hash">#SDcarFdFindingBattle</a></p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584915058506870784">2015, 4月 6</a></blockquote>
 
 
 <blockquote class="twitter-tweet" lang="ja"><p>あと30秒遅かったらリタイアだったわ <a href="https://twitter.com/hashtag/SDcardFindingBattle?src=hash">#SDcardFindingBattle</a></p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584915558820225025">2015, 4月 6</a></blockquote>
@@ -220,7 +220,7 @@ iPhoneの電子コンパスを使って方角を確かめ、正しい出口か�
 
 ちなみに足利駅には電車が飾ってありました。（こんなの撮影してないで急げというツッコミはなしで）
 
-[![IMG_2379.JPG](/blog/resources/images/2015/04/16/IMG_2379.JPG)
+![IMG_2379.JPG](/blog/resources/images/2015/04/16/IMG_2379.JPG)
 
 
 最後の乗り換えを終え、あとは前橋駅で降りるだけとなりました。なんとか電車で赤城山最寄駅までこぎつけることができる状態となり、これにて過酷な電車乗り換え編はおしまいとなります。
@@ -283,8 +283,8 @@ iPhoneの電子コンパスを使って方角を確かめ、正しい出口か�
 赤城山ビジターセンター行きのバスに乗ると、風景に大きな山が見えてきました。たぶん赤城山です。たぶん。
 
 
-[![IMG_2388.JPG](/blog/resources/images/2015/04/16/IMG_2388.JPG)
-[![IMG_2391.JPG](/blog/resources/images/2015/04/16/IMG_2391.JPG)
+![IMG_2388.JPG](/blog/resources/images/2015/04/16/IMG_2388.JPG)
+![IMG_2391.JPG](/blog/resources/images/2015/04/16/IMG_2391.JPG)
 
 
 バスで揺られて眠くなる中、標高1000mを越えたあたりから車窓から覗く景色が明るくなっていることに気づきます。
@@ -295,8 +295,8 @@ iPhoneの電子コンパスを使って方角を確かめ、正しい出口か�
 
 そう、残雪が景色を明るくしていたのです。また、赤城山大沼という湖は湖面が凍っていました。
 
-[![IMG_2395.JPG](/blog/resources/images/2015/04/16/IMG_2395.JPG)
-[![IMG_2398.JPG](/blog/resources/images/2015/04/16/IMG_2398.JPG)
+![IMG_2395.JPG](/blog/resources/images/2015/04/16/IMG_2395.JPG)
+![IMG_2398.JPG](/blog/resources/images/2015/04/16/IMG_2398.JPG)
 
 赤城山大洞バス停に到着し、降車します。降りるとき、バスの運転手にこう告げられました。
 
@@ -312,7 +312,7 @@ iPhoneの電子コンパスを使って方角を確かめ、正しい出口か�
 
 バス停を降りてすぐのところで登山者向けの案内看板を見つけました。
 
-[![IMG_2399.JPG](/blog/resources/images/2015/04/16/IMG_2399.JPG)
+![IMG_2399.JPG](/blog/resources/images/2015/04/16/IMG_2399.JPG)
 
 この看板の略図にある地蔵岳を越えてゆくコースを通ってSDカードの場所へと向かいます。看板の凡例にあるように、通る道は**歩道**となっているので比較的楽に登ることができると思いまいした。その歩道とやらはどこにあるのかとあたりを見渡すと、アスファルトで舗装された道がみつかりました。
 
@@ -333,7 +333,7 @@ iPhoneの電子コンパスを使って方角を確かめ、正しい出口か�
 
 よく滑る雪道を数十メートル進み、湖の方を眺めると大きな山がこちらを見守ってくれていました。
 
-[![IMG_2403.JPG](/blog/resources/images/2015/04/16/IMG_2403.JPG)
+![IMG_2403.JPG](/blog/resources/images/2015/04/16/IMG_2403.JPG)
 
 
 刻々と帰りのバスの時間が迫ってきているので、後悔はほどほどに先に進みます。
@@ -345,34 +345,34 @@ iPhoneの電子コンパスを使って方角を確かめ、正しい出口か�
 
 膝上まで沈む深い雪があるところや、雪解け水で小川ができているところを水浸しになりながらかけ進んでいきます。
 
-[![IMG_2405.JPG](/blog/resources/images/2015/04/16/IMG_2405.JPG)
-[![IMG_2410.JPG](/blog/resources/images/2015/04/16/IMG_2410.JPG)
-[![IMG_2412.JPG](/blog/resources/images/2015/04/16/IMG_2412.JPG)
-[![IMG_2413.JPG](/blog/resources/images/2015/04/16/IMG_2413.JPG)
-[![IMG_2414.JPG](/blog/resources/images/2015/04/16/IMG_2414.JPG)
+![IMG_2405.JPG](/blog/resources/images/2015/04/16/IMG_2405.JPG)
+![IMG_2410.JPG](/blog/resources/images/2015/04/16/IMG_2410.JPG)
+![IMG_2412.JPG](/blog/resources/images/2015/04/16/IMG_2412.JPG)
+![IMG_2413.JPG](/blog/resources/images/2015/04/16/IMG_2413.JPG)
+![IMG_2414.JPG](/blog/resources/images/2015/04/16/IMG_2414.JPG)
 
 <blockquote class="twitter-tweet" lang="ja"><p>Googleさんの案内相当険しかったですね。。これマップの地点の画像です <a href="https://twitter.com/hashtag/SDcardFindingBattle?src=hash">#SDcardFindingBattle</a> <a href="http://t.co/OthdUPcczu">pic.twitter.com/OthdUPcczu</a></p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584976426962530305">2015, 4月 6</a></blockquote>
 
 20分ほど登ったでしょうか、地蔵岳の登山道を抜け、車道に出てきました。
 
-[![IMG_2415.JPG](/blog/resources/images/2015/04/16/IMG_2415.JPG)
+![IMG_2415.JPG](/blog/resources/images/2015/04/16/IMG_2415.JPG)
 
 やっと雪道から解放されました。
 
 少し進むと小沼という湖がでてきました。
 
-[![IMG_2416.JPG](/blog/resources/images/2015/04/16/IMG_2416.JPG)
-[![IMG_2417.JPG](/blog/resources/images/2015/04/16/IMG_2417.JPG)
-[![IMG_2418.JPG](/blog/resources/images/2015/04/16/IMG_2418.JPG)
-[![IMG_2419.JPG](/blog/resources/images/2015/04/16/IMG_2419.JPG)
-[![IMG_2420.JPG](/blog/resources/images/2015/04/16/IMG_2420.JPG)
+![IMG_2416.JPG](/blog/resources/images/2015/04/16/IMG_2416.JPG)
+![IMG_2417.JPG](/blog/resources/images/2015/04/16/IMG_2417.JPG)
+![IMG_2418.JPG](/blog/resources/images/2015/04/16/IMG_2418.JPG)
+![IMG_2419.JPG](/blog/resources/images/2015/04/16/IMG_2419.JPG)
+![IMG_2420.JPG](/blog/resources/images/2015/04/16/IMG_2420.JPG)
 
 標高1450m地点とのことです。あと一息で目的地周辺です。
 凍った湖を左手に眺めながら車道脇をてくてくと歩き進んでいきます。
 
-[![IMG_2422.JPG](/blog/resources/images/2015/04/16/IMG_2422.JPG)
-[![IMG_2424.JPG](/blog/resources/images/2015/04/16/IMG_2424.JPG)
-[![IMG_2425.JPG](/blog/resources/images/2015/04/16/IMG_2425.JPG)
+![IMG_2422.JPG](/blog/resources/images/2015/04/16/IMG_2422.JPG)
+![IMG_2424.JPG](/blog/resources/images/2015/04/16/IMG_2424.JPG)
+![IMG_2425.JPG](/blog/resources/images/2015/04/16/IMG_2425.JPG)
 ![route-to-dest.png](/blog/resources/images/2015/04/16/route-to-dest.png)
 
 目的地周辺まで来ました。このときiPhoneの電波は圏外となっていました。
@@ -384,18 +384,18 @@ iPhoneの電子コンパスを使って方角を確かめ、正しい出口か�
 登山道が60cm超の雪まみれだったのにもかかわらず、SDカードが隠されている森は数cmの雪しかありませんでした。
 不幸中の幸いというものですね。
 
-[![IMG_2428.JPG](/blog/resources/images/2015/04/16/IMG_2428.JPG)
-[![IMG_2429.JPG](/blog/resources/images/2015/04/16/IMG_2429.JPG)
-[![IMG_2431.JPG](/blog/resources/images/2015/04/16/IMG_2431.JPG)
-[![IMG_2433.JPG](/blog/resources/images/2015/04/16/IMG_2433.JPG)
+![IMG_2428.JPG](/blog/resources/images/2015/04/16/IMG_2428.JPG)
+![IMG_2429.JPG](/blog/resources/images/2015/04/16/IMG_2429.JPG)
+![IMG_2431.JPG](/blog/resources/images/2015/04/16/IMG_2431.JPG)
+![IMG_2433.JPG](/blog/resources/images/2015/04/16/IMG_2433.JPG)
 
 道無き道を突き進んでいたのですが、途中で道らしきものを見つけそちらを歩き始めました。
 すると、看板とともに分岐点があらわれました。
 
 GPSによると、血の池方面に行けばよさそうなので、そちらへ進んでいきます。
 
-[![IMG_2435.JPG](/blog/resources/images/2015/04/16/IMG_2435.JPG)
-[![IMG_2437.JPG](/blog/resources/images/2015/04/16/IMG_2437.JPG)
+![IMG_2435.JPG](/blog/resources/images/2015/04/16/IMG_2435.JPG)
+![IMG_2437.JPG](/blog/resources/images/2015/04/16/IMG_2437.JPG)
 
 血の池に着くと、血の池にまつわる伝説と池の由来が書かれた看板がありました。
 この看板を読んでいると、すこし前に目にした単語を見つけました。
@@ -404,22 +404,22 @@ GPSによると、血の池方面に行けばよさそうなので、そちら�
 
 血の池の中心に来て辺りを見回すと、そこは静かな森でした。まぁ森に入って来たからあたりまえなのですが。
 
-[![IMG_2441.JPG](/blog/resources/images/2015/04/16/IMG_2441.JPG)
+![IMG_2441.JPG](/blog/resources/images/2015/04/16/IMG_2441.JPG)
 
 
 地図を拡大し、GPSだけを頼りにSDカードの位置まで行くと、kanto1_1.jpgに写っているのと同じような岩がたくさんある場所へと来ました。
 
-[![IMG_2445.JPG](/blog/resources/images/2015/04/16/IMG_2445.JPG)
+![IMG_2445.JPG](/blog/resources/images/2015/04/16/IMG_2445.JPG)
 
 
 よーくkanto1_1.jpgと目の前の岩岩を見比べ、それらしき岩を特定しました。
 
-[![IMG_2446.JPG](/blog/resources/images/2015/04/16/IMG_2446.JPG)
+![IMG_2446.JPG](/blog/resources/images/2015/04/16/IMG_2446.JPG)
 
 mondai10.txtによると、*ヒント：石の下のミンティア*とのことなので、石をめくってみます。
 
-[![IMG_2447.JPG](/blog/resources/images/2015/04/16/IMG_2447.JPG)
-[![IMG_2449.JPG](/blog/resources/images/2015/04/16/IMG_2449.JPG)
+![IMG_2447.JPG](/blog/resources/images/2015/04/16/IMG_2447.JPG)
+![IMG_2449.JPG](/blog/resources/images/2015/04/16/IMG_2449.JPG)
 
 ありました！ミンティアアップルフィズ味です！
 
@@ -427,13 +427,13 @@ mondai10.txtによると、*ヒント：石の下のミンティア*とのこと
 
 気になる中身は...
 
-[![IMG_2451.JPG](/blog/resources/images/2015/04/16/IMG_2451.JPG)
+![IMG_2451.JPG](/blog/resources/images/2015/04/16/IMG_2451.JPG)
 
 **待望のSDカードでした！やっとみつかりました！**
 9:24につくば駅から電車に乗り、15:24に発見したのでかれこれ6時間の旅でした。
 ものすごい達成感とSDカードの中身への興味から、岩場に腰を下ろしSDカードをマウントしてみてみました。
 
-[![IMG_2452.JPG](/blog/resources/images/2015/04/16/IMG_2452.JPG)
+![IMG_2452.JPG](/blog/resources/images/2015/04/16/IMG_2452.JPG)
 
 <pre style="border:none; color:inherit; background-color:inherit;">
 ＿人人人人人人人＿
@@ -449,10 +449,10 @@ mondai10.txtによると、*ヒント：石の下のミンティア*とのこと
 
 ### 午後3　帰宅編
 
-[![IMG_2454.JPG](/blog/resources/images/2015/04/16/IMG_2454.JPG)
-[![IMG_2455.JPG](/blog/resources/images/2015/04/16/IMG_2455.JPG)
-[![IMG_2457.JPG](/blog/resources/images/2015/04/16/IMG_2457.JPG)
-[![IMG_2458.JPG](/blog/resources/images/2015/04/16/IMG_2458.JPG)
+![IMG_2454.JPG](/blog/resources/images/2015/04/16/IMG_2454.JPG)
+![IMG_2455.JPG](/blog/resources/images/2015/04/16/IMG_2455.JPG)
+![IMG_2457.JPG](/blog/resources/images/2015/04/16/IMG_2457.JPG)
+![IMG_2458.JPG](/blog/resources/images/2015/04/16/IMG_2458.JPG)
 
 看板の指示通りに歩いていたら、あっさりと県道へと抜けることができ、さらに県道から血の池までの最短ルートとなる登山道の入り口の案内板がありました。
 hint7.txtのヤマヒゲナガケンミジンコから血の池が導けていれば、道無き道を進む必要もなく、この看板から血の池へ向かうことができていたかもしれません。
@@ -461,11 +461,11 @@ hint7.txtのヤマヒゲナガケンミジンコから血の池が導けてい�
 行きに降車した赤城山大洞バス停へは、あの**険しい登山道**を再度通らないといけないため、少し遠回りになりますが、赤城山ビジターセンターへと向かいます。
 行きとは逆で、右手に小沼を眺めながら下っていきます。
 
-[![IMG_2461.JPG](/blog/resources/images/2015/04/16/IMG_2461.JPG)
-[![IMG_2462.JPG](/blog/resources/images/2015/04/16/IMG_2462.JPG)
-[![IMG_2465.JPG](/blog/resources/images/2015/04/16/IMG_2465.JPG)
-[![IMG_2466.JPG](/blog/resources/images/2015/04/16/IMG_2466.JPG)
-[![IMG_2469.JPG](/blog/resources/images/2015/04/16/IMG_2469.JPG)
+![IMG_2461.JPG](/blog/resources/images/2015/04/16/IMG_2461.JPG)
+![IMG_2462.JPG](/blog/resources/images/2015/04/16/IMG_2462.JPG)
+![IMG_2465.JPG](/blog/resources/images/2015/04/16/IMG_2465.JPG)
+![IMG_2466.JPG](/blog/resources/images/2015/04/16/IMG_2466.JPG)
+![IMG_2469.JPG](/blog/resources/images/2015/04/16/IMG_2469.JPG)
 
 ただただ歩き進むだけだったので、何事もなく赤城山ビジターセンターに到着することができました。
 
@@ -475,7 +475,7 @@ hint7.txtのヤマヒゲナガケンミジンコから血の池が導けてい�
 
 ビジターセンター横に、赤城山公園に関するお得な掲示板がありました。
 
-[![IMG_2477.JPG](/blog/resources/images/2015/04/16/IMG_2477.JPG)
+![IMG_2477.JPG](/blog/resources/images/2015/04/16/IMG_2477.JPG)
 
 急いで降りてきた甲斐があってか、バスが来るまで1時間も余裕があったので、持って来たコーヒーと板チョコレートで休憩しました。
 
