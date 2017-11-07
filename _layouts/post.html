@@ -9,20 +9,7 @@ layout: default
       {% assign tags_page = site.html_pages | where: "id", "tags" | first %}
       <h1>{{ page.title }}</h1>
       {% if page.image %}
-      <div class="parallax mt-10">
-        <div class="parallax-top-left"></div>
-        <div class="parallax-top-right"></div>
-        <div class="parallax-bottom-left"></div>
-        <div class="parallax-bottom-right"></div>
-        <div class="parallax-content">
-          <div class="parallax-front">
-            <h2>{{ page.title }}</h2>
-          </div>
-          <div class="parallax-back">
-            <img src="{{ page.image }}" class="img-responsive rounded" alt="{{ page.title }}" />
-          </div>
-        </div>
-      </div>
+      <img src="{{ page.image }}" class="img-responsive rounded" alt="{{ page.title }}" />
       {% endif %}
       <ul class="breadcrumb">
         <li class="breadcrumb-item">
