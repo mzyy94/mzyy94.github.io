@@ -76,7 +76,7 @@ NanoPi NEO2に搭載されているAllwinner H5は赤外線信号をサポート
 [File:Allwinner H5 Datasheet V1.0.pdf - FriendlyARM WiKi](http://wiki.friendlyarm.com/wiki/index.php/File:Allwinner_H5_Datasheet_V1.0.pdf)
 
 そのため、Raspberry Piのときは簡単にできていたirsendによる送信ではなく、GPIOを制御して赤外線LEDを点滅させることで送信を行います。
-ただ、リモコンの赤外線は単なるLEDの点滅ではなく、38kHzでディーティ比1/3の変調が掛っています。
+ただ、リモコンの赤外線は単なるLEDの点滅ではなく、38kHzでデューティ比1/3の変調がかっています。
 よく参照される以下のサイトに目を通して、どういう形で最終的に送信すればいいかを知っておく必要があります。
 
 - [フォーマット](http://www.asahi-net.or.jp/~gt3n-tnk/IR_TX1.html)
