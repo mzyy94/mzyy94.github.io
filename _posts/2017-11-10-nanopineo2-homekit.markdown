@@ -290,6 +290,8 @@ pulse 488
 
 <script src="https://gist.github.com/mzyy94/5cf28ac56553142db9364d4178fc5ccc.js"></script>
 
+<script src="https://gist.github.com/mzyy94/37d6919fd4a3d97900d9a981255e66e4.js"></script>
+
 ## HomeKitで照明を操作
 
 照明をNanoPi NEO2で制御できることがわかったので、これをHomeKitでコントロールできるようにします。
@@ -302,7 +304,7 @@ homebridgeの設定はconfig.jsonファイルに記述する形で行います�
 <script src="https://gist.github.com/mzyy94/f7f008f50c9a9d7cd6d0922527ca722e.js"></script>
 
 先ほど作った適当なコマンドをたたくため、homebridge-cmdswitch2を使ってます。
-設定ファイルを`~/.homebridge/config.json`に配置したら、`homebridge`として起動するだけでホームアプリなどからの接続を待機し始めます。
+設定ファイルを **~/.homebridge/config.json** に配置したら、`homebridge`として起動するだけでホームアプリなどからの接続を待機し始めます。
 
 いい感じに起動するようだったら、よしなにsystemdのserviceを作って放り込んでおくといいと思う。
 
@@ -310,7 +312,7 @@ homebridgeの設定はconfig.jsonファイルに記述する形で行います�
 
 iPhoneを用いてホームアプリにhomebridgeで起動してるアクセサリを登録します。
 最近のhomebridgeは優秀で、起動時にクールな接続用のQRコードを表示してくれるようになりました。
-昔は微妙なPIN表示画面があっただけで、読み込みできなくて手動で入力する必要があったりしてものでした。
+昔は微妙なPIN表示画面があっただけで、読み込みできなくて手動で入力する必要があったりしたものでした。
 相変わらずMFi認証を取得していない「認定されていないアクセサリ」として表示されますが、そこは仕方ないのでこのまま追加します。
 
 ![screenshot](/blog/resources/images/2017/11/10/IMG_0063.PNG)
