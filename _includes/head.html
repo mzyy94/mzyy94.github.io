@@ -3,22 +3,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="format-detection" content="telephone=no">
-  <link rel="icon" type="image/x-icon" href="">
-  <link rel="apple-touch-icon" href="">
+  <link rel="icon" type="image/png" href="{{ site.logo }}">
+  <link rel="apple-touch-icon" href="{{ site.logo }}">
   {% seo %}
   {% feed_meta %}
-{% assign asset_files = site.static_files | where: "assets", true | sort: 'index' %}
-{% for file in asset_files %}
-{% if file.extname == '.css' %}
-  {% if file.basename == 'noscript' %}
+  <link rel="stylesheet" href="/assets/stylesheets/style.css">
   <noscript>
-  <link rel="stylesheet" href="{{ file.path | relative_url }}">
+  <link rel="stylesheet" href="/assets/stylesheets/noscript.css">
   </noscript>
-  {% else %}
-  <link rel="stylesheet" href="{{ file.path | relative_url }}">
-  {% endif %}
-{% elsif file.extname == '.js' %}
-  <script defer src="{{ file.path | relative_url }}"></script>
-{% endif %}
-{% endfor %}
+  <script defer src="/assets/javascript/tocbot.min.js"></script>
+  <script defer src="/assets/javascript/main.js"></script>
 </head>

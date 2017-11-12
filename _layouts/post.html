@@ -2,7 +2,7 @@
 layout: default
 ---
 
-<div class="columns mt-10">
+<div class="columns mt-2">
   <main class="column col-9 col-md-12" lang="{{ site.lang }}">
     <header>
       {% assign categories_page = site.html_pages | where: "id", "categories" | first %}
@@ -95,7 +95,7 @@ layout: default
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
     {% endif %}
   </main>
-  <div class="divider-vert hide-md padding-0"></div>
+  <div class="divider-vert hide-md p-0"></div>
   <div class="column col-3 col-md-12">
     {% include sidebar.html %}
   </div>

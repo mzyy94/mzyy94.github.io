@@ -5,20 +5,21 @@ layout: default
 <div class="columns">
   <main class="column col-9 col-md-12" lang="{{ site.lang }}">
     <div class="text-right">
-{% assign feedicon = site.static_files | where: "assets", true | where: "basename", "feed-icon" | first %}
+{% assign feedicon = site.static_files | where: "basename", "feed-icon" | first %}
       <a href='https://cloud.feedly.com/#subscription%2Ffeed%2F{{ site.feed.path | absolute_url | cgi_escape }}' target='blank'><img id='feedlyFollow' src='https://s3.feedly.com/img/follows/feedly-follow-logo-black_2x.png' alt='follow us in feedly' width='28' height='28'></a>
       <a href="{{ site.feed.path | relative_url }}"><img src="{{ feedicon.path }}" alt="feed icon"></a> 
     </div>
+{% assign categories_page = site.html_pages | where: "id", "categories" | first %}
     <div class="columns">
       {% for post in paginator.posts %}
       <section class="column col-6 col-sm-12">
-        <div class="card mt-10 mb-10">
+        <div class="card my-2">
           <header class="card-header">
             <h4 class="card-title text-bold"><a href="{{ post.url | relative_url}}">{{ post.title }}</a></h4>
-            <h6 class="card-subtitle">
+            <h6 class="card-subtitle text-normal text-gray">
                 {{ post.date | date_to_string }} /
                 {% for category in post.categories %}
-                <a href="#">{{ category }}</a>
+                <a href="{{ categories_page.url | relative_url }}">{{ category }}</a>
                 {% endfor %}
             </h6>
           </header>
@@ -27,6 +28,8 @@ layout: default
             {% assign image_ext = post.image | split: "." | last | prepend: "." %}
             <img src="{{ post.image | replace: image_ext, '-small' | append: image_ext }}" class="img-responsive">
           </div>
+          {% else %}
+            <div class="divider"></div>
           {% endif %}
           <article class="card-body">
             {{ post.excerpt }}
@@ -40,7 +43,7 @@ layout: default
     </div>
 
     {% if paginator.total_pages > 1 %}
-    <ul class="column col-12 pagination">
+    <ul class="column col-12 pagination flex-centered">
       <li class="page-item">
         {% if paginator.previous_page %}
         <a href="{{paginator.previous_page_path | relative_url }}">Previous</a>
@@ -68,7 +71,7 @@ layout: default
     {% endif %}
 
   </main>
-  <div class="divider-vert hide-md padding-0"></div>
+  <div class="divider-vert hide-md p-0"></div>
   <div class="column col-3 col-md-12">
     {% include sidebar.html %}
   </div>

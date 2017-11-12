@@ -31,14 +31,14 @@ layout: default
           {% endfor %}
 
           <div class="filter-nav">
-            <label class="chip cursor-pointer" for="tag-all">All</label>
+            <label class="chip c-hand" for="tag-all">All</label>
             {% for category in site.categories %}
-            <label class="chip cursor-pointer" for="tag-{{ category[0] | slugify }}">{{ category[0] }}</label>
+            <label class="chip c-hand" for="tag-{{ category[0] | slugify }}">{{ category[0] }}</label>
             {% endfor %}
           </div>
           <div class="filter-body columns">
           {% for post in site.posts %}
-            <div class="column col-4" data-tag="tag-{{ post.categories[0] | slugify }}">
+            <div class="column col-4 my-2" data-tag="tag-{{ post.categories[0] | slugify }}">
               <div class="filter-item card">
                 <div class="card-header">
                   <a class="card-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
@@ -52,7 +52,7 @@ layout: default
       </div>
     </div>
   </main>
-  <div class="divider-vert hide-md padding-0"></div>
+  <div class="divider-vert hide-md p-0"></div>
   <div class="column col-3 col-md-12">
     {% include sidebar.html %}
   </div>

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 {% include head.html %}
-<body class="container grid-1280">
-  <div class="colmuns mt-10 mb-10">
+<body class="container grid-xl">
+  <div class="colmuns my-2">
     <div class="column">
       <header class="navbar">
         <section class="navbar-section">
@@ -39,11 +39,11 @@
       </header>
     </div>
   </div>
-  {{ content | replace: '<table>', '<table class="table table-striped mt-10 mb-10">' | replace: '<pre class="highlight">', '<pre class="highlight code">' }}
+  {{ content | replace: '<table>', '<table class="table table-striped my-2">' | replace: '<pre class="highlight">', '<pre class="highlight code">' }}
   <div class="columns">
     <div class="column">
       <footer class="text-center">
-        Copyright &copy; {{ site.time | date: "%Y" }} {{ site.author }} {{ site.title }} - Powered by <a href="https://github.com/mzyy94/stainless">Stainless</a>
+        Copyright &copy; {{ site.time | date: "%Y" }} {{ site.author }} {{ site.title }} - Powered by <a href="https://github.com/picturepan2/spectre">Spectre.css</a>
       </footer>
     </div>
   </div>

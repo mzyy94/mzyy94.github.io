@@ -1,3 +1,10 @@
+---
+---
+
+@import "spectre";
+@import "spectre-exp";
+@import "spectre-icons";
+
 html, body {
   height: 100%;
 }
@@ -20,43 +27,27 @@ pre, pre code, pre code * {
   top: 10px;
 }
 
-.padding-0 {
-  padding: 0 !important;
-}
-
-.pagination {
-  justify-content: center;
-}
-
 .card-image img {
   width: 100%;
 }
 
-.card-body h1, .card-body h2, .card-body h3, .card-body h4, .card-body h5, .card-body h6 {
-  font-size: 2rem;
-  margin: 0.5rem auto;
-}
+.card-body {
+  h1, h2, h3, h4, h5, h6 {
+    font-size: 1rem;
+    margin: 0.5rem auto;
+  }
 
-.card-body ol li, .card-body ul li {
-  margin-top: 0;
-}
+  ol li, ul li {
+    margin-top: 0;
+  }
 
-.card-body p {
-  line-height: normal;
-}
-
-.parallax {
-  z-index: 10;
-}
-
-.cursor-pointer {
-  cursor: pointer;
+  p {
+    line-height: normal;
+  }
 }
 
 .flex.empty {
   height: 80%;
-  align-items: center;
-  justify-content: center;
 }
 
 [id^=___plusone] {

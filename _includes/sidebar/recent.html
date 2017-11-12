@@ -1,15 +1,16 @@
-<div class="panel mt-10">
+<div class="panel mt-2">
   <div class="panel-header">
-    <div class="panel-title">Recent</div>
+    <h5 class="panel-title">Recent</h5>
   </div>
   <div class="panel-body">
     {% for post in site.posts limit: site.recent_posts %}
     <div class="tile">
       <a class="tile-content text-clip" href="{{ post.url | relative_url }}">
-        <p class="tile-title text-ellipsis">{{ post.title }}</p>
-        <p class="tile-subtitle">{{ post.date | date_to_string }}</p>
+        <span class="tile-title text-ellipsis d-block">{{ post.title }}</span>
+        <span class="tile-subtitle text-gray d-block">{{ post.date | date_to_string }}</span>
       </a>
     </div>
+    <div class="divider"></div>
     {% endfor %}
   </div>
   {% assign archive_page = site.html_pages | where: "id", "archive" | first %}
