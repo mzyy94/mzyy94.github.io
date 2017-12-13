@@ -83,7 +83,7 @@ xhr.send();
 tocbot.init({
   tocSelector: '#toc',
   contentSelector: 'main article',
-  headingSelector: 'h1, h2, h3',
+  headingSelector: 'h1, h2, h3, h4, h5',
   listClass: 'nav',
   listItemClass: 'nav-item',
   activeLinkClass: 'text-bold',
