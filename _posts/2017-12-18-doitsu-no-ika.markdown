@@ -121,6 +121,8 @@ USBケーブルでNintendo SwitchのDockのUSBポートにつなげて待つ。
 
 ![second](/blog/resources/images/2017/12/18/drawing3.jpg)
 
+<blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">ドイツのトリ in Splatoon 2 | 犬アイコンのみっきー　<a href="https://t.co/qrlCPcNIbd">https://t.co/qrlCPcNIbd</a> <a href="https://twitter.com/hashtag/Splatoon2?src=hash&amp;ref_src=twsrc%5Etfw">#Splatoon2</a> <a href="https://twitter.com/hashtag/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B32?src=hash&amp;ref_src=twsrc%5Etfw">#スプラトゥーン2</a> <a href="https://twitter.com/hashtag/NintendoSwitch?src=hash&amp;ref_src=twsrc%5Etfw">#NintendoSwitch</a> <a href="https://t.co/UB85373ZCF">pic.twitter.com/UB85373ZCF</a></p>&mdash; サーバルキッャト (@mzyy94) <a href="https://twitter.com/mzyy94/status/942410916842401792?ref_src=twsrc%5Etfw">2017年12月17日</a></blockquote>
+
 ｱﾉ!!
 
 ### まとめ
