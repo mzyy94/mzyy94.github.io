@@ -16,19 +16,11 @@ tags: kemono-friends machine-learning
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">わたしはサーバルキッャトのサーバルだよ！</p>&mdash; サーバルキッャト (@mzyy94) <a href="https://twitter.com/mzyy94/status/942050333471023105?ref_src=twsrc%5Etfw">2017年12月16日</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-<!--
-![voice]()
--->
+
 
 
 あなたもサーバルって言うんだね！
-<!--
-かわいい声～！
-わたしに似てるね！
-すっごーい！
 
-でもどうしてそんなに私に似た声してるんだろ～！
--->
 どんな声してるのー？
 わたし、気になっちゃった！！
 
