@@ -1,6 +1,6 @@
 ---
 title: "わたしはサーバルキャットのサーバルだよ！"
-date: 2017-12-18 00:00:00 +0900
+date: 2017-12-20 00:00:00 +0900
 categories: misc
 tags: kemono-friends machine-learning
 ---
@@ -127,7 +127,7 @@ tags: kemono-friends machine-learning
 
 ### フレンズぼいす
 
-![icon@1x]()
+![icon@1x](https://is2-ssl.mzstatic.com/image/thumb/Purple118/v4/9e/ba/30/9eba305d-6e1c-e6cc-d3c0-6909465c905b/AppIcon-1x_U007emarketing-85-220-5.png/400x400bb.jpg)
 
 <a href="https://itunes.apple.com/jp/app/%E3%81%91%E3%82%82%E3%81%AE%E3%83%95%E3%83%AC%E3%83%B3%E3%82%BA%E3%81%82%E3%82%89%E3%83%BC%E3%82%80/id1268624173?mt=8&at=1l3v4mQ">けものフレンズあらーむ - Tyrell Systems</a>
 
