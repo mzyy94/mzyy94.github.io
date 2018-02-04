@@ -6,9 +6,11 @@ url: https://mzyy94.com
 baseurl: ""
 title: 犬アイコンのみっきー
 subtitle:
-description:
+description: いろいろ書く。
 author: mzyy94
-logo: https://avatars3.githubusercontent.com/mzyy94?v=3&s=32
+amazon: https://amzn.mzyy94.com
+remote_theme: mzyy94/flexible-jekyll
+logo: https://avatars3.githubusercontent.com/mzyy94?v=3&s=192
 
 # ----------------------- #
 #     Link & Markdown     #
@@ -56,7 +58,6 @@ timezone: Asia/Tokyo
 # ----------------------- #
 
 sass:
-  sass_dir: spectre/src
   style: compressed
 
 # ----------------------- #
@@ -66,7 +67,7 @@ sass:
 search_engine: https://www.google.com/search
 feed:
   path: /blog/atom.xml
-disqus_short_name: mzyy94blog
+discus-identifier: mzyy94blog
 
 # ----------------------- #
 #        Generate         #
@@ -78,16 +79,11 @@ exclude:
   - LICENSE
   - Gemfile
   - Gemfile.lock
-  - spectre
 
 # ----------------------- #
 #        Defaults         #
 # ----------------------- #
 defaults:
-  - scope:
-      path: "assets/stylesheets/syntax.css"
-    values:
-      defered_css: true
   - scope:
       path: ""
       type: "posts"
@@ -108,12 +104,12 @@ pocket_save_button: true
 #       Analytics         #
 # ----------------------- #
 
-google_analytics_tracking_id: UA-41944495-3
+analytics: UA-41944495-3
 
 # ----------------------- #
 #   3rd Party Settings    #
 # ----------------------- #
-gems:
+plugins:
   - jekyll-avatar
   - jekyll-paginate
   - jekyll-seo-tag
@@ -124,6 +120,7 @@ gems:
   - jekyll-default-layout
   - jekyll-optional-front-matter
   - jekyll-redirect-from
+  - jekyll-remote-theme
   - jemoji
 
 # Mentions
@@ -131,5 +128,4 @@ jekyll-mentions: https://twitter.com
 # Github repositories
 repository: mzyy94/mzyy94.github.io
 # SEO tag
-twitter:
-  username: mzyy94
+twitter: mzyy94

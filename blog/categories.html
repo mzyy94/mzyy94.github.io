@@ -1,60 +1,44 @@
 ---
 title: Categories
 id: categories
-layout: default
+layout: main
 ---
 
 <style>
-  .filter .filter-tag#tag-all:checked ~ .filter-nav .chip[for="tag-all"],
 {% for category in site.categories %}
-  .filter .filter-tag#tag-{{ category[0] | slugify }}:checked ~ .filter-nav .chip[for="tag-{{ category[0] | slugify }}"]{% if forloop.last == false %},{% endif %}
-{% endfor %} {
+.filter-category#category-{{ category[0] | slugify }}:checked ~ .categories .tag[for="category-{{ category[0] | slugify }}"],
+{% endfor %}
+.filter-category#category-all:checked ~ .categories .tag[for="category-all"] {
   background: #5764c6;
   color: #fff;
 }
 {% for category in site.categories %}
-  .filter .filter-tag#tag-{{ category[0] | slugify }}:checked ~ .filter-body .column:not([data-tag~="tag-{{ category[0] | slugify }}"]){% if forloop.last == false %},{% endif %}
+.filter-category#category-{{ category[0] | slugify }}:checked ~ .filter-body .tag-list:not([data-category~="category-{{ category[0] | slugify }}"]){% if forloop.last == false %},{% endif %}
 {% endfor %} {
   display: none;
 }
 </style>
 
-<div class="columns">
-  <main class="column col-9 col-md-12" lang="{{ site.lang }}">
-    <div class="columns">
-      <div class="column col-12">
-        <h1>{{ page.title }}</h1>
-        <div class="filter">
-          <input type="radio" id="tag-all" class="filter-tag" name="filter-radio" hidden="" checked="">
-          {% for category in site.categories %}
-          <input type="radio" id="tag-{{ category[0] | slugify }}" class="filter-tag" name="filter-radio" hidden="">
-          {% endfor %}
-
-          <div class="filter-nav">
-            <label class="chip c-hand" for="tag-all">All</label>
-            {% for category in site.categories %}
-            <label class="chip c-hand" for="tag-{{ category[0] | slugify }}">{{ category[0] }}</label>
-            {% endfor %}
-          </div>
-          <div class="filter-body columns">
-          {% for post in site.posts %}
-            <div class="column col-4 my-2" data-tag="tag-{{ post.categories[0] | slugify }}">
-              <div class="filter-item card">
-                <div class="card-header">
-                  <a class="card-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
-                  <div class="card-subtitle">{{ post.categories[0] }}</div>
-                </div>
-              </div>
-            </div>
-          {% endfor %}
-          </div>
-        </div>
+<section class="blog-tags">
+  <h1>{{ page.title }}</h1>
+  <input type="radio" id="category-all" class="filter-category" name="filter-radio" hidden="" checked="">
+  {% for category in site.categories %}
+  <input type="radio" id="category-{{ category[0] | slugify }}" class="filter-category" name="filter-radio" hidden="">
+  {% endfor %}
+  <ul class="tags">
+      <li><label class="tag" for="category-all">All</label></li>
+  {% for category in site.categories %}{% assign label = category[0] %}
+    <li><label class="tag" for="category-{{ label | slugify | cgi_escape }}">{{ label }} ({{ site.categories[label].size }})</label></li>
+  {% endfor %}
+  </ul>
+  <div class="filter-body columns">
+  {% for post in site.posts %}
+    <div class="tag-list" data-category="{% for category in post.categories %}category-{{ category | slugify }} {% endfor %}">
+      <div>
+        <h2><span><a class="card-title" href="{{ post.url | relative_url }}">{{ post.title }}</a></span></h2>
+        <span>{{ post.date | date_to_string }} | {{ post.categories | array_to_sentence_string: '' }}</span>
       </div>
     </div>
-  </main>
-  <div class="divider-vert hide-md p-0"></div>
-  <div class="column col-3 col-md-12">
-    {% include sidebar.html %}
+  {% endfor %}
   </div>
-</div>
-
+</section>

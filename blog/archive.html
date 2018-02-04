@@ -1,43 +1,21 @@
 ---
 title: Archive
 id: archive
-layout: default
+layout: main
 ---
 
-<div class="columns">
-  <main class="column col-9 col-md-12" lang="{{ site.lang }}">
-    <div class="timeline">
+<section class="blog-archive">
+  <h1>{{ page.title }}</h1>
     {% for post in site.posts %}
     {% capture prev_month %}{{ post.next.date | date: "%B %Y" }}{% endcapture %}
     {% capture this_month %}{{ post.date | date: "%B %Y" }}{% endcapture %}
     {% capture next_month %}{{ post.previous.date | date: "%B %Y" }}{% endcapture %}
     {% unless prev_month == this_month %}
-      <div class="timeline-item">
-        <div class="timeline-left icon-lg">
-          <a href="#timeline-example-1" class="timeline-icon tooltip" data-tooltip="{{ this_month }}"></a>
-        </div>
-        <div class="timeline-content">
-          <div class="tile">
-            <div class="tile-content">
-              <p class="tile-subtitle">{{ this_month }}</p>
+    <h2 class="tile-subtitle">{{ this_month }}</h2>
     {% endunless %}
-              <p class="tile-title">
-                <span class="text-bold">{{ post.date | date: "%d" }}</span>
-                {% for category in post.categories %}<span class="label">{{ category }}</span>{% endfor %}
-                <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-              </p>
-    {% unless next_month == this_month %}
-            </div>
-          </div>
-        </div>
-      </div>
-    {% endunless %}
-    {% endfor %}
+    <div class="archive-list">
+      <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+      <small>{{ post.categories }} | {{ post.date | date_to_string }}</span></small>
     </div>
-  </main>
-  <div class="divider-vert hide-md p-0"></div>
-  <div class="column col-3 col-md-12">
-    {% include sidebar.html %}
-  </div>
-</div>
-
+    {% endfor %}
+</section>

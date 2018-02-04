@@ -1,48 +1,81 @@
 ---
-layout: page
+layout: default
 ---
 
-<main class="container">
-  <h2>Web sites</h2>
-  <div class="columns">
-    {% for extsite in site.data.top.sites %}
-    <a class="column col-4 col-sm-12 my-2" href="{{ extsite.url }}">
-      <div class="parallax">
-        <div class="parallax-top-left"></div>
-        <div class="parallax-top-right"></div>
-        <div class="parallax-bottom-left"></div>
-        <div class="parallax-bottom-right"></div>
-        <div class="parallax-content">
-          <div class="parallax-front">
-            <h2>{{ extsite.name }}</h2>
-          </div>
-          <div class="parallax-back">
-            <img src="{{ extsite.image }}" class="img-responsive rounded" alt="{{ extsite.name }}" />
-          </div>
-        </div>
-      </div>
-    </a>
-    {% endfor %}
-  </div>
-  <h2>Presentations</h2>
-  <div class="columns">
-    {% for presentation in site.data.top.presentations %}
-    <a class="column col-3 col-sm-12 my-2" href="{{ presentation.url }}">
-      <div class="parallax">
-        <div class="parallax-top-left"></div>
-        <div class="parallax-top-right"></div>
-        <div class="parallax-bottom-left"></div>
-        <div class="parallax-bottom-right"></div>
-        <div class="parallax-content">
-          <div class="parallax-front">
-            <h2>{{ presentation.name }}</h2>
-          </div>
-          <div class="parallax-back">
-            <img src="{{ presentation.image }}" class="img-responsive rounded" alt="{{ presentation.name }}" />
-          </div>
-        </div>
-      </div>
-    </a>
-    {% endfor %}
-  </div>
+<style>
+.button {
+  display: inline-block;
+  width: 200px;
+  height: 54px;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  margin: 20px;
+  position: relative;
+  z-index: 2;
+  background-color: #333;
+  border: 2px solid #333;
+  color: #fff;
+  line-height: 50px;
+}
+.button::before,
+.button::after {
+  position: absolute;
+  z-index: -1;
+  display: block;
+  content: '';
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background-color: #333;
+}
+.button,
+.button::before,
+.button::after {
+  box-sizing: border-box;
+  transition: all .3s;
+}
+.button:hover {
+  background-color: #fff;
+  border-color: #59b1eb;
+  color: #59b1eb;
+}
+.button::before {
+  top: 0;
+}
+.button::after {
+  bottom: 0;
+}
+.button:hover::before,
+.button:hover::after {
+  height: 0;
+  background-color: #59b1eb;
+}
+html, body, main, .wrapper {
+    height: 100%;
+    max-width: 100%;
+}
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+img {
+    width: 100%;
+    height: 100%;
+}
+nav {
+  flex-direction: row;
+}
+</style>
+<main>
+  <header>
+  <img src="{{ site.logo }}" alt="{{ site.author }}">
+  </header>
+  <nav>
+    <a href="/blog/" class="button">Blog</a>
+    <a href="https://github.com/mzyy94" class="button">GitHub</a>
+    <a href="https://twitter.com/mzyy94" class="button">Twitter</a>
+  </nav>
 </main>

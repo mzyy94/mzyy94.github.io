@@ -1,78 +1,20 @@
 ---
-layout: default
+layout: main
+ads: true
 ---
-
-<div class="columns">
-  <main class="column col-9 col-md-12" lang="{{ site.lang }}">
-    <div class="text-right">
-{% assign feedicon = site.static_files | where: "basename", "feed-icon" | first %}
-      <a href='https://cloud.feedly.com/#subscription%2Ffeed%2F{{ site.feed.path | absolute_url | cgi_escape }}' target='blank'><img id='feedlyFollow' src='https://s3.feedly.com/img/follows/feedly-follow-logo-black_2x.png' alt='follow us in feedly' width='28' height='28'></a>
-      <a href="{{ site.feed.path | relative_url }}"><img src="{{ feedicon.path }}" alt="feed icon"></a> 
-    </div>
-{% assign categories_page = site.html_pages | where: "id", "categories" | first %}
-    <div class="columns">
-      {% for post in paginator.posts %}
-      <section class="column col-6 col-sm-12">
-        <div class="card my-2">
-          <header class="card-header">
-            <h4 class="card-title text-bold"><a href="{{ post.url | relative_url}}">{{ post.title }}</a></h4>
-            <h6 class="card-subtitle text-normal text-gray">
-                {{ post.date | date_to_string }} /
-                {% for category in post.categories %}
-                <a href="{{ categories_page.url | relative_url }}">{{ category }}</a>
-                {% endfor %}
-            </h6>
-          </header>
-          {% if post.image %}
-          <div class="card-image">
-            {% assign image_ext = post.image | split: "." | last | prepend: "." %}
-            <img src="{{ post.image | replace: image_ext, '-small' | append: image_ext }}" class="img-responsive">
-          </div>
-          {% else %}
-            <div class="divider"></div>
-          {% endif %}
-          <article class="card-body">
-            {{ post.excerpt }}
-          </article>
-          <footer class="card-footer text-right">
-            <a rel="full-article" href="{{ post.url | relative_url }}" class="btn btn-primary"><span>{{ site.excerpt_link | default: "More" }}</span> <i class="icon icon-forward"></i></a>
-          </footer>
-        </div>
-      </section>
-      {% endfor %}
-    </div>
-
-    {% if paginator.total_pages > 1 %}
-    <ul class="column col-12 pagination flex-centered">
-      <li class="page-item">
-        {% if paginator.previous_page %}
-        <a href="{{paginator.previous_page_path | relative_url }}">Previous</a>
-        {% else %}
-        <a href="#" disabled tabindex="-1">Previous</a>
-        {% endif %}
-      </li>
-
-      {% for page in (1..paginator.total_pages) %}
-      <li class="page-item{% if page == paginator.page %} active{% endif %}">
-        {% if page == 1 %}
-        <a href="{{ '/' | relative_url }}">{{ page }}</a>
-        {% else %}
-        <a href="{{ site.paginate_path | relative_url | replace: ':num', page }}">{{ page }}</a>
-        {% endif %}
-      </li>
-      {% endfor %}
-
-      <li class="page-item">
-        {% if paginator.next_page %}
-        <a href="{{paginator.next_page_path | relative_url}}">Next</a> {% else %}
-        <a href="#" disabled tabindex="-1">Next</a> {% endif %}
-      </li>
-    </ul>
-    {% endif %}
-
-  </main>
-  <div class="divider-vert hide-md p-0"></div>
-  <div class="column col-3 col-md-12">
-    {% include sidebar.html %}
+{% for post in paginator.posts %}
+<article class="post">
+  {% if post.image %}
+    <a class="post-thumbnail" style="background-image: url({{site.baseurl | append : post.image}})" href="{{post.url | prepend: site.baseurl}}"></a>
+  {% else %}
+  {% endif %}
+  <div class="post-content">
+    <h2 class="post-title"><a href="{{post.url | prepend: site.baseurl}}">{{post.title}}</a></h2>
+    <p>{{ post.content | strip_html | truncatewords: 15 }}</p>
+    <span class="post-date">{{post.date | date: '%Y, %b %d'}}&nbsp;&nbsp;&nbsp;—&nbsp;</span>
+    <span class="post-words">{% capture words %}{{ post.content | number_of_words }}{% endcapture %}{% unless words contains "-" %}{{ words | plus: 250 | divided_by: 250 | append: " minute read" }}{% endunless %}</span>
   </div>
-</div>
+</article>
+{% endfor %}
+
+{% include pagination.html %}
