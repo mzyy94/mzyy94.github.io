@@ -1,7 +1,7 @@
 ---
-title: "2016年のまんがタイムきららアニメを振り返る"
+title: 2016年のまんがタイムきららアニメを振り返る
 date: 2016-12-05 00:00:01 +0900
-categories: misc
+category: misc
 tags: manga time kirara dokidoki visual anime html5
 image: /blog/resources/images/2016/12/05/dokidokivisual.jpg
 ---
@@ -9,7 +9,7 @@ image: /blog/resources/images/2016/12/05/dokidokivisual.jpg
 [まんがタイムきらら Advent Calendar 2016 - Adventar](http://www.adventar.org/calendars/1454) 5日目の記事にようこそ！
 今日は2016年のまんがタイムきらら作品を振り返ってみよう！
 
-# 2016年のアニメ放送されたまんがタイムきらら作品たち
+## 2016年のアニメ放送されたまんがタイムきらら作品たち
 
 今年は冬に0作というスタートを切り、少々不安がありましたが計4作が地上波で放映されました。
 
@@ -24,7 +24,7 @@ image: /blog/resources/images/2016/12/05/dokidokivisual.jpg
 
 <!-- more -->
 
-## 三者三葉
+### 三者三葉
 
 2016年春アニメとして放映の開始されたこのアニメ、実に長い間連載を続け今か今かとアニメ放送を楽しみにしていた人も多いかと思います。
 さて、そんな三者三葉のWebサイトを見てみましょう。
@@ -67,7 +67,7 @@ image: /blog/resources/images/2016/12/05/dokidokivisual.jpg
 
 
 
-### 三者三葉まとめ
+#### 三者三葉まとめ
 
  機能  | 状態
  :----:|:----:
@@ -85,7 +85,7 @@ image: /blog/resources/images/2016/12/05/dokidokivisual.jpg
 
 
 
-## あんハピ♪
+### あんハピ♪
 
 これも時期を同じくして2016年春アニメとして放映されました。
 三者三葉と比べれば、連載開始は大幅に近代化された後なのでWebページの中身も期待ができます。
@@ -115,7 +115,7 @@ image: /blog/resources/images/2016/12/05/dokidokivisual.jpg
 ドメイン取得日は2015年10月26日と番宣開始を前後して用意したようです。
 
 
-### あんハピ♪まとめ
+#### あんハピ♪まとめ
 
  機能  | 状態
  :----:|:----:
@@ -133,7 +133,7 @@ image: /blog/resources/images/2016/12/05/dokidokivisual.jpg
 
 
 
-## NEW GAME!
+### NEW GAME!
 
 漫画が話題になってからアニメ化するまでの速度がものすごく早かった印象のNEW GAME!。
 2016年秋アニメとして放映されていました。
@@ -160,7 +160,7 @@ image: /blog/resources/images/2016/12/05/dokidokivisual.jpg
 突如として現れる&amp;nbsp;の嵐。狂気しか感じません。
 
 
-### NEW GAME!まとめ
+#### NEW GAME!まとめ
 
  機能  | 状態
  :----:|:----:
@@ -177,7 +177,7 @@ image: /blog/resources/images/2016/12/05/dokidokivisual.jpg
 
 
 
-## ステラのまほう
+### ステラのまほう
 
 2016年冬アニメのほんわか担当として放映されているゆるふわアニメです。
 
@@ -199,7 +199,7 @@ image: /blog/resources/images/2016/12/05/dokidokivisual.jpg
 
 SNS部のアニメですが、SNS用のOpenGraphタグはなく、SNSの語源がSocial Networking Serviceでないことを再確認させられます。
 
-### ステラのまほうまとめ
+#### ステラのまほうまとめ
 
  機能  | 状態
  :----:|:----:
@@ -215,7 +215,7 @@ SNS部のアニメですが、SNS用のOpenGraphタグはなく、SNSの語源�
  ドメイン取得日 | 2015-12-03
 
 
-# まとめ
+## まとめ
 かわいい女の子も中身は汚い心を持っているということがありますが、アニメのWebサイトにも同様ということがわかりました。
 
 とにもかくにも、このご時世にOGPタグを設定していないのはいかがなものかと思います。

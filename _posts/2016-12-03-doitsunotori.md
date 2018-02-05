@@ -1,7 +1,7 @@
 ---
-title: "ドイツのトリ聖地巡礼してきた"
+title: ドイツのトリ聖地巡礼してきた
 date: 2016-12-03 00:00:01 +0900
-categories: trip
+category: trip
 tags: doitsu germany tori 600eur
 image: /blog/resources/images/2016/12/03/IMG_8443.JPG
 ---
@@ -21,9 +21,9 @@ image: /blog/resources/images/2016/12/03/IMG_8443.JPG
 
 <!-- more -->
 
-# 旅の記録
+## 旅の記録
 
-## 前日譚
+### 前日譚
 
 とくに話すことはありません。
 ドイツへ訪れるにあたって、保険をかけておきました。
@@ -34,7 +34,7 @@ image: /blog/resources/images/2016/12/03/IMG_8443.JPG
 ホテルとかは[Booking.com](https://booking.com)で出発前日に予約しました。
 
 
-## 出国 (3/8-3/9)
+### 出国 (3/8-3/9)
 
 移動はいわずもがな、飛行機でした。
 
@@ -53,12 +53,12 @@ image: /blog/resources/images/2016/12/03/IMG_8443.JPG
 
 とりあえず無事にミュンヘン某所のホテルに到着。
 
-## 1日目 (3/10)
+### 1日目 (3/10)
 
 <del>ミュンヘンに来ましたが特にやることもなかったので街を観光することにしました。</del>
 この旅行の一番の目的であるドイツのトリ聖地巡礼をしました。
 
-### 朝
+#### 朝
 
 時差ボケで変な時間に目が覚めたので外をぶらぶらしていたらホテルの裏に城が。
 
@@ -72,7 +72,7 @@ image: /blog/resources/images/2016/12/03/IMG_8443.JPG
 
 このパン、サイズ感が伝わりませんが、となりのカフェオレが両手で抱えるくらいのサイズなので相当でかいです。でも300円程度とお安い（安い）。
 
-### 朝(朝食後。だいたい昼)
+#### 朝(朝食後。だいたい昼)
 
 向かうはオリンピア公園。
 昨年のドイツのトリ Advent Calendarの12月24日の記事を100回くらい読んでいたものの、どの座標にヤツがいるかはさっぱり覚えていなかったので適当に歩いていました。
@@ -110,7 +110,7 @@ image: /blog/resources/images/2016/12/03/IMG_8443.JPG
 
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">今回はここで発見しました <a href="https://twitter.com/hashtag/%E3%83%89%E3%82%A4%E3%83%84%E3%81%AE%E3%83%88%E3%83%AA?src=hash">#ドイツのトリ</a> <a href="https://t.co/oQfWBJbRQx">pic.twitter.com/oQfWBJbRQx</a></p>&mdash; はいふり@3日目東v-14a (@mzyy94) <a href="https://twitter.com/mzyy94/status/707930162403385345">2016年3月10日</a></blockquote>
 
-### お昼
+#### お昼
 
 次の目的地であるあしゅりー城へと向かいます。
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">マリエンプラッツ、あしゅりー城があるとこ</p>&mdash; レッドアイズ・ブラック弊社 (@Asyley_) <a href="https://twitter.com/Asyley_/status/707914411315310594">2016年3月10日</a></blockquote>
@@ -120,7 +120,7 @@ image: /blog/resources/images/2016/12/03/IMG_8443.JPG
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="de" dir="ltr">I&#39;m at Marienplatz in München, Bayern <a href="https://t.co/6Qejlz36bK">https://t.co/6Qejlz36bK</a> <a href="https://t.co/9wbtvH0giP">pic.twitter.com/9wbtvH0giP</a></p>&mdash; はいふり@3日目東v-14a (@mzyy94) <a href="https://twitter.com/mzyy94/status/707914219627405312">2016年3月10日</a></blockquote>
 
 
-### 食事
+#### 食事
 
 この日のやることリストは消化できたので、ドイツ料理を食べておしまいです。
 
@@ -129,17 +129,17 @@ image: /blog/resources/images/2016/12/03/IMG_8443.JPG
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">白ソーセージとプレッツェル <a href="https://t.co/KvA7hbdiOj">pic.twitter.com/KvA7hbdiOj</a></p>&mdash; はいふり@3日目東v-14a (@mzyy94) <a href="https://twitter.com/mzyy94/status/707930342703964160">2016年3月10日</a></blockquote>
 
 
-## 2日目 (3/11)
+### 2日目 (3/11)
 
 あしゅりー城いってきた
 
-### 水分補給
+#### 水分補給
 
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">花金じゃー！！ (€3,50) (@ Allgäuer Stüberl in Schwangau) <a href="https://t.co/Kn7DzL6UWg">https://t.co/Kn7DzL6UWg</a> <a href="https://t.co/myZdzoMHUj">pic.twitter.com/myZdzoMHUj</a></p>&mdash; はいふり@3日目東v-14a (@mzyy94) <a href="https://twitter.com/mzyy94/status/708251179466276864">2016年3月11日</a></blockquote>
 
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">シュニッツェル！！！ <a href="https://t.co/caIxI57Xqg">pic.twitter.com/caIxI57Xqg</a></p>&mdash; はいふり@3日目東v-14a (@mzyy94) <a href="https://twitter.com/mzyy94/status/708252928436412416">2016年3月11日</a></blockquote>
 
-### Schloss Neuschwanstein
+#### Schloss Neuschwanstein
 
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">ノイシュバンシュタイン城 <a href="https://t.co/9IafOHIbwI">pic.twitter.com/9IafOHIbwI</a></p>&mdash; はいふり@3日目東v-14a (@mzyy94) <a href="https://twitter.com/mzyy94/status/708286438715039744">2016年3月11日</a></blockquote>
 
@@ -155,13 +155,13 @@ image: /blog/resources/images/2016/12/03/IMG_8443.JPG
 
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">ドイツのトリ、実際めちゃくちゃたくさんいるし、ノイシュバンスタイン城のおみやげコーナーにも売ってたくらい<a href="https://t.co/Hpvn7kJw8R">https://t.co/Hpvn7kJw8R</a></p>&mdash; はいふり@3日目東v-14a (@mzyy94) <a href="https://twitter.com/mzyy94/status/708363852061286400">2016年3月11日</a></blockquote>
 
-## 3日目 (3/12)
+### 3日目 (3/12)
 
 ローテンブルクにいってみました。
 ここもドイツのきれいな石畳の街として有名な観光スポットです。
 日本人ばっかりいました。
 
-### 観光
+#### 観光
 
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="de" dir="ltr">I&#39;m at Rödertor in Rothenburg ob der Tauber, BY <a href="https://t.co/wUHgKVgM1l">https://t.co/wUHgKVgM1l</a> <a href="https://t.co/0kSqplXtzI">pic.twitter.com/0kSqplXtzI</a></p>&mdash; はいふり@3日目東v-14a (@mzyy94) <a href="https://twitter.com/mzyy94/status/708608221620129793">2016年3月12日</a></blockquote>
 
@@ -173,20 +173,20 @@ image: /blog/resources/images/2016/12/03/IMG_8443.JPG
 
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">きれい <a href="https://t.co/H2hkL7TrXF">pic.twitter.com/H2hkL7TrXF</a></p>&mdash; はいふり@3日目東v-14a (@mzyy94) <a href="https://twitter.com/mzyy94/status/708617199171280896">2016年3月12日</a></blockquote>
 
-### 夕食
+#### 夕食
 
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">スーパーで買ったソーセージとビールで夕食 <a href="https://t.co/D5HucsHFTG">pic.twitter.com/D5HucsHFTG</a></p>&mdash; はいふり@3日目東v-14a (@mzyy94) <a href="https://twitter.com/mzyy94/status/708723838083842048">2016年3月12日</a></blockquote>
 
-## 4-5日目 (3/13-3/14)
+### 4-5日目 (3/13-3/14)
 
 この日の内容はごちうさAdvent Calendarの記事にまとめてあります。
 
 
-## 6日目 (3/15)
+### 6日目 (3/15)
 
 せっかくなので城に泊まろうかと。
 
-### Hotel Burg Trendelburg
+#### Hotel Burg Trendelburg
 
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">今日泊まる古城ホテル <a href="https://t.co/lEoFC0g8rl">pic.twitter.com/lEoFC0g8rl</a></p>&mdash; はいふり@3日目東v-14a (@mzyy94) <a href="https://twitter.com/mzyy94/status/709768318685728768">2016年3月15日</a></blockquote>
 
@@ -196,7 +196,7 @@ image: /blog/resources/images/2016/12/03/IMG_8443.JPG
 
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">古城ホテル (@ Hotel Burg Trendelburg in Trendelburg, Hessen) <a href="https://t.co/qmljDXa6BM">https://t.co/qmljDXa6BM</a> <a href="https://t.co/m0o7o5MtPx">pic.twitter.com/m0o7o5MtPx</a></p>&mdash; はいふり@3日目東v-14a (@mzyy94) <a href="https://twitter.com/mzyy94/status/709741208013250560">2016年3月15日</a></blockquote>
 
-### 夕食
+#### 夕食
 
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">城下町を眺められる豪華なレストラン <a href="https://t.co/pswEVqkVzo">pic.twitter.com/pswEVqkVzo</a></p>&mdash; はいふり@3日目東v-14a (@mzyy94) <a href="https://twitter.com/mzyy94/status/709792837920026624">2016年3月15日</a></blockquote>
 
@@ -211,25 +211,25 @@ image: /blog/resources/images/2016/12/03/IMG_8443.JPG
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">デザート！(燃えてる) <a href="https://t.co/OHk5K9jeAG">pic.twitter.com/OHk5K9jeAG</a></p>&mdash; はいふり@3日目東v-14a (@mzyy94) <a href="https://twitter.com/mzyy94/status/709813580317720577">2016年3月15日</a></blockquote>
 
 
-## 7日目 (3/16)
+### 7日目 (3/16)
 
 城を後にしてマインツへ移動する日。
 
-### 朝食
+#### 朝食
 
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">古城ホテルの朝食ビュッフェ <a href="https://t.co/UzNw3UVn9o">pic.twitter.com/UzNw3UVn9o</a></p>&mdash; はいふり@3日目東v-14a (@mzyy94) <a href="https://twitter.com/mzyy94/status/710013708253138944">2016年3月16日</a></blockquote>
 
-### 夕食
+#### 夕食
 
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">買ってきたビールとソーセージとハム食べる <a href="https://t.co/qtN2ZgEiPD">pic.twitter.com/qtN2ZgEiPD</a></p>&mdash; はいふり@3日目東v-14a (@mzyy94) <a href="https://twitter.com/mzyy94/status/710190632053174273">2016年3月16日</a></blockquote>
 
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">生ハムうめぇ… 8枚も入って150円ほどヤバいビールがすすむ <a href="https://t.co/3qSXylCdY6">pic.twitter.com/3qSXylCdY6</a></p>&mdash; はいふり@3日目東v-14a (@mzyy94) <a href="https://twitter.com/mzyy94/status/710192011488464896">2016年3月16日</a></blockquote>
 
-## 8日目 (3/17)
+### 8日目 (3/17)
 
 マインツを散歩。
 
-### 観光
+#### 観光
 
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">ライン川 (@ Mainz in Mainz, Rheinland-Pfalz) <a href="https://t.co/ufEgNSvP5K">https://t.co/ufEgNSvP5K</a> <a href="https://t.co/oif35uycL3">pic.twitter.com/oif35uycL3</a></p>&mdash; はいふり@3日目東v-14a (@mzyy94) <a href="https://twitter.com/mzyy94/status/710406436375887872">2016年3月17日</a></blockquote>
 
@@ -238,7 +238,7 @@ image: /blog/resources/images/2016/12/03/IMG_8443.JPG
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="en" dir="ltr">I&#39;m at Kirschgarten <a href="https://t.co/3q6bjuLe5J">https://t.co/3q6bjuLe5J</a> <a href="https://t.co/m1cAQuzKWq">pic.twitter.com/m1cAQuzKWq</a></p>&mdash; はいふり@3日目東v-14a (@mzyy94) <a href="https://twitter.com/mzyy94/status/710420434672607232">2016年3月17日</a></blockquote>
 
 
-### 夕食
+#### 夕食
 
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">調味料とかソーセージとかチーズやシュニッツェルを買い込んでドイツに暮らすレベル <a href="https://t.co/DBXZV2Jcnh">pic.twitter.com/DBXZV2Jcnh</a></p>&mdash; はいふり@3日目東v-14a (@mzyy94) <a href="https://twitter.com/mzyy94/status/710507265242087425">2016年3月17日</a></blockquote>
 
@@ -252,17 +252,17 @@ image: /blog/resources/images/2016/12/03/IMG_8443.JPG
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">ドイツ料理の完成ー<br>ビールと一緒にいただきまーす <a href="https://t.co/CSGioy8Mko">pic.twitter.com/CSGioy8Mko</a></p>&mdash; はいふり@3日目東v-14a (@mzyy94) <a href="https://twitter.com/mzyy94/status/710529332263960576">2016年3月17日</a></blockquote>
 
 
-## 9日目 (3/18)
+### 9日目 (3/18)
 
 ワインの名産地リューデスハイムへ行った。
 
-### 朝食
+#### 朝食
 
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">スーパーで買ってきた食材で朝ごはんー <a href="https://t.co/VW7UlukGYv">pic.twitter.com/VW7UlukGYv</a></p>&mdash; はいふり@3日目東v-14a (@mzyy94) <a href="https://twitter.com/mzyy94/status/710738487125876736">2016年3月18日</a></blockquote>
 
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">みんな大好きラクレットチーズ(日本のスライスチーズの3倍のサイズのやつが5枚入って150円くらい) <a href="https://t.co/8J7L8iwCXi">pic.twitter.com/8J7L8iwCXi</a></p>&mdash; はいふり@3日目東v-14a (@mzyy94) <a href="https://twitter.com/mzyy94/status/710743778605268992">2016年3月18日</a></blockquote>
 
-### 観光
+#### 観光
 
 シーズンオフのため、ワインの産地だけどブドウ畑は枯れていました。
 
@@ -274,24 +274,24 @@ image: /blog/resources/images/2016/12/03/IMG_8443.JPG
 
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">いい感じの雰囲気だった <a href="https://t.co/NsV53XHras">pic.twitter.com/NsV53XHras</a></p>&mdash; はいふり@3日目東v-14a (@mzyy94) <a href="https://twitter.com/mzyy94/status/710843247787171840">2016年3月18日</a></blockquote>
 
-### 昼食
+#### 昼食
 
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">昼間からビール <a href="https://t.co/euw9xgaxx5">pic.twitter.com/euw9xgaxx5</a></p>&mdash; はいふり@3日目東v-14a (@mzyy94) <a href="https://twitter.com/mzyy94/status/710813847381102593">2016年3月18日</a></blockquote>
 
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">ラム肉のステーキ (@ Restaurant Cafe Seilbahn) <a href="https://t.co/cVe0yuMixR">https://t.co/cVe0yuMixR</a> <a href="https://t.co/sV6NQYGnvu">pic.twitter.com/sV6NQYGnvu</a></p>&mdash; はいふり@3日目東v-14a (@mzyy94) <a href="https://twitter.com/mzyy94/status/710834602735181824">2016年3月18日</a></blockquote>
 
 
-## 10日目 (3/19)
+### 10日目 (3/19)
 
 フランクフルト
 
-### 観光
+#### 観光
 
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">600ユーロのユーロ <a href="https://t.co/1clp7vBKhN">pic.twitter.com/1clp7vBKhN</a></p>&mdash; はいふり@3日目東v-14a (@mzyy94) <a href="https://twitter.com/mzyy94/status/711210852754563072">2016年3月19日</a></blockquote>
 
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">りんご酒電車！ (@ H Zoo in Frankfurt am Main, Hessen) <a href="https://t.co/FYDhNLKInh">https://t.co/FYDhNLKInh</a> <a href="https://t.co/axIi2QnNIU">pic.twitter.com/axIi2QnNIU</a></p>&mdash; はいふり@3日目東v-14a (@mzyy94) <a href="https://twitter.com/mzyy94/status/711206598572691456">2016年3月19日</a></blockquote>
 
-### 食事
+#### 食事
 
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">自炊ー</p>&mdash; はいふり@3日目東v-14a (@mzyy94) <a href="https://twitter.com/mzyy94/status/711273272877453312">2016年3月19日</a></blockquote>
 
@@ -304,7 +304,7 @@ image: /blog/resources/images/2016/12/03/IMG_8443.JPG
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">アスパラスープと焼いたジャガイモ添えて完成ー <a href="https://t.co/mr9IsdYdi9">pic.twitter.com/mr9IsdYdi9</a></p>&mdash; はいふり@3日目東v-14a (@mzyy94) <a href="https://twitter.com/mzyy94/status/711274298460262405">2016年3月19日</a></blockquote>
 
 
-## 11日目 (3/20)
+### 11日目 (3/20)
 
 ミュンヘン空港に移動。
 
@@ -315,7 +315,7 @@ image: /blog/resources/images/2016/12/03/IMG_8443.JPG
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">ドイツ最後の晩ご飯なので豪遊 (@ Airbräu Brauhaus in München, Bayern) <a href="https://t.co/yEYDzd4KBs">https://t.co/yEYDzd4KBs</a> <a href="https://t.co/Tiuw4SDEIN">pic.twitter.com/Tiuw4SDEIN</a></p>&mdash; はいふり@3日目東v-14a (@mzyy94) <a href="https://twitter.com/mzyy94/status/711599618426073094">2016年3月20日</a></blockquote>
 
 
-## 帰国 (3/21-3/22)
+### 帰国 (3/21-3/22)
 
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">飛行機の座席がダブルブッキングしてキャンセル待ち</p>&mdash; はいふり@3日目東v-14a (@mzyy94) <a href="https://twitter.com/mzyy94/status/711828865090514945">2016年3月21日</a></blockquote>
 
@@ -330,7 +330,7 @@ image: /blog/resources/images/2016/12/03/IMG_8443.JPG
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">これ格安航空券の機内食(ディナー)<br>冷静スモークサーモン・ラバレのマリネ・トナカイのアントルコート・マカロンアソート <a href="https://t.co/LuIpOmgYEL">pic.twitter.com/LuIpOmgYEL</a></p>&mdash; はいふり@3日目東v-14a (@mzyy94) <a href="https://twitter.com/mzyy94/status/712132016091766785">2016年3月22日</a></blockquote>
 
 
-# まとめ
+## まとめ
 
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">ドイツに来てまでずっとツイッターやってる</p>&mdash; レッドアイズ・ブラック弊社 (@Asyley_) <a href="https://twitter.com/Asyley_/status/442099164919660544">2014年3月8日</a></blockquote>
 

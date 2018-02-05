@@ -1,14 +1,14 @@
 ---
-title: "Team TomoriNaoのサイトの秘密"
+title: Team TomoriNaoのサイトの秘密
 date: 2016-12-17 17:00:00 +0900
-categories: web
+category: web
 tags: svg css3 html5 smil
 image: /blog/resources/images/2016/12/17/tomorinao.pro.png
 ---
 
 こちらは[友利奈緒 Advent Calendar 2016 - Adventar](http://www.adventar.org/calendars/1379) 17日目の記事です。
 
-# TomoriNao
+## TomoriNao
 
 昨年のこの時期、ふとした思いつきからTeam TomoriNaoというホワイトハッカー（死語？）チームが生まれました。
 皆さんもご覧に入れたことがあると思いますが、トップの画像のようなチームロゴを掲げています。
@@ -22,9 +22,9 @@ Team TomoriNaoのWebサイトは、**JavaScript** を使用せずにいろいろ
 
 <!-- more -->
 
-## ロゴのアニメーション
+### ロゴのアニメーション
 
-### 文字列の縁取り
+#### 文字列の縁取り
 
 まずサイトを開くと現れるロゴのアニメーション。
 彗星の輝きが表現されていた今までに加え、1周年を記念してロゴの描画アニメーションが増えています。
@@ -133,7 +133,7 @@ svg #tomorinao-demo1 path[name=a] {
 
 [Orbitron - Google Fonts](https://fonts.google.com/specimen/Orbitron)
 
-### 彗星の輝き
+#### 彗星の輝き
 
 こちらはSVGアニメーションのSMILで書かれています。
 
@@ -172,7 +172,7 @@ svg #tomorinao-demo1 path[name=a] {
 
 なぜCSS3ではなくSMILを使ったかというと、このグラデーションのパラメータがCSS3では変更できなかったからという理由があります。
 
-## サイトのフェードイン
+### サイトのフェードイン
 
 これもCSS3 keyframeアニメーションで実現されています。
 ロゴが表示される最初のセクション意外に対して、最初は透明にしておき、ロゴ表示のタイミングで不透明度を変更するという形でフェードインをしています。
@@ -188,7 +188,7 @@ body > section:not(:first-of-type) {
 }
 ```
 
-## More... ボタン
+### More... ボタン
 
 NEWSセクションにMoreボタンがありますが、このボタンによって追加の項目を表示する部分も、JavaScriptなしで実現しています。
 More...ボタンの正体は、実は **チェックボックス** で、チェックされた状態を示すCSS3の擬似セレクタである`:checked`で表示を切り替えています。
@@ -233,7 +233,7 @@ More...ボタンの正体は、実は **チェックボックス** で、チェ�
 }
 ```
 
-# まとめ
+## まとめ
 
 悪意のある広告にJavaScriptが利用されていたり、JavaScriptが複雑化しページの表示が重くなる一方の2016年。
 2017年はNo-JSが叫ばれ、JavaScriptなしで如何にきれいにサイトを表現するかを考えさせられるかもしれません。

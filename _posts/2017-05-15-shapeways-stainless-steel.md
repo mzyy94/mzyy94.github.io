@@ -1,7 +1,7 @@
 ---
 title: Shapewaysで金属3Dプリントした -ステンレススチール編-
 date: 2017-05-15 21:48:08 +0900
-categories: 3dprint
+category: 3dprint
 tags: metal stainless steel kemono-friends ﾏｶｾﾃ
 image: /blog/resources/images/2017/05/15/boss-6.jpg
 ---

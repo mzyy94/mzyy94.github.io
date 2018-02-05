@@ -1,7 +1,7 @@
 ---
-title: "コルマールのひと時"
+title: コルマールのひと時
 date: 2016-12-01 00:00:01 +0900
-categories: trip
+category: trip
 tags: france gochiusa colmar elsass
 image: /blog/resources/images/2016/12/01/colmar.jpg
 ---
@@ -23,14 +23,14 @@ image: /blog/resources/images/2016/12/01/colmar.jpg
 
 <!-- more -->
 
-# コルマールへの往き方
+## コルマールへの往き方
 
 コルマールへは、アルザス地方の都市であるストラスブール、もしくはバーゼルを経由して鉄道を使って訪れることとなります。
 ストラスブールへはフランス国外から鉄道で訪れられるほか、バスや飛行機といった手段があります。
 今回の旅行ではドイツはミュンヘンからICE（高速鉄道）を利用してマンハイムまで移動し、そこから高速バスでストラスブールまでやってきました。
 ドイツ国内の高速鉄道の予約・購入・利用はDeutche Bahn公式アプリが便利です。
 
-## ICE (Intercity-Express)
+### ICE (Intercity-Express)
 
 ドイツ鉄道における新幹線の立ち位置にある高速鉄道です。
 カラーは白を基調とし、赤のラインが入っています。
@@ -52,7 +52,7 @@ image: /blog/resources/images/2016/12/01/colmar.jpg
 
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">いくぜごちうさタウン <a href="https://t.co/bV50HJ9eUw">pic.twitter.com/bV50HJ9eUw</a></p>&mdash; はいふり@3日目東v-14a (@mzyy94) <a href="https://twitter.com/mzyy94/status/708915165186682880">2016年3月13日</a></blockquote>
 
-## IC Bus (Intercity Bus)
+### IC Bus (Intercity Bus)
 
 ドイツ鉄道が運行するバスです。ドイツ西部の街、マンハイムからフランスの中継地点ストラスブールまでをこのバスを利用して往きました。
 
@@ -64,7 +64,7 @@ image: /blog/resources/images/2016/12/01/colmar.jpg
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">国境超えた <a href="https://t.co/7jE2yaIoLx">pic.twitter.com/7jE2yaIoLx</a></p>&mdash; はいふり@3日目東v-14a (@mzyy94) <a href="https://twitter.com/mzyy94/status/708992858682953730">2016年3月13日</a></blockquote>
 
 
-## TER (Train Express Regional)
+### TER (Train Express Regional)
 
 フランスに入ったのでここからはフランス国鉄のTERでコルマールへ向かいます。
 世界ブランドのクレジットカードを持っていれば、券売機で切符を購入できます。
@@ -80,7 +80,7 @@ image: /blog/resources/images/2016/12/01/colmar.jpg
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="fr" dir="ltr">I&#39;m at Gare SNCF de Colmar - <a href="https://twitter.com/ConnectGares">@connectgares</a> in Colmar, Alsace <a href="https://t.co/MDNo3ckh3s">https://t.co/MDNo3ckh3s</a> <a href="https://t.co/KtaYKdqrss">pic.twitter.com/KtaYKdqrss</a></p>&mdash; はいふり@3日目東v-14a (@mzyy94) <a href="https://twitter.com/mzyy94/status/709039024766382084">2016年3月13日</a></blockquote>
 
 
-# コルマールという街並み
+## コルマールという街並み
 
 パステルカラーの木組みの建物に石畳と、まさに言葉通り**異国**を感じさせる街です。
 聖地かどうか関係なしに、一度訪れて雰囲気を感じておいて損はないでしょう。
@@ -94,7 +94,7 @@ image: /blog/resources/images/2016/12/01/colmar.jpg
 
 
 
-# コルマールの料理
+## コルマールの料理
 
 旧ドイツ領のアルザス地方なだけあって、ドイツでよく見られるザワークラウトやソーセージなどもポピュラーな郷土料理として提供されています。
 
@@ -118,9 +118,9 @@ image: /blog/resources/images/2016/12/01/colmar.jpg
 
 
 
-# コルマールに往くにあたって
+## コルマールに往くにあたって
 
-## 治安は悪くない
+### 治安は悪くない
 
 フランスというと治安が悪い国という印象があるようですが、コルマールは他の都市と比べてもだいぶ治安がいい街です。
 日中は警官やフランス軍が巡回していたのに加え、夜間も人通りの少ないところを選ばなければ明かりもしっかりと点灯していました。
@@ -128,7 +128,7 @@ image: /blog/resources/images/2016/12/01/colmar.jpg
 
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">夜のごちうさタウン <a href="https://t.co/z2xQx00XrF">pic.twitter.com/z2xQx00XrF</a></p>&mdash; はいふり@3日目東v-14a (@mzyy94) <a href="https://twitter.com/mzyy94/status/709115231142846465">2016年3月13日</a></blockquote>
 
-## ガイドブックを片手に
+### ガイドブックを片手に
 
 コルマール観光局がガイドブックを作成してくれています。
 
@@ -148,7 +148,7 @@ image: /blog/resources/images/2016/12/01/colmar.jpg
 [COLMAR 観光地図 \[PDF\]](http://colmar.ingenie.fr/documents/documentation/documentation-PLANCOLMAR-JA.pdf)
 
 
-## トイレは有料
+### トイレは有料
 
 日本でも東京駅などで見られるようになってきましたが、基本的にヨーロッパのトイレは有料です。
 外にある公衆トイレも、50セントもしくは1ユーロ、高いところだと2ユーロ入れないと扉が開きません。
@@ -158,6 +158,6 @@ image: /blog/resources/images/2016/12/01/colmar.jpg
 [COLMAR TOURISME \| TOILETTES - TOILETTEN - TOILETS](http://colmar.ingenie.fr/documents/documentation/documentation-SANI-UK.pdf)
 
 
-# まとめ
+## まとめ
 
 コルマール、いい街。
