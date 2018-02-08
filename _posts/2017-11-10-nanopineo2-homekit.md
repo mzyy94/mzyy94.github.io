@@ -3,7 +3,8 @@ title: NanoPi NEO2とhomebridgeとSiriで照明操作
 date: 2017-11-10 02:13:29 +0900
 category: nanopineo2
 tags: homebridge siri homekit ir
-image: /blog/resources/images/2017/11/10/applewatch-nanopineo2.jpg
+header:
+  image: /blog/resources/images/2017/11/10/applewatch-nanopineo2.jpg
 ---
 
 この3連休に部屋を見渡していたところ、今夏に大陸から届いた荷物を開封することなく放置していたことに気づいたので開封してみました。

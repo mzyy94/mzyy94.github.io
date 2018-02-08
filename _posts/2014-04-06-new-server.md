@@ -3,7 +3,8 @@ title: 自宅サーバーを増やした
 date: 2014-04-06 23:10:36 +0900
 category: server
 tags: xeon server
-image: /blog/resources/images/2014/4/6/DSC08148.JPG
+header:
+  image: /blog/resources/images/2014/4/6/DSC08148.JPG
 ---
 
 増税前のPCパーツ買いだめイベントに便乗して、３月中に自宅サーバーを増設しました。

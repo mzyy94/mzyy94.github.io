@@ -3,7 +3,8 @@ title: まどマギコンサート名古屋行ってきた
 date: 2013-12-11 23:50:50 +0900
 category: dialy
 tags: anime madomagi concert
-image: /blog/resources/images/2013/12/11/madomagi-concert-nagoya.jpg
+header:
+  image: /blog/resources/images/2013/12/11/madomagi-concert-nagoya.jpg
 ---
 
 昨日に開催された魔法少女まどか☆マギカ オーケストラ・コンサートに行ってきまし。

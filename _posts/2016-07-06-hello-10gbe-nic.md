@@ -3,7 +3,8 @@ title: 1万円台の格安Intel X540-T2 10GbEを買ってみた
 date: 2016-07-06 03:24:50 +0900
 category: network
 tags: 10gbe nic x540-t2
-image: /blog/resources/images/2016/07/06/card-face.jpg
+header:
+  image: /blog/resources/images/2016/07/06/card-face.jpg
 ---
 
 

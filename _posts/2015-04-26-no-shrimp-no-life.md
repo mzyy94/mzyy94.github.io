@@ -3,7 +3,8 @@ title: 小さなえびを飼い始めて2ヶ月が過ぎた
 date: 2015-04-26 23:46:19 +0900
 category: shrimp
 tags: shrimp
-image: /blog/resources/images/2015/04/26/shrimp-bottle.jpg
+header:
+  image: /blog/resources/images/2015/04/26/shrimp-bottle.jpg
 ---
 
 先日、久々にアイコンを大幅に変更しました。

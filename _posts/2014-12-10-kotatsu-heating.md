@@ -3,7 +3,8 @@ title: サーバーの発熱でこたつを温める
 date: 2014-12-10 00:02:35 +0900
 category: server
 tags: kotatsu
-image: /blog/resources/images/2014/12/10/kotatsu.jpg
+header:
+  image: /blog/resources/images/2014/12/10/kotatsu.jpg
 ---
 この記事は[coins Advent Calendar](http://www.adventar.org/calendars/443)の一部です。
 

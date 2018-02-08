@@ -3,7 +3,8 @@ title: Surface Ergonomic Keyboardに乗り換えた
 date: 2017-07-05 21:40:08 +0900
 category: gadget
 tags: ergonomics keyboard
-image: /blog/resources/images/2017/07/05/surface_ergonomic_keyboard.jpg
+header:
+  image: /blog/resources/images/2017/07/05/surface_ergonomic_keyboard.jpg
 ---
 
 昨年の同じ時期に話題になり始めていたエルゴノミクスキーボード。

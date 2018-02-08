@@ -3,7 +3,8 @@ title: はいふりWeb VRつくろうよ！
 date: 2016-12-24 01:00:00 +0900
 category: web
 tags: webgl webvr html5 three.js
-image: /blog/resources/images/2016/12/24/out-of-playarea.png
+header:
+  image: /blog/resources/images/2016/12/24/out-of-playarea.png
 ---
 
 

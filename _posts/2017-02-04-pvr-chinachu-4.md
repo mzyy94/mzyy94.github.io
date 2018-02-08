@@ -3,7 +3,8 @@ title: Harekaze for Kodi (pvr.chinachu) 4.0.0 リリース
 date: 2017-02-04 11:15:00 +0900
 category: kodi
 tags: chinachu dtv kodi osmc pvr
-image: /blog/resources/images/2017/02/04/pvr.chinachu-fanart.png
+header:
+  image: /blog/resources/images/2017/02/04/pvr.chinachu-fanart.png
 ---
 
 KodiとChinachuがシームレスに連携し、快適に地デジが視聴できるアドオン Harekaze for Kodi(pvr.chinachu) をKodi 17 Krypton

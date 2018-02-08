@@ -3,7 +3,8 @@ title: Kodi Chinachu PVRアドオンでRasPi2/Android TVをテレビに
 date: 2015-08-08 20:51:33 +09:00
 category: kodi
 tags: android chinachu dtv kodi osmc pvr
-image: /blog/resources/images/2015/08/08/chinachu-pvr-client-1_0_0.png
+header:
+  image: /blog/resources/images/2015/08/08/chinachu-pvr-client-1_0_0.png
 ---
 暑い日が続きますね。こういう日はエアコンの効いた部屋でだらだらとテレビを見たいものです。
 しかしテレビをもっておりません。27インチのモニタを持っているのみです。

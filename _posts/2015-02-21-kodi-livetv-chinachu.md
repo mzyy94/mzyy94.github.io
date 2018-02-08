@@ -3,7 +3,8 @@ title: KodiとChinachuで地デジLive視聴 on Raspberry Pi2 w/ OSMC
 date: 2015-02-21 07:02:43 +0900
 category: raspberry-pi
 tags: kodi chinachu osmc dtv
-image: /blog/resources/images/2015/02/21/kodi-livetv.png
+header:
+  image: /blog/resources/images/2015/02/21/kodi-livetv.png
 ---
 
 

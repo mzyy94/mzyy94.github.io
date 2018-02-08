@@ -3,7 +3,8 @@ title: GTX 1070とKaby Lake i5で新しくメインPC組んだ
 date: 2017-6-17 17:25:29 +0900
 category: gadget
 tags: gpu pc dnn
-image: /blog/resources/images/2017/06/17/zbox-en1070k.jpg
+header:
+  image: /blog/resources/images/2017/06/17/zbox-en1070k.jpg
 ---
 
 4Kの広大なモニタを生かすためにも、Kaby Lake世代のCPUとNVIDIA Pascal&trade;アーキテクチャのGPUを搭載したマシンを組みたくなったので組んでみました。

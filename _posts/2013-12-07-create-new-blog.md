@@ -3,7 +3,8 @@ title: blogを建ててみた
 date: 2013-12-07 18:22:11 +0900
 category: web
 tags: html5 css3 gh-pages
-image: /blog/resources/images/2013/12/07/create-new-blog.png
+header:
+  image: /blog/resources/images/2013/12/07/create-new-blog.png
 ---
 
 いままで情報を発信する場として、確かなものが周りになかったので新年に向けて新しくブログを作成しました。

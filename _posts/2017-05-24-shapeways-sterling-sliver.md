@@ -3,7 +3,8 @@ title: Shapewaysで金属3Dプリントした -シルバー925編-
 date: 2017-05-24 02:30:10 +0900
 category: 3dprint
 tags: metal silver925 kemono-friends ﾏｶｾﾃ
-image: /blog/resources/images/2017/05/24/lucky.jpg
+header:
+  image: /blog/resources/images/2017/05/24/lucky.jpg
 ---
 
 [前回](/blog/2017/05/15/shapeways-stainless-steel/)の予告でお伝えした通り、Shapewaysでシルバー925のプリントをしてみた話。

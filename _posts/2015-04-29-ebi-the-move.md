@@ -3,7 +3,8 @@ title: えびの水槽引越しと環境整備と飼育について
 date: 2015-04-29 15:03:01 +0900
 category: shrimp
 tags: shrimp muji charm
-image: /blog/resources/images/2015/04/29/new-ebipot.jpg
+header:
+  image: /blog/resources/images/2015/04/29/new-ebipot.jpg
 ---
 
 小さくてかわいいピクシーシュリンプ（以下、えび）

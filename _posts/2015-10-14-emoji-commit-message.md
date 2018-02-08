@@ -3,7 +3,8 @@ title: GitHubで絵文字コミットを続けてみて有用だったEmojiま�
 date: 2015-10-14 19:39:47 +0900
 category: misc
 tags: emoji git github
-image: /blog/resources/images/2015/10/14/emoji-commit-log.png
+header:
+  image: /blog/resources/images/2015/10/14/emoji-commit-log.png
 ---
 
 

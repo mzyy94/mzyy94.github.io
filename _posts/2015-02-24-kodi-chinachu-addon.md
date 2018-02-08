@@ -3,7 +3,8 @@ title: KodiでChinachuの録画を観るAdd-on作った
 date: 2015-02-24 19:28:35 +0900
 category: raspberry-pi
 tags: kodi osmc chinachu
-image: /blog/resources/images/2015/02/24/addon-info.png
+header:
+  image: /blog/resources/images/2015/02/24/addon-info.png
 ---
 
 Raspberry Pi2でKodi（旧：XBMC)が快適に動き、地デジのLIVE視聴環境として優れているので、
