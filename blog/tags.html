@@ -1,44 +1,15 @@
 ---
-title: Tags
-id: tags
-layout: main
+layout: archive
+title: "Posts by Tag"
+author_profile: true
 ---
 
-<style>
-{% for tag in site.tags %}
-.filter-tag#tag-{{ tag[0] | slugify }}:checked ~ .tags .tag[for="tag-{{ tag[0] | slugify }}"],
-{% endfor %}
-.filter-tag#tag-all:checked ~ .tags .tag[for="tag-all"] {
-  background: #5764c6;
-  color: #fff;
-}
-{% for tag in site.tags %}
-.filter-tag#tag-{{ tag[0] | slugify }}:checked ~ .filter-body .tag-list:not([data-tag~="tag-{{ tag[0] | slugify }}"]){% if forloop.last == false %},{% endif %}
-{% endfor %} {
-  display: none;
-}
-</style>
+{% include group-by-array collection=site.posts field="tags" %}
 
-<section class="blog-tags">
-  <h1>{{ page.title }}</h1>
-  <input type="radio" id="tag-all" class="filter-tag" name="filter-radio" hidden="" checked="">
-  {% for tag in site.tags %}
-  <input type="radio" id="tag-{{ tag[0] | slugify }}" class="filter-tag" name="filter-radio" hidden="">
+{% for tag in group_names %}
+  {% assign posts = group_items[forloop.index0] %}
+  <h2 id="{{ tag | slugify }}" class="archive__subtitle">{{ tag }}</h2>
+  {% for post in posts %}
+    {% include archive-single.html %}
   {% endfor %}
-  <ul class="tags">
-      <li><label class="tag" for="tag-all">All</label></li>
-  {% for tag in site.tags %}{% assign label = tag[0] %}
-    <li><label class="tag" for="tag-{{ label | slugify | cgi_escape }}">{{ label }} ({{ site.tags[label].size }})</label></li>
-  {% endfor %}
-  </ul>
-  <div class="filter-body columns">
-  {% for post in site.posts %}
-    <div class="tag-list" data-tag="{% for tag in post.tags %}tag-{{ tag | slugify }} {% endfor %}">
-      <div>
-        <h2><span><a class="card-title" href="{{ post.url | relative_url }}">{{ post.title }}</a></span></h2>
-        <span>{{ post.date | date_to_string }} | {{ post.tags | array_to_sentence_string: '' }}</span>
-      </div>
-    </div>
-  {% endfor %}
-  </div>
-</section>
+{% endfor %}

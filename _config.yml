@@ -5,12 +5,35 @@
 url: https://mzyy94.com
 baseurl: ""
 title: 犬アイコンのみっきー
+title_separator          : "-"
 subtitle:
 description: いろいろ書く。
-author: mzyy94
-amazon: https://amzn.mzyy94.com
-remote_theme: mzyy94/flexible-jekyll
-logo: https://avatars3.githubusercontent.com/mzyy94?v=3&s=192
+name: &id mzyy94
+repository: mzyy94/mzyy94.github.io
+
+remote_theme: mmistakes/minimal-mistakes
+minimal_mistakes_skin: contrast
+
+# ----------------------- #
+#          Author         #
+# ----------------------- #
+
+author:
+  name             : "mzyy94"
+  fullname         : "Yuki MIZUNO"
+  avatar           : https://avatars3.githubusercontent.com/mzyy94?v=3&s=192
+  bio              : 何かしら生きた証を遺したい (575)
+  location         : Tokyo
+  email            :
+  uri              : https://mzyy94.com
+  bitbucket        : *id
+  foursquare       : *id
+  github           : *id
+  gitlab           : *id
+  keybase          : *id
+  stackoverflow    : # "123456/username" (the last part of your profile url, e.g. https://stackoverflow.com/users/123456/username)
+  steam            : RockingUniform # "steamId" (the last part of your profile url, e.g. https://steamcommunity.com/id/steamId/)
+  twitter          : *id
 
 # ----------------------- #
 #     Link & Markdown     #
@@ -36,11 +59,18 @@ highlighter: rouge
 lsi: false
 
 # ----------------------- #
+#           Sass          #
+# ----------------------- #
+
+sass:
+  style: compressed
+
+# ----------------------- #
 #    Paginate & Excerpt   #
 # ----------------------- #
 
 paginate: 10
-paginate_path: "/blog/page/:num"
+paginate_path: "/blog/page:num"
 excerpt_link: "Read more"
 excerpt_separator: "<!-- more -->"
 recent_posts: 5
@@ -50,24 +80,24 @@ recent_posts: 5
 # ----------------------- #
 
 lang: ja
+locale: ja-JP
 date_format: "ordinal"
 timezone: Asia/Tokyo
-
-# ----------------------- #
-#           Sass          #
-# ----------------------- #
-
-sass:
-  style: compressed
 
 # ----------------------- #
 #  RSS & Search & Comment #
 # ----------------------- #
 
-search_engine: https://www.google.com/search
-feed:
+#search_engine: https://www.google.com/search
+search: true
+search_full_content: true
+atom_feed:
   path: /blog/atom.xml
-discus-identifier: mzyy94blog
+#discus-identifier: mzyy94blog
+comments:
+  provider: "disqus"
+  disqus:
+    shortname: mzyy94blog
 
 # ----------------------- #
 #        Generate         #
@@ -88,23 +118,38 @@ defaults:
       path: ""
       type: "posts"
     values:
-      layout: post
+      layout: single
+      toc: true
+      author_profile: true
+      comments: true
+      share: true
+      related: true
+      read_time: true
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: single
+      author_profile: true
 
 # ----------------------- #
 #        SNS Share        #
 # ----------------------- #
 
-twitter_share_button: true
-hatena_bookmark_button: true
-google_plus_button: true
-facebook_like_button: true
-pocket_save_button: true
+twitter:
+  username: *id
+# Mentions
+jekyll-mentions: https://twitter.com
 
 # ----------------------- #
-#       Analytics         #
+#    Analytics & SEO      #
 # ----------------------- #
 
-analytics: UA-41944495-3
+analytics:
+  provider: google
+  google:
+    tracking_id: UA-41944495-3
+google_site_verification : 
 
 # ----------------------- #
 #   3rd Party Settings    #
@@ -123,9 +168,13 @@ plugins:
   - jekyll-remote-theme
   - jemoji
 
-# Mentions
-jekyll-mentions: https://twitter.com
-# Github repositories
-repository: mzyy94/mzyy94.github.io
-# SEO tag
-twitter: mzyy94
+
+# ----------------------- #
+#         Archives        #
+# ----------------------- #
+category_archive:
+  type: liquid
+  path: /blog/categories/
+tag_archive:
+  type: liquid
+  path: /blog/tags/

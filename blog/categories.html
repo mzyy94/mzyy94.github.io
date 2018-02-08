@@ -1,44 +1,15 @@
 ---
-title: Categories
-id: categories
-layout: main
+layout: archive
+title: "Posts by Category"
+author_profile: true
 ---
 
-<style>
-{% for category in site.categories %}
-.filter-category#category-{{ category[0] | slugify }}:checked ~ .categories .tag[for="category-{{ category[0] | slugify }}"],
-{% endfor %}
-.filter-category#category-all:checked ~ .categories .tag[for="category-all"] {
-  background: #5764c6;
-  color: #fff;
-}
-{% for category in site.categories %}
-.filter-category#category-{{ category[0] | slugify }}:checked ~ .filter-body .tag-list:not([data-category~="category-{{ category[0] | slugify }}"]){% if forloop.last == false %},{% endif %}
-{% endfor %} {
-  display: none;
-}
-</style>
+{% include group-by-array collection=site.posts field="categories" %}
 
-<section class="blog-tags">
-  <h1>{{ page.title }}</h1>
-  <input type="radio" id="category-all" class="filter-category" name="filter-radio" hidden="" checked="">
-  {% for category in site.categories %}
-  <input type="radio" id="category-{{ category[0] | slugify }}" class="filter-category" name="filter-radio" hidden="">
+{% for category in group_names %}
+  {% assign posts = group_items[forloop.index0] %}
+  <h2 id="{{ category | slugify }}" class="archive__subtitle">{{ category }}</h2>
+  {% for post in posts %}
+    {% include archive-single.html %}
   {% endfor %}
-  <ul class="tags">
-      <li><label class="tag" for="category-all">All</label></li>
-  {% for category in site.categories %}{% assign label = category[0] %}
-    <li><label class="tag" for="category-{{ label | slugify | cgi_escape }}">{{ label }} ({{ site.categories[label].size }})</label></li>
-  {% endfor %}
-  </ul>
-  <div class="filter-body columns">
-  {% for post in site.posts %}
-    <div class="tag-list" data-category="{% for category in post.categories %}category-{{ category | slugify }} {% endfor %}">
-      <div>
-        <h2><span><a class="card-title" href="{{ post.url | relative_url }}">{{ post.title }}</a></span></h2>
-        <span>{{ post.date | date_to_string }} | {{ post.categories | array_to_sentence_string: '' }}</span>
-      </div>
-    </div>
-  {% endfor %}
-  </div>
-</section>
+{% endfor %}

@@ -1,0 +1,14 @@
+main:
+  - title: "About"
+    url: /about/
+  - title: "Blog"
+    url: /blog/
+    children:
+      - title: "Tags"
+        url: /blog/tags/
+      - title: "Categories"
+        url: /blog/categories/
+  - title: "License"
+    url: /license/
+  - title: "Keys"
+    url: /keys/

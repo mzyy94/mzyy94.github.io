@@ -1,21 +1,13 @@
 ---
-title: Archive
-id: archive
-layout: main
+layout: archive
+title: "Archive"
+author_profile: true
 ---
 
-<section class="blog-archive">
-  <h1>{{ page.title }}</h1>
-    {% for post in site.posts %}
-    {% capture prev_month %}{{ post.next.date | date: "%B %Y" }}{% endcapture %}
-    {% capture this_month %}{{ post.date | date: "%B %Y" }}{% endcapture %}
-    {% capture next_month %}{{ post.previous.date | date: "%B %Y" }}{% endcapture %}
-    {% unless prev_month == this_month %}
-    <h2 class="tile-subtitle">{{ this_month }}</h2>
-    {% endunless %}
-    <div class="archive-list">
-      <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-      <small>{{ post.categories }} | {{ post.date | date_to_string }}</span></small>
-    </div>
-    {% endfor %}
-</section>
+{% assign postsByYear = site.posts | group_by_exp:"post", "post.date | date: '%Y'"  %}
+{% for year in postsByYear %}
+  <h2 id="{{ year.name | slugify }}" class="archive__subtitle">{{ year.name }}</h2>
+  {% for post in year.items %}
+    {% include archive-single.html %}
+  {% endfor %}
+{% endfor %}

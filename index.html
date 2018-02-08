@@ -1,9 +1,9 @@
 ---
-layout: default
+layout: splash
 ---
 
 <style>
-.button {
+.button, .button:visited {
   display: inline-block;
   width: 200px;
   height: 54px;
@@ -51,10 +51,6 @@ layout: default
   height: 0;
   background-color: #59b1eb;
 }
-html, body, main, .wrapper {
-    height: 100%;
-    max-width: 100%;
-}
 main {
     display: flex;
     justify-content: center;
@@ -71,7 +67,7 @@ nav {
 </style>
 <main>
   <header>
-  <img src="{{ site.logo }}" alt="{{ site.author }}">
+  <img src="{{ site.author.avatar }}" alt="{{ site.name }}">
   </header>
   <nav>
     <a href="/blog/" class="button">Blog</a>
