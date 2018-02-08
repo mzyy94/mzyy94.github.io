@@ -1,6 +1,4 @@
 main:
-  - title: "About"
-    url: /about/
   - title: "Blog"
     url: /blog/
     children:
@@ -8,6 +6,8 @@ main:
         url: /blog/tags/
       - title: "Categories"
         url: /blog/categories/
+  - title: "About"
+    url: /about/
   - title: "License"
     url: /license/
   - title: "Keys"
