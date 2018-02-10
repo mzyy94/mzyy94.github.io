@@ -91,6 +91,8 @@ timezone: Asia/Tokyo
 #search_engine: https://www.google.com/search
 search: true
 search_full_content: true
+feed:
+  path: /blog/atom.xml
 atom_feed:
   path: /blog/atom.xml
 #discus-identifier: mzyy94blog
