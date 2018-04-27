@@ -142,7 +142,6 @@ WebVTTには、テキストにタイムスタンプタグを打ち込むこと�
 ```css
 video::cue {
     font-family: 'Hiragino Kaku Gothic ProN';
-    background: -webkit-linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5));
 }
 video::cue(.title), video::cue(:past), video::cue(:future) {
     font-family: 'Hiragino Mincho ProN';
