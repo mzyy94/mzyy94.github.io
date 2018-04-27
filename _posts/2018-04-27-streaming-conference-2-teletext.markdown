@@ -129,7 +129,7 @@ WEBVTT
 00:00:16.000 --> 00:00:22.000 line:6 position:15% align:left
 <00:00:18.600><c>(フ</c><00:00:18.800><c>レ</c><00:00:19.000><c>ン</c><00:00:19.200><c>ズ)</c>
 
-00:01:19.200 --> 00:00:32.000 line:9 position:15% align:left
+00:00:19.800 --> 00:00:26.000 line:9 position:15% align:left
 <00:00:23.800><c>喧嘩して すっちゃかめっちゃかしても</c>
 ```
 
@@ -171,6 +171,8 @@ video::cue(:future) {
 -->
 
 ## EXAMPLE 3 -LIVE comment-
+
+<iframe src="//www.slideshare.net/slideshow/embed_code/key/pEWSFoKd193PBq?startSlide=16" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/mzyy94/teletext-95201437" title="# TELETEXT" target="_blank"># TELETEXT</a> </strong> from <strong><a href="//www.slideshare.net/mzyy94" target="_blank">Yuki Mizuno</a></strong> </div>
 
 最後に紹介したのは背景に流した動画にテレテキストを取得させ、スライド上にライブコメントを流すというもの。プレゼンテーション中に[#streamingconf](https://twitter.com/hashtag/streamingconf)で呟かれたものを取得して流していましたが、ツイ廃のせいか、Twitter APIを叩くと頻繁に**420 Exceeded connection limit for user**エラーが出て取得がうまくいかなかったりしていました。
 ストリーミング勉強会での発表なので上記2つのようなオンデマンド配信に対するテレテキストのデモだけではなく、ストリーミング動画に対してもテレテキストは面白い使い方ができるということをご紹介した形となります。
