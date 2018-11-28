@@ -11,7 +11,7 @@ description: いろいろ書く。
 name: &id mzyy94
 repository: mzyy94/mzyy94.github.io
 
-remote_theme: mmistakes/minimal-mistakes
+remote_theme: mmistakes/minimal-mistakes@4.14.1
 minimal_mistakes_skin: contrast
 
 # ----------------------- #
@@ -168,6 +168,7 @@ plugins:
   - jekyll-optional-front-matter
   - jekyll-redirect-from
   - jekyll-remote-theme
+  - jekyll-include-cache
   - jemoji
 
 
