@@ -88,6 +88,57 @@ IKEAという北欧料理レストランが郊外には点在しています。�
 
 ![](/blog/resources/images/2019/05/28/IMG_9217.JPG)
 
+### // 追記
+
+<blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">電気工事士の資格もってるんだろうな？<br><br>小さな穴に電源コードを通して壁に穴を開けずにダイソンを立てる <a href="https://t.co/Ca4vBm77xg">https://t.co/Ca4vBm77xg</a> <a href="https://twitter.com/mzyy94?ref_src=twsrc%5Etfw">@mzyy94</a>から</p>&mdash; 海鮮居酒屋 ゆうなぎ亭「ゆうなぎ りつ」 (@you_nagisan1815) <a href="https://twitter.com/you_nagisan1815/status/1133300074379767808?ref_src=twsrc%5Etfw">2019年5月28日</a></blockquote>
+
+ご指摘ありがとうございます。電気工事士の資格が必要な作業と例外について記載が漏れていたので追記します。
+
+
+> ３　この法律において「電気工事」とは、一般用電気工作物又は自家用電気工作物を設置し、又は変更する工事をいう。ただし、政令で定める軽微な工事を除く。
+
+電気工事士法 [http://elaws.e-gov.go.jp/search/elawsSearch/elaws_search/lsg0500/detail?lawId=335AC0000000139_20160401_426AC0000000072#4](http://elaws.e-gov.go.jp/search/elawsSearch/elaws_search/lsg0500/detail?lawId=335AC0000000139_20160401_426AC0000000072#4)
+
+
+> （軽微な工事）
+>
+> 第一条　電気工事士法（以下「法」という。）第二条第三項ただし書の政令で定める軽微な工事は、次のとおりとする。
+>
+> 一　電圧六百ボルト以下で使用する差込み接続器、ねじ込み接続器、ソケット、ローゼットその他の接続器又は電圧六百ボルト以下で使用するナイフスイッチ、カットアウトスイッチ、スナップスイッチその他の開閉器にコード又はキャブタイヤケーブルを接続する工事
+
+電気工事士法施行令 [http://elaws.e-gov.go.jp/search/elawsSearch/elaws_search/lsg0500/detail?lawId=335CO0000000260#1](http://elaws.e-gov.go.jp/search/elawsSearch/elaws_search/lsg0500/detail?lawId=335CO0000000260#1)
+
+
+また、以下のPDFに写真付きでより優しく解説があります。こちらも参考になさってください。
+
+[https://www.meti.go.jp/policy/safety_security/industrial_safety/sangyo/electric/files/1-3keibi.pdf](https://www.meti.go.jp/policy/safety_security/industrial_safety/sangyo/electric/files/1-3keibi.pdf)
+
+
+> # 電気工事士等資格不要の「軽微な工事」について（１）
+>
+> 電気工事士法施行令第１条
+> 
+> ①電圧600V以下で使用する差込み接続器、ねじ込み接続器、ソケット、ローゼット、その他の接続
+> 器又は電圧600V以下で使用するナイフスイッチ、カットアウトスイッチ、スナップスイッチその他
+> の開閉器にコード又はキャブタイヤケーブルを接続する工事
+>
+> ○「差込み接続器」とは、差込プラグ（オス側）とプラグ受け（メス側）のことです。（写真１）
+>
+> （中略）
+>
+> ○「コード」「キャブタイヤケーブル」とは、取り回しが良く柔軟に曲げることができる構造を持つ電線をいいます。
+> 
+> ![](/blog/resources/images/2019/05/28/picture.png)
+>
+> （写真１）
+> 
+> 電気工事士資格が不要となる作業は、上記の接続器や開閉器とコード又はキャブタイヤケーブルを接続する工事に限られます。
+> コード又はキャブタイヤケーブル以外に接続する場合は、電気工事士等資格が必要となります。
+
+今回分解した電源タップは、この「差込み接続器」と「コード」によって構成されており、分解したのち、「差込み接続器にコードを接続する工事」を施したまでです。
+ご指摘いただいた電気工事士の資格は不要となりますので、ご確認のほどよろしくお願いいたします。
+
+// 追記ここまで
 
 日曜大工ついでにいままで立てかけて放置だったダイソンをなんとかしようと思い立ち、充電スタンドを取り付けることに。
 ただ、充電スタンドは壁にねじ止めして固定しないといけない。しかし壁にネジで穴を開けたくない。
