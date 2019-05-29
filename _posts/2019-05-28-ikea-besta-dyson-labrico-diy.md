@@ -93,12 +93,13 @@ IKEAという北欧料理レストランが郊外には点在しています。�
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">電気工事士の資格もってるんだろうな？<br><br>小さな穴に電源コードを通して壁に穴を開けずにダイソンを立てる <a href="https://t.co/Ca4vBm77xg">https://t.co/Ca4vBm77xg</a> <a href="https://twitter.com/mzyy94?ref_src=twsrc%5Etfw">@mzyy94</a>から</p>&mdash; 海鮮居酒屋 ゆうなぎ亭「ゆうなぎ りつ」 (@you_nagisan1815) <a href="https://twitter.com/you_nagisan1815/status/1133300074379767808?ref_src=twsrc%5Etfw">2019年5月28日</a></blockquote>
 
 ご指摘ありがとうございます。電気工事士の資格が必要な作業と例外について記載が漏れていたので追記します。
-
+電気工事士法によって、電気工事士の資格が必要な範囲は以下のように定められています。
 
 > ３　この法律において「電気工事」とは、一般用電気工作物又は自家用電気工作物を設置し、又は変更する工事をいう。ただし、政令で定める軽微な工事を除く。
 
 電気工事士法 [http://elaws.e-gov.go.jp/search/elawsSearch/elaws_search/lsg0500/detail?lawId=335AC0000000139_20160401_426AC0000000072#4](http://elaws.e-gov.go.jp/search/elawsSearch/elaws_search/lsg0500/detail?lawId=335AC0000000139_20160401_426AC0000000072#4)
 
+ここで言う軽微な工事については、電気工事士法施行令によって、以下のように定められています。
 
 > （軽微な工事）
 >
