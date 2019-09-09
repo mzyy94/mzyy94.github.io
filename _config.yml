@@ -24,16 +24,45 @@ author:
   avatar           : https://avatars3.githubusercontent.com/mzyy94?v=3&s=192
   bio              : 何かしら生きた証を遺したい (575)
   location         : Tokyo
-  email            :
-  uri              : https://mzyy94.com
-  bitbucket        : *id
-  foursquare       : *id
-  github           : *id
-  gitlab           : *id
-  keybase          : *id
-  stackoverflow    : # "123456/username" (the last part of your profile url, e.g. https://stackoverflow.com/users/123456/username)
-  steam            : RockingUniform # "steamId" (the last part of your profile url, e.g. https://steamcommunity.com/id/steamId/)
-  twitter          : *id
+  links:
+  - label: "Website"
+    icon: "fas fa-fw fa-link"
+    url: https://mzyy94.com
+  - label: "Keybase"
+    icon: "fas fa-fw fa-key"
+    url: https://keybase.io/mzyy94
+  - label: "Twitter"
+    icon: "fab fa-fw fa-twitter-square"
+    url: https://twitter.com/mzyy94
+  - label: "Bitbucket"
+    icon: "fab fa-fw fa-bitbucket"
+    url: https://bitbucket.org/mzyy94
+  - label: "GitHub"
+    icon: "fab fa-fw fa-github"
+    url: https://github.com/mzyy94
+  - label: "GitLab"
+    icon: "fab fa-fw fa-gitlab"
+    url: https://gitlab.com/mzyy94
+  - label: "Foursquare"
+    icon: "fab fa-fw fa-foursquare"
+    url: https://foursquare.com/mzyy94
+  - label: "Steam"
+    icon: "fab fa-fw fa-steam"
+    url: https://steamcommunity.com/id/RockingUniform
+  - label: "SlideShare"
+    icon: "fab fa-fw fa-slideshare"
+    url: https://www.slideshare.net/mzyy94
+  - label: "Twitch"
+    icon: "fab fa-fw fa-twitch"
+    url: https://www.twitch.tv/mzyy94
+  - label: "Wishlist"
+    icon: "fab fa-fw fa-amazon"
+    url: https://amzn.mzyy94.com
+  - label: "PayPal"
+    icon: "fab fa-fw fa-amazon"
+    url: https://www.paypal.me/mzyy94
+
+
 
 # ----------------------- #
 #     Link & Markdown     #
