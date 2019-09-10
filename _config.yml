@@ -156,7 +156,8 @@ defaults:
       comments: true
       share: true
       related: true
-      read_time: true
+      read_time: false
+      toc_sticky: true
   - scope:
       path: ""
       type: "pages"
@@ -212,3 +213,9 @@ category_archive:
 tag_archive:
   type: liquid
   path: /blog/tags/
+
+# ----------------------- #
+#         Scripts         #
+# ----------------------- #
+after_footer_scripts:
+  - https://platform.twitter.com/widgets.js
