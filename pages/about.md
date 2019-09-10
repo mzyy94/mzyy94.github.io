@@ -5,44 +5,44 @@ permalink: "/about/"
 sites:
   - title: TomoriNao.pro
     url: https://tomorinao.pro
-    image_path: /previews/tomorinao.pro.png
+    image_path: /assets/previews/tomorinao.pro.png
     alt: Screenshot
   - title: Harekaze.org
     url: https://harekaze.org
-    image_path: /previews/harekaze.org.png
+    image_path: /assets/previews/harekaze.org.png
     alt: Screenshot
   - title: splashworks.jp
     url: https://splashworks.jp
-    image_path: /previews/splashworks.jp.png
+    image_path: /assets/previews/splashworks.jp.png
     alt: Screenshot
   - title: KokoWalk-iOS
     url: https://harekaze.org/KokoWalk-iOS
-    image_path: /previews/harekaze.org_kokowalk-ios.png
+    image_path: /assets/previews/harekaze.org_kokowalk-ios.png
     alt: Screenshot
   - title: 渋い.mzyy94.com
     url: https://xn--n8j037p.mzyy94.com
-    image_path: /previews/xn--n8j037p.mzyy94.com.png
+    image_path: /assets/previews/xn--n8j037p.mzyy94.com.png
     alt: Screenshot
   - title: yokunaine
     url: https://yokunaine.mzyy94.com
-    image_path: /previews/yokunaine.mzyy94.com.png
+    image_path: /assets/previews/yokunaine.mzyy94.com.png
     alt: Screenshot
   - title: フレンズ.みんな
     url: https://xn--0cktc7c2a.xn--q9jyb4c/
-    image_path: /previews/friends-minna.png
+    image_path: /assets/previews/friends-minna.png
     alt: Screenshot
 presentations:
   - url: https://www.slideshare.net/mzyy94/games-on-linux-kernelvm1
-    image_path: /previews/no-game-no-life.png
+    image_path: /assets/previews/no-game-no-life.png
     alt: Screenshot
   - url: https://www.slideshare.net/mzyy94/packetoon
-    image_path: /previews/packetoon.png
+    image_path: /assets/previews/packetoon.png
     alt: Screenshot
   - url: https://www.slideshare.net/mzyy94/ss-63199765
-    image_path: /previews/packetoon-alpha.png
+    image_path: /assets/previews/packetoon-alpha.png
     alt: Screenshot
   - url: https://www.slideshare.net/mzyy94/subscriber-identity-module-66892458
-    image_path: /previews/subscriber-identity-module.png
+    image_path: /assets/previews/subscriber-identity-module.png
     alt: Screenshot
 ---
 
