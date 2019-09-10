@@ -5,7 +5,7 @@ published: true
 categories: misc
 tags: credit card platinum
 header:
-  image: /blog/resources/images/2019/03/22/platinums.jpg
+  image: /assets/images/2019/03/22/platinums.jpg
 ---
 
 平成も末。キャッシュレス全盛期と言われる2019年の今、現金は次第にレガシーなものとなりつつあります。
@@ -61,7 +61,7 @@ header:
 
 ## JCBプラチナ
 
-![JCB platinum](/blog/resources/images/2019/03/22/jcb-platinum.png)
+![JCB platinum](/assets/images/2019/03/22/jcb-platinum.png)
 
 引用元: [https://www.jcb.co.jp/promotion/ordercard/platinum/](https://www.jcb.co.jp/promotion/ordercard/platinum/)
 
@@ -81,7 +81,7 @@ header:
 
 ### 重さ
 
-![JCB platinum weight](/blog/resources/images/2019/03/22/IMG_7310.jpg)
+![JCB platinum weight](/assets/images/2019/03/22/IMG_7310.jpg)
 
 重さは約5.2g。軽いため、ズボンのポケットに入れっぱなしになったまま洗濯したことがあるくらい気づかない。そんなんでいいのかプラチナカード。
 
@@ -104,7 +104,7 @@ USJでザ･フライング･ダイナソーに並ばず乗れるやつです�
 
 ## LUXURY CARD Mastercard® Titanium Card™
 
-![LUXURY CARD Titanium](/blog/resources/images/2019/03/22/luxury-card.png)
+![LUXURY CARD Titanium](/assets/images/2019/03/22/luxury-card.png)
 
 引用元: [https://www.luxurycard.co.jp/titaniumcard](https://www.luxurycard.co.jp/titaniumcard)
 
@@ -130,7 +130,7 @@ USJでザ･フライング･ダイナソーに並ばず乗れるやつです�
 チタンカードという名前なのにカードの素材はステンレス。騙された。でもかっこいいからOK。
 持ってるプラチナカードの中で一番重い。かっこいい。OK。
 
-![LUXURY CARD Titanium weight](/blog/resources/images/2019/03/22/IMG_7311.jpg)
+![LUXURY CARD Titanium weight](/assets/images/2019/03/22/IMG_7311.jpg)
 
 
 重さは約22.5g。ステンレスなりの適度な重さがあってよい。落としたときの金属音がすき。
@@ -156,7 +156,7 @@ Titanium Card™にはステータスなんてないんじゃないですかね�
 
 ## アメリカン・エキスプレス プラチナ・カード®
 
-![american express platinum](/blog/resources/images/2019/03/22/american-express-platinum.png)
+![american express platinum](/assets/images/2019/03/22/american-express-platinum.png)
 
 引用元: [https://www.americanexpress.com/jp/benefits/product/rcp-platinum/platinum-overview.html](https://www.americanexpress.com/jp/benefits/product/rcp-platinum/platinum-overview.html)
 
@@ -177,7 +177,7 @@ Titanium Card™にはステータスなんてないんじゃないですかね�
 表面にカード番号がないので修正が少なくて済む。良い。
 ただ、[CID](https://ja.wikipedia.org/wiki/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%82%B3%E3%83%BC%E3%83%89)が表面に書いてある点はそのままなのは謎。
 
-![American Express Platinum weight](/blog/resources/images/2019/03/22/IMG_7312.jpg)
+![American Express Platinum weight](/assets/images/2019/03/22/IMG_7312.jpg)
 
 重さは約17.7g。年会費140,400円(消費税8%込み)を質量で割ると１グラムあたり7,932円。純金の相場よりはるかに高い。そりゃそうか。プラチナカードなんだもの（謎）。
 

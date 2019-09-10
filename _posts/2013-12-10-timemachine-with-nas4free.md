@@ -4,7 +4,7 @@ date: 2013-12-10 12:58:47 +0900
 category: server
 tags: nas4free timemachine mac
 header:
-  image: /blog/resources/images/2013/12/10/timemachine-with-nas4free.png
+  image: /assets/images/2013/12/10/timemachine-with-nas4free.png
 ---
 
 Mavericksの登場で手元のMacBook Airをクリーンインストールしました。
@@ -66,9 +66,9 @@ NAS4Freeが起動したら
 以前、FreeNAS用にZFSで作った際にpoolを破壊してしまってデータが吹っ飛んだ経験があるため、ZFSは避けましたが、
 メモリが潤沢に搭載されているシステムであればraidzを利用してもいいかと思います。
 
-![alt](/blog/resources/images/2013/12/10/NAS4Free-1.png)
-![alt](/blog/resources/images/2013/12/10/NAS4Free-2.png)
-![alt](/blog/resources/images/2013/12/10/NAS4Free-3.png)
+![alt](/assets/images/2013/12/10/NAS4Free-1.png)
+![alt](/assets/images/2013/12/10/NAS4Free-2.png)
+![alt](/assets/images/2013/12/10/NAS4Free-3.png)
 
 
 ### AFPの設定
@@ -91,14 +91,14 @@ Services->AFPにて、
 ---
 と、設定します。ほかはデフォルトのままにしました。
 
-![alt](/blog/resources/images/2013/12/10/NAS4Free-4.png)
-![alt](/blog/resources/images/2013/12/10/NAS4Free-5.png)
-![alt](/blog/resources/images/2013/12/10/NAS4Free-6.png)
+![alt](/assets/images/2013/12/10/NAS4Free-4.png)
+![alt](/assets/images/2013/12/10/NAS4Free-5.png)
+![alt](/assets/images/2013/12/10/NAS4Free-6.png)
 
 この設定で、同一ネットワークにつながったMacからTime Machineの設定を開くと以下のように、バックアップ先に設定できるようになっていると思います。
 
 
-![Time Machineの設定画面](/blog/resources/images/2013/12/10/NAS4Free-7.png)
+![Time Machineの設定画面](/assets/images/2013/12/10/NAS4Free-7.png)
 
 
 設定方法と、NASの紹介でした。

@@ -4,7 +4,7 @@ date: 2016-10-09 16:00:00 +0900
 category: network
 tags: eap-sim 802.1x sim
 header:
-  image: /blog/resources/images/2016/10/09/slide1.jpg
+  image: /assets/images/2016/10/09/slide1.jpg
 ---
 
 ご家庭のWi-Fi、まだパスワード認証ですか？
@@ -215,12 +215,12 @@ auth_server_shared_secret=eap-sim
 iOSでは、WPA2 EnterpriseのアクセスポイントをデフォルトでEAP-TLSとして認識し、加えてiPhone/iPad側でEAP-SIMとして接続させる方法がありません。
 立ち上げたAPがEAP-SIM認証であることを教え込むために、構成プロファイルを作成する必要があります。
 
-![apple configurator2](/blog/resources/images/2016/10/09/apple-configurator2.png)
+![apple configurator2](/assets/images/2016/10/09/apple-configurator2.png)
 
 macOSが動く環境をお持ちの方は、[Apple Configurator 2](https://itunes.apple.com/jp/app/apple-configurator-2/id1037126344?mt=12)で上図のように作成するか、
 もしくは*EAP-SIM_AP*向けに作った以下の構成プロファイル（XMLファイル）のAP名を変更したものをiOSデバイスにインストールして準備完了です。
 
-[EAP-SIM_AP.mobileconfig](/blog/resources/data/2016/10/09/EAP-SIM_AP.mobileconfig)
+[EAP-SIM_AP.mobileconfig](/assets/data/2016/10/09/EAP-SIM_AP.mobileconfig)
 
 最後にお待ちかね、`hostapd /etc/hostapd/hostapd.conf`で起動させて接続してみましょう！
 

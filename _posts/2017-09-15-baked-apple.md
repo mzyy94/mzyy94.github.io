@@ -4,7 +4,7 @@ date: 2017-09-15 00:40:29 +0900
 category: gadget
 tags: apple baking macbookair
 header:
-  image: /blog/resources/images/2017/09/15/baking.jpg
+  image: /assets/images/2017/09/15/baking.jpg
 ---
 
 
@@ -81,7 +81,7 @@ Appleは鉛フリーはんだを用いているため、鉛フリーはんだの
 
 先ほどのスライドより、鉛フリーはんだの融点は216℃～220℃と示されているため、 __220℃で4分__ の加熱をすることとした。
 
-![heating](/blog/resources/images/2017/09/15/heating.jpg)
+![heating](/assets/images/2017/09/15/heating.jpg)
 
 予熱をしている間に、グリスをふき取り、アルミホイルで包むなどの加熱への準備を進めた。
 予熱が終わり4分間の加熱をし、自然冷却を行い待つこと30分。

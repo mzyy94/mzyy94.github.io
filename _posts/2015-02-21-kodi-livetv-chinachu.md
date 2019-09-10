@@ -4,7 +4,7 @@ date: 2015-02-21 07:02:43 +0900
 category: raspberry-pi
 tags: kodi chinachu osmc dtv
 header:
-  image: /blog/resources/images/2015/02/21/kodi-livetv.png
+  image: /assets/images/2015/02/21/kodi-livetv.png
 ---
 
 
@@ -67,37 +67,37 @@ _[https://github.com/mzyy94/Chinachu-IPTV-API-addon](https://github.com/mzyy94/C
 
 まず、設定のAdd-onの中にある無効なアドオンからPVR Simple IPTV Clientを探して選択し、設定画面を開きます。
 
-![Disabled add-ons](/blog/resources/images/2015/02/21/disabled-addons.png)
-![IPTV Simple client](/blog/resources/images/2015/02/21/iptv-simple-client-addon.png)
+![Disabled add-ons](/assets/images/2015/02/21/disabled-addons.png)
+![IPTV Simple client](/assets/images/2015/02/21/iptv-simple-client-addon.png)
 
 設定画面にあるM3UプレイリストのURLとXMLTV URLにChinachuのWUIが動作するURLに続けて、下図のように設定します。
 各自環境に合わせて`chinachu:10772`の部分を書き換えてください。
 
-![Add-on configure1](/blog/resources/images/2015/02/21/addon-configure1.png)
-![Add-on configure2](/blog/resources/images/2015/02/21/addon-configure2.png)
+![Add-on configure1](/assets/images/2015/02/21/addon-configure1.png)
+![Add-on configure2](/assets/images/2015/02/21/addon-configure2.png)
 
 設定を終えたらSimple IPTV Clientの__有効__を選択して有効にし、Kodiの全体の設定にあるLive TV設定に移動してLCD有効(誤訳？)すると、
 トップの画像のようにライブTVの項目が現れ、PVRが利用できるようになります。
 
-![Enable PVR](/blog/resources/images/2015/02/21/enable-pvr.png)
+![Enable PVR](/assets/images/2015/02/21/enable-pvr.png)
 
 m3uプレイリストとしてAPIが提供するチャンネルは、Chinachuの設定ファイルに記載の通りの順番でサブチャンネル含め配信しているので、
 後日紹介するであろうリモコンを使ってチャンネル切り替えを行う場合は、Live TV設定のチャンネルマネージャーからグループ管理を行って、
 不要なチャンネルを隠すことでリモコンでの操作に適したチャンネルのみを切り替え可能にできます。
 
-![Channel Manager1](/blog/resources/images/2015/02/21/channel-manager1.png)
-![Channel Manager2](/blog/resources/images/2015/02/21/channel-manager2.png)
-![Channel Manager3](/blog/resources/images/2015/02/21/channel-manager3.png)
+![Channel Manager1](/assets/images/2015/02/21/channel-manager1.png)
+![Channel Manager2](/assets/images/2015/02/21/channel-manager2.png)
+![Channel Manager3](/assets/images/2015/02/21/channel-manager3.png)
 
 ここまで終わった状態で、Kodiのトップに移動するとライブTVの項目が増えているはずです。これを選択すると、デフォルトではEPG番組表が表示されます。
 Kodi上でキーボードのEを押すと同じようにEPG番組表が表示されます。
 
-![PVR EPG view](/blog/resources/images/2015/02/21/pvr-epg.png)
+![PVR EPG view](/assets/images/2015/02/21/pvr-epg.png)
 
 ここで、バックスペースキーを押すとチャンネル一覧を表示するメニューが現れるので、そちらに切り替えると現在放送中の番組情報が表示されます。
 もしくはキーボードのHを押すことでチャンネル一覧が表示できます。
 
-![PVR Channel view](/blog/resources/images/2015/02/21/pvr-channel.png)
+![PVR Channel view](/assets/images/2015/02/21/pvr-channel.png)
 
 
 ここで好きなようにチャンネルを切り替え、地デジを観ることができます。

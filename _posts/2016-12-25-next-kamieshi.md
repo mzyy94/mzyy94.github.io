@@ -4,7 +4,7 @@ date: 2016-12-25 01:00:00 +0900
 category: graphic
 tags: kamieshi haihuri
 header:
-  image: /blog/resources/images/2016/12/25/kamie.png
+  image: /assets/images/2016/12/25/kamie.png
 ---
 
 この記事は[神絵師 Advent Calendar 2016 - Adventar](http://www.adventar.org/calendars/1831)の25日目を飾るにふさわしい記事です。
@@ -37,7 +37,7 @@ header:
 
 [グラフギア500｜商品紹介｜ぺんてる株式会社](http://www.pentel.co.jp/products/automaticpencils/graphgear500/)
 
-![グラフギア500](/blog/resources/images/2016/12/25/graphgear500.jpg)
+![グラフギア500](/assets/images/2016/12/25/graphgear500.jpg)
 
 
 日本ブランドのぺんてるから製図ペンシリーズとして展開されているグラフギア。
@@ -52,7 +52,7 @@ Amazonでは参考価格より大幅に安く販売されているため、神�
 
 [製品紹介（Products）：製図用シャープペンシル \| STAEDTLER Japan website!](http://www.staedtler.jp/products/01_writing/07a-mechanical-pencil/index.html)
 
-![STAEDTLER 925](/blog/resources/images/2016/12/25/staedtler925.jpg)
+![STAEDTLER 925](/assets/images/2016/12/25/staedtler925.jpg)
 
 
 ドイツブランドのSTAEDTLERもぺんてるに引けを取らず、数多くの製図ペンシリーズをSTAEDTLER 925として販売しています。
@@ -99,7 +99,7 @@ iPadですらすらと絵をくのにオススメなのが、このProcreate。
 ペンを使っているときは、指の反応を無効にすることができるほか、
 レイヤーを保持したPSD形式で出力できるため、PCやMacで仕上げを行うことができます。
 
-<img src="/blog/resources/images/2016/12/25/procreate-icon.jpg" style="border-radius: 26px; width: 120px; height: 120px; border: none;" >
+<img src="/assets/images/2016/12/25/procreate-icon.jpg" style="border-radius: 26px; width: 120px; height: 120px; border: none;" >
 
 [Procreateを App Store で](https://itunes.apple.com/jp/app/procreate/id425073498?mt=8&at=1l3v4mQ)
 
@@ -133,11 +133,11 @@ Macで動作するCLIP STUDIO PAINTをiPadに表示し、Apple Pencilの筆圧�
 
 左に並ぶツールは並び替えが自由で、ショートカットキーがわりあてられるため、次のように設定してiPadのみでのお絵描きができるようにしています。
 
-![ショートカット設定](/blog/resources/images/2016/12/25/astropad-setting.png)
+![ショートカット設定](/assets/images/2016/12/25/astropad-setting.png)
 
 ただ、Windowsは2016年時点でまだサポートされてません。
 
-<img src="/blog/resources/images/2016/12/25/astropad-icon.jpg" style="border-radius: 26px; width: 120px; height: 120px; border: none;" >
+<img src="/assets/images/2016/12/25/astropad-icon.jpg" style="border-radius: 26px; width: 120px; height: 120px; border: none;" >
 
 [Astropad Graphics Tabletを App Store で](https://itunes.apple.com/jp/app/astropad-graphics-tablet/id934510730?mt=8&at=1l3v4mQ)
 
@@ -152,9 +152,9 @@ iPadの解像度は2048x1536のため、AstropadでMacの画面をドットバ�
 このソフトウェアで2048x1536のスケール解像度を作成し、メニューからそれを有効にすることで、iPad Pro 9.7インチにドットバイドットで表示させることが可能になります。
 
 
-![解像度設定](/blog/resources/images/2016/12/25/switchresx-setting.png)
+![解像度設定](/assets/images/2016/12/25/switchresx-setting.png)
 
-![解像度設定](/blog/resources/images/2016/12/25/all-setting.png)
+![解像度設定](/assets/images/2016/12/25/all-setting.png)
 
 Macの種類によってはHiDPIに対応していないので、[Quartz Debugを使って有効化する](https://www.google.co.jp/search?q=hidpi+quartz+debug)必要があります。
 
@@ -168,27 +168,27 @@ Macの種類によってはHiDPIに対応していないので、[Quartz Debug�
 
 適当にそれっぽく描きます。
 
-![step1](/blog/resources/images/2016/12/25/step1.png)
+![step1](/assets/images/2016/12/25/step1.png)
 
 
 ### 下書きをする
 
 それっぽい線を、よりそれっぽくします。
 
-![step2](/blog/resources/images/2016/12/25/step2.png)
+![step2](/assets/images/2016/12/25/step2.png)
 
 
 ### ペン入れをする
 
 それらしさを上げます。
 
-![step3](/blog/resources/images/2016/12/25/step3.png)
+![step3](/assets/images/2016/12/25/step3.png)
 
 ### 完成
 
 完成。
 
-![step4](/blog/resources/images/2016/12/25/step4.png)
+![step4](/assets/images/2016/12/25/step4.png)
 
 ## 原稿の落とし方
 神絵師なら誰しも原稿を落としています。
@@ -197,7 +197,7 @@ Macの種類によってはHiDPIに対応していないので、[Quartz Debug�
 今回の新刊の落ちそうな過程をProcreateとApple Pencilで描きました。
 ご覧ください。
 
-![グラフ](/blog/resources/images/2016/12/25/graph.png)
+![グラフ](/assets/images/2016/12/25/graph.png)
 
 
 ## <del>まとめ</del>宣伝

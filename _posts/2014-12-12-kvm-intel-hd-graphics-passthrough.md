@@ -59,8 +59,8 @@ XenによるPCIパススルーの記事はたくさん見つかるものの、KV
 
 KVMでPCIパススルーするための手がかりを`make menuconfig`で調べたところ、次の2つのオプションを有効化することでIntel HD GraphicsをKVMにパススルーできそうだということがわかりました。
 
-![Intel IOMMU](/blog/resources/images/2014/12/12/Intel-IOMMU-option.png)
-![Intel VFIO](/blog/resources/images/2014/12/12/VFIO-option.png)
+![Intel IOMMU](/assets/images/2014/12/12/Intel-IOMMU-option.png)
+![Intel VFIO](/assets/images/2014/12/12/VFIO-option.png)
 
 Intel IOMMUはIntel VT-dの機能をカーネルで有効にするものです。
 また、VFIOはIOMMUによるデバイスへのアクセスを提供するものです。
@@ -70,7 +70,7 @@ Intel IOMMUはIntel VT-dの機能をカーネルで有効にするものです�
 その次はqemuの起動オプションです。
 まず、ベアメタルマシン上ではどのようにIntel HD Graphicsが認識されているのかを調べます。
 
-![Intel HD Graphics host](/blog/resources/images/2014/12/12/Intel-HD-Graphics-Host.png)
+![Intel HD Graphics host](/assets/images/2014/12/12/Intel-HD-Graphics-Host.png)
 
 バス00:02.0にIntel HD Graphicsが認識されています。
 
@@ -84,7 +84,7 @@ Intel IOMMUはIntel VT-dの機能をカーネルで有効にするものです�
 
 すると、ゲストLinuxにしっかりとIntel HD Graphicsが渡されていることがわかります。
 
-![Intel HD Graphics guest](/blog/resources/images/2014/12/12/Intel-HD-Graphics-Guest.png)
+![Intel HD Graphics guest](/assets/images/2014/12/12/Intel-HD-Graphics-Guest.png)
 
 ## Intel Media SDK Install
 

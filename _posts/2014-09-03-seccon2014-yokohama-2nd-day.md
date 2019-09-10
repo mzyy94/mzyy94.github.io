@@ -4,7 +4,7 @@ date: 2014-09-03 14:40:47 +0900
 category: ctf
 tags: seccon seccon2014
 header:
-  image: /blog/resources/images/2014/9/3/KEN.JPG
+  image: /assets/images/2014/9/3/KEN.JPG
 ---
 SECCON 2014 横浜大会に参加してきました。
 NW,BIN,WEBと３部門の予選がありましたが、ネットワーク大好き♡なのでNWにチャレンジしました。
@@ -64,7 +64,7 @@ tsharkでパケットをチェックしてみると、
     開いてるTCPポートを列挙せよ
 
 
-[nmaped.pcap](/blog/resources/data/2014/9/3/nmaped.pcap)
+[nmaped.pcap](/assets/data/2014/9/3/nmaped.pcap)
 
 
 これはpcapファイルが添付されていました。

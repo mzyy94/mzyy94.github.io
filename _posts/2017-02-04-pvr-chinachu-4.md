@@ -4,7 +4,7 @@ date: 2017-02-04 11:15:00 +0900
 category: kodi
 tags: chinachu dtv kodi osmc pvr
 header:
-  image: /blog/resources/images/2017/02/04/pvr.chinachu-fanart.png
+  image: /assets/images/2017/02/04/pvr.chinachu-fanart.png
 ---
 
 KodiとChinachuがシームレスに連携し、快適に地デジが視聴できるアドオン Harekaze for Kodi(pvr.chinachu) をKodi 17 Krypton
@@ -35,7 +35,7 @@ Kodi 17になり、標準のスキンが変更になりました。
 今までの光沢感の強いConfluenceから、モダンな感じのEstuaryに変わり、操作性も大きく変わりました。
 特にPVRは、トップ画面にチャンネルや録画済みの項目が表示されるようになりました。
 
-![top image](/blog/resources/images/2017/02/04/pvr-window.png)
+![top image](/assets/images/2017/02/04/pvr-window.png)
 
 視聴方法などは標準的な操作から変更はないですが、インターフェースの変更に伴って新たな項目が増えました。
 タイマールールです。こちらにはChinachuのルールが該当しますが、機能に関しての詳細は後述します。
@@ -50,22 +50,22 @@ Kodi 17になり、標準のスキンが変更になりました。
 **オプション**
 : 標準テーマでは左側から出現する各機能のオプションが表示される画面。左キーを押したり画面左端にカーソルを移動させるなどして表示させられます。
 
-![option](/blog/resources/images/2017/02/04/option-subwindow.png)
+![option](/assets/images/2017/02/04/option-subwindow.png)
 
 **メニュー**
 : 標準テーマではダイアログのように操作項目一覧が表示される画面。決定キー長押しや、右クリックなどで表示させられます。
 
-![menu](/blog/resources/images/2017/02/04/menu-dialog.png)
+![menu](/assets/images/2017/02/04/menu-dialog.png)
 
 **設定画面**
 : Add-onの詳細ページにある設定ボタンを押したときに表示される画面。インストール済みAdd-onからHarekazeを選択することで設定ボタンを見つけられます。
 
-![settings](/blog/resources/images/2017/02/04/setting-dialog1.png)
+![settings](/assets/images/2017/02/04/setting-dialog1.png)
 
 
 ## チャンネル一覧
 
-![channel list](/blog/resources/images/2017/02/04/channel-list.png)
+![channel list](/assets/images/2017/02/04/channel-list.png)
 
 チャンネル一覧には、これまでにはなかった各チャンネルのロゴが表示されるようになりました。
 また、1つのチャンネルに複数サービスがある場合、番組が存在してもしなくてもチャンネルが選択肢として表示されていたところ、
@@ -75,7 +75,7 @@ Kodi 17になり、標準のスキンが変更になりました。
 
 ### ライブ視聴
 
-![hai-furi live watch](/blog/resources/images/2017/02/04/live-watch.png)
+![hai-furi live watch](/assets/images/2017/02/04/live-watch.png)
 
 視聴に関して、3.xでは設定画面にMirakurunからのダイレクト視聴オプションがありましたが、
 チューナーの管理などをChinachu gammaに任せる方針に変更しました。
@@ -84,11 +84,11 @@ Kodi 17になり、標準のスキンが変更になりました。
 このとき、録画のためにチューナーが別で確保されるため、複数のチューナーを搭載していない場合は、
 録画が終了するまでライブ視聴が中断されます。
 
-![hai-furi 2stream recording and live watch](/blog/resources/images/2017/02/04/live-watch2.png)
+![hai-furi 2stream recording and live watch](/assets/images/2017/02/04/live-watch2.png)
 
 ## 番組表
 
-![program guide](/blog/resources/images/2017/02/04/program-guide.png)
+![program guide](/assets/images/2017/02/04/program-guide.png)
 
 Chinachu gammaになり、新たにジャンルコードが追加されたため、それに追従して番組表の色分けも追加しました。
 また、チャンネル名の横にチャンネルロゴが表示されるようになりました。
@@ -97,14 +97,14 @@ Chinachu gammaになり、新たにジャンルコードが追加されたため
 
 ### 手動録画機能
 
-![manual reserving](/blog/resources/images/2017/02/04/program-detail.png)
+![manual reserving](/assets/images/2017/02/04/program-detail.png)
 
 番組表やチャンネル一覧から番組詳細を表示したりメニューを開くと、録画（_スキンによっては録音との誤訳あり_）ボタンが現れます。
 このボタンより、Chinachuの手動予約リクエストが発生し、現在放映中の番組はその時点から録画、未来に放映される番組は手動録画予約が行われます。
 
 ## 録画一覧
 
-![recording list](/blog/resources/images/2017/02/04/recording-list.png)
+![recording list](/assets/images/2017/02/04/recording-list.png)
 
 録画一覧には、録画された番組が表示されます。
 項目を選択することで再生ができ、メニューより削除ができます。
@@ -116,7 +116,7 @@ Chinachu gammaになり、新たにジャンルコードが追加されたため
 
 ### 一覧の更新
 
-![client actino menu](/blog/resources/images/2017/02/04/client-action.png)
+![client actino menu](/assets/images/2017/02/04/client-action.png)
 
 メニューのクライアントのアクションに録画一覧・タイマー一覧の更新アクションとスケジューラーの実行アクションを搭載しました。
 これにより、これまではKodiが一覧を更新するタイミングが来るまでChinachuの情報が取得できなかった問題が解決します。
@@ -124,7 +124,7 @@ Chinachu gammaになり、新たにジャンルコードが追加されたため
 
 ## タイマー一覧
 
-![timer list](/blog/resources/images/2017/02/04/timer-list.png)
+![timer list](/assets/images/2017/02/04/timer-list.png)
 
 タイマー一覧には、Chinachuの録画予約が一覧として表示されます。
 ルールによって一致した予約に関しては、スキップやスキップの取り消しができ、手動予約は予約の削除がメニューからできるようになっています。
@@ -133,7 +133,7 @@ Chinachu gammaになり、新たにジャンルコードが追加されたため
 
 ## タイマールール一覧
 
-![timer rule list](/blog/resources/images/2017/02/04/timer-rule.png)
+![timer rule list](/assets/images/2017/02/04/timer-rule.png)
 
 Kodi 17からの新機能で、タイマールール一覧が追加されました。
 Chinachuのルールに相当するものです。
@@ -160,7 +160,7 @@ Chinachuのルールにある項目のうち、Kodiのタイマールールと�
 
 ### ルールの作成と管理
 
-![rule creation](/blog/resources/images/2017/02/04/rule-creation.png)
+![rule creation](/assets/images/2017/02/04/rule-creation.png)
 
 新しい予約形態として、番組からルールの作成ができるようになりました。
 Chinachuのルール作成とほぼ同等の機能です。
@@ -173,7 +173,7 @@ Chinachuのルール作成とほぼ同等の機能です。
 
 ### 基本設定
 
-![settings 1](/blog/resources/images/2017/02/04/setting-dialog1.png)
+![settings 1](/assets/images/2017/02/04/setting-dialog1.png)
 
 設定画面の項目は不要なものが削除されたのみで、新しいものは追加されていません。
 Add-onを有効にする前の初期設定としてChinachuのWUIのURLの入力をしておけば、とりあえず動作します。
@@ -188,14 +188,14 @@ Mirakurunからのダイレクト視聴が無効となったため、Mirakurun�
 
 ### ストリーミング設定
 
-![settings 2](/blog/resources/images/2017/02/04/setting-dialog2.png)
+![settings 2](/assets/images/2017/02/04/setting-dialog2.png)
 
 モバイルデバイスではなく、据え置きの機器にインストールしたKodiで視聴している方にはあまり縁がないかもしれませんが、
 Chinachuによるトランスコードを有効にする設定をすることができます。
 
 ### 録画設定
 
-![settings 3](/blog/resources/images/2017/02/04/setting-dialog3.png)
+![settings 3](/assets/images/2017/02/04/setting-dialog3.png)
 
 録画済み番組に関する設定をまとめた画面ですが、現状はサムネイルの表示有無とサムネイルとして切り出す動画のフレームの位置を設定できます。
 

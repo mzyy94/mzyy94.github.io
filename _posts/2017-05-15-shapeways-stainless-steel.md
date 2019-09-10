@@ -4,7 +4,7 @@ date: 2017-05-15 21:48:08 +0900
 category: 3dprint
 tags: metal stainless steel kemono-friends ﾏｶｾﾃ
 header:
-  image: /blog/resources/images/2017/05/15/boss-6.jpg
+  image: /assets/images/2017/05/15/boss-6.jpg
 ---
 
 :scream_cat: **すっごーい！なにこれなにこれ？ボスがこんなに！どうやったの！**
@@ -40,15 +40,15 @@ header:
 
 :school_satchel: Shapewaysはうみのそとにあるので作ってもらうまでに時間がかかりますが、今回は注文から**約22日**で到着しました。
 
-![Box](/blog/resources/images/2017/05/15/box.jpg)
+![Box](/assets/images/2017/05/15/box.jpg)
 
-![Packed](/blog/resources/images/2017/05/15/packed.jpg)
+![Packed](/assets/images/2017/05/15/packed.jpg)
 
 :owl: うみのそとからの荷物ということは関税がかかったのですか
 
 :school_satchel: 詳しいですね。はい、いろいろ含めて **1800円** かかりました。
 
-![Tax](/blog/resources/images/2017/05/15/tax.jpg)
+![Tax](/assets/images/2017/05/15/tax.jpg)
 
 :smiley_cat: それはじゃパリコイン何枚分なの？
 
@@ -58,34 +58,34 @@ header:
 
 :school_satchel: そして出来上がりがこちらです
 
-![Boss front](/blog/resources/images/2017/05/15/boss-front.jpg)
+![Boss front](/assets/images/2017/05/15/boss-front.jpg)
 
 :heart_eyes_cat: すっごーい！
 
 :school_satchel: はじめて3Dプリントしてみましたが意外ときれいにつくれるんですね。
 
-![Boss back](/blog/resources/images/2017/05/15/boss-back.jpg)
-![Boss bottom](/blog/resources/images/2017/05/15/boss-bottom.jpg)
-![Boss right](/blog/resources/images/2017/05/15/boss-right.jpg)
+![Boss back](/assets/images/2017/05/15/boss-back.jpg)
+![Boss bottom](/assets/images/2017/05/15/boss-bottom.jpg)
+![Boss right](/assets/images/2017/05/15/boss-right.jpg)
 
 :school_satchel: 金・銀・銅と色が違いますが、全部ステンレススチール製です。
 
-![boss 3](/blog/resources/images/2017/05/15/boss-3.jpg)
+![boss 3](/assets/images/2017/05/15/boss-3.jpg)
 
 :school_satchel: ラッキーさんの目や本体（？）の部分もしっかりとできてますね。
 
-![detail eye](/blog/resources/images/2017/05/15/eye.jpg)
-![detail watch](/blog/resources/images/2017/05/15/watch.jpg)
+![detail eye](/assets/images/2017/05/15/eye.jpg)
+![detail watch](/assets/images/2017/05/15/watch.jpg)
 
 :school_satchel: サイズは高さが **2.28cm** ほどです。意外と重さもあって、1つ **16.4g** ほどあります。置物にちょうどいいですね。
 
-![Boss tall](/blog/resources/images/2017/05/15/boss-tall.jpg)
+![Boss tall](/assets/images/2017/05/15/boss-tall.jpg)
 
 :owl: これらはいくらしたんですか？
 
 :school_satchel: Shapewaysではステンレススチールの3Dプリントの値段が次のように書いてありました。
 
-![price table](/blog/resources/images/2017/05/15/price-table.png)
+![price table](/assets/images/2017/05/15/price-table.png)
 
 引用元: [https://www.shapeways.com/materials/steel](https://www.shapeways.com/materials/steel)
 

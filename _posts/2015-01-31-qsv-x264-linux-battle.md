@@ -12,7 +12,7 @@ tags: ffmpeg qsv x264
 
 *[Big Buck Bunny](http://www.bigbuckbunny.org)*
 
-![Big Buck Bunny](/blog/resources/images/2015/01/31/big-buck-bunny.png)
+![Big Buck Bunny](/assets/images/2015/01/31/big-buck-bunny.png)
 
 ここの、`big_buck_bunny_1080p_surround.avi`を以下の表のオプションでLibx264とQSVでのエンコードで変換し、比較をしてみました。
 
@@ -33,7 +33,7 @@ tags: ffmpeg qsv x264
 Xeon搭載マシンで動かしているKVMに仮想8コアを割り当てた環境でエンコードしてみました。
 FFmpegの粋な計らいによって、エンコード中は以下のようにたくさんのスレッドが立ちがあり、マシンはエンコードに専念していました。
 
-![x264 8core encode](/blog/resources/images/2015/01/31/x264-8core-encode.png)
+![x264 8core encode](/assets/images/2015/01/31/x264-8core-encode.png)
 
 CPUはエンコード中、全コア90%前後の使用率を維持していました。そんなエンコードにかかった時間は以下の通りでした。
 
@@ -52,7 +52,7 @@ sys     0m7.375s
 こちらもFFmpegによって複数のスレッドによる処理がされるのですが、CPUの負荷は多くて各コア10%程度となる非常に省エネなエンコードとなっていました。
 
 
-![QSV 8core encode](/blog/resources/images/2015/01/31/qsv-8core-encode.png)
+![QSV 8core encode](/assets/images/2015/01/31/qsv-8core-encode.png)
 
 こんな省エネでもエンコードに要する時間はそれほどかかりませんでした。
 
@@ -71,7 +71,7 @@ KVMで割り当てコア数を1コアに設定し、x264を用いたエンコー
 負荷はほぼ100%、まれに90%前後になる程度でした。
 
 
-![x264 1core encode](/blog/resources/images/2015/01/31/x264-1core-encode.png)
+![x264 1core encode](/assets/images/2015/01/31/x264-1core-encode.png)
 
 じっくりエンコードしてかかった時間は以下のとおりです。
 
@@ -89,7 +89,7 @@ sys     0m1.070s
 QSVとコア数の関係性は不明ながら、比較のために同じ環境でQSVでもエンコードしてみました。
 負荷はほとんどないかと思ってたのですが、エンコーダに渡す前処理などで少々CPUを使うようで、90%前後まで達したり0%付近をうろうろしたりと、不安定な負荷がかかっていました。また、なぜか2スレッドで処理していました。
 
-![qsv 1core encode](/blog/resources/images/2015/01/31/qsv-1core-encode.png)
+![qsv 1core encode](/assets/images/2015/01/31/qsv-1core-encode.png)
 
 要した時間は以下のとおりです。
 
@@ -111,7 +111,7 @@ sys     0m0.972s
 早速、QSVでの同時エンコードを試してみました。
 tmuxで分割し、上下のコンソールで同時にエンコードを開始してみた結果が以下の画像のとおりになります。
 
-![qsv 1core multi encode](/blog/resources/images/2015/01/31/qsv-1core-multi-encode.png)
+![qsv 1core multi encode](/assets/images/2015/01/31/qsv-1core-multi-encode.png)
 
 ライブラリがIGPへアクセスできないようでアクセス違反起こして終了してしまうため、QSVでの同時エンコードはダメでした。
 

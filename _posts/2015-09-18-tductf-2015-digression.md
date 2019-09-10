@@ -4,7 +4,7 @@ date: 2015-09-18 01:33:16 +0900
 category: ctf
 tags: tductf electron react lepusctf
 header:
-  image: /blog/resources/images/2015/09/18/tductf-frontend.png
+  image: /assets/images/2015/09/18/tductf-frontend.png
 ---
 みなさんご参加ありがとうございます。
 存じ上げている方もたくさんいらっしゃると思いますが、先月末の日曜日にTDUCTF 2015なるものが開催されました。

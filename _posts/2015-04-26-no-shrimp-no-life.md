@@ -4,7 +4,7 @@ date: 2015-04-26 23:46:19 +0900
 category: shrimp
 tags: shrimp
 header:
-  image: /blog/resources/images/2015/04/26/shrimp-bottle.jpg
+  image: /assets/images/2015/04/26/shrimp-bottle.jpg
 ---
 
 先日、久々にアイコンを大幅に変更しました。
@@ -46,7 +46,7 @@ MacBook Airとコーヒーと犬が描かれていたアイコンをここ数年
 思惑は期待通りで、20℃前後の空間を作り上げることができ、2月の寒い時期を元気にすごしてくれました。
 
 
-![shrimp-in-the-server](/blog/resources/images/2015/04/26/shrimp-in-the-server.jpg)
+![shrimp-in-the-server](/assets/images/2015/04/26/shrimp-in-the-server.jpg)
 
 ## えびかわいいのでえび特集します
 

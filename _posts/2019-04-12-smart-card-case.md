@@ -5,7 +5,7 @@ published: true
 categories: misc
 tags: credit card case wallet
 header:
-  image: /blog/resources/images/2019/04/12/cases.jpg
+  image: /assets/images/2019/04/12/cases.jpg
 ---
 
 キャッシュレス大好きで、普段から現金を使うことはほとんどない。だけれども長財布を持ち歩いていた。
@@ -94,7 +94,7 @@ Areospaceだとか航空機グレードだとか、かっこいい単語並べ�
 
 ## The Ridge
 
-![ridge-main](/blog/resources/images/2019/04/12/ridge-main.jpg)
+![ridge-main](/assets/images/2019/04/12/ridge-main.jpg)
 
 
 公式: [ridgewallet.com/collections/all-wallets/products/aluminum-silver](https://www.ridgewallet.com/collections/all-wallets/products/aluminum-silver)
@@ -113,9 +113,9 @@ Kickstarterでもまあまあ人気だったっぽいカードケース。
 
 ### 外観
 
-![ridge-1](/blog/resources/images/2019/04/12/ridge-1.jpg)
-![ridge-2](/blog/resources/images/2019/04/12/ridge-2.jpg)
-![ridge-3](/blog/resources/images/2019/04/12/ridge-3.jpg)
+![ridge-1](/assets/images/2019/04/12/ridge-1.jpg)
+![ridge-2](/assets/images/2019/04/12/ridge-2.jpg)
+![ridge-3](/assets/images/2019/04/12/ridge-3.jpg)
 
 イケメンシルバーは梨地加工があり、MacBook Proっぽさを感じる（色は若干違う）。スタバの小さい机の上に置いておくとイケメンになれそう。
 カーボンファイバーはエセっぽさ（なんちゃってカーボンファイバー感）がなく、ロゴを削ってあるところは繊維（ファイバー？）が露出していた。オタクこういうの好きそう。
@@ -124,8 +124,8 @@ Kickstarterでもまあまあ人気だったっぽいカードケース。
 
 ### エッジ処理
 
-![ridge-edge1](/blog/resources/images/2019/04/12/ridge-edge1.jpg)
-![ridge-edge2](/blog/resources/images/2019/04/12/ridge-edge2.jpg)
+![ridge-edge1](/assets/images/2019/04/12/ridge-edge1.jpg)
+![ridge-edge2](/assets/images/2019/04/12/ridge-edge2.jpg)
 
 
 エッジはしっかりと研ぎ澄まされている。なめらかな指ざわり。
@@ -134,8 +134,8 @@ Kickstarterでもまあまあ人気だったっぽいカードケース。
 
 ### 収納
 
-![ridge-card1](/blog/resources/images/2019/04/12/ridge-card1.jpg)
-![ridge-card2](/blog/resources/images/2019/04/12/ridge-card2.jpg)
+![ridge-card1](/assets/images/2019/04/12/ridge-card1.jpg)
+![ridge-card2](/assets/images/2019/04/12/ridge-card2.jpg)
 
 実際にカードを8枚入れてみた。いれ方はゴムのない辺をくぱぁと開いて挿入する。
 ゴムの張りは強くしっかりと保持される。若干きつい。
@@ -154,8 +154,8 @@ Kickstarterでもまあまあ人気だったっぽいカードケース。
 
 The Ridgeにはマネーバンド型とマネークリップ型が存在する。今回はシルバーがクリップで、カーボンファイバーがバンドのものにした。
 
-![ridge-band1](/blog/resources/images/2019/04/12/ridge-band1.jpg)
-![ridge-clip1](/blog/resources/images/2019/04/12/ridge-clip1.jpg)
+![ridge-band1](/assets/images/2019/04/12/ridge-band1.jpg)
+![ridge-clip1](/assets/images/2019/04/12/ridge-clip1.jpg)
 
 マネーバンド型は取り出しが長辺方向だけであるが、数枚畳んで持ち歩く分にはしっかりと保持できている。マネークリップ型は固定されているのが一辺だけだが、これもしっかり止まっているようだ。お札1枚だけだとクリップの方はちょっとポケットからの出し入れの際に心配になるが、落ちることはなかった。
 
@@ -174,7 +174,7 @@ The Ridgeにはマネーバンド型とマネークリップ型が存在する�
 ## Decadent Minimalist One
 
 
-![dc1-main](/blog/resources/images/2019/04/12/dc1-main.jpg)
+![dc1-main](/assets/images/2019/04/12/dc1-main.jpg)
 
 公式: [decadentminimalist.com](https://decadentminimalist.com/)
 
@@ -196,15 +196,15 @@ Kickstarterを見るに、The RidgeよりもFounderは少ないが達成額は�
 
 ### 外観
 
-![dc1-frame1](/blog/resources/images/2019/04/12/dc1-frame1.jpg)
-![dc1-frame2](/blog/resources/images/2019/04/12/dc1-frame2.jpg)
+![dc1-frame1](/assets/images/2019/04/12/dc1-frame1.jpg)
+![dc1-frame2](/assets/images/2019/04/12/dc1-frame2.jpg)
 
 アルミ削り出しと直感でわかる仕上がり。惚れ惚れするフォルム。
 サイズは公式サイトより、3.53" x 2.38", 8-card: 0.38"、すなわち、89.7mm x 60.5mm x 9.7mm。
 
 ### エッジ処理
 
-![dc1-edge1](/blog/resources/images/2019/04/12/dc1-edge1.jpg)
+![dc1-edge1](/assets/images/2019/04/12/dc1-edge1.jpg)
 
 これもエッジはなめらか。削り出しだからそれは当然のように、全体が統一された手触りだった。
 カードが触れる部分も滑らかに処理されている。
@@ -212,8 +212,8 @@ Kickstarterを見るに、The RidgeよりもFounderは少ないが達成額は�
 ### 収納
 
 
-![dc1-card1](/blog/resources/images/2019/04/12/dc1-card1.jpg)
-![dc1-card2](/blog/resources/images/2019/04/12/dc1-card2.jpg)
+![dc1-card1](/assets/images/2019/04/12/dc1-card1.jpg)
+![dc1-card2](/assets/images/2019/04/12/dc1-card2.jpg)
 
 開いている辺を少し開け、すーっと滑り込ませる形で挿入する。これがまた綺麗に入るんだわ。
 カチッと音がなる。周りからの評判がとても良かった。
@@ -231,13 +231,13 @@ Kickstarterを見るに、The RidgeよりもFounderは少ないが達成額は�
 
 DM1のマネークリップは別になっていて、一枚のカードのようになっている。
 
-![dc1-clip1](/blog/resources/images/2019/04/12/dc1-clip1.jpg)
-![dc1-clip2](/blog/resources/images/2019/04/12/dc1-clip2.jpg)
+![dc1-clip1](/assets/images/2019/04/12/dc1-clip1.jpg)
+![dc1-clip2](/assets/images/2019/04/12/dc1-clip2.jpg)
 
 これを一番後ろに入れることによってクリップを追加できる。
 保持力はしっかりとある。また、押さえる部分が当たるところに穴が空いてるため、緩くなっても押し込むことで保持力を元に戻せるようになっているのもポイント高い。
 
-![dc1-clip3](/blog/resources/images/2019/04/12/dc1-clip3.jpg)
+![dc1-clip3](/assets/images/2019/04/12/dc1-clip3.jpg)
 
 ただ、このマネークリップがカード一枚分の厚さがあるため、これを入れるとカードが7枚しか収納できなくなる。残念ポイント。
 
@@ -253,7 +253,7 @@ DM1のマネークリップは別になっていて、一枚のカードのよ�
 
 ## SECRID
 
-![secrid-main](/blog/resources/images/2019/04/12/secrid-main.jpg)
+![secrid-main](/assets/images/2019/04/12/secrid-main.jpg)
 
 
 公式: [secrid.com](https://secrid.com/)
@@ -267,9 +267,9 @@ DM1のマネークリップは別になっていて、一枚のカードのよ�
 
 ### 外観
 
-![secrid-1](/blog/resources/images/2019/04/12/secrid-1.jpg)
-![secrid-2](/blog/resources/images/2019/04/12/secrid-2.jpg)
-![secrid-3](/blog/resources/images/2019/04/12/secrid-3.jpg)
+![secrid-1](/assets/images/2019/04/12/secrid-1.jpg)
+![secrid-2](/assets/images/2019/04/12/secrid-2.jpg)
+![secrid-3](/assets/images/2019/04/12/secrid-3.jpg)
 
 内側のカードケースのみのものもあるが、今回は手帳タイプの物にした。
 というのも、カードケース単品では紙幣が一緒に持ち歩けないからだ。
@@ -278,7 +278,7 @@ DM1のマネークリップは別になっていて、一枚のカードのよ�
 ### エッジ処理
 
 
-![secrid-edge1](/blog/resources/images/2019/04/12/secrid-edge1.jpg)
+![secrid-edge1](/assets/images/2019/04/12/secrid-edge1.jpg)
 
 
 サイドはラウンド形状なのでエッジがない。カードを入れる部分のエッジ処理は痛くない程度。丸い感じはなかったが、さらっとしている。
@@ -286,8 +286,8 @@ DM1のマネークリップは別になっていて、一枚のカードのよ�
 
 ### 収納
 
-![secrid-card1](/blog/resources/images/2019/04/12/secrid-card1.jpg)
-![secrid-card2](/blog/resources/images/2019/04/12/secrid-card2.jpg)
+![secrid-card1](/assets/images/2019/04/12/secrid-card1.jpg)
+![secrid-card2](/assets/images/2019/04/12/secrid-card2.jpg)
 
 ちょっときつい。8枚は入らなかった。販売サイトには6枚までと記載があった。
 
@@ -303,8 +303,8 @@ DM1のマネークリップは別になっていて、一枚のカードのよ�
 しっかりと収納できる反面、取り出しにケースを開く作業が1ステップ増えるため、スマートさに欠ける。
 
 
-![secrid-money1](/blog/resources/images/2019/04/12/secrid-money1.jpg)
-![secrid-money2](/blog/resources/images/2019/04/12/secrid-money2.jpg)
+![secrid-money1](/assets/images/2019/04/12/secrid-money1.jpg)
+![secrid-money2](/assets/images/2019/04/12/secrid-money2.jpg)
 
 お札以外にも小物も収納できる点はよい。
 
@@ -332,16 +332,16 @@ DM1のマネークリップは別になっていて、一枚のカードのよ�
 
 
 
-![zepirion-1](/blog/resources/images/2019/04/12/zepirion-1.jpg)
-![zepirion-2](/blog/resources/images/2019/04/12/zepirion-2.jpg)
+![zepirion-1](/assets/images/2019/04/12/zepirion-1.jpg)
+![zepirion-2](/assets/images/2019/04/12/zepirion-2.jpg)
 
 Amazon掲載の写真では美しく見えるように撮ってあるみたいだが、実物を目の前にすると安っぽい。安いから仕方ない。
 
 ### エッジ処理
 
 
-![zepirion-edge1](/blog/resources/images/2019/04/12/zepirion-edge1.jpg)
-![zepirion-edge2](/blog/resources/images/2019/04/12/zepirion-edge2.jpg)
+![zepirion-edge1](/assets/images/2019/04/12/zepirion-edge1.jpg)
+![zepirion-edge2](/assets/images/2019/04/12/zepirion-edge2.jpg)
 
 
 甘い。触れると角をしっかりと感じる。
@@ -349,8 +349,8 @@ Amazon掲載の写真では美しく見えるように撮ってあるみたい�
 
 ### 収納
 
-![zepirion-card1](/blog/resources/images/2019/04/12/zepirion-card1.jpg)
-![zepirion-card2](/blog/resources/images/2019/04/12/zepirion-card2.jpg)
+![zepirion-card1](/assets/images/2019/04/12/zepirion-card1.jpg)
+![zepirion-card2](/assets/images/2019/04/12/zepirion-card2.jpg)
 
 ちょっときつい。販売サイトには5枚までと書いてあるので8枚は入らないのはあたりまえだった。仕方ない。
 

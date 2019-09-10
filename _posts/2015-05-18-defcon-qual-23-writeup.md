@@ -4,7 +4,7 @@ date: 2015-05-18 23:45:04 +0900
 category: ctf
 tags: defcon babycmd babyecho
 header:
-  image: /blog/resources/images/2015/05/18/scoreboard.png
+  image: /assets/images/2015/05/18/scoreboard.png
 ---
 
 今年のDEFCON CTFの予選が5月16日午前9時から48時間開催されていました。今回はチーム********としての参加ではなく、Team Enuに派遣される形で参加してきました。
@@ -277,7 +277,7 @@ esp+0x1cの位置から標準入力の値の格納バッファーが確保され
 IDA pro (demo)で入力待ちになるときの直前の処理を追ってみます。
 
 
-![IDA pro demo debugging](/blog/resources/images/2015/05/18/babyecho-debugging.png)
+![IDA pro demo debugging](/assets/images/2015/05/18/babyecho-debugging.png)
 
 この入力と出力を繰り返すループ(0x08048FB6)の直前の処理で、サイズ0x420のスタックを用意し、スタック内の値をいくつかセットしているところがあります。この値のセットで、esp+0x14にesp+0x1cのアドレスをセットしている部分があります(0x08048f57)。esp+0x1cは、先ほどの調査より標準入力の値が格納されるバッファーの開始位置です。このことから、先ほど*AAAA%5$p*を入力して返ってきた値*0xffea839c*は、標準入力からの値を格納するバッファーのアドレスを指しているということになります。
 

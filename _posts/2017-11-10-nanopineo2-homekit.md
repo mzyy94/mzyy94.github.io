@@ -4,7 +4,7 @@ date: 2017-11-10 02:13:29 +0900
 category: nanopineo2
 tags: homebridge siri homekit ir
 header:
-  image: /blog/resources/images/2017/11/10/applewatch-nanopineo2.jpg
+  image: /assets/images/2017/11/10/applewatch-nanopineo2.jpg
 ---
 
 この3連休に部屋を見渡していたところ、今夏に大陸から届いた荷物を開封することなく放置していたことに気づいたので開封してみました。
@@ -102,7 +102,7 @@ Wikiに記載の[ダウンロードリンク](https://www.mediafire.com/folder/a
 ログイン方法はシリアル接続でもよいけれど、公式イメージは最初からsshdが起動しているので、任意の方法でIPv4アドレスを割り出すなどしてssh接続を行います。
 ユーザ名とパスワードはWikiに書いてある通り、pi/pi。
 
-![バナー画面](/blog/resources/images/2017/11/10/banner-ss.png)
+![バナー画面](/assets/images/2017/11/10/banner-ss.png)
 
 ### Node.js入れる
 
@@ -185,7 +185,7 @@ NanoPi NEO2ではmicroSDスロット側の一列に並んだGPIO2にあるGPIOL1
 
 [File:NEO2 pinout-02.jpg - FriendlyARM WiKi](http://wiki.friendlyarm.com/wiki/index.php/File:NEO2_pinout-02.jpg)
 
-![配線写真](/blog/resources/images/2017/11/10/board.jpg)
+![配線写真](/assets/images/2017/11/10/board.jpg)
 
 [Fritzing](http://fritzing.org)めんどくさかったので写真で。
 
@@ -316,17 +316,17 @@ iPhoneを用いてホームアプリにhomebridgeで起動してるアクセサ�
 昔は微妙なPIN表示画面があっただけで、読み込みできなくて手動で入力する必要があったりしたものでした。
 相変わらずMFi認証を取得していない「認定されていないアクセサリ」として表示されますが、そこは仕方ないのでこのまま追加します。
 
-![screenshot](/blog/resources/images/2017/11/10/IMG_0063.PNG)
+![screenshot](/assets/images/2017/11/10/IMG_0063.PNG)
 
 アクセサリの追加ができたら、ブリッジとアクセサリを部屋に割り当てておきます。
 今回の設定ではLightはデフォルトでスイッチとして認識されましたが、ライトとしてアイコンが表示されるようにタイプを変更しておきます。
 
-![screenshot](/blog/resources/images/2017/11/10/IMG_0064.PNG)
-![screenshot](/blog/resources/images/2017/11/10/IMG_0065.PNG)
+![screenshot](/assets/images/2017/11/10/IMG_0064.PNG)
+![screenshot](/assets/images/2017/11/10/IMG_0065.PNG)
 
 そうすると自宅にアクセサリが追加されます。
 
-![screenshot](/blog/resources/images/2017/11/10/IMG_0066.PNG)
+![screenshot](/assets/images/2017/11/10/IMG_0066.PNG)
 
 #### シーンの設定
 
@@ -335,14 +335,14 @@ Siriでお願いしたりボタンをタップしたり、また後述のオー�
 まだ今は1つしかアクセサリがないのであまり意味ないですが、寝るときや家に帰ってきたときに電気と、
 これからの季節暖房も一緒につけるようなこともあるので、これらのシーンを設定しておきます。
 
-![screenshot](/blog/resources/images/2017/11/10/IMG_0067.PNG)
+![screenshot](/assets/images/2017/11/10/IMG_0067.PNG)
 
 ##### ただいま
 
 電気をつけるタイミングは生活リズムからして、日の入りを過ぎてから家に帰ってきたときです。
 そのためのシーンとして、「ただいま」という直球なネーミングのシーンがホームアプリには用意されています。
 
-![screenshot](/blog/resources/images/2017/11/10/IMG_0069.PNG)
+![screenshot](/assets/images/2017/11/10/IMG_0069.PNG)
 
 これを設定し、ただいまのシーンを動作させたときに電気が付くようにしておきます。
 
@@ -350,7 +350,7 @@ Siriでお願いしたりボタンをタップしたり、また後述のオー�
 
 電気を消すタイミングも夜間の外出を除けば就寝時と決まっているので、こちらも「おやすみ」シーンに設定しておきます。
 
-![screenshot](/blog/resources/images/2017/11/10/IMG_0068.PNG)
+![screenshot](/assets/images/2017/11/10/IMG_0068.PNG)
 
 #### オートメーションの設定
 
@@ -361,9 +361,9 @@ _誰か_ が任意の _場所_ にある _時間帯_ に到着した場合、オ
 __誰かが__ の部分には設定しているiPhoneが、 __場所__ は自宅に、 __時間帯__ は夜間（日の入りから日の出まで）を条件としてセットし、
 自動化するシーンに先ほどの「ただいま」を設定することでオートメーションの追加は完了です。
 
-![screenshot](/blog/resources/images/2017/11/10/IMG_0070.PNG)
-![screenshot](/blog/resources/images/2017/11/10/IMG_0071.PNG)
-![screenshot](/blog/resources/images/2017/11/10/IMG_0072.PNG)
+![screenshot](/assets/images/2017/11/10/IMG_0070.PNG)
+![screenshot](/assets/images/2017/11/10/IMG_0071.PNG)
+![screenshot](/assets/images/2017/11/10/IMG_0072.PNG)
 
 ### Siriからのコントロール
 

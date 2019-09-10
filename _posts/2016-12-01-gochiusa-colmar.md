@@ -4,7 +4,7 @@ date: 2016-12-01 00:00:01 +0900
 category: trip
 tags: france gochiusa colmar elsass
 header:
-  image: /blog/resources/images/2016/12/01/colmar.jpg
+  image: /assets/images/2016/12/01/colmar.jpg
 ---
 
 ご注文はコルマールですか？

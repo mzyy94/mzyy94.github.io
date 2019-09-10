@@ -4,7 +4,7 @@ date: 2015-06-21 16:35:31 +0900
 category: shrimp
 tags: charm shrimp
 header:
-  image: /blog/resources/images/2015/06/21/ebi-new-watertank.jpg
+  image: /assets/images/2015/06/21/ebi-new-watertank.jpg
 ---
 
 えびを飼い始めて4ヶ月が過ぎました。

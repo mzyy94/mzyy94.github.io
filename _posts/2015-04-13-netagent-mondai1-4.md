@@ -123,7 +123,7 @@ mondai3.txtの中身は以下の通り。
 パスワードを3つに分割してSHA1ハッシュを生成したものが記されており、それらの元の文字列を探し出せばいいというもの。広いWebの世界には単純な単語のハッシュ化前後のテーブルが存在し、手軽に利用できるものに
 [SHA1 Decrypter - SHA1 Decryption, Free SHA1 Decryptor, Online SHA1 Cracker, SHA1 Security](http://www.hashkiller.co.uk/sha1-decrypter.aspx)などがあります。このサイトに問題のハッシュ値をペーストして探索をかけると1秒足らずでハッシュ化前の数値を返してくれます。
 
-![hashkiller.png](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/hashkiller.png)
+![hashkiller.png](/assets/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/hashkiller.png)
 
 ここで得られた単語をそのままくっつけてパスワードに指定すると、mondai4.zipが解凍できます。
 
@@ -170,7 +170,7 @@ Compressed: 70391891
 
 ## mondai4
 
-![mondai4.png](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/mondai4.png)
+![mondai4.png](/assets/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/mondai4.png)
 mondai4.pngはヒエログリフが書かれた画像です。ヒエログリフを読解できなければ問題文すら読めない状況なので、ヒエログリフ学習サイトを探して学びます。以下のサイトを参考に3分ほどで学びました。
 
 - [日本語五十音をヒエログリフで表現](http://www004.upp.so-net.ne.jp/anubis/j50/jp50.html)
@@ -183,7 +183,7 @@ mondai4.pngはヒエログリフが書かれた画像です。ヒエログリフ
 
 ぱっと見で平仮名で換字式暗号化された英文もしくはローマ字の文だと想像がつきます。ここで適当な文節として二言目の「てちのちんちもちみら」をGoogleで検索してみると、上位にヒットしたものにこの暗号の手がかりがでてきます。
 
-![techinochi-search.png](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/techinochi-search.png)
+![techinochi-search.png](/assets/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/techinochi-search.png)
 
 日本語キーボードのかな入力モードにしてローマ字の文を打った文は、母音に位置する「ら」や「ち」が多く登場することから、この暗号方式はカナ入力のままのローマ字打ちだと断定しました。
 しかし英字キーボードユーザーなので、かなが印刷されたキーボードを持っていません。仕方なしにWikimediaでそれっぽい画像を拾ってきて、平仮名⇆アルファベット変換を行うと、上記の平仮名文字列は以下のように変換できます。
@@ -193,7 +193,7 @@ kotaeha wakayamano minamino misakinamae komoji
 ```
 「答えは和歌山の南の岬名前小文字」とのことです。早速Googleマップを開いて和歌山県の南にある岬を探します。
 
-![wakayama-map.png](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/wakayama-map.png)
+![wakayama-map.png](/assets/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/wakayama-map.png)
 
 探すと潮岬（読み：しおのみさき）が和歌山の南部にある岬なので、これをアルファベット小文字にしてパスワードにして回答終了…だとおもってました。
 **shionomisaki**としてタイプしてもパスワードが間違っていると言われ、解凍できません。「もしや違う岬なのかな？」と思い、和歌山の岬をいろいろ調べて同じように入力しても開きません。もうだめ...と心折れそうになってしまったので、あとはBruteForceに任せようと、次のような適当なスクリプトを書いて放置しました。

@@ -4,7 +4,7 @@ date: 2017-6-17 17:25:29 +0900
 category: gadget
 tags: gpu pc dnn
 header:
-  image: /blog/resources/images/2017/06/17/zbox-en1070k.jpg
+  image: /assets/images/2017/06/17/zbox-en1070k.jpg
 ---
 
 4Kの広大なモニタを生かすためにも、Kaby Lake世代のCPUとNVIDIA Pascal&trade;アーキテクチャのGPUを搭載したマシンを組みたくなったので組んでみました。
@@ -133,7 +133,7 @@ ZBOX EN1070KをAmazon.comで買いました。これはベアボーンなので�
 
 ## 軽くレビュー
 
-![Specification](/blog/resources/images/2017/06/17/spec.png)
+![Specification](/assets/images/2017/06/17/spec.png)
 
 ありふれた構成で最新の製品でもないので、一応記事の体裁を保つためにこの製品のおすすめポイントなどを紹介しておきます。
 
@@ -144,7 +144,7 @@ ZBOX EN1070KをAmazon.comで買いました。これはベアボーンなので�
 この製品はNVIDIAのVR Readyプログラムで認定されたVRエクスペリエンスを最適化するように構成されたPCです。
 このコンパクトさでVRが体験できるとあって、今後時期を見てOculus Riftでも購入しようかと思います。
 
-![VR Ready check](/blog/resources/images/2017/06/17/vr-ready.png)
+![VR Ready check](/assets/images/2017/06/17/vr-ready.png)
 
 
 ### 4Kゲーミングはあと一歩
@@ -156,19 +156,19 @@ ZBOX EN1070KをAmazon.comで買いました。これはベアボーンなので�
 
 #### バイオハザード5
 
-![resident evil 5 benchmark setting](/blog/resources/images/2017/06/17/re5dx9-setting.png)
-![resident evil 5 benchmark](/blog/resources/images/2017/06/17/re5dx9-benchmark.png)
-![resident evil 5 benchmark score](/blog/resources/images/2017/06/17/re5dx9-score.png)
+![resident evil 5 benchmark setting](/assets/images/2017/06/17/re5dx9-setting.png)
+![resident evil 5 benchmark](/assets/images/2017/06/17/re5dx9-benchmark.png)
+![resident evil 5 benchmark score](/assets/images/2017/06/17/re5dx9-score.png)
 
 #### バイオハザード6
 
-![resident evil 6 benchmark setting](/blog/resources/images/2017/06/17/re6-setting.png)
-![resident evil 6 benchmark](/blog/resources/images/2017/06/17/re6-benchmark.png)
-![resident evil 6 benchmark score](/blog/resources/images/2017/06/17/re6-score.png)
+![resident evil 6 benchmark setting](/assets/images/2017/06/17/re6-setting.png)
+![resident evil 6 benchmark](/assets/images/2017/06/17/re6-benchmark.png)
+![resident evil 6 benchmark score](/assets/images/2017/06/17/re6-score.png)
 
 #### FFXIV
 
-![FFXIV benchmark score](/blog/resources/images/2017/06/17/ffxiv-score.png)
+![FFXIV benchmark score](/assets/images/2017/06/17/ffxiv-score.png)
 
 
 ### 海外版でも技適マークあり
@@ -177,7 +177,7 @@ ZBOX EN1070KをAmazon.comで買いました。これはベアボーンなので�
 Amazon.comで購入できたのは型番ZBOX-EN1070K-Uで、日本で発売を予定されている型番ZBOX-EN1070K-Jではありません。
 しかし本体は共通のようで、底面には技適マークが書かれたシールが貼られています。
 
-![技適マーク](/blog/resources/images/2017/06/17/telec.jpg)
+![技適マーク](/assets/images/2017/06/17/telec.jpg)
 
 ### M.2 SSDクーラー
 
@@ -185,12 +185,12 @@ Amazon.comで購入できたのは型番ZBOX-EN1070K-Uで、日本で発売を�
 Skylakeモデルではなかったものです。
 熱のこもりやすい底面にM.2 SSDスロットがあるため、大変うれしい仕様です。
 
-<!--![NVMe Go](/blog/resources/images/2017/06/17/nvmego-1.jpg)-->
-![NVMe Go](/blog/resources/images/2017/06/17/nvmego-2.jpg)
+<!--![NVMe Go](/assets/images/2017/06/17/nvmego-1.jpg)-->
+![NVMe Go](/assets/images/2017/06/17/nvmego-2.jpg)
 
 エアフローのない状態でもそこまで発熱をしないといわれている960 EVOですが、[CrystalDiskMark](http://crystalmark.info/software/CrystalDiskMark/)でベンチマークをとっている間は、最高61℃まで上昇しました。
 
-![SSD温度](/blog/resources/images/2017/06/17/ssd-temp.png)
+![SSD温度](/assets/images/2017/06/17/ssd-temp.png)
 
 
 60℃程度なら許容範囲との声もありますが、気になったのでM.2 SSD専用放熱パッドを購入しました。
@@ -202,11 +202,11 @@ Skylakeモデルではなかったものです。
 
 これを装着した状態で同様のベンチマークをしたところ、最高56℃まで下がりました。
 
-![放熱パッド付きSSD温度](/blog/resources/images/2017/06/17/ssd-temp-with-tp01.png)
+![放熱パッド付きSSD温度](/assets/images/2017/06/17/ssd-temp-with-tp01.png)
 
 ついでなので960 EVOのベンチマーク結果貼っておきますね。
 
-![CrystalDiskMark](/blog/resources/images/2017/06/17/crystaldiskmark.png)
+![CrystalDiskMark](/assets/images/2017/06/17/crystaldiskmark.png)
 
 ## まとめ
 

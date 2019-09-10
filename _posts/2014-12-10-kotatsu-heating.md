@@ -4,7 +4,7 @@ date: 2014-12-10 00:02:35 +0900
 category: server
 tags: kotatsu
 header:
-  image: /blog/resources/images/2014/12/10/kotatsu.jpg
+  image: /assets/images/2014/12/10/kotatsu.jpg
 ---
 この記事は[coins Advent Calendar](http://www.adventar.org/calendars/443)の一部です。
 
@@ -45,7 +45,7 @@ LTで発表した2つのシステムをこたつ内で動作させて、熱の�
 
 ## 録画サーバー
 
-![Recording Server](/blog/resources/images/2014/12/10/recording-server.jpg)
+![Recording Server](/assets/images/2014/12/10/recording-server.jpg)
 
 まずは録画サーバーを熱源としてこたつを温めてみたいと思います。
 主な熱源となりうるパーツは以下の通りです。
@@ -65,17 +65,17 @@ LTで発表した2つのシステムをこたつ内で動作させて、熱の�
 
 いつもの利用方法を想定して、電源を入れてアニメを2本、計50分ストリーミング再生して温度上昇がどれほどかを実験してみます。
 
-![temperature1](/blog/resources/images/2014/12/10/recording-server-temperature1.jpg)
+![temperature1](/assets/images/2014/12/10/recording-server-temperature1.jpg)
 
 電源をいれる直前のこたつ内の温度は16.0℃でした。アニメを再生しているときの録画サーバーの消費電力は平均40.4Wでした。
 
-![power1](/blog/resources/images/2014/12/10/recording-server-power.jpg)
+![power1](/assets/images/2014/12/10/recording-server-power.jpg)
 
 ## 結果
 
 体温が熱源となることがないよう、寒いこたつの外でアニメを2本みた後のこたつ内の温度はどうなったでしょうか。
 
-![temperature2](/blog/resources/images/2014/12/10/recording-server-temperature2.jpg)
+![temperature2](/assets/images/2014/12/10/recording-server-temperature2.jpg)
 
 1時間の録画サーバーの稼働でなんとこたつ内の温度は21.2℃になりました。5.2℃の上昇です。
 なんとなく温もりを感じられますが、まだまだこたつとしては物足りなさを感じてしまう温度です。
@@ -83,7 +83,7 @@ LTで発表した2つのシステムをこたつ内で動作させて、熱の�
 
 ## ゲームストリームサーバー
 
-![GameStream Server](/blog/resources/images/2014/12/10/gamestream-server.jpg)
+![GameStream Server](/assets/images/2014/12/10/gamestream-server.jpg)
 そこで、ゲームストリームサーバーを追加してあらたな熱源としてこたつを温めてみたいと思います。
 主な熱源となりうるパーツは以下の通りです。
 
@@ -102,19 +102,19 @@ LTで発表した2つのシステムをこたつ内で動作させて、熱の�
 先ほどの録画サーバーによって温まったこたつに、ゲームストリームサーバーを追加して、2台のマシンでどれほどこたつを温められるかを実験してみます。
 こちらもいつもの利用方法を想定して、電源を入れてゲームを1チャプター、約30分プレイしてこたつ内を温めます。
 
-![temperature1](/blog/resources/images/2014/12/10/gamestream-server-temperature1.jpg)
+![temperature1](/assets/images/2014/12/10/gamestream-server-temperature1.jpg)
 
 電源をいれる直前のこたつ内の温度は20.8℃でした。アニメを再生した直後より少し下がっていますが、これはこたつ内にサーバーを搬入した際に、こたつ外の冷えた空気が入ったためです。
 ゲームをプレイしているときの2台のマシンの消費電力は平均120Wでした。
 
-![power2](/blog/resources/images/2014/12/10/gamestream-server-power.jpg)
+![power2](/assets/images/2014/12/10/gamestream-server-power.jpg)
 
 ### 結果
 
 1回死んでしまいましたが、なんとかチャプターをクリアできました。透明なハンターは強い。
 さて、こたつ内の温度はどうなったでしょうか。
 
-![temperature2](/blog/resources/images/2014/12/10/gamestream-server-temperature2.jpg)
+![temperature2](/assets/images/2014/12/10/gamestream-server-temperature2.jpg)
 
 30分間のゲームプレイで、温度はなんと26.1℃になりました。2台のマシンで16.0℃から26.1℃にまで暖かくなりました。10℃も！！
 こたつに入ってみると、眠りを誘う温もりを感じられるほどでした。普通にあったかい。

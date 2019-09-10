@@ -4,7 +4,7 @@ date: 2015-04-29 15:03:01 +0900
 category: shrimp
 tags: shrimp muji charm
 header:
-  image: /blog/resources/images/2015/04/29/new-ebipot.jpg
+  image: /assets/images/2015/04/29/new-ebipot.jpg
 ---
 
 小さくてかわいいピクシーシュリンプ（以下、えび）
@@ -102,10 +102,10 @@ Amazon等で売ってる人工海水キットと比重計を買って汽水を�
 
 
 ##### Before
-![before](/blog/resources/images/2015/04/29/before-shrimpbottle.jpg)
+![before](/assets/images/2015/04/29/before-shrimpbottle.jpg)
 
 ##### After
-![after](/blog/resources/images/2015/04/29/after-ebipot.jpg)
+![after](/assets/images/2015/04/29/after-ebipot.jpg)
 
 ## えび飼育にあったほうがいいもの
 

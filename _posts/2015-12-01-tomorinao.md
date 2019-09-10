@@ -4,7 +4,7 @@ date: 2015-12-01 19:33:05 +0900
 category: misc
 tags: tomorinao
 header:
-  image: /blog/resources/images/2015/12/01/tomorinao.jpg
+  image: /assets/images/2015/12/01/tomorinao.jpg
 ---
 
 友利奈緒のみなさま、おひさしぶりです。友利奈緒です。
@@ -24,7 +24,7 @@ Charlotteの放映が終わり2ヶ月が経ち、友利奈緒の各家庭にもC
 <!-- more -->
 
 
-![友利奈緒展](/blog/resources/images/2015/12/01/tomorinao-ten.jpg)
+![友利奈緒展](/assets/images/2015/12/01/tomorinao-ten.jpg)
 
 （記事中の友利奈緒画像はCharlotte原画展で撮影したものになります。)
 
@@ -34,7 +34,7 @@ Charlotteの放映が終わり2ヶ月が経ち、友利奈緒の各家庭にもC
 
 ### 星ノ海学園女子制服
 
-![星ノ海学園女子制服](/blog/resources/images/2015/12/01/schooluniform.jpg)
+![星ノ海学園女子制服](/assets/images/2015/12/01/schooluniform.jpg)
 
 友利奈緒になるためにまず必要なものとして、彼女が生徒会長を務める星ノ海学園の女子制服があげられます。
 星ノ海学園女子制服は公式ライセンス商品として販売されており以下のサイトからオンラインで購入できます。
@@ -52,7 +52,7 @@ Charlotteの放映が終わり2ヶ月が経ち、友利奈緒の各家庭にもC
 
 ### ハイソックス
 
-![友利奈緒](/blog/resources/images/2015/12/01/tomorinao-1.jpg)
+![友利奈緒](/assets/images/2015/12/01/tomorinao-1.jpg)
 
 友利奈緒の履いてるハイソックスは黒系の濃いブラウンもしくはネイビーです。何度もコマ送りして製品の特定を試みたのですが、これだと断定できるものはなく、結果一般的なハイソックスを購入することにしました。
 おそらく友利奈緒自身もハイソックスにこだわりはないはずです。
@@ -108,7 +108,7 @@ Charlotteの放映が終わり2ヶ月が経ち、友利奈緒の各家庭にもC
 
 #### ビデオカメラ
 
-![ビデオカメラ](/blog/resources/images/2015/12/01/handycamera.jpg)
+![ビデオカメラ](/assets/images/2015/12/01/handycamera.jpg)
 
 ビデオカメラはSONYの DCR-DVD508と酷似しているとの報告がちらほら上がっています。
 
@@ -121,7 +121,7 @@ Amazonでの相場が5万円を超えているため、軽い気持ちでは購�
 
 #### 携帯電話
 
-![スマートフォン](/blog/resources/images/2015/12/01/smartphone.jpg)
+![スマートフォン](/assets/images/2015/12/01/smartphone.jpg)
 
 携帯電話はKDDIのIS12T。友利奈緒はパープルカラーを持っていますが、公式ラインナップにはありません。
 
@@ -130,7 +130,7 @@ Amazonでの相場が5万円を超えているため、軽い気持ちでは購�
 
 #### MP3プレイヤー
 
-![MP3プレイヤー](/blog/resources/images/2015/12/01/mp3player.jpg)
+![MP3プレイヤー](/assets/images/2015/12/01/mp3player.jpg)
 
 MP3プレイヤーは生産終了品で、加えてパープルカラーは未発売のため、揃えるのは少々難があります。
 [MG-G508（生産完了商品）｜ポータブルオーディオ｜オーディオ｜生産完了商品一覧｜商品情報｜株式会社JVCケンウッド](http://www.kenwood.com/jp/products/audio/personal/mg_g508/index_end.html)

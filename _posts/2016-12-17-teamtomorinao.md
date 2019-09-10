@@ -4,7 +4,7 @@ date: 2016-12-17 17:00:00 +0900
 category: web
 tags: svg css3 html5 smil
 header:
-  image: /blog/resources/images/2016/12/17/tomorinao.pro.png
+  image: /assets/images/2016/12/17/tomorinao.pro.png
 ---
 
 こちらは[友利奈緒 Advent Calendar 2016 - Adventar](http://www.adventar.org/calendars/1379) 17日目の記事です。

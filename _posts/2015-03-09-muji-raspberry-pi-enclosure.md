@@ -4,7 +4,7 @@ date: 2015-03-09 12:09:04 +0900
 category: raspberry-pi
 tags: muji enclosure case
 header:
-  image: /blog/resources/images/2015/03/09/muji-case.jpg
+  image: /assets/images/2015/03/09/muji-case.jpg
 ---
 
 Raspberry Pi2を発売日に2つ注文したものの、ケースを準備していなかったので手軽に買えるRaspberry Piにぴったりの入れ物はないかと
@@ -20,17 +20,17 @@ Raspberry Pi2を発売日に2つ注文したものの、ケースを準備して
 - 寸法：約７０×１０５×３５ｍｍ
 - 素材：ポリプロピレン
 
-![muji-soapcase-1](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/muji-soapcase-1.jpg)
+![muji-soapcase-1](/assets/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/muji-soapcase-1.jpg)
 
 
 1つ目は寸法がRaspberry Piのために作られたかと感じるほどにピッタリサイズの石鹸ケース。本当にピッタリサイズです。
 
-![muji-soapcase-2](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/muji-soapcase-2.jpg)
+![muji-soapcase-2](/assets/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/muji-soapcase-2.jpg)
 
 スポンジ付きで、ケース内に収めた時の安定性・可搬性は抜群です。
 
-![muji-soapcase-3](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/muji-soapcase-3.jpg)
-![muji-soapcase-4](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/muji-soapcase-4.jpg)
+![muji-soapcase-3](/assets/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/muji-soapcase-3.jpg)
+![muji-soapcase-4](/assets/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/muji-soapcase-4.jpg)
 
 ただ、エッジが尖っているRaspberry Pi 1 model B（プラスではない）は引っかかってしまい、格納できませんでした。
 
@@ -45,13 +45,13 @@ Raspberry Pi2を発売日に2つ注文したものの、ケースを準備して
 - 寸法：約１７０×５１×２０ｍｍ
 - 素材：ポリプロピレン
 
-![muji-pencase-1](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/muji-pencase-1.jpg)
+![muji-pencase-1](/assets/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/muji-pencase-1.jpg)
 
 
 奥行きがRaspberry Piにピッタリで横幅がRaspberry Pi 二台分のケース。2台同時に持ち運んだり格納する際に利用したいケースです。
 
-![muji-pencase-2](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/muji-pencase-2.jpg)
-![muji-pencase-3](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/muji-pencase-3.jpg)
+![muji-pencase-2](/assets/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/muji-pencase-2.jpg)
+![muji-pencase-3](/assets/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/muji-pencase-3.jpg)
 
 
 
@@ -64,18 +64,18 @@ Raspberry Pi2を発売日に2つ注文したものの、ケースを準備して
 - 寸法：約７５×１１０×４６ｍｍ
 - 素材：ポリプロピレン
 
-![muji-facase-1](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/muji-facase-1.jpg)
+![muji-facase-1](/assets/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/muji-facase-1.jpg)
 
 
 
 奥行き・幅・高さともにゆとりのあるケース。いろいろな部品を装着したRaspberry Piに適しています。
 
-![muji-facase-2](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/muji-facase-2.jpg)
-![muji-facase-3](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/muji-facase-3.jpg)
+![muji-facase-2](/assets/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/muji-facase-2.jpg)
+![muji-facase-3](/assets/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/muji-facase-3.jpg)
 
 ちなみに石鹸ケースがぴったりおさまります。
 
-![muji-facase-4](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/muji-facase-4.jpg)
+![muji-facase-4](/assets/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/muji-facase-4.jpg)
 
 
 ## アクリルケース用・ベロア内箱仕切・縦・グレー
@@ -88,14 +88,14 @@ Raspberry Pi2を発売日に2つ注文したものの、ケースを準備して
 - 寸法：約幅１６×奥行１２×高さ２．５ｃｍ
 - 素材：？？
 
-![muji-innercase-1](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/muji-innercase-1.jpg)
+![muji-innercase-1](/assets/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/muji-innercase-1.jpg)
 
 
 平置きで2台格納できるケース。蓋がないので可搬性はゼロですがポンと置いておく分には手軽で机の上に一つ置いておくとよい品です。
 
-![muji-innercase-2](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/muji-innercase-2.jpg)
+![muji-innercase-2](/assets/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/muji-innercase-2.jpg)
 
-![muji-innercase-3](/blog/resources/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/muji-innercase-3.jpg)
+![muji-innercase-3](/assets/images/{{ page.date | replace: '-', '/' | split: ' ' | first}}/muji-innercase-3.jpg)
 
 
 ## まとめ

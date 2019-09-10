@@ -4,7 +4,7 @@ date: 2015-08-08 20:51:33 +09:00
 category: kodi
 tags: android chinachu dtv kodi osmc pvr
 header:
-  image: /blog/resources/images/2015/08/08/chinachu-pvr-client-1_0_0.png
+  image: /assets/images/2015/08/08/chinachu-pvr-client-1_0_0.png
 ---
 暑い日が続きますね。こういう日はエアコンの効いた部屋でだらだらとテレビを見たいものです。
 しかしテレビをもっておりません。27インチのモニタを持っているのみです。
@@ -76,17 +76,17 @@ Kodi/XBMCでAdd-onをインストールしたことがある人は知ってい�
 
 Kodiを起動し、zip形式のパッケージをSettings -> Add-ons -> Install from zip-file から選択し、Add-onsの階層にあるPVR clientsからChinachu PVR clientを探し出して設定を行ってください。
 
-![install from zip](/blog/resources/images/2015/08/08/install-from-zip.png)
+![install from zip](/assets/images/2015/08/08/install-from-zip.png)
 
 設定項目に関しては[wiki/configuration - mzyy94/pvr.chinachu](https://github.com/mzyy94/pvr.chinachu/wiki/configuration)にまとめてあります。
 
 その後、Settings -> TV -> GeneralからEnabledにしてPVR add-onを開始してください。
 
-![enable tv](/blog/resources/images/2015/08/08/enable-tv.png)
+![enable tv](/assets/images/2015/08/08/enable-tv.png)
 
 ** ※Android/Android TV環境ではこのままでは動作しないことがあるので、[wiki/Android-Installation - mzyy94/pvr.chinachu](https://github.com/mzyy94/pvr.chinachu/wiki/Android-Installation)を参考に少しいじってください。 **
 
-![top menu](/blog/resources/images/2015/08/08/top-menu.png)
+![top menu](/assets/images/2015/08/08/top-menu.png)
 
 PVRプラグインが有効になるとKodiのメイン画面にTVの項目が現れ、Chinachuから取得したデータにアクセスできるサブ項目も現れます。
 Skinによっては録画中や録画予約済みの項目がメイン画面に表示されたりします。
@@ -95,11 +95,11 @@ Skinによっては録画中や録画予約済みの項目がメイン画面に�
 Skinごとの差異や日本語設定にしていると項目名が違いますが、似たような項目が現れると思います。
 表示言語を日本語に設定していない場合、Settings -> Appearance -> Skin -> Fontsから日本語表示に対応しているフォント（例：Arial）を選択しておかないと、文字化けして使い物にならいのでご注意を。
 
-![font settings](/blog/resources/images/2015/08/08/font-settings.png)
+![font settings](/assets/images/2015/08/08/font-settings.png)
 
 ### Channels
 
-![channels page](/blog/resources/images/2015/08/08/channels-page.png)
+![channels page](/assets/images/2015/08/08/channels-page.png)
 
 Chinachuから取得したチャンネルの一覧と、現在放送中の番組が表示されるページです。
 チャンネルを選択するとライブ視聴ができます。
@@ -109,12 +109,12 @@ Chinachuから取得したチャンネルの一覧と、現在放送中の番組
 
 ちなみにここで表示されるチャンネルはGR/BS/CSと、地デジ・BS・CSを分けてグループ化してあるので、項目が多すぎる場合はメニューから表示するグループを選択することができます。
 
-![channel manager](/blog/resources/images/2015/08/08/channel-manager.png)
-![channel group](/blog/resources/images/2015/08/08/channel-group.png)
+![channel manager](/assets/images/2015/08/08/channel-manager.png)
+![channel group](/assets/images/2015/08/08/channel-group.png)
 
 ### Guide
 
-![guide page](/blog/resources/images/2015/08/08/guide-page.png)
+![guide page](/assets/images/2015/08/08/guide-page.png)
 
 Chinachuから取得した番組表情報を、チャンネルごとに表示するページです。
 テーマによっては番組のジャンルごとに色分けがされて表示されます。
@@ -124,7 +124,7 @@ Chinachuから取得した番組表情報を、チャンネルごとに表示す
 
 ### Recordings
 
-![recordings page](/blog/resources/images/2015/08/08/recordings-page.png)
+![recordings page](/assets/images/2015/08/08/recordings-page.png)
 
 名前の通り、録画した番組を視聴できるページです。
 選択すると再生することができます。
@@ -132,14 +132,14 @@ Chinachuから取得した番組表情報を、チャンネルごとに表示す
 
 ### Timer
 
-![timer page](/blog/resources/images/2015/08/08/timer-page.png)
+![timer page](/assets/images/2015/08/08/timer-page.png)
 
 タイマーと名のつくこのページでは、録画予約を確認できます。
 現バージョンでは新たに追加することはできませんが、予約のStateをActive/Inactiveにすることで、Chinachuの録画予約をSkip/Unskipできるようになっています。
 
 ### Search
 
-![search page](/blog/resources/images/2015/08/08/search-page.png)
+![search page](/assets/images/2015/08/08/search-page.png)
 
 番組検索ができるページがSearchページです。
 今の所、番組タイトルのみを対象としており、かつ大文字小文字・全角半角を厳しく判定しているので、すこしでも違うとヒットしません。
@@ -148,7 +148,7 @@ Chinachuから取得した番組表情報を、チャンネルごとに表示す
 
 ### オマケ
 
-![pvr information](/blog/resources/images/2015/08/08/pvr-information.png)
+![pvr information](/assets/images/2015/08/08/pvr-information.png)
 
 Settings -> System info -> PVR Serviceからチャンネル数や録画済み番組数、録画予約数が確認できます。
 

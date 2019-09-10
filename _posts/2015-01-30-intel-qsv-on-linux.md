@@ -19,7 +19,7 @@ Intel QSVは高速にある程度の画質のエンコードできてよいで�
 IMSSはIntel Developer Zoneのメンバーになってから、[こちら](https://software.intel.com/en-us/intel-media-server-studio)へアクセスすることでダウンロードできます。
 メンバー登録時と同じメールアドレスを指定するとダウンロードリンクが送られてくるので、アクセスしてfor Linuxの方をダウンロードします。
 
-![IMSS donwload page](/blog/resources/images/2015/01/30/IMSS-download.png)
+![IMSS donwload page](/assets/images/2015/01/30/IMSS-download.png)
 
 執筆時点での最新版は2015 R3です。この2015 R3を対象にインストールを進めていきます。(12月中旬に2015 R2を対象にした記事を書き終わっていたのだけれど、公開し損ねてる間にバージョンアップがあったため最初から書き直してるなんて言えない。。)
 
@@ -28,11 +28,11 @@ IMSS 2015 R3から対応OSはCentOSとSLESの2種類のみとなったので、�
 ### Intel Media SDK Install
 IMSSをダウンロードし回答すると、下図のように幾つかアーカイブの入ったディレクトリが展開されます。そこにあるSDKをインストールすることでQSVを利用することができるようになります。
 
-![IMSS step 1](/blog/resources/images/2015/01/30/IMSS-step-1.png)
+![IMSS step 1](/assets/images/2015/01/30/IMSS-step-1.png)
 
 このSDKのアーカイブを展開すると下図のように、インストール手順の書かれたPDFファイルとOSごとにディレクトリで分けられたドライバがでてきます。
 
-![IMSS step 2](/blog/resources/images/2015/01/30/IMSS-step-2.png)
+![IMSS step 2](/assets/images/2015/01/30/IMSS-step-2.png)
 
 今回はCentOS 7なので、CentOSディレクトリに移動し、PDFに記載のインストール手順を踏むだけでいいはずなんですが、幾つか依存関係にあるパッケージが必要になります。これがなくてインストールコケまくったので下表にまとめておきます。`yum install`などでインストールしてください。
 
@@ -48,46 +48,46 @@ net-tools | ネットワーク設定するアレ
 
 なので、SDKのディレクトリにあるGenericディレクトリに移動し、ぽつりと存在するアーカイブを展開します。
 
-![IMSS step 3](/blog/resources/images/2015/01/30/IMSS-step-3.png)
+![IMSS step 3](/assets/images/2015/01/30/IMSS-step-3.png)
 
 展開されたファイルの中にあるシェルスクリプトを管理者権限で実行し、Generic SDKをインストールします。
 
-![IMSS step 4](/blog/resources/images/2015/01/30/IMSS-step-4.png)
+![IMSS step 4](/assets/images/2015/01/30/IMSS-step-4.png)
 
 この作業で必要なディレクトリとファイルが作成されるので、次にOS固有のドライバとSDKをインストールします。
 
 SDKのディレクトリに戻り、さらにCentOSのディレクトリに移動しファイルを確認すると、以下のようになっているはずです。
 
-![IMSS step 5](/blog/resources/images/2015/01/30/IMSS-step-5.png)
+![IMSS step 5](/assets/images/2015/01/30/IMSS-step-5.png)
 
 　
 ここではファイルの展開等は行わず、PDF記載の通りにユーザーをvideoグループに追加して、`/MSS`ディレクトリを作成してそこにファイルをコピーしてカレントディレクトリも移動し、インストール関連ファイルの入ったアーカイブを展開してでてくるSDKのインストールスクリプトを実行します。下図のninnikuはカレントユーザー名なので適当に`$(whoami)`に置換してください。
 
-![IMSS step 6](/blog/resources/images/2015/01/30/IMSS-step-6.png)
+![IMSS step 6](/assets/images/2015/01/30/IMSS-step-6.png)
 
 
 SDKのインストールが成功すると、下図のようになり、再起動を促されるのでひとまず再起動します。
 
-![IMSS step 7](/blog/resources/images/2015/01/30/IMSS-step-7.png)
+![IMSS step 7](/assets/images/2015/01/30/IMSS-step-7.png)
 
 
 再起動後、再度`/MSS`へ移動して、下図のようにドライバの組み込まれたカーネルをビルドします。
 
-![IMSS step 8](/blog/resources/images/2015/01/30/IMSS-step-8.png)
+![IMSS step 8](/assets/images/2015/01/30/IMSS-step-8.png)
 
 正常に終了すると以下のようになります。
 
-![IMSS step 9](/blog/resources/images/2015/01/30/IMSS-step-9.png)
+![IMSS step 9](/assets/images/2015/01/30/IMSS-step-9.png)
 
 指定された場所`./rpmbuild/RPMS/`に移動すると`x86_64`ディレクトリがさらにあるのでそこに移動し、ここにあるQSVドライバが組み込まれたカーネルカーネルをインストールします。しかし今回使用しているCentOS 7では、QSVドライバが組み込まれたカーネルより新しいカーネルがインストールされていたため、QSVドライバ付きカーネルのインストールを拒否されてしまいました。
 古いバージョンであることを重々承知した上でインストールするため、`--oldpackage`オプションを追加してインストールし、再起動してドライバのインストールは終了です。
 
-![IMSS step 10](/blog/resources/images/2015/01/30/IMSS-step-10.png)
+![IMSS step 10](/assets/images/2015/01/30/IMSS-step-10.png)
 
 
 再起動後、`lsmod | grep i915`として、以下のように幾つか該当があれば、ドライバが動作していることを確認できます。
 
-![IMSS step 11](/blog/resources/images/2015/01/30/IMSS-step-11.png)
+![IMSS step 11](/assets/images/2015/01/30/IMSS-step-11.png)
 
 
 これで終わりかと思いきや、インストールスクリプトのバグなのか、ライブラリのリンク先が間違っており、実際にSDKを利用するときにリンクできずにプログラムが起動しない、などが発生してしまいます。

@@ -4,7 +4,7 @@ date: 2013-12-07 18:22:11 +0900
 category: web
 tags: html5 css3 gh-pages
 header:
-  image: /blog/resources/images/2013/12/07/create-new-blog.png
+  image: /assets/images/2013/12/07/create-new-blog.png
 ---
 
 いままで情報を発信する場として、確かなものが周りになかったので新年に向けて新しくブログを作成しました。
@@ -36,7 +36,7 @@ HTML5やCSS3が主要となりつつある現代WebデザインにおいてはUI
 時々出力されたサイトのソースをみるとこんなかんじになっていました。
 
 <figure>
-<img src="/blog/resources/images/2013/12/07/blog-html-sourcecode.png" alt="blog html sourcecode" />
+<img src="/assets/images/2013/12/07/blog-html-sourcecode.png" alt="blog html sourcecode" />
 <figcaption class="boxed-green">blogのソースコード</figcaption>
 </figure>
 
