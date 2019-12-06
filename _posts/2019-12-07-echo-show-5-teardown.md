@@ -19,7 +19,8 @@ header:
 
 Amazonが今年5月に予約販売を開始したディスプレイ付きスマートスピーカー「[Echo Show 5](https://www.amazon.co.jp/Echo-Show-5-%E3%82%A8%E3%82%B3%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%BC5-%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E4%BB%98%E3%81%8D%E3%82%B9%E3%83%9E%E3%83%BC%E3%83%88%E3%82%B9%E3%83%94%E3%83%BC%E3%82%AB%E3%83%BC-with-Alexa-%E3%83%81%E3%83%A3%E3%82%B3%E3%83%BC%E3%83%AB/dp/B07KD87NCM/ref=as_li_ss_tl?ref_=nav_custrec_signin&&linkCode=ll1&tag=mzyy-22&linkId=3cfa7bd32e260d1de990bfcd9e68958d&language=ja_JP)」をご存知か。
 これはAmazoが近年、力を入れているAlexaスマートプラットフォーム構想の一端を握るスマートスピーカーEchoシリーズのうち、5.5インチの小型ディスプレイを搭載したものである。
-これまでのディスプレイつきEchoの国内ラインナップは少なく、このShow 5と、より小さな2.5インチの円形ディスプレイを搭載したEcho Spot、そして10.1インチの大型ディスプレイを搭載したEcho Show(第二世代)がある。ただ、Echo Spotは取り扱いが終了しているため、現時点ではShow 5とShow(第二世代)の2種類がディスプレイつきEchoとして販売されている。
+
+これまでのディスプレイつきEchoの国内ラインナップは少なく、このShow 5と、より小さな2.5インチの円形ディスプレイを搭載したEcho Spot、そして10.1インチの大型ディスプレイを搭載した[Echo Show(第二世代)](https://www.amazon.co.jp/Echo-Show-%E3%82%A8%E3%82%B3%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%BC-%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E4%BB%98%E3%81%8D%E3%82%B9%E3%83%9E%E3%83%BC%E3%83%88%E3%82%B9%E3%83%94%E3%83%BC%E3%82%AB%E3%83%BC-with-Alexa-%E3%82%B5%E3%83%B3%E3%83%89%E3%82%B9%E3%83%88%E3%83%BC%E3%83%B3/dp/B0793DZCR6/ref=as_li_ss_tl?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&keywords=echo+show&qid=1575653432&smid=AN1VRQENFRJN5&sr=8-2&linkCode=ll1&tag=mzyy-22&linkId=f2f7e2757185180e8814fde62f76b9e4&language=ja_JP)がある。ただ、Echo Spotは取り扱いが終了しているため、現時点ではShow 5とShow(第二世代)の2種類がディスプレイつきEchoとして販売されている。
 そんなEcho Show 5を、手始めに分解してみる。
 
 <!-- more -->
@@ -80,8 +81,9 @@ Android搭載なので、いじりがいがありそう。しかしそんな簡�
 滑り止めシートを剥がすとT6ネジが現れるので、簡単に開けられる。
 こういう電動ねじ回しだと楽に開けられた。
 
-<iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=mzyy-22&language=ja_JP&o=9&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=B07SSZX76W&linkId=62a0dfe665ee66eb01ce8cbe1a4b911f"></iframe>
+<a href="https://www.amazon.co.jp/Xiaomi-Wowstick1F-%E7%B2%BE%E5%AF%86%E3%83%89%E3%83%A9%E3%82%A4%E3%83%90%E3%83%BC%E3%82%BB%E3%83%83%E3%83%88-56%E7%A8%AE%E9%A1%9ES2%E3%83%93%E3%83%83%E3%83%88-%E3%83%9A%E3%83%B3%E5%9E%8B%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%A5%E3%83%BC%E3%83%89%E3%83%A9%E3%82%A4%E3%83%90%E3%83%BC/dp/B07SSZX76W/ref=as_li_ss_il?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&keywords=wowstick&qid=1575653300&sr=8-6&linkCode=li2&tag=mzyy-22&linkId=fac5eba7de2252c3b2f85887a9346a15&language=ja_JP" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B07SSZX76W&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22&language=ja_JP" ></a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=mzyy-22&language=ja_JP&l=li2&o=9&a=B07SSZX76W" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
 
+[Amazon \| Xiaomi Wowstick1F+ 電動 精密ドライバーセット usb充電 ドライバー コードレス リチウム電池 小型 USB充電式 56種類S2ビット 正逆転可能 LED付 コードレス ペン型スクリュードライバー 携帯便利 精密製品修理 \| インパクトドライバー](https://www.amazon.co.jp/Xiaomi-Wowstick1F-%E7%B2%BE%E5%AF%86%E3%83%89%E3%83%A9%E3%82%A4%E3%83%90%E3%83%BC%E3%82%BB%E3%83%83%E3%83%88-56%E7%A8%AE%E9%A1%9ES2%E3%83%93%E3%83%83%E3%83%88-%E3%83%9A%E3%83%B3%E5%9E%8B%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%A5%E3%83%BC%E3%83%89%E3%83%A9%E3%82%A4%E3%83%90%E3%83%BC/dp/B07SSZX76W/ref=as_li_ss_tl?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&keywords=wowstick&qid=1575653300&sr=8-6&linkCode=ll1&tag=mzyy-22&linkId=396109fd68d27a00cf2165a91a7f27b9&language=ja_JP)
 
 
 ![echo show 5 teardown](/assets/images/2019/12/07/IMG_1496.JPG)
