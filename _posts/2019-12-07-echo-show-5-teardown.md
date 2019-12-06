@@ -2,7 +2,7 @@
 title: "Echo Show 5で遊びたい　-分解編-"
 date: 2019-12-07 02:00:00 +0900
 published: true
-toc: false
+toc: true
 categories: gadget 
 tags: echo alexa teardown amazon iot
 header:
@@ -13,7 +13,7 @@ header:
 
 <b>今なら5,000円引きでセールしてる。<a href="https://amzn.to/3512eFG">https://amzn.to/3512eFG</a></b>
 
-# Echo Show 5
+## Echo Show 5
 
 <a href="https://www.amazon.co.jp/Echo-Show-5-%E3%82%A8%E3%82%B3%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%BC5-%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E4%BB%98%E3%81%8D%E3%82%B9%E3%83%9E%E3%83%BC%E3%83%88%E3%82%B9%E3%83%94%E3%83%BC%E3%82%AB%E3%83%BC-with-Alexa-%E3%83%81%E3%83%A3%E3%82%B3%E3%83%BC%E3%83%AB/dp/B07KD87NCM/ref=as_li_ss_il?ref_=nav_custrec_signin&&linkCode=li3&tag=mzyy-22&linkId=077b852ff4f8f6794ffb523ddfec50b9&language=ja_JP" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B07KD87NCM&Format=_SL250_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22&language=ja_JP" ></a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=mzyy-22&language=ja_JP&l=li3&o=9&a=B07KD87NCM" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
 
@@ -27,7 +27,7 @@ Amazonが今年5月に予約販売を開始したディスプレイ付きスマ�
 <img src="/assets/images/2019/12/07/IMG_1425.JPG" alt="echo spot" width="500px" />
 
 
-# Alexaへの不信感
+## Alexaへの不信感
 
 これらのAlexaデバイスは声でアプリや家電を操作でき便利な反面、プライバシーに関しては不透明な部分が多くある。
 音声操作の間の録音データをクラウド(Amazonのサーバー)にアップロードすることは利用規約にも書かれているが、声に限らず可能な音源を操作時以外にも収集していたという、まことしやかな話が流れてきたのだ。
@@ -44,17 +44,17 @@ Amazonが今年5月に予約販売を開始したディスプレイ付きスマ�
 
 余談はここら辺にして、本題に入ろう。
 
-# Echo Show 5を自由に使う
+## Echo Show 5を自由に使う
 
 先に掲載したEcho Spotの取り扱い終了を示すスクリーンショットからも分かるように、スマートスピーカーなんて使うまいと言っていながら、Echo SpotとEcho Show 5を持っている。
 これには理由があって、Alexaとして欲しかったのではなく、小さな小型ディスプレを備える魅力的な解析心をくすぐられるハードウェアとして購入した次第である。
 実際、これまでスマートスピーカーとしては使っておらず、開封後数十分で分解バラバラにしてきた。
 
-## 自由とは
+### 自由とは
 
 スマートスピーカーにおける自由な利用とは、先のような盗聴の危険がなく、自分の管理下における状態のことを指す。これを叶えるため、次から述べる取り組みを行なった。
 
-## Echo Show 5の周辺情報収集
+### Echo Show 5の周辺情報収集
 
 何事も先ずは情報収集から始める。
 Echo Show 5は、使われているプロセッサや対応無線方式などのハードウェア情報が、丁寧にもAmazonの販売ページに記載されている。
@@ -64,20 +64,24 @@ Echo Show 5は、使われているプロセッサや対応無線方式などの
 そしてAmazonの開発者ページやGitHubを調べていくと、MediaTek MT 8163 を搭載するEcho Show 5のOSがFire OS 6であるという情報を集められる。
 
 - [Fireタブレットのデバイス仕様（カスタムテーブル） \| Fireタブレット](https://developer.amazon.com/ja/docs/fire-tablets/ft-specs-custom.html)
-- [Fireタブレットのデバイス仕様（全一覧） | Fireタブレット](https://developer.amazon.com/ja/docs/fire-tablets/ft-device-and-feature-specifications.html)
+- [Fireタブレットのデバイス仕様（全一覧） \| Fireタブレット](https://developer.amazon.com/ja/docs/fire-tablets/ft-device-and-feature-specifications.html)
 - [firefox-echo-show/device_reference.md at master · mozilla-mobile/firefox-echo-show · GitHub](https://github.com/mozilla-mobile/firefox-echo-show/blob/master/docs/device_reference.md)
 
 そしてこのFire OS 6とは、Android ？をフォークとしたものを源流とし、Amazonデバイスに適した形に手を加えられているものである。
 Android搭載なので、いじりがいがありそう。しかしそんな簡単にいじられるようになってはいない。fastbootは使えても、一般権限では[adb](https://developer.android.com/studio/command-line/adb)は使えないようにしてあるのだ。
 
-- [Fire OSの概要 | Amazon Fire TV](https://developer.amazon.com/ja/docs/fire-tv/fire-os-overview.html)
+- [Fire OSの概要 \| Amazon Fire TV](https://developer.amazon.com/ja/docs/fire-tv/fire-os-overview.html)
 
 分解して高い権限を得られないかどうか、ハードウェアから探ってみることにした。
 
 ## 分解
 
 ザザーっと写真だけ
-テストパッドくらいかな、いじれそうなのは。
+滑り止めシートを剥がすとT6ネジが現れるので、簡単に開けられる。
+こういう電動ねじ回しだと楽に開けられた。
+
+<iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=mzyy-22&language=ja_JP&o=9&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=B07SSZX76W&linkId=62a0dfe665ee66eb01ce8cbe1a4b911f"></iframe>
+
 
 
 ![echo show 5 teardown](/assets/images/2019/12/07/IMG_1496.JPG)
@@ -102,7 +106,8 @@ Android搭載なので、いじりがいがありそう。しかしそんな簡�
 
 -----
 
-いろいろな基板があらわになってかわいい。
+いろいろな基板があらわになってかわいい。テストパッドくらいかな、ぱっと見でいじる道筋は。
+シールドの下へのアクセスや、フラッシュメモリへの直アクセスをしてadb有効化とかできないものか。
 解析には時間がかかる。趣味となると尚更時間がとれない。続きはいつになることやら。この前のセキュリティコンテストでのJailbreak手法とかもやりたいね。
 
 - [Zero Day Initiative — Pwn2Own Tokyo 2019 – Day One Results](https://www.zerodayinitiative.com/blog/2019/11/6/pwn2own-tokyo-2019-day-one-results)
