@@ -11,8 +11,6 @@ header:
 
 自由を求めるべく、自分好みに染められないかを探求する第一歩。Amazon Echo Show 5をはちゃめちゃにする。
 
-<b>今なら5,000円引きでセールしてる。<a href="https://amzn.to/3512eFG">https://amzn.to/3512eFG</a></b>
-
 ## Echo Show 5
 
 <a href="https://www.amazon.co.jp/Echo-Show-5-%E3%82%A8%E3%82%B3%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%BC5-%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E4%BB%98%E3%81%8D%E3%82%B9%E3%83%9E%E3%83%BC%E3%83%88%E3%82%B9%E3%83%94%E3%83%BC%E3%82%AB%E3%83%BC-with-Alexa-%E3%83%81%E3%83%A3%E3%82%B3%E3%83%BC%E3%83%AB/dp/B07KD87NCM/ref=as_li_ss_il?ref_=nav_custrec_signin&&linkCode=li3&tag=mzyy-22&linkId=077b852ff4f8f6794ffb523ddfec50b9&language=ja_JP" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B07KD87NCM&Format=_SL250_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22&language=ja_JP" ></a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=mzyy-22&language=ja_JP&l=li3&o=9&a=B07KD87NCM" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
@@ -68,7 +66,7 @@ Echo Show 5は、使われているプロセッサや対応無線方式などの
 - [Fireタブレットのデバイス仕様（全一覧） \| Fireタブレット](https://developer.amazon.com/ja/docs/fire-tablets/ft-device-and-feature-specifications.html)
 - [firefox-echo-show/device_reference.md at master · mozilla-mobile/firefox-echo-show · GitHub](https://github.com/mozilla-mobile/firefox-echo-show/blob/master/docs/device_reference.md)
 
-そしてこのFire OS 6とは、Android ？をフォークとしたものを源流とし、Amazonデバイスに適した形に手を加えられているものである。
+そしてこのFire OS 6とは、Android 7.1.2 Nougatをフォークとしたものを源流とし、Amazonデバイスに適した形に手を加えられているものである。
 Android搭載なので、いじりがいがありそう。しかしそんな簡単にいじられるようになってはいない。fastbootは使えても、一般権限では[adb](https://developer.android.com/studio/command-line/adb)は使えないようにしてあるのだ。
 
 - [Fire OSの概要 \| Amazon Fire TV](https://developer.amazon.com/ja/docs/fire-tv/fire-os-overview.html)
