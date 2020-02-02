@@ -27,10 +27,6 @@ sites:
     url: https://yokunaine.mzyy94.com
     image_path: /assets/previews/yokunaine.mzyy94.com.png
     alt: Screenshot
-  - title: フレンズ.みんな
-    url: https://xn--0cktc7c2a.xn--q9jyb4c/
-    image_path: /assets/previews/friends-minna.png
-    alt: Screenshot
 presentations:
   - url: https://www.slideshare.net/mzyy94/games-on-linux-kernelvm1
     image_path: /assets/previews/no-game-no-life.png
@@ -43,6 +39,9 @@ presentations:
     alt: Screenshot
   - url: https://www.slideshare.net/mzyy94/subscriber-identity-module-66892458
     image_path: /assets/previews/subscriber-identity-module.png
+    alt: Screenshot
+  - url: https://www.slideshare.net/mzyy94/teletext-95201437
+    image_path: /assets/previews/teletext.png
     alt: Screenshot
 ---
 
