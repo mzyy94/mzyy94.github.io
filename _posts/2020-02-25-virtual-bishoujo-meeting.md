@@ -1,5 +1,5 @@
 ---
-title: "バ美肉ビデオ会議"
+title: "リモートワークでバ美肉ビデオ会議"
 date: 2020-02-25 22:30:00 +0900
 published: true
 toc: true
