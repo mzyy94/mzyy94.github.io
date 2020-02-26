@@ -70,6 +70,10 @@ iOS 11でARKitのAPIが提供され始めた時のこと、Face Trackingして[L
 
 誰でも簡単に使えるようになっているので、READMEを読んで動かしてみてください。
 
+こんな感じで動きます
+
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">ビデオ会議風景 <a href="https://t.co/9jIyNgwBki">pic.twitter.com/9jIyNgwBki</a></p>&mdash; 劇場版ハイスクール・フリート4DX (@mzyy94) <a href="https://twitter.com/mzyy94/status/1232523165131108354?ref_src=twsrc%5Etfw">February 26, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 ## macOSでiPhoneの画面表示
 
 さて、これでiPhoneでのバ美肉はできるようになりました。しかし、これだけではビデオ会議にこの映像を使うことはできません。
