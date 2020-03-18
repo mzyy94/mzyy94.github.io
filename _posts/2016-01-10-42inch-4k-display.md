@@ -35,7 +35,7 @@ header:
 
 41インチ前後の4Kディスプレイで日本でトップに位置する売り上げを叩き出しているものに、Philipsの[BDM4065UC/11](http://www.amazon.co.jp/PHILIPS-40%E5%9E%8B4K%E5%AF%BE%E5%BF%9C%E3%83%AF%E3%82%A4%E3%83%89%E6%B6%B2%E6%99%B6%E3%83%87%E3%82%A3%E3%82%B9%E3%83%97%E3%83%AC%E3%82%A4-5%E5%B9%B4%E9%96%93%E3%83%95%E3%83%AB%E4%BF%9D%E8%A8%BC-BDM4065UC-11/dp/B00P9VXD9A/ref=sr_1_1?ie=UTF8&qid=1452263864&sr=8-1&tag=mzyy-22)があります。
 
-<a rel="nofollow" href="http://www.amazon.co.jp/gp/product/B00P9VXD9A/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=B00P9VXD9A&linkCode=as2&tag=mzyy-22"><img border="0" src="http://ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B00P9VXD9A&Format=_SL250_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22" ></a>
+<a rel="nofollow" href="http://www.amazon.co.jp/gp/product/B00P9VXD9A/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=B00P9VXD9A&linkCode=as2&tag=mzyy-22"><img border="0" src="http://ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B00P9VXD9A&Format=_SL500_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22" ></a>
 
 2014年からのロングセラー商品となっており、購入の決め手となるのはなんといっても価格。40インチサイズの情報量の多い4Kディスプレイを7万円台で購入できるとあって、長くコンスタントに売れている機種のようです。しかし、少し気になる点がありました。パネルの種類です。
 

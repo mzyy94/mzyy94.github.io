@@ -62,7 +62,7 @@ GPU | モバイル版 GTX 1070
 
 ### The New Razer Blade
 
-<a href="https://www.amazon.com/Razer-Blade-GeForce-Gaming-Laptop/dp/B01N9SSQ9E/ref=as_li_ss_il?ie=UTF8&linkCode=li3&tag=mzyy22-20&linkId=c017682a8c2ba7c8abec795b8f4981c4" target="_blank"><img border="0" src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B01N9SSQ9E&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=mzyy22-20" ></a><img src="https://ir-na.amazon-adsystem.com/e/ir?t=mzyy22-20&l=li3&o=1&a=B01N9SSQ9E" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+<a href="https://www.amazon.com/Razer-Blade-GeForce-Gaming-Laptop/dp/B01N9SSQ9E/ref=as_li_ss_il?ie=UTF8&linkCode=li3&tag=mzyy22-20&linkId=c017682a8c2ba7c8abec795b8f4981c4" target="_blank"><img border="0" src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B01N9SSQ9E&Format=_SL500_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=mzyy22-20" ></a><img src="https://ir-na.amazon-adsystem.com/e/ir?t=mzyy22-20&l=li3&o=1&a=B01N9SSQ9E" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
 
 [The New Razer Blade Gaming Laptop](https://www2.razerzone.com/jp-jp/gaming-systems/razer-blade)
 
@@ -89,7 +89,7 @@ RAMが32GBでGTX 1070が搭載されていれば、このスタイリッシュ�
 
 ### ZOTAC ZBOX MAGNUS EN1070K
 
-<a href="https://www.amazon.com/ZOTAC-ZBOX-EN1070K-U-MAGNUS-GeForce-Barebone/dp/B06ZY6CSDM/ref=as_li_ss_il?ie=UTF8&qid=1497683506&sr=8-1&keywords=zbox+en1070k&linkCode=li3&tag=mzyy22-20&linkId=64ac486155f8c71def65b9a21b8fac77" target="_blank"><img border="0" src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B06ZY6CSDM&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=mzyy22-20" ></a><img src="https://ir-na.amazon-adsystem.com/e/ir?t=mzyy22-20&l=li3&o=1&a=B06ZY6CSDM" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+<a href="https://www.amazon.com/ZOTAC-ZBOX-EN1070K-U-MAGNUS-GeForce-Barebone/dp/B06ZY6CSDM/ref=as_li_ss_il?ie=UTF8&qid=1497683506&sr=8-1&keywords=zbox+en1070k&linkCode=li3&tag=mzyy22-20&linkId=64ac486155f8c71def65b9a21b8fac77" target="_blank"><img border="0" src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B06ZY6CSDM&Format=_SL500_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=mzyy22-20" ></a><img src="https://ir-na.amazon-adsystem.com/e/ir?t=mzyy22-20&l=li3&o=1&a=B06ZY6CSDM" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
 
 [MAGNUS EN1070K \| ZOTAC](https://www.zotac.com/jp/product/mini_pcs/magnus-en1070k)
 
@@ -195,7 +195,7 @@ Skylakeモデルではなかったものです。
 
 60℃程度なら許容範囲との声もありますが、気になったのでM.2 SSD専用放熱パッドを購入しました。
 
-<a href="https://www.amazon.co.jp/SilverStone-M-2-SSD%E5%B0%82%E7%94%A8%E6%94%BE%E7%86%B1%E3%83%91%E3%83%83%E3%83%89-SST-TP01-M2-%E6%97%A5%E6%9C%AC%E6%AD%A3%E8%A6%8F%E4%BB%A3%E7%90%86%E5%BA%97%E5%93%81/dp/B06WWM64VJ/ref=as_li_ss_il?ie=UTF8&linkCode=li3&tag=mzyy-22&linkId=6ec149036279b48edf26a1ac50c886bd" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B06WWM64VJ&Format=_SL250_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22" ></a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=mzyy-22&l=li3&o=9&a=B06WWM64VJ" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+<a href="https://www.amazon.co.jp/SilverStone-M-2-SSD%E5%B0%82%E7%94%A8%E6%94%BE%E7%86%B1%E3%83%91%E3%83%83%E3%83%89-SST-TP01-M2-%E6%97%A5%E6%9C%AC%E6%AD%A3%E8%A6%8F%E4%BB%A3%E7%90%86%E5%BA%97%E5%93%81/dp/B06WWM64VJ/ref=as_li_ss_il?ie=UTF8&linkCode=li3&tag=mzyy-22&linkId=6ec149036279b48edf26a1ac50c886bd" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B06WWM64VJ&Format=_SL500_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22" ></a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=mzyy-22&l=li3&o=9&a=B06WWM64VJ" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
 
 [Amazon \| SilverStone M.2 SSD専用放熱パッド 2枚組 SST-TP01-M2 日本正規代理店品](https://www.amazon.co.jp/SilverStone-M-2-SSD%E5%B0%82%E7%94%A8%E6%94%BE%E7%86%B1%E3%83%91%E3%83%83%E3%83%89-SST-TP01-M2-%E6%97%A5%E6%9C%AC%E6%AD%A3%E8%A6%8F%E4%BB%A3%E7%90%86%E5%BA%97%E5%93%81/dp/B06WWM64VJ/ref=as_li_ss_tl?ie=UTF8&linkCode=ll1&tag=mzyy-22&linkId=4a99c560410b4a60662d8b4b65097e5c)
 

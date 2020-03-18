@@ -62,7 +62,7 @@ Amazon等で売ってる人工海水キットと比重計を買って汽水を�
 一番初めに準備したのはえびの隠れ家です。今までの小瓶には枝が1つと藻が1本入っているだけで、おちおちと休まることのできない環境だったので隠れ家を用意してあげようと思い立ちました。
 えび用の隠れ家は何種類も売っていたのですが、どれもこの小さなえびには大きすぎるので、稚えび用の隠れ家を購入しました。
 
-[![稚エビの隠れ家](http://ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B00R493S22&Format=_SL250_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22)](http://www.amazon.co.jp/gp/product/B00R493S22/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=B00R493S22&linkCode=as2&tag=mzyy-22)
+[![稚エビの隠れ家](http://ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B00R493S22&Format=_SL500_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22)](http://www.amazon.co.jp/gp/product/B00R493S22/ref=as_li_ss_il?ie=UTF8&camp=247&creative=7399&creativeASIN=B00R493S22&linkCode=as2&tag=mzyy-22)
 
 - Amazon: [ウォーターエンジニアリング ベビー ビー シュリンプ シェルター (稚エビの隠れ家) 20個入り](http://www.amazon.co.jp/gp/product/B00R493S22/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=B00R493S22&linkCode=as2&tag=mzyy-22)
 
@@ -117,7 +117,7 @@ Amazon等で売ってる人工海水キットと比重計を買って汽水を�
 小瓶に付属していた飼い方説明書きには、減ってきたら専用のマイクロウォーターを追加してくださいと書いてあったのですが、汽水濃度が上がり続けることが心配になりました。
 そこで、人工海水の作成時にも用いられる、海洋深層水をろ過したRO水を購入し、減った時には追加するようにしています。今回購入したRO水はもともと飲料水として販売している物なので、試しにコーヒーを淹れてみた所、すこし香りが増したような味わいになりました。
 
-![赤穂化成 純水 2000ml×6本](http://ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B004ABND0Y&Format=_SL250_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22)
+![赤穂化成 純水 2000ml×6本](http://ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B004ABND0Y&Format=_SL500_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22)
 
 - Amazon: [赤穂化成 純水 2000ml×6本](http://www.amazon.co.jp/gp/product/B004ABND0Y/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=B004ABND0Y&linkCode=as2&tag=mzyy-22)
 

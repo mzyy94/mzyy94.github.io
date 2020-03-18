@@ -69,7 +69,7 @@ MacBook Airはデスクトップマシン向けGPUのように基板が丸出し
 
 手持ちの特殊精密ドライバーを用いて手順に従い、分解を進めること10分。いとも簡単にロジックボードの取り外しが完了した。
 
-<a href="https://www.amazon.co.jp/dp/B01MUCQB1O//ref=as_li_ss_il?ie=UTF8&linkCode=li3&tag=mzyy-22&linkId=582cbadddc622cf4b063d65f217b6ddc" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B01MUCQB1O&Format=_SL250_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22" ></a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=mzyy-22&l=li3&o=9&a=B01MUCQB1O" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+<a href="https://www.amazon.co.jp/dp/B01MUCQB1O//ref=as_li_ss_il?ie=UTF8&linkCode=li3&tag=mzyy-22&linkId=582cbadddc622cf4b063d65f217b6ddc" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B01MUCQB1O&Format=_SL500_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22" ></a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=mzyy-22&l=li3&o=9&a=B01MUCQB1O" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
 
 
 ### 加熱
