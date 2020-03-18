@@ -251,14 +251,13 @@ macOSでは、以下のように認識されました。
 メディアキーはそのままシステムキーとして利用できますが、ホットキーはそのままでは使えないので、
 [Hammerspoon](http://www.hammerspoon.org/)を使って一部ホットキーが動くようにしました。
 
-<script src="https://gist.github.com/mzyy94/20f0cea78187459dffa6d55e94298033.js"></script>
+{% gist 20f0cea78187459dffa6d55e94298033 init.lua %}
 
 
 ## まとめ
 
 昨年1月に4Kディスプレイを導入し作業環境の拡大を行い、今年1月にFull HDディスプレイを追加して広大な作業場を確保しました。
 そして今回キーボードを新調して理想の作業環境を手に入れることができました。
-/Vlue
 
 ![Desktop](/assets/images/2017/07/05/desktop.jpg)
 
