@@ -109,7 +109,7 @@ H2C-RPI-B01はRaspberry Pi Zeroとほぼ同じサイズであり、ねじ穴もR
 ## HDMI映像入力をみてみる
 
 取り付けが終わったら、入力をみてみます。
-Raspbianにはドライバがあり、必要なものは標準で読み込まれているので、初期設定だけすれば使えます。
+Raspbianには、もといLinuxにはTC358743のドライバがあり、必要なものは標準で読み込まれているので、初期設定だけすれば使えます。
 
 [linux/tc358743.c at raspberrypi-kernel_1.20200212-1 · raspberrypi/linux](https://github.com/raspberrypi/linux/blob/raspberrypi-kernel_1.20200212-1/drivers/media/i2c/tc358743.c)
 
