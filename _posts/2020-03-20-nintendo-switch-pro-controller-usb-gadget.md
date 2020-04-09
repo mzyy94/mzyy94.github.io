@@ -4,7 +4,7 @@ date: 2020-03-20 01:50:00 +0900
 published: true
 toc: true
 categories: raspberry-pi
-tags: nintendo switch usb hid
+tags: nintendo switch usb hid usb-gadget
 header:
   image: /assets/images/2020/03/20/switch-remote-control.jpg
 ---
@@ -692,7 +692,7 @@ Command | SubCommand | Description
 ### 入力データ
 
 初期化処理の次は、入力データを紐解きます。
-Pro Coontrollerからのボタンの入力データは、**`08 04` Enable USB HID Joystick report**がSwitchからPro Coontrollerに送られると、一秒間におよそ80回の周期で`30 XX`で始まるURBをPro Coontrollerが送りつけてくるようになります。
+Pro Controllerからのボタンの入力データは、**`08 04` Enable USB HID Joystick report**がSwitchからPro Controllerに送られると、一秒間におよそ80回の周期で`30 XX`で始まるURBをPro Controllerが送りつけてくるようになります。
 
 この`30 XX`で始まるデータは、前途の通りHID Report Descriptorで通知されている通りではないので、どういった定義で値が意味をなしているかを通信からは断定できません。
 ですが、先のchromiumのnintendo_controllerのソースコードに、どのビットがどのボタンであるかなど、定義を読み取るれる実装がありました。
