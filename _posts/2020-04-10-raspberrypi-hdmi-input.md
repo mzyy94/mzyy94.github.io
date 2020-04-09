@@ -198,7 +198,7 @@ export stream_key=your_stream_key_here
 gst-launch-1.0 v4l2src ! videorate ! video/x-raw,width=1280,height=720,framerate=30/1 ! tee name=t t. ! queue ! kmssink t. ! omxh264enc ! h264parse ! flvmux ! rtmpsink location=rtmp://live-tyo.twitch.tv/app/${stream_key}
 ```
 
-コマンドラインでこれを実行すると、Raspberry Piに繋げたHDMIディスプレイに映像が表示され、Twitchで配信できていることを確認できます。
+コマンドラインでこれを実行すると、Raspberry Piに繋げたHDMIディスプレイにほぼ遅延なく映像が表示され、Twitchで配信できていることを確認できます。
 
 
 ![twitch rtmp broadcasting](/assets/images/2020/04/10/hdmi-rtmp-twitch.png)
