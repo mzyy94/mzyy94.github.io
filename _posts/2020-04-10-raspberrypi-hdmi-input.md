@@ -168,6 +168,8 @@ a=rtpmap:96 H264/90000
 
 ### RTMP
 
+[Real Time Messaging Protocol - Wikipedia](https://ja.wikipedia.org/wiki/Real_Time_Messaging_Protocol)
+
 TwitchとかYouTube Liveとかで配信する時に通信するプロトコルです。これは簡単にGstreamerを使ってできます。
 Twitchでやってみます。
 
