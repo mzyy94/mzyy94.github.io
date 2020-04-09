@@ -131,7 +131,7 @@ basis and therefore requests for support or changes will not be acted on.
 
 ![raspivid recording](/assets/images/2020/04/10/hdmi-raspivid.png)
 
-ちゃんとraspividで取り込めています。
+VLCで見てみると、ちゃんとraspividで取り込めています。
 
 ### Gstreamer
 
@@ -160,7 +160,7 @@ a=rtpmap:96 H264/90000
 
 ![vlc rtp receiving capture](/assets/images/2020/04/10/hdmi-rtp.png)
 
-ちゃんとgstreamerで転送できています。
+遅延は大きいですが、ちゃんとgstreamerで転送できています。
 
 ## HDMI映像配信してみる
 
