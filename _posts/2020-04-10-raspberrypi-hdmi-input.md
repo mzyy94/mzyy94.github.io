@@ -109,9 +109,7 @@ H2C-RPI-B01はRaspberry Pi Zeroとほぼ同じサイズであり、ねじ穴もR
 ## HDMI映像入力をみてみる
 
 取り付けが終わったら、入力をみてみます。
-Raspbianには、もといLinuxにはTC358743のドライバがあり、必要なものは標準で読み込まれているので、初期設定だけすれば使えます。
-
-[linux/tc358743.c at raspberrypi-kernel_1.20200212-1 · raspberrypi/linux](https://github.com/raspberrypi/linux/blob/raspberrypi-kernel_1.20200212-1/drivers/media/i2c/tc358743.c)
+Raspbianには、[Raspberry Pi Camera Module](https://www.raspberrypi.org/documentation/usage/camera/)と同様にして認識され、必要なものは標準で読み込まれているので、Camera Moduleと同じ初期設定だけすれば使えます。
 
 初期設定も難しいものではなく、`sudo raspi-config nonint do_camera 0`を打ち込むだけです。
 
