@@ -9,7 +9,7 @@ header:
   image: /assets/images/2020/04/17/usb-audio-detected.jpg
 ---
 
-前回の記事でHDMI映像入力をRaspberry Piで扱う方法を紹介し、その最後に音声の取り込みについて、まだ課題が残っていると書きました。
+[前回の記事](/blog/2020/03/20/nintendo-switch-pro-controller-usb-gadget/)でHDMI映像入力をRaspberry Piで扱う方法を紹介し、その最後に音声の取り込みについて、まだ課題が残っていると書きました。
 HDMI入力からの音声取り込みといった、本質的な課題の解決を試みているものの、なかなかに難しい問題に直面しているので、対象を限定して部分的解決に挑みます。
 
 主に今HDMI入力の対象として使おうと思っているデバイスは、Nintendo Switchです。
@@ -73,7 +73,7 @@ WindowsやmacOS、LinuxやAndroid含め、ほとんどのOSに標準でUAC1とUA
 ## UACデバイスシミュレート
 
 物は試しということで、早速Nintendo SwitchとRaspberry Piを接続してconfigfsでUAC1デバイスを作ってみます。
-前の記事と同様、/boot/config.txtと/etc/modulesに追記を済ませておく必要があります。
+手法を紹介したの記事と同様、/boot/config.txtと/etc/modulesに追記を済ませておく必要があります。
 接続はシンプルに、それぞれのUSB Type-CポートにUSB 2.0 Type-Cケーブルを接続するだけです。
 
 {% gist 02bcd9d843c77896803c4cd0c4d9b640 uac1_gadget.sh %}
@@ -106,7 +106,7 @@ ls /sys/class/udc > UDC
 
 -->
 
-root権限でこれを実行すると、Nintendo SwitchでUSBサウンドデバイスとして認識されました。
+root権限でこれを実行すると、Nintendo SwitchがRaspberry Pi 4をUSBサウンドデバイスとして認識しました。
 
 ![usb audio device detected](/assets/images/2020/04/17/usb-audio-detected.jpg)
 
