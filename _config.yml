@@ -118,14 +118,16 @@ timezone: Asia/Tokyo
 #  RSS & Search & Comment #
 # ----------------------- #
 
-#search_engine: https://www.google.com/search
 search: true
-search_full_content: true
+search_provider: google
+google:
+  search_engine_id: 004594946578658771924:ycmbm9tri80
+
 feed:
   path: /blog/atom.xml
 atom_feed:
   path: /blog/atom.xml
-#discus-identifier: mzyy94blog
+
 comments:
   provider: "disqus"
   disqus:
@@ -184,7 +186,7 @@ analytics:
   provider: google
   google:
     tracking_id: UA-41944495-3
-google_site_verification : 
+google_site_verification: m5HDLtvpHciiq97KscNByMXhvFiwvwJzlwBHEDUlmwk
 
 # ----------------------- #
 #   3rd Party Settings    #
