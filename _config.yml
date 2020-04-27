@@ -22,7 +22,7 @@ minimal_mistakes_skin: contrast
 author:
   name             : "mzyy94"
   fullname         : "Yuki MIZUNO"
-  avatar           : https://avatars3.githubusercontent.com/mzyy94?v=3&s=192
+  avatar           : /assets/images/logo.png
   bio              : 何かしら生きた証を遺したい (575)
   location         : Tokyo
   links:
