@@ -157,7 +157,7 @@ defaults:
       comments: true
       share: true
       related: true
-      read_time: false
+      read_time: true
       toc_sticky: true
   - scope:
       path: ""
