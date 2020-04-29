@@ -64,7 +64,7 @@ tsharkでパケットをチェックしてみると、
     開いてるTCPポートを列挙せよ
 
 
-[nmaped.pcap](/assets/data/2014/9/3/nmaped.pcap)
+[nmaped.pcap](https://gist.github.com/mzyy94/ae0144ba055b505a17ff58b18c4e921c)
 
 
 これはpcapファイルが添付されていました。

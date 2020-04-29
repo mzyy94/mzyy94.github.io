@@ -181,7 +181,7 @@ TrueCryptでmondai8.tcをマウントして中を見てみました。
 
 シート3には、key:passwordに対応するanswerを入力するような空欄がありました。
 このpasswordという文字列はきっとシート1のアルファベットと2つの数字に対応していて、1つ目の数字は行番号、2つ目の数字はその行の文字の位置を指しているだろうと思いました。
-Excel Onlineの印刷機能でシート2をHTML形式にし、保存したのちテキストに変換して[kidanclub.txt](/assets/data/2015/04/15/kidanclub.txt)を作成し、
+Excel Onlineの印刷機能でシート2をHTML形式にし、保存したのちテキストに変換して[kidanclub.txt](https://gist.github.com/mzyy94/409d925fa2d176fac1b393398529eff8)を作成し、
 シート1を基に、アルファベット**"password"**に対応する行から文字を抽出するコードを書きました。
 
 
