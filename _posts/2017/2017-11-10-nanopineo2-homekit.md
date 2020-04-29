@@ -291,7 +291,7 @@ pulse 488
 
 {% gist 5cf28ac56553142db9364d4178fc5ccc transmitter.c %}
 
-{% gist 37d6919fd4a3d97900d9a981255e66e4 hb.sh %}
+{% gist 5cf28ac56553142db9364d4178fc5ccc hb.sh %}
 
 ## HomeKitで照明を操作
 
