@@ -146,6 +146,11 @@ exclude:
   - Gemfile.lock
   - vendor
 
+compress_html:
+  clippings: all
+  ignore:
+    envs: development
+
 # ----------------------- #
 #        Defaults         #
 # ----------------------- #
