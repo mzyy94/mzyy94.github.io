@@ -9,7 +9,7 @@ header:
   image: /assets/images/2020/04/17/usb-audio-detected.jpg
 ---
 
-[前回の記事](/blog/2020/03/20/nintendo-switch-pro-controller-usb-gadget/)でHDMI映像入力をRaspberry Piで扱う方法を紹介し、その最後に音声の取り込みについて、まだ課題が残っていると書きました。
+[前回の記事](../2020/2020-03-20-nintendo-switch-pro-controller-usb-gadget.md)でHDMI映像入力をRaspberry Piで扱う方法を紹介し、その最後に音声の取り込みについて、まだ課題が残っていると書きました。
 HDMI入力からの音声取り込みといった、本質的な課題の解決を試みているものの、なかなかに難しい問題に直面しているので、対象を限定して部分的解決に挑みます。
 
 主に今HDMI入力の対象として使おうと思っているデバイスは、Nintendo Switchです。
@@ -66,7 +66,7 @@ WindowsやmacOS、LinuxやAndroid含め、ほとんどのOSに標準でUAC1とUA
 
 ## USB Gadget API
 
-聞き覚えがありますね。[スマホでNintendo Switchを操作する手法を紹介したの記事](/blog/2020/03/20/nintendo-switch-pro-controller-usb-gadget/#usb-gadget-api)で登場しています。
+聞き覚えがありますね。[スマホでNintendo Switchを操作する手法を紹介したの記事](../2020/2020-03-20-nintendo-switch-pro-controller-usb-gadget.md#usb-gadget-api)で登場しています。
 聞いたことない人はそちらをチラッとみていただくとして、そこに挙げたドキュメント記載の例に**sound subsystem (for audio gadgets)**があり、USB Audio Device Classのシミュレートもできるのです。
 これでRaspberry PiをUACデバイスとして振舞うようにできれば、Nintendo SwitchのUSBサウンド出力を取り込めるかもしれません。
 
@@ -166,7 +166,7 @@ ls /sys/class/udc > UDC
 
 
 
-この状態で、[1.3inch LCD HATでの入力](/blog/2020/03/20/nintendo-switch-pro-controller-usb-gadget/#13inch-lcd-hat%E3%81%A7%E3%81%AE%E5%85%A5%E5%8A%9B)を試してみると、ちゃんとUSBサウンドデバイスとPro Controllerとして認識されています。
+この状態で、[1.3inch LCD HATでの入力](../2020/2020-03-20-nintendo-switch-pro-controller-usb-gadget.md#13inch-lcd-hat%E3%81%A7%E3%81%AE%E5%85%A5%E5%8A%9B)を試してみると、ちゃんとUSBサウンドデバイスとPro Controllerとして認識されています。
 
 ![pro controller and audio device](/assets/images/2020/04/17/controller-and-audio.jpg)
 
@@ -207,7 +207,7 @@ arecord -v -D hw:UAC1Gadget -c2 -r 48000 -f S16_LE -t wav -V stereo /tmp/rec.wav
 
 ## 映像と音声をWebRTC
 
-[前回の記事](/blog/2020/04/10/raspberrypi-hdmi-input/#webrtc)でも扱った映像のWebRTC配信に、音声も乗っけてみます。
+[前回の記事](../2020/2020-04-10-raspberrypi-hdmi-input.md#webrtc)でも扱った映像のWebRTC配信に、音声も乗っけてみます。
 
 HDMI出力はUSB Type-C端子からは取り出せないので、Nintendo Switchドックに接続する必要があります。
 そして、Raspberry Pi 4とNintendo Switchドックは裏面のUSB 3.0ポートに、以下のようなUSB Type-A to USB Type−C 3.0ケーブルを使って接続します。
@@ -264,7 +264,7 @@ index b8a716d..b9674b3 100644
 
 上記パッチを当て、Readmeに従って`sudo make install`までできていると、**examples/**にWebRTCデモの実行ファイルができているはずです。
 
-ビルド前の依存パッケージの導入と実行時の注意は、[前回の記事](/blog/2020/04/10/raspberrypi-hdmi-input/#webrtc)を参考にしてください。
+ビルド前の依存パッケージの導入と実行時の注意は、[前回の記事](../2020/2020-04-10-raspberrypi-hdmi-input.md#webrtc)を参考にしてください。
 また、追加で`sudo apt install gstreamer1.0-alsa`をしてALSAのプラグインも導入しておく必要があります。
 
 `OPENSSL_CONF= ./examples/webrtc-unidirectional-h264`で実行し、Chromeでみてみると、音声もWebRTCで転送できていることが確認できます。
@@ -275,8 +275,8 @@ index b8a716d..b9674b3 100644
 
 とりあえずNintendo Switchの音声出力が取れました。
 
-[前々回](/blog/2020/04/10/raspberrypi-hdmi-input/)はNintendo Switch Pro ControllerのWeb対応。
-[前回](/blog/2020/03/20/nintendo-switch-pro-controller-usb-gadget/)はNintendo Switchゲーム画面のWeb対応。
+[前々回](../2020/2020-04-10-raspberrypi-hdmi-input.md)はNintendo Switch Pro ControllerのWeb対応。
+[前回](../2020/2020-03-20-nintendo-switch-pro-controller-usb-gadget.md)はNintendo Switchゲーム画面のWeb対応。
 今回はNintendo Switchゲーム音声のWeb対応。
 
 何を作ろうとしてるか、だんだんワクワクしてきましたね？

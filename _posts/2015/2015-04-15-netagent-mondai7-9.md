@@ -12,7 +12,7 @@ tags: netagent
 これまでのmondaiはLinuxやOS Xがあれば解くことができていましたが、mondai7からはWindowsの実行ファイル形式やMicrosoft Officeドキュメントが登場したりと、そろそろWindowsがない環境には手厳しい問題となってきました。
 なので、今回の記事に掲載のmondaiはすべて（`file`コマンドでのファイル情報調査以外）、Windows上での解法となっております。
 
-昨日の[mondai6までの解法](/blog/2015/04/14/netagent-mondai5-6/)に続いて本日はmondai7、mondai8、mondai9の解法を公開します。
+昨日の[mondai6までの解法](../2015/2015-04-14-netagent-mondai5-6.md)に続いて本日はmondai7、mondai8、mondai9の解法を公開します。
 
 <!-- more -->
 

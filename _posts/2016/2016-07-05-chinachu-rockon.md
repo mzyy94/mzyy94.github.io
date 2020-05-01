@@ -7,7 +7,7 @@ header:
   image: /assets/images/2016/07/05/chinachu-rockon-installed.png
 ---
 
-[昨日紹介したRockstor](https://mzyy94.com/blog/2016/07/04/do-you-know-rockstor/)というNAS用OS、とても便利で快適に使っています。
+[昨日紹介したRockstor](../2016/2016-07-04-do-you-know-rockstor.md#$5)というNAS用OS、とても便利で快適に使っています。
 今まで低消費電力で非力なマシンで動作させていたNASもCore i5で動作するようになり、
 もっといろいろとやらせてみたくなりました。
 余裕がありそうなので、録画サーバの役割も担ってもらい、録画NASとして我が家で働いてもらいます。

@@ -37,7 +37,7 @@ header:
 Nintendo Switchは、このPro Controllerなど、任天堂製か公式ライセンス商品しかコントローラーとして認識してくれません。
 2017年の年末に没頭していたSplatoon 2で、自動ドット絵作画ツールを作った時も、公式ライセンス商品であるHORIのPokken Padをシミュレートして使っていました。
 
-[ドイツのトリ in Splatoon 2 - 犬アイコンのみっきー](/blog/2017/12/18/doitsu-no-ika/)
+[ドイツのトリ in Splatoon 2 - 犬アイコンのみっきー](../2017/2017-12-18-doitsu-no-ika.md)
 
 Pokken Padは、Arduinoベースでのシミュレートの動作実績もあるので比較的簡単にシミュレートできます。
 しかしジャイロやジョイスティックがないので、多くのゲームに対応しようとするには不向きです。
@@ -58,7 +58,7 @@ Nintendo Switchに関するリバースエンジニアリングは発売から�
 
 USB Gadget APIとは、Linux KernelにおけるUSBデバイスのペリフェラル、周辺機器側として動作する機能のことです。
 簡単に言うと、Raspberry Piがキーボードとかゲームパッドになるよってやつです。
-ハードウェアのサポートも必要ですが、最近話題のRaspberry Pi 4や[昔紹介したNanoPi NEO2](/blog/2017/11/10/nanopineo2-homekit/)などが対応しています。
+ハードウェアのサポートも必要ですが、最近話題のRaspberry Pi 4や[昔紹介したNanoPi NEO2](../2017/2017-11-10-nanopineo2-homekit.md)などが対応しています。
 
 [USB Gadget API for Linux — The Linux Kernel documentation](https://www.kernel.org/doc/html/v4.19/driver-api/usb/gadget.html)
 

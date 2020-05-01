@@ -5,7 +5,7 @@ category: linux
 tags: qsv ffmpeg imss
 ---
 
-[前回の記事](/blog/2014/12/12/kvm-intel-hd-graphics-passthrough/)から1ヶ月以上空いてしまいました。遅ればせながらで申し訳ありません。続編です。
+[前回の記事](../2014/2014-12-12-kvm-intel-hd-graphics-passthrough.md)から1ヶ月以上空いてしまいました。遅ればせながらで申し訳ありません。続編です。
 Intel QSVは高速にある程度の画質のエンコードできてよいです。とても。
 
 今回はKVMでIntel HD Graphicsをパススルーした仮装マシン上に、SDKのインストールとカーネルモジュールのインストール、そしてffmpegでのQSVによるH.264エンコードができる環境づくりまでの手順をご紹介します。

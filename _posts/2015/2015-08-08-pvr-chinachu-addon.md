@@ -12,9 +12,9 @@ header:
 ただ、今年２月に記事にしたように、Raspberry Pi2 + OSMC + Kodi(XBMC) + add-onで地デジの視聴環境は出来上がっており、
 だらだらとテレビを見ることができる状態にあります。
 
-- [Raspberry Pi2にOSMC入れてKodi(旧:XBMC)日本語化するまで](/blog/2015/02/16/raspberry-pi2-osmc-jp/)
-- [KodiとChinachuで地デジLive視聴 on Raspberry Pi2 w/ OSMC](/blog/2015/02/21/kodi-livetv-chinachu/)
-- [KodiでChinachuの録画を観るAdd-on作った](/blog/2015/02/24/kodi-chinachu-addon/)
+- [Raspberry Pi2にOSMC入れてKodi(旧:XBMC)日本語化するまで](../2015/2015-02-16-raspberry-pi2-osmc-jp.md)
+- [KodiとChinachuで地デジLive視聴 on Raspberry Pi2 w/ OSMC](../2015/2015-02-21-kodi-livetv-chinachu.md)
+- [KodiでChinachuの録画を観るAdd-on作った](../2015/2015-02-24-kodi-chinachu-addon.md)
 
 
 これでだいたい十分に地デジを視聴できるようになったのですが、最近Android TVを手にし、同じように上記記事のように

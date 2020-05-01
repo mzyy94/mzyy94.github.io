@@ -7,7 +7,7 @@ header:
   image: /assets/images/2017/05/24/lucky.jpg
 ---
 
-[前回](/blog/2017/05/15/shapeways-stainless-steel/)の予告でお伝えした通り、Shapewaysでシルバー925のプリントをしてみた話。
+[前回](../2017/2017-05-15-shapeways-stainless-steel.md)の予告でお伝えした通り、Shapewaysでシルバー925のプリントをしてみた話。
 多くのシルバーアクセサリーで扱われる銀含有率925‰の[スターリングシルバー](https://ja.wikipedia.org/wiki/%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%AA%E3%83%B3%E3%82%B0%E3%82%B7%E3%83%AB%E3%83%90%E3%83%BC)で作ってみました。
 ステンレススチール編ではざっくりとした感想しかお伝えいたしませんでしたが、今回はいろいろあったので多めに記録を残しておきます。
 

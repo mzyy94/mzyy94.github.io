@@ -13,7 +13,7 @@ tags: netagent
 某所ではこれらのmondaiを10分で解けたとの声が上がっているようで、世の中にはこの記事とは比べ物にならないくらい効率のよい解き方をしている方がいるようです。それらの解法と比べると、この記事の解法は全部解くのに数日かかっているので、内容が無いも同然という位置付けとなります。
 もし10分で解いた猛者たちの解法が公開されていたら、この記事ではなくそちらをご覧になることをお勧めします。
 
-昨日の[mondai1からmondai4までのWrite-upの記事](/blog/2015/04/13/netagent-mondai1-4/)に続き、今日はmondai5とmondai6のWrite-upを公開します。
+昨日の[mondai1からmondai4までのWrite-upの記事](../2015/2015-04-13-netagent-mondai1-4.md)に続き、今日はmondai5とmondai6のWrite-upを公開します。
 
 <!-- more -->
 
@@ -217,7 +217,7 @@ qrcode.png: PNG image data, 123 x 123, 4-bit grayscale, non-interlaced
 
 ![qrcode.png](/assets/images/2015/04/14/qrcode.png)
 
-[半分食べられてしまったパンケーキ](/blog/2014/12/07/seccon2014-online/)ではなく、普通のQRコードでした。
+[半分食べられてしまったパンケーキ](../2014/2014-12-07-seccon2014-online.md)ではなく、普通のQRコードでした。
 
 適当なQRコードリーダーで読み込むと、以下のような文字列が得られます。
 ```

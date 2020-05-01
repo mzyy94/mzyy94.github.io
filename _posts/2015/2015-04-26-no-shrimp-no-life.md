@@ -9,7 +9,7 @@ header:
 
 先日、久々にアイコンを大幅に変更しました。
 MacBook Airとコーヒーと犬が描かれていたアイコンをここ数年使っていたのですが、
-先月頭に起きた[とある一件](/blog/2015/03/06/yuzu-trouble/)のために柚子胡椒禁止アイコンが追加されるマイナーバージョンアップがあったくらいです。
+先月頭に起きた[とある一件](../2015/2015-03-06-yuzu-trouble.md)のために柚子胡椒禁止アイコンが追加されるマイナーバージョンアップがあったくらいです。
 
 <blockquote class="twitter-tweet" lang="ja"><p>柚子胡椒 禁止アイコン <a href="http://t.co/FKXJYy96GN">pic.twitter.com/FKXJYy96GN</a></p>&mdash; プロ生ちゃん（暮井 慧） (@pronama) <a href="https://twitter.com/pronama/status/573812508881870849">2015, 3月 6</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
