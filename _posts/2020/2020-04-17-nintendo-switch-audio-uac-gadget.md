@@ -9,7 +9,7 @@ header:
   image: /assets/images/2020/04/17/usb-audio-detected.jpg
 ---
 
-[前回の記事](../2020/2020-03-20-nintendo-switch-pro-controller-usb-gadget.md)でHDMI映像入力をRaspberry Piで扱う方法を紹介し、その最後に音声の取り込みについて、まだ課題が残っていると書きました。
+[前回の記事](../2020/2020-04-10-raspberrypi-hdmi-input.md)でHDMI映像入力をRaspberry Piで扱う方法を紹介し、その最後に音声の取り込みについて、まだ課題が残っていると書きました。
 HDMI入力からの音声取り込みといった、本質的な課題の解決を試みているものの、なかなかに難しい問題に直面しているので、対象を限定して部分的解決に挑みます。
 
 主に今HDMI入力の対象として使おうと思っているデバイスは、Nintendo Switchです。
