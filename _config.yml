@@ -78,8 +78,6 @@ relative_permalinks: false
 relative_links:
   enabled:     true
   collections: true
-aboutme:
-  url: /about/
 markdown: kramdown
 kramdown:
   input: GFM

@@ -5,7 +5,5 @@ main:
     url: /blog/tags/
   - title: "Categories"
     url: /blog/categories/
-  - title: "About"
-    url: /about/
   - title: "License"
     url: /license/
