@@ -954,7 +954,7 @@ ja: &DEFAULT_JA
   comments_label             : "コメントする"
   comments_title             : "コメント"
   more_label                 : "さらに詳しく"
-  related_label              : "関連記事"
+  related_label              : "最新記事" # これは仕様
   follow_label               : "フォロー"
   feed_label                 :
   powered_by                 :
