@@ -3,7 +3,7 @@ title: "UAC GadgetでNintendo Switchの音声出力をRaspberry Piに取り込�
 date: 2020-04-17 21:30:00 +0900
 published: true
 toc: true
-categories: raspberry-pi
+category: raspberry-pi
 tags: hdmi uac usb usb-gadget nintendo switch
 header:
   image: /assets/images/2020/04/17/usb-audio-detected.jpg

@@ -2,7 +2,7 @@
 title: "金属製プラチナカード"
 date: 2019-03-22 22:30:00 +0900
 published: true
-categories: misc
+category: misc
 tags: credit card platinum
 header:
   image: /assets/images/2019/03/22/platinums.jpg

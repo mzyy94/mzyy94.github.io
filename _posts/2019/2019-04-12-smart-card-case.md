@@ -2,7 +2,7 @@
 title: "モダンでスマートなクレジットカードケース3選"
 date: 2019-04-12 10:00:00 +0900
 published: true
-categories: misc
+category: misc
 tags: credit card case wallet
 header:
   image: /assets/images/2019/04/12/cases.jpg
