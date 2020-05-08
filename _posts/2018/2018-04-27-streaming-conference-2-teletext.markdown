@@ -6,7 +6,7 @@ category: Web
 tags: streaming teletext
 ---
 
-こんにちは、Feneecエバンジェリストです。
+こんにちは、Fennecエバンジェリストです。
 最近暇で暇でしょうがないので何かアウトプットしようと、先日[Streaming Conference #2](https://streaming-lab.connpass.com/event/79586/)にてLTをしてきました。
 表題は**# TELETEXT**で、字幕放送についてご紹介しました。
 
