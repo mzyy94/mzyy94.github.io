@@ -822,6 +822,10 @@ Pro Controllerからのボタンの入力データは、**`08 04` Enable USB HID
 バックエンドをGoやRustなどのモダン言語を使わなかったのは、ちょっとまだ追加で実装したいものがある関係で、あえてCを選んだが故です。
 ソースコードの公開も、その追加実装が終わってからかなぁと。暫しお待ちを。
 
+**追記(2020/05/09)** やっぱりCで書くの辛くなってきたのでGoで書き直した。
+[mzyy94/nscon: Nintendo Switch Controller simulator written in go](https://github.com/mzyy94/nscon)
+{: .notice--info}
+
 実際に動作している様子がこちら。
 
 <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">スマホをNintendo Switchのコントローラーにできたやつ <a href="https://t.co/cM9BgcWktl">pic.twitter.com/cM9BgcWktl</a></p>&mdash; 咳4週間 (@mzyy94) <a href="https://twitter.com/mzyy94/status/1240606803093671937?ref_src=twsrc%5Etfw">March 19, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
