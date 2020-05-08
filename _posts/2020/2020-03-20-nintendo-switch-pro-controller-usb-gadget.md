@@ -1,5 +1,5 @@
 ---
-title: "スマホでNintendo Switchを操作する　 〜 USB GadgetでPro Controllerをシミュレート 〜"
+title: "スマホでNintendo Switchを操作する 〜 USB GadgetでPro Controllerをシミュレート 〜"
 date: 2020-03-20 01:50:00 +0900
 published: true
 toc: true
