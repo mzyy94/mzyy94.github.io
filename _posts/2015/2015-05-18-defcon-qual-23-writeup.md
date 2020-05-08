@@ -733,8 +733,8 @@ FLAG: `Cats with frickin lazer beamz on top of their heads!`
 
 
 追記：flag獲得者のみむらさんによるWrite-upが公開されています。
-
 [DEFCON CTF 23 Quals – catwestern Writeup \| みむらの手記手帳](https://mimumimu.net/blog/2015/05/19/defcon-ctf-23-quals-catwestern/)
+{: .notice--info}
 
 ## まとめ
 
