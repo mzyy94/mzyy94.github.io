@@ -1,8 +1,8 @@
 ---
 title: サーバーの発熱でこたつを温める
 date: 2014-12-10 00:02:35 +0900
-category: server
-tags: kotatsu
+category: misc
+tags: kotatsu nas server
 header:
   image: /assets/images/2014/12/10/kotatsu.jpg
 ---

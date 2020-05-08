@@ -1,7 +1,7 @@
 ---
 title: エビ水槽を新しくした
 date: 2015-06-21 16:35:31 +0900
-category: shrimp
+category: Aquarium
 tags: charm shrimp
 header:
   image: /assets/images/2015/06/21/ebi-new-watertank.jpg

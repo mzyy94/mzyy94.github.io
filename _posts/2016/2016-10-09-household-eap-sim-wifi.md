@@ -1,7 +1,7 @@
 ---
 title: 一般のご家庭向けEAP-SIM認証Wi-Fi
 date: 2016-10-09 16:00:00 +0900
-category: network
+category: Network
 tags: eap-sim 802.1x sim
 header:
   image: /assets/images/2016/10/09/slide1.jpg

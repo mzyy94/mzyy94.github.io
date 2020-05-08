@@ -1,7 +1,7 @@
 ---
 title: ドイツのトリ聖地巡礼してきた
 date: 2016-12-03 00:00:01 +0900
-category: trip
+category: Trip
 tags: doitsu germany tori 600eur
 header:
   image: /assets/images/2016/12/03/IMG_8443.JPG

@@ -1,7 +1,7 @@
 ---
 title: えびの水槽引越しと環境整備と飼育について
 date: 2015-04-29 15:03:01 +0900
-category: shrimp
+category: Aquarium
 tags: shrimp muji charm
 header:
   image: /assets/images/2015/04/29/new-ebipot.jpg

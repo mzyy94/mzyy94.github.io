@@ -1,8 +1,8 @@
 ---
 title: LinuxでQSVとH.264のエンコード対決
 date: 2015-01-31 19:23:04 +0900
-category: linux
-tags: ffmpeg qsv x264
+category: Multimedia
+tags: ffmpeg qsv x264 linux
 ---
 
 先日の記事、でLinuxでH.264の動画をエンコードできることを紹介しました。

@@ -1,7 +1,7 @@
 ---
 title: TDUCTF 2015の運営をした話
 date: 2015-09-18 01:33:16 +0900
-category: ctf
+category: CTF
 tags: tductf electron react lepusctf
 header:
   image: /assets/images/2015/09/18/tductf-frontend.png

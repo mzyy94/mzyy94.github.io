@@ -2,7 +2,7 @@
 title: "Streaming Conference #2 -TELETEXT-"
 date: 2018-04-27 20:00:00 +0900
 published: true
-category: web
+category: Web
 tags: streaming teletext
 ---
 

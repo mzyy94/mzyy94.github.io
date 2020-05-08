@@ -3,8 +3,8 @@ title: "スマホでNintendo Switchを操作する 〜 USB GadgetでPro Controll
 date: 2020-03-20 01:50:00 +0900
 published: true
 toc: true
-category: raspberry-pi
-tags: nintendo switch usb hid usb-gadget
+category: Game
+tags: nintendo switch usb hid usb-gadget sbc
 header:
   image: /assets/images/2020/03/20/switch-remote-control.jpg
 ---

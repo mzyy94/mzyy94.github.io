@@ -1,7 +1,7 @@
 ---
 title: SECCON 2014 横浜大会NW予選 Write-up
 date: 2014-09-03 14:40:47 +0900
-category: ctf
+category: CTF
 tags: seccon seccon2014
 header:
   image: /assets/images/2014/9/3/KEN.JPG

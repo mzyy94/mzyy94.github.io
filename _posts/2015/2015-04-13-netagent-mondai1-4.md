@@ -1,7 +1,7 @@
 ---
 title: ネットエージェント最終面接問題 Write-up その1
 date: 2015-04-13 14:08:49 +0900
-category: ctf
+category: CTF
 tags: netagent
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Team TomoriNaoのサイトの秘密
 date: 2016-12-17 17:00:00 +0900
-category: web
+category: Web
 tags: svg css3 html5 smil
 header:
   image: /assets/images/2016/12/17/tomorinao.pro.png

@@ -1,7 +1,7 @@
 ---
 title: ドイツのトリ in Splatoon 2
 date: 2017-12-18 00:00:00 +0900
-category: gadget
+category: Gadget
 tags: doitsu tori 600eur splatoon
 header:
   image: /assets/images/2017/12/18/drawing.jpg

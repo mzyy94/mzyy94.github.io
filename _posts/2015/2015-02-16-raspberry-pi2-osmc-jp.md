@@ -1,8 +1,8 @@
 ---
 title: Raspberry Pi2にOSMC入れてKodi(旧:XBMC)日本語化するまで
 date: 2015-02-16 20:05:56 +0900
-category: raspberry-pi
-tags: osmc kodi
+category: Multimedia
+tags: osmc kodi raspberry-pi sbc
 header:
   image: /assets/images/2015/02/16/raspi2.jpg
 ---

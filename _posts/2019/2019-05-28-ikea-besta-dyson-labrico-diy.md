@@ -3,7 +3,7 @@ title: "小さな穴に電源コードを通して壁に穴を開けずにダイ
 date: 2019-05-28 10:00:00 +0900
 published: true
 toc: false
-category: home
+category: Home
 tags: ikea diy labrico
 header:
   image: /assets/images/2019/05/28/IMG_9208.JPG

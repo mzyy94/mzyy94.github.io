@@ -1,7 +1,7 @@
 ---
 title: debianでiscsi target/initiator動作させるメモ
 date: 2014-01-09 13:45:08 +0900
-category: network
+category: Network
 tags: iscsi debian
 ---
 

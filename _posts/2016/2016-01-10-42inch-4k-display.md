@@ -1,7 +1,7 @@
 ---
 title: 42インチのAH-IPS 4Kディスプレイ買ってみた
 date: 2016-01-10 05:00:00 +0900
-category: gadget
+category: Gadget
 tags: 4k ips ah-ips display
 header:
   image: /assets/images/2016/01/10/42inch-splatoon.jpg

@@ -3,7 +3,7 @@ title: "リモートワークでバ美肉ビデオ会議"
 date: 2020-02-25 22:30:00 +0900
 published: true
 toc: true
-category: oss 
+category: XR 
 tags: oss ios arkit live2d
 header:
   image: /assets/images/2020/02/25/babiniku.png

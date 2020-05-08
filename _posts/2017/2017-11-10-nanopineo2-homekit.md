@@ -1,8 +1,8 @@
 ---
 title: NanoPi NEO2とhomebridgeとSiriで照明操作
 date: 2017-11-10 02:13:29 +0900
-category: nanopineo2
-tags: homebridge siri homekit ir
+category: Home
+tags: homebridge siri homekit ir nanopi-neo2 sbc
 header:
   image: /assets/images/2017/11/10/applewatch-nanopineo2.jpg
 ---

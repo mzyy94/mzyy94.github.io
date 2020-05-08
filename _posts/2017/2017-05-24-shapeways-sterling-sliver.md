@@ -1,7 +1,7 @@
 ---
 title: Shapewaysで金属3Dプリントした -シルバー925編-
 date: 2017-05-24 02:30:10 +0900
-category: 3dprint
+category: misc
 tags: metal silver925 kemono-friends ﾏｶｾﾃ
 header:
   image: /assets/images/2017/05/24/lucky.jpg

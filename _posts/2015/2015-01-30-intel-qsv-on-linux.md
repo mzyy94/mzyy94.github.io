@@ -1,8 +1,8 @@
 ---
 title: Intel QSVのH.264エンコードをLinuxで！
 date: 2015-01-30 22:22:03 +0900
-category: linux
-tags: qsv ffmpeg imss
+category: Multimedia
+tags: qsv ffmpeg imss linux
 ---
 
 [前回の記事](../2014/2014-12-12-kvm-intel-hd-graphics-passthrough.md)から1ヶ月以上空いてしまいました。遅ればせながらで申し訳ありません。続編です。

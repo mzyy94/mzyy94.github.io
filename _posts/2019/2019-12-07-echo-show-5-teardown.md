@@ -3,7 +3,7 @@ title: "Echo Show 5で遊びたい　-分解編-"
 date: 2019-12-07 02:00:00 +0900
 published: true
 toc: true
-category: gadget 
+category: Gadget 
 tags: echo alexa teardown amazon iot
 header:
   image: /assets/images/2019/12/07/BANNER.JPG

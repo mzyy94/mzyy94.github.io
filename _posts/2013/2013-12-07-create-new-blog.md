@@ -1,7 +1,7 @@
 ---
 title: blogを建ててみた
 date: 2013-12-07 18:22:11 +0900
-category: web
+category: Web
 tags: html5 css3 gh-pages
 header:
   image: /assets/images/2013/12/07/create-new-blog.png

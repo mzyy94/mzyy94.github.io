@@ -1,8 +1,8 @@
 ---
 title: まどマギコンサート名古屋行ってきた
 date: 2013-12-11 23:50:50 +0900
-category: dialy
-tags: anime madomagi concert
+category: Trip
+tags: anime madomagi concert diary
 header:
   image: /assets/images/2013/12/11/madomagi-concert-nagoya.jpg
 ---

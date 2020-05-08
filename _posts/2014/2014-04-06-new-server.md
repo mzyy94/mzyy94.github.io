@@ -1,7 +1,7 @@
 ---
 title: 自宅サーバーを増やした
 date: 2014-04-06 23:10:36 +0900
-category: server
+category: NAS
 tags: xeon server
 header:
   image: /assets/images/2014/4/6/DSC08148.JPG

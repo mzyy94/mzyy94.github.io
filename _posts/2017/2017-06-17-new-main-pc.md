@@ -1,7 +1,7 @@
 ---
 title: GTX 1070とKaby Lake i5で新しくメインPC組んだ
 date: 2017-6-17 17:25:29 +0900
-category: gadget
+category: Gadget
 tags: gpu pc dnn
 header:
   image: /assets/images/2017/06/17/zbox-en1070k.jpg
