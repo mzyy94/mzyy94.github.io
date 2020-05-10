@@ -4,7 +4,7 @@ date: 2020-04-17 21:30:00 +0900
 published: true
 toc: true
 category: Multimedia
-tags: hdmi uac usb usb-gadget nintendo switch raspberry-pi sbc
+tags: hdmi uac usb usb-gadget nintendo switch raspberry-pi sbc webrtc gstreamer
 header:
   image: /assets/images/2020/04/17/usb-audio-detected.jpg
 ---
@@ -212,17 +212,17 @@ arecord -v -D hw:UAC1Gadget -c2 -r 48000 -f S16_LE -t wav -V stereo /tmp/rec.wav
 HDMI出力はUSB Type-C端子からは取り出せないので、Nintendo Switchドックに接続する必要があります。
 そして、Raspberry Pi 4とNintendo Switchドックは裏面のUSB 3.0ポートに、以下のようなUSB Type-A to USB Type−C 3.0ケーブルを使って接続します。
 消費電力の関係で、USB 2.0ポートやUSB 2.0ケーブルを使うと電力不足でRaspberry Piが落ちます。
-また、間にセルフパワーのUSBハブを噛ませても良いでしょう。
+また、Nintendo SwitchをDockから抜き差しするとRaspberry Piへの給電が止まるので、間にセルフパワーのUSBハブを噛ませた方がいいです。
+以下は実際に使ってるUSBケーブルとUSBハブです。
 
 <a href="https://www.amazon.co.jp/Anker-PowerLine-3-0%E3%82%B1%E3%83%BC%E3%83%96%E3%83%AB-%E3%80%90Galaxy-%E3%80%81MacBook%E3%80%81Xperia/dp/B01MUCRKJS/ref=as_li_ss_il?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=30058AVVLJS1W&dchild=1=&linkCode=li3&tag=mzyy-22&linkId=36aeb22f917425f6c4debc4674a377f8&language=ja_JP" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B01MUCRKJS&Format=_SL500_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22&language=ja_JP" ></a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=mzyy-22&language=ja_JP&l=li3&o=9&a=B01MUCRKJS" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
 
 [Amazon.co.jp： Anker USB Type C ケーブル PowerLine USB-C & USB-A 3.0 ケーブル Xperia / Samsung Galaxy / LG / iPad Pro MacBook その他 Android Oculus Quest 等 USB-C機器対応 1.8m ブラック: 家電・カメラ](https://www.amazon.co.jp/Anker-PowerLine-3-0%E3%82%B1%E3%83%BC%E3%83%96%E3%83%AB-%E3%80%90Galaxy-%E3%80%81MacBook%E3%80%81Xperia/dp/B01MUCRKJS/ref=as_li_ss_tl?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=30058AVVLJS1W&dchild=1=&linkCode=ll1&tag=mzyy-22&linkId=2fae1ff8d7fe1be125c70bc4f0f3a34d&language=ja_JP)
 
 
-<a href="https://www.amazon.co.jp/%E3%82%A8%E3%83%AC%E3%82%B3%E3%83%A0-USB3-0-AC%E3%82%A2%E3%83%80%E3%83%97%E3%82%BF%E4%BB%98-%E3%83%9E%E3%82%B0%E3%83%8D%E3%83%83%E3%83%88%E4%BB%98-U3H-T410SBK/dp/B00RT8SSFK/ref=as_li_ss_il?ie=UTF8&linkCode=li3&tag=mzyy-22&linkId=624c4f81eb9d858711f826847dfbc38d&language=ja_JP" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B00RT8SSFK&Format=_SL500_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22&language=ja_JP" ></a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=mzyy-22&language=ja_JP&l=li3&o=9&a=B00RT8SSFK" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+<a href="https://www.amazon.co.jp/gp/product/B017SNHP8G/ref=as_li_ss_il?ie=UTF8&psc=1&linkCode=li3&tag=mzyy-22&linkId=8b872ca0a78f689701a9c0b28fc12dcd&language=ja_JP" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B017SNHP8G&Format=_SL500_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22&language=ja_JP" ></a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=mzyy-22&language=ja_JP&l=li3&o=9&a=B017SNHP8G" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
 
-[Amazon \| エレコム USB3.0 ハブ 4ポート ACアダプタ付 セルフ/バス両対応 マグネット付 ブラック U3H-T410SBK \| エレコム \| USBハブ 通販](https://www.amazon.co.jp/%E3%82%A8%E3%83%AC%E3%82%B3%E3%83%A0-USB3-0-AC%E3%82%A2%E3%83%80%E3%83%97%E3%82%BF%E4%BB%98-%E3%83%9E%E3%82%B0%E3%83%8D%E3%83%83%E3%83%88%E4%BB%98-U3H-T410SBK/dp/B00RT8SSFK/ref=as_li_ss_tl?ie=UTF8&linkCode=sl1&tag=mzyy-22&linkId=f5351c12165f7c6bbdb1f84075fd1103&language=ja_JP)
-
+[Amazon \| ORICO 4ポート USB3.0 ハブ 電源付き BC1.2 (5V2.4A) 急速充電対応 5Gbps転送 セルフパワー 12V2A電源アダプター付き アルミ筐体 ブラック A3H4-V2 \| ORICO \| USBハブ 通販](https://www.amazon.co.jp/gp/product/B017SNHP8G/ref=as_li_ss_tl?ie=UTF8&psc=1&linkCode=ll1&tag=mzyy-22&linkId=5a4e5664988514dc9cd7d99f460d83b4&language=ja_JP)
 
 ソフトウェアは今回も動作確認できればいいので、デモコードを用います。
 

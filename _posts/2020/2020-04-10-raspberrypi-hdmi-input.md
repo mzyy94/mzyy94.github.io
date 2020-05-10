@@ -4,7 +4,7 @@ date: 2020-04-10 03:00:00 +0900
 published: true
 toc: true
 category: Multimedia
-tags: nintendo switch hdmi uvc raspberry-pi sbc
+tags: nintendo switch hdmi uvc raspberry-pi sbc webrtc gstreamer
 header:
   image: /assets/images/2020/04/10/raspi-hdmi-connected.jpg
 ---
