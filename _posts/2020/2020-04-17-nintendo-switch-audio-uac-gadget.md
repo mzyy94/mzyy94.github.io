@@ -275,9 +275,9 @@ index b8a716d..b9674b3 100644
 
 とりあえずNintendo Switchの音声出力が取れました。
 
-[前々回](../2020/2020-04-10-raspberrypi-hdmi-input.md)はNintendo Switch Pro ControllerのWeb対応。
-[前回](../2020/2020-03-20-nintendo-switch-pro-controller-usb-gadget.md)はNintendo Switchゲーム画面のWeb対応。
-今回はNintendo Switchゲーム音声のWeb対応。
+[前々回](../2020/2020-03-20-nintendo-switch-pro-controller-usb-gadget.md)はNintendo Switch Pro ControllerのWeb対応。
+[前回](../2020/2020-04-10-raspberrypi-hdmi-input.md)はNintendo Switchゲーム画面のWeb対応。
+[今回](../2020/2020-04-17-nintendo-switch-audio-uac-gadget.md)はNintendo Switchゲーム音声のWeb対応。
 
 何を作ろうとしてるか、だんだんワクワクしてきましたね？
 
