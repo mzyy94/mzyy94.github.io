@@ -9,14 +9,14 @@ header:
   image: /assets/images/2020/05/27/joycon-purple.png
 ---
 
-昨今、入手困難となっているNintendo Switchは、3年前のSplatoon 2セットモデルが発売された時も激戦でした。
+昨今、入手困難となっているNintendo Switchは、3年前のスプラトゥーン2セットモデルが発売された時も激戦でした。
 各種通販サイトを廻り、運良く発売日に手に入れられた喜びは今でも鮮明に覚えています。
 
 [スプラトゥーン2：商品情報 \| Nintendo Switch \| 任天堂](https://www.nintendo.co.jp/switch/aab6a/products/index.html)
 
 <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">ｽﾌﾟﾗﾄｩｰﾝ2!!! <a href="https://t.co/nnu4HztBQr">pic.twitter.com/nnu4HztBQr</a></p>&mdash; ミ゛ (@mzyy94) <a href="https://twitter.com/mzyy94/status/888340517087346689?ref_src=twsrc%5Etfw">July 21, 2017</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-当時のSplatoon人気から、多くの人がSplatoonセットモデルを買い、遊ぶ人遊ぶ人全員が同じカラーのNintendo Switchを持っているなんてこともありました。本体から外してしまったら、もうどれが誰のJoy-Conだったかわからなくなります。
+当時のSplatoon人気から、多くの人がスプラトゥーン2セットモデルを買い、遊ぶ人遊ぶ人全員が同じカラーのNintendo Switchを持っているなんてこともありました。本体から外してしまったら、もうどれが誰のJoy-Conだったかわからなくなります。
 
 ![joycon splatoon color](/assets/images/2020/05/27/joycon-splatoon-color.jpg)
 
@@ -35,7 +35,7 @@ Joy-Conは外装シェルと呼ばれるプラスチックの「ガワ」に色�
 出典: [周辺機器 \| Nintendo Switch｜任天堂](https://www.nintendo.co.jp/hardware/switch/accessories/index.html)
 
 新たな色の組み合わせを買うことで、自分の個性を出していくことができますが、1組8,000円強する上に、Joy-Conを買い足す必要も今はありません。
-安く、交換パーツである「ガワ」さえ手に入れられれば、手持ちのJoy-Conの外装交換するだけで事足ります。
+安く、好きな色の「ガワ」さえ手に入れられれば、手持ちのJoy-Conの外装交換するだけで事足ります。
 
 ## 外装シェル（ガワ）
 
