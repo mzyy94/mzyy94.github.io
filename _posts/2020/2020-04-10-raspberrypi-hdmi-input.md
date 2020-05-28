@@ -84,7 +84,9 @@ USB接続のこれらはHDMI入力の映像を、UVCプロトコルで転送で�
 
 [樹莓派 ZERO HDMI採集， HDMI 轉 CSI ，HDMI輸入](https://world.taobao.com/item/602390051699.htm)
 
-価格も159人民元（執筆時）と安かったのでこれを購入しました。
+[Lusya アップグレード版ラズベリーパイ hdmi アダプタボード hdmi インタフェースに CSI 2 TC358743XBG ため 4B 3B 3B + ゼロ G11 011\|アンプ\| - AliExpress](http://s.click.aliexpress.com/e/_dTNt3wP)
+
+価格も36.98 USD（執筆時）と安かったのでこれを購入しました。
 
 ![HDMI Input board](/assets/images/2020/04/10/hdmi-input.jpg)
 

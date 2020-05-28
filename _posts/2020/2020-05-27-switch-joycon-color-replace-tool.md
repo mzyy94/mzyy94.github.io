@@ -42,7 +42,7 @@ Joy-Conは外装シェルと呼ばれるプラスチックの「ガワ」に色�
 安く交換パーツを手に入れる方法はいくつかありますが、今回もAliexpressで探索しました。
 Joy-Conで失われていた十字キーを搭載するものもあり、価格も安価で1,800円程で買えるものが見つかりました。
 
-[Myriann (D PAD バージョン) 交換ハウジングケース nintend スイッチ NS コントローラ喜び Con シェルゲームコンソールスイッチケース\|交換部品 & アクセサリー\| - AliExpress](https://ja.aliexpress.com/item/4000127096025.html)
+[Myriann (D PAD バージョン) 交換ハウジングケース nintend スイッチ NS コントローラ喜び Con シェルゲームコンソールスイッチケース\|交換部品 & アクセサリー\| - AliExpress](http://s.click.aliexpress.com/e/_dZajvgP)
 
 買いました。
 
