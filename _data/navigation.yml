@@ -1,9 +1,8 @@
-main:
-  - title: "Blog"
-    url: /blog/
-  - title: "Tags"
-    url: /blog/tags/
-  - title: "Categories"
-    url: /blog/categories/
-  - title: "License"
-    url: /license/
+- title: "Blog"
+  url: /blog/
+- title: "Tags"
+  url: /blog/tags/
+- title: "Categories"
+  url: /blog/categories/
+- title: "License"
+  url: /license/
