@@ -225,12 +225,8 @@ plugins:
 # ----------------------- #
 #         Archives        #
 # ----------------------- #
-category_archive:
-  type: liquid
-  path: /blog/categories/
-tag_archive:
-  type: liquid
-  path: /blog/tags/
+category_archive_path: "/blog/categories/#"
+tag_archive_path: "/blog/tags/#"
 
 # ----------------------- #
 #         Scripts         #
