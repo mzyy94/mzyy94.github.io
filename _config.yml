@@ -124,6 +124,11 @@ timezone: Asia/Tokyo
 #  RSS & Search & Comment #
 # ----------------------- #
 
+footer_links:
+  - title: Feed
+    url: /blog/atom.xml
+    icon: fas fa-rss-square
+
 search: true
 search_provider: google
 google:
