@@ -164,7 +164,7 @@ defaults:
       path: ""
       type: "posts"
     values:
-      layout: single
+      layout: post
       toc: true
       author_profile: true
       comments: true
@@ -175,7 +175,7 @@ defaults:
       path: ""
       type: "pages"
     values:
-      layout: single
+      layout: page
       author_profile: true
 
 # ----------------------- #
