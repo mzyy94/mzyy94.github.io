@@ -139,10 +139,8 @@ feed:
 atom_feed:
   path: /blog/atom.xml
 
-comments:
-  provider: "disqus"
-  disqus:
-    shortname: mzyy94blog
+disqus:
+  shortname: mzyy94blog
 
 # ----------------------- #
 #        Generate         #
