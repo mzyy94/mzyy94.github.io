@@ -20,6 +20,8 @@ image:
 そして修理は諦め、自分でなんとかする方法を模索することにした。
 
 <!-- more -->
+{% include toc %}
+
 
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">MacBook Air Mid2013、歴代のMacBookシリーズの中で一番ロジックボード修理代金が高いようで、53,000円+税と言われたのでオーブンに放り込むことが決定した</p>&mdash; ふぇねっくのやべーやつ (@mzyy94) <a href="https://twitter.com/mzyy94/status/902800288242843649">2017年8月30日</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>

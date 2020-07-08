@@ -25,6 +25,8 @@ A. [ドイツのトリ Advent Calendar 2017 - Adventar](https://adventar.org/cal
 今年の流行りと言えば<del>忖度</del>Splatoon 2。Splatoon 2を舞台に繰り広げられるドイツのトリのダイレクトマーケティングの一部始終をお届けします。
 
 <!-- more -->
+{% include toc %}
+
 
 ## ドイツのトリ
 

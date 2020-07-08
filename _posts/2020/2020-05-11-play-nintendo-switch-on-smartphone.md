@@ -22,6 +22,8 @@ image:
 釣りタイトルっぽくなっているため、Nintendo Switch本体を持ってない人がスマホでNintendo Switchのゲームができると勘違いして迷い込んだ人は[お帰りください](https://chiebukuro.yahoo.co.jp/)。
 
 <!-- more -->
+{% include toc %}
+
 
 ## 振り返り
 

@@ -38,6 +38,8 @@ image:
 
 
 <!-- more -->
+{% include toc %}
+
 
 ## Splatoonっぽいスライドテーマ
 

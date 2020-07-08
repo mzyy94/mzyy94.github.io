@@ -18,6 +18,8 @@ image:
 お題はHDMI入力で遊ぶ、です。
 
 <!-- more -->
+{% include toc %}
+
 
 ## ビデオ転送プロトコル
 

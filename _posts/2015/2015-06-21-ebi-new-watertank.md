@@ -21,6 +21,8 @@ image:
 <blockquote class="twitter-tweet" lang="ja"><p lang="ja" dir="ltr">一悶着あったけど無事全員の引越し完了！ <a href="http://t.co/jLvciTSJGs">pic.twitter.com/jLvciTSJGs</a></p>&mdash; エビライブ配信休止中 (@mzyy94) <a href="https://twitter.com/mzyy94/status/595228119708999680">2015, 5月 4</a></blockquote>
 
 <!-- more -->
+{% include toc %}
+
 
 季節は変わり、初夏となりました。
 冬の間は購入時の瓶を[サーバーの中に入れたり](https://twitter.com/mzyy94/status/566981294739820547)USB接続の発熱体を水槽に貼り付けるなどして適温(24℃前後)を維持してきましたが、今は暑くなり、冷却が必要となりました。

@@ -16,6 +16,8 @@ tags: streaming teletext
 そんなテレテキストについて少しでも興味を持ってもらおうと、いくつがWebにおける字幕放送の表現の例をご紹介してきました。
 
 <!-- more -->
+{% include toc %}
+
 
 <iframe src="//www.slideshare.net/slideshow/embed_code/key/pEWSFoKd193PBq" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/mzyy94/teletext-95201437" title="# TELETEXT" target="_blank"># TELETEXT</a> </strong> from <strong><a href="https://www.slideshare.net/mzyy94" target="_blank">Yuki Mizuno</a></strong> </div>
 

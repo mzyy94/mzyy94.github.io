@@ -30,6 +30,8 @@ image:
 そこで思い立ってKodi/XBMC向けのテレビadd-on(PVR add-on)を作って、上記問題の解決に取り組みました。
 
 <!-- more -->
+{% include toc %}
+
 
 
 ## Chinachu PVR add-on

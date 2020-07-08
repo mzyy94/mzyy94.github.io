@@ -17,6 +17,8 @@ image:
 はい、今回はRaspberry PiとHDMI EDID/CECの話。
 
 <!-- more -->
+{% include toc %}
+
 
 
 ## HDMI

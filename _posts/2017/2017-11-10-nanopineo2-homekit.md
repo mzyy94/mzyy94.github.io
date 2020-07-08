@@ -15,6 +15,8 @@ image:
 ひとまずの目標はiOSのホーム(HomeKit)で部屋の照明をON/OFFすることにします。
 
 <!-- more -->
+{% include toc %}
+
 
 <style>
 [alt="screenshot"] {

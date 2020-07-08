@@ -30,6 +30,8 @@ image:
 [Amazon.co.jp： intel X540-T2: パソコン・周辺機器](https://www.amazon.co.jp/intel-X540T2-X540-T2/dp/B0077CS9UM/ref=sr_1_1?ie=UTF8&qid=1467713812&sr=8-1&tag=mzyy-22)
 
 <!-- more -->
+{% include toc %}
+
 
 ## Intel X540-T2
 

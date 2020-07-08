@@ -24,6 +24,8 @@ image:
 ちょっと分量が多いので読むのは大変かも。
 
 <!-- more -->
+{% include toc %}
+
 
 
 ## Nintendo Switch Pro Controller

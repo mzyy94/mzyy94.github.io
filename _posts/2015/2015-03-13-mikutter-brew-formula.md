@@ -20,6 +20,8 @@ mikutterをご存知ない方はいないと思いますが、簡単に説明す
 
 
 <!-- more -->
+{% include toc %}
+
 
 ## Brew formulae
 Homebrewでは、パッケージをformulaという形で管理しています。

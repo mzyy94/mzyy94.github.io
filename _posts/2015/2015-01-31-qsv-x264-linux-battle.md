@@ -27,6 +27,8 @@ tags: ffmpeg qsv x264 linux
 
 
 <!-- more -->
+{% include toc %}
+
 
 ## 仮想8コアでx264エンコード
 

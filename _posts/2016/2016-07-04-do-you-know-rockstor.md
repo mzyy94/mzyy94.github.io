@@ -25,6 +25,8 @@ NAS4Freeを使っていた理由はAtomサーバ機に搭載されている256MB
 せっかくなのでココは冒険と、RockstorなるNAS用OSを導入してみました。
 
 <!-- more -->
+{% include toc %}
+
 
 ## Rockstorとは
 ![Dashboard](/assets/images/2016/07/04/rockstor-dashboard.png)

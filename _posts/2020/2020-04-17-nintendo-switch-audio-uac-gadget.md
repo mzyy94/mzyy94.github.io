@@ -17,6 +17,8 @@ HDMI入力からの音声取り込みといった、本質的な課題の解決�
 なので、Nintendo Switchの音声出力に限定して、それをRaspberry Piで取り込むことだけを目的とし、音声が取り込めていない問題を解決していきます。
 
 <!-- more -->
+{% include toc %}
+
 
 ## Nintendo Switchの音声出力
 

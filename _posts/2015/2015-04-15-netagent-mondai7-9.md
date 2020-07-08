@@ -15,6 +15,8 @@ tags: netagent
 昨日の[mondai6までの解法](../2015/2015-04-14-netagent-mondai5-6.md)に続いて本日はmondai7、mondai8、mondai9の解法を公開します。
 
 <!-- more -->
+{% include toc %}
+
 
 ## mondai7
 

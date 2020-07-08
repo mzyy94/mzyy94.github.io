@@ -17,6 +17,8 @@ Raspberry Pi2が発売され、従来の6倍のパフォーマンスが発揮で
 Raspbmc改めOSMCで地デジ視聴をする方法をまとめます。
 
 <!-- more -->
+{% include toc %}
+
 
 
 ## PVRクライアント

@@ -165,12 +165,10 @@ defaults:
       type: "posts"
     values:
       layout: post
-      toc: true
       author_profile: true
       comments: true
       share: true
       related: true
-      toc_sticky: true
   - scope:
       path: ""
       type: "pages"
