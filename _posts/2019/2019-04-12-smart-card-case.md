@@ -4,8 +4,9 @@ date: 2019-04-12 10:00:00 +0900
 published: true
 category: misc
 tags: credit card case wallet
-header:
-  image: /assets/images/2019/04/12/cases.jpg
+image:
+  path: /assets/images/2019/04/12/cases.jpg
+  thumbnail: /assets/images/2019/04/12/cases.jpg
 ---
 
 キャッシュレス大好きで、普段から現金を使うことはほとんどない。だけれども長財布を持ち歩いていた。

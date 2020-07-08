@@ -5,8 +5,9 @@ published: true
 toc: true
 category: Multimedia 
 tags: hdmi cec edid
-header:
-  image: /assets/images/2020/05/12/hdmi.jpg
+image:
+  path: /assets/images/2020/05/12/hdmi.jpg
+  thumbnail: /assets/images/2020/05/12/hdmi.jpg
 ---
 
 みなさん、テレビやディスプレイに備わるHDMIの情報を確認する必要に迫られることはありませんか？

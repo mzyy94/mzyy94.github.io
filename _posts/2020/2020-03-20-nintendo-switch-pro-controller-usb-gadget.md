@@ -5,8 +5,9 @@ published: true
 toc: true
 category: Game
 tags: nintendo switch usb hid usb-gadget sbc
-header:
-  image: /assets/images/2020/03/20/switch-remote-control.jpg
+image:
+  path: /assets/images/2020/03/20/switch-remote-control.jpg
+  thumbnail: /assets/images/2020/03/20/switch-remote-control.jpg
 ---
 
 あつまれ どうぶつの森の配信が開始されましたね。いくつか積みゲーが増え始めたNintendo Switchも、また新たにゲームが増えて稼働時間が伸びる一方です。

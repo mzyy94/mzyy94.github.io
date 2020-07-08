@@ -3,8 +3,9 @@ title: 無印良品で買えるRaspberry Pi2にぴったりのケース
 date: 2015-03-09 12:09:04 +0900
 category: misc
 tags: muji enclosure case raspberry-pi sbc
-header:
-  image: /assets/images/2015/03/09/muji-case.jpg
+image:
+  path: /assets/images/2015/03/09/muji-case.jpg
+  thumbnail: /assets/images/2015/03/09/muji-case.jpg
 ---
 
 Raspberry Pi2を発売日に2つ注文したものの、ケースを準備していなかったので手軽に買えるRaspberry Piにぴったりの入れ物はないかと

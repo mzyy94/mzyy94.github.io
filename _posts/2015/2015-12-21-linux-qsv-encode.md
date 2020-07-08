@@ -3,8 +3,9 @@ title: クリスマスなのでLinuxでQSVエンコードする
 date: 2015-12-21 23:58:29 +0900
 category: Multimedia
 tags: ffmpeg imss qsv xeon linux
-header:
-  image: /assets/images/2015/12/21/ffmpeg-cmd.png
+image:
+  path: /assets/images/2015/12/21/ffmpeg-cmd.png
+  thumbnail: /assets/images/2015/12/21/ffmpeg-cmd.png
 ---
 
 こちらは[DTV Advent Calendar](http://www.adventar.org/calendars/835) 21日目の記事です。

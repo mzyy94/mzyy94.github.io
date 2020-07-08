@@ -3,8 +3,9 @@ title: DEFCON CTF 23予選 Write-up (解説付き(すこし))
 date: 2015-05-18 23:45:04 +0900
 category: CTF
 tags: defcon babycmd babyecho
-header:
-  image: /assets/images/2015/05/18/scoreboard.png
+image:
+  path: /assets/images/2015/05/18/scoreboard.png
+  thumbnail: /assets/images/2015/05/18/scoreboard.png
 ---
 
 今年のDEFCON CTFの予選が5月16日午前9時から48時間開催されていました。今回はチーム********としての参加ではなく、Team Enuに派遣される形で参加してきました。

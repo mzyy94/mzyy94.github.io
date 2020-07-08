@@ -4,8 +4,9 @@ date: 2019-03-22 22:30:00 +0900
 published: true
 category: misc
 tags: credit card platinum
-header:
-  image: /assets/images/2019/03/22/platinums.jpg
+image:
+  path: /assets/images/2019/03/22/platinums.jpg
+  thumbnail: /assets/images/2019/03/22/platinums.jpg
 ---
 
 平成も末。キャッシュレス全盛期と言われる2019年の今、現金は次第にレガシーなものとなりつつあります。

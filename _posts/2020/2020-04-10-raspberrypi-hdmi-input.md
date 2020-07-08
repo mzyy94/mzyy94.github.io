@@ -5,8 +5,9 @@ published: true
 toc: true
 category: Multimedia
 tags: nintendo switch hdmi uvc raspberry-pi sbc webrtc gstreamer
-header:
-  image: /assets/images/2020/04/10/raspi-hdmi-connected.jpg
+image:
+  path: /assets/images/2020/04/10/raspi-hdmi-connected.jpg
+  thumbnail: /assets/images/2020/04/10/raspi-hdmi-connected.jpg
 ---
 
 昨今の衰えることのない技術トレンドに追従すべく、映像配信とかやりたいなーと思っていた2019年。

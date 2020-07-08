@@ -3,8 +3,9 @@ title: エビ水槽を新しくした
 date: 2015-06-21 16:35:31 +0900
 category: Aquarium
 tags: charm shrimp
-header:
-  image: /assets/images/2015/06/21/ebi-new-watertank.jpg
+image:
+  path: /assets/images/2015/06/21/ebi-new-watertank.jpg
+  thumbnail: /assets/images/2015/06/21/ebi-new-watertank.jpg
 ---
 
 えびを飼い始めて4ヶ月が過ぎました。

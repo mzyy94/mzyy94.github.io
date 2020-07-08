@@ -5,8 +5,9 @@ published: true
 toc: true
 category: Gadget 
 tags: echo alexa teardown amazon iot
-header:
-  image: /assets/images/2019/12/07/BANNER.JPG
+image:
+  path: /assets/images/2019/12/07/BANNER.JPG
+  thumbnail: /assets/images/2019/12/07/BANNER.JPG
 ---
 
 自由を求めるべく、自分好みに染められないかを探求する第一歩。Amazon Echo Show 5をはちゃめちゃにする。

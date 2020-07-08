@@ -5,8 +5,9 @@ published: true
 toc: true
 category: Multimedia
 tags: hdmi uac usb usb-gadget nintendo switch raspberry-pi sbc webrtc gstreamer
-header:
-  image: /assets/images/2020/04/17/usb-audio-detected.jpg
+image:
+  path: /assets/images/2020/04/17/usb-audio-detected.jpg
+  thumbnail: /assets/images/2020/04/17/usb-audio-detected.jpg
 ---
 
 [前回の記事](../2020/2020-04-10-raspberrypi-hdmi-input.md)でHDMI映像入力をRaspberry Piで扱う方法を紹介し、その最後に音声の取り込みについて、まだ課題が残っていると書きました。

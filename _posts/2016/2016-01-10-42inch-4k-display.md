@@ -3,8 +3,9 @@ title: 42インチのAH-IPS 4Kディスプレイ買ってみた
 date: 2016-01-10 05:00:00 +0900
 category: Gadget
 tags: 4k ips ah-ips display
-header:
-  image: /assets/images/2016/01/10/42inch-splatoon.jpg
+image:
+  path: /assets/images/2016/01/10/42inch-splatoon.jpg
+  thumbnail: /assets/images/2016/01/10/42inch-splatoon.jpg
 ---
 
 年が明け、2016年。27インチのWQHD(2560x1440)ディスプレイを使い続けていたものの、情報量が少ないことが気になり始めました。

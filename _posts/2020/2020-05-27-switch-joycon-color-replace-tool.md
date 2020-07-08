@@ -5,8 +5,9 @@ published: true
 toc: true
 category: Game
 tags: nintendo switch hid webhid oss
-header:
-  image: /assets/images/2020/05/27/joycon-purple.png
+image:
+  path: /assets/images/2020/05/27/joycon-purple.png
+  thumbnail: /assets/images/2020/05/27/joycon-purple.png
 ---
 
 昨今、入手困難となっているNintendo Switchは、3年前のスプラトゥーン2セットモデルが発売された時も激戦でした。

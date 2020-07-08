@@ -3,8 +3,9 @@ title: ドイツのトリ in Splatoon 2
 date: 2017-12-18 00:00:00 +0900
 category: Game
 tags: doitsu tori 600eur splatoon arduino avr
-header:
-  image: /assets/images/2017/12/18/drawing.jpg
+image:
+  path: /assets/images/2017/12/18/drawing.jpg
+  thumbnail: /assets/images/2017/12/18/drawing.jpg
 ---
 
 Q. なんやこれ

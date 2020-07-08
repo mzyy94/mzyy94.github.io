@@ -5,8 +5,9 @@ published: true
 toc: true
 category: Gadget
 tags: jetson xavier nx nano case
-header:
-  image: /assets/images/2020/06/09/IMG_5087.jpg
+image:
+  path: /assets/images/2020/06/09/IMG_5087.jpg
+  thumbnail: /assets/images/2020/06/09/IMG_5087.jpg
 ---
 
 エッジAIスーパーコンピューターのNVIDIA Jetsonとの付き合いは長く、2015年に買った[Shield TVをJetson TX1化](https://forum.xda-developers.com/shield-tv/general/build-kernel-source-boot-to-ubuntu-t3274632)したのを発端に、遊び初めて5年となる。

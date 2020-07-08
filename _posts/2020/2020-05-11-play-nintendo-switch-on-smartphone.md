@@ -5,8 +5,9 @@ published: true
 toc: true
 category: Game
 tags: nintendo switch usb-gadget raspberry-pi webrtc gstreamer
-header:
-  image: /assets/images/2020/05/11/ns-remote.jpg
+image:
+  path: /assets/images/2020/05/11/ns-remote.jpg
+  thumbnail: /assets/images/2020/05/11/ns-remote.jpg
 ---
 
 > [前々回](../2020/2020-03-20-nintendo-switch-pro-controller-usb-gadget.md)はNintendo Switch Pro ControllerのWeb対応。

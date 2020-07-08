@@ -3,8 +3,9 @@ title: コルマールのひと時
 date: 2016-12-01 00:00:01 +0900
 category: Trip
 tags: france gochiusa colmar elsass
-header:
-  image: /assets/images/2016/12/01/colmar.jpg
+image:
+  path: /assets/images/2016/12/01/colmar.jpg
+  thumbnail: /assets/images/2016/12/01/colmar.jpg
 ---
 
 ご注文はコルマールですか？

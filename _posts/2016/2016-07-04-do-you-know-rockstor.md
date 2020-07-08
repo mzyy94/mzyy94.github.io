@@ -3,8 +3,9 @@ title: NAS用OSにRockstorという選択
 date: 2016-07-04 20:12:14 +0900
 category: NAS
 tags: docker rockstor btrfs nas linux
-header:
-  image: /assets/images/2016/07/04/rockstor-disks.png
+image:
+  path: /assets/images/2016/07/04/rockstor-disks.png
+  thumbnail: /assets/images/2016/07/04/rockstor-disks.png
 ---
 
 みなさんはNASのOSとして何を使っていますか？

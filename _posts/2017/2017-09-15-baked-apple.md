@@ -3,8 +3,9 @@ title: MacBook Airをオーブンで焼きリンゴ（修理）
 date: 2017-09-15 00:40:29 +0900
 category: Gadget
 tags: apple baking macbookair
-header:
-  image: /assets/images/2017/09/15/baking.jpg
+image:
+  path: /assets/images/2017/09/15/baking.jpg
+  thumbnail: /assets/images/2017/09/15/baking.jpg
 ---
 
 

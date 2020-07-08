@@ -5,8 +5,9 @@ published: true
 toc: true
 category: XR 
 tags: oss ios arkit live2d
-header:
-  image: /assets/images/2020/02/25/babiniku.png
+image:
+  path: /assets/images/2020/02/25/babiniku.png
+  thumbnail: /assets/images/2020/02/25/babiniku.png
 ---
 
 

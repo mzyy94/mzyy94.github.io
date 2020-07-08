@@ -3,8 +3,9 @@ title: サーバーの発熱でこたつを温める
 date: 2014-12-10 00:02:35 +0900
 category: misc
 tags: kotatsu nas server
-header:
-  image: /assets/images/2014/12/10/kotatsu.jpg
+image:
+  path: /assets/images/2014/12/10/kotatsu.jpg
+  thumbnail: /assets/images/2014/12/10/kotatsu.jpg
 ---
 この記事は[coins Advent Calendar](http://www.adventar.org/calendars/443)の一部です。
 

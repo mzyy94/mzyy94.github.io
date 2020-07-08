@@ -5,8 +5,9 @@ published: true
 toc: false
 category: Home
 tags: ikea diy labrico
-header:
-  image: /assets/images/2019/05/28/IMG_9208.JPG
+image:
+  path: /assets/images/2019/05/28/IMG_9208.JPG
+  thumbnail: /assets/images/2019/05/28/IMG_9208.JPG
 ---
 
 
