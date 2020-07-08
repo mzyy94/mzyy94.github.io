@@ -191,10 +191,7 @@ jekyll-mentions: https://twitter.com
 #    Analytics & SEO      #
 # ----------------------- #
 
-analytics:
-  provider: google
-  google:
-    tracking_id: UA-41944495-3
+google_analytics: UA-41944495-3
 google_site_verification: m5HDLtvpHciiq97KscNByMXhvFiwvwJzlwBHEDUlmwk
 
 # ----------------------- #
