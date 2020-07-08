@@ -221,12 +221,6 @@ category_archive_path: "/blog/categories/#"
 tag_archive_path: "/blog/tags/#"
 
 # ----------------------- #
-#         Scripts         #
-# ----------------------- #
-after_footer_scripts:
-  - https://platform.twitter.com/widgets.js
-
-# ----------------------- #
 #           gist          #
 # ----------------------- #
 gist:
