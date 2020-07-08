@@ -21,47 +21,48 @@ remote_theme: mmistakes/so-simple-theme@3.2.0
 author:
   name             : "mzyy94"
   fullname         : "Yuki MIZUNO"
-  avatar           : /assets/images/logo.png
+  picture          : /assets/images/logo.png
   bio              : 何かしら生きた証を遺したい (575)
   location         : Tokyo
+  twitter          : mzyy94
   links:
-  - label: "Website"
+  - title: "Website"
     icon: "fas fa-fw fa-link"
     url: https://mzyy94.com
-  - label: "Keybase"
+  - title: "Keybase"
     icon: "fab fa-fw fa-keybase"
     url: https://keybase.io/mzyy94
-  - label: "Twitter"
+  - title: "Twitter"
     icon: "fab fa-fw fa-twitter"
     url: https://twitter.com/mzyy94
-  - label: "Bitbucket"
+  - title: "Bitbucket"
     icon: "fab fa-fw fa-bitbucket"
     url: https://bitbucket.org/mzyy94
-  - label: "GitHub"
+  - title: "GitHub"
     icon: "fab fa-fw fa-github"
     url: https://github.com/mzyy94
-  - label: "GitLab"
+  - title: "GitLab"
     icon: "fab fa-fw fa-gitlab"
     url: https://gitlab.com/mzyy94
-  - label: "Foursquare"
+  - title: "Foursquare"
     icon: "fab fa-fw fa-foursquare"
     url: https://foursquare.com/mzyy94
-  - label: "Steam"
+  - title: "Steam"
     icon: "fab fa-fw fa-steam"
     url: https://steamcommunity.com/id/RockingUniform
-  - label: "SlideShare"
+  - title: "SlideShare"
     icon: "fab fa-fw fa-slideshare"
     url: https://www.slideshare.net/mzyy94
-  - label: "Twitch"
+  - title: "Twitch"
     icon: "fab fa-fw fa-twitch"
     url: https://www.twitch.tv/mzyy94
-  - label: "Wishlist"
+  - title: "Wishlist"
     icon: "fab fa-fw fa-amazon"
     url: https://amzn.mzyy94.com
-  - label: "PayPal"
+  - title: "PayPal"
     icon: "fab fa-fw fa-paypal"
     url: https://www.paypal.me/mzyy94
-  - label: "Public keys"
+  - title: "Public keys"
     icon: "fas fa-fw fa-key"
     url: https://github.com/mzyy94.keys
 
