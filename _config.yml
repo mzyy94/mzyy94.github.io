@@ -133,8 +133,8 @@ search_full_content: false
 
 feed:
   path: /blog/atom.xml
-atom_feed:
-  path: /blog/atom.xml
+  excerpt_only: true
+  posts_limit: 20
 
 disqus:
   shortname: mzyy94blog
