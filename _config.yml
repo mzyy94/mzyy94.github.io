@@ -109,6 +109,7 @@ paginate_path: "/blog/page:num"
 excerpt_link: "Read more"
 excerpt_separator: "<!-- more -->"
 recent_posts: 5
+read_time: true
 
 # ----------------------- #
 #      Locale & Date      #
@@ -169,7 +170,6 @@ defaults:
       comments: true
       share: true
       related: true
-      read_time: true
       toc_sticky: true
   - scope:
       path: ""
@@ -177,7 +177,6 @@ defaults:
     values:
       layout: single
       author_profile: true
-      read_time: false
 
 # ----------------------- #
 #        SNS Share        #
