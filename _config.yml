@@ -129,10 +129,7 @@ footer_links:
     url: /blog/atom.xml
     icon: fas fa-rss-square
 
-search: true
-search_provider: google
-google:
-  search_engine_id: 004594946578658771924:ycmbm9tri80
+search_full_content: false
 
 feed:
   path: /blog/atom.xml
