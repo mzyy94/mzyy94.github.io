@@ -1,18 +1,18 @@
 ---
 # Only the main Sass file needs front matter (the dashes are enough)
+sitemap: false
 ---
 
 @charset "utf-8";
 
-@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
-@import "minimal-mistakes"; // main partials
+@import "so-simple";
 
 body * {
     max-width: 100%;
     word-wrap: break-word;
 }
 
-.page__hero-image {
+.entry-feature-image {
     object-fit: cover;
     max-height: 400px;
 }
