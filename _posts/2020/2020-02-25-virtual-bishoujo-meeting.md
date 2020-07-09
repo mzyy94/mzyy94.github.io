@@ -77,6 +77,8 @@ iOS 11でARKitのAPIが提供され始めた時のこと、Face Trackingして[L
 
 <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">ビデオ会議風景 <a href="https://t.co/9jIyNgwBki">pic.twitter.com/9jIyNgwBki</a></p>&mdash; 劇場版ハイスクール・フリート4DX (@mzyy94) <a href="https://twitter.com/mzyy94/status/1232523165131108354?ref_src=twsrc%5Etfw">February 26, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
+ちょっとアップデートして背景色と位置の変更ができるようになりました。
+
 ## macOSでiPhoneの画面表示
 
 さて、これでiPhoneでのバ美肉はできるようになりました。しかし、これだけではビデオ会議にこの映像を使うことはできません。
@@ -109,18 +111,45 @@ iOS -> ReplayKit - RTMP -> macOS -> CoreMediaIO DAL -> Camera
 
 ただ、CoreMediaIO DALのサンプルコードが古いのと、Kernel Extensionのデバッグに難航してしまったので、仮想カメラを作るのは諦めました。
 
-あとはビデオ会議アプリがこのCoreMediaIO DALを用いた画面共有ができることを祈るばかりです。
+### OBS + OBS Virtual Camera
+
+ゲーム実況やYouTubeでの配信に用いられる、OBSという配信ソフトウェアがあります。
+
+[Open Broadcaster Software®️ \| OBS](https://obsproject.com/ja)
+
+OBSでは映像や音声、テキストなど、複数の入力ソースを組み合わせて一つの動画を作り上げることができます。
+それらの入力ソースの中に、映像キャプチャデバイスがあり、これによりiPhoneの画面出力をLightningケーブルで取り込むことができます。
+これはCoreMediaIOを用いて実現しています。
+
+![obs-capture-device-iphone](/assets/images/2020/02/25/obs-capture-device-iphone.png)
+
+そしてOBSはプラグインシステムで拡張でき、[obs-mac-virtualcam](https://github.com/johnboiles/obs-mac-virtualcam)というプラグインを用いることで、作った動画を**仮想Webカメラ**として、他のアプリケーションに取り込むことができるのです。
+
+[johnboiles/obs-mac-virtualcam: Creates a virtual webcam device from the output of OBS. Especially useful for streaming smooth, composited video into Zoom, Hangouts, Jitsi etc. Like CatxFish/obs-virtualcam but for macOS.](https://github.com/johnboiles/obs-mac-virtualcam)
+
+
+```
+iOS -> CoreMediaIO -> OBS -> CoreMediaIO DAL -> Camera
+```
+
 
 ## Zoomビデオ会議
 
 弊社では、ビデオ会議には[Zoom](https://zoom.us/)を用いています。
-このZoomには画面共有機能があり、その項目になんとCoreMediaIO DALを用いたiPhoneの画面共有がありました。
 
-![zoom-input-selection](/assets/images/2020/02/25/zoom-input-selection.png)
+Zoomは少し前まで仮想Webカメラからの映像入力ができないようになっていました。
+Zoomバージョン5.0.4からホワイトリストで一部の仮想Webカメラが使えるようになり、バージョン5.1.1から全ての仮想Webカメラが使えるようになりました。
 
-USB接続したiPhone 11 ProでARKit-Live2Dを起動し、画面をプレビューしてみると、とてもきれいに写るではないですか！
+[New updates for macOS – Zoom Help Center](https://support.zoom.us/hc/en-us/articles/201361963)
 
-![zoom-ios-input](/assets/images/2020/02/25/zoom-ios-input.png)
+![zoom-5-1-1-changelog](/assets/images/2020/02/25/zoom-5-1-1-changelog.png)
+
+
+OBSとobs-mac-virtualcamをインストール、そして、OBSで映像キャプチャデバイスを設定して動画を準備しツールメニューから"Start Virtual Camera"を選択すると、Zoomのカメラ一覧に"OBS Virtual Camera"が現れ、映像入力として使えるようになります。
+
+
+![zoom-camera-input](/assets/images/2020/02/25/zoom-camera-input.png)
+
 
 あとはこれでミーティングに参加すれば、バ美肉ビデオ会議が叶うこととなりました☺️
 
