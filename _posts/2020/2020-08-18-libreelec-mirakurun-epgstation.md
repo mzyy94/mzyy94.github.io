@@ -35,7 +35,7 @@ Raspberry Piで地デジを見る
 [LibreELEC – Just enough OS for KODI](https://libreelec.tv/)
 
 メディアセンターアプリケーションとして名を馳せる[Kodi](https://kodi.tv/)を動作させることに特化したOS。
-類似のものに[osmc](https://osmc.tv/)や[OpenELEC](https://openelec.tv/)があるが、現時点でもっとも活発にメンテナンスされているのはLibreELEC。
+類似のものに[osmc](https://osmc.tv/)や[OpenELEC](https://openelec.tv/)があるが、もっとも活発にメンテナンスされているのはLibreELECだ（執筆時）。
 
 Kodiはアドオンというプラグインシステムで機能やサービスの拡張ができる。
 そのアドオンを管理するためのアドオンマネージャという、言わばパッケージマネージャをKodiは有しており、依存関係の解消やアドオンリポジトリの管理などを担っている。
@@ -86,7 +86,7 @@ Mirakurunを使っていい感じにWebブラウザから地上デジタル・�
 
 <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">.<a href="https://twitter.com/masnagam?ref_src=twsrc%5Etfw">@masnagam</a> さんのご協力によって(私はほぼ何もしていませんが) Docker HubにてEPGStationのdockerイメージを公開できるようになりました。<br>docker-mirakurun-epgstationへの対応も追々やります。<br>ぜひご活用ください。<a href="https://t.co/z8jJKrZxNM">https://t.co/z8jJKrZxNM</a><br><br>ffmpegは含まれないので注意してください。</p>&mdash; l3tnun (@l3tnun) <a href="https://twitter.com/l3tnun/status/1259449383034077184?ref_src=twsrc%5Etfw">May 10, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-同じくしてLibreELEC向けのDockerアドオンに対応したEPGStationアドオンを作成した。
+Mirakurunと同じくして、LibreELEC向けのDockerアドオンに対応したEPGStationアドオンを作成した。
 
 [GitHub - Harekaze/docker.harekaze.epgstation: EPGStation Docker addon for LibreELEC](https://github.com/Harekaze/docker.harekaze.epgstation)
 
@@ -172,7 +172,7 @@ B-CASカードを読むために必要。
 **B-CASカード**
 
 安価な地デジチューナーにはB-CASカードがついていない。
-無い場合は、以下のフォームから再発行を申し込める。
+無い場合は、以下のフォームから **再発行** を申し込める。
 
 [B-CAS 株式会社 ビーエス・コンディショナルアクセスシステムズ](https://www.b-cas.co.jp/cardorder/view/order/agreement.html)
 
@@ -250,7 +250,7 @@ zipファイル選択画面で、「ホーム→Downloads」と辿って先ほ�
 順番はmirakurun→EPGStation→pvr.epgstationが望ましい。
 Dockerイメージの取得に時間がかかるため、気長に待つ。
 
-初期状態で特に設定をしなくても使えるようにしてあるが、SambaのConfigfilesディレクトリに設定ファイルがあるので調整はそこからできる。
+初期状態で特に設定をしなくても使えるようにしてあるが、SambaのConfigfilesディレクトリにMirakurunとEPGStationの設定ファイルがあるので、必要であれば調整はそこからできる。
 
 ![Samba configfiles directory](/assets/images/2020/08/18/configfiles.png)
 
@@ -265,9 +265,10 @@ Dockerイメージの取得に時間がかかるため、気長に待つ。
 ![Select EPGStation server](/assets/images/2020/08/18/configure-pvrepgstation.png)
 
 EPGStationのサービスが動いている`http://0.0.0.0:8888`を、pvr.epgstationの設定画面で指定する。
-再起動すれば、お手軽地デジ視聴環境の出来上がり。
+アドオンを再起動すれば、お手軽地デジ視聴環境の出来上がり。
 
 ![pvr.epgstation1](/assets/images/2020/08/18/pvr-epgstation1.png)
+
 ![pvr.epgstation2](/assets/images/2020/08/18/pvr-epgstation2.png)
 
 
