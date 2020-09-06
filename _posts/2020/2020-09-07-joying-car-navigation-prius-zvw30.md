@@ -4,7 +4,7 @@ date: 2020-09-07 05:00:00 +0900
 published: true
 toc: true
 category: Automobile
-tags: 720p car-audio 中華ナビ navigation joying android
+tags: 720p car-audio 中華ナビ navigation joying android carplay
 image:
   path: /assets/images/2020/09/07/home-screen.jpg
   thumbnail: /assets/images/2020/09/07/home-screen.jpg
