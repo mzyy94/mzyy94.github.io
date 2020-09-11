@@ -322,6 +322,15 @@ CarPlayの画面を分割してみたところ、YouTubeアプリとCarPlayを�
 
 ![car-launcher.png](/assets/images/2020/09/07/car-launcher.png)
 
+### マルチタッチのテスト
+
+[MultiTouch Tester - Google Play のアプリ](https://play.google.com/store/apps/details?id=com.the511plus.MultiTouchTester&hl=ja)
+
+カーナビは基本的に人差し指だけで操作するのでマルチタッチの本数はあまり重要ではないが、確認しておいた。
+
+![multitouch-tester.png](/assets/images/2020/09/07/multitouch-tester.png)
+
+結果、5本マルチタッチであると分かった。
 
 ### ベンチマーク
 
