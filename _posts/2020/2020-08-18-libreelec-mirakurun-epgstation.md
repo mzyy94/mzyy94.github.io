@@ -155,12 +155,12 @@ Linuxにドライバーが組み込まれているチューナーを選ぶ。
 
 [Amazon.co.jp： PLEX USB接続ドングル型地上デジタルTVチューナー PX-S1UD V2.0: パソコン・周辺機器](https://www.amazon.co.jp/%E3%83%97%E3%83%AC%E3%82%AF%E3%82%B9-PX-S1UD-V2-0-PLEX-USB%E6%8E%A5%E7%B6%9A%E3%83%89%E3%83%B3%E3%82%B0%E3%83%AB%E5%9E%8B%E5%9C%B0%E4%B8%8A%E3%83%87%E3%82%B8%E3%82%BF%E3%83%ABTV%E3%83%81%E3%83%A5%E3%83%BC%E3%83%8A%E3%83%BC/dp/B0141NFWSG/ref=as_li_ss_tl?ie=UTF8&linkCode=ll1&tag=mzyy-22&linkId=7cb0e0457cf602b4fae00c9bbd6c2182&language=ja_JP)
 
-だけど廉価なこっちでも普通に動いたので、こちらでも良い。
+<del>だけど廉価なこっちでも普通に動いたので、こちらでも良い。</del>
 
-<a href="https://www.amazon.co.jp/gp/product/B0869HDJHJ/ref=as_li_ss_il?ie=UTF8&psc=1&linkCode=li3&tag=mzyy-22&linkId=3b212c22fc0b3b14c49ee5d76e7324df&language=ja_JP" target="_blank"><img border="0"  width="250" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B0869HDJHJ&Format=_SL500_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22&language=ja_JP" ></a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=mzyy-22&language=ja_JP&l=li3&o=9&a=B0869HDJHJ" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+[<del>Amazon \| USB接続ドングル型地上デジタルTVチューナー/薄型コンパクトPC用USB地デジチューナーPC用 USBバスパワー \| MyGica \| TVチューナー・キャプチャーボード 通販</del>](https://www.amazon.co.jp/gp/product/B0869HDJHJ/ref=as_li_ss_tl?ie=UTF8&psc=1&linkCode=sl1&tag=mzyy-22&linkId=2554f6fb58e710c7f98fa2d0f8e5213e&language=ja_JP)
 
-[Amazon \| USB接続ドングル型地上デジタルTVチューナー/薄型コンパクトPC用USB地デジチューナーPC用 USBバスパワー \| MyGica \| TVチューナー・キャプチャーボード 通販](https://www.amazon.co.jp/gp/product/B0869HDJHJ/ref=as_li_ss_tl?ie=UTF8&psc=1&linkCode=sl1&tag=mzyy-22&linkId=2554f6fb58e710c7f98fa2d0f8e5213e&language=ja_JP)
-
+2020/09/17追記: MyGicaの安価なチューナーはもう取り扱いを終了したようだ。
+{: .notice--info}
 **ICカードリーダー**
 
 B-CASカードを読むために必要。
