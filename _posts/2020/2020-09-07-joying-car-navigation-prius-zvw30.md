@@ -4,7 +4,7 @@ date: 2020-09-07 05:00:00 +0900
 published: true
 toc: true
 category: Automobile
-tags: 720p car-audio 中華ナビ navigation joying android carplay
+tags: 720p car-audio 中華ナビ navigation joying android carplay review
 image:
   path: /assets/images/2020/09/07/home-screen.jpg
   thumbnail: /assets/images/2020/09/07/home-screen.jpg
@@ -12,6 +12,7 @@ image:
 
 色々と[探し回って見つけた](../2020/2020-09-03-high-res-720p-car-navigation.md)JOYINGの720pの9インチカーナビ。
 プリウスに取り付ける前に、家で動作確認をする準備ができたので、開封して起動してみた。
+使いこなすまではいかない程度の軽めのレビューです。
 
 
 <!-- more -->
@@ -93,10 +94,17 @@ Dinとは[ISO 7736](https://ja.wikipedia.org/wiki/ISO_7736)で規格化されて
 
 JOYINGはいろいろな車種向けに同じ仕様のナビを展開しているが、このフレームを入れ替えるだけという単純な仕組みによって、本体の共通化を果たしているようだ。
 
-ディスプレイはユニットとケーブルで繋がれていて、組み込みの際はツメをはめ込むことで固定するようになっている。
+ディスプレイはユニットとフラットケーブルで繋がれていて、組み込みの際はツメをはめ込むことで固定するようになっている。
 
 ![display-removed.jpg](/assets/images/2020/09/07/display-removed.jpg)
 
+![display-back.jpg](/assets/images/2020/09/07/display-back.jpg)
+
+ディスプレイの裏に隠れて、microSDカードスロットとリセットボタンがそれぞれユニットの左右にあった。
+
+![sdcard-slot.jpg](/assets/images/2020/09/07/sdcard-slot.jpg)
+
+![reset-button.jpg](/assets/images/2020/09/07/reset-button.jpg)
 
 ### 背面ポートとコネクタ
 
