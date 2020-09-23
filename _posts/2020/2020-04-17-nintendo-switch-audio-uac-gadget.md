@@ -223,9 +223,9 @@ HDMI出力はUSB Type-C端子からは取り出せないので、Nintendo Switch
 [Amazon.co.jp： Anker USB Type C ケーブル PowerLine USB-C & USB-A 3.0 ケーブル Xperia / Samsung Galaxy / LG / iPad Pro MacBook その他 Android Oculus Quest 等 USB-C機器対応 1.8m ブラック: 家電・カメラ](https://www.amazon.co.jp/Anker-PowerLine-3-0%E3%82%B1%E3%83%BC%E3%83%96%E3%83%AB-%E3%80%90Galaxy-%E3%80%81MacBook%E3%80%81Xperia/dp/B01MUCRKJS/ref=as_li_ss_tl?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=30058AVVLJS1W&dchild=1=&linkCode=ll1&tag=mzyy-22&linkId=2fae1ff8d7fe1be125c70bc4f0f3a34d&language=ja_JP)
 
 
-<a href="https://www.amazon.co.jp/gp/product/B017SNHP8G/ref=as_li_ss_il?ie=UTF8&psc=1&linkCode=li3&tag=mzyy-22&linkId=8b872ca0a78f689701a9c0b28fc12dcd&language=ja_JP" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B017SNHP8G&Format=_SL500_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22&language=ja_JP" ></a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=mzyy-22&language=ja_JP&l=li3&o=9&a=B017SNHP8G" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+<a href="https://www.amazon.co.jp/gp/product/B013HY4SD0/ref=as_li_ss_il?ie=UTF8&psc=1&linkCode=li2&tag=mzyy-22&linkId=6af8d66b6da32e009f470909855fcb94&language=ja_JP" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B013HY4SD0&Format=_SL500_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22&language=ja_JP" ></a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=mzyy-22&language=ja_JP&l=li2&o=9&a=B013HY4SD0" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
 
-[Amazon \| ORICO 4ポート USB3.0 ハブ 電源付き BC1.2 (5V2.4A) 急速充電対応 5Gbps転送 セルフパワー 12V2A電源アダプター付き アルミ筐体 ブラック A3H4-V2 \| ORICO \| USBハブ 通販](https://www.amazon.co.jp/gp/product/B017SNHP8G/ref=as_li_ss_tl?ie=UTF8&psc=1&linkCode=ll1&tag=mzyy-22&linkId=5a4e5664988514dc9cd7d99f460d83b4&language=ja_JP)
+[Amazon \| オリコ ORICO 4ポート USB3.0ハブ アルミ製 セルフパワー 12V/2A電源 ブラック A3H4-BK \| オリコ(ORICO) \| USBハブ 通販](https://www.amazon.co.jp/gp/product/B013HY4SD0/ref=as_li_ss_tl?ie=UTF8&psc=1&linkCode=ll1&tag=mzyy-22&linkId=72a1e864f3394b5fdb570f9dec911741&language=ja_JP)
 
 ソフトウェアは今回も動作確認できればいいので、デモコードを用います。
 
