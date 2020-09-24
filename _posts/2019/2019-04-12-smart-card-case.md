@@ -2,8 +2,8 @@
 title: "モダンでスマートなクレジットカードケース3選"
 date: 2019-04-12 10:00:00 +0900
 published: true
-category: misc
-tags: credit card case wallet
+category: Credit Card
+tags: cashless card-case wallet
 image:
   path: /assets/images/2019/04/12/cases.jpg
   thumbnail: /assets/images/2019/04/12/cases.jpg

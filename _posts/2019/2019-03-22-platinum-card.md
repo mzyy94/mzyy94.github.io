@@ -2,8 +2,8 @@
 title: "金属製プラチナカード"
 date: 2019-03-22 22:30:00 +0900
 published: true
-category: misc
-tags: credit card platinum
+category: Credit Card
+tags: cashless platinum-card
 image:
   path: /assets/images/2019/03/22/platinums.jpg
   thumbnail: /assets/images/2019/03/22/platinums.jpg
