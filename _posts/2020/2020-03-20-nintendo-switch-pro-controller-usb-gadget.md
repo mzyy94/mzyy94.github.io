@@ -19,14 +19,12 @@ image:
 家電はスマホでスマートに操作できるのに、ゲームはレガシーなコントローラーを探さなきゃいけないなんて、なんてスマートじゃないのでしょう。
 どうぶつたちの住む無人島に到達できやしません。
 
-と言うことで、スマートフォンでNintendo Switchを操作出来るようにすべく、奮闘した記録です。
+と言うことで、スマートフォンでNintendo Switchを操作出来るようにすべく奮闘した記録です。
 概要としては、Raspberry PiでNintendo Switch Pro Controllerをシミュレートし、Wi-Fi経由でスマホから操作する話です。
 ちょっと分量が多いので読むのは大変かも。
 
 <!-- more -->
 {% include toc %}
-
-
 
 ## Nintendo Switch Pro Controller
 
@@ -42,7 +40,7 @@ Nintendo Switchは、このPro Controllerなど、任天堂製か公式ライセ
 
 [ドイツのトリ in Splatoon 2 - 犬アイコンのみっきー](../2017/2017-12-18-doitsu-no-ika.md)
 
-Pokken Padは、Arduinoベースでのシミュレートの動作実績もあるので比較的簡単にシミュレートできます。
+Pokken Padは、先の記事の通りArduinoベースでのシミュレート実績もあるので比較的簡単にシミュレートできます。
 しかしジャイロやジョイスティックがないので、多くのゲームに対応しようとするには不向きです。
 
 今回はこのPro Controllerをなくしても大丈夫なように、シミュレートしていきます。
@@ -178,7 +176,7 @@ Device Status:     0x0001
 ```
 
 肝心な**HID Report Descriptor**は** UNAVAILABLE **となっていて、`lsusb`では取得できませんでした。そのため、`usbhid-dump`を用います。
-`usbhid-dump`は`sudo apt-get install -y hidrd`で入ります。
+`usbhid-dump`は`sudo apt-get install -y hidrd`で入手できます。
 
 ```
 pi@raspberrypi:~ $ sudo usbhid-dump -d057e
@@ -214,42 +212,6 @@ configfsを用いたUSBデバイスのUSB Gadget APIでの実装方法は、Linu
 Raspbianでは、dwc2モジュールをロードしておくため、/boot/config.txtに`dtoverlay=dwc2`を、/etc/modulesに`dwc2`と`libcomposite`を追記する必要があります。
 
 [firmware/README at 1.20200212 · raspberrypi/firmware](https://github.com/raspberrypi/firmware/blob/1.20200212/boot/overlays/README#L675-L683)
-
-<!--
-```sh
-#!/bin/bash
-cd /sys/kernel/config/usb_gadget/
-mkdir -p procon
-cd procon
-echo 0x057e > idVendor
-echo 0x2009 > idProduct
-echo 0x0200 > bcdDevice
-echo 0x0200 > bcdUSB
-echo 0x00 > bDeviceClass
-echo 0x00 > bDeviceSubClass
-echo 0x00 > bDeviceProtocol
-
-mkdir -p strings/0x409
-echo "000000000001" > strings/0x409/serialnumber
-echo "Nintendo Co., Ltd." > strings/0x409/manufacturer
-echo "Pro Controller" > strings/0x409/product
-
-mkdir -p configs/c.1/strings/0x409
-echo "Nintendo Switch Pro Controller" > configs/c.1/strings/0x409/configuration
-echo 500 > configs/c.1/MaxPower
-echo 0xa0 > configs/c.1/bmAttributes
-
-mkdir -p functions/hid.usb0
-echo 0 > functions/hid.usb0/protocol
-echo 0 > functions/hid.usb0/subclass
-echo 64 > functions/hid.usb0/report_length
-echo 050115000904A1018530050105091901290A150025017501950A5500650081020509190B290E150025017501950481027501950281030B01000100A1000B300001000B310001000B320001000B35000100150027FFFF0000751095048102C00B39000100150025073500463B0165147504950181020509190F2912150025017501950481027508953481030600FF852109017508953F8103858109027508953F8103850109037508953F9183851009047508953F9183858009057508953F9183858209067508953F9183C0 | xxd -r -ps > functions/hid.usb0/report_desc
-
-ln -s functions/hid.usb0 configs/c.1/
-
-ls /sys/class/udc > UDC
-```
--->
 
 {% gist 60ae253a45e2759451789a117c59acf9 add_procon_gadget.sh %}
 
@@ -301,104 +263,6 @@ USBケーブルを繋げてすぐにMacとPro Controllerが通信を始め、し
 
 
 デコードした結果は、以下のようになっています。
-
-<!--
-```
-0x05, 0x01,        // Usage Page (Generic Desktop Ctrls)
-0x15, 0x00,        // Logical Minimum (0)
-0x09, 0x04,        // Usage (Joystick)
-0xA1, 0x01,        // Collection (Application)
-0x85, 0x30,        //   Report ID (48)
-0x05, 0x01,        //   Usage Page (Generic Desktop Ctrls)
-0x05, 0x09,        //   Usage Page (Button)
-0x19, 0x01,        //   Usage Minimum (0x01)
-0x29, 0x0A,        //   Usage Maximum (0x0A)
-0x15, 0x00,        //   Logical Minimum (0)
-0x25, 0x01,        //   Logical Maximum (1)
-0x75, 0x01,        //   Report Size (1)
-0x95, 0x0A,        //   Report Count (10)
-0x55, 0x00,        //   Unit Exponent (0)
-0x65, 0x00,        //   Unit (None)
-0x81, 0x02,        //   Input (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)
-0x05, 0x09,        //   Usage Page (Button)
-0x19, 0x0B,        //   Usage Minimum (0x0B)
-0x29, 0x0E,        //   Usage Maximum (0x0E)
-0x15, 0x00,        //   Logical Minimum (0)
-0x25, 0x01,        //   Logical Maximum (1)
-0x75, 0x01,        //   Report Size (1)
-0x95, 0x04,        //   Report Count (4)
-0x81, 0x02,        //   Input (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)
-0x75, 0x01,        //   Report Size (1)
-0x95, 0x02,        //   Report Count (2)
-0x81, 0x03,        //   Input (Const,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)
-0x0B, 0x01, 0x00, 0x01, 0x00,  //   Usage (0x010001)
-0xA1, 0x00,        //   Collection (Physical)
-0x0B, 0x30, 0x00, 0x01, 0x00,  //     Usage (0x010030)
-0x0B, 0x31, 0x00, 0x01, 0x00,  //     Usage (0x010031)
-0x0B, 0x32, 0x00, 0x01, 0x00,  //     Usage (0x010032)
-0x0B, 0x35, 0x00, 0x01, 0x00,  //     Usage (0x010035)
-0x15, 0x00,        //     Logical Minimum (0)
-0x27, 0xFF, 0xFF, 0x00, 0x00,  //     Logical Maximum (65534)
-0x75, 0x10,        //     Report Size (16)
-0x95, 0x04,        //     Report Count (4)
-0x81, 0x02,        //     Input (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)
-0xC0,              //   End Collection
-0x0B, 0x39, 0x00, 0x01, 0x00,  //   Usage (0x010039)
-0x15, 0x00,        //   Logical Minimum (0)
-0x25, 0x07,        //   Logical Maximum (7)
-0x35, 0x00,        //   Physical Minimum (0)
-0x46, 0x3B, 0x01,  //   Physical Maximum (315)
-0x65, 0x14,        //   Unit (System: English Rotation, Length: Centimeter)
-0x75, 0x04,        //   Report Size (4)
-0x95, 0x01,        //   Report Count (1)
-0x81, 0x02,        //   Input (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)
-0x05, 0x09,        //   Usage Page (Button)
-0x19, 0x0F,        //   Usage Minimum (0x0F)
-0x29, 0x12,        //   Usage Maximum (0x12)
-0x15, 0x00,        //   Logical Minimum (0)
-0x25, 0x01,        //   Logical Maximum (1)
-0x75, 0x01,        //   Report Size (1)
-0x95, 0x04,        //   Report Count (4)
-0x81, 0x02,        //   Input (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)
-0x75, 0x08,        //   Report Size (8)
-0x95, 0x34,        //   Report Count (52)
-0x81, 0x03,        //   Input (Const,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)
-0x06, 0x00, 0xFF,  //   Usage Page (Vendor Defined 0xFF00)
-0x85, 0x21,        //   Report ID (33)
-0x09, 0x01,        //   Usage (0x01)
-0x75, 0x08,        //   Report Size (8)
-0x95, 0x3F,        //   Report Count (63)
-0x81, 0x03,        //   Input (Const,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)
-0x85, 0x81,        //   Report ID (-127)
-0x09, 0x02,        //   Usage (0x02)
-0x75, 0x08,        //   Report Size (8)
-0x95, 0x3F,        //   Report Count (63)
-0x81, 0x03,        //   Input (Const,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)
-0x85, 0x01,        //   Report ID (1)
-0x09, 0x03,        //   Usage (0x03)
-0x75, 0x08,        //   Report Size (8)
-0x95, 0x3F,        //   Report Count (63)
-0x91, 0x83,        //   Output (Const,Var,Abs,No Wrap,Linear,Preferred State,No Null Position,Volatile)
-0x85, 0x10,        //   Report ID (16)
-0x09, 0x04,        //   Usage (0x04)
-0x75, 0x08,        //   Report Size (8)
-0x95, 0x3F,        //   Report Count (63)
-0x91, 0x83,        //   Output (Const,Var,Abs,No Wrap,Linear,Preferred State,No Null Position,Volatile)
-0x85, 0x80,        //   Report ID (-128)
-0x09, 0x05,        //   Usage (0x05)
-0x75, 0x08,        //   Report Size (8)
-0x95, 0x3F,        //   Report Count (63)
-0x91, 0x83,        //   Output (Const,Var,Abs,No Wrap,Linear,Preferred State,No Null Position,Volatile)
-0x85, 0x82,        //   Report ID (-126)
-0x09, 0x06,        //   Usage (0x06)
-0x75, 0x08,        //   Report Size (8)
-0x95, 0x3F,        //   Report Count (63)
-0x91, 0x83,        //   Output (Const,Var,Abs,No Wrap,Linear,Preferred State,No Null Position,Volatile)
-0xC0,              // End Collection
-
-// 203 bytes
-```
--->
 
 {% gist 60ae253a45e2759451789a117c59acf9 hid_report_descriptor %}
 
@@ -478,12 +342,12 @@ Joyスティックは正しく表示されない上に、何も操作してい�
 
 このコードから、大まかな初期化処理を行う必要性がわかります。さらに、後述しますが、コントローラーの入力データの謎フォーマットも解けるのです。
 
-まずは、初期化処理を、キャプチャしたデータを元に解析していきます。
+まずは初期化処理を、キャプチャしたデータを元に解析していきます。
 
 ## リバースエンジニアリング
 
 ChromiumのGemapad APIの実装がどういったやり取りを行っていたかを、Nintendo_Switch_Reverse_Engineeringを参考に紐解いていきます。
-WiresharkでキャプチャしたURB Interruptで送受信されているデータは、大まかに以下の5つのパターンでした
+WiresharkでキャプチャしたURB Interruptで送受信されているデータは、大まかに以下の5つのパターンでした。
 
 - `80 0X`で始まるChromiumからの要求(Output Report)
 - `81 0X`で始まるPro Controllerからの応答(Input Report)
@@ -538,122 +402,11 @@ pi@raspberrypi:~ $ sudo dmesg | grep -A7 057e
 この`/dev/hidraw0`とconfigfsで作った`/dev/hidg0`を相互に繋げると、Nintendo SwitchとPro Controllerでやり取りする通信の間に割り込む事ができます。
 割り込んで、URBデータをダンプしてみます。
 
-<!--
-```python
-#!/usr/bin/env python3
-
-import os
-import threading
-import time
-
-# Re-connect USB Gadget device
-os.system('echo > /sys/kernel/config/usb_gadget/procon/UDC')
-os.system('ls /sys/class/udc > /sys/kernel/config/usb_gadget/procon/UDC')
-
-time.sleep(0.5)
-
-gadget = os.open('/dev/hidg0', os.O_RDWR | os.O_NONBLOCK)
-procon = os.open('/dev/hidraw0', os.O_RDWR | os.O_NONBLOCK)
-
-def procon_input():
-    while True:
-        try:
-            input_data = os.read(gadget, 128)
-            print('>>>', input_data.hex())
-            os.write(procon, input_data)
-        except BlockingIOError:
-            pass
-        except:
-            os._exit(1)
-
-def procon_output():
-    while True:
-        try:
-            output_data = os.read(procon, 128)
-            print('<<<', output_data.hex())
-            os.write(gadget, output_data)
-        except BlockingIOError:
-            pass
-        except:
-            os._exit(1)
-
-threading.Thread(target=procon_input).start()
-threading.Thread(target=procon_output).start()
-```
--->
 
 {% gist 60ae253a45e2759451789a117c59acf9 bypass_procon.py %}
 
 これをroot権限で実行すると、Nintendo SwitchとPro Controllerの間でやり取りしているデータが流れてきます。
-`30 XX`で始まるPro Controllerからの入力データが多すぎるので、それを非表示にして、初期化処理に絞ってみてみます。
-
-<!--
-```
-pi@raspberrypi:~ $ sudo python3 bypass_procon.py | grep -v '<<< 30'
->>> 0000
->>> 0000
->>> 8005
->>> 0000
->>> 8001
-<<< 810100031f861dd60304000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
->>> 8002
-<<< 81020000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
->>> 01000000000000000000033000000000000000000000000000000000000000000000000000000000000000000000000000
-<<< 21b191008000f3e77ae1e77e00800300000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
->>> 8004
->>> 01080000000000000000480000000000000000000000000000000000000000000000000000000000000000000000000000
->>> 01090000000000000000020000000000000000000000000000000000000000000000000000000000000000000000000000
-<<< 21b691008000f2f77ae2f77e00804800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
->>> 010a0000000000000000020000000000000000000000000000000000000000000000000000000000000000000000000000
-<<< 21e391008000f2e77ae2f77e008202034803020403d61d861f030100000000000000000000000000000000000000000000000000000000000000000000000000
->>> 010b0000000000000000080000000000000000000000000000000000000000000000000000000000000000000000000000
-<<< 21e791008000f2f77ae2c77e00800800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
->>> 010c0000000000000000100060000010000000000000000000000000000000000000000000000000000000000000000000
-<<< 21eb91008000f2e77ae3d77e0090100060000010ffffffffffffffffffffffffffffffff00000000000000000000000000000000000000000000000000000000
->>> 010d000000000000000010506000000d000000000000000000000000000000000000000000000000000000000000000000
-<<< 21ef91008000f4f77ae4e77e009010506000000d323232ffffffffffffffffffff00000000000000000000000000000000000000000000000000000000000000
->>> 010e00000000000000000104185395d6030400043c4e696e74656e646f2053776974636800000000006800ac90113f5900
-<<< 21f391008000f3f77ae1e77e00810103000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
->>> 010f0001404000014040033000000000000000000000000000000000000000000000000000000000000000000000000000
-<<< 21f791008000eed77ae2d77e0c800300000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
->>> 01000000000000000000040000000000000000000000000000000000000000000000000000000000000000000000000000
-<<< 21fc91008000f1e77ae2e77e0a830400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
->>> 01010000000000000000108060000018000000000000000000000000000000000000000000000000000000000000000000
-<<< 210091008000f2e77ae1e77e099010806000001850fd0000c60f0f30619630f3d41454411554c7799c3336630000000000000000000000000000000000000000
->>> 01020000000000000000109860000012000000000000000000000000000000000000000000000000000000000000000000
-<<< 210491008000f2e77ae2e77e0b901098600000120f30619630f3d41454411554c7799c3336630000000000000000000000000000000000000000000000000000
->>> 01030001404000014040101080000018000000000000000000000000000000000000000000000000000000000000000000
-<<< 210991008000f4077be3c77e0990101080000018ffffffffffffffffffffffffffffffffffffffffffffb2a10000000000000000000000000000000000000000
->>> 01040000000000000000103d60000019000000000000000000000000000000000000000000000000000000000000000000
-<<< 210d91008000f2f77ae3e77e0b90103d60000019ba156211b87f29065bffe77e0e36569e8560ff323232ffffff00000000000000000000000000000000000000
->>> 01050000000000000000102880000018000000000000000000000000000000000000000000000000000000000000000000
-<<< 211191008000f3f77ae3d77e0990102880000018beff3e00f001004000400040fefffeff0800e73be73be73b0000000000000000000000000000000000000000
->>> 01060000000000000000400100000000000000000000000000000000000000000000000000000000000000000000000000
->>> 10070001404000014040
-<<< 211891008000f4e77ae3c77e0c804000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
->>> 10080001404000014040
->>> 10090001404000014040
->>> 100a0001404000014040
->>> 100b0001404000014040
->>> 100c0001404000014040
->>> 010d0000000000000000480100000000000000000000000000000000000000000000000000000000000000000000000000
-<<< 218291008000e40bbbe3d77e0c804800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
->>> 010ec218037200014040212100000000000000000000000000000000000000000000000000000000000000000000000000
->>> 100f0001404000000000
-<<< 218691008000422cc2e0b77e00a0210100ff0003000501000000000000000000000000000000000000000000000000005c000000000000000000000000000000
->>> 01000000000000000000300100000000000000000000000000000000000000000000000000000000000000000000000000
-<<< 218c9100800048fcc1e0d77e0a803000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
->>> 10010000000002786040
->>> 10020001404000014040
->>> 10030001404000014040
->>> 10040001404000014040
->>> 10050001404000014040
->>> 10060001404000014040
->>> 10070001404000014040
->>> 10080001404000014040
->>> 10090001404000014040
-```
--->
+`30 XX`で始まるPro Controllerからの入力データが多すぎるので、それを非表示にして初期化処理に絞ってみてみます。
 
 {% gist 60ae253a45e2759451789a117c59acf9 bypass_procon_log.txt %}
 
@@ -698,7 +451,7 @@ Command | SubCommand | Description
 Pro Controllerからのボタンの入力データは、**`08 04` Enable USB HID Joystick report**がSwitchからPro Controllerに送られると、一秒間におよそ80回の周期で`30 XX`で始まるURBをPro Controllerが送りつけてくるようになります。
 
 この`30 XX`で始まるデータは、前途の通りHID Report Descriptorで通知されている通りではないので、どういった定義で値が意味をなしているかを通信からは断定できません。
-ですが、先のchromiumのnintendo_controllerのソースコードに、どのビットがどのボタンであるかなど、定義を読み取るれる実装がありました。
+ですが、先のchromiumのnintendo_controllerのソースコードに、どのビットがどのボタンであるかなど定義を読み取るれる実装がありました。
 
 
 <table style="text-align: center">
@@ -798,7 +551,7 @@ Pro Controllerからのボタンの入力データは、**`08 04` Enable USB HID
 ### 1.3inch LCD HATでの入力
 
 まずは小さい構成で動くかどうかです。
-入力はWavesharkのディスプレイ付きHATのボタン入力を使います。
+入力はWaveshareのディスプレイ付きHATのボタン入力を使います。
 
 [1.3inch IPS LCD display HAT for Raspberry Pi, 240x240 pixels, SPI interface](https://www.waveshare.com/1.3inch-lcd-hat.htm)
 
@@ -823,7 +576,6 @@ Pro Controllerからのボタンの入力データは、**`08 04` Enable USB HID
 フロントエンドはHTML5+JavaScriptで、全画面表示のためにPWA技術を、コントローラーの描画に[pixi.js](https://www.pixijs.com/)を用いました。
 
 バックエンドをGoやRustなどのモダン言語を使わなかったのは、ちょっとまだ追加で実装したいものがある関係で、あえてCを選んだが故です。
-ソースコードの公開も、その追加実装が終わってからかなぁと。暫しお待ちを。
 
 **追記(2020/05/09)** やっぱりCで書くの辛くなってきたのでGoで書き直した。
 [mzyy94/nscon: Nintendo Switch Controller simulator written in go](https://github.com/mzyy94/nscon)
@@ -837,4 +589,4 @@ Pro Controllerからのボタンの入力データは、**`08 04` Enable USB HID
 ## まとめ
 
 これでコントローラーが見つからなくてもスマホがあればどうぶつの森ができるようになりました。やったね。
-まあスマホもよくなくすんですけど。
+まあスマホもよくなくすんですけどね。
