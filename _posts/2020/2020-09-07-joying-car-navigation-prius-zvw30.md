@@ -254,7 +254,7 @@ Google Chromeなど、使えそうなアプリが標準でいくつか入って�
 
 #### 開発者向けオプション
 
-「いパン設定」の中に、開発者向けオプションがデフォルトで存在する。ここにもプロテクトがかかっているが、先ほどと同じパスワードだった。
+「システム設定」の中に、開発者向けオプションがデフォルトで存在する。ここにもプロテクトがかかっているが、先ほどと同じパスワードだった。
 このオプションに存在する項目は、Android 8.1搭載スマホと同じような内容である。
 
 ![developer-mode.png](/assets/images/2020/09/07/developer-mode.png)
@@ -263,7 +263,7 @@ Google Chromeなど、使えそうなアプリが標準でいくつか入って�
 ### Apple CarPlay
 
 いよいよ本命のApple CarPlayを使ってみる。
-使い方は説明書に記されていなかったが、USB - LightningケーブルでiPhone 11 Proを接続したところ、ZLINKなるアプリが立ち上がり、iPhoneに接続の確認画面が出た。
+使い方は説明書に記されていなかったが、ZLINKアプリを立ち上げた状態でUSB - LightningケーブルでiPhone 11 Proを接続したところ、iPhoneに接続の確認画面が出た。
 
 ![zlink-connection.png](/assets/images/2020/09/07/zlink-connection.png)
 
