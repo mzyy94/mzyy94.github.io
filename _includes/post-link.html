@@ -1,0 +1,23 @@
+{% assign link_post = site.posts | where: "slug", include.slug | first %}
+{% if link_post %}
+<div class="include-card">
+  <section>
+    <header>
+      <a href="{{ link_post.url }}"><img src="/assets/icons/favicon-32x32.png" class="favicon" /><h1>{{ link_post.title }} | {{ site.title }}</h1></a>
+    </header>
+    <article>
+      <p>{{ link_post.excerpt | strip_html | normalize_whitespace | truncate: 200 }}</p>
+    </article>
+    <footer>
+      <time datetime="{{ link_post.date }}">{{ link_post.date | date_to_string: "ordinal", "JP" }}</time>
+    </footer>
+  </section>
+  {% if link_post.image and link_post.image.thumbnail %}
+  <section>
+    <a class="link-thumb" href="{{ link_post.url }}"><img class="link-thumb" src="{{ link_post.image.thumbnail }}" /></a>
+  </section>
+  {% endif %}
+</div>
+{% else %}
+<p>No page found '{{ include.slug }}'</p>
+{% endif %}
