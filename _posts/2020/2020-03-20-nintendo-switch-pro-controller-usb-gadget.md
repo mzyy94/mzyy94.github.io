@@ -38,7 +38,7 @@ image:
 Nintendo Switchは、このPro Controllerなど、任天堂製か公式ライセンス商品しかコントローラーとして認識してくれません。
 2017年の年末に没頭していたSplatoon 2で、自動ドット絵作画ツールを作った時も、公式ライセンス商品であるHORIのPokken Padをシミュレートして使っていました。
 
-[ドイツのトリ in Splatoon 2 - 犬アイコンのみっきー](../2017/2017-12-18-doitsu-no-ika.md)
+{% include post-link.html slug="doitsu-no-ika" %}
 
 Pokken Padは、先の記事の通りArduinoベースでのシミュレート実績もあるので比較的簡単にシミュレートできます。
 しかしジャイロやジョイスティックがないので、多くのゲームに対応しようとするには不向きです。

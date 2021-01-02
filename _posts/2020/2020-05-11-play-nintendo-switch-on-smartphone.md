@@ -32,9 +32,7 @@ image:
 
 ### Pro Controllerの模倣
 
-![header image](/assets/images/2020/03/20/switch-remote-control.jpg)
-
-[スマホでNintendo Switchを操作する 〜 USB GadgetでPro Controllerをシミュレート 〜 - 犬アイコンのみっきー](../2020/2020-03-20-nintendo-switch-pro-controller-usb-gadget.md)
+{% include post-link.html slug="nintendo-switch-pro-controller-usb-gadget" %}
 
 この回ではNintendo Switch Pro Controllerの挙動を解析し、スマホから操作するところまでやりました。
 [libusbgx](https://github.com/libusbgx/libusbgx)や[Gstreamer](https://gstreamer.freedesktop.org/)との相性を考え、GoやRustを使わずCで書いていたものの、[h2o](https://github.com/h2o/h2o)のWebSocket実装が未熟だっり、glibやlibevent使うの辛かったりしたのもあって、Cで書くのをやめて結局Goで書き直しました。
@@ -45,9 +43,7 @@ image:
 
 ### HDMI入力を扱う
 
-![haeder image](/assets/images/2020/04/10/raspi-hdmi-connected.jpg)
-
-[HDMI入力をRaspberry Piで駆使する - 犬アイコンのみっきー](../2020/2020-04-10-raspberrypi-hdmi-input.md)
+{% include post-link.html slug="raspberrypi-hdmi-input" %}
 
 HDMI入力基板を用いてHDMI入力を扱いました。
 Raspberry Pi公式のCamera Moduleとして認識してくれるので、何もせずにH.264で入力を扱えて楽でしたが、これはこれで問題を抱えていました。
@@ -98,9 +94,7 @@ gst-launch-1.0 v4l2src ! video/x-raw,width=1280,height=720,framerate=30/1 ! v4l2
 
 ### Switchの音声出力を取り込む
 
-![header image](/assets/images/2020/04/17/usb-audio-detected.jpg)
-
-[UAC GadgetでNintendo Switchの音声出力をRaspberry Piに取り込む - 犬アイコンのみっきー](../2020/2020-04-17-nintendo-switch-audio-uac-gadget.md)
+{% include post-link.html slug="nintendo-switch-audio-uac-gadget" %}
 
 UAC Gadgetでオーディオデバイスをシミュレートし、ALSA経由で取り込んでWebRTCでブラウザで見られるようにしました。
 この時は、GstreamerのWebRTCを用いていましたが、WebRTCのSDPのネゴシエーションに不備があるなど、これも問題を抱えていました。
