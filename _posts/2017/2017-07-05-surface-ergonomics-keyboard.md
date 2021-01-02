@@ -264,7 +264,7 @@ macOSでは、以下のように認識されました。
 
 ![Desktop](/assets/images/2017/07/05/desktop.jpg)
 
-正面のディスプレイは[去年1月に紹介した](../2016/2016-01-10-42inch-4k-display.md#$5) [WASABI MANGO UHD420 REAL 4K HDMI 2.0](https://www.amazon.co.jp/s/ref=as_li_ss_tl?sf=qz&rh=i:computers,k:WASABI+MANGO+REAL+4K&keywords=WASABI+MANGO+REAL+4K&unfiltered=1&ie=UTF8&qid=1499256622&linkCode=ll2&tag=mzyy-22&linkId=3410f241625cc0e0a746caa5bac537e5)、
+正面のディスプレイは[去年1月に紹介した](../2016/2016-01-10-42inch-4k-display.md) [WASABI MANGO UHD420 REAL 4K HDMI 2.0](https://www.amazon.co.jp/s/ref=as_li_ss_tl?sf=qz&rh=i:computers,k:WASABI+MANGO+REAL+4K&keywords=WASABI+MANGO+REAL+4K&unfiltered=1&ie=UTF8&qid=1499256622&linkCode=ll2&tag=mzyy-22&linkId=3410f241625cc0e0a746caa5bac537e5)、
 右の縦置きFull HDディスプレイは[Philips 25型 257E7QDSB/11](https://www.amazon.co.jp/Philips-25%E5%9E%8B%E3%83%AF%E3%82%A4%E3%83%89%E6%B6%B2%E6%99%B6%E3%83%87%E3%82%A3%E3%82%B9%E3%83%97%E3%83%AC%E3%82%A4-AH-IPS%E3%83%91%E3%83%8D%E3%83%AB-257E7QDSB-11/dp/B0109FQXME/ref=as_li_ss_tl?ie=UTF8&qid=1499256789&sr=8-1&keywords=B0109FQXME&linkCode=ll1&tag=mzyy-22&linkId=ecb36ae178e02442a770dc90f93569bf)です。
 Magic Trackpad 2の隣にあるのは、けものフレンズのGentoo Penguinジェーンの陶器コースターです。
 

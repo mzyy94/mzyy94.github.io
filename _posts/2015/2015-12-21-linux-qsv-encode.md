@@ -31,7 +31,7 @@ Linuxにおいてはffmpeg/x264のソフトウェアエンコードの方法ば�
 
 ## FFmpegによるLinuxでのQSVエンコード
 
-今年の頭に書いた記事でもLinuxでのQSVを取り上げました(../2015/2015-01-30-intel-qsv-on-linux.md#$5))。しかしあれから約１年が経ち、いろいろと変わってきたので
+今年の頭に書いた記事でもLinuxでのQSVを取り上げました(参照: [Intel QSVのH.264エンコードをLinuxで！ - 犬アイコンのみっきー](../2015/2015-01-30-intel-qsv-on-linux.md))。しかしあれから約１年が経ち、いろいろと変わってきたので
 環境の再構築とパッケージの修正などを行いました。
 QSVエンコード環境の導入に関して必要なエンコーダーは、自分で用意する必要もなくなり、QSVを利用できる環境も大きく変わりました。
 
@@ -55,7 +55,7 @@ PT3とUSB ICカードリーダーをパススルーした[Chinachu](https://gith
 
 #### Intel HD Graphics Pass-through
 
-昨年のLinux Advent CalendarにてIntel HD Graphics Pass-throughを取り上げましたが(../2014/2014-12-12-kvm-intel-hd-graphics-passthrough.md#$5))、あれから1年が経ち色々と変わってきている部分があります。
+昨年のLinux Advent CalendarにてIntel HD Graphics Pass-throughを取り上げましたが(参照：[KVMでQSVするためIntel HD Graphicsパススルーするー](../2014/2014-12-12-kvm-intel-hd-graphics-passthrough.md))、あれから1年が経ち色々と変わってきている部分があります。
 1年前は[ProxMox](https://www.proxmox.com/) 3.2で構築していた仮想マシンも今では4.1となり、自前でカーネルをビルドする必要がなくなったことが大きな違いです。
 そのため、ProxMoxのカーネルはそのままに、Pass-through機能を有効にする設定をいじるだけでIntel HD Graphicsのパススルーができます。
 

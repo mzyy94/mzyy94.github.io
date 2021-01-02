@@ -24,7 +24,7 @@ AndroidやAndroid TV、iOSへのインストール方法は、[Harekaze/pvr.chin
 新規に導入する方への説明や、バージョンアップに伴った機能の追加を含め、pvr.chinachuの操作について紹介します。
 Kodi 17のインストールについては紹介しないので、知人に頼るか他ブログや公式サイトを参考にするなどしてください。
 Add-onのインストールについては、[リポジトリのREADME](https://github.com/Harekaze/pvr.chinachu/blob/master/README.md)を読んだり、
-[過去記事](../2015/2015-08-08-pvr-chinachu-addon.md#$5)を参考にするか、
+[過去記事](../2015/2015-08-08-pvr-chinachu-addon.md)を参考にするか、
 これまた他ブログをあたってみてください。
 今回はrepository add-onの提供もあるので、そちらのご利用をお勧めします。
 
