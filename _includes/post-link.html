@@ -18,6 +18,9 @@
   </section>
   {% endif %}
 </div>
+<style>
+  .include-card{border:1px solid #ddd;border-radius:4px;padding:1em;display:flex;width:100%;max-width:800px;margin:10px 0}.include-card a{text-decoration:none}.include-card header img{display:inline;width:1rem;height:1rem;margin:.2rem}.include-card header h1{display:inline;font-size:1.2rem;margin:0}.include-card article p{color:#333;font-size:.8rem;margin-bottom:.5rem;text-overflow:ellipsis;overflow:hidden;max-height:6rem;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:4;overflow:hidden}.include-card footer{font-size:.8rem;color:#666}.include-card .link-thumb{width:150px;height:150px;display:block;object-fit:cover}%
+</style>
 {% else %}
 <p>No page found '{{ include.slug }}'</p>
 {% endif %}
