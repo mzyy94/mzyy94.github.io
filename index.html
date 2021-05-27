@@ -3,54 +3,6 @@ layout: default
 ---
 
 <style>
-.button, .button:visited {
-  display: inline-block;
-  width: 200px;
-  height: 54px;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  margin: 20px;
-  position: relative;
-  z-index: 2;
-  background-color: #333;
-  border: 2px solid #333;
-  color: #fff;
-  line-height: 50px;
-}
-.button::before,
-.button::after {
-  position: absolute;
-  z-index: -1;
-  display: block;
-  content: '';
-  left: 0;
-  width: 100%;
-  height: 50%;
-  background-color: #333;
-}
-.button,
-.button::before,
-.button::after {
-  box-sizing: border-box;
-  transition: all .3s;
-}
-.button:hover {
-  background-color: #fff;
-  border-color: #59b1eb;
-  color: #59b1eb;
-}
-.button::before {
-  top: 0;
-}
-.button::after {
-  bottom: 0;
-}
-.button:hover::before,
-.button:hover::after {
-  height: 0;
-  background-color: #59b1eb;
-}
 main {
     display: flex;
     justify-content: center;
@@ -68,8 +20,8 @@ main nav {
 </style>
 <main>
   <nav>
-    <a href="/blog/" class="button">Blog</a>
-    <a href="https://github.com/mzyy94" class="button">GitHub</a>
-    <a href="https://twitter.com/mzyy94" class="button">Twitter</a>
+    <a href="/blog/" class="solid-button">Blog</a>
+    <a href="https://github.com/mzyy94" class="solid-button">GitHub</a>
+    <a href="https://twitter.com/mzyy94" class="solid-button">Twitter</a>
   </nav>
 </main>

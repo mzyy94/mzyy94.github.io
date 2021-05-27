@@ -113,3 +113,53 @@ body * {
         }
     }
 }
+
+.solid-button {
+    &,
+    &:visited {
+        display: inline-block;
+        width: 200px;
+        height: 54px;
+        text-align: center;
+        text-decoration: none;
+        outline: none;
+        margin: 20px;
+        position: relative;
+        z-index: 2;
+        background-color: rgba(0, 0, 0, 0.7);
+        border: 2px solid #333;
+        color: #fff;
+        line-height: 50px;
+        box-sizing: border-box;
+        transition: all 0.3s;
+    }
+    &::before,
+    &::after {
+        position: absolute;
+        z-index: -1;
+        display: block;
+        content: "";
+        left: 0;
+        width: 100%;
+        height: 50%;
+        background-color: rgba(0, 0, 0, 0.7);
+        box-sizing: border-box;
+        transition: all 0.3s;
+    }
+    &::before {
+        top: 0;
+    }
+    &::after {
+        bottom: 0;
+    }
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.9);
+        border-color: #59b1eb;
+        color: #59b1eb;
+        &::before,
+        &::after {
+            height: 0;
+            background-color: #59b1eb;
+        }
+    }
+}
