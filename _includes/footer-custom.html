@@ -16,6 +16,20 @@
         .querySelector(".page-content")
         .insertAdjacentElement("afterbegin", p);
     }
+
+    document
+      .querySelectorAll(".page-content .e-content a:not([id]):not([class])")
+      .forEach(function(a) {
+        if (a.children.length) return;
+        const url = new URL(a.href, location.origin);
+        if (url.origin == location.origin) return;
+        const i = document.createElement("i");
+        i.className = "fas fa-external-link-alt fa-sm fa-fw";
+        i.setAttribute("data-fa-transform", "shrink-2 up-4");
+        a.insertAdjacentElement("beforeend", i);
+        a.target = "_blank";
+        a.setAttribute("rel", "noopener");
+      });
   });
 </script>
 {% endif %}
