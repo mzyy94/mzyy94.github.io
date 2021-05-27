@@ -590,3 +590,13 @@ Pro Controllerからのボタンの入力データは、**`08 04` Enable USB HID
 
 これでコントローラーが見つからなくてもスマホがあればどうぶつの森ができるようになりました。やったね。
 まあスマホもよくなくすんですけどね。
+
+---
+
+### 参考リンク
+
+- [linux/gadget-testing.rst at a2d79c7174aeb43b13020dd53d85a7aefdd9f3e5 · torvalds/linux](https://github.com/torvalds/linux/blob/a2d79c7174aeb43b13020dd53d85a7aefdd9f3e5/Documentation/usb/gadget-testing.rst)
+- [chromium/keyboard_gadget.py at 2ca8c5037021c9d2ecc00b787d58a31ed8fc8bcb · chromium/chromium](https://github.com/chromium/chromium/blob/2ca8c5037021c9d2ecc00b787d58a31ed8fc8bcb/tools/usb_gadget/keyboard_gadget.py)
+- [Hori Pad for Nintendo Switch USB Descriptor (dumped through lsusb)](https://gist.github.com/jwiki95/86dcf36103ce799b3e262ed7b4245da6)
+- [HID Protocol for Bluetooth / USB · Issue #7 · dekuNukem/Nintendo_Switch_Reverse_Engineering](https://github.com/dekuNukem/Nintendo_Switch_Reverse_Engineering/issues/7)
+- [HID-Joy-Con-Whispering/hidtest.cpp at master · shinyquagsire23/HID-Joy-Con-Whispering](https://github.com/shinyquagsire23/HID-Joy-Con-Whispering/blob/master/hidtest/hidtest.cpp)

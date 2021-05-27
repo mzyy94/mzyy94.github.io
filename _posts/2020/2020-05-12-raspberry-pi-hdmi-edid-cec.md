@@ -525,3 +525,12 @@ CECの調査では、デバイスと連動してスリープにちゃんと移�
 また、どのようなフレームを送るとどういった挙動をするのか、動作確認にも使えますね。
 
 これらのツールでみなさん良いHDMI調査ライフを〜
+
+---
+### 参考リンク
+
+- [Web Based EDID Reader](http://www.edidreader.com/)
+- [dgallegos/edidreader: JavaScript EDID Parser](https://github.com/dgallegos/edidreader)
+- [Irwin's BIOS World: OemEdid UEFI Shell Version](http://irwinshen.blogspot.com/2016/08/oemedid-uefi-shell-version.html)
+- [Understanding EDID - Extended Display Identification Data \| Extron](https://www.extron.com/article/uedid)
+- [EDID (VESA Enhanced Extended Display Identification Data) format spec for Kaitai Struct](https://formats.kaitai.io/edid/index.html)
