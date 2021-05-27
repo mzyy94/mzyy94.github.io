@@ -7,6 +7,18 @@ sitemap: false
 
 @import "so-simple";
 
+main {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+table {
+    display: block;
+    overflow-x: scroll;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+}
+
 body * {
     max-width: 100%;
     word-wrap: break-word;
