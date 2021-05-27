@@ -1,0 +1,73 @@
+{% if site.data.navigation %}
+  <div class="navigation-wrapper">
+    <a href="#menu-toggle" id="menu-toggle">{{ site.data.text[site.locale].menu_label | default: 'Menu' }}</a>
+    <nav id="primary-nav" class="site-nav animated drop">
+      <ul>
+        {%- for link in site.data.navigation -%}
+          {%- if link.url contains '://' -%}
+            {%- assign url = link.url -%}
+          {%- else -%}
+            {%- assign url = link.url | relative_url -%}
+          {%- endif -%}
+          <li><a href="{{ url }}">{{ link.title }}</a></li>
+        {%- endfor -%}
+        <li>
+          <i class="fas fa-lightbulb"></i>
+          <div class="toggle">
+            <input id="theme-toggle" type="checkbox" />
+            <label for="theme-toggle"></label>
+          </div>
+          <i class="fas fa-moon"></i>
+        </li>
+      </ul>
+    </nav>
+    <style>
+    .toggle {
+      --color: #4bd3d8;
+      --size: 1rem;
+      position: relative;
+      width: calc(var(--size) * 1.8);
+      height: var(--size);
+      display: inline-block;
+      vertical-align: text-bottom;
+    }
+
+    .toggle input {
+      display: none;
+    }
+
+    .toggle label {
+      position: relative;
+      width: inherit;
+      height: inherit;
+      background: #ccc;
+      display: inline-block;
+      border-radius: var(--size);
+      transition: 0.2s;
+      box-sizing: border-box;
+      cursor: pointer;
+    }
+
+    .toggle label::after {
+      content: '';
+      position: absolute;
+      width: var(--size);
+      height: var(--size);
+      border-radius: var(--size);
+      left: 0;
+      top: 0;
+      background: #fff;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+      transition: 0.2s;
+    }
+
+    .toggle input:checked + label {
+      background: var(--color);
+    }
+
+    .toggle input:checked + label:after {
+      left: calc(var(--size) * 0.8);
+    }
+    </style>
+  </div><!-- /.navigation-wrapper -->
+{% endif %}
