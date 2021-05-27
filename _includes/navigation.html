@@ -21,53 +21,5 @@
         </li>
       </ul>
     </nav>
-    <style>
-    .toggle {
-      --color: #4bd3d8;
-      --size: 1rem;
-      position: relative;
-      width: calc(var(--size) * 1.8);
-      height: var(--size);
-      display: inline-block;
-      vertical-align: text-bottom;
-    }
-
-    .toggle input {
-      display: none;
-    }
-
-    .toggle label {
-      position: relative;
-      width: inherit;
-      height: inherit;
-      background: #ccc;
-      display: inline-block;
-      border-radius: var(--size);
-      transition: 0.2s;
-      box-sizing: border-box;
-      cursor: pointer;
-    }
-
-    .toggle label::after {
-      content: '';
-      position: absolute;
-      width: var(--size);
-      height: var(--size);
-      border-radius: var(--size);
-      left: 0;
-      top: 0;
-      background: #fff;
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
-      transition: 0.2s;
-    }
-
-    .toggle input:checked + label {
-      background: var(--color);
-    }
-
-    .toggle input:checked + label:after {
-      left: calc(var(--size) * 0.8);
-    }
-    </style>
   </div><!-- /.navigation-wrapper -->
 {% endif %}

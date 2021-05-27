@@ -43,7 +43,6 @@ body * {
     }
     article {
         p {
-            color: #333333;
             font-size: 0.8rem;
             margin-bottom: 0.5rem;
             text-overflow: ellipsis;
@@ -64,5 +63,53 @@ body * {
         height: 150px;
         display: block;
         object-fit: cover;
+    }
+}
+
+.toggle {
+    --color: #4bd3d8;
+    --size: 1rem;
+    position: relative;
+    width: calc(var(--size) * 1.8);
+    height: var(--size);
+    display: inline-block;
+    vertical-align: text-bottom;
+
+    input {
+        display: none;
+    }
+
+    label {
+        position: relative;
+        width: inherit;
+        height: inherit;
+        background: #ccc;
+        display: inline-block;
+        border-radius: var(--size);
+        transition: 0.2s;
+        box-sizing: border-box;
+        cursor: pointer;
+
+        &::after {
+            content: "";
+            position: absolute;
+            width: var(--size);
+            height: var(--size);
+            border-radius: var(--size);
+            left: 0;
+            top: 0;
+            background: #fff;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+            transition: 0.2s;
+        }
+    }
+
+    input:checked {
+        + label {
+            background: var(--color);
+        }
+        + label:after {
+            left: calc(var(--size) * 0.8);
+        }
     }
 }
