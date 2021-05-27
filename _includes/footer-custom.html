@@ -1,0 +1,21 @@
+{% if page.date %}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const datePublished = new Date("{{page.date}}");
+    const date2YearsAgo = new Date().setFullYear(new Date().getFullYear() - 2);
+    if (datePublished < date2YearsAgo) {
+      const diff = Date.now() - datePublished;
+      const diffYears = diff / 365 / 24 / 60 / 60 / 1000;
+      const p = document.createElement("p");
+      p.className = "notice--warning";
+      const i = document.createElement("i");
+      i.className = "fas fa-exclamation-triangle";
+      p.innerText = ` この記事は${Math.floor(diffYears)}年以上昔に投稿されたものです。古い情報が含まれる場合があります。`;
+      p.insertAdjacentElement("afterbegin", i);
+      document
+        .querySelector(".page-content")
+        .insertAdjacentElement("afterbegin", p);
+    }
+  });
+</script>
+{% endif %}
