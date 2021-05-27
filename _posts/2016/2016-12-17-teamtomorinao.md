@@ -118,7 +118,7 @@ svg #tomorinao-demo1 path[name=a] {
 	100% { stroke-dashoffset: 0; }
 }
 </style>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="100%" height="100%" viewBox="30, 130, 400, 200">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="100%" height="100%" viewBox="30, 130, 400, 200" style="background-color: #fff">
     <g id="tomorinao-demo1">
         <path stroke="#000" stroke-width="1" d="M55.91,137 L55.91,145.1 L87.91,145.1 L87.91,209 L96.01,209 L96.01,145.1 L127.91,145.1 L127.91,137 z" fill="#020204" name="T"/>
         <path stroke="#000" stroke-width="1" d="M134.71,151 C128.01,151 122.61,156.4 122.61,163.1 L122.61,196.9 C122.61,203.6 128.01,209 134.71,209 L169.51,209 C176.31,209 181.71,203.6 181.71,196.9 L181.71,163.1 C181.71,156.4 176.31,151 169.51,151 z M169.51,159.2 C171.71,159.2 173.41,161 173.41,163.1 L173.41,196.9 C173.41,199 171.71,200.8 169.51,200.8 L134.71,200.8 C132.61,200.8 130.81,199 130.81,196.9 L130.81,163.1 C130.81,161 132.61,159.2 134.71,159.2 z" fill="#020204" name="o"/>
