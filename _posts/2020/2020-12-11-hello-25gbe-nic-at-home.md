@@ -130,6 +130,12 @@ QNAPアクセサリーストアは台湾からの発送にもかかわらず、�
 翌日発送で注文6日後に受け取りました。
 
 
+**追記(2021/5/27)** 今年に入ってからSynologyもほとんど同じ仕様の25GbEカードを発売しました。
+[E25G21-F2 \| Synology Incorporated](https://www.synology.com/ja-jp/products/E25G21-F2)
+<br>
+[Amazon \| 【拡張NIC】Synology E25G21-F2 [25GbE / SFP28 / デュアルポート / Synology用拡張ネットワークカード] 国内正規代理店品 \| Synology \| ネットワークカード 通販](https://www.amazon.co.jp/%E3%80%90%E6%8B%A1%E5%BC%B5NIC%E3%80%91Synology-E25G21-F2-%E3%83%87%E3%83%A5%E3%82%A2%E3%83%AB%E3%83%9D%E3%83%BC%E3%83%88-Synology%E7%94%A8%E6%8B%A1%E5%BC%B5%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E3%82%AB%E3%83%BC%E3%83%89-%E5%9B%BD%E5%86%85%E6%AD%A3%E8%A6%8F%E4%BB%A3%E7%90%86%E5%BA%97%E5%93%81/dp/B08WLGZS86?&linkCode=ll1&tag=mzyy-22&linkId=5706a99cd58ac07ae652523758a04127&language=ja_JP&ref_=as_li_ss_tl)
+{: .notice--info}
+
 ### 移行先のNASの購入
 
 25GbEカードと同時期に注文しておいたSynologyの[DS1621+](https://www.synology.com/ja-jp/products/DS1621+)に移行します。

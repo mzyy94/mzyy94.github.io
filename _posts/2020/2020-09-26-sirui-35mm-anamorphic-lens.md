@@ -108,6 +108,9 @@ image:
 
 好評なSIRUIのアナモルフィックレンズは波に乗ったまま、第2弾の[35mmアナモルフィックレンズが今年8月にIndiegogoに登場](https://www.indiegogo.com/projects/sirui-35mm-anamorphic-lens)した。
 
+**追記(2021/5/27)** 今年に入ってからAmazonでも取り扱いが開始されていました。<br> [Amazon \| シルイ SIRUI 35mm F1.8 1.33X アナモルフィックレンズ M4/3(マイクロフォーサーズ)【国内正規品】 \| カメラ用交換レンズ 通販](https://www.amazon.co.jp/%E3%82%B7%E3%83%AB%E3%82%A4-SIRUI-%E3%82%A2%E3%83%8A%E3%83%A2%E3%83%AB%E3%83%95%E3%82%A3%E3%83%83%E3%82%AF%E3%83%AC%E3%83%B3%E3%82%BA-%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%83%95%E3%82%A9%E3%83%BC%E3%82%B5%E3%83%BC%E3%82%BA-%E3%80%90%E5%9B%BD%E5%86%85%E6%AD%A3%E8%A6%8F%E5%93%81%E3%80%91/dp/B091JNDNGB?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&dchild=1&qid=1622116360&s=electronics&sr=1-4&linkCode=ll1&tag=mzyy-22&linkId=3184234a9a1963426de24ce20cd19707&language=ja_JP&ref_=as_li_ss_tl)
+{: .notice--info}
+
 ## SIRUI 35mm/F1.8 1.33xアナモルフィックレンズ
 
 ![IMG_5982.jpg](/assets/images/2020/09/26/IMG_5982.jpg)
