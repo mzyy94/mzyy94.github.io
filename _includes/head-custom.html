@@ -20,6 +20,7 @@
   });
 </script>
 {% if page.date %}
-<script defer src="/assets/js/article-plus.js"></script>
+{% assign article-plus = site.static_files | where: "name", "article-plus.js" | first %}
+<script defer src="{{ article-plus.path }}?v={{ article-plus.modified_time | date: "%s" }}"></script>
 {% endif %}
 {% include night-mode.html %}
