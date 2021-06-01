@@ -1,7 +1,8 @@
 {% if page.date %}
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const datePublished = new Date("{{page.date}}");
+  (function insertGoodNotice() {
+    const time = document.querySelector("time.dt-published[datetime]");
+    const datePublished = new Date(time.getAttribute("datetime") || Date.now());
     const date2YearsAgo = new Date().setFullYear(new Date().getFullYear() - 2);
     if (datePublished < date2YearsAgo) {
       const diff = Date.now() - datePublished;
@@ -16,10 +17,12 @@
         .querySelector(".page-content")
         .insertAdjacentElement("afterbegin", p);
     }
+  })();
 
+  (function addTargetBlank() {
     document
       .querySelectorAll(".page-content .e-content a:not([id]):not([class])")
-      .forEach(function(a) {
+      .forEach(function (a) {
         if (a.children.length) return;
         const url = new URL(a.href, location.origin);
         if (url.origin == location.origin) return;
@@ -30,6 +33,6 @@
         a.target = "_blank";
         a.setAttribute("rel", "noopener");
       });
-  });
+  })();
 </script>
 {% endif %}
