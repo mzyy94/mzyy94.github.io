@@ -6,3 +6,5 @@ _stash
 _site
 public
 vendor
+Gemfile.lock
+.jekyll-metadata
