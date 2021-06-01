@@ -19,4 +19,7 @@
     enable_page_level_ads: true
   });
 </script>
-{% include night-mode.html %} 
+{% if page.date %}
+<script defer src="/assets/js/article-plus.js"></script>
+{% endif %}
+{% include night-mode.html %}
