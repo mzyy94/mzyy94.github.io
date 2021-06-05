@@ -13,8 +13,10 @@
   };
 
   const systemColorDark = window.matchMedia("(prefers-color-scheme: dark)");
-  systemColorDark.addListener(function (e) {
-    changeTheme(e.matches, false);
+  systemColorDark.addEventListener('change', function (e) {
+    if (!themeStorage.get()) {
+      changeTheme(e.matches, false);
+    }
   });
 
   let toggleButton;
