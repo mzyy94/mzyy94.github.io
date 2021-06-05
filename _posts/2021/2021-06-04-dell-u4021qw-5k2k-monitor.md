@@ -83,8 +83,8 @@ MSIのPRESTIGE-PS341WUは平面パネルのため、ここで候補から外れ�
 > - **最大表示色** : 10.7億色
 > - **入力コネクタ** : 2xHDMI, DisplayPort, Thunderbolt 3
 > - **スクリーンコーティング** : Anti-glare 3H hardness
-> - **寸法 (幅x奥行きx高さ) - スタンド含む** : 94.66 cm x 24.8 cm x 45.78 cm
-> - **重量** : 13.8 kg
+> - スタンド含む - 幅： 94.66 cm - 深さ： 24.8 cm - 高さ： 45.78 cm - 重量： 13.8 kg
+> - スタンド除く - 重量： 9.5 kg
 > 
 > ---
 > - USB-C 3.2 Gen 2 upstream (DisplayPort 1.4 mode / power up to 90W)
@@ -116,6 +116,9 @@ MSIのPRESTIGE-PS341WUは平面パネルのため、ここで候補から外れ�
 
 かれこれ10年使っているが、いまだに壊れる気配のないサンコーの[3軸式くねくねモニターアーム](https://www.amazon.co.jp/%E3%82%B5%E3%83%B3%E3%82%B3%E3%83%BC-MARMGUS191B-3%E8%BB%B8%E5%BC%8F%E3%81%8F%E3%81%AD%E3%81%8F%E3%81%AD%E3%83%A2%E3%83%8B%E3%82%BF%E3%83%BC%E3%82%A2%E3%83%BC%E3%83%A0/dp/B003LKJST0?&linkCode=ll1&tag=mzyy-22&linkId=bb5c57f29f11ee614bfd03ff2963ee32&language=ja_JP&ref_=as_li_ss_tl)を取り付け、モニター下に空間を設けた。
 設置後は上下左右に動かすことは皆無だが、[Amazon Basicのモニターアーム](https://www.amazon.co.jp/Amazon%E3%83%99%E3%83%BC%E3%82%B7%E3%83%83%E3%82%AF-%E3%83%A2%E3%83%8B%E3%82%BF%E3%83%BC%E3%82%A2%E3%83%BC%E3%83%A0-%E3%82%B7%E3%83%B3%E3%82%B0%E3%83%AB-%E3%83%A2%E3%83%8B%E3%82%BF%E3%83%BC%E3%82%B5%E3%82%A4%E3%82%BA-32%E3%82%A4%E3%83%B3%E3%83%81%E3%81%BE%E3%81%A7/dp/B00MIBN16O?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&dchild=1&keywords=Amazon+Basic%E3%81%AE%E3%83%A2%E3%83%8B%E3%82%BF%E3%83%BC%E3%82%A2%E3%83%BC%E3%83%A0&qid=1622753567&s=computers&sr=1-4&linkCode=ll1&tag=mzyy-22&linkId=25ff4501bd95a0e74bc526f94425ea51&language=ja_JP&ref_=as_li_ss_tl)が動きも良く費用対効果に優れていると聞いたので次はこれにする。
+
+**追記(2021/06/05)** 3軸式くねくねモニターアームの耐荷重は10kgまでとなっており、Dell U4021QWだけであれば9.5kgまででギリギリセーフだが、後述するMac miniをマウントするとオーバーしていたことが後からわかった。近々買い替える予定。
+{: .notice--info}
 
 <a href="https://www.amazon.co.jp/%E3%82%B5%E3%83%B3%E3%82%B3%E3%83%BC-MARMGUS191B-3%E8%BB%B8%E5%BC%8F%E3%81%8F%E3%81%AD%E3%81%8F%E3%81%AD%E3%83%A2%E3%83%8B%E3%82%BF%E3%83%BC%E3%82%A2%E3%83%BC%E3%83%A0/dp/B003LKJST0?&linkCode=li3&tag=mzyy-22&linkId=279c93860dc527bd9ff84b9213952241&language=ja_JP&ref_=as_li_ss_il" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B003LKJST0&Format=_SL250_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22&language=ja_JP" ></a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=mzyy-22&language=ja_JP&l=li3&o=9&a=B003LKJST0" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
 
