@@ -98,7 +98,7 @@ MSIのPRESTIGE-PS341WUは平面パネルのため、ここで候補から外れ�
 引用元: [Dell デジタルハイエンドシリーズ U4021QW 40インチワイド曲面USB-C HUB モニタ－ \| dell e-catalog](https://japancatalog.dell.com/pd/U4021QW.html)
 
 
-2021年のトレンドになること間違いなしと感じたため、各社追従するかと数ヶ月動向を見守っていたが、大きな動きはなかったためDell U4021QWを購入した。
+2021年のトレンドになること間違いなしと感じたため、各社追従するかと数ヶ月動向を見守っていた。同時期にほぼ同じ5K2K仕様でLGが[40WP95C](https://www.lgnewsroom.com/2021/01/enhanced-and-upgraded-for-2021-lgs-newest-ultra-series-monitors-exceed-all-expectations/)を発表したが、いつまで経っても発売される気配がないため、Dell U4021QWを購入した。
 4月に注文して待つこと1ヶ月強。5月末に到着した。
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">𝑚𝑦 𝑛𝑒𝑤 𝑔𝑒𝑎𝑟 <a href="https://t.co/4Ubqs3H4wV">pic.twitter.com/4Ubqs3H4wV</a></p>&mdash; 🌊 (@mzyy94) <a href="https://twitter.com/mzyy94/status/1399412638652669954?ref_src=twsrc%5Etfw">May 31, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
