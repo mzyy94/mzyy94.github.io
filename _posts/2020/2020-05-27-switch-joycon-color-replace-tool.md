@@ -99,7 +99,7 @@ APIは仕様と[Example](https://github.com/WICG/webhid/blob/8d80264b37124ca532b
 
 書きました。Joy-Con Tool(Web)です。
 
-[https://joycon.mzyy94.com/](https://joycon.mzyy94.com/)
+[https://mzyy94.com/joycon-toolweb/](https://www.mzyy94.com/joycon-toolweb/)
 
 ![joycon-toolweb](/assets/images/2020/05/27/joycon-toolweb.png)
 
@@ -123,7 +123,7 @@ Joy-Con Tool(Web)で色を変えるには、予めmacOSやWindowsにJoy-ConをBl
 
 ### コントローラーの接続
 
-[Joy-Con Tool(Web)](https://joycon.mzyy94.com/)をGoogle Chromeで開いて、"+ Add"を押すと、コントローラーの接続メニューが出てきます。
+[Joy-Con Tool(Web)](https://www.mzyy94.com/joycon-toolweb/)をGoogle Chromeで開いて、"+ Add"を押すと、コントローラーの接続メニューが出てきます。
 
 ![connect controller](/assets/images/2020/05/27/connect-controller.png)
 
