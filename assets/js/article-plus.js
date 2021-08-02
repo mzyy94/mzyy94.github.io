@@ -19,7 +19,7 @@
 
 (function addTargetBlank() {
   document
-    .querySelectorAll(".page-content .e-content a:not([id]):not([class])")
+    .querySelectorAll(".page-content .e-content p > a:not([id]):not([class])")
     .forEach(function (a) {
       if (a.children.length) return;
       const url = new URL(a.href, location.origin);
