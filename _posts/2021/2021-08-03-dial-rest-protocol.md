@@ -73,7 +73,7 @@ WAKEUP: MAC=96:14:ee:8a:ff:70;Timeout=120
 
 DIALを喋っている子は先日買い替えた75インチテレビのHISENSE-75A6Gでした！
 振り返ってみると、ちょうどテレビを買い替えた日からUPnPのマルチキャストパケットが大量発生していました！
-インターネットテレビに対応したスマートTVを導入したのが今回が初めてなので、それによって急増したマルチキャストパケットが異常としてアラートに引っかかってしまったです。
+インターネットテレビに対応したスマートTVを導入したのが今回が初めてなので、それによって急増したマルチキャストパケットが異常としてアラートに引っかかってしまったのです。
 
 [インターネットテレビ - Wikipedia](https://ja.wikipedia.org/wiki/%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%8D%E3%83%83%E3%83%88%E3%83%86%E3%83%AC%E3%83%93)
 
@@ -312,7 +312,7 @@ img[alt$="on iOS"] {
 
 [media/router/discovery/dial/chromium/README.md at 94.0.4595.1 · chromium/chromium](https://github.com/chromium/chromium/blob/94.0.4595.1/chrome/browser/media/router/discovery/dial/README.md)
 
-media/router配下のこの階層のソースコードは[Chrome Media Router](https://chromium.googlesource.com/chromium/src.git/+/refs/heads/main/docs/media/media_router.md)というコンポーネントの実装で、Chromecastなどのデバイスとコンテンツのコントロールを行うブラウザAPIを提供しています。
+このmedia/router下の階層のソースコードは[Chrome Media Router](https://chromium.googlesource.com/chromium/src.git/+/refs/heads/main/docs/media/media_router.md)というコンポーネントの実装で、Chromecastなどのデバイスとコンテンツのコントロールを行うブラウザAPIを提供しています。
 この低いレイヤーのAPIを拡張機能なしでJavaScriptから扱うために、Cast Chrome Sender SDKが使えるとあります。
 
 [Web Sender API  \|  Cast  \|  Google Developers](https://developers.google.com/cast/docs/reference/web_sender)
@@ -330,7 +330,7 @@ sessionRequest.dialRequest = new chrome.cast.DialRequest(dialAppName);
 
 そこでさらに探っていくと、[NetflixやYouTubeはホワイトリスト形式でドメイン判定](https://github.com/chromium/chromium/blob/94.0.4595.1/chrome/browser/media/router/providers/dial/dial_media_route_provider.cc#L692-L710)があり、特定のオリジンでしかDIALによる起動ができないようになっていました。
 ただ、Amazon Prime VideoはChrome 94相当のソースコードには判定コードが含まれていなかったので、Amazon Prime Videoを起動するサンプルを以下に用意しました。
-対応デバイスを持っていればChrome 94前後でAmazon Prime VideoのDIALアプリの起動を試すことができるはずです。
+対応デバイスが同一ネットワークにあれば、Chrome 94前後でAmazon Prime VideoのDIALアプリの起動を試すことができるはずです。
 
 <script src="https://gistcdn.githack.com/mzyy94/aa25615639fd3466d37bac7da204778e/raw/c2ae3a90df1824f3bb20a44d6338015e7317eeed/launch_dial.js"></script>
 <script src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js"></script>
