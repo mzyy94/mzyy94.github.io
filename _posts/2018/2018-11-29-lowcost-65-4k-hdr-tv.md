@@ -3,7 +3,7 @@ title: "格安65インチ4K/HDRテレビが届いたのでレビュー"
 date: 2018-11-29 07:00:00 +0900
 published: true
 category: Gadget
-tags: 4k jdr tv display ips
+tags: 4k hdr tv display ips
 image:
   path: /assets/images/2018/11/29/P1021487.JPG
   thumbnail: /assets/images/2018/11/29/P1021487.JPG
