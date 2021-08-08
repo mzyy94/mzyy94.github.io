@@ -107,7 +107,7 @@ IPS方式に似たADSパネルを搭載していることもあって、一般�
 ![RGB subpixel](/assets/images/2021/08/07/subpixel.jpg)
 
 格安4Kパネルではコストダウンのために、光の三元色RGBに加えて白を追加したRGBWでドット数を削減しピクセル数を水増しする手法が流行った。
-買い替える前に使っていた65インチテレビがまさにそのRGBWだった。
+買い替える前に使っていた65インチテレビが[まさにそのRGBWだった](../2018/2018-11-29-lowcost-65-4k-hdr-tv.md#%E3%82%B5%E3%83%96%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB)。
 このハイセンス 75A6Gはそんな水増しのない、ちゃんとした**RGBサブピクセル**だ。
 
 [【激安の真実】メーカーが言わない格安4Kテレビの落とし穴 - the360.life（サンロクマル）](https://the360.life/U1301.doit?id=1551)
@@ -144,6 +144,17 @@ HDRを本格的に楽しみたいのであれば、ハイセンスの場合は�
 ![HDMI Mode select](/assets/images/2021/08/07/mode-select.jpg)
 
 ![HDR enabled PS5](/assets/images/2021/08/07/ps5-hdr.jpg)
+
+#### なめらか調整
+
+カクカクしがちな映像をフレーム補完してくれるなめらか調整機能が搭載されているが、これもまた厄介な存在である。
+クリアスムーズ・スムーズ・オフの三段階で調節で、デフォルトはクリアスムーズとなっているが、おすすめは「オフ」だ。
+
+理由としては二つあり、75A6Gに搭載のNetflixで映画を見ていると、せっかくの24fpsの映像表現が酔うほどに無理やり60fps化され、気分が悪くなってしまったこと。
+そしてMPEGノイズの載った映像に対してなめらか調整がなされると、[ティアリング](https://ja.wikipedia.org/wiki/%E3%83%86%E3%82%A3%E3%82%A2%E3%83%AA%E3%83%B3%E3%82%B0)のような映像の乱れが発生することが頻発すること。
+これらはなめらか調整レベルをスムーズに下げることによって幾分マシになるが、控えめに言ってなくても良いレベル、強く言えば邪魔な機能なので、オフをおすすめする。
+
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">新しいテレビのNetflixで映画み始めたらフレーム補完がデフォルトで強になってて酔いそうな感じになってる🤮</p>&mdash; TODO: 免許証更新 (@mzyy94) <a href="https://twitter.com/mzyy94/status/1412757492572909575?ref_src=twsrc%5Etfw">July 7, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 ### DLNA再生対応
 
