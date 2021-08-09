@@ -94,6 +94,15 @@ lsi: false
 breadcrumbs: true
 
 # ----------------------- #
+#       JavaScript        #
+# ----------------------- #
+
+footer_scripts:
+  - https://code.jquery.com/jquery-3.6.0.min.js
+  - /assets/js/main.min.js
+  - https://use.fontawesome.com/releases/v5.15.4/js/all.js
+
+# ----------------------- #
 #           Sass          #
 # ----------------------- #
 
