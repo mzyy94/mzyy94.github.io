@@ -1,3 +1,12 @@
+function _c(tagName, className, attributes) {
+  const elm = document.createElement(tagName);
+  elm.className = className;
+  Object.entries(attributes || {}).forEach(function(attr) {
+    elm.setAttribute(attr[0], attr[1]);
+  });
+  return elm;
+}
+
 (function insertGoodNotice() {
   const time = document.querySelector("time.dt-published[datetime]");
   const datePublished = new Date(time.getAttribute("datetime") || Date.now());
@@ -5,10 +14,8 @@
   if (datePublished < date2YearsAgo) {
     const diff = Date.now() - datePublished;
     const diffYears = diff / 365 / 24 / 60 / 60 / 1000;
-    const p = document.createElement("p");
-    p.className = "notice--warning";
-    const i = document.createElement("i");
-    i.className = "fas fa-exclamation-triangle";
+    const p = _c("p", "notice--warning");
+    const i = _c("i", "fas fa-exclamation-triangle");
     p.innerText = ` この記事は${Math.floor(diffYears)}年以上昔に投稿されたものです。古い情報が含まれる場合があります。`;
     p.insertAdjacentElement("afterbegin", i);
     document
@@ -24,9 +31,7 @@
       if (a.children.length) return;
       const url = new URL(a.href, location.origin);
       if (url.origin == location.origin) return;
-      const i = document.createElement("i");
-      i.className = "fas fa-external-link-alt fa-sm fa-fw";
-      i.setAttribute("data-fa-transform", "shrink-2 up-4");
+      const i = _c("i", "fas fa-external-link-alt fa-sm fa-fw", {"data-fa-transform": "shrink-2 up-4"});
       a.insertAdjacentElement("beforeend", i);
       a.target = "_blank";
       a.setAttribute("rel", "noopener");
