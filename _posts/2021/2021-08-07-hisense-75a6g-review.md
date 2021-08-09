@@ -3,6 +3,7 @@ title: "75インチ液晶テレビHisense 75A6Gのレビューと通信システ
 date: 2021-08-07 20:30:00 +0900
 category: Multimedia
 tags: 4k hdr tv display ips
+redirect_from: /blog/2021/08/07/hisense-vidaa-hacking/
 image:
   path: /assets/images/2021/08/07/hisense-75a6g.jpg
   thumbnail: /assets/images/2021/08/07/hisense-75a6g.jpg
