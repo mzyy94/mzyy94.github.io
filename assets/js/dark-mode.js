@@ -30,7 +30,7 @@
   });
 
   window.addEventListener("storage", function (e) {
-    if (e.storageArea == localStorage && e.key == theme_setting_key) {
+    if (e.storageArea == localStorage && e.key == "dark-mode") {
       changeTheme(e.newValue || systemColorDark.matches, !!e.newValue);
     }
   });
