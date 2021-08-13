@@ -154,14 +154,14 @@ JOYINGはいろいろな車種向けに同じ仕様のナビを展開してい�
 各端子の先端のタブコンタクトは平型端子のメスにちょうどハマるサイズになっていることがわかる。
 以下のターミナルセットに付属する平型端子のメスを、ACアダプタの配線に付けることで、電源を着脱可能にできる。
 
-<a href="https://www.amazon.co.jp/gp/product/B07X8DWFKZ/ref=as_li_ss_il?ie=UTF8&psc=1&linkCode=li3&tag=mzyy-22&linkId=048348d25986d7e888d839e5510b73a9&language=ja_JP" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B07X8DWFKZ&Format=_SL500_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22&language=ja_JP" ></a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=mzyy-22&language=ja_JP&l=li3&o=9&a=B07X8DWFKZ" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+<a href="https://www.amazon.co.jp/gp/product/B07X8DWFKZ/ref=as_li_ss_il?ie=UTF8&psc=1&linkCode=li3&tag=mzyy-22&linkId=048348d25986d7e888d839e5510b73a9&language=ja_JP" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B07X8DWFKZ&Format=_SL500_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22&language=ja_JP" ></a>
 
 [Amazon.co.jp： 【Amazon.co.jp 限定】エーモン ターミナルセット(中) 電工ペンチ付 (E2): 車＆バイク](https://www.amazon.co.jp/gp/product/B07X8DWFKZ/ref=as_li_ss_tl?ie=UTF8&psc=1&linkCode=sl1&tag=mzyy-22&linkId=477d637987ab77f82a6cbcded2558d89&language=ja_JP)
 
 手持ちのACアダプタはどこで手に入れたのか、センタープラスの外径 5.5mm、内径 2.1mm の12V 3A出力のごく一般的な12V ACアダプタである。
 何かの付属品だったっぽいことは覚えていて、ケーブルを切断することは躊躇われたため、以下の怪しいケーブルを買って平型端子のメスを圧着した。
 
-<a href="https://www.amazon.co.jp/gp/product/B019DQ7UD6/ref=as_li_ss_il?ie=UTF8&psc=1&linkCode=li3&tag=mzyy-22&linkId=e5bb0f54f6fd1268379cf6c505310d54&language=ja_JP" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B019DQ7UD6&Format=_SL500_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22&language=ja_JP" ></a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=mzyy-22&language=ja_JP&l=li3&o=9&a=B019DQ7UD6" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+<a href="https://www.amazon.co.jp/gp/product/B019DQ7UD6/ref=as_li_ss_il?ie=UTF8&psc=1&linkCode=li3&tag=mzyy-22&linkId=e5bb0f54f6fd1268379cf6c505310d54&language=ja_JP" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B019DQ7UD6&Format=_SL500_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22&language=ja_JP" ></a>
 
 [Amazon.co.jp： 【ノーブランド品】CCTV　セキュリティ用　12V　DC電源　ピグテール　メス　5.5x2.1mm　ケーブル　プラグ　ワイヤー　10個: ホーム＆キッチン](https://www.amazon.co.jp/gp/product/B019DQ7UD6/ref=as_li_ss_tl?ie=UTF8&psc=1&linkCode=sl1&tag=mzyy-22&linkId=9e8709c130337dfb21ddf481fe03ea17&language=ja_JP)
 
@@ -180,7 +180,7 @@ JOYINGはいろいろな車種向けに同じ仕様のナビを展開してい�
 
 ダミーロードは手持ちになかったので、以下のダミーロードを購入した。
 
-<a href="https://www.amazon.co.jp/gp/product/B07DSCD6YF/ref=as_li_ss_il?ie=UTF8&psc=1&linkCode=li3&tag=mzyy-22&linkId=beaf76275372c3fed54865520db7d242&language=ja_JP" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B07DSCD6YF&Format=_SL500_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22&language=ja_JP" ></a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=mzyy-22&language=ja_JP&l=li3&o=9&a=B07DSCD6YF" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+<a href="https://www.amazon.co.jp/gp/product/B07DSCD6YF/ref=as_li_ss_il?ie=UTF8&psc=1&linkCode=li3&tag=mzyy-22&linkId=beaf76275372c3fed54865520db7d242&language=ja_JP" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B07DSCD6YF&Format=_SL500_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22&language=ja_JP" ></a>
 
 [Amazon.co.jp： ランフィー 5 PCS SMA オス RF 同軸終端一致ダミー負荷50オームコネクタ RC ドローン: DIY・工具・ガーデン](https://www.amazon.co.jp/gp/product/B07DSCD6YF/ref=as_li_ss_tl?ie=UTF8&psc=1&linkCode=sl1&tag=mzyy-22&linkId=13756fe72a06076746935e0fcbcbb08e&language=ja_JP)
 

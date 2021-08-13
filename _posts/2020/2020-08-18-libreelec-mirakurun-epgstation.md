@@ -117,7 +117,7 @@ KodiでEPGStationを管理・視聴するためのKodiアドオン。自分で�
 
 これがなきゃ始まらない。4GBモデルの方が不安がないが、2GBモデルでも多分動く。
 
-<a href="https://www.amazon.co.jp/%E3%80%90%E5%9B%BD%E5%86%85%E6%AD%A3%E8%A6%8F%E4%BB%A3%E7%90%86%E5%BA%97%E7%89%88%E3%80%91Raspberry-Pi-Model-4GB-RS%E7%89%88/dp/B07TC2BK1X/ref=as_li_ss_il?ie=UTF8&linkCode=li3&tag=mzyy-22&linkId=253958ad7a06306732a35d7a4c5cd1d1&language=ja_JP" target="_blank"><img border="0"  width="250" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B07TC2BK1X&Format=_SL500_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22&language=ja_JP" ></a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=mzyy-22&language=ja_JP&l=li3&o=9&a=B07TC2BK1X" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+<a href="https://www.amazon.co.jp/%E3%80%90%E5%9B%BD%E5%86%85%E6%AD%A3%E8%A6%8F%E4%BB%A3%E7%90%86%E5%BA%97%E7%89%88%E3%80%91Raspberry-Pi-Model-4GB-RS%E7%89%88/dp/B07TC2BK1X/ref=as_li_ss_il?ie=UTF8&linkCode=li3&tag=mzyy-22&linkId=253958ad7a06306732a35d7a4c5cd1d1&language=ja_JP" target="_blank"><img border="0"  width="250" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B07TC2BK1X&Format=_SL500_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22&language=ja_JP" ></a>
 
 [Amazon \| 【国内正規代理店版】Raspberry Pi 4 Model B/4GB OKdo版【技適マーク付】 \| Raspberry Pi Shop by KSY \| PCパーツ 通販](https://www.amazon.co.jp/%E3%80%90%E5%9B%BD%E5%86%85%E6%AD%A3%E8%A6%8F%E4%BB%A3%E7%90%86%E5%BA%97%E7%89%88%E3%80%91Raspberry-Pi-Model-4GB-RS%E7%89%88/dp/B07TC2BK1X/ref=as_li_ss_tl?ie=UTF8&linkCode=ll1&tag=mzyy-22&linkId=230e27678db710ac9dc1d919ff2eae2c&language=ja_JP)
 
@@ -132,7 +132,7 @@ KodiでEPGStationを管理・視聴するためのKodiアドオン。自分で�
 Raspberry Piはポート類が頭の悪い配置になっているので、全て背面に寄せられるケース。
 冷却ファン付きである上、microHDMIポートをType A HDMIに変換してくれ、尚且つ安価である。
 
-<a href="https://www.amazon.co.jp/gp/product/B087G9S7ZN/ref=as_li_ss_il?ie=UTF8&psc=1&linkCode=li3&tag=mzyy-22&linkId=59b76bcd38111b1f9d9654ca5d349be7&language=ja_JP" target="_blank"><img border="0" width="250" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B087G9S7ZN&Format=_SL500_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22&language=ja_JP" ></a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=mzyy-22&language=ja_JP&l=li3&o=9&a=B087G9S7ZN" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+<a href="https://www.amazon.co.jp/gp/product/B087G9S7ZN/ref=as_li_ss_il?ie=UTF8&psc=1&linkCode=li3&tag=mzyy-22&linkId=59b76bcd38111b1f9d9654ca5d349be7&language=ja_JP" target="_blank"><img border="0" width="250" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B087G9S7ZN&Format=_SL500_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22&language=ja_JP" ></a>
 
 [Amazon \| GeeekPi Raspberry Pi 4セットトップボックスキット、ポート拡張ボード付き Raspberry Pi 4アクリルケース、4010ブルーLEDライトファン5V付き Raspberry Pi 4 Bに対応 \| GeeekPi \| ベアボーンPC 通販](https://www.amazon.co.jp/gp/product/B087G9S7ZN/ref=as_li_ss_tl?ie=UTF8&psc=1&linkCode=sl1&tag=mzyy-22&linkId=2749f179bad55eaadd5b0b016f050ff7&language=ja_JP)
 
@@ -141,7 +141,7 @@ Raspberry Piはポート類が頭の悪い配置になっているので、全�
 Dockerでサービスを動かしたりするので、耐久性のある32GBくらいの容量のものが必要。
 ちゃんとしたメーカーのものであればどれでも良い。
 
-<a href="https://www.amazon.co.jp/10%E5%AF%BE%E5%BF%9C%E3%80%91Samsung-microSD%E3%82%AB%E3%83%BC%E3%83%8932GB-Nintendo-MB-MC32GA-ECO/dp/B06XSV23T1/ref=as_li_ss_il?ie=UTF8&linkCode=li3&tag=mzyy-22&linkId=0508cfbe1a9eeeffd15f4f89c86fef83&language=ja_JP" target="_blank"><img border="0" width="250" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B06XSV23T1&Format=_SL500_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22&language=ja_JP" ></a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=mzyy-22&language=ja_JP&l=li3&o=9&a=B06XSV23T1" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+<a href="https://www.amazon.co.jp/10%E5%AF%BE%E5%BF%9C%E3%80%91Samsung-microSD%E3%82%AB%E3%83%BC%E3%83%8932GB-Nintendo-MB-MC32GA-ECO/dp/B06XSV23T1/ref=as_li_ss_il?ie=UTF8&linkCode=li3&tag=mzyy-22&linkId=0508cfbe1a9eeeffd15f4f89c86fef83&language=ja_JP" target="_blank"><img border="0" width="250" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B06XSV23T1&Format=_SL500_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22&language=ja_JP" ></a>
 
 [Amazon.co.jp： Samsung EVO Plus 32GB microSDHC UHS-I U1 95MB/s Full HD Nintendo Switch動作確認済 MB-MC32GA/ECO 国内正規保証品: パソコン・周辺機器](https://www.amazon.co.jp/10%E5%AF%BE%E5%BF%9C%E3%80%91Samsung-microSD%E3%82%AB%E3%83%BC%E3%83%8932GB-Nintendo-MB-MC32GA-ECO/dp/B06XSV23T1/ref=as_li_ss_tl?ie=UTF8&linkCode=sl1&tag=mzyy-22&linkId=88e2993dbce36b35e23bb5c865ed3070&language=ja_JP)
 
@@ -151,7 +151,7 @@ Dockerでサービスを動かしたりするので、耐久性のある32GBく�
 Linuxにドライバーが組み込まれているチューナーを選ぶ。
 推奨はPLEXの地上デジタルチューナー。
 
-<a href="https://www.amazon.co.jp/%E3%83%97%E3%83%AC%E3%82%AF%E3%82%B9-PX-S1UD-V2-0-PLEX-USB%E6%8E%A5%E7%B6%9A%E3%83%89%E3%83%B3%E3%82%B0%E3%83%AB%E5%9E%8B%E5%9C%B0%E4%B8%8A%E3%83%87%E3%82%B8%E3%82%BF%E3%83%ABTV%E3%83%81%E3%83%A5%E3%83%BC%E3%83%8A%E3%83%BC/dp/B0141NFWSG/ref=as_li_ss_il?ie=UTF8&linkCode=li3&tag=mzyy-22&linkId=b721f1713b705beab1f11cd41d32b3a1&language=ja_JP" target="_blank"><img border="0"  width="250" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B0141NFWSG&Format=_SL500_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22&language=ja_JP" ></a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=mzyy-22&language=ja_JP&l=li3&o=9&a=B0141NFWSG" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+<a href="https://www.amazon.co.jp/%E3%83%97%E3%83%AC%E3%82%AF%E3%82%B9-PX-S1UD-V2-0-PLEX-USB%E6%8E%A5%E7%B6%9A%E3%83%89%E3%83%B3%E3%82%B0%E3%83%AB%E5%9E%8B%E5%9C%B0%E4%B8%8A%E3%83%87%E3%82%B8%E3%82%BF%E3%83%ABTV%E3%83%81%E3%83%A5%E3%83%BC%E3%83%8A%E3%83%BC/dp/B0141NFWSG/ref=as_li_ss_il?ie=UTF8&linkCode=li3&tag=mzyy-22&linkId=b721f1713b705beab1f11cd41d32b3a1&language=ja_JP" target="_blank"><img border="0"  width="250" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B0141NFWSG&Format=_SL500_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22&language=ja_JP" ></a>
 
 [Amazon.co.jp： PLEX USB接続ドングル型地上デジタルTVチューナー PX-S1UD V2.0: パソコン・周辺機器](https://www.amazon.co.jp/%E3%83%97%E3%83%AC%E3%82%AF%E3%82%B9-PX-S1UD-V2-0-PLEX-USB%E6%8E%A5%E7%B6%9A%E3%83%89%E3%83%B3%E3%82%B0%E3%83%AB%E5%9E%8B%E5%9C%B0%E4%B8%8A%E3%83%87%E3%82%B8%E3%82%BF%E3%83%ABTV%E3%83%81%E3%83%A5%E3%83%BC%E3%83%8A%E3%83%BC/dp/B0141NFWSG/ref=as_li_ss_tl?ie=UTF8&linkCode=ll1&tag=mzyy-22&linkId=7cb0e0457cf602b4fae00c9bbd6c2182&language=ja_JP)
 
@@ -165,7 +165,7 @@ Linuxにドライバーが組み込まれているチューナーを選ぶ。
 
 B-CASカードを読むために必要。
 
-<a href="https://www.amazon.co.jp/Gemalto-%E3%82%B8%E3%82%A7%E3%83%A0%E3%82%A2%E3%83%AB%E3%83%88-IC%E3%82%AB%E3%83%BC%E3%83%89%E3%83%AA%E3%83%BC%E3%83%80%E3%83%BB%E3%83%A9%E3%82%A4%E3%82%BF-%E5%AF%BE%E5%BF%9C%E4%BD%8F%E5%9F%BA%E3%82%AB%E3%83%BC%E3%83%89%E7%94%A8PC-HWP119316/dp/B003XF2JJY/ref=as_li_ss_il?ie=UTF8&linkCode=li3&tag=mzyy-22&linkId=bb46cc12ae9a0c222cca6e9af79e41bc&language=ja_JP" target="_blank"><img border="0"  width="250" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B003XF2JJY&Format=_SL500_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22&language=ja_JP" ></a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=mzyy-22&language=ja_JP&l=li3&o=9&a=B003XF2JJY" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+<a href="https://www.amazon.co.jp/Gemalto-%E3%82%B8%E3%82%A7%E3%83%A0%E3%82%A2%E3%83%AB%E3%83%88-IC%E3%82%AB%E3%83%BC%E3%83%89%E3%83%AA%E3%83%BC%E3%83%80%E3%83%BB%E3%83%A9%E3%82%A4%E3%82%BF-%E5%AF%BE%E5%BF%9C%E4%BD%8F%E5%9F%BA%E3%82%AB%E3%83%BC%E3%83%89%E7%94%A8PC-HWP119316/dp/B003XF2JJY/ref=as_li_ss_il?ie=UTF8&linkCode=li3&tag=mzyy-22&linkId=bb46cc12ae9a0c222cca6e9af79e41bc&language=ja_JP" target="_blank"><img border="0"  width="250" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B003XF2JJY&Format=_SL500_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22&language=ja_JP" ></a>
 
 [Amazon \| 【国内正規品】Gemalto ジェムアルト ICカードリーダ・ライタ IDBridge CT30 電子申告(e-Tax)対応マイナンバー・住基カード用PC USB-TR HWP119316 \| ジェムアルト \| 外付メモリカードリーダー 通販](https://www.amazon.co.jp/Gemalto-%E3%82%B8%E3%82%A7%E3%83%A0%E3%82%A2%E3%83%AB%E3%83%88-IC%E3%82%AB%E3%83%BC%E3%83%89%E3%83%AA%E3%83%BC%E3%83%80%E3%83%BB%E3%83%A9%E3%82%A4%E3%82%BF-%E5%AF%BE%E5%BF%9C%E4%BD%8F%E5%9F%BA%E3%82%AB%E3%83%BC%E3%83%89%E7%94%A8PC-HWP119316/dp/B003XF2JJY/ref=as_li_ss_tl?ie=UTF8&linkCode=sl1&tag=mzyy-22&linkId=8af534afc3020cc24ae9c16d3d44da9a&language=ja_JP)
 
@@ -182,7 +182,7 @@ B-CASカードを読むために必要。
 
 録画データ保存用。USB 3.0対応であれば、どれでも良い。
 
-<a href="https://www.amazon.co.jp/BUFFALO-%E3%83%9F%E3%83%8B%E3%82%B9%E3%83%86%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3-USB3-1-USB3-0%E7%94%A8%E3%83%9D%E3%83%BC%E3%82%BF%E3%83%96%E3%83%ABHDD-HD-PCFS1-0U3-BBA/dp/B07D795SV5/ref=as_li_ss_il?ie=UTF8&linkCode=li3&tag=mzyy-22&linkId=036ad8813ebc3bb0973d9844281d86c8&language=ja_JP" target="_blank"><img border="0" width="250"  src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B07D795SV5&Format=_SL500_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22&language=ja_JP" ></a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=mzyy-22&language=ja_JP&l=li3&o=9&a=B07D795SV5" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+<a href="https://www.amazon.co.jp/BUFFALO-%E3%83%9F%E3%83%8B%E3%82%B9%E3%83%86%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3-USB3-1-USB3-0%E7%94%A8%E3%83%9D%E3%83%BC%E3%82%BF%E3%83%96%E3%83%ABHDD-HD-PCFS1-0U3-BBA/dp/B07D795SV5/ref=as_li_ss_il?ie=UTF8&linkCode=li3&tag=mzyy-22&linkId=036ad8813ebc3bb0973d9844281d86c8&language=ja_JP" target="_blank"><img border="0" width="250"  src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B07D795SV5&Format=_SL500_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22&language=ja_JP" ></a>
 
 [Amazon.co.jp： BUFFALO ミニステーション USB3.1(Gen1)/USB3.0用ポータブルHDD 1TB HD-PCFS1.0U3-BBA: パソコン・周辺機器](https://www.amazon.co.jp/BUFFALO-%E3%83%9F%E3%83%8B%E3%82%B9%E3%83%86%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3-USB3-1-USB3-0%E7%94%A8%E3%83%9D%E3%83%BC%E3%82%BF%E3%83%96%E3%83%ABHDD-HD-PCFS1-0U3-BBA/dp/B07D795SV5/ref=as_li_ss_tl?ie=UTF8&linkCode=sl1&tag=mzyy-22&linkId=389b1beac3d7cf2d6666ae00e5162218&language=ja_JP)
 

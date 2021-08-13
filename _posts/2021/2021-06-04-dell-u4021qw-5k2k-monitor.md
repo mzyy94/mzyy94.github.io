@@ -69,7 +69,7 @@ MSIのPRESTIGE-PS341WUは平面パネルのため、ここで候補から外れ�
 
 [Dellデジタル ハイエンド シリーズ40インチ曲面WUHDモニター：U4021QW \| Dell 日本](https://www.dell.com/ja-jp/shop/dell-u4021qw-397%E3%82%A4%E3%83%B3%E3%83%81%E3%83%AF%E3%82%A4%E3%83%89%E3%83%A2%E3%83%8B%E3%82%BF%E3%83%BC5k2k-%E6%9B%B2%E9%9D%A2-21-9-ips%E9%9D%9E%E5%85%89%E6%B2%A2-usb-ctbhdmix2dprj45-%E9%AB%98%E3%81%95%E8%AA%BF%E6%95%B4/apd/210-aypy/%E3%83%A2%E3%83%8B%E3%82%BF%E3%83%BC-%E3%83%A2%E3%83%8B%E3%82%BF%E3%83%BC%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B5%E3%83%AA%E3%83%BC)
 
-<a href="https://www.amazon.co.jp/dp/B08TBJ4YTM?&linkCode=li3&tag=mzyy-22&linkId=df4a52916bdbd53e55b6ad0bf41c520f&language=ja_JP&ref_=as_li_ss_il" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B08TBJ4YTM&Format=_SL500_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22&language=ja_JP" ></a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=mzyy-22&language=ja_JP&l=li3&o=9&a=B08TBJ4YTM" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+<a href="https://www.amazon.co.jp/dp/B08TBJ4YTM?&linkCode=li3&tag=mzyy-22&linkId=df4a52916bdbd53e55b6ad0bf41c520f&language=ja_JP&ref_=as_li_ss_il" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B08TBJ4YTM&Format=_SL500_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22&language=ja_JP" ></a>
 
 [Amazon \| Dell 曲面モニター 39.7インチ U4021QW(3年間無輝点交換保証/sRGB 100%,Rec.709 100%,DCI-P3 98%/フレームレス/USB-C/LANポート(RJ45)/WUHD/5K2K/IPS非光沢/Thunderbolt™ 3,DP,HDMIx2/高さ調節/スピーカー付) \| Dell \| パソコン・周辺機器 通販](https://www.amazon.co.jp/dp/B08TBJ4YTM?&linkCode=ll1&tag=mzyy-22&linkId=01d23c2df2c484388e175af6477165b0&language=ja_JP&ref_=as_li_ss_tl)
 
