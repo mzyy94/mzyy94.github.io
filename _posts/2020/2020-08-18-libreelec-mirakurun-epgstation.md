@@ -106,7 +106,7 @@ KodiでEPGStationを管理・視聴するためのKodiアドオン。自分で�
 
 [GitHub - Harekaze/repository: Remote binary repository](https://github.com/Harekaze/repository)
 
-[repo.harekaze.org](https://repo.harekaze.org/)からアドオンリポジトリのアドオンをダウンロードし、LibreELECのKodiにインストールすることで、アドオンマネージャで管理できるようになる。さらに自動更新にも対応するので、これを使わない手は無い。
+[harekaze.github.io/repository](https://harekaze.github.io/repository/)からアドオンリポジトリのアドオンをダウンロードし、LibreELECのKodiにインストールすることで、アドオンマネージャで管理できるようになる。さらに自動更新にも対応するので、これを使わない手は無い。
 
 
 ## 用意するもの
@@ -227,7 +227,7 @@ Raspberry Pi公式のOS書き込みツールである[Raspberry Pi Imager](https
 ### 4. リポジトリのzipをSambaで転送する
 
 セットアップが終わると、同じLANにつながっているWindowsやmacOSからLibreELECのSambaが見えるようになっている。
-SambaにあるDownloadsフォルダに[repo.harekaze.org](https://repo.harekaze.org/)からダウンロードしたリポジトリアドオンをコピーする。
+SambaにあるDownloadsフォルダに[harekaze.github.io/repository](https://harekaze.github.io/repository/)からダウンロードしたリポジトリアドオンをコピーする。
 
 ![Transfer repository zip](/assets/images/2020/08/18/transfer-repository-zip.png)
 
