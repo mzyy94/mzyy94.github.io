@@ -168,3 +168,31 @@ body * {
         }
     }
 }
+
+main .page-content .e-content > {
+    h2, h3, h4, h5, h6 {
+        &.link {
+            pointer-events: none; 
+            &::before {
+                cursor: pointer;
+                pointer-events: all;
+            }
+        }
+        &::before {
+            display: inline;
+            opacity: 0.6;
+        }
+    }
+    h2::before {
+        content: '# ';
+    }
+    h3::before {
+        content: '## ';
+    }
+    h4::before {
+        content: '### ';
+    }
+    h5::before {
+        content: '#### ';
+    }
+}
