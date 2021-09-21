@@ -37,3 +37,14 @@ function _c(tagName, className, attributes) {
       a.setAttribute("rel", "noopener");
     });
 })();
+
+(function headingHashLink() {
+  document
+    .querySelector(".page-content .e-content").querySelectorAll("h2, h3, h4, h5, h6")
+    .forEach(function (h) {
+      h.addEventListener("click", function(e) {
+        location.hash = h.id;
+      });
+      h.classList.add('link')
+    });
+})();
