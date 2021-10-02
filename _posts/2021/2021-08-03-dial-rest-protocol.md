@@ -277,7 +277,7 @@ Netflixの例では特にリクエストヘッダーをつけなくても`curl`�
 
 - Netflix: `https://www.netflix.com`, `package:`スキーマで始まる任意のURI
 - YouTube: `https://www.youtube.com`, `package:`スキーマで始まる任意のURI
-- Netflix: `https://www.amazon.com`, `package:`スキーマで始まる任意のURI
+- Amazon: `https://www.amazon.com`, `package:`スキーマで始まる任意のURI
 
 
 ## DIAL対応アプリと挙動
