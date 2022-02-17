@@ -5,6 +5,7 @@ published: true
 toc: true
 category: Multimedia 
 tags: hdmi cec edid
+redirect_from: /blog/2020/05/12/raspberry-pi-hdmi-edid-cec/
 image:
   path: /assets/images/2020/05/12/hdmi.jpg
   thumbnail: /assets/images/2020/05/12/hdmi.jpg
