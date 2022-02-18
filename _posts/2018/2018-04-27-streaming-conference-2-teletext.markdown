@@ -137,7 +137,7 @@ WEBVTT
 
 今回は[ようこそジャパリパークへ](https://www.youtube.com/watch?v=xkMdLcB_vNU)の歌詞を引用してご紹介します。ノリのよい曲調でテンポの良い歌詞で気に入ってます。上記歌詞に引用した*高らかに笑い笑えばフレンズ*の部分は特に現代社会を生きる日本人に足りない精神だとも言えます。
 
-<iframe src="//tools.applemusic.com/embed/v1/song/1198924324?country=jp&amp;at=1l3v4mQ" height="110px" width="100%" frameborder="0"></iframe>
+<iframe src="https://embed.music.apple.com/jp/album/%E3%82%88%E3%81%86%E3%81%93%E3%81%9D%E3%82%B8%E3%83%A3%E3%83%91%E3%83%AA%E3%83%91%E3%83%BC%E3%82%AF%E3%81%B8-tv%E3%82%A2%E3%83%8B%E3%83%A1-%E3%81%91%E3%82%82%E3%81%AE%E3%83%95%E3%83%AC%E3%83%B3%E3%82%BA-%E3%82%AA%E3%83%BC%E3%83%97%E3%83%8B%E3%83%B3%E3%82%B0%E3%83%86%E3%83%BC%E3%83%9E/1198924234?i=1198924324&amp;app=music&amp;itsct=music_box_player&amp;itscg=30200&amp;at=1l3v4mQ&amp;ls=1" height="150px" frameborder="0" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation" allow="autoplay *; encrypted-media *;" style="width: 100%; max-width: 660px; overflow: hidden; border-radius: 10px; background: transparent;"></iframe>
 
 WebVTTには、テキストにタイムスタンプタグを打ち込むことによって、動画の時間と同期してタグの前後に属性の変化が起こります。それを用いて、CSSで色付けをおこなうことで、カラオケのように時間に沿った文字の変更をJavaScriptなしで実現しています。
 

@@ -135,7 +135,7 @@ Apple TV 4Kがあるのでテレビ以上の付加機能はいらないのでち
 
 iTunesで販売されている4K HDRコンテンツは最近の話題の映画が中心だが、ほとんどは映画館でみてしまっていた。唯一気になっていて見そびれていたオーシャンズ8がHDR対応であったのでそれにした。
 
-<div id='ibb-widget-root-1390225970'></div><script>(function(t,e,i,d){var o=t.getElementById(i),n=t.createElement(e);o.style.height=90;o.style.width=728;o.style.display='inline-block';n.id='ibb-widget',n.setAttribute('src',('https:'===t.location.protocol?'https://':'http://')+d),n.setAttribute('width','728'),n.setAttribute('height','90'),n.setAttribute('frameborder','0'),n.setAttribute('scrolling','no'),o.appendChild(n)})(document,'iframe','ibb-widget-root-1390225970',"banners.itunes.apple.com/banner.html?partnerId=&aId=1l3v4mQ&bt=catalog&t=catalog_white&id=1390225970&c=jp&l=ja-JP&w=728&h=90&store=movie");</script>
+<a href="https://tv.apple.com/movie/%E3%82%AA%E3%83%BC%E3%82%B7%E3%83%A3%E3%83%B3%E3%82%B9-8/umc.cmc.45tdpugrl6s7n2raxytlj4g92?itsct=tv_box_badge&amp;itscg=30200&amp;at=1l3v4mQ" style="display: inline-block; overflow: hidden; border-radius: 13px; width: 250px; height: 83px;"><img src="https://tools.applemediaservices.com/api/badges/get-it-on-apple-tv/badge/ja-jp?size=250x83&amp;releaseDate=1533859200&h=7d9e49d71a7c1e6c19aabf0ee5edb08b" alt="Get it on Apple TV" style="border-radius: 13px; width: 250px; height: 83px;"></a>
 
 
 この映像の中で明暗が綺麗に出るシーンが20分18秒時点にあったので、この位置の映像を撮影。Apple TV 4Kの設定からSDRとHDRを切り替え、テレビの画面表示ボタンでレンジが切り替わってるのを確認してそれぞれ見比べてみた。

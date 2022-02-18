@@ -99,7 +99,7 @@ image:
 
 :penguin: 次回、シルバー925編。
 
-<iframe src="//tools.applemusic.com/embed/v1/song/1198924326?country=jp&at=1l3v4mQ" height="110px" width="100%" frameborder="0"></iframe>
+<iframe src="https://embed.music.apple.com/jp/album/%E5%A4%A7%E7%A9%BA%E3%83%89%E3%83%AA%E3%83%BC%E3%83%9E%E3%83%BC/1198924234?i=1198924326&amp;app=music&amp;itsct=music_box_player&amp;itscg=30200&amp;at=1l3v4mQ&amp;ls=1" height="150px" frameborder="0" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation" allow="autoplay *; encrypted-media *;" style="width: 100%; max-width: 660px; overflow: hidden; border-radius: 10px; background: transparent;"></iframe>
 
 :womans_hat: 各種頒布会などでたまに展示しますので実物を確認したい方はブースまでお立ち寄りくださいね。
 
