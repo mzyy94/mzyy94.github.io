@@ -4,7 +4,7 @@ date: 2020-05-11 07:30:00 +0900
 published: true
 toc: true
 category: Game
-tags: nintendo switch usb-gadget raspberry-pi webrtc gstreamer
+tags: nintendo switch usb-gadget raspberry-pi webrtc gstreamer tc358743
 image:
   path: /assets/images/2020/05/11/ns-remote.jpg
   thumbnail: /assets/images/2020/05/11/ns-remote.jpg
