@@ -304,7 +304,7 @@ Netflixがローカルネットワークの端末から再生コントロール�
 HDMIも立派な制御信号や映像を伝送する通信規格なので、もれなく調査する。
 調査方法にあたっては、以下の過去記事やKernel/VM探検隊online part2で発表した時の資料を参照のこと。
 
-{% include post-link.html slug="raspberry-pi-hdmi-edid-cec" %}
+{% include post-link.html slug="raspberrypi-hdmi-edid-cec" %}
 
 
 <iframe src="//www.slideshare.net/slideshow/embed_code/key/sc4bHyHUnKmTH" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/mzyy94/hdmi-expedition" title="HDMI探検隊" target="_blank">HDMI探検隊</a> </strong> from <strong><a href="https://www.slideshare.net/mzyy94" target="_blank">Yuki Mizuno</a></strong> </div>
