@@ -1,6 +1,6 @@
 ---
 title: "Photon Mono 4K 光造形3Dプリンターを導入した"
-date: 2022-06-15 9:00:00 +0900
+date: 2022-06-15 2:00:00 +0900
 published: true
 toc: true
 category: 3D Print
