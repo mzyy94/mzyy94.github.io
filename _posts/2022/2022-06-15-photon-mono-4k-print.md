@@ -310,14 +310,15 @@ Thingiverseのコメント欄にも同様の問題に直面した人のコメン
 
 ### ペットボトルキャップを蓋に利用する小物入れ
 
-![PET bottle cap case](/assets/images/2022/06/15/bottle-cap-case.jpg)
+![PET bottle cap case](/assets/images/2022/06/15/bottle-cap-case-tray.jpg)
 
 
 [Mini Container with PET Bottle Cap Size by Tokyo_Bird - Thingiverse](https://www.thingiverse.com/thing:4900080)
 
-[Tray with 3 or 5 spaces for Mini Container by gdPupo - Thingiverse](https://www.thingiverse.com/thing:4902847)
+[3 Mini Containers Tray for IKEA Skadis by mzyy94 - Thingiverse](https://www.thingiverse.com/thing:5446632)
 
-Thingiverseでフィーチャーされていたので作ってみた。3種類のケースをプリントし、3つのケースが収まる土台もプリントした。
+Thingiverseでフィーチャーされていたので作ってみた。3種類のケースをプリントし、3つのケースが収まるトレイもプリントした。
+トレイはIKEAの有孔ボードに取り付けられる形のものをFusion 360で自作した。
 スリットの無いタイプのケースはカッピングが起きるので、あらかじめスライサーで下部側面に直径2mmの穴を開けてプリントした。
 強度もしっかりあり、ネジなどの細かいものを入れるケースとして重宝している。ペットボトルキャップを使える点もSDGs的にGoodだ。
 
