@@ -263,7 +263,9 @@ XY軸精度0.035mmとZ軸精度0.01mmだけあって、出力された造形物�
 プロトタイピングとは別で、いくつかオープンな3Dモデルをプリントしてみた。
 その中で実際に3Dプリントしてみて便利に使えた造形物を紹介しておく。
 
-### Photon Mono 4Kのプラットフォーム傾斜パーツ
+### Photon Mono用便利ツール
+
+#### Photon Mono 4Kのプラットフォーム傾斜パーツ
 
 [Anycubic Photon Mono Dripping Hook by PiN0YChris - Thingiverse](https://www.thingiverse.com/thing:4611512)
 
@@ -276,7 +278,7 @@ Photon Mono用だがPhoton Mono 4Kでも使えた。
 <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">今更ながら3Dプリンタ補助器具を3Dプリントした <a href="https://t.co/9MazdUS6ry">pic.twitter.com/9MazdUS6ry</a></p>&mdash; 6月 (@mzyy94) <a href="https://twitter.com/mzyy94/status/1522253455863468035?ref_src=twsrc%5Etfw">May 5, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
-### レジンバットの液切り台
+#### レジンバットの液切り台
 
 ![Resin VAT drainer](/assets/images/2022/06/15/resin-drainer.jpg)
 
@@ -285,13 +287,19 @@ Photon Mono用だがPhoton Mono 4Kでも使えた。
 レジンバットに残ったレジンを容器に戻す液切り台。バットを立てかけて下に空き瓶を置くことで、最後の一滴まで残ったレジンを再利用できる。
 何度かプリントした後やレジンのゴミが残っているとわかる場合などは、茶漉しをセットして固形のレジンを濾して回収する。
 
-### IKEAの有孔ボードSKÅDISに電池を保管するケース
+### IKEA SKÅDISアイテム
+
+![Skadis items](/assets/images/2022/06/15/skadis-items.jpg)
+
+デスク横に立ててある[IKEAで売ってる有孔ボード](https://www.ikea.com/jp/ja/p/skadis-pegboard-white-30320806/)SKÅDISに取り付けられるアイテムをプリントしてみた。
+
+#### SKÅDISに電池を保管するケース
 
 ![Skadis mount things](/assets/images/2022/06/15/skadis-things.jpg)
 
 [Battery Dispenser for Skadis (AA & AAA) by Jobsis - Thingiverse](https://www.thingiverse.com/thing:3160395)
 
-[IKEAで売ってる有孔ボード](https://www.ikea.com/jp/ja/p/skadis-pegboard-white-30320806/)に引っ掛けられる単三の電池をストックするケース。[同じくIKEAの単三充電池](https://www.ikea.com/jp/ja/p/ladda-rechargeable-battery-hr06-aa-1-2v-50504692/)を収納するのに最適だ。
+SKÅDISに引っ掛けられる単三の電池をストックするケース。[同じくIKEAの単三充電池](https://www.ikea.com/jp/ja/p/ladda-rechargeable-battery-hr06-aa-1-2v-50504692/)を収納するのに最適だ。
 
 注意点として、この3Dモデルを用いて出力したものは寸法が合わなかった。プリントして二次硬化していざ取り付けようとしたら有孔ボードに下の突起が刺さらなかったのだ。
 Thingiverseのコメント欄にも同様の問題に直面した人のコメントがあるが、光造形でプリントすると突起の位置に上下に2mmのずれが生じるようだ（なんで？）。
@@ -300,7 +308,18 @@ Thingiverseのコメント欄にも同様の問題に直面した人のコメン
 
 [Remixes for Battery Dispenser for Skadis (AA & AAA) by Jobsis - Thingiverse](https://www.thingiverse.com/thing:3160395/remixes)
 
-### IKEAの有孔ボードSKÅDISにM5Stack Atom/Matrixをかけるやつ
+#### SKÅDISにmicroSDカードとUSBメモリーを置くトレイ
+
+![Skadis SD card holder](/assets/images/2022/06/15/skadis-sdcard-holder.jpg)
+
+[SKADIS USB & SD Card Holder by batuhanarican - Thingiverse](https://www.thingiverse.com/thing:3967683)
+
+Raspberry Piなどで頻繁に利用するmicroSDカード5枚と、SDカードアダプターとUSBメモリーをそれぞれ4つ置くことのできるトレイ。
+コンパクトで場所を取らず取り出しやすさも抜群なので一つ作っておくと良い。
+注意点として、フックの寸法がギチギチに作られていて無理に取り付けようとすると折れてしまう。実際折ってしまった。
+リューターでフックの厚みを2mmほど削ることでスムーズに取り付けられるようになった。重いものを掛けるわけではないのでフックのゆとりは許容範囲内だ。
+
+#### SKÅDISにM5Stack Atom/Matrixをかけるやつ
 
 [M5Stack Atom Skadis mount by Zulimaine - Thingiverse](https://www.thingiverse.com/thing:4606687)
 
@@ -308,7 +327,7 @@ Thingiverseのコメント欄にも同様の問題に直面した人のコメン
 フックの奥行きと有孔ボードの厚みがきっちり作られているので、有孔ボードに勢いよく取り付けようとするとフック部分が折れてしまうので注意。
 
 
-### ペットボトルキャップを蓋に利用する小物入れ
+#### ペットボトルキャップを蓋に利用する小物入れ
 
 ![PET bottle cap case](/assets/images/2022/06/15/bottle-cap-case-tray.jpg)
 
