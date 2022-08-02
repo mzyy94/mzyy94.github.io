@@ -204,7 +204,7 @@ jekyll-mentions: https://twitter.com
 #    Analytics & SEO      #
 # ----------------------- #
 
-google_analytics: UA-41944495-3
+# google_analytics: UA-41944495-3 ## Disabled by 0da48b7
 google_site_verification: m5HDLtvpHciiq97KscNByMXhvFiwvwJzlwBHEDUlmwk
 
 # ----------------------- #
