@@ -1,0 +1,627 @@
+---
+title: "75インチ液晶テレビHisense 75A6Gのレビューと通信システム調査"
+date: 2021-08-07T20:30:00+09:00
+categories: ["Multimedia"]
+tags: ["4k", "hdr", "tv", "display", "ips"]
+redirect_from: /blog/2021/08/07/hisense-vidaa-hacking/
+image: "/assets/images/2021/08/07/hisense-75a6g.jpg"
+---
+
+三年前に65インチの格安4Kテレビを購入したが、視力の低下が著しく視聴距離2mでは鮮明さに欠けるようになってきた。
+
+{% include post-link.html slug="lowcost-65-4k-hdr-tv" %}
+
+矯正視力なら精細に観ることができるものの、映像視聴を除いてはメガネの必要性が無い家の中なので、極力メガネをかけることなしに視聴したい。
+解決策の一つとして、テレビのサイズをデカくする方法を考えていたが、65インチを超えるサイズとなると20万、30万円の価格帯となり、インチあたりの価格が極端に高くなる傾向にある。
+そのためなかなか購入に踏み切れていなかったが、オリンピックと在庫処分が掛け合わさって[LGの型落ち75インチ液晶テレビ](https://www.lg.com/jp/tv/lg-75SM8600PJB)がコストコで税込16万円を切るなど、だいぶ手の届きやすいところへと落ち着いてきていた。
+
+そのLGの型落ちモデルを買ってもよかったが、オリンピック開幕直前にハイセンスより75インチ4K液晶テレビ新製品が15万円前後で発売されると聞いて、この値段ならと購入した。
+
+<!-- more -->
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">𝑚𝑦 𝑛𝑒𝑤 𝑔𝑒𝑎𝑟 <a href="https://t.co/gleCE0owYY">pic.twitter.com/gleCE0owYY</a></p>&mdash; TODO: 免許証更新 (@mzyy94) <a href="https://twitter.com/mzyy94/status/1412752254491234310?ref_src=twsrc%5Etfw">July 7, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+{% include toc %}
+
+## Hisense 75A6G
+
+[75A6G \| ハイセンスジャパン株式会社](https://www.hisense.co.jp/tv/75a6g/)
+
+今年7月上旬発売のハイセンス75型液晶テレビ。
+一昔前のハイエンドモデルにしか搭載されてこなかったような機能や特徴が、この普及価格帯のモデルに搭載されているのが最大の長所である。
+詳しい謳い文句は公式サイトにある。
+
+東芝のテレビ事業を買収してからのハイセンスのテレビは、ミドルレンジ向けのREGZAをハイセンスブランドで売ってるようなものが多く、この製品もREGZAそのものだった（後述）。
+
+<a href="https://www.amazon.co.jp/%E3%83%8F%E3%82%A4%E3%82%BB%E3%83%B3%E3%82%B9-4K%E3%83%81%E3%83%A5%E3%83%BC%E3%83%8A%E3%83%BC%E5%86%85%E8%94%B5-75A6G-%E3%83%8D%E3%83%83%E3%83%88%E5%8B%95%E7%94%BB%E5%AF%BE%E5%BF%9C-2021%E5%B9%B4%E3%83%A2%E3%83%87%E3%83%AB/dp/B098JV7JC8?&linkCode=li3&tag=mzyy-22&linkId=2f77aa64f5c988b69f7297c7e11688ad&language=ja_JP&ref_=as_li_ss_il" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B098JV7JC8&Format=_SL500_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22&language=ja_JP" ></a>
+
+[Amazon \| ハイセンス 75V型 4Kチューナー内蔵 液晶 テレビ 75A6G ネット動画対応 ADSパネル 3年保証 2021年モデル \| テレビ 通販](https://www.amazon.co.jp/%E3%83%8F%E3%82%A4%E3%82%BB%E3%83%B3%E3%82%B9-4K%E3%83%81%E3%83%A5%E3%83%BC%E3%83%8A%E3%83%BC%E5%86%85%E8%94%B5-75A6G-%E3%83%8D%E3%83%83%E3%83%88%E5%8B%95%E7%94%BB%E5%AF%BE%E5%BF%9C-2021%E5%B9%B4%E3%83%A2%E3%83%87%E3%83%AB/dp/B098JV7JC8?&linkCode=ll1&tag=mzyy-22&linkId=d1040628fe9d7878ec1f3c35ebec3280&language=ja_JP&ref_=as_li_ss_tl)
+
+Android TVのような重量級のソフトウェアを搭載せず、代わりにLinuxが搭載されている。
+その上でNetflixやprime videoなど、WebをベースとしたVODサービスが動くようになっている。
+個人的には何年間も使うテレビにはAndroid TVを搭載してほしく無いと考えているため、Android TVを搭載してこなかった点は好印象だ。
+
+今までAndroid TVを搭載していたテレビで、長きにわたってアップデートが提供されてきている製品を見たことがない。
+スマホのような短いサイクルで買い替えることのない大型家電に、複雑なAndroidなんて載せられたら数年後には動かないアプリは出てくるわセキュリティホールまみれだわで、大きな粗大ゴミになってしまう。
+たまったもんじゃない。
+
+## 使用感レビュー
+
+![wall mounted Hisense 75A6G](/assets/images/2021/08/07/hisense-75a6g.jpg)
+
+このモデルは店頭にも置いてあるようなので、購入を迷っている人はインターネットの記事なんか信用せずに目で見て確認してほしい。
+直接目で見るものだからこそ、直接目で見て判断した方が良いと言うものだ。
+
+### 壁掛け設置のしやすさ
+
+75インチにして本体26kgの軽量設計のため、壁掛けも容易だ。流石に一人では掛けられないが、標準体格二人で余裕を持って掛けられる。
+支柱あたり耐荷重20kgのラブリコ（アイアンモデル）で柱を2本立て、間に2本の棚を渡して壁掛けパーツを取り付けて掛けている。
+安いからと血迷って型落ちモデルを買っていたら、40kg前後もあるパネルを壁に掛け続けることとなっていたと思うと、新製品を選択した甲斐があったと電源を入れる前から実感させられる。
+
+![wall mount on labrico](/assets/images/2021/08/07/tv-wall-mount.jpg)
+
+多くの壁掛けパーツに対応しており、裏にはVESAの穴が400x300で空いていてM6x10mmのネジが適合する。
+
+それ以上の長さのネジにはスペーサーを必要とすると記載があるので、10mm程度が埋まるよう調節する必要がある。
+
+![VESA dimension](/assets/images/2021/08/07/vesa-dimension.png)
+
+引用元: [https://www.hisense.co.jp/tv/75a6g/assets/pdf/75A6G_spec.pdf](https://www.hisense.co.jp/tv/75a6g/assets/pdf/75A6G_spec.pdf)
+
+
+<a href="https://www.amazon.co.jp/dp/B07B4W2HTL?_encoding=UTF8&psc=1&linkCode=li3&tag=mzyy-22&linkId=2b2e2f98fb918c39e903829f6e58e506&language=ja_JP&ref_=as_li_ss_il" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B07B4W2HTL&Format=_SL500_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22&language=ja_JP" ></a>
+
+[Amazon \| 平安伸銅工業 LABRICO DIY収納パーツ 2×4アジャスター アイアン 屋外使用可 ホワイト IXO-1 \| DIY収納用パーツ・キット](https://www.amazon.co.jp/dp/B07B4W2HTL?_encoding=UTF8&psc=1&linkCode=sl1&tag=mzyy-22&linkId=360655d543faaabb77c1b22ecb40b9e4&language=ja_JP&ref_=as_li_ss_tl)
+
+
+### ノンベゼル
+
+近年の流行りとなっているパネルの縁が狭いベゼルレスデザインのひとつ上、ノンベゼルデザインをこの製品は採用している。
+ベゼル（縁）がないノンベゼルという言葉通り、液晶パネル面がむき出しになっている。
+
+![wall mount on labrico](/assets/images/2021/08/07/non-bezel.jpg)
+
+
+映像が占める割合が高く没入感が強まる反面、短所も多い。
+縁を持つことができないので、テレビの位置調整が困難になる。
+また、これまで使っていたテレビ上のベゼルに引っ掛けるタイプの棚を置くと、パネルに圧力がかかって映像が滲んでしまった。
+棚自体を後ろに傾斜させることでパネルへの圧力を避け、なんとか棚を置くことはできたが、お勧めできないので棚は置けないものとして考えた方が良い。
+
+<a href="https://www.amazon.co.jp/%E3%82%A8%E3%83%AC%E3%82%B3%E3%83%A0-TV%E7%94%A8%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B5%E3%83%AA-%E6%BB%91%E3%82%8A%E6%AD%A2%E3%82%81%E3%82%B7%E3%83%BC%E3%83%88%E4%BB%98-32%E3%82%A4%E3%83%B3%E3%83%81%E4%BB%A5%E4%B8%8A%E5%AF%BE%E5%BF%9C%E3%83%A2%E3%83%87%E3%83%AB-AVD-TVTS01BK/dp/B08B7QY68Q?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&dchild=1&keywords=%E8%96%84%E5%9E%8B%E3%83%86%E3%83%AC%E3%83%93%E3%83%A9%E3%83%83%E3%82%AF&qid=1628222465&sr=8-5&linkCode=li2&tag=mzyy-22&linkId=e7c5a4869ed78348e258bb3807a276a3&language=ja_JP&ref_=as_li_ss_il" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B08B7QY68Q&Format=_SL500_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22&language=ja_JP" ></a>
+
+[Amazon.co.jp: エレコム TV用アクセサリ TV上収納棚 滑り止めシート付 32インチ以上対応モデル 60cm 耐荷重5Kg ブラック AVD-TVTS01BK : パソコン・周辺機器](https://www.amazon.co.jp/%E3%82%A8%E3%83%AC%E3%82%B3%E3%83%A0-TV%E7%94%A8%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B5%E3%83%AA-%E6%BB%91%E3%82%8A%E6%AD%A2%E3%82%81%E3%82%B7%E3%83%BC%E3%83%88%E4%BB%98-32%E3%82%A4%E3%83%B3%E3%83%81%E4%BB%A5%E4%B8%8A%E5%AF%BE%E5%BF%9C%E3%83%A2%E3%83%87%E3%83%AB-AVD-TVTS01BK/dp/B08B7QY68Q?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&dchild=1&keywords=%E8%96%84%E5%9E%8B%E3%83%86%E3%83%AC%E3%83%93%E3%83%A9%E3%83%83%E3%82%AF&qid=1628222465&sr=8-5&linkCode=sl1&tag=mzyy-22&linkId=935df93b09a11aadfaec9301d2024fe7&language=ja_JP&ref_=as_li_ss_tl)
+
+### 光沢ADSパネル
+
+エッジレスデザインの光沢パネル。結構な反射があるため、明るい部屋で黒が映える映像の視聴は苦しい。
+IPS方式に似たADSパネルを搭載していることもあって、一般的なミドルレンジの液晶テレビなりの映像が楽しめる。
+このサイズでこの低価格だから映像もそれなりかと思っていたが、想像以上に良い色が出ていた。
+
+[心惹かれる美しさ ADSパネル \| 液晶ディスプレイ（PCモニター） \| IODATA アイ・オー・データ機器](https://www.iodata.jp/product/lcd/info/ads.htm)
+
+#### RGBサブピクセル
+
+カラーバーを表示して白い部分をマクロ撮影したものが以下の画像。
+
+![RGB subpixel](/assets/images/2021/08/07/subpixel.jpg)
+
+格安4Kパネルではコストダウンのために、光の三元色RGBに加えて白を追加したRGBWでドット数を削減しピクセル数を水増しする手法が流行った。
+買い替える前に使っていた65インチテレビが[まさにそのRGBWだった](../2018/2018-11-29-lowcost-65-4k-hdr-tv.md#%E3%82%B5%E3%83%96%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB)。
+このハイセンス 75A6Gはそんな水増しのない、ちゃんとした**RGBサブピクセル**だ。
+
+[【激安の真実】メーカーが言わない格安4Kテレビの落とし穴 - the360.life（サンロクマル）](https://the360.life/U1301.doit?id=1551)
+
+#### バックライト
+
+直下型バックライトを搭載している。このバックライトが<ruby>曲者<rp>（</rp><rt>くせもの</rt><rp>）</rp></ruby>だった。
+
+地上波の視聴中、映像の明るさに応じてバックライトの輝度が変わるのだが、表示される映像より数十ミリ秒早くバックライトの輝度が切り替わることがあり、観ていて不快に感じることが何度かあった。
+ソフトウェアの不良だと思うので今後のアップデートで修正されるだろう。それまでは我慢することとする。
+
+**追記(2021/10/03):** 先日アップデートがあり幾分マシになったが、まだ十ミリ秒ほど早くバックライトの切り替わりが起きている。
+{: .notice--info}
+
+肝心のHDR映像では明暗のシーン切り替わりでバックライトがとても激しく切り替わる。ポジティブに捉えるならばまさにダイナミックなHDRだ。
+アクション映画を見ていて、暗所で銃撃戦になるときに映る[マズルフラッシュ](https://en.wikipedia.org/wiki/Muzzle_flash)が、とてもわかりやすくバックライトの激しさを体感できる。
+全体的に輝度を落とせばHDRの激しさも落ち着くが、通常シーンも暗めになるので調節が難しいところ。
+加えてローカルディミング非搭載ということもあって、暗い部分と明るい部分がはっきり分かれているシーンでは輝度が引っ張られる傾向にある。
+
+HDRを本格的に楽しみたいのであれば、ハイセンスの場合はローカルディミング対応のUシリーズか、有機ELテレビを買った方が良いだろう。
+
+
+![Local dimming](/assets/images/2021/08/07/image_sec05_img01.png)
+
+引用元: [75U8F \| ハイセンスジャパン株式会社](https://www.hisense.co.jp/tv/75u8f/?category=tv&page=75u8f)
+
+#### HDR
+
+前途の通り、HDRはお世辞にも素晴らしいものではないが、使えるなら使いたい機能だ。
+ただ、工場出荷時の設定では互換性優先となっていて、4K60pのHDRが利用できない状態となっている。
+
+設定を開き、「その他の設定＞外部入力・HDMI連動設定＞HDMI　モード選択」を高速通信モードにすると4K60pでHDRが利用できるフォーマットへと変更される。
+後から調べてわかったことだが、これは東芝REGZAの仕様のようだ（やっぱりREGZAじゃないか）。
+
+[ゲーム機との接続におけるHDR信号入力対応｜テレビ｜REGZA：東芝](https://www.regza.com/regza/support/hdr/index.html)
+
+![HDMI Mode select](/assets/images/2021/08/07/mode-select.jpg)
+
+![HDR enabled PS5](/assets/images/2021/08/07/ps5-hdr.jpg)
+
+#### なめらか調整
+
+カクカクしがちな映像をフレーム補完してくれるなめらか調整機能が搭載されているが、これもまた厄介な存在である。
+クリアスムーズ・スムーズ・オフの三段階で調節でき、デフォルトはクリアスムーズとなっているが、おすすめは「オフ」だ。
+
+理由としては二つあり、75A6Gに搭載のNetflixで映画を見ていると、せっかくの24fpsの映像表現が酔うほどに無理やり60fps化され、気分が悪くなってしまったこと。
+そしてMPEGノイズの載った映像に対してなめらか調整がなされると、[ティアリング](https://ja.wikipedia.org/wiki/%E3%83%86%E3%82%A3%E3%82%A2%E3%83%AA%E3%83%B3%E3%82%B0)のような映像の乱れが発生すること。
+これらはなめらか調整レベルをスムーズに下げることによって幾分マシになるが、控えめに言ってなくても良いレベル、強く言えば邪魔な機能なので、オフをおすすめする。
+
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">新しいテレビのNetflixで映画み始めたらフレーム補完がデフォルトで強になってて酔いそうな感じになってる🤮</p>&mdash; TODO: 免許証更新 (@mzyy94) <a href="https://twitter.com/mzyy94/status/1412757492572909575?ref_src=twsrc%5Etfw">July 7, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+### DLNA再生対応
+
+これまでNASに保存したコンテンツは[Plex](https://www.plex.tv/ja/)で管理し、AppleTVのPlexアプリで視聴する形をとっていた。
+このテレビにはメディアプレイヤーの機能の中に、USBメモリからの再生に加えてDLNAクライアントが搭載されているため、PlexのDLNA機能を有効にすることで簡易的な視聴ができるようになった。
+ただ、再生位置や未視聴バッジなどは同期されず、UI/UXもお世辞にもいいとは言えないので、おまけ程度と考えた方が良いだろう。
+
+
+**2021/12/17追記：** 久々にDLNAクライアント機能を使ってみたところ、MPEG-TS、MP4共に再生できなくなっていた。どうやらファームウェアアップデートで他のREGZAと同じくDTCP-IPのみ対応に制限されてしまったようだ。
+{: .notice--info}
+
+## 通信システムの解析
+
+ここからが本題。通信機器としての75A6Gを見ていく。
+
+### TCP/IP
+
+インターネットテレビ対応とあって、有線LANや無線LANによるインターネット接続に対応している。
+なのでnmapでネットワークスキャンをかけてみた。
+
+```
+Starting Nmap 7.91 ( https://nmap.org ) at 2021-07-14 02:46 JST
+Nmap scan report for 192.168.181.222
+Host is up (0.0039s latency).
+Not shown: 65529 closed ports
+PORT      STATE SERVICE     VERSION
+7681/tcp  open  unknown
+9080/tcp  open  glrpc
+20000/tcp open  upnp        Intel UPnP reference SDK 1.2 (Linux 4.19.79-dtv2020-t31-20210402; UPnP 1.0; DLNADOC 1.50)
+51048/tcp open  ssl/unknown
+56789/tcp open  tcpwrapped
+56790/tcp open  tcpwrapped
+MAC Address: 96:14:EE:8A:FF:70 (Unknown)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel:4.19.79-dtv2020-t31-20210402
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 150.08 seconds
+```
+
+いくつかサービスをListenしているようだ。大きい順にさらに深く調べていく。
+
+#### TCPポート 56789/56790
+
+これは先日紹介したDIAL RESTプロトコルに使われているものだ。
+
+{% include post-link.html slug="dial-rest-protocol" %}
+
+#### TCPポート 51048
+
+SSL/TLSではあるものの、nmapによるとCipher suiteが謎のようだ。
+OpenSSLコマンドでいくつか試したところ、TLS 1.2とSHA256暗号スイートの組み合わせで通信を始められた。
+
+```
+$ openssl s_client -connect 192.168.181.222:51048 -tls1_2 -cipher NULL-SHA256 2>/dev/null
+CONNECTED(00000003)
+---
+Certificate chain
+ 0 s:/CN=REGZA NetLog Server/ST=Kanagawa/C=JP/O=Toshiba Visual Solutions Co.
+   i:/CN=REGZA NetLog CA
+ 1 s:/CN=REGZA NetLog CA
+   i:/CN=REGZA NetLog CA
+---
+Server certificate
+-----BEGIN CERTIFICATE-----
+MIIDBzCCAe+gAwIBAgIBATANBgkqhkiG9w0BAQsFADAaMRgwFgYDVQQDEw9SRUda
+QSBOZXRMb2cgQ0EwHhcNOTUwMTAxMDAwMDAyWhcNMjQxMjI0MDAwMDAyWjBlMRww
+GgYDVQQDDBNSRUdaQSBOZXRMb2cgU2VydmVyMREwDwYDVQQIDAhLYW5hZ2F3YTEL
+MAkGA1UEBhMCSlAxJTAjBgNVBAoMHFRvc2hpYmEgVmlzdWFsIFNvbHV0aW9ucyBD
+by4wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC28JD8qR9EPN7hnuP7
+AGXtKe/8IREN//34txhA0yFAn6xHpBYx6gfDCkZbsCl9WIBHb533GLQ2M8FXYH/H
+N9F0BOdOP6EC2m3ztGRjNiBr8IyihgsKZZjCXFqU0a1kIWwyhdNtzQrBWPLvvD/M
+Ubsq9gw8zlJoFATVG1okq3jiLy+xMinfUsdoGwUKBCqqiT4xbtjADHAGfZ+5DRis
+5PfJPQqhWQSJnTB/ZodS3fQs2/kqSdfK5TzPiotxuFubzGa1ucbPvAxZQFid76fT
+4Zjotyvf7VHB6OCb8qar+u1izURL1A2XCksgd8/ivRHqz4YL5HVzw1ajKNCB+qau
+1tr9AgMBAAGjDTALMAkGA1UdEwQCMAAwDQYJKoZIhvcNAQELBQADggEBACwPifwt
+8oyPSxJAkF1bC6/w8jVmbfI5O0KSnRXivJ+/maCs0t5r/ciFzAxCx/mUULR46rh/
+fuyFG6q9g2ov9Q5XRUWQqc8D87do2aYOV84kGndtUqGdhev1MUe2K9cK/dDZwld4
+3+JYTRPbZ92BBYDkXckKtLEI3LTYT+/S5dqJJtL4osyQqNt2j+lhCnuP+1VGlvlM
+bL+lI50fm7v4iI8SBVa6bWfYl141EYaKzj8ewe0fPfRwqE6df/hTFGttv+j7G6yE
+5fMsLPMHxPLwcjgaI4kzoN31Mfw7kTKasM2NuNyxighXPOmaEmlncS9BuTFRQJim
+mgrsmOTBLXJ5sRY=
+-----END CERTIFICATE-----
+subject=/CN=REGZA NetLog Server/ST=Kanagawa/C=JP/O=Toshiba Visual Solutions Co.
+issuer=/CN=REGZA NetLog CA
+---
+No client certificate CA names sent
+---
+SSL handshake has read 1628 bytes and written 338 bytes
+---
+New, TLSv1/SSLv3, Cipher is NULL-SHA256
+Server public key is 2048 bit
+Secure Renegotiation IS supported
+Compression: NONE
+Expansion: NONE
+No ALPN negotiated
+SSL-Session:
+    Protocol  : TLSv1.2
+    Cipher    : NULL-SHA256
+    Session-ID:
+    Session-ID-ctx:
+    Master-Key: BF86D4091A74BBEB0A565D7A207907AE4D714B09F1951749BC09DF9A92D0DAE2A6CFA177FB2C967194F6AC69535D297E
+    Start Time: 1627154771
+    Timeout   : 7200 (sec)
+    Verify return code: 19 (self signed certificate in certificate chain)
+---
+```
+
+「REGZA NetLog Server」って。やはりハイセンスの皮を被ったREGZAじゃないか（呆れ）。
+
+![REGZA Certificate](/assets/images/2021/08/07/regza-certificate.png)
+
+クライアント証明書を要求されるので接続の確立まではできなかったが、サービスポートのようだ。
+
+#### TCPポート 20000
+
+HTTPサーバーが立っていて、DLNAのなにかが動いていた。
+UPnPで探索してもこのポートは告知されないので、DLNAのサービスが見つけられない状態となっている。
+外部連携機能によって外部から録画番組を観れると取扱説明書にあり、おそらくDLNAのことだろうが、ご覧の通り正しく動いていない可能性が高い。
+
+```
+$ curl -s -D - http://192.168.181.222:20000  
+HTTP/1.1 500 Internal Server Error
+SERVER: Linux/4.19.79-dtv2020-t31-20210402 UPnP/1.0 DLNADOC/1.50 Intel_SDK_for_UPnP_devices/1.2
+CONTENT-LENGTH: 60
+CONTENT-TYPE: text/html
+
+<html><body><h1>500 Internal Server Error</h1></body></html>
+```
+
+#### TCPポート 9080
+
+Netflixがローカルネットワークの端末から再生コントロールを受け付けるためのHTTPポート。
+通信の流れはこちらのDIALの記事の後半に記載した。
+
+[DIALによる起動後の操作連携](../2021/2021-08-03-dial-rest-protocol.md#dialによる起動後の操作連携)
+
+#### TCPポート 7681
+
+よくわからず。nmapもunknownと行っているのでunknownなんだろう。
+
+### HDMI
+
+HDMIも立派な制御信号や映像を伝送する通信規格なので、もれなく調査する。
+調査方法にあたっては、以下の過去記事やKernel/VM探検隊online part2で発表した時の資料を参照のこと。
+
+{% include post-link.html slug="raspberrypi-hdmi-edid-cec" %}
+
+
+<iframe src="//www.slideshare.net/slideshow/embed_code/key/sc4bHyHUnKmTH" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/mzyy94/hdmi-expedition" title="HDMI探検隊" target="_blank">HDMI探検隊</a> </strong> from <strong><a href="https://www.slideshare.net/mzyy94" target="_blank">Yuki Mizuno</a></strong> </div>
+
+[HDMIケーブルはどんな制御信号を送っているのか　悪意ある「BadHDMI」を見分けるために知っておくこと - ログミーTech](https://logmi.jp/tech/articles/324535)
+
+
+#### EDID
+
+![HDMI mode list](/assets/images/2021/08/07/mode-list.jpg)
+
+この製品は4K60pのHDRに対応しているが、PS5で動かなくて困っていた。
+この時EDIDを調査したところ、クロックが297MHzで帯域が足りていない様子だった。
+
+<p>
+<details>
+<summary>EDIDデコード結果</summary>
+<div class="highlighter-rouge"><pre><code>EDID version: 1.3
+Manufacturer: HEC Model 1024 Serial Number 00000000
+Digital display
+Maximum image size: 160 cm x 90 cm
+Gamma: 2.20
+RGB color display
+First detailed timing is preferred timing
+Display x,y Chromaticity:
+  Red:   0.6250, 0.3398
+  Green: 0.2802, 0.5947
+  Blue:  0.1552, 0.0703
+  White: 0.2832, 0.2978
+Established timings supported:
+  640x480@60Hz 4:3 HorFreq: 31469 Hz Clock: 25.175 MHz
+  800x600@60Hz 4:3 HorFreq: 37900 Hz Clock: 40.000 MHz
+  1024x768@60Hz 4:3 HorFreq: 48400 Hz Clock: 65.000 MHz
+Standard timings supported:
+  1280x1024@60Hz 5:4 HorFreq: 64000 Hz Clock: 108.000 MHz
+Detailed mode: Clock 297.000 MHz, 1600 mm x 900 mm
+               3840 4016 4104 4400 hborder 0
+               2160 2168 2178 2250 vborder 0
+               +hsync +vsync 
+               VertFreq: 30 Hz, HorFreq: 67500 Hz
+Detailed mode: Clock 148.500 MHz, 1600 mm x 900 mm
+               1920 2008 2052 2200 hborder 0
+               1080 1084 1089 1125 vborder 0
+               +hsync +vsync 
+               VertFreq: 60 Hz, HorFreq: 67500 Hz
+Monitor name: HISENSE
+Monitor ranges (GTF): 23-61Hz V, 15-135kHz H, max dotclock 300MHz
+Has 1 extension blocks
+Checksum: 0x4 (valid)
+
+CTA extension block
+Extension version: 3
+60 bytes of CTA data
+  Video data block
+    VIC  16 1920x1080@60Hz 16:9  HorFreq: 67500 Hz Clock: 148.500 MHz
+    VIC  32 1920x1080@24Hz 16:9  HorFreq: 27000 Hz Clock: 74.250 MHz
+    VIC  34 1920x1080@30Hz 16:9  HorFreq: 33750 Hz Clock: 74.250 MHz
+    VIC   4 1280x720@60Hz 16:9  HorFreq: 45000 Hz Clock: 74.250 MHz
+    VIC   5 1920x1080i@60Hz 16:9  HorFreq: 33750 Hz Clock: 74.250 MHz
+    VIC   3 720x480@60Hz 16:9  HorFreq: 31469 Hz Clock: 27.000 MHz
+    VIC   2 720x480@60Hz 4:3  HorFreq: 31469 Hz Clock: 27.000 MHz
+    VIC   7 1440x480i@60Hz 16:9  HorFreq: 15734 Hz Clock: 27.000 MHz
+    VIC   6 1440x480i@60Hz 4:3  HorFreq: 15734 Hz Clock: 27.000 MHz
+    VIC   1 640x480@60Hz 4:3  HorFreq: 31469 Hz Clock: 25.175 MHz
+    VIC 100 4096x2160@30Hz 256:135  HorFreq: 67500 Hz Clock: 297.000 MHz
+    VIC  98 4096x2160@24Hz 256:135  HorFreq: 54000 Hz Clock: 297.000 MHz
+    VIC  95 3840x2160@30Hz 16:9  HorFreq: 67500 Hz Clock: 297.000 MHz
+    VIC  93 3840x2160@24Hz 16:9  HorFreq: 54000 Hz Clock: 297.000 MHz
+  Audio data block
+    Linear PCM, max channels 2
+      Supported sample rates (kHz): 48 44.1 32
+      Supported sample sizes (bits): 24 20 16
+    AC-3, max channels 6
+      Supported sample rates (kHz): 48 44.1 32
+      Maximum bit rate: 640 kb/s
+    AAC, max channels 6
+      Supported sample rates (kHz): 48 44.1 32
+      Maximum bit rate: 576 kb/s
+    Dolby Digital+, max channels 8
+      Supported sample rates (kHz): 48 44.1 32
+  Vendor-specific data block, OUI 000c03 (HDMI)
+    Source physical address 2.0.0.0
+    DC_36bit
+    DC_30bit
+    DC_Y444
+    Maximum TMDS clock: 300MHz
+    Supported Content Types:
+      Graphics
+      Photo
+      Cinema
+      Game
+    Video latency: 131
+    Audio latency: 131
+    Interlaced video latency: 96
+    Interlaced audio latency: 96
+    Extended HDMI video details:
+      Base EDID image size is aspect ratio
+      HDMI VIC 1 3840x2160@30Hz 16:9 HorFreq: 67500 Hz Clock: 297.000 MHz
+      HDMI VIC 3 3840x2160@24Hz 16:9 HorFreq: 54000 Hz Clock: 297.000 MHz
+      HDMI VIC 4 4096x2160@24Hz 256:135 HorFreq: 54000 Hz Clock: 297.000 MHz
+  Extended tag: Colorimetry data block
+    xvYCC601
+    xvYCC709
+    BT2020YCC
+    BT2020RGB
+  Extended tag: Video capability data block
+    YCbCr quantization: No Data (0)
+    RGB quantization: Selectable (via AVI Q) (1)
+    PT scan behaviour: Always Overscannned (1)
+    IT scan behaviour: Always Underscanned (2)
+    CE scan behaviour: Always Overscannned (1)
+  Extended tag: HDR static metadata data block
+    Electro optical transfer functions:
+      Traditional gamma - SDR luminance range
+      Traditional gamma - HDR luminance range
+      SMPTE ST2084
+      Hybrid Log-Gamma
+    Supported static metadata descriptors:
+      Static metadata type 1
+  Extended tag: YCbCr 4:2:0 video data block
+    VIC  97 3840x2160@60Hz 16:9  HorFreq: 135000 Hz Clock: 297.000 MHz
+Underscans PC formats by default
+Basic audio support
+Supports YCbCr 4:4:4
+Supports YCbCr 4:2:2
+0 native detailed modes
+Detailed mode: Clock 85.500 MHz, 1600 mm x 900 mm
+               1360 1424 1536 1792 hborder 0
+                768  771  777  795 vborder 0
+               +hsync +vsync 
+               VertFreq: 60 Hz, HorFreq: 47712 Hz
+Detailed mode: Clock 241.500 MHz, 1600 mm x 900 mm
+               2560 2608 2640 2720 hborder 0
+               1440 1443 1448 1481 vborder 0
+               +hsync -vsync 
+               VertFreq: 59 Hz, HorFreq: 88786 Hz
+Detailed mode: Clock 79.500 MHz, 1600 mm x 900 mm
+               1280 1344 1472 1664 hborder 0
+                768  771  778  798 vborder 0
+               -hsync +vsync 
+               VertFreq: 59 Hz, HorFreq: 47776 Hz
+Checksum: 0xeb (valid)</code></pre>
+</div>
+</details>
+</p>
+
+そして高速信号モードに切り替えたところ、EDIDが変化してクロックは594MHzまで対応となり、無事4K60pのHDRに対応する通信を確立できるようになった。
+メニューの操作で高速信号モードに切り替え帯域を増やすという振る舞いは、読ませるEDIDを変えることによって実現していたのだ。
+
+```diff
+--- normal-mode.txt     2021-08-06 05:10:49.647907811 +0900
++++ high-speed.txt      2021-08-06 05:18:57.977892309 +0900
+@@ -16,24 +16,24 @@
+   1024x768@60Hz 4:3 HorFreq: 48400 Hz Clock: 65.000 MHz
+ Standard timings supported:
+   1280x1024@60Hz 5:4 HorFreq: 64000 Hz Clock: 108.000 MHz
+-Detailed mode: Clock 297.000 MHz, 1600 mm x 900 mm
++Detailed mode: Clock 594.000 MHz, 1600 mm x 900 mm
+                3840 4016 4104 4400 hborder 0
+                2160 2168 2178 2250 vborder 0
+                +hsync +vsync 
+-               VertFreq: 30 Hz, HorFreq: 67500 Hz
++               VertFreq: 60 Hz, HorFreq: 135000 Hz
+ Detailed mode: Clock 148.500 MHz, 1600 mm x 900 mm
+                1920 2008 2052 2200 hborder 0
+                1080 1084 1089 1125 vborder 0
+                +hsync +vsync 
+                VertFreq: 60 Hz, HorFreq: 67500 Hz
+ Monitor name: HISENSE
+-Monitor ranges (GTF): 23-61Hz V, 15-135kHz H, max dotclock 300MHz
++Monitor ranges (GTF): 23-61Hz V, 15-135kHz H, max dotclock 600MHz
+ Has 1 extension blocks
+-Checksum: 0x4 (valid)
++Checksum: 0x6e (valid)
+ 
+ CTA extension block
+ Extension version: 3
+-60 bytes of CTA data
++72 bytes of CTA data
+   Video data block
+     VIC  16 1920x1080@60Hz 16:9  HorFreq: 67500 Hz Clock: 148.500 MHz
+     VIC  32 1920x1080@24Hz 16:9  HorFreq: 27000 Hz Clock: 74.250 MHz
+@@ -49,6 +49,7 @@
+     VIC  98 4096x2160@24Hz 256:135  HorFreq: 54000 Hz Clock: 297.000 MHz
+     VIC  95 3840x2160@30Hz 16:9  HorFreq: 67500 Hz Clock: 297.000 MHz
+     VIC  93 3840x2160@24Hz 16:9  HorFreq: 54000 Hz Clock: 297.000 MHz
++    VIC  97 3840x2160@60Hz 16:9  HorFreq: 135000 Hz Clock: 594.000 MHz
+   Audio data block
+     Linear PCM, max channels 2
+       Supported sample rates (kHz): 48 44.1 32
+@@ -81,6 +82,13 @@
+       HDMI VIC 1 3840x2160@30Hz 16:9 HorFreq: 67500 Hz Clock: 297.000 MHz
+       HDMI VIC 3 3840x2160@24Hz 16:9 HorFreq: 54000 Hz Clock: 297.000 MHz
+       HDMI VIC 4 4096x2160@24Hz 256:135 HorFreq: 54000 Hz Clock: 297.000 MHz
++  Vendor-specific data block, OUI c45dd8 (HDMI Forum)
++    Version: 1
++    Maximum TMDS Character Rate: 600MHz
++    SCDC Present
++    Supports 12-bits/component Deep Color 4:2:0 Pixel Encoding
++    Supports 10-bits/component Deep Color 4:2:0 Pixel Encoding
++    Supports Auto Low-Latency Mode
+   Extended tag: Colorimetry data block
+     xvYCC601
+     xvYCC709
+@@ -100,8 +108,8 @@
+       Hybrid Log-Gamma
+     Supported static metadata descriptors:
+       Static metadata type 1
+-  Extended tag: YCbCr 4:2:0 video data block
+-    VIC  97 3840x2160@60Hz 16:9  HorFreq: 135000 Hz Clock: 297.000 MHz
++  Extended tag: YCbCr 4:2:0 capability map data block
++    VSD Index 14
+ Underscans PC formats by default
+ Basic audio support
+ Supports YCbCr 4:4:4
+@@ -117,10 +125,5 @@
+                1440 1443 1448 1481 vborder 0
+                +hsync -vsync 
+                VertFreq: 59 Hz, HorFreq: 88786 Hz
+-Detailed mode: Clock 79.500 MHz, 1600 mm x 900 mm
+-               1280 1344 1472 1664 hborder 0
+-                768  771  778  798 vborder 0
+-               -hsync +vsync 
+-               VertFreq: 59 Hz, HorFreq: 47776 Hz
+-Checksum: 0xeb (valid)
++Checksum: 0xc2 (valid)
+```
+
+#### CEC
+
+cec-clientでscanをかけてみると、CEC 1.4を搭載していることがわかった。
+
+```
+CEC bus information
+===================
+device #0: TV
+address:       0.0.0.0
+active source: no
+vendor:        Unknown
+osd string:    TV
+CEC version:   1.4
+power status:  standby
+language:      jpn
+```
+
+いくつかCECフレームを送ってみたところ、リモコン信号のパススルー命令 (メッセージID: `0x44`) が機能した。
+Raspberry Piなど任意のHDMIデバイスを経由して次のようなCECフレームを送ることで、リモコンを使わずにテレビの操作ができることを確認できた。
+
+- `F0:44:6D`: テレビの電源をON (Power On: `0x6D`)
+- `F0:44:42`: ボリュームを下げる (Volume Down: `0x42`)
+- `F0:44:53`: 番組表を表示する (EPG: `0x53`)
+
+#### DDC/CI
+
+HDMIのI2Cバスを見てみたところ、アドレス0x37が現れなかった。
+なのでほとんどのテレビと同じく、DDC/CIは非搭載である。
+
+```
+pi@raspberrypi:~ $ i2cdetect -y 2
+     0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
+00:          -- -- -- -- -- -- -- -- -- -- -- -- -- 
+10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+20: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+30: -- -- -- -- -- -- -- -- -- -- 3a -- -- -- -- -- 
+40: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+50: 50 51 -- -- 54 -- -- -- -- -- -- -- -- -- -- -- 
+60: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+70: -- -- -- -- -- -- -- --      
+```
+
+### 赤外線
+
+リモコンは赤外線で通信されていて、これもまた一人前の無線通信規格なので調査する。
+リモコンの型番はEN3B40H。
+いくつか信号をデコードしてみると、プロトコルはNECであることが特定できた。
+
+[赤外線リモコンの通信フォーマット](http://elm-chan.org/docs/ir_format.html)
+
+全てのボタンのコードは下表の通りである。
+
+**カスタマーコード: `00bf`**
+
+ボタン | データ | ボタン | データ | ボタン | データ
+---|:---:|---|:---:|---|:---:
+<i class="fas fa-power-off" style="color:red"></i> | `0d` | 入力切替 | `12` | 地デジ | `1b`
+BS     | `4c` | CS     | `47` | 4K     | `64` | 
+1      | `01` | 2      | `02` | 3      | `03` | 
+4      | `04` | 5      | `05` | 6      | `06` | 
+7      | `07` | 8      | `08` | 9      | `09` | 
+0      | `00` | 11     | `0b` | 12     | `1c` | 
+<span style="color:blue">青<span>   | `55` | <span style="color:red">赤<span>    | `52` | <span style="color:green">緑<span>  | `53` | 
+<span style="color:yellow">黄<span> | `54` | 音量+     | `44` | 音量-     | `43` | 
+画面表示   | `0c` | 消音   | `0e` | チャンネル<i class="fas fa-angle-up"></i>   | `4a` | 
+チャンネル<i class="fas fa-angle-down"></i>    | `4b` | 設定 | `14` | サブメニュー | `4f` | 
+番組表  | `1d` | <i class="fas fa-angle-up"></i>     | `16` | <i class="fas fa-angle-down"></i>   | `17` | 
+<i class="fas fa-angle-left"></i>   | `19` | <i class="fas fa-angle-right"></i>  | `18` | 決定  | `15` | 
+戻る   | `48` | ホーム   | `20` | 終了   | `bf` | 
+録画リスト | `5d` | 音声切替 | `11` | クリア音声 | `63` | 
+_d_ データ | `1f` | <i class="fas fa-fast-backward"></i>   | `59` | <i class="fas fa-fast-forward"></i>    | `58` | 
+<i class="fas fa-backward"></i>     | `57` | <i class="fas fa-forward"></i>     | `56` | <i class="fas fa-circle" style="color:red"></i>    | `5e` | 
+<i class="fas fa-square"></i>   | `5a` | <i class="fas fa-pause"></i>  | `4e` | <i class="fas fa-play"></i>   | `1e` | 
+Netflix | `2d` | YouTube | `aa` | prime video  | `bb` | 
+hulu   | `cb` | ABEMA  | `cc` | U-NEXT  | `b8` |
+
+
+## まとめ
+
+テレビを通信機器という視点で捉え、各種経路を調査してみた。
+目的はアタック・サーフェスを見つけ出しハッキングすることであったが、すぐに利用できる穴は無いようだ。残念。
+
+TCP/IPはサーバーとして機能している部分のみを今回は調査したため、クライアント側に穴がある可能性は大いにある。
+すでに何箇所か平文で通信している部分は観測しているので、攻撃まで行かずとも遊ぶことはできるだろう。
+
+今回の調査の過程で、テレビがテレビらしからぬほどのインターネット通信をしていることを観測できた。
+
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">パケットログ見てると4KテレビがAWSにめちゃくちゃな数のコネクション張り続けてて怖い</p>&mdash; TODO: 免許証更新 (@mzyy94) <a href="https://twitter.com/mzyy94/status/1415003931449597954?ref_src=twsrc%5Etfw">July 13, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+洗濯機ですらIoT家電（笑）と称してクラウド連携する時代であるわけで、最近の家電は行儀が悪いのもが多い。
+例に漏れずこのテレビも大変行儀が悪く、どうしたものか、ちゃんと「しつけ」してあげないといけない機器である。
+
+映像を視聴するという一般的な用途においては、この価格でこの品質のものが手に入ることに少々驚いた。
+総合的に誰もが買って満足できる品だと思うので、オリンピック閉会後も続くステイホームのお供に是非どうぞ。
