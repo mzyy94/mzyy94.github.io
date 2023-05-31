@@ -1,10 +1,25 @@
-.bundle
+# build output
+dist/
+.output/
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+yarn.lock
+package-lock.json
+
+
+# environment variables
+.env
+.env.production
+
+# macOS-specific files
 .DS_Store
-.sass-cache
-.gist-cache
-_stash
-_site
-public
-vendor
-Gemfile.lock
-.jekyll-metadata
+
+# ignore .astro directory
+.astro
