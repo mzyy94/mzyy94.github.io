@@ -4,10 +4,12 @@ import config from "@config/config.json";
 import { getSinglePage } from "@lib/contentParser";
 import dateFormat from "@lib/utils/dateFormat";
 import { abspath,humanize,slugify } from "@lib/utils/textConverter";
+import { getDescriptions } from "@lib/utils/contentDescription";
 import { BiCalendarEdit,BiCategoryAlt } from "react-icons/bi/index.js";
 const authors = await getSinglePage("authors");
 const { summary_length } = config.settings;
 const { className, posts, fluid } = Astro.props;
+const descriptions = await getDescriptions(posts);
 ---
 
 <div class={`row gy-5 gx-4 ${className} ${posts.length == 1 ? "justify-center" : ""} `}>
@@ -79,7 +81,14 @@ const { className, posts, fluid } = Astro.props;
           </a>
         </h3>
         <p class="text-text">
-          {post.body?.slice(0, Number(i === 0 && fluid != false ? summary_length * 2 : summary_length))}...
+          {
+            descriptions[i] ?
+              descriptions[i].length < Number(i === 0 && fluid != false ? summary_length * 2 : summary_length) ?
+              descriptions[i] :
+              descriptions[i].slice(0, Number(i === 0 && fluid != false ? summary_length * 2 : summary_length)) + "..."
+            : post.body?.slice(0, Number(i === 0 && fluid != false ? summary_length * 2 : summary_length))
+            + "..."
+          }
         </p>
       </div>
     ))

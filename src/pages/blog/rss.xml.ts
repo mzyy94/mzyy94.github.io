@@ -1,12 +1,12 @@
 import rss from "@astrojs/rss";
 import { getSinglePage } from "@lib/contentParser";
+import { getDescriptions } from "@lib/utils/contentDescription";
 import config from "@config/config.json";
 
 const moreText = "<br/><br/>続きはWebで";
 export async function get(context) {
   const posts = await getSinglePage("posts");
-  const contents = await Promise.all(posts.map(post => post.render()))
-    .then(p => p.map(p => p.remarkPluginFrontmatter.description));
+  const contents = await getDescriptions(posts);
   return rss({
     title: config.site.title,
     description: config.site.description,
