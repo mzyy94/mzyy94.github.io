@@ -1,6 +1,6 @@
 ---
 title: "独身男性 新築を買う"
-date: 2023-02-07T01:00:00+09:00
+date: 2023-02-27T01:00:00+09:00
 published: true
 toc: true
 categories: ["Misc"]
