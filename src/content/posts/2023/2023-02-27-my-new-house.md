@@ -5,6 +5,7 @@ published: true
 toc: true
 categories: ["Misc"]
 tags: ["home", "house"]
+redirect_from: /blog/2023/02/07/my-new-house/
 image: "/assets/images/2023/02/27/keys.jpg"
 ---
 

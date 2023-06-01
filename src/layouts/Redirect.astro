@@ -1,0 +1,20 @@
+---
+// types for frontmatters
+export interface Props {
+  target: string;
+}
+
+const { target } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en-US">
+  <meta charset="utf-8">
+  <title>Redirecting&hellip;</title>
+  <link rel="canonical" href={target}>
+  <script is:inline set:html={`location.href="${target}"`}></script>
+  <meta http-equiv="refresh" content={`0; url=${target}`}>
+  <meta name="robots" content="noindex">
+  <h1>Redirecting&hellip;</h1>
+  <a href={target}>Click here if you are not redirected.</a>
+</html>
