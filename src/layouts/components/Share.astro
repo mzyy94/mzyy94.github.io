@@ -7,15 +7,26 @@ import {
   IoLogoTwitter,
 } from "react-icons/io5/index.js";
 
-const { base_url } = config.site;
-const { title, description, slug, className } = Astro.props;
+const { base_url, title: site_title } = config.site;
+const { title: content_title, description, slug, className } = Astro.props;
+const title = encodeURIComponent(`${content_title} | ${site_title}`);
 ---
 
 <ul class={`${className}`}>
   <li class="inline-block">
+    <a href={`https://b.hatena.ne.jp/entry/panel/?title=${title}&url=${base_url}/blog/${slug}`} onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;">
+      <svg xmlns="http://www.w3.org/2000/svg" stroke="currentColor" fill="currentColor" viewBox="0 0 512 512" width="1em" height="1em">
+        <rect x="32" y="32" width="448" height="448" rx="64" ry="64" />
+        <text x="64" y="384" font-family="Verdana" font-size="352" font-weight="900" fill="white">
+          B!
+        </text>
+      </svg>
+     </a>
+  </li>
+  <li class="inline-block">
     <a
       aria-label="facebook share button"
-      href={`https://facebook.com/sharer/sharer.php?u=${base_url}/${slug}`}
+      href={`https://facebook.com/sharer/sharer.php?u=${base_url}/blog/${slug}`}
       target="_blank"
       rel="noreferrer noopener"
     >
@@ -25,7 +36,7 @@ const { title, description, slug, className } = Astro.props;
   <li class="inline-block">
     <a
       aria-label="twitter share button"
-      href={`https://twitter.com/intent/tweet/?text=${title}&amp;url=${base_url}/${slug}`}
+      href={`https://twitter.com/intent/tweet/?text=${title}&amp;url=${base_url}/blog/${slug}`}
       target="_blank"
       rel="noreferrer noopener"
     >
@@ -35,7 +46,7 @@ const { title, description, slug, className } = Astro.props;
   <li class="inline-block">
     <a
       aria-label="linkedin share button"
-      href={`https://www.linkedin.com/shareArticle?mini=true&url=${base_url}/${slug}&title=${title}&summary=${description}&source=${base_url}`}
+      href={`https://www.linkedin.com/shareArticle?mini=true&url=${base_url}/blog/${slug}&title=${title}&summary=${description}&source=${base_url}`}
       target="_blank"
       rel="noreferrer noopener"
     >
@@ -45,7 +56,7 @@ const { title, description, slug, className } = Astro.props;
   <li class="inline-block">
     <a
       aria-label="pinterest share button"
-      href={`https://pinterest.com/pin/create/button/?url=${base_url}/${slug}&media=&description=${description}`}
+      href={`https://pinterest.com/pin/create/button/?url=${base_url}/blog/${slug}&media=&description=${description}`}
       target="_blank"
       rel="noreferrer noopener"
     >
