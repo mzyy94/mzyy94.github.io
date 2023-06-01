@@ -14,7 +14,7 @@ image: "/assets/images/2017/07/05/surface_ergonomic_keyboard.jpg"
 肩こりも治り、進捗がとても出るようになりましたが、いろいろと苦労した点もいくつかありました。
 
 <!-- more -->
-{% include toc %}
+## 目次
 
 
 ## エルゴノミクスキーボード選び

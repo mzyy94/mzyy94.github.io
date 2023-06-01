@@ -18,7 +18,7 @@ mikutterをご存知ない方はいないと思いますが、簡単に説明す
 
 
 <!-- more -->
-{% include toc %}
+## 目次
 
 
 ## Brew formulae

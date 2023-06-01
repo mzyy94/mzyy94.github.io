@@ -24,7 +24,7 @@ image: "/assets/images/2020/05/27/joycon-purple.png"
 頑張って手に入れたSplatoon 2カラーを持つことの満足感も捨てがたいですが、Joy-Conに個性を持たせたい気持ちが高まってきたので、この節目をもってSplatoon 2カラーを卒業することにしました。
 
 <!-- more -->
-{% include toc %}
+## 目次
 
 
 ## Joy-Conカラーバリエーション

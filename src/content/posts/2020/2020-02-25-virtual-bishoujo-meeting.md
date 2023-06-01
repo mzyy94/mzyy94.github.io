@@ -20,7 +20,7 @@ image: "/assets/images/2020/02/25/babiniku.png"
 ビデオ会議の存在です。
 
 <!-- more -->
-{% include toc %}
+## 目次
 
 
 ## ビデオ会議

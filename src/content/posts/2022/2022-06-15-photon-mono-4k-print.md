@@ -25,7 +25,7 @@ image: "/assets/images/2022/06/15/photon_mono_4k_sample_print.jpg"
 
 <!-- more -->
 
-{% include toc %}
+## 目次
 
 ## ANYCUBIC Photon Mono 4K
 

@@ -13,7 +13,7 @@ image: "/assets/images/2017/11/10/applewatch-nanopineo2.jpg"
 ひとまずの目標はiOSのホーム(HomeKit)で部屋の照明をON/OFFすることにします。
 
 <!-- more -->
-{% include toc %}
+## 目次
 
 
 <style>

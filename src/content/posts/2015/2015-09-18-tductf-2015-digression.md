@@ -22,7 +22,7 @@ image: "/assets/images/2015/09/18/tductf-frontend.png"
 
 
 <!-- more -->
-{% include toc %}
+## 目次
 
 
 

@@ -21,7 +21,7 @@ Team TomoriNaoのWebサイトは、**JavaScript** を使用せずにいろいろ
 
 
 <!-- more -->
-{% include toc %}
+## 目次
 
 
 ### ロゴのアニメーション

@@ -18,7 +18,7 @@ image: "/assets/images/2020/09/11/magisk-installed.png"
 
 <!-- more -->
 
-{% include toc %}
+## 目次
 
 ## JOYING カーナビのバージョン確認
 

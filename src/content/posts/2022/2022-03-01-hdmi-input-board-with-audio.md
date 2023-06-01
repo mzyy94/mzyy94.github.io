@@ -15,7 +15,7 @@ image: "/assets/images/2022/03/01/soldering-patch.jpg"
 
 {% include post-link.html slug="raspberrypi-hdmi-input" %}
 
-{% include toc %}
+## 目次
 
 
 ## HDMI入力基板で音声も取り出そうとした2020

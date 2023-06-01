@@ -22,7 +22,7 @@ Raspberry Piで地デジを見る
 
 <!-- more -->
 
-{% include toc %}
+## 目次
 
 ## ソフトウェア構成
 

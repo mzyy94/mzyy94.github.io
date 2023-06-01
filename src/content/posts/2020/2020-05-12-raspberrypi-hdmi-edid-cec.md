@@ -16,7 +16,7 @@ image: "/assets/images/2020/05/12/hdmi.jpg"
 はい、今回はRaspberry PiとHDMI EDID/CECの話。
 
 <!-- more -->
-{% include toc %}
+## 目次
 
 
 

@@ -23,7 +23,7 @@ image: "/assets/images/2016/12/05/dokidokivisual.jpg"
 公開されている情報から客観的に図れる値を使う振り返り方をしてみます。
 
 <!-- more -->
-{% include toc %}
+## 目次
 
 
 ### 三者三葉

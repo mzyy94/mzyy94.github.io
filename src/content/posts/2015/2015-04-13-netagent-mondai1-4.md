@@ -17,7 +17,7 @@ tags: ["netagent"]
 この記事ではmondai1からmondai4までの回答を掲載しています。
 
 <!-- more -->
-{% include toc %}
+## 目次
 
 
 ## mondai1

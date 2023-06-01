@@ -21,7 +21,7 @@ image: "/assets/images/2021/02/04/homescreen.png"
 
 <!-- more -->
 
-{% include toc %}
+## 目次
 
 <a href="https://s.click.aliexpress.com/e/_AFArsH" target="_blank"><img src="https://ae01.alicdn.com/kf/H17b3d56096ee462fa7c3ddbe74fd99f55.jpg_350x350.jpg" /></a>
 

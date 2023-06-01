@@ -18,7 +18,7 @@ image: "/assets/images/2019/03/22/platinums.jpg"
 いつものごとくまともな記事じゃないので、ブラウザバックするひとは今のうちにどうぞ。
 
 <!-- more -->
-{% include toc %}
+## 目次
 
 
 

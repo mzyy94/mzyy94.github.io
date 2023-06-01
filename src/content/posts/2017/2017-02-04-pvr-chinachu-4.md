@@ -27,7 +27,7 @@ Add-onのインストールについては、[リポジトリのREADME](https://
 今回はrepository add-onの提供もあるので、そちらのご利用をお勧めします。
 
 <!-- more -->
-{% include toc %}
+## 目次
 
 
 ## インターフェース

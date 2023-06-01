@@ -12,7 +12,7 @@ image: "/assets/images/2015/05/18/scoreboard.png"
 複数ある問題の中でFlagをsubmitしたのは1問だけですが、いくつか正解までたどり着くところまで解けたのでWrite-upを記します。
 
 <!-- more -->
-{% include toc %}
+## 目次
 
 
 ## Babycmd

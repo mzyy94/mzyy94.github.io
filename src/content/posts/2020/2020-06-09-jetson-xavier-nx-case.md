@@ -32,7 +32,7 @@ Jetson Xavier NX開発者キットが発売された。
 この状態では怖くてとても常用できないので、ケースを探すことにした。
 
 <!-- more -->
-{% include toc %}
+## 目次
 
 
 ## Jetson Xavier NX用のケース

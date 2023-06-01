@@ -19,7 +19,7 @@ image: "/assets/images/2016/12/25/kamie.png"
 そんなあなたに、形から入る神絵師のなり方を伝授いたします！
 
 <!-- more -->
-{% include toc %}
+## 目次
 
 
 ## 神絵師入門グッズ

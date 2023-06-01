@@ -22,7 +22,7 @@ image: "/assets/images/2020/03/20/switch-remote-control.jpg"
 ちょっと分量が多いので読むのは大変かも。
 
 <!-- more -->
-{% include toc %}
+## 目次
 
 ## Nintendo Switch Pro Controller
 

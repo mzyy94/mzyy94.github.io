@@ -12,7 +12,7 @@ Intel QSVは高速にある程度の画質のエンコードできてよいで�
 ~~これが意外と骨が折れる作業だったので同じような思いをせぬよう、ご熟読ください。~~（書き直す前の文章です。書き直した理由は後述。）
 
 <!-- more -->
-{% include toc %}
+## 目次
 
 
 ## Intel Media Server Studio (Intel Media SDK)

@@ -21,7 +21,7 @@ Amazonが今年5月に予約販売を開始したディスプレイ付きスマ�
 そんなEcho Show 5を、手始めに分解してみる。
 
 <!-- more -->
-{% include toc %}
+## 目次
 
 
 <img src="/assets/images/2019/12/07/IMG_1425.JPG" alt="echo spot" width="500px" />

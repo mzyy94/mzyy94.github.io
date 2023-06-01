@@ -1,0 +1,27 @@
+h2#目次 {
+  font-size: 1.5em;
+  text-align: center;
+
+  & + ol {
+    border: 2px solid #efefef;
+    width: 80%;
+    margin: auto;
+
+    counter-reset: toc;
+    list-style: none;
+
+    ol {
+      counter-reset: toc;
+      list-style: none;
+      margin: 0;
+    }
+
+    li {
+      counter-increment: toc;
+      margin: 0;
+      &:before {
+        content: counters(toc, ".") " ";
+      }
+    }
+  }
+}

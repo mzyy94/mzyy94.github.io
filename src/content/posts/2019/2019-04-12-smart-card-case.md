@@ -17,7 +17,7 @@ image: "/assets/images/2019/04/12/cases.jpg"
 [前回のクレジットカードの記事](../2019/2019-03-22-platinum-card.md)は、この記事のための布石だった。
 
 <!-- more -->
-{% include toc %}
+## 目次
 
 
 ## スマートウォレット

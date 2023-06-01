@@ -19,7 +19,7 @@ QSVを利用できるベアメタルマシンは我が家に2台あり、より�
 今回はそのマシンに録画用仮想マシンを立て、録画に必要なUSBデバイスとPCI ExpressのレーンとQSVエンコードのためにIntel HD Graphicsのパススルーを試みる記録の第1章となります。
 
 <!-- more -->
-{% include toc %}
+## 目次
 
 
 ## Intel QuickSync Video

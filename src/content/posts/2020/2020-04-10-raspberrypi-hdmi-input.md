@@ -16,7 +16,7 @@ image: "/assets/images/2020/04/10/raspi-hdmi-connected.jpg"
 お題はHDMI入力で遊ぶ、です。
 
 <!-- more -->
-{% include toc %}
+## 目次
 
 
 ## ビデオ転送プロトコル

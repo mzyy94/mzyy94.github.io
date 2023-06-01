@@ -14,7 +14,7 @@ image: "/assets/images/2020/09/07/home-screen.jpg"
 
 
 <!-- more -->
-{% include toc %}
+## 目次
 
 ## JOYING プリウス用9インチナビ
 

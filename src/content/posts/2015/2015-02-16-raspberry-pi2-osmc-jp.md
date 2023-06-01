@@ -15,7 +15,7 @@ Raspberry Piでのメディアセンター用途で代表的なのは[Raspbmc](h
 ということで、Raspberry Pi 2 Model B(以下、RPi2B)にOSMCを導入して日本語化するまでのメモを残します。
 
 <!-- more -->
-{% include toc %}
+## 目次
 
 
 ## OSMCインストール

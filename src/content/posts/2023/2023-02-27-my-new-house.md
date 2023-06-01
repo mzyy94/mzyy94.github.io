@@ -17,7 +17,7 @@ image: "/assets/images/2023/02/27/keys.jpg"
 
 <!-- more -->
 
-{% include toc %}
+## 目次
 
 ## 家選びの条件を狭める
 

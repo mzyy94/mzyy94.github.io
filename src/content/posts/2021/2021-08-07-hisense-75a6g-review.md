@@ -21,7 +21,7 @@ image: "/assets/images/2021/08/07/hisense-75a6g.jpg"
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">𝑚𝑦 𝑛𝑒𝑤 𝑔𝑒𝑎𝑟 <a href="https://t.co/gleCE0owYY">pic.twitter.com/gleCE0owYY</a></p>&mdash; TODO: 免許証更新 (@mzyy94) <a href="https://twitter.com/mzyy94/status/1412752254491234310?ref_src=twsrc%5Etfw">July 7, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-{% include toc %}
+## 目次
 
 ## Hisense 75A6G
 

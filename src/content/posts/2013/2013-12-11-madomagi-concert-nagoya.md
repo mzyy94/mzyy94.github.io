@@ -11,7 +11,7 @@ image: "/assets/images/2013/12/11/madomagi-concert-nagoya.jpg"
 少しの写真とコンサートを聴いた雑感をまとめておきます。
 
 <!-- more -->
-{% include toc %}
+## 目次
 
 
 ## 会場

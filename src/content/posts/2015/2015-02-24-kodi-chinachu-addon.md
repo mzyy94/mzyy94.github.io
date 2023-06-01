@@ -14,7 +14,7 @@ Chinachuには録画ファイルの情報とストリーミング視聴ができ
 これを叩いてKodiで動画コンテンツを視聴できるAdd-onを作ったのでお知らせいたします。
 
 <!-- more -->
-{% include toc %}
+## 目次
 
 
 ## Kodi/XBMC Add-on

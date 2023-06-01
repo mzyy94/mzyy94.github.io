@@ -15,7 +15,7 @@ image: "/assets/images/2021/09/22/IMG_2555.jpg"
 今回は[Firefly](https://en.t-firefly.com/)のStationPCシリーズの最新作、[Station P2](https://www.stationpc.com/product/stationp2)を軽く動かしてみた記録を書き殴った。
 
 <!-- more -->
-{% include toc %}
+## 目次
 
 ## FireflyのStationPC
 

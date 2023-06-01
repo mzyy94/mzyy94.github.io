@@ -15,7 +15,7 @@ image: "/assets/images/2021/06/04/setup.jpg"
 **NOTE:** この記事には「ディスプレイ」「モニター」などの表記ゆれがあります。
 {: .notice--success}
 
-{% include toc %}
+## 目次
 
 ## 42インチ4Kディスプレイに浮かぶ不満と欲
 {% include post-link.html slug="42inch-4k-display" %}

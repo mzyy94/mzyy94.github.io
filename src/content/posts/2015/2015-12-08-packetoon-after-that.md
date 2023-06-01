@@ -36,7 +36,7 @@ image: "/assets/images/2015/12/08/slidoon.png"
 
 
 <!-- more -->
-{% include toc %}
+## 目次
 
 
 ## Splatoonっぽいスライドテーマ
