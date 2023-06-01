@@ -5,10 +5,12 @@ import { abspath,humanize,slugify,markdownify,plainify } from "@lib/utils/textCo
 import { BiCalendarEdit,BiCategoryAlt } from "react-icons/bi/index.js";
 import { getSinglePage } from "@lib/contentParser";
 import config from "@config/config.json";
+import { getDescription } from "@lib/utils/contentDescription";
 
 const { slug } = Astro.props;
 const posts = await getSinglePage("posts");
 const post = posts.find((post) => post.slug.includes(slug));
+const description = await getDescription(post);
 ---
 
 <div class="row my-4 py-4 justify-center border border-gray-200 rounded">
@@ -26,7 +28,7 @@ const post = posts.find((post) => post.slug.includes(slug));
   </h5>
   <div class="row">
     <article class="text-sm text-break col-9">
-      {plainify(markdownify(post.body?.slice(0, 300)) || "")}...
+      {plainify(markdownify((description ?? post.body)?.slice(0, 300)) || "")}...
     </article>
     <div class="col-3">
       {post.data.image && (
