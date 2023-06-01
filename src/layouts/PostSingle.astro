@@ -5,8 +5,9 @@ import SimilarPosts from "@components/SimilarPosts.astro";
 import { getSinglePage } from "@lib/contentParser";
 import dateFormat from "@lib/utils/dateFormat";
 import similerItems from "@lib/utils/similarItems";
+import readingTime from "@lib/utils/readingTime";
 import { abspath,humanize,markdownify,slugify } from "@lib/utils/textConverter";
-import { BiCalendarEdit,BiCategoryAlt } from "react-icons/bi/index.js";
+import { BiCalendarEdit,BiCategoryAlt,BiTimer } from "react-icons/bi/index.js";
 
 const allAuthors = await getSinglePage("authors");
 const posts = await getSinglePage("posts");
@@ -72,6 +73,10 @@ const { title, description, authors, categories, image, date, tags } =
               }
             </ul>
             </>
+          </li>
+          <li class="mx-3 flex items-center flex-wrap font-medium">
+            <BiTimer className="mr-1 h-5 w-5 text-gray-600" />
+            <>{readingTime(markdownify(post.body) ?? "")}</>
           </li>
         </ul>
       </div>

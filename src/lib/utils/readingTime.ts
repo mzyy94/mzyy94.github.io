@@ -1,16 +1,20 @@
+import { plainify } from "@lib/utils/textConverter";
+
 // content reading
 const readingTime = (content: string) => {
-  const WPS = 275 / 60;
+  const CPS = 600 / 60;
 
   let images = 0;
-  const regex = /\w/;
 
-  let words = content.split(" ").filter((word) => {
-    if (word.includes("<img")) {
+  let lines = content.split("\n").filter((line) => {
+    if (line.includes("<img")) {
       images += 1;
+      return false;
     }
-    return regex.test(word);
-  }).length;
+    return true;
+  });
+
+  const chars = plainify(lines.join("\n")).length;
 
   let imageAdjust = images * 4;
   let imageSecs = 0;
@@ -24,7 +28,7 @@ const readingTime = (content: string) => {
     images -= 1;
   }
 
-  const minutes = Math.ceil(((words - imageAdjust) / WPS + imageSecs) / 60);
+  const minutes = Math.ceil(((chars - imageAdjust) / CPS + imageSecs) / 60);
 
   if (minutes < 10) {
     if (minutes < 2) {

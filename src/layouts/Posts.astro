@@ -3,9 +3,10 @@ import { Image } from "@astrojs/image/components";
 import config from "@config/config.json";
 import { getSinglePage } from "@lib/contentParser";
 import dateFormat from "@lib/utils/dateFormat";
-import { abspath,humanize,slugify } from "@lib/utils/textConverter";
+import readingTime from "@lib/utils/readingTime";
+import { abspath,humanize,slugify,markdownify } from "@lib/utils/textConverter";
 import { getDescriptions } from "@lib/utils/contentDescription";
-import { BiCalendarEdit,BiCategoryAlt } from "react-icons/bi/index.js";
+import { BiCalendarEdit,BiCategoryAlt,BiTimer } from "react-icons/bi/index.js";
 const authors = await getSinglePage("authors");
 const { summary_length } = config.settings;
 const { className, posts, fluid } = Astro.props;
@@ -73,6 +74,10 @@ const descriptions = await getDescriptions(posts);
                 ))}
               </ul>
             </>
+          </li>
+          <li class="mr-5 flex items-center flex-wrap">
+            <BiTimer className="mr-1 h-5 w-5 text-gray-600" />
+            <>{readingTime(markdownify(post.body) ?? "")}</>
           </li>
         </ul>
         <h3 class="mb-4">
