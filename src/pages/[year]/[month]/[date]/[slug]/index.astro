@@ -1,0 +1,36 @@
+---
+import Base from "@layouts/Base.astro";
+import PostSingle from "@layouts/PostSingle.astro";
+import { getSinglePage } from "@lib/contentParser.astro";
+
+export async function getStaticPaths() {
+  const posts = await getSinglePage("posts");
+
+  const paths = posts.flatMap((page) => {
+    const [year, month, date, slug] = page.slug.split("/");
+    if (!slug) return [];
+    return {
+      params: {
+        year,
+        month,
+        date,
+        slug,
+      },
+      props: { page },
+    };
+  });
+  return paths;
+}
+
+const { page } = Astro.props;
+const { title, meta_title, description, image } = page.data;
+---
+
+<Base
+  title={title}
+  meta_title={meta_title}
+  description={description}
+  image={image}
+>
+  <PostSingle post={page} />
+</Base>
