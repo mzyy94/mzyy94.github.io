@@ -1,5 +1,6 @@
 import { slug } from 'github-slugger';
 import { marked } from "marked";
+import config from "@config/config.json";
 
 // slugify
 export const slugify = (content: string) => {
@@ -55,3 +56,8 @@ const htmlEntityDecoder = (htmlWithEntities: string): string => {
   );
   return htmlWithoutEntities;
 };
+
+// make absolute path
+export const abspath = (...template: Parameters<typeof String.raw>) => {
+  return (config.site.base_path + String.raw(...template) + (config.site.trailing_slash ? "/" : "")).replaceAll("//", "/");
+}

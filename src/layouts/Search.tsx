@@ -1,6 +1,6 @@
 import config from "@config/config.json";
 import dateFormat from "@lib/utils/dateFormat";
-import { humanize, slugify } from "@lib/utils/textConverter";
+import { abspath, humanize, slugify } from "@lib/utils/textConverter";
 import Fuse from "fuse.js";
 import { useEffect, useRef, useState } from "react";
 import { BiCalendarEdit, BiCategoryAlt } from "react-icons/bi/index.js";
@@ -93,7 +93,7 @@ export default function SearchBar({ searchList }: Props) {
         {searchResults?.map(({ item }) => (
           <div key={item.slug} className={"col-12 mb-8 sm:col-6"}>
             {item.data.image && (
-              <a href={`/${item.slug}`} className="rounded-lg block hover:text-primary overflow-hidden group">
+              <a href={abspath`/${item.slug}`} className="rounded-lg block hover:text-primary overflow-hidden group">
                 <img
                   className="group-hover:scale-[1.03] transition duration-300 w-full"
                   src={item.data.image}
@@ -116,7 +116,7 @@ export default function SearchBar({ searchList }: Props) {
                     {item.data.categories.map((category: string, i: number) => (
                       <li className="inline-block">
                         <a
-                          href={`/categories/${slugify(category)}`}
+                          href={abspath`/categories/${slugify(category)}`}
                           className="mr-2 hover:text-primary font-medium"
                         >
                           {humanize(category)}{i !== item.data.categories.length - 1 && ","}
@@ -129,7 +129,7 @@ export default function SearchBar({ searchList }: Props) {
             </ul>
 
             <h3 className="mb-2">
-              <a href={`/${item.slug}`} className="block hover:text-primary transition duration-300">
+              <a href={abspath`/${item.slug}`} className="block hover:text-primary transition duration-300">
                 {item.data.title}
               </a>
             </h3>
