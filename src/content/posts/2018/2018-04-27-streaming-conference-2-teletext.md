@@ -2,8 +2,8 @@
 title: "Streaming Conference #2 -TELETEXT-"
 date: 2018-04-27T20:00:00+09:00
 published: true
-category: Web
-tags: streaming teletext
+category: ["Web"]
+tags: ["streaming", "teletext"]
 ---
 
 こんにちは、Fennecエバンジェリストです。
