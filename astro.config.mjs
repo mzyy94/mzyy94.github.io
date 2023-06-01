@@ -34,6 +34,7 @@ export default defineConfig({
       [m2dx, {
         styleDirectives: true,
         componentDirectives: true,
+        scanAbstract: "description",
       }],
       remarkEmoji,
       [remarkToc, {
