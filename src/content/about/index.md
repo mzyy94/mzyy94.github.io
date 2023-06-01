@@ -1,23 +1,30 @@
 ---
-title: "I’m John Doe, A content writer based in LDN, Currently at Bookworm"
+title: "mzyy94.com"
 meta_title: "About"
-image: "/images/author.png"
+image: "/assets/images/logo.png"
 draft: false
 
 what_i_do:
-  title: "What I Do"
+  title: "じゃあ、注文を聞こうか。"
   items:
-  - title: "Content Writing"
-    description: "Purus eget ipsum elementum venenatis, quis rutrum mi semper nonpurus eget ipsum elementum venenatis."
+  - title: "Blog"
+    link: "/blog/"
   
-  - title: "Photography"
-    description: "Aenean maximus urna magna elementum, quis rutrum mi semper non purus eget ipsum venenatis."
+  - title: "GitHub"
+    link: "https://github.com/mzyy94"
   
-  - title: "Web Research"
-    description: "Aenean maximus urna magna elementum venenatis, quis semper non purus eget ipsum venenatis."
+  - title: "Twitter"
+    link: "https://twitter.com/mzyy94"
 
 ---
 
-A content writer with over 12 years experience working across brand identity, publishing and digital products. Maecenas sit amet purus eget ipsum elementum venenatis. Aenean maximus urna magna elementum venenatis quis non purus.
+やあ （´・ω・｀)<br>
+ようこそ、mzyy94.comへ。<br>
+このCookieはサービスだから、まず食べて同意して欲しい。
 
-Purus eget ipsum elementum venenatis. Aenean maximus urna magna elementum venenatis, quis rutrum mi semper non purus eget ipsum elementum venenatis, aenean maximus urna magna elementum.
+うん、「また」なんだ。済まない。<br>
+仏の顔もって言うしね、謝って許してもらおうとも思っていない。
+
+でも、このサイトを見たとき、君は、きっと言葉では言い表せない「ときめき」みたいなものを感じてくれたと思う。<br>
+殺伐とした世の中で、そういう気持ちを忘れないで欲しい<br>
+そう思って、このサイトを立てたんだ。
