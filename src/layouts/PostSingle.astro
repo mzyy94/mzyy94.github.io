@@ -8,12 +8,14 @@ import dateFormat from "@lib/utils/dateFormat";
 import similerItems from "@lib/utils/similarItems";
 import readingTime from "@lib/utils/readingTime";
 import { abspath,humanize,markdownify,slugify } from "@lib/utils/textConverter";
-import { BiCalendarEdit,BiCategoryAlt,BiTimer } from "react-icons/bi/index.js";
+import { BiCalendarEdit,BiCategoryAlt,BiTimer,BiArrowToLeft,BiArrowToRight } from "react-icons/bi/index.js";
+import prevNextPost from "@lib/utils/prevNextPost";
 
 const allAuthors = await getSinglePage("authors");
 const posts = await getSinglePage("posts");
 const { post } = Astro.props;
 const similarPosts = similerItems(post, posts, post.slug);
+const {prev, next} = prevNextPost(post, posts);
 const { Content } = await post.render();
 const { title, description, authors, categories, image, date, tags } =
   post.data;
@@ -126,6 +128,29 @@ const { title, description, authors, categories, image, date, tags } =
 </section>
 
 <Comments />
+
+<nav class="container flex flex-nowrap justify-between py-8" role="navigation">
+  {prev ?
+    <a href={`/blog/${prev.slug}`}>
+      <p class="h5 text-black font-bold">前へ</p>
+      <span>
+        <BiArrowToLeft className="inline" />
+        {prev.data.title}
+      </span>
+    </a>
+    : <span></span>
+  }
+  {next ?
+    <a class="text-right" href={`/blog/${next.slug}`}>
+      <p class="h5 text-black font-bold">次へ</p>
+      <span class="text-right">
+        {next.data.title}
+        <BiArrowToRight className="inline" />
+      </span>
+    </a>
+    : <span></span>
+  }
+</nav>
 
 <!-- similar posts -->
 {
