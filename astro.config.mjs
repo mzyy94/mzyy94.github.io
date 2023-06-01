@@ -10,6 +10,26 @@ import remarkEmoji from "remark-emoji";
 import { defineConfig } from "astro/config";
 import config from "./src/config/config.json";
 
+const resolveRelativeMd = () => {
+  function editLink(node) {
+    if (node.type == "link" && node.url.startsWith("../")) {
+      const newLink = node.url.replace(/^\.\.\/\d+\/(\d+)-(\d+)-(\d+)-([^\.]+)\.mdx?/, (_, y,m,d,s) => `/blog/${y}/${m}/${d}/${s}/`);
+      node.url = newLink;
+    }
+  }
+
+  function processChild(children) {
+    children?.forEach((child) => {
+      editLink(child);
+      processChild(child.children);
+    })
+  }
+
+  return async function transform(root, file) {
+    processChild(root.children ?? [root]);
+  }
+}
+
 // https://astro.build/config
 export default defineConfig({
   site: config.site.base_url ? config.site.base_url : "http://examplesite.com",
@@ -36,6 +56,7 @@ export default defineConfig({
         componentDirectives: true,
         scanAbstract: "description",
       }],
+      resolveRelativeMd,
       remarkEmoji,
       [remarkToc, {
         heading: "目次",
