@@ -6,6 +6,7 @@ import tailwind from "@astrojs/tailwind";
 import remarkToc from "remark-toc";
 import remarkDirective from "remark-directive";
 import remarkDirectiveRehype from "remark-directive-rehype";
+import remarkEmoji from "remark-emoji";
 import { defineConfig } from "astro/config";
 import config from "./src/config/config.json";
 
@@ -31,6 +32,7 @@ export default defineConfig({
     remarkPlugins: [
       remarkDirective,
       remarkDirectiveRehype,
+      remarkEmoji,
       [remarkToc, {
         heading: "目次",
         tight: true,
