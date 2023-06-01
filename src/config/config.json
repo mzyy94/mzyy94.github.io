@@ -1,35 +1,29 @@
 {
   "site": {
-    "title": "Bookworm Light Astro | Blog Template",
-    "base_url": "https://bookworm-light-astro.vercel.app",
+    "title": "犬アイコンのみっきー",
+    "base_url": "https://www.mzyy94.com",
     "base_path": "/",
-    "trailing_slash": false,
-    "favicon": "/images/favicon.png",
-    "logo": "/images/logo.png",
-    "logo_width": "200",
-    "logo_height": "34",
-    "logo_text": "Bookworm Light"
+    "trailing_slash": true,
+    "favicon": "/assets/icons/favicon.ico",
+    "_logo": "/assets/images/logo.png",
+    "logo_width": "64",
+    "logo_height": "64",
+    "logo_text": "犬アイコンのみっきー"
   },
 
   "settings": {
-    "pagination": 5,
+    "pagination": 11,
     "summary_length": 100
   },
 
   "metadata": {
     "meta_author": "Themefisher",
     "meta_image": "/images/og-image.png",
-    "meta_description": "Bookworm Light Astro Blog Template"
+    "meta_description": "犬アイコンのみっきー"
   },
 
   "params": {
     "contact_form_action": "#",
-    "copyright": "Copyright © 2023 a theme by [Themefisher](https://themefisher.com)"
-  },
-
-  "contactinfo": {
-    "address": "355 S Grand Ave <br/> Los Angeles, CA 90071",
-    "email": "info@bookworm.org",
-    "phone": "+800 567 1234"
+    "copyright": "Copyright © 2023 mzyy94. Powered by [Atsro](https://astro.build/) with [Themefisher](https://themefisher.com)"
   }
 }
