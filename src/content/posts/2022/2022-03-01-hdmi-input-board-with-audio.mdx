@@ -6,13 +6,12 @@ categories: ["Multimedia"]
 tags: ["hdmi", "raspberry-pi", "i2s", "tc358743"]
 image: "/assets/images/2022/03/01/soldering-patch.jpg"
 ---
-import PostLink from "@components/PostLink.astro";
 
 2年前に投稿した[HDMI入力をRaspberry Piで取り込む記事](../2020/2020-04-10-raspberrypi-hdmi-input.md)では映像しか取得していませんでしたが、このHDMI入力基板には音声も取り込めるチップ[TC358743](https://toshiba.semicon-storage.com/jp/semiconductor/product/interface-bridge-ics-for-mobile-peripheral-devices/hdmir-interface-bridge-ics/detail.TC358743XBG.html)が搭載されています。
 取り込める端子は購入したHDMI入力基板にもちゃんと用意されていたので、ピンヘッダを取り付けて信号を見たりしたものの、音声出力が正常に取得できませんでした。
 この問題をあれこれ探し回って解決した記録を残しておきます。
 
-<PostLink slug="raspberrypi-hdmi-input" />
+::PostLink{slug="raspberrypi-hdmi-input"}
 
 ## 目次
 
@@ -271,7 +270,7 @@ I2Sのクロック周りで同期が取れないようなエラーです。オ�
 
 <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">プローブがショートして白い煙出しながらオシロスコープ発火してモニター消えたので終わり。</p>&mdash; MMP (@mzyy94) <a href="https://twitter.com/mzyy94/status/1263494401382166528?ref_src=twsrc%5Etfw">May 21, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-<PostLink slug="nintendo-switch-audio-uac-gadget" />
+::PostLink{slug="nintendo-switch-audio-uac-gadget"}
 
 
 ## 音声を取り出すリベンジ

@@ -5,7 +5,6 @@ categories: ["Network"]
 tags: ["25gbe", "nic", "mellanox", "connectx-4"]
 image: "/assets/images/2020/12/11/hello-25gbe-nic.jpg"
 ---
-import PostLink from "@components/PostLink.astro";
 
 
 師走と言えば大掃除。
@@ -24,7 +23,7 @@ PCやiPadやNASなど、いたるところに散らばるデータの掃除に�
 
 2016年、自分でNASを構築する楽しみを感じていたこともあり、NAS4FreeやRockstor、そしてOpenMediaVaultと、OSSのNAS用ディストリビューションをとっかえひっかえしていました。
 
-<PostLink slug="do-you-know-rockstor" />
+::PostLink{slug="do-you-know-rockstor"}
 
 ストレージプールの復元に失敗してデータを失うことが何度かあったものの、ずっと構築を続けられるんじゃないかと感じたくらい楽しかったのを覚えています。
 しかし2018年のある日、突然考え方に変化が起こりました。
@@ -45,7 +44,7 @@ PCやiPadやNASなど、いたるところに散らばるデータの掃除に�
 
 2016年に10GbE NICを導入したのも、NASの移行を頻繁に行なっていたことが理由でした。
 
-<PostLink slug="hello-10gbe-nic" />
+::PostLink{slug="hello-10gbe-nic"}
 
 当時のNASはHDDを4つ積んでRAID5相当で組んだシンプルなストレージ構成ではあったものの、1 GbEでは通信速度が頭打ちとなってしまってストレージのスピードを発揮し切れていなかったのです。
 10GbEの導入でディスクをフルスピードで稼働させ、快適なデータ転送を行えるようになりました。

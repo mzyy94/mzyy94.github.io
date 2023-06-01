@@ -33,6 +33,7 @@ export default defineConfig({
       remarkDirective,
       [m2dx, {
         styleDirectives: true,
+        componentDirectives: true,
       }],
       remarkEmoji,
       [remarkToc, {
