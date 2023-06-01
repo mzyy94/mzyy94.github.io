@@ -59,5 +59,5 @@ const htmlEntityDecoder = (htmlWithEntities: string): string => {
 
 // make absolute path
 export const abspath = (...template: Parameters<typeof String.raw>) => {
-  return (config.site.base_path + String.raw(...template) + (config.site.trailing_slash ? "/" : "")).replaceAll("//", "/");
+  return ("/blog" + String.raw(...template) + (config.site.trailing_slash ? "/" : "")).replaceAll("//", "/");
 }
