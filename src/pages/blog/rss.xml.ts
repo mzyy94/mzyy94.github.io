@@ -1,5 +1,5 @@
 import rss from "@astrojs/rss";
-import { getSinglePage } from "@lib/contentParser.astro";
+import { getSinglePage } from "@lib/contentParser";
 import config from "@config/config.json";
 
 export async function get(context) {

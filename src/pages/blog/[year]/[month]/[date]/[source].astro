@@ -1,7 +1,7 @@
 ---
 import Redirect from "@layouts/Redirect.astro";
 import config from "@config/config.json";
-import { getSinglePage } from "@lib/contentParser.astro";
+import { getSinglePage } from "@lib/contentParser";
 
 export async function getStaticPaths() {
   const posts = await getSinglePage("posts");

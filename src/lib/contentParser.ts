@@ -1,4 +1,3 @@
----
 import { getCollection } from "astro:content";
 
 export const getSinglePage = async (collection: any) => {
@@ -13,4 +12,3 @@ export const getSinglePage = async (collection: any) => {
     }
   })
 };
----
