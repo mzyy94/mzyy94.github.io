@@ -12,6 +12,7 @@
     "@astrojs/mdx": "^0.16.0",
     "@astrojs/rss": "^2.1.0",
     "astro": "^2.0.11",
+    "astro-m2dx": "^0.7.15",
     "date-fns": "^2.29.3",
     "date-fns-tz": "^2.0.0",
     "fuse.js": "^6.6.2",
@@ -19,7 +20,6 @@
     "marked": "^4.2.12",
     "react-icons": "^4.7.1",
     "remark-directive": "^2.0.1",
-    "remark-directive-rehype": "^0.4.2",
     "remark-emoji": "^3.1.1",
     "remark-toc": "^8.0.1"
   },

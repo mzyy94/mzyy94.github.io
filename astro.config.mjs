@@ -5,7 +5,7 @@ import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import remarkToc from "remark-toc";
 import remarkDirective from "remark-directive";
-import remarkDirectiveRehype from "remark-directive-rehype";
+import m2dx from "astro-m2dx";
 import remarkEmoji from "remark-emoji";
 import { defineConfig } from "astro/config";
 import config from "./src/config/config.json";
@@ -31,7 +31,9 @@ export default defineConfig({
   markdown: {
     remarkPlugins: [
       remarkDirective,
-      remarkDirectiveRehype,
+      [m2dx, {
+        styleDirectives: true,
+      }],
       remarkEmoji,
       [remarkToc, {
         heading: "目次",
