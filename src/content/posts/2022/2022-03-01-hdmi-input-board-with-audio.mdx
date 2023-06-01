@@ -6,14 +6,13 @@ categories: ["Multimedia"]
 tags: ["hdmi", "raspberry-pi", "i2s", "tc358743"]
 image: "/assets/images/2022/03/01/soldering-patch.jpg"
 ---
+import PostLink from "@components/PostLink.astro";
 
 2年前に投稿した[HDMI入力をRaspberry Piで取り込む記事](../2020/2020-04-10-raspberrypi-hdmi-input.md)では映像しか取得していませんでしたが、このHDMI入力基板には音声も取り込めるチップ[TC358743](https://toshiba.semicon-storage.com/jp/semiconductor/product/interface-bridge-ics-for-mobile-peripheral-devices/hdmir-interface-bridge-ics/detail.TC358743XBG.html)が搭載されています。
 取り込める端子は購入したHDMI入力基板にもちゃんと用意されていたので、ピンヘッダを取り付けて信号を見たりしたものの、音声出力が正常に取得できませんでした。
 この問題をあれこれ探し回って解決した記録を残しておきます。
 
-<!-- more -->
-
-{% include post-link.html slug="raspberrypi-hdmi-input" %}
+<PostLink slug="raspberrypi-hdmi-input" />
 
 ## 目次
 
@@ -54,14 +53,14 @@ Linux raspberrypi 5.10.63-v7l+ #1496 SMP Wed Dec 1 15:58:56 GMT 2021 armv7l GNU/
 <details>
 <summary>ファームウェア: Dec  1 2021 15:02:46</summary>
 <pre><code>
-Dec  1 2021 15:02:46 
+Dec  1 2021 15:02:46
 Copyright (c) 2012 Broadcom
 version 71bd3109023a0c8575585ba87cbb374d2eeb038f (clean) (release) (start_x)
 </code></pre>
 </details>
 
 ---
-<br>
+<br/>
 
 ## HDMI入力基板 H2C-RPI-B01とTC358743XBG
 
@@ -212,7 +211,7 @@ videodev              200704  9 bcm2835_unicam,v4l2_fwnode,bcm2835_codec,v4l2_co
 media                  36864  5 bcm2835_unicam,bcm2835_codec,videodev,v4l2_mem2mem,tc358743
 pi@raspberrypi:~ $ ls /dev/video*
 /dev/video0  /dev/video10  /dev/video11  /dev/video12
-pi@raspberrypi:~ $ 
+pi@raspberrypi:~ $
 ```
 
 ### 音声出力信号の取り込み
@@ -260,7 +259,7 @@ Recording WAVE '/tmp/rec.wav' : Signed 32 bit Little Endian, Rate 48000 Hz, Mono
 arecord: pcm_read:2145: read error: Interrupted system call
 pi@raspberrypi:~ $ dmesg
 [  560.152152] bcm2835-i2s fe203000.i2s: I2S SYNC error!
-pi@raspberrypi:~ $ 
+pi@raspberrypi:~ $
 ```
 
 I2Sのクロック周りで同期が取れないようなエラーです。オシロスコープでI2S信号を観測したところ、確かに波形がおかしく基板上に問題がありそうだということがわかったのです。
@@ -272,7 +271,7 @@ I2Sのクロック周りで同期が取れないようなエラーです。オ�
 
 <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">プローブがショートして白い煙出しながらオシロスコープ発火してモニター消えたので終わり。</p>&mdash; MMP (@mzyy94) <a href="https://twitter.com/mzyy94/status/1263494401382166528?ref_src=twsrc%5Etfw">May 21, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-{% include post-link.html slug="nintendo-switch-audio-uac-gadget" %}
+<PostLink slug="nintendo-switch-audio-uac-gadget" />
 
 
 ## 音声を取り出すリベンジ
@@ -358,7 +357,7 @@ CM3/CM4ではMIPI CSI-2のバスが二つあり、そのうちCSI0で動作さ�
 南無
 
 
-<a href="https://www.amazon.co.jp/gp/product/B09KC3VGGS?ie=UTF8&psc=1&linkCode=li3&tag=mzyy-22&linkId=009374e7cd8cf1bb2c563b673c60de3d&language=ja_JP&ref_=as_li_ss_il" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B09KC3VGGS&Format=_SL500_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22&language=ja_JP" ></a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=mzyy-22&language=ja_JP&l=li3&o=9&a=B09KC3VGGS" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+<a href="https://www.amazon.co.jp/gp/product/B09KC3VGGS?ie=UTF8&psc=1&linkCode=li3&tag=mzyy-22&linkId=009374e7cd8cf1bb2c563b673c60de3d&language=ja_JP&ref_=as_li_ss_il" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B09KC3VGGS&Format=_SL500_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22&language=ja_JP" /></a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=mzyy-22&language=ja_JP&l=li3&o=9&a=B09KC3VGGS" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
 
 [Amazon \| Geekworm Raspberry Pi Hdmi to CSI-2 （Hdmi入力の最大1080p/25fps）X630 拡張ボード、Raspberry Pi 4B/3B+/3B/Pi Zero/Zero Wに適用 \| Geekworm \| ベアボーンPC 通販](https://www.amazon.co.jp/gp/product/B09KC3VGGS?ie=UTF8&psc=1&linkCode=ll1&tag=mzyy-22&linkId=9d5787b5b84a4f07cc3a07deff07f27e&language=ja_JP&ref_=as_li_ss_tl)
 

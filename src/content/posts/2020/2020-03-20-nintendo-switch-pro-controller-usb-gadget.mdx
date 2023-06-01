@@ -7,6 +7,7 @@ categories: ["Game"]
 tags: ["nintendo", "switch", "usb", "hid", "usb-gadget", "sbc"]
 image: "/assets/images/2020/03/20/switch-remote-control.jpg"
 ---
+import PostLink from "@components/PostLink.astro";
 
 あつまれ どうぶつの森の配信が開始されましたね。いくつか積みゲーが増え始めたNintendo Switchも、また新たにゲームが増えて稼働時間が伸びる一方です。
 
@@ -21,7 +22,6 @@ image: "/assets/images/2020/03/20/switch-remote-control.jpg"
 概要としては、Raspberry PiでNintendo Switch Pro Controllerをシミュレートし、Wi-Fi経由でスマホから操作する話です。
 ちょっと分量が多いので読むのは大変かも。
 
-<!-- more -->
 ## 目次
 
 ## Nintendo Switch Pro Controller
@@ -31,12 +31,12 @@ image: "/assets/images/2020/03/20/switch-remote-control.jpg"
 
 [Amazon \| 【任天堂純正品】Nintendo Switch Proコントローラー \| ゲーム](https://www.amazon.co.jp/%E4%BB%BB%E5%A4%A9%E5%A0%82-Nintendo-Switch-Pro%E3%82%B3%E3%83%B3%E3%83%88%E3%83%AD%E3%83%BC%E3%83%A9%E3%83%BC/dp/B01NCX3W3O/ref=as_li_ss_tl?ref_=nav_ya_signin&&linkCode=ll1&tag=mzyy-22&linkId=8042ff62f0a570bdd0ad6f41fac393dd&language=ja_JP)
 
-<a href="https://www.amazon.co.jp/%E4%BB%BB%E5%A4%A9%E5%A0%82-Nintendo-Switch-Pro%E3%82%B3%E3%83%B3%E3%83%88%E3%83%AD%E3%83%BC%E3%83%A9%E3%83%BC/dp/B01NCX3W3O/ref=as_li_ss_il?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&dchild=1&keywords=%E3%82%B9%E3%82%A4%E3%83%83%E3%83%81+Pro+Controller&qid=1584556077&s=videogames&sr=1-3&linkCode=li3&tag=mzyy-22&linkId=d95f52eefae959908facac13d2cf9c08&language=ja_JP" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B01NCX3W3O&Format=_SL500_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22&language=ja_JP" ></a>
+<a href="https://www.amazon.co.jp/%E4%BB%BB%E5%A4%A9%E5%A0%82-Nintendo-Switch-Pro%E3%82%B3%E3%83%B3%E3%83%88%E3%83%AD%E3%83%BC%E3%83%A9%E3%83%BC/dp/B01NCX3W3O/ref=as_li_ss_il?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&dchild=1&keywords=%E3%82%B9%E3%82%A4%E3%83%83%E3%83%81+Pro+Controller&qid=1584556077&s=videogames&sr=1-3&linkCode=li3&tag=mzyy-22&linkId=d95f52eefae959908facac13d2cf9c08&language=ja_JP" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B01NCX3W3O&Format=_SL500_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22&language=ja_JP" /></a>
 
 Nintendo Switchは、このPro Controllerなど、任天堂製か公式ライセンス商品しかコントローラーとして認識してくれません。
 2017年の年末に没頭していたSplatoon 2で、自動ドット絵作画ツールを作った時も、公式ライセンス商品であるHORIのPokken Padをシミュレートして使っていました。
 
-{% include post-link.html slug="doitsu-no-ika" %}
+<PostLink slug="doitsu-no-ika" />
 
 Pokken Padは、先の記事の通りArduinoベースでのシミュレート実績もあるので比較的簡単にシミュレートできます。
 しかしジャイロやジョイスティックがないので、多くのゲームに対応しようとするには不向きです。
@@ -97,22 +97,22 @@ Linux raspberrypi 4.19.97-v7l+ #1294 SMP Thu Jan 30 13:21:14 GMT 2020 armv7l GNU
 
 pi@raspberrypi:~ $ lsusb
 Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
-Bus 001 Device 003: ID 057e:2009 Nintendo Co., Ltd 
+Bus 001 Device 003: ID 057e:2009 Nintendo Co., Ltd
 Bus 001 Device 002: ID 2109:3431 VIA Labs, Inc. Hub
 Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
 
 pi@raspberrypi:~ $ lsusb -d 057e: -v 2> /dev/null
-Bus 001 Device 003: ID 057e:2009 Nintendo Co., Ltd 
+Bus 001 Device 003: ID 057e:2009 Nintendo Co., Ltd
 Device Descriptor:
   bLength                18
   bDescriptorType         1
   bcdUSB               2.00
-  bDeviceClass            0 
-  bDeviceSubClass         0 
-  bDeviceProtocol         0 
+  bDeviceClass            0
+  bDeviceSubClass         0
+  bDeviceProtocol         0
   bMaxPacketSize0        64
   idVendor           0x057e Nintendo Co., Ltd
-  idProduct          0x2009 
+  idProduct          0x2009
   bcdDevice            2.00
   iManufacturer           1 Nintendo Co., Ltd.
   iProduct                2 Pro Controller
@@ -124,7 +124,7 @@ Device Descriptor:
     wTotalLength       0x0029
     bNumInterfaces          1
     bConfigurationValue     1
-    iConfiguration          0 
+    iConfiguration          0
     bmAttributes         0xa0
       (Bus Powered)
       Remote Wakeup
@@ -136,9 +136,9 @@ Device Descriptor:
       bAlternateSetting       0
       bNumEndpoints           2
       bInterfaceClass         3 Human Interface Device
-      bInterfaceSubClass      0 
-      bInterfaceProtocol      0 
-      iInterface              0 
+      bInterfaceSubClass      0
+      bInterfaceProtocol      0
+      iInterface              0
         HID Device Descriptor:
           bLength                 9
           bDescriptorType        33
@@ -147,7 +147,7 @@ Device Descriptor:
           bNumDescriptors         1
           bDescriptorType        34 Report
           wDescriptorLength     203
-         Report Descriptors: 
+         Report Descriptors:
            ** UNAVAILABLE **
       Endpoint Descriptor:
         bLength                 7
@@ -276,16 +276,16 @@ Input Report ID `0x30`にだけ、詳細にどのビットがどの入力を示�
 
 Usage | Usage | Logical Min/Max | Report Size(bits) | Report Count |
 ---:|---|:---:|:---:|:--:|
-`09` | Button | 0/1 | 1 | 10 
-`09` | Button | 0/1 | 1 | 4 
+`09` | Button | 0/1 | 1 | 10
+`09` | Button | 0/1 | 1 | 4
 - | (blank) | -/- | 1 | 2
 `010001` | Pointer | 0/65534 | 16 | 4 |
-`010030` | X | (ditto) | (ditto) |  
-`010031` | Y | (ditto) | (ditto) |  
-`010032` | Z | (ditto) | (ditto) |  
-`010035` | Rz | (ditto) | (ditto) |  
+`010030` | X | (ditto) | (ditto) |
+`010031` | Y | (ditto) | (ditto) |
+`010032` | Z | (ditto) | (ditto) |
+`010035` | Rz | (ditto) | (ditto) |
 `010039` | Hat switch | 0/7 | 4 |  1
-`09` | Button | 0/1 | 1 | 4 
+`09` | Button | 0/1 | 1 | 4
 
 これを噛み砕くと、`0x30`で始まるURBのデータは、
 
@@ -378,7 +378,7 @@ UART要求に関しては、11バイト目から[Nintendo_Switch_Reverse_Enginee
 Raspberry Pi 4には、ヒートシンク機能付きケースを付けてあります。
 数あるヒートシンク機能付きケースの中でも、HATを固定できるねじ穴が上に出てるのがこの製品にした決め手です。
 
-<a href="https://www.amazon.co.jp/gp/product/B07X47L6DD/ref=as_li_ss_il?ie=UTF8&psc=1&linkCode=li3&tag=mzyy-22&linkId=0a54d809ccd910e81a24a46a564e9077&language=ja_JP" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B07X47L6DD&Format=_SL500_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22&language=ja_JP" ></a>
+<a href="https://www.amazon.co.jp/gp/product/B07X47L6DD/ref=as_li_ss_il?ie=UTF8&psc=1&linkCode=li3&tag=mzyy-22&linkId=0a54d809ccd910e81a24a46a564e9077&language=ja_JP" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B07X47L6DD&Format=_SL500_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22&language=ja_JP" /></a>
 
 [Amazon \| Geekworm Raspberry pi 4(ラズベリーパイ4モデルB) CNC超薄型アルミ合金パッシブ冷却金属ケース、ラズパイ4モデルBのみに適用 \| Geekworm \| ベアボーンPC 通販](https://www.amazon.co.jp/gp/product/B07X47L6DD/ref=as_li_ss_tl?ie=UTF8&psc=1&linkCode=sl1&tag=mzyy-22&linkId=ea0b8274695e7a1074770a391235d70c&language=ja_JP)
 
@@ -577,7 +577,7 @@ Pro Controllerからのボタンの入力データは、**`08 04` Enable USB HID
 
 **追記(2020/05/09)** やっぱりCで書くの辛くなってきたのでGoで書き直した。
 [mzyy94/nscon: Nintendo Switch Controller simulator written in go](https://github.com/mzyy94/nscon)
-{: .notice--info}
+.notice--info
 
 実際に動作している様子がこちら。
 
