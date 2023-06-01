@@ -211,7 +211,7 @@ arecord -v -D hw:UAC1Gadget -c2 -r 48000 -f S16_LE -t wav -V stereo /tmp/rec.wav
 [前回の記事](../2020/2020-04-10-raspberrypi-hdmi-input.md#webrtc)でも扱った映像のWebRTC配信に、音声も乗っけてみます。
 
 HDMI出力はUSB Type-C端子からは取り出せないので、Nintendo Switchドックに接続する必要があります。
-そして、Raspberry Pi 4とNintendo Switchドックは裏面のUSB 3.0ポートに、以下のようなUSB Type-A to USB Type−C 3.0ケーブルを使って接続します。
+そして、Raspberry Pi 4とNintendo Switchドックは裏面のUSB 3.0ポートに、以下のようなUSB Type-A to USB Type−C 3.0ケーブルを使って接続します。
 消費電力の関係で、USB 2.0ポートやUSB 2.0ケーブルを使うと電力不足でRaspberry Piが落ちます。
 また、Nintendo SwitchをDockから抜き差しするとRaspberry Piへの給電が止まるので、間にセルフパワーのUSBハブを噛ませた方がいいです。
 以下は実際に使ってるUSBケーブルとUSBハブです。

@@ -121,7 +121,7 @@ Joy-Con Tool(Web)で色を変えるには、予めmacOSやWindowsにJoy-ConをBl
 
 ### コントローラーの接続
 
-[Joy-Con Tool(Web)](https://www.mzyy94.com/joycon-toolweb/)をGoogle Chromeで開いて、"+ Add"を押すと、コントローラーの接続メニューが出てきます。
+[Joy-Con Tool(Web)](https://www.mzyy94.com/joycon-toolweb/)をGoogle Chromeで開いて、"+ Add"を押すと、コントローラーの接続メニューが出てきます。
 
 ![connect controller](/assets/images/2020/05/27/connect-controller.png)
 
