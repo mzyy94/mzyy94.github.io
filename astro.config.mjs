@@ -4,6 +4,8 @@ import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import remarkToc from "remark-toc";
+import remarkDirective from "remark-directive";
+import remarkDirectiveRehype from "remark-directive-rehype";
 import { defineConfig } from "astro/config";
 import config from "./src/config/config.json";
 
@@ -27,6 +29,8 @@ export default defineConfig({
   ],
   markdown: {
     remarkPlugins: [
+      remarkDirective,
+      remarkDirectiveRehype,
       [remarkToc, {
         heading: "目次",
         tight: true,

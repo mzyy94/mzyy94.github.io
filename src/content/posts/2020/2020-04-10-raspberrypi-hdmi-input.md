@@ -94,9 +94,10 @@ USB接続のこれらはHDMI入力の映像を、UVCプロトコルで転送で�
 
 商品ページに 板子名稱：H2C-RPI-B01 と書かれているため、以下、この製品をH2C-RPI-B01と呼称します。
 
+:::div{.notice .notice--info}
 **追記(2021/5/27)** Waveshareでも今年に入ってから類似の製品が取り扱われるようになったようです。
 [HDMI To CSI Adapter For Raspberry Pi Series, 1080p@30fps Support - Waveshare](https://www.waveshare.com/hdmi-to-csi-adapter.htm)
-{: .notice--info}
+:::
 
 ## H2C-RPI-B01
 

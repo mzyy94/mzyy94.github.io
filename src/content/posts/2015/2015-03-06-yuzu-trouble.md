@@ -22,10 +22,10 @@ tags: ["yuzu", "kosho"]
 
 柚子胡椒を出したかっただけなのです。
 
+:::div{.notice .notice--info}
 **追記:** ここにまとめられているようです。
 [柚子胡椒スロット - Togetterまとめ](http://togetter.com/li/791586)
-{: .notice--info}
-
+:::
 
 ## 解決案
 

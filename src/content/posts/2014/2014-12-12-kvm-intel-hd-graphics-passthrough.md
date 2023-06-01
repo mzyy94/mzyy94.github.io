@@ -78,8 +78,9 @@ Intel IOMMUはIntel VT-dの機能をカーネルで有効にするものです�
 
 このバス 00:02.0をPCIデバイスとしてパススルーするため、kvmの起動オプションに`-device vfio-pci,host=00:02.0,id=hostpci0,bus=ich9-pcie-port-1,addr=0x0,x-vga=on -machine type=q35`を追加します。
 
+:::div{.notice .notice--info}
 **追記(2015/1/30)** このとき、CPUタイプのオプションを`-cpu Haswell,kvm=off,+x2apic`とすることを忘れないでください。
-{: .notice--info}
+:::
 
 すると、ゲストLinuxにしっかりとIntel HD Graphicsが渡されていることがわかります。
 

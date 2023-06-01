@@ -18,6 +18,8 @@
     "github-slugger": "^2.0.0",
     "marked": "^4.2.12",
     "react-icons": "^4.7.1",
+    "remark-directive": "^2.0.1",
+    "remark-directive-rehype": "^0.4.2",
     "remark-toc": "^8.0.1"
   },
   "devDependencies": {

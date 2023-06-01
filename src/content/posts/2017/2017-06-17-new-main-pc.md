@@ -106,9 +106,9 @@ Kaby Lake世代のi5とモバイル版GTX 1070を搭載しています。
 メモリーも32GBまで搭載でき、小型PCとしては可もなく不可もなく、CPUがi5なところが少々気になりますが、LGAなので気になったときにi7-7700Tに換装することができます。
 <del>不満を挙げるとしたら、国内ではKaby Lakeモデルが発売されておらず、Amazon.comからの購入を余儀なくされることくらいでしょうか。</del>
 
+:::div{.notice .notice--info}
 2017/6/23追記： 国内でも販売が開始されました。 [Amazon \| ZOTAC MAGNUS EN1070K GTX1070搭載ゲーミングミニベアボーン PC3094 ZBOX-EN1070K-J \| ベアボーンPC \| パソコン・周辺機器 通販](https://www.amazon.co.jp/MAGNUS-EN1070K-GTX1070%E6%90%AD%E8%BC%89%E3%82%B2%E3%83%BC%E3%83%9F%E3%83%B3%E3%82%B0%E3%83%9F%E3%83%8B%E3%83%99%E3%82%A2%E3%83%9C%E3%83%BC%E3%83%B3-PC3094-ZBOX-EN1070K-J/dp/B071XHVHFK/ref=sr_1_1?ie=UTF8&tag=mzyy-22&qid=1498183756&sr=8-1&keywords=ZBOX-EN1070K-J)
-{: .notice--info}
-
+:::
 
 ## ZBOX EN1070K
 

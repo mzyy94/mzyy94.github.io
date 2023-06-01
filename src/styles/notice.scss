@@ -1,0 +1,22 @@
+.notice {
+  background-color: whitesmoke;
+  border: 0px solid lightgray;
+  border-radius: 8px;
+  border-left-width: 4px;
+  padding: 1em 2em;
+
+  &.notice--info {
+    background-color: aliceblue;
+    border-color: lightblue;
+  }
+
+  &.notice--warn {
+    background-color: cornsilk;
+    border-color: lightsalmon;
+  }
+
+  &.notice--accent {
+    background-color: mistyrose;
+    border-color: lightpink;
+  }
+}
