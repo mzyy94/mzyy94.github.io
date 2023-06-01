@@ -77,7 +77,7 @@ WindowsやmacOS、LinuxやAndroid含め、ほとんどのOSに標準でUAC1とUA
 手法を紹介したの記事と同様、/boot/config.txtと/etc/modulesに追記を済ませておく必要があります。
 接続はシンプルに、それぞれのUSB Type-CポートにUSB 2.0 Type-Cケーブルを接続するだけです。
 
-{% gist 02bcd9d843c77896803c4cd0c4d9b640 uac1_gadget.sh %}
+<script src="https://gist.github.com/mzyy94/02bcd9d843c77896803c4cd0c4d9b640.js?file=uac1_gadget.sh"></script>
 
 <!--
 
@@ -123,7 +123,7 @@ Nintendo SwitchはPro Controllerのシミュレートに関しては、製品ID(
 
 そして、なんと、Pro Controllerを模したUSB GadgetにUACの機能を追加しても、認識しちゃうのです！
 
-{% gist 02bcd9d843c77896803c4cd0c4d9b640 procon_audio.sh %}
+<script src="https://gist.github.com/mzyy94/02bcd9d843c77896803c4cd0c4d9b640.js?file=procon_audio.sh"></script>
 
 <!--
 ```sh

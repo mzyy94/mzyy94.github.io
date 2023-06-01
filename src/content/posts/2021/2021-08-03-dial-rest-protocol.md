@@ -47,7 +47,7 @@ DIAL公式サイトでプロトコル仕様のPDFが提供されていました�
 しかしながら、我が家にはFire TVはありません。一体どのデバイスがこのDIALを喋るようになってしまったのでしょうか。
 仕様書を読みながら簡単に検出スクリプトを書いて実行してみます。
 
-{% gist aa25615639fd3466d37bac7da204778e discover-dial.py %}
+<script src="https://gist.github.com/mzyy94/aa25615639fd3466d37bac7da204778e.js?file=discover-dial.py"></script>
 
 これを実行すると、標準出力には次のような内容が出力されました。
 

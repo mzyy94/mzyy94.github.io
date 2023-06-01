@@ -37,7 +37,7 @@ LightウェイトフォントでJIS第二水準まで含むオープンなフォ
 M+ FONTを利用するため、OSMC上で以下のスクリプトを実行するか、`curl -L http://git.io/pjg5 | sh -`とするとデフォルトフォントをM+ FONTに差し替えられます。
 OSMCへはSSHで（USER/PASSともに`osmc`）ログインしてください。※パスワードの変更をお忘れなく。
 
-{% gist 15ee1b3880107e9d7ece osmc-jp-font-replace.sh %}
+<script src="https://gist.github.com/mzyy94/15ee1b3880107e9d7ece.js?file=osmc-jp-font-replace.sh"></script>
 
 
 このあと、Settings->Appearance->International->Japaneseとすることで、以下のような美しい日本語メニューが表示されるようになります。

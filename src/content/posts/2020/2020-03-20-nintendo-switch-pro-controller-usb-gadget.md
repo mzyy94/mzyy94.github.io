@@ -211,7 +211,7 @@ Raspbianでは、dwc2モジュールをロードしておくため、/boot/confi
 
 [firmware/README at 1.20200212 · raspberrypi/firmware](https://github.com/raspberrypi/firmware/blob/1.20200212/boot/overlays/README#L675-L683)
 
-{% gist 60ae253a45e2759451789a117c59acf9 add_procon_gadget.sh %}
+<script src="https://gist.github.com/mzyy94/60ae253a45e2759451789a117c59acf9.js?file=add_procon_gadget.sh"></script>
 
 Raspberry Pi 4をUSB 2.0 Type-CケーブルでmacOSにつなげた状態でこれを実行すると、以下のようにPro Controllerっぽく認識してくれます。
 そしてRaspberry Pi側には、**/dev/hidg0** といったスペシャルファイルが出来上がります。
@@ -262,7 +262,7 @@ USBケーブルを繋げてすぐにMacとPro Controllerが通信を始め、し
 
 デコードした結果は、以下のようになっています。
 
-{% gist 60ae253a45e2759451789a117c59acf9 hid_report_descriptor %}
+<script src="https://gist.github.com/mzyy94/60ae253a45e2759451789a117c59acf9.js?file=hid_report_descriptor"></script>
 
 
 入力機器からのデータを示すInputの他にOutputがあるのに加え、一番気になるのは、`0x06, 0x00, 0xFF,  //   Usage Page (Vendor Defined 0xFF00)` の部分です。独自のデータ定義が含まれていることを指しています。
@@ -401,12 +401,12 @@ pi@raspberrypi:~ $ sudo dmesg | grep -A7 057e
 割り込んで、URBデータをダンプしてみます。
 
 
-{% gist 60ae253a45e2759451789a117c59acf9 bypass_procon.py %}
+<script src="https://gist.github.com/mzyy94/60ae253a45e2759451789a117c59acf9.js?file=bypass_procon.py"></script>
 
 これをroot権限で実行すると、Nintendo SwitchとPro Controllerの間でやり取りしているデータが流れてきます。
 `30 XX`で始まるPro Controllerからの入力データが多すぎるので、それを非表示にして初期化処理に絞ってみてみます。
 
-{% gist 60ae253a45e2759451789a117c59acf9 bypass_procon_log.txt %}
+<script src="https://gist.github.com/mzyy94/60ae253a45e2759451789a117c59acf9.js?file=bypass_procon_log.txt"></script>
 
 
 この結果をNintendo_Switch_Reverse_Engineeringの資料を元にデコードすると、次のようにやり取りしていることがわかりました。
@@ -559,7 +559,7 @@ Pro Controllerからのボタンの入力データは、**`08 04` Enable USB HID
 ついでにコントローラーの色を変えられるっぽかったので、Raspberry Piカラーにしてみました。
 上の写真にも写ってる通り、USB接続として認識されたコントローラーのボディがラズベリーカラーで、ボタンが葉っぱグリーンになってます。
 
-{% gist 60ae253a45e2759451789a117c59acf9 simulate_procon.py %}
+<script src="https://gist.github.com/mzyy94/60ae253a45e2759451789a117c59acf9.js?file=simulate_procon.py"></script>
 
 動かしてみると、期待通りちゃんとコントローラーとして認識され、操作できました。
 

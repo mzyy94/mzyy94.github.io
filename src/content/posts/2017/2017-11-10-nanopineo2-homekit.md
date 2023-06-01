@@ -290,9 +290,9 @@ pulse 488
 書き出したmode2の出力データを元に、赤外線LEDを点滅させるコードをWiringNPを用いて適当に書き上げました。
 いい感じにビルドしてLEDのつながるGPIOピン番号と先のファイルを引数に与え、照明が点灯/消灯することを確認します。
 
-{% gist 5cf28ac56553142db9364d4178fc5ccc transmitter.c %}
+<script src="https://gist.github.com/mzyy94/5cf28ac56553142db9364d4178fc5ccc.js?file=transmitter.c"></script>
 
-{% gist 5cf28ac56553142db9364d4178fc5ccc hb.sh %}
+<script src="https://gist.github.com/mzyy94/5cf28ac56553142db9364d4178fc5ccc.js?file=hb.sh"></script>
 
 ## HomeKitで照明を操作
 
@@ -303,7 +303,7 @@ pulse 488
 homebridgeの設定はconfig.jsonファイルに記述する形で行います。
 記述方法に関してはそれぞれ調べてもらうとして、今回設定したconfig.jsonを記しておきます。
 
-{% gist f7f008f50c9a9d7cd6d0922527ca722e config.json %}
+<script src="https://gist.github.com/mzyy94/f7f008f50c9a9d7cd6d0922527ca722e.js?file=config.json"></script>
 
 先ほど作った適当なコマンドをたたくため、homebridge-cmdswitch2を使ってます。
 設定ファイルを **~/.homebridge/config.json** に配置したら、`homebridge`として起動するだけでホームアプリなどからの接続を待機し始めます。

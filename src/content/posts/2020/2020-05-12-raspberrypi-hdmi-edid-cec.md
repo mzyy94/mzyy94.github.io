@@ -225,7 +225,7 @@ pi@raspberrypi:~ $ xxd /tmp/edid.bin
 
 Raspbianには`tvservice`とセットで同じ場所に`edidparser`コマンドがあり、これで先ほどのEDIDファイルを読める形にできます。
 
-{% gist 9e9c3a23d84f7167d07a4e7939c85d1d edidparser%20edid.bin %}
+<script src="https://gist.github.com/mzyy94/9e9c3a23d84f7167d07a4e7939c85d1d.js?file=edidparser%20edid.bin"></script>
 
 <!--
 

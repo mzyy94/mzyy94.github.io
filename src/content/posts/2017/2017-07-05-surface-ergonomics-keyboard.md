@@ -252,7 +252,7 @@ macOSでは、以下のように認識されました。
 メディアキーはそのままシステムキーとして利用できますが、ホットキーはそのままでは使えないので、
 [Hammerspoon](http://www.hammerspoon.org/)を使って一部ホットキーが動くようにしました。
 
-{% gist 20f0cea78187459dffa6d55e94298033 init.lua %}
+<script src="https://gist.github.com/mzyy94/20f0cea78187459dffa6d55e94298033.js?file=init.lua"></script>
 
 
 ## まとめ

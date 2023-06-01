@@ -102,7 +102,7 @@ OTAパッケージを用いたファームウェアアップデートは、デ�
 このファイルは有名なアーカイブフォーマットではないようで、おそらく独自のフォーマットで作られている。
 適当に構造を推測しながら解析を進めていくと、次のスクリプトで中身を展開できた。独自フォーマットの解析は朝飯前だ。
 
-{% gist eadad9fc3fd66c91c15dfe874e955f8c extract-allapppkg.py %}
+<script src="https://gist.github.com/mzyy94/eadad9fc3fd66c91c15dfe874e955f8c.js?file=extract-allapppkg.py"></script>
 
 SystemUI.apkやSettings.apkなど、システムの要となるアプリケーションが含まれていた。
 
@@ -122,12 +122,12 @@ main関数からいくつかの処理を経て、終盤に **lsec_updatesh/lsec.
 このようなファイルはアップデートファイルには含まれていないが、勘でShellScriptを用意すれば良いことはわかる。
 物は試しということで、以下のようなスクリプトをUSBメモリの**lsec_updatesh/lsec.sh**に配置し、**lsec6521update**と共に格納してJOYING カーナビに差し込んでみた。
 
-{% gist 18580f051415ea45a3f69aee0805109c lsec.sh %}
+<script src="https://gist.github.com/mzyy94/18580f051415ea45a3f69aee0805109c.js?file=lsec.sh"></script>
 
 ビンゴ〜〜！通常のファームウェアアップデートと同様にダイアログが出たのち、自動でリカバリモードで再起動され、スクリプトが実行された。
 log.txtの中身は次のようになっていた。
 
-{% gist 18580f051415ea45a3f69aee0805109c log.txt %}
+<script src="https://gist.github.com/mzyy94/18580f051415ea45a3f69aee0805109c.js?file=log.txt"></script>
 
 この結果より、**任意のコマンドをroot権限で実行できる**ことがわかった。
 
@@ -196,7 +196,7 @@ Magisk Managerを起動するとｲﾝｽﾄｰﾙという項目が2つある�
 
 例: `sh ./createpatchedboot.sh ~/Downloads/9853i\ OS\ 1024X600\ 800X480\ 1280X720\ 2020.4.7.zip ../magisk_patched.img && ls ./out`
 
-{% gist fc1e5cbed5c6814777e5938351a5bed1 createpatchedboot.sh %}
+<script src="https://gist.github.com/mzyy94/fc1e5cbed5c6814777e5938351a5bed1.js?file=createpatchedboot.sh"></script>
 
 署名の方法については以下のサイトに詳しく解説されているが、今はAOSPプロジェクトに含まれる[SignApk.java](https://android.googlesource.com/platform/build/+/refs/heads/nougat-release/tools/signapk/src/com/android/signapk/SignApk.java)で簡単にできるようになっている。
 

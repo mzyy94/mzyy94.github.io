@@ -90,7 +90,7 @@ ICCIDやIMSIを確認してみたい場合は、pySIMの`pySim-read.py`を実行
 EAP-SIMは標準では無効化されているので、これを有効化します。
 有効化といっても大層なことはせず、設定ファイル`/etc/freeradius/eap.conf`に2行追加するだけですけどね。
 
-{% gist 589e1a1177036df883ae3e91ef0132de eap.conf.patch %}
+<script src="https://gist.github.com/mzyy94/589e1a1177036df883ae3e91ef0132de.js?file=eap.conf.patch"></script>
 
 <!--
 ```diff
@@ -112,7 +112,7 @@ index 797130d..435f7e6 100644
 
 有効化ついでに`/etc/freeradius/clients.conf`のsecretも変えておくとわかりやすくていいですね。
 
-{% gist 589e1a1177036df883ae3e91ef0132de clients.conf.patch %}
+<script src="https://gist.github.com/mzyy94/589e1a1177036df883ae3e91ef0132de.js?file=clients.conf.patch"></script>
 
 <!--
 ```diff
@@ -172,7 +172,7 @@ EAP-SIMのリクエストの仕様上、IMSIからHNIを推定してMCCとMNCを
 必要なツールのインストール`apt-get install hostapd bridge-utils`。
 そして、**/etc/network/interfaces**をこんな感じに。
 
-{% gist 589e1a1177036df883ae3e91ef0132de interfaces %}
+<script src="https://gist.github.com/mzyy94/589e1a1177036df883ae3e91ef0132de.js?file=interfaces"></script>
 
 <!--
 ```
@@ -195,7 +195,7 @@ bridge_ports eth0
 
 で、**/etc/hostapd/hostapd.conf**をこう。
 
-{% gist 589e1a1177036df883ae3e91ef0132de hostapd.conf %}
+<script src="https://gist.github.com/mzyy94/589e1a1177036df883ae3e91ef0132de.js?file=hostapd.conf"></script>
 
 <!--
 ```
@@ -238,7 +238,7 @@ iOSでは、WPA2 EnterpriseのアクセスポイントをデフォルトでEAP-T
 macOSが動く環境をお持ちの方は、[Apple Configurator 2](https://itunes.apple.com/jp/app/apple-configurator-2/id1037126344?mt=12)で上図のように作成するか、
 もしくは*EAP-SIM_AP*向けに作った以下の構成プロファイル（XMLファイル）のAP名を変更したものをiOSデバイスにインストールして準備完了です。
 
-{% gist 589e1a1177036df883ae3e91ef0132de EAP-SIM_AP.mobileconfig %}
+<script src="https://gist.github.com/mzyy94/589e1a1177036df883ae3e91ef0132de.js?file=EAP-SIM_AP.mobileconfig"></script>
 
 最後にお待ちかね、`hostapd /etc/hostapd/hostapd.conf`で起動させて接続してみましょう！
 
