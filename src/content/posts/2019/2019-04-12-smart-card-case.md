@@ -2,7 +2,6 @@
 title: "モダンでスマートなクレジットカードケース3選"
 date: 2019-04-12T10:00:00+09:00
 author: mzyy94
-published: true
 categories: ["Credit Card"]
 tags: ["cashless", "card-case", "wallet"]
 image: "/assets/images/2019/04/12/cases.jpg"
@@ -17,7 +16,6 @@ image: "/assets/images/2019/04/12/cases.jpg"
 
 [前回のクレジットカードの記事](../2019/2019-03-22-platinum-card.md)は、この記事のための布石だった。
 
-<!-- more -->
 ## 目次
 
 

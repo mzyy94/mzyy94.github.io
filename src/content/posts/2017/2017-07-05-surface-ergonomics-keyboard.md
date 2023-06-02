@@ -14,7 +14,6 @@ image: "/assets/images/2017/07/05/surface_ergonomic_keyboard.jpg"
 そんなこんなで年月が経ち、Surface Ergonomic Keyboardが発売されていたので買いました。
 肩こりも治り、進捗がとても出るようになりましたが、いろいろと苦労した点もいくつかありました。
 
-<!-- more -->
 ## 目次
 
 

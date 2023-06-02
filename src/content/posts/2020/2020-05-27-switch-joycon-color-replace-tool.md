@@ -2,8 +2,6 @@
 title: "ブラウザでNintendo SwitchのJoy-Conの色を変える"
 date: 2020-05-27T01:30:00+09:00
 author: mzyy94
-published: true
-toc: true
 categories: ["Game"]
 tags: ["nintendo", "switch", "hid", "webhid", "oss"]
 image: "/assets/images/2020/05/27/joycon-purple.png"
@@ -24,7 +22,6 @@ image: "/assets/images/2020/05/27/joycon-purple.png"
 
 頑張って手に入れたSplatoon 2カラーを持つことの満足感も捨てがたいですが、Joy-Conに個性を持たせたい気持ちが高まってきたので、この節目をもってSplatoon 2カラーを卒業することにしました。
 
-<!-- more -->
 ## 目次
 
 

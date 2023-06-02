@@ -2,7 +2,6 @@
 title: "金属製プラチナカード"
 date: 2019-03-22T22:30:00+09:00
 author: mzyy94
-published: true
 categories: ["Credit Card"]
 tags: ["cashless", "platinum-card"]
 image: "/assets/images/2019/03/22/platinums.jpg"
@@ -18,7 +17,6 @@ image: "/assets/images/2019/03/22/platinums.jpg"
 そしてつい先日、手が滑ってかっこいいプラチナカードを手に入れたので所有欲が満たされ、ついでに手持ちのかっこいいカードの他にはない点に重きを置いて比較をしようと思い立ち、この記事を書いている次第です。
 いつものごとくまともな記事じゃないので、ブラウザバックするひとは今のうちにどうぞ。
 
-<!-- more -->
 ## 目次
 
 

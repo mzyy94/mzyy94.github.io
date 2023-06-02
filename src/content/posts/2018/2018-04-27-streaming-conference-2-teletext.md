@@ -2,7 +2,6 @@
 title: "Streaming Conference #2 -TELETEXT-"
 date: 2018-04-27T20:00:00+09:00
 author: mzyy94
-published: true
 categories: ["Web"]
 tags: ["streaming", "teletext"]
 ---
@@ -16,7 +15,6 @@ tags: ["streaming", "teletext"]
 地上デジタル放送でも字幕放送によって演者の話し声を文字情報として伝えるものがいくつかありますが、インターネット動画ストリーミングにおいては忘れられている存在にも思える2018年。
 そんなテレテキストについて少しでも興味を持ってもらおうと、いくつがWebにおける字幕放送の表現の例をご紹介してきました。
 
-<!-- more -->
 ## 目次
 
 

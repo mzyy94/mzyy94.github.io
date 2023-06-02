@@ -2,8 +2,6 @@
 title: "JOYINGのAndroidカーナビをRoot化する(?)[SC9853i搭載向け]"
 date: 2020-09-11T05:00:00+09:00
 author: mzyy94
-published: true
-toc: true
 categories: ["Automobile"]
 tags: [car-audio", "中華ナビ", "navigation", "joying", "android", "magisk", "root"]
 image: "/assets/images/2020/09/11/magisk-installed.png"
@@ -17,7 +15,6 @@ image: "/assets/images/2020/09/11/magisk-installed.png"
 
 ということで、root化できるかどうかの調査と試行を重ねた挑戦の記録をここに残す。
 
-<!-- more -->
 
 ## 目次
 

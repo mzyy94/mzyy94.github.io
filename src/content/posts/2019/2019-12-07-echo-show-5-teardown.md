@@ -2,8 +2,6 @@
 title: "Echo Show 5で遊びたい　-分解編-"
 date: 2019-12-07T02:00:00+09:00
 author: mzyy94
-published: true
-toc: true
 categories: ["Gadget"]
 tags: ["echo", "alexa", "teardown", "amazon", "iot"]
 image: "/assets/images/2019/12/07/BANNER.JPG"
@@ -21,7 +19,6 @@ Amazonが今年5月に予約販売を開始したディスプレイ付きスマ�
 これまでのディスプレイつきEchoの国内ラインナップは少なく、このShow 5と、より小さな2.5インチの円形ディスプレイを搭載したEcho Spot、そして10.1インチの大型ディスプレイを搭載した[Echo Show(第二世代)](https://www.amazon.co.jp/Echo-Show-%E3%82%A8%E3%82%B3%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%BC-%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E4%BB%98%E3%81%8D%E3%82%B9%E3%83%9E%E3%83%BC%E3%83%88%E3%82%B9%E3%83%94%E3%83%BC%E3%82%AB%E3%83%BC-with-Alexa-%E3%82%B5%E3%83%B3%E3%83%89%E3%82%B9%E3%83%88%E3%83%BC%E3%83%B3/dp/B0793DZCR6/ref=as_li_ss_tl?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&keywords=echo+show&qid=1575653432&smid=AN1VRQENFRJN5&sr=8-2&linkCode=ll1&tag=mzyy-22&linkId=f2f7e2757185180e8814fde62f76b9e4&language=ja_JP)がある。ただ、Echo Spotは取り扱いが終了しているため、現時点ではShow 5とShow(第二世代)の2種類がディスプレイつきEchoとして販売されている。
 そんなEcho Show 5を、手始めに分解してみる。
 
-<!-- more -->
 ## 目次
 
 

@@ -2,7 +2,6 @@
 title: "格安65インチ4K/HDRテレビが届いたのでレビュー"
 date: 2018-11-29T07:00:00+09:00
 author: mzyy94
-published: true
 categories: ["Gadget"]
 tags: ["4k", "hdr", "tv", "display", "ips"]
 image: "/assets/images/2018/11/29/P1021487.JPG"
@@ -31,7 +30,6 @@ BFGDが一向に発売される気配がなく、渋々ちいさなディスプ�
 
 というわけで、BFGDが発売されるまでのつなぎとして格安4K/HDR 65インチテレビを購入したので軽くレビュー。
 
-<!-- more -->
 ## 目次
 
 

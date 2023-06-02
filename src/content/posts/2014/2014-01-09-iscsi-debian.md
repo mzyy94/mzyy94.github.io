@@ -8,7 +8,6 @@ tags: ["iscsi", "debian"]
 
 Linux上でのiSCSIパケット収集のためにVirtual Boxで作成した、Debian 7.0.0にiSCSI initiatorとtargetを入れたときのメモを起こしておきます。
 
-<!-- more -->
 
 今回iSCSIパケットの収集をする必要があったので、Linux上で動くように導入しました。
 iSCSIの説明はまた今度にするとして、簡単に用語を定義しておくと、

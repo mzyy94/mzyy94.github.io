@@ -36,7 +36,6 @@ image: "/assets/images/2015/12/08/slidoon.png"
 是非ともこの期待に応えたいと思ったので、Splatoonっぽいスライドテーマを作成し、公開しました。
 
 
-<!-- more -->
 ## 目次
 
 

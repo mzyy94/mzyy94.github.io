@@ -2,8 +2,6 @@
 title: "Jetson Xavier NXで使えるNano用ケースを2つ試した"
 date: 2020-06-09T00:10:00+09:00
 author: mzyy94
-published: true
-toc: true
 categories: ["Gadget"]
 tags: ["jetson", "xavier", "nx", "nano", "case"]
 image: "/assets/images/2020/06/09/IMG_5087.jpg"
@@ -32,7 +30,6 @@ Jetson Xavier NX開発者キットが発売された。
 さて、無事起動することがわかって、色々と検証をしていこうと思ったものの、Jetson Xavier NX開発者キットは、そのままでは基板剥き出しである。
 この状態では怖くてとても常用できないので、ケースを探すことにした。
 
-<!-- more -->
 ## 目次
 
 

@@ -21,7 +21,6 @@ Charlotteの放映が終わり2ヶ月が経ち、友利奈緒の各家庭にもC
 そんな友利奈緒の、友利奈緒による、友利奈緒のための[友利奈緒 Advent Calendar](http://www.adventar.org/calendars/779) 1日目の記事は、友利奈緒の「いままでとこれから」です。
 
 
-<!-- more -->
 ## 目次
 
 

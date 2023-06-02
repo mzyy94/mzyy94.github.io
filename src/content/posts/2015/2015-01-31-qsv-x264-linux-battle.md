@@ -27,7 +27,6 @@ tags: ["ffmpeg", "qsv", "x264", "linux"]
 このオプションで起動すると、**ffmpeg -i big_buck_bunny_1080p_surround.avi -acodec copy -vcodec コーデック -b:v 2000k -s 1280x720 -r 30000/1001 -y 出力ファイル**という起動オプションになります。
 
 
-<!-- more -->
 ## 目次
 
 

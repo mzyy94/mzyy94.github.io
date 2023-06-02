@@ -2,7 +2,6 @@
 title: "Firefly Station P2を買ったのでとりあえず動かした"
 date: 2021-09-22T11:00:00+09:00
 author: mzyy94
-published: true
 categories: ["Gadget"]
 tags: ["station-pc", "sbc", "rk3568", "rockchip"]
 image: "/assets/images/2021/09/22/IMG_2555.jpg"
@@ -15,7 +14,6 @@ image: "/assets/images/2021/09/22/IMG_2555.jpg"
 
 今回は[Firefly](https://en.t-firefly.com/)のStationPCシリーズの最新作、[Station P2](https://www.stationpc.com/product/stationp2)を軽く動かしてみた記録を書き殴った。
 
-<!-- more -->
 ## 目次
 
 ## FireflyのStationPC

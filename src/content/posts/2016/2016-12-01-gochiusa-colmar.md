@@ -22,7 +22,6 @@ image: "/assets/images/2016/12/01/colmar.jpg"
 さて、聖地巡礼記は[プロ](https://twitter.com/kivantium)が丁寧に書いてくれるということなので、
 聖地巡礼記とはちょっと離れたコルマールの楽しみ方をご紹介します。
 
-<!-- more -->
 ## 目次
 
 

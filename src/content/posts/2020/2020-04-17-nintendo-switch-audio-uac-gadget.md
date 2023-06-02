@@ -2,8 +2,6 @@
 title: "UAC GadgetでNintendo Switchの音声出力をRaspberry Piに取り込む"
 date: 2020-04-17T21:30:00+09:00
 author: mzyy94
-published: true
-toc: true
 categories: ["Multimedia"]
 tags: ["hdmi", "uac", "usb", "usb-gadget", "nintendo", "switch", "raspberry-pi", "sbc", "webrtc", "gstreamer"]
 image: "/assets/images/2020/04/17/usb-audio-detected.jpg"
@@ -15,7 +13,6 @@ HDMI入力からの音声取り込みといった、本質的な課題の解決�
 主に今HDMI入力の対象として使おうと思っているデバイスは、Nintendo Switchです。
 なので、Nintendo Switchの音声出力に限定して、それをRaspberry Piで取り込むことだけを目的とし、音声が取り込めていない問題を解決していきます。
 
-<!-- more -->
 ## 目次
 
 

@@ -19,7 +19,6 @@ image: "/assets/images/2015/06/21/ebi-new-watertank.jpg"
 
 <blockquote class="twitter-tweet" lang="ja"><p lang="ja" dir="ltr">一悶着あったけど無事全員の引越し完了！ <a href="http://t.co/jLvciTSJGs">pic.twitter.com/jLvciTSJGs</a></p>&mdash; エビライブ配信休止中 (@mzyy94) <a href="https://twitter.com/mzyy94/status/595228119708999680">2015, 5月 4</a></blockquote>
 
-<!-- more -->
 ## 目次
 
 

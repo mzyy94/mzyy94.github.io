@@ -13,7 +13,6 @@ image: "/assets/images/2017/11/10/applewatch-nanopineo2.jpg"
 せっかくなのでこのボードでIoTに挑戦することとしました。IoTと言ってもIoT（笑）のほうではなく、実用的なものを目指して。
 ひとまずの目標はiOSのホーム(HomeKit)で部屋の照明をON/OFFすることにします。
 
-<!-- more -->
 ## 目次
 
 

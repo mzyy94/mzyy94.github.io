@@ -2,8 +2,6 @@
 title: "リモートワークでバ美肉ビデオ会議"
 date: 2020-02-25T22:30:00+09:00
 author: mzyy94
-published: true
-toc: true
 categories: ["XR"]
 tags: ["oss", "ios", "arkit", "live2d"]
 image: "/assets/images/2020/02/25/babiniku.png"
@@ -20,7 +18,6 @@ image: "/assets/images/2020/02/25/babiniku.png"
 
 ビデオ会議の存在です。
 
-<!-- more -->
 ## 目次
 
 

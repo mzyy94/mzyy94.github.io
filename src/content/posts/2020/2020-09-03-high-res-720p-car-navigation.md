@@ -2,8 +2,6 @@
 title: "9インチ720pの大画面・高解像度カーナビを探した"
 date: 2020-09-03T22:30:00+09:00
 author: mzyy94
-published: true
-toc: true
 categories: ["Automobile"]
 tags: ["720p", "car-audio", "中華ナビ", "navigation"]
 image: "/assets/images/2020/09/03/joying-package.jpg"
@@ -14,7 +12,6 @@ image: "/assets/images/2020/09/03/joying-package.jpg"
 目まぐるしく変わる都市や新しい道は更新・追加されることなく、地デジもワンセグしか対応していない。
 そのため最近は[Yahoo!カーナビ](https://carnavi.yahoo.co.jp/)など、スマホのカーナビアプリを使うことが多くなってきたこともあり、あまり活用されなくなったこの古いカーナビを買い換えることにした。その買い替え商品を購入するまでの調査記録を残す。
 
-<!-- more -->
 ## 目次
 
 ## 要求スペック

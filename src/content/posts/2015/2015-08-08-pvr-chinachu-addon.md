@@ -28,7 +28,6 @@ image: "/assets/images/2015/08/08/chinachu-pvr-client-1_0_0.png"
 
 そこで思い立ってKodi/XBMC向けのテレビadd-on(PVR add-on)を作って、上記問題の解決に取り組みました。
 
-<!-- more -->
 ## 目次
 
 

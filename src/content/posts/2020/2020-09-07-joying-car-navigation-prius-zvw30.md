@@ -2,8 +2,6 @@
 title: "JOYINGのAndroid中華ナビを買ったので動かしてみた"
 date: 2020-09-07T05:00:00+09:00
 author: mzyy94
-published: true
-toc: true
 categories: ["Automobile"]
 tags: ["720p", "car-audio", "中華ナビ", "navigation", "joying", "android", "carplay", "review"]
 image: "/assets/images/2020/09/07/home-screen.jpg"
@@ -14,7 +12,6 @@ image: "/assets/images/2020/09/07/home-screen.jpg"
 使いこなすまではいかない程度の軽めのレビューです。
 
 
-<!-- more -->
 ## 目次
 
 ## JOYING プリウス用9インチナビ

@@ -12,7 +12,6 @@ image: "/assets/images/2016/07/05/chinachu-rockon-installed.png"
 もっといろいろとやらせてみたくなりました。
 余裕がありそうなので、録画サーバの役割も担ってもらい、録画NASとして我が家で働いてもらいます。
 
-<!-- more -->
 ## 目次
 
 
