@@ -21,7 +21,7 @@ const allTags = await getAllTaxonomy(blog_folder, "tags");
             return (
               <li class="m-3 inline-block">
                 <a
-                  href={`/blog/tags/${tag}/`}
+                  href={encodeURI(`/blog/tags/${tag}/`)}
                   class="block rounded bg-theme-light px-4 py-2 text-xl text-dark dark:bg-darkmode-theme-light dark:text-darkmode-dark"
                 >
                   {humanize(tag)}{" "}
