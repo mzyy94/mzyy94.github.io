@@ -3,6 +3,7 @@ import { Image } from "@astrojs/image/components";
 import config from "@/config/config.json";
 import dateFormat from "@/lib/utils/dateFormat";
 import { humanize, plainify, slugify } from "@/lib/utils/textConverter";
+import { getDescription } from "@/lib/utils/contentDescription";
 import { FaRegClock, FaRegFolder, FaRegUserCircle } from "react-icons/fa/index.js";
 
 const {
@@ -11,11 +12,13 @@ const {
 }: { summary_length: number; blog_folder: string } = config.settings;
 const { data } = Astro.props;
 const { title, image, date, author, categories } = data.data;
+const description = await getDescription(data);
 ---
 
 <div class="bg-body dark:bg-darkmode-body">
   {
     image && (
+    <a href={`/blog/${data.slug}`}>
       <Image
         class="mb-6 w-full rounded"
         src={image}
@@ -23,6 +26,7 @@ const { title, image, date, author, categories } = data.data;
         width={445}
         height={230}
       />
+    </a>
     )
   }
   <h4 class="mb-3">
@@ -53,7 +57,7 @@ const { title, image, date, author, categories } = data.data;
       {dateFormat(date)}
     </li>
   </ul>
-  <p class="mb-6">{plainify(data.body?.slice(0, Number(summary_length)))}</p>
+  <p class="mb-6">{plainify(description.slice(0, Number(summary_length)))}...</p>
   <a
     class="btn btn-outline-primary btn-sm"
     href={`/blog/${data.slug}`}
