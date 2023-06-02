@@ -1,0 +1,5 @@
+.dark h2#目次 {
+  &+ p + details {
+    color: white;
+  }
+}
