@@ -33,6 +33,11 @@ import {
   IoLogoWhatsapp,
   IoLogoYoutube,
   IoMail,
+  IoLogoSteam,
+  IoLogoTwitch,
+  IoLogoAmazon,
+  IoLogoPaypal,
+  IoKey,
 } from "react-icons/io5/index.js";
 
 type SocialLink = {
@@ -67,6 +72,11 @@ type SocialLink = {
   address: string;
   skype: string;
   website: string;
+  steam: string;
+  twitch: string;
+  amazon: string;
+  paypal: string;
+  key: string;
 };
 const {
   facebook,
@@ -100,6 +110,11 @@ const {
   address,
   skype,
   website,
+  steam,
+  twitch,
+  amazon,
+  paypal,
+  key,
 }: SocialLink = source;
 ---
 
@@ -524,6 +539,76 @@ const {
           rel="noopener noreferrer nofollow"
         >
           <IoLocation />
+        </a>
+      </li>
+    )
+  }
+  {
+    steam && (
+      <li class="inline-block">
+        <a
+          aria-label="location"
+          href={steam}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+          <IoLogoSteam />
+        </a>
+      </li>
+    )
+  }
+  {
+    twitch && (
+      <li class="inline-block">
+        <a
+          aria-label="location"
+          href={twitch}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+          <IoLogoTwitch />
+        </a>
+      </li>
+    )
+  }
+  {
+    amazon && (
+      <li class="inline-block">
+        <a
+          aria-label="location"
+          href={amazon}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+          <IoLogoAmazon />
+        </a>
+      </li>
+    )
+  }
+  {
+    paypal && (
+      <li class="inline-block">
+        <a
+          aria-label="location"
+          href={paypal}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+          <IoLogoPaypal />
+        </a>
+      </li>
+    )
+  }
+  {
+    key && (
+      <li class="inline-block">
+        <a
+          aria-label="location"
+          href={key}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+          <IoKey />
         </a>
       </li>
     )

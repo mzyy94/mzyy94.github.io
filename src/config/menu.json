@@ -21,6 +21,10 @@
     {
       "name": "About",
       "url": "/about/"
+    },
+    {
+      "name": "Key",
+      "url": "https://github.com/mzyy94.keys"
     }
   ]
 }
