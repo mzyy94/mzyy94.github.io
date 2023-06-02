@@ -117,6 +117,7 @@ const Search = ({ searchList }: Props) => {
               <div className="mb-12 md:col-6 lg:col-4" key={`search-${index}`}>
                 <div className="bg-body dark:bg-darkmode-body">
                   {item.data.image && (
+                  <a href={`/blog/${item.slug}`}>
                     <img
                       className="mb-6 w-full rounded"
                       src={item.data.image}
@@ -124,9 +125,10 @@ const Search = ({ searchList }: Props) => {
                       width={445}
                       height={230}
                     />
+                  </a>
                   )}
                   <h4 className="mb-3">
-                    <a href={`/${blog_folder}/${item.slug}`}>
+                    <a href={`/blog/${item.slug}`}>
                       {item.data.title}
                     </a>
                   </h4>
@@ -159,7 +161,7 @@ const Search = ({ searchList }: Props) => {
                   </p>
                   <a
                     className="btn btn-outline-primary btn-sm"
-                    href={`/${blog_folder}/${item.slug}`}
+                    href={`/blog/${item.slug}`}
                   >
                     read more
                   </a>
