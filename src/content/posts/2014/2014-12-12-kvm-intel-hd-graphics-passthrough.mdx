@@ -19,7 +19,6 @@ QSVを利用できるベアメタルマシンは我が家に2台あり、より�
 このマシンではKVMで仮想マシンを複数立ち上げていて、カーネルコンパイルなどのCIを回したり、クロスコンパイル環境を構築しているものです。
 今回はそのマシンに録画用仮想マシンを立て、録画に必要なUSBデバイスとPCI ExpressのレーンとQSVエンコードのためにIntel HD Graphicsのパススルーを試みる記録の第1章となります。
 
-<!-- more -->
 ## 目次
 
 
@@ -79,9 +78,9 @@ Intel IOMMUはIntel VT-dの機能をカーネルで有効にするものです�
 
 このバス 00:02.0をPCIデバイスとしてパススルーするため、kvmの起動オプションに`-device vfio-pci,host=00:02.0,id=hostpci0,bus=ich9-pcie-port-1,addr=0x0,x-vga=on -machine type=q35`を追加します。
 
-:::div{.notice .notice--info}
+<Notice type="info">
 **追記(2015/1/30)** このとき、CPUタイプのオプションを`-cpu Haswell,kvm=off,+x2apic`とすることを忘れないでください。
-:::
+</Notice>
 
 すると、ゲストLinuxにしっかりとIntel HD Graphicsが渡されていることがわかります。
 
