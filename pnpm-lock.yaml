@@ -94,6 +94,9 @@ devDependencies:
   sharp:
     specifier: ^0.31.3
     version: 0.31.3
+  sitemap:
+    specifier: ^7.1.1
+    version: 7.1.1
   tailwind-bootstrap-grid:
     specifier: ^5.0.1
     version: 5.0.1(tailwindcss@3.2.6)

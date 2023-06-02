@@ -37,7 +37,14 @@ export default defineConfig({
   trailingSlash: config.site.trailing_slash ? "always" : "never",
   integrations: [
     react(),
-    sitemap(),
+    sitemap({
+      serialize(item) {
+        if (/\/blog\/(\d+)\/(\d+)\/(\d+)\/([^\.]+)\/$/.test(item.url) || item.url.includes(".xml")) {
+          return undefined;
+        }
+        return item;
+      }
+    }),
     tailwind({
       config: {
         applyBaseStyles: false,
