@@ -2,19 +2,22 @@
 import { Image } from "@astrojs/image/components";
 import dateFormat from "@/lib/utils/dateFormat";
 import { humanize,slugify,markdownify,plainify } from "@/lib/utils/textConverter";
-import { FaRegFolder, FaRegUserCircle } from "react-icons/fa/index.js";
+import { FaRegClock, FaRegFolder, FaRegUserCircle } from "react-icons/fa/index.js";
 import { getSinglePage } from "@/lib/contentParser.astro";
 import config from "@/config/config.json";
 import { getDescription } from "@/lib/utils/contentDescription";
 
+const { summary_length } = config.settings;
 const { slug } = Astro.props;
 const posts = await getSinglePage("posts");
 const post = posts.find((post) => post.slug.includes(slug));
+const data = post;
+const { title, image, date, author, categories } = post.data;
 const description = await getDescription(post);
 ---
 
-<div class="row my-4 py-4 justify-center border border-gray-200 rounded">
-  <h5 class="h5 col-12">
+<div class="bg-body dark:bg-darkmode-body border border-gray-200 rounded px-4">
+  <h4 class="mb-3 h5">
     <img
       class="inline my-0"
       src={config.site.icon}
@@ -22,43 +25,49 @@ const description = await getDescription(post);
       width={32}
       height={32}
     />
-    <a href={`/${post.slug}`} class="inline hover:text-primary transition duration-300">
-      {post.data.title}
+    <a href={`/blog/${data.slug}`}>
+      {title}
     </a>
-  </h5>
+  </h4>
   <div class="row">
-    <p class="text-sm text-break col-9">
-      {plainify(markdownify((description ?? post.body)?.slice(0, 300)) || "")}...
-    </p>
-    <div class="col-3">
-      {post.data.image && (
-        <a href={`/${post.slug}`} class="rounded-lg block hover:text-primary overflow-hidden group">
-          <Image
-            class="group-hover:scale-[1.05] transition duration-300 w-full my-0"
-            src={post.data.image}
-            alt={post.data.title}
-            width={230}
-            height={230}
-          />
-        </a>
-      )}
-    </div>
-  </div>
-  <ul class="py-0 my-0 text-text flex flex-wrap items-center text-sm">
-    <li class="my-0 mr-4 flex items-center flex-wrap font-medium">
-      <FaRegUserCircle className={"mr-2 -mt-1 inline-block"} />
-      <>{dateFormat(post.data.date)}</>
-    </li>
-    <li class="my-0 mr-4 flex items-center flex-wrap">
-      <FaRegFolder className={"mr-2 -mt-1 inline-block"} />
-      {post.data.categories.map((category: string, i: number) => (
-          <a
-            href={`/blog/categories/${slugify(category)}/`}
-            class="mr-2 hover:text-primary font-medium"
-          >
-            {humanize(category)}{i !== post.data.categories.length - 1 && ","}
+    <div class="col row justify-between">
+      <p class="mb-6 text-sm">{plainify(description.slice(0, Number(summary_length * 2)))}...</p>
+      <ul class="m-0 flex items-end text-sm">
+        <li class="mr-4 inline-block">
+          <a href={`/blog/authors/${slugify(author)}/`}>
+            <FaRegUserCircle className={"mr-2 -mt-1 inline-block"} />
+            {humanize(author)}
           </a>
-      ))}
-    </li>
-  </ul>
+        </li>
+        <li class="mr-4 inline-block">
+          <FaRegFolder className={"mr-2 -mt-1 inline-block"} />
+          {
+            categories.map((category: string, index: number) => (
+              <a href={`/blog/categories/${slugify(category)}/`}>
+                {humanize(category)}
+                {index !== categories.length - 1 && ","}
+              </a>
+            ))
+          }
+        </li>
+        <li class="mr-4 inline-block">
+          <FaRegClock className={"mr-2 -mt-1 inline-block"} />
+          {dateFormat(date)}
+        </li>
+      </ul>
+    </div>
+  {
+    image && (
+    <a href={`/blog/${data.slug}`} class="col col-2 hidden md:block">
+      <Image
+        class="mb-6 w-full rounded"
+        src={image}
+        alt={title}
+        width={230}
+        height={230}
+      />
+    </a>
+    )
+  }
+  </div>
 </div>
