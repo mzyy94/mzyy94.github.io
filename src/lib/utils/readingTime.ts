@@ -1,4 +1,4 @@
-import { plainify } from "@lib/utils/textConverter";
+import { plainify } from "@/lib/utils/textConverter";
 
 // content reading
 const readingTime = (content: string) => {

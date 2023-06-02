@@ -1,165 +1,143 @@
 ---
+import BlogCard from "@/components/BlogCard.astro";
+import Share from "@/components/Share.astro";
+import config from "@/config/config.json";
+import Disqus from "@/function-components/Disqus";
+import { getSinglePage } from "@/lib/contentParser.astro";
+import dateFormat from "@/lib/utils/dateFormat";
+import similerItems from "@/lib/utils/similarItems";
+import { humanize, markdownify, slugify } from "@/lib/utils/textConverter";
+import prevNextPost from "@/lib/utils/prevNextPost";
 import { Image } from "@astrojs/image/components";
-import Share from "@components/Share.astro";
-import SimilarPosts from "@components/SimilarPosts.astro";
-import Comments from "@components/Comments.astro";
-import { getSinglePage } from "@lib/contentParser";
-import dateFormat from "@lib/utils/dateFormat";
-import similerItems from "@lib/utils/similarItems";
-import readingTime from "@lib/utils/readingTime";
-import { abspath,humanize,markdownify,slugify } from "@lib/utils/textConverter";
-import { BiCalendarEdit,BiCategoryAlt,BiTimer,BiArrowToLeft,BiArrowToRight } from "react-icons/bi/index.js";
-import prevNextPost from "@lib/utils/prevNextPost";
+import {
+  FaRegClock,
+  FaRegFolder,
+  FaRegUserCircle,
+  FaArrowLeft,
+  FaArrowRight,
+} from "react-icons/fa/index.js";
 
-const allAuthors = await getSinglePage("authors");
-const posts = await getSinglePage("posts");
+const { blog_folder } = config.settings;
+const posts = await getSinglePage(blog_folder);
 const { post } = Astro.props;
 const similarPosts = similerItems(post, posts, post.slug);
 const {prev, next} = prevNextPost(post, posts);
 const { Content } = await post.render();
-const { title, description, authors, categories, image, date, tags } =
-  post.data;
+const { title, description, author, categories, image, date, tags } = post.data;
 ---
 
-<section class="section">
+<section class="section pt-7">
   <div class="container">
-    <article class="row justify-center">
-      <div class="md:col-10 text-center">
-        <h1 set:html={markdownify(title)} class="h2" />
-        <ul class="mt-4 flex flex-wrap items-center justify-center text-text">
-          <li class="mx-3">
+    <div class="row justify-center">
+      <article class="lg:col-10">
+        {
+          image && (
+            <div class="mb-10">
+              <Image
+                src={image}
+                height={500}
+                width={1200}
+                alt={title}
+                class="w-full rounded"
+              />
+            </div>
+          )
+        }
+        <h1 set:html={markdownify(title)} class="h2 mb-4" />
+        <ul class="mb-4">
+          <li class="mr-4 inline-block">
+            <a href={`/blog/authors/${slugify(author)}/`}>
+              <FaRegUserCircle className={"mr-2 -mt-1 inline-block"} />
+              {humanize(author)}
+            </a>
+          </li>
+          <li class="mr-4 inline-block">
+            <FaRegFolder className={"mr-2 -mt-1 inline-block"} />
             {
-              allAuthors
-                .filter((author) =>
-                  authors
-                    .map((author: string) => slugify(author))
-                    .includes(slugify(author.data.title))
-                )
-                .map((author, i) => (
-                  <a
-                    href={abspath`/authors/${slugify(author.slug)}`}
-                    class="flex items-center hover:text-primary font-medium"
-                  >
-                    {author.data.image && (
-                      <Image
-                        src={author.data.image}
-                        alt={author.data.title}
-                        height={50}
-                        width={50}
-                        class="mr-2 h-6 w-6 rounded-full"
-                      />
-                    )}
-                    <span>{author.data.title}</span>
-                  </a>
-                ))
+              categories.map((category: string, index: number) => (
+                <a href={`/blog/categories/${slugify(category)}/`}>
+                  {humanize(category)}
+                  {index !== categories.length - 1 && ","}
+                </a>
+              ))
             }
           </li>
-          <li class="mx-3 flex items-center flex-wrap font-medium">
-            <BiCalendarEdit className="mr-1 h-5 w-5 text-gray-600" />
-            <>{dateFormat(date)}</>
+          <li class="mr-4 inline-block">
+            <FaRegClock className={"mr-2 -mt-1 inline-block"} />
+            {dateFormat(date)}
           </li>
-          <li class="mx-3 flex items-center flex-wrap">
-            <BiCategoryAlt className="mr-1 h-[18px] w-[18px] text-gray-600" />
-            <>
+        </ul>
+        <div class="content mb-10">
+          <Content />
+        </div>
+        <div class="row items-start justify-between">
+          <div class="mb-10 flex items-center lg:col-5 lg:mb-0">
+            <h5 class="mr-3">Tags :</h5>
             <ul>
               {
-                categories.map((category: string, i: number) => (
+                tags.map((tag: string) => (
                   <li class="inline-block">
                     <a
-                      href={abspath`/categories/${slugify(category)}`}
-                      class="mr-2 hover:text-primary font-medium"
+                      class="m-1 block rounded bg-theme-light px-3 py-1 hover:bg-primary hover:text-white dark:bg-darkmode-theme-light dark:hover:bg-darkmode-primary dark:hover:text-dark"
+                      href={`/blog/tags/${slugify(tag)}/`}
                     >
-                      {humanize(category)}{i !== post.data.categories.length - 1 && ","}
+                      {humanize(tag)}
                     </a>
                   </li>
                 ))
               }
             </ul>
-            </>
-          </li>
-          <li class="mx-3 flex items-center flex-wrap font-medium">
-            <BiTimer className="mr-1 h-5 w-5 text-gray-600" />
-            <>{readingTime(markdownify(post.body) ?? "")}</>
-          </li>
-        </ul>
-      </div>
-
-      <div class="col-12 mt-8 mb-2">
-        {image && (
-          <Image
-            src={image}
-            height={500}
-            width={1000}
-            alt={title}
-            class="rounded-lg"
-          />
-        )}
-      </div>
-
-      <div class="md:col-10">
-        <div class="content mb-16 text-left">
-          <Content />
+          </div>
+          <div class="flex items-center lg:col-4">
+            <h5 class="mr-3">Share :</h5>
+            <Share
+              className="social-icons"
+              title={title}
+              description={description}
+              slug={post.slug}
+            />
+          </div>
         </div>
-        <div class="flex flex-wrap items-center justify-between">
-          <ul class="mr-4 mb-4 space-x-3">
-            {
-              tags.map((tag: string) => (
-                <li class="inline-block">
-                  <a
-                    href={abspath`/tags/${slugify(tag)}`}
-                    class="block rounded-lg bg-theme-light px-4 py-2 font-semibold text-dark text-sm hover:text-primary transition duration-300"
-                  >
-                    #{humanize(tag)}
-                  </a>
-                </li>
-              ))
-            }
-          </ul>
-          <Share
-            className="social-share mb-4"
-            title={title}
-            description={description}
-            slug={post.slug}
-          />
-        </div>
+        <Disqus className="mt-20" client:load />
+      </article>
+    </div>
+
+    <nav class="container flex flex-nowrap justify-between py-8" role="navigation">
+      {prev ?
+        <a href={`/blog/${prev.slug}`}>
+          <p class="h5 text-black font-bold">前へ</p>
+          <span>
+            <FaArrowLeft className="inline" />
+            {prev.data.title}
+          </span>
+        </a>
+        : <span></span>
+      }
+      {next ?
+        <a class="text-right" href={`/blog/${next.slug}`}>
+          <p class="h5 text-black font-bold">次へ</p>
+          <span class="text-right">
+            {next.data.title}
+            <FaArrowRight className="inline" />
+          </span>
+        </a>
+        : <span></span>
+      }
+    </nav>
+
+
+    <!-- Related posts -->
+    <div class="section pb-0">
+      <h2 class="h3 mb-12 text-center">Related Posts</h2>
+      <div class="row justify-center">
+        {
+          similarPosts.map((post) => (
+            <div class="lg:col-4">
+              <BlogCard data={post} />
+            </div>
+          ))
+        }
       </div>
-    </article>
+    </div>
   </div>
 </section>
-
-<Comments />
-
-<nav class="container flex flex-nowrap justify-between py-8" role="navigation">
-  {prev ?
-    <a href={`/blog/${prev.slug}`}>
-      <p class="h5 text-black font-bold">前へ</p>
-      <span>
-        <BiArrowToLeft className="inline" />
-        {prev.data.title}
-      </span>
-    </a>
-    : <span></span>
-  }
-  {next ?
-    <a class="text-right" href={`/blog/${next.slug}`}>
-      <p class="h5 text-black font-bold">次へ</p>
-      <span class="text-right">
-        {next.data.title}
-        <BiArrowToRight className="inline" />
-      </span>
-    </a>
-    : <span></span>
-  }
-</nav>
-
-<!-- similar posts -->
-{
-  similarPosts.length > 0 && (
-    <section class="section pt-0">
-      <div class="container">
-        <h2 class="mb-8 text-center h3">Similar Posts</h2>
-        <SimilarPosts posts={similarPosts.slice(0, 3)} />
-      </div>
-    </section>
-  )
-}

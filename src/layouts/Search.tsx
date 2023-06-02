@@ -1,10 +1,14 @@
-import config from "@config/config.json";
-import dateFormat from "@lib/utils/dateFormat";
-import { abspath, humanize, slugify } from "@lib/utils/textConverter";
+import config from "@/config/config.json";
+import { humanize, plainify, slugify } from "@/lib/utils/textConverter";
 import Fuse from "fuse.js";
-import { useEffect, useRef, useState } from "react";
-import { BiCalendarEdit, BiCategoryAlt } from "react-icons/bi/index.js";
-const { summary_length } = config.settings;
+import React, { useEffect, useRef, useState } from "react";
+import {
+  FaRegFolder,
+  FaRegUserCircle,
+  FaSearch,
+} from "react-icons/fa/index.js";
+
+const { summary_length, blog_folder } = config.settings;
 
 export type SearchItem = {
   slug: string;
@@ -21,12 +25,10 @@ interface SearchResult {
   refIndex: number;
 }
 
-export default function SearchBar({ searchList }: Props) {
+const Search = ({ searchList }: Props) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const [inputVal, setInputVal] = useState("");
-  const [searchResults, setSearchResults] = useState<SearchResult[] | null>(
-    null
-  );
+  const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
 
   const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
     setInputVal(e.currentTarget.value);
@@ -35,7 +37,7 @@ export default function SearchBar({ searchList }: Props) {
   const fuse = new Fuse(searchList, {
     keys: ["data.title", "data.categories", "data.tags"],
     includeMatches: true,
-    minMatchCharLength: 2,
+    minMatchCharLength: 3,
     threshold: 0.5,
   });
 
@@ -66,79 +68,109 @@ export default function SearchBar({ searchList }: Props) {
   }, [inputVal]);
 
   return (
-    <div className="min-h-[45vh]">
-      <input
-        className="form-input w-full text-center"
-        placeholder="Type here to Search posts"
-        type="text"
-        name="search"
-        value={inputVal}
-        onChange={handleChange}
-        autoComplete="off"
-        autoFocus
-        ref={inputRef}
-      />
-
-      {inputVal.length > 1 && (
-        <div className="my-6 text-center">
-          Found {searchResults?.length}
-          {searchResults?.length && searchResults?.length === 1
-            ? " result"
-            : " results"}{" "}
-          for '{inputVal}'
-        </div>
-      )}
-
-      <div className="row">
-        {searchResults?.map(({ item }) => (
-          <div key={item.slug} className={"col-12 mb-8 sm:col-6"}>
-            {item.data.image && (
-              <a href={abspath`/${item.slug}`} className="rounded-lg block hover:text-primary overflow-hidden group">
-                <img
-                  className="group-hover:scale-[1.03] transition duration-300 w-full"
-                  src={item.data.image}
-                  alt={item.data.title}
-                  width={445}
-                  height={230}
-                />
-              </a>
-            )}
-
-            <ul className="mt-6 mb-4 flex flex-wrap items-center text-text">
-              <li className="mr-5 flex items-center flex-wrap font-medium">
-                <BiCalendarEdit className="mr-1 h-5 w-5 text-gray-600" />
-                <>{dateFormat(item.data.date)}</>
-              </li>
-              <li className="mr-5 flex items-center flex-wrap">
-                <BiCategoryAlt className="mr-1 h-[18px] w-[18px] text-gray-600" />
-                <>
-                  <ul>
-                    {item.data.categories.map((category: string, i: number) => (
-                      <li className="inline-block">
-                        <a
-                          href={abspath`/categories/${slugify(category)}`}
-                          className="mr-2 hover:text-primary font-medium"
-                        >
-                          {humanize(category)}{i !== item.data.categories.length - 1 && ","}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </>
-              </li>
-            </ul>
-
-            <h3 className="mb-2">
-              <a href={abspath`/${item.slug}`} className="block hover:text-primary transition duration-300">
-                {item.data.title}
-              </a>
-            </h3>
-            <p className="text-text">
-              {item.content?.slice(0, Number(summary_length))}...
-            </p>
+    <section className="section-sm">
+      <div className="container">
+        <div className="row mb-10 justify-center">
+          <div className="lg:col-8">
+            <div className="flex flex-nowrap">
+              <input
+                className="form-input rounded-r-none"
+                placeholder="Search posts"
+                type="search"
+                name="search"
+                value={inputVal}
+                onChange={handleChange}
+                autoComplete="off"
+                autoFocus
+                ref={inputRef}
+              />
+              <button className="btn btn-primary rounded-l-none" type="submit">
+                <FaSearch />
+              </button>
+            </div>
           </div>
-        ))}
+        </div>
+
+        {/* {inputVal.length > 1 && (
+          <div className="mt-8">
+            Found {searchResults?.length}
+            {searchResults?.length && searchResults?.length === 1
+              ? " result"
+              : " results"}{" "}
+            for '{inputVal}'
+          </div>
+        )} */}
+        <div className="row">
+          {searchResults?.length < 1 ? (
+            <div className="mx-auto pt-5 text-center">
+              <h1 className="h2 mb-4">
+                {inputVal.length < 1 ? "Search Post Here" : "No Search Found!"}
+              </h1>
+              <p>
+                {inputVal.length < 1
+                  ? "Search for posts by title, category, or tag."
+                  : "We couldn't find what you searched for. Try searching again."}
+              </p>
+            </div>
+          ) : (
+            searchResults?.map(({ item }, index) => (
+              <div className="mb-12 md:col-6 lg:col-4" key={`search-${index}`}>
+                <div className="bg-body dark:bg-darkmode-body">
+                  {item.data.image && (
+                    <img
+                      className="mb-6 w-full rounded"
+                      src={item.data.image}
+                      alt={item.data.title}
+                      width={445}
+                      height={230}
+                    />
+                  )}
+                  <h4 className="mb-3">
+                    <a href={`/${blog_folder}/${item.slug}`}>
+                      {item.data.title}
+                    </a>
+                  </h4>
+                  <ul className="mb-4">
+                    <li className="mr-4 inline-block">
+                      <a href={`/blog/authors/${slugify(item.data.author)}/`}>
+                        <FaRegUserCircle
+                          className={"-mt-1 mr-2 inline-block"}
+                        />
+                        {humanize(item.data.author)}
+                      </a>
+                    </li>
+                    <li className="mr-4 inline-block">
+                      <FaRegFolder className={"-mt-1 mr-2 inline-block"} />
+                      {item.data.categories.map(
+                        (category: string, index: number) => (
+                          <a
+                            href={`/blog/categories/${slugify(category)}/`}
+                            key={category}
+                          >
+                            {humanize(category)}
+                            {index !== item.data.categories.length - 1 && ", "}
+                          </a>
+                        )
+                      )}
+                    </li>
+                  </ul>
+                  <p className="mb-6">
+                    {plainify(item.content?.slice(0, Number(summary_length)))}
+                  </p>
+                  <a
+                    className="btn btn-outline-primary btn-sm"
+                    href={`/${blog_folder}/${item.slug}`}
+                  >
+                    read more
+                  </a>
+                </div>
+              </div>
+            ))
+          )}
+        </div>
       </div>
-    </div>
+    </section>
   );
-}
+};
+
+export default Search;

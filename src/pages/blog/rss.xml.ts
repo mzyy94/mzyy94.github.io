@@ -1,7 +1,7 @@
 import rss from "@astrojs/rss";
-import { getSinglePage } from "@lib/contentParser";
-import { getDescriptions } from "@lib/utils/contentDescription";
-import config from "@config/config.json";
+import { getSinglePage } from "@/lib/contentParser.astro";
+import { getDescriptions } from "@/lib/utils/contentDescription";
+import config from "@/config/config.json";
 
 const moreText = "<br/><br/>続きはWebで";
 export async function get(context) {

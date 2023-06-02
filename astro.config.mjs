@@ -3,11 +3,13 @@ import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
-import remarkToc from "remark-toc";
+import AutoImport from "astro-auto-import";
 import remarkDirective from "remark-directive";
 import m2dx from "astro-m2dx";
 import remarkEmoji from "remark-emoji";
 import { defineConfig } from "astro/config";
+import remarkCollapse from "remark-collapse";
+import remarkToc from "remark-toc";
 import config from "./src/config/config.json";
 
 const resolveRelativeMd = () => {
@@ -53,6 +55,17 @@ export default defineConfig({
     image({
       serviceEntryPoint: "@astrojs/image/sharp",
     }),
+    AutoImport({
+      imports: [
+        "@/shortcodes/Button",
+        "@/shortcodes/Accordion",
+        "@/shortcodes/Notice",
+        "@/shortcodes/Video",
+        "@/shortcodes/Youtube",
+        "@/shortcodes/Tabs",
+        "@/shortcodes/Tab",
+      ],
+    }),
     mdx(),
   ],
   markdown: {
@@ -70,6 +83,12 @@ export default defineConfig({
         tight: true,
         ordered: true,
       }],
+      [
+        remarkCollapse,
+        {
+          test: "目次",
+        },
+      ],
     ],
     shikiConfig: {
       theme: "one-dark-pro",

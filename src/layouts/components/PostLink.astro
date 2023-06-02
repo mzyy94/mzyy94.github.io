@@ -1,11 +1,11 @@
 ---
 import { Image } from "@astrojs/image/components";
-import dateFormat from "@lib/utils/dateFormat";
-import { abspath,humanize,slugify,markdownify,plainify } from "@lib/utils/textConverter";
+import dateFormat from "@/lib/utils/dateFormat";
+import { humanize,slugify,markdownify,plainify } from "@/lib/utils/textConverter";
 import { BiCalendarEdit,BiCategoryAlt } from "react-icons/bi/index.js";
-import { getSinglePage } from "@lib/contentParser";
-import config from "@config/config.json";
-import { getDescription } from "@lib/utils/contentDescription";
+import { getSinglePage } from "@/lib/contentParser.astro";
+import config from "@/config/config.json";
+import { getDescription } from "@/lib/utils/contentDescription";
 
 const { slug } = Astro.props;
 const posts = await getSinglePage("posts");
@@ -22,7 +22,7 @@ const description = await getDescription(post);
       width={32}
       height={32}
     />
-    <a href={abspath`/${post.slug}`} class="inline hover:text-primary transition duration-300">
+    <a href={`/${post.slug}`} class="inline hover:text-primary transition duration-300">
       {post.data.title}
     </a>
   </h5>
@@ -32,7 +32,7 @@ const description = await getDescription(post);
     </article>
     <div class="col-3">
       {post.data.image && (
-        <a href={abspath`/${post.slug}`} class="rounded-lg block hover:text-primary overflow-hidden group">
+        <a href={`/${post.slug}`} class="rounded-lg block hover:text-primary overflow-hidden group">
           <Image
             class="group-hover:scale-[1.05] transition duration-300 w-full my-0"
             src={post.data.image}
@@ -53,7 +53,7 @@ const description = await getDescription(post);
       <BiCategoryAlt className="mr-1 h-[16px] w-[16px] text-gray-600" />
       {post.data.categories.map((category: string, i: number) => (
           <a
-            href={abspath`/categories/${slugify(category)}`}
+            href={`/blog/categories/${slugify(category)}/`}
             class="mr-2 hover:text-primary font-medium"
           >
             {humanize(category)}{i !== post.data.categories.length - 1 && ","}

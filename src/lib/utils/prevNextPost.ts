@@ -1,4 +1,4 @@
-import { sortByDate } from "@lib/utils/sortFunctions";
+import { sortByDate } from "@/lib/utils/sortFunctions";
 
 // prev/next post
 const prevNextPost = (post: any, posts: any) => {

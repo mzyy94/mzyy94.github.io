@@ -1,25 +1,23 @@
-import { slug } from 'github-slugger';
+import { slug } from "github-slugger";
 import { marked } from "marked";
-import config from "@config/config.json";
+
+marked.use({
+  mangle: false,
+  headerIds: false,
+});
 
 // slugify
-export const slugify = (content: string) => {
-  if (!content) return null;
-
+export const slugify = (content: string): string => {
   return slug(content);
 };
 
 // markdownify
-export const markdownify = (content: string) => {
-  if (!content) return null;
-
-  return marked.parseInline(content);
+export const markdownify = (content: string, div?: boolean): string => {
+  return div ? marked.parse(content) : marked.parseInline(content);
 };
 
 // humanize
-export const humanize = (content: string) => {
-  if (!content) return null;
-
+export const humanize = (content: string): string => {
   return content
     .replace(/^[\s_]+|[\s_]+$/g, "")
     .replace(/[_\s]+/g, " ")
@@ -29,9 +27,7 @@ export const humanize = (content: string) => {
 };
 
 // plainify
-export const plainify = (content: string) => {
-  if (!content) return null;
-
+export const plainify = (content: string): string => {
   const filterBrackets = content.replace(/<\/?[^>]+(>|$)/gm, "");
   const filterSpaces = filterBrackets.replace(/[\r\n]\s*[\r\n]/gm, "");
   const stripHTML = htmlEntityDecoder(filterSpaces);
@@ -56,8 +52,3 @@ const htmlEntityDecoder = (htmlWithEntities: string): string => {
   );
   return htmlWithoutEntities;
 };
-
-// make absolute path
-export const abspath = (...template: Parameters<typeof String.raw>) => {
-  return ("/blog" + String.raw(...template) + (config.site.trailing_slash ? "/" : "")).replaceAll("//", "/");
-}

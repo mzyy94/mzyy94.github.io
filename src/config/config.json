@@ -7,6 +7,7 @@
     "trailing_slash": true,
     "favicon": "/assets/icons/favicon.ico",
     "logo": "/assets/images/title.png",
+    "logo_darkmode": "/assets/images/title-darkmode.png",
     "icon": "/assets/images/logo.png",
     "logo_width": "256",
     "logo_height": "64",
@@ -14,18 +15,35 @@
   },
 
   "settings": {
-    "pagination": 11,
-    "summary_length": 100
-  },
-
-  "metadata": {
-    "meta_author": "Themefisher",
-    "meta_image": "/images/og-image.png",
-    "meta_description": "犬アイコンのみっきー"
+    "search": true,
+    "sticky_header": true,
+    "theme_switcher": true,
+    "default_theme": "system",
+    "pagination": 10,
+    "summary_length": 100,
+    "blog_folder": "posts"
   },
 
   "params": {
     "contact_form_action": "#",
-    "copyright": "Copyright © 2023 mzyy94. Powered by [Atsro](https://astro.build/) with [Themefisher](https://themefisher.com)"
+    "copyright": "Copyright © 2023 mzyy94. Powered by [Atsro](https://astro.build/) with [Astroplate](https://github.com/zeon-studio/astroplate)"
+  },
+
+  "navigation_button": {
+    "enable": false,
+    "label": "View Source",
+    "link": "https://github.com/mzyy94/mzyy94.github.io/"
+  },
+
+  "disqus": {
+    "enable": true,
+    "shortname": "mzyy94blog",
+    "settings": {}
+  },
+
+  "metadata": {
+    "meta_author": "mzyy94",
+    "meta_image": "/images/og-image.png",
+    "meta_description": "犬アイコンのみっきー"
   }
 }

@@ -1,18 +1,19 @@
 ---
-import Base from "@layouts/Base.astro";
-import { markdownify } from "@lib/utils/textConverter";
+import Base from "@/layouts/Base.astro";
+import { markdownify } from "@/lib/utils/textConverter";
 import { getEntryBySlug } from "astro:content";
 const entry = await getEntryBySlug("pages", "404");
 const { Content } = await entry.render();
 ---
 
 <Base title={entry.data.title}>
-  <section class="section">
+  <section class="section-sm">
     <div class="container">
-      <div class="flex h-[40vh] items-center justify-center">
-        <div class="text-center">
-          <h1 class="mb-4" set:html={markdownify(entry.data.title)} />
+      <div class="row justify-center">
+        <div class="text-center sm:col-10 md:col-8 lg:col-6">
+          <h1 class="h2 mb-4" set:html={markdownify(entry.data.title)} />
           <Content />
+          <a href="/" class="btn btn-primary mt-8">Back To Home</a>
         </div>
       </div>
     </div>

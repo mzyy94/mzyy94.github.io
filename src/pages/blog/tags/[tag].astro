@@ -1,14 +1,14 @@
 ---
-import Base from "@layouts/Base.astro";
-import Posts from "@layouts/Posts.astro";
-import { getSinglePage } from "@lib/contentParser";
-import { getTaxonomy } from "@lib/taxonomyParser.astro";
-import { sortByDate } from "@lib/utils/sortFunctions";
-import taxonomyFilter from "@lib/utils/taxonomyFilter";
-import { humanize } from "@lib/utils/textConverter";
+import BlogCard from "@/components/BlogCard.astro";
+import config from "@/config/config.json";
+import Base from "@/layouts/Base.astro";
+import { getSinglePage } from "@/lib/contentParser.astro";
+import { getTaxonomy } from "@/lib/taxonomyParser.astro";
+import taxonomyFilter from "@/lib/utils/taxonomyFilter";
+import PageHeader from "@/partials/PageHeader.astro";
 
 export async function getStaticPaths() {
-  const tags = await getTaxonomy("posts", "tags");
+  const tags = await getTaxonomy(config.settings.blog_folder, "tags");
 
   return tags.map((tag) => {
     return {
@@ -18,20 +18,23 @@ export async function getStaticPaths() {
 }
 
 const { tag } = Astro.params;
-
-const posts = await getSinglePage("posts");
-const sortedPosts = sortByDate(posts);
-const filterByTags = taxonomyFilter(sortedPosts, "tags", tag);
-
-const title = humanize(tag || "");
+const posts = await getSinglePage(config.settings.blog_folder);
+const filterByCategories = taxonomyFilter(posts, "tags", tag!);
 ---
 
-<Base title={title || "Tag"}>
-  <div class="section">
+<Base title={tag}>
+  <PageHeader title={tag} />
+  <div class="section-sm pb-0">
     <div class="container">
-      <p class="text-center mb-4">Showing Posts From</p>
-      <h1 class="h2 mb-16 text-center text-primary">{title}</h1>
-      <Posts posts={filterByTags} fluid={false} />
+      <div class="row">
+        {
+          filterByCategories.map((post) => (
+            <div class="mb-14 md:col-6 lg:col-4">
+              <BlogCard data={post} />
+            </div>
+          ))
+        }
+      </div>
     </div>
   </div>
 </Base>

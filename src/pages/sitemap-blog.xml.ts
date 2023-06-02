@@ -1,6 +1,5 @@
 import { SitemapStream, streamToPromise } from "sitemap";
-import { getSinglePage } from "@lib/contentParser";
-import { getDescriptions } from "@lib/utils/contentDescription";
+import { getSinglePage } from "@/lib/contentParser.astro";
 
 export async function get(context) {
   const posts = await getSinglePage("posts");

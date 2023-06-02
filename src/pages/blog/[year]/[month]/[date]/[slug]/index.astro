@@ -1,14 +1,14 @@
 ---
-import Base from "@layouts/Base.astro";
-import PostSingle from "@layouts/PostSingle.astro";
-import { getSinglePage } from "@lib/contentParser";
+import config from "@/config/config.json";
+import Base from "@/layouts/Base.astro";
+import PostSingle from "@/layouts/PostSingle.astro";
+import { getSinglePage } from "@/lib/contentParser.astro";
 
 export async function getStaticPaths() {
-  const posts = await getSinglePage("posts");
+  const posts = await getSinglePage(config.settings.blog_folder);
 
-  const paths = posts.flatMap((page) => {
-    const [year, month, date, slug] = page.slug.split("/");
-    if (!slug) return [];
+  const paths = posts.map((post) => {
+    const [year, month, date, slug] = post.slug.split("/");
     return {
       params: {
         year,
@@ -16,14 +16,14 @@ export async function getStaticPaths() {
         date,
         slug,
       },
-      props: { page },
+      props: { post },
     };
   });
   return paths;
 }
 
-const { page } = Astro.props;
-const { title, meta_title, description, image } = page.data;
+const { post } = Astro.props;
+const { title, meta_title, description, image } = post.data;
 ---
 
 <Base
@@ -32,5 +32,5 @@ const { title, meta_title, description, image } = page.data;
   description={description}
   image={image}
 >
-  <PostSingle post={page} />
+  <PostSingle post={post} />
 </Base>
