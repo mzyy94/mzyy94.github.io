@@ -1,6 +1,7 @@
 ---
 title: "JOYINGのAndroid中華ナビを買ったので動かしてみた"
 date: 2020-09-07T05:00:00+09:00
+author: mzyy94
 published: true
 toc: true
 categories: ["Automobile"]

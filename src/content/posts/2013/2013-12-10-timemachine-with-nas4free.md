@@ -1,6 +1,7 @@
 ---
 title: NAS4FreeでTime Machineの設定するメモ
 date: 2013-12-10T12:58:47+09:00
+author: mzyy94
 categories: ["NAS"]
 tags: ["nas4free", "timemachine", "mac", "server"]
 image: "/assets/images/2013/12/10/timemachine-with-nas4free.png"

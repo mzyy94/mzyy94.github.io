@@ -1,6 +1,7 @@
 ---
 title: GitHubで絵文字コミットを続けてみて有用だったEmojiまとめ
 date: 2015-10-14T19:39:47+09:00
+author: mzyy94
 categories: ["misc"]
 tags: ["emoji", "git", "github"]
 image: "/assets/images/2015/10/14/emoji-commit-log.png"

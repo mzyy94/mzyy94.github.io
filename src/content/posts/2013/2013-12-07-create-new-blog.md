@@ -1,6 +1,7 @@
 ---
 title: blogを建ててみた
 date: 2013-12-07T18:22:11+09:00
+author: mzyy94
 categories: ["Web"]
 tags: ["html5", "css3", "gh-pages"]
 image: "/assets/images/2013/12/07/create-new-blog.png"

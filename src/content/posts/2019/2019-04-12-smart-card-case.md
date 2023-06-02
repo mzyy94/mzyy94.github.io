@@ -1,6 +1,7 @@
 ---
 title: "モダンでスマートなクレジットカードケース3選"
 date: 2019-04-12T10:00:00+09:00
+author: mzyy94
 published: true
 categories: ["Credit Card"]
 tags: ["cashless", "card-case", "wallet"]

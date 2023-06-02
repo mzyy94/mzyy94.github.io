@@ -1,6 +1,7 @@
 ---
 title: サーバーの発熱でこたつを温める
 date: 2014-12-10T00:02:35+09:00
+author: mzyy94
 categories: ["misc"]
 tags: ["kotatsu", "nas", "server"]
 image: "/assets/images/2014/12/10/kotatsu.jpg"

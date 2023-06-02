@@ -1,6 +1,7 @@
 ---
 title: "JOYINGのAndroidカーナビをRoot化する(?)[SC9853i搭載向け]"
 date: 2020-09-11T05:00:00+09:00
+author: mzyy94
 published: true
 toc: true
 categories: ["Automobile"]

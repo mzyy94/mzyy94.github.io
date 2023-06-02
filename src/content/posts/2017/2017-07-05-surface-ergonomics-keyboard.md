@@ -1,6 +1,7 @@
 ---
 title: Surface Ergonomic Keyboardに乗り換えた
 date: 2017-07-05T21:40:08+09:00
+author: mzyy94
 categories: ["Gadget"]
 tags: ["ergonomics", "keyboard"]
 image: "/assets/images/2017/07/05/surface_ergonomic_keyboard.jpg"

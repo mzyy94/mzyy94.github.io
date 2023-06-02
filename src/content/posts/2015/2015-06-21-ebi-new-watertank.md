@@ -1,6 +1,7 @@
 ---
 title: エビ水槽を新しくした
 date: 2015-06-21T16:35:31+09:00
+author: mzyy94
 categories: ["Aquarium"]
 tags: ["charm", "shrimp"]
 image: "/assets/images/2015/06/21/ebi-new-watertank.jpg"

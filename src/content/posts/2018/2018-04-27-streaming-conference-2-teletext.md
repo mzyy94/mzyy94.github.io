@@ -1,8 +1,9 @@
 ---
 title: "Streaming Conference #2 -TELETEXT-"
 date: 2018-04-27T20:00:00+09:00
+author: mzyy94
 published: true
-category: ["Web"]
+categories: ["Web"]
 tags: ["streaming", "teletext"]
 ---
 

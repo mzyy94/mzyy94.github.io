@@ -1,6 +1,7 @@
 ---
 title: SECCON 2014 横浜大会NW予選 Write-up
 date: 2014-09-03T14:40:47+09:00
+author: mzyy94
 categories: ["CTF"]
 tags: ["seccon", "seccon2014"]
 image: "/assets/images/2014/9/3/KEN.JPG"

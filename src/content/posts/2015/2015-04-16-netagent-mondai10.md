@@ -1,6 +1,7 @@
 ---
 title: ネットエージェント最終面接問題 Write-up エクストリームCTF編
 date: 2015-04-16T00:13:43+09:00
+author: mzyy94
 categories: ["CTF"]
 tags: ["netagent"]
 ---

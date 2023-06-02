@@ -1,6 +1,7 @@
 ---
 title: はいふりWeb VRつくろうよ！
 date: 2016-12-24T01:00:00+09:00
+author: mzyy94
 categories: ["Web"]
 tags: ["webgl", "webvr", "html5", "three.js"]
 image: "/assets/images/2016/12/24/out-of-playarea.png"

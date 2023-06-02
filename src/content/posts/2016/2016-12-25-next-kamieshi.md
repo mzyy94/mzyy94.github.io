@@ -1,6 +1,7 @@
 ---
 title: 形から入る神絵師2017年版
 date: 2016-12-25T01:00:00+09:00
+author: mzyy94
 categories: ["misc"]
 tags: ["kamieshi", "haihuri"]
 image: "/assets/images/2016/12/25/kamie.png"

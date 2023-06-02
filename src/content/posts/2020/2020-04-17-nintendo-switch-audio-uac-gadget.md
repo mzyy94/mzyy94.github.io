@@ -1,6 +1,7 @@
 ---
 title: "UAC GadgetでNintendo Switchの音声出力をRaspberry Piに取り込む"
 date: 2020-04-17T21:30:00+09:00
+author: mzyy94
 published: true
 toc: true
 categories: ["Multimedia"]

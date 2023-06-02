@@ -1,6 +1,7 @@
 ---
 title: "LibreELECで地デジを楽しむためにMirakurunとEPGStationを一発で動かす"
 date: 2020-08-18T10:20:00+09:00
+author: mzyy94
 published: true
 toc: true
 categories: ["Multimedia"]

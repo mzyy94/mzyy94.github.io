@@ -1,6 +1,7 @@
 ---
 title: "DIALというネットワークプロトコル"
 date: 2021-08-03T09:30:00+09:00
+author: mzyy94
 categories: ["Network"]
 tags: ["upnp", "dial", "ssdp", "chromecast"]
 image: "/assets/images/2021/08/03/dial-launch-demo.png"

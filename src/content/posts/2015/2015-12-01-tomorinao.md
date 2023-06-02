@@ -1,6 +1,7 @@
 ---
 title: 友利奈緒「いままでとこれから」
 date: 2015-12-01T19:33:05+09:00
+author: mzyy94
 categories: ["misc"]
 tags: ["tomorinao"]
 image: "/assets/images/2015/12/01/tomorinao.jpg"

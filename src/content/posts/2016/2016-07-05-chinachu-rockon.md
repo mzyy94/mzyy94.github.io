@@ -1,6 +1,7 @@
 ---
 title: RockstorにChinachuを詰め込んで録画NAS作ろ
 date: 2016-07-05T00:07:31+09:00
+author: mzyy94
 categories: ["NAS"]
 tags: ["chinachu", "docker", "rockstor", "pt3", "nas", "linux"]
 image: "/assets/images/2016/07/05/chinachu-rockon-installed.png"

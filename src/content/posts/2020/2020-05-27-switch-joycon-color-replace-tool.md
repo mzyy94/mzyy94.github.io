@@ -1,6 +1,7 @@
 ---
 title: "ブラウザでNintendo SwitchのJoy-Conの色を変える"
 date: 2020-05-27T01:30:00+09:00
+author: mzyy94
 published: true
 toc: true
 categories: ["Game"]

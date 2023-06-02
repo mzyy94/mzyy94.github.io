@@ -1,6 +1,7 @@
 ---
 title: KVMでQSVするためIntel HD Graphicsパススルーするー
 date: 2014-12-12T23:59:49+09:00
+author: mzyy94
 categories: ["Multimedia"]
 tags: ["kvm", "qsv", "kernel", "linux"]
 ---

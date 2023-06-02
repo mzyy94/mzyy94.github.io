@@ -1,6 +1,7 @@
 ---
 title: コルマールのひと時
 date: 2016-12-01T00:00:01+09:00
+author: mzyy94
 categories: ["Trip"]
 tags: ["france", "gochiusa", "colmar", "elsass"]
 image: "/assets/images/2016/12/01/colmar.jpg"

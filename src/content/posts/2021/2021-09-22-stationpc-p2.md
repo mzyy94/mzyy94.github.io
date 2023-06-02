@@ -1,6 +1,7 @@
 ---
 title: "Firefly Station P2を買ったのでとりあえず動かした"
 date: 2021-09-22T11:00:00+09:00
+author: mzyy94
 published: true
 categories: ["Gadget"]
 tags: ["station-pc", "sbc", "rk3568", "rockchip"]

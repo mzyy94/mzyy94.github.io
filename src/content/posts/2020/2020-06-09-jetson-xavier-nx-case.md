@@ -1,6 +1,7 @@
 ---
 title: "Jetson Xavier NXで使えるNano用ケースを2つ試した"
 date: 2020-06-09T00:10:00+09:00
+author: mzyy94
 published: true
 toc: true
 categories: ["Gadget"]

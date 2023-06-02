@@ -1,6 +1,7 @@
 ---
 title: TDUCTF 2015の運営をした話
 date: 2015-09-18T01:33:16+09:00
+author: mzyy94
 categories: ["CTF"]
 tags: ["tductf", "electron", "react", "lepusctf"]
 image: "/assets/images/2015/09/18/tductf-frontend.png"

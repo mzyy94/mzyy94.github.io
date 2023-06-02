@@ -1,6 +1,7 @@
 ---
 title: "リモートワークでバ美肉ビデオ会議"
 date: 2020-02-25T22:30:00+09:00
+author: mzyy94
 published: true
 toc: true
 categories: ["XR"]

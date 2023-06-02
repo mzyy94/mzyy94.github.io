@@ -1,6 +1,7 @@
 ---
 title: NAS用OSにRockstorという選択
 date: 2016-07-04T20:12:14+09:00
+author: mzyy94
 categories: ["NAS"]
 tags: ["docker", "rockstor", "btrfs", "nas", "linux"]
 image: "/assets/images/2016/07/04/rockstor-disks.png"

@@ -1,6 +1,7 @@
 ---
 title: Intel QSVのH.264エンコードをLinuxで！
 date: 2015-01-30T22:22:03+09:00
+author: mzyy94
 categories: ["Multimedia"]
 tags: ["qsv", "ffmpeg", "imss", "linux"]
 ---

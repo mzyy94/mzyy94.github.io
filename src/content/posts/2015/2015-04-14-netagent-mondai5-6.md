@@ -1,6 +1,7 @@
 ---
 title: ネットエージェント最終面接問題 Write-up その2
 date: 2015-04-14T00:05:14+09:00
+author: mzyy94
 categories: ["CTF"]
 tags: ["netagent"]
 ---

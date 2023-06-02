@@ -1,6 +1,7 @@
 ---
 title: DEFCON CTF 23予選 Write-up (解説付き(すこし))
 date: 2015-05-18T23:45:04+09:00
+author: mzyy94
 categories: ["CTF"]
 tags: ["defcon", "babycmd", "babyecho"]
 image: "/assets/images/2015/05/18/scoreboard.png"

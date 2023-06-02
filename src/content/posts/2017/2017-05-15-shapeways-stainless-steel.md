@@ -1,6 +1,7 @@
 ---
 title: Shapewaysで金属3Dプリントした -ステンレススチール編-
 date: 2017-05-15T21:48:08+09:00
+author: mzyy94
 categories: ["3D Print"]
 tags: ["metal", "stainless", "steel", "kemono-friends"]
 image: "/assets/images/2017/05/15/boss-6.jpg"

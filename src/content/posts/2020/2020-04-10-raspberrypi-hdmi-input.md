@@ -1,6 +1,7 @@
 ---
 title: "HDMI入力をRaspberry Piで駆使する"
 date: 2020-04-10T03:00:00+09:00
+author: mzyy94
 published: true
 toc: true
 categories: ["Multimedia"]

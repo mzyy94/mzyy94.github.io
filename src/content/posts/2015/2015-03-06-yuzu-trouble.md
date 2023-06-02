@@ -1,6 +1,7 @@
 ---
 title: 柚子胡椒でサーバーを壊さないために
 date: 2015-03-06T18:05:49+09:00
+author: mzyy94
 categories: ["misc"]
 tags: ["yuzu", "kosho"]
 ---

@@ -1,6 +1,7 @@
 ---
 title: "Echo Show 5で遊びたい　-分解編-"
 date: 2019-12-07T02:00:00+09:00
+author: mzyy94
 published: true
 toc: true
 categories: ["Gadget"]

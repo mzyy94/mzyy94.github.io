@@ -1,6 +1,7 @@
 ---
 title: Team TomoriNaoのサイトの秘密
 date: 2016-12-17T17:00:00+09:00
+author: mzyy94
 categories: ["Web"]
 tags: ["svg", "css3", "html5", "smil"]
 image: "/assets/images/2016/12/17/tomorinao.pro.png"

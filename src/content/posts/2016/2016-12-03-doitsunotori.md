@@ -1,6 +1,7 @@
 ---
 title: ドイツのトリ聖地巡礼してきた
 date: 2016-12-03T00:00:01+09:00
+author: mzyy94
 categories: ["Trip"]
 tags: ["doitsu", "germany", "tori", "600eur"]
 image: "/assets/images/2016/12/03/IMG_8443.JPG"

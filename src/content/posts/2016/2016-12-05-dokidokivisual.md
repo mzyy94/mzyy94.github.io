@@ -1,6 +1,7 @@
 ---
 title: 2016年のまんがタイムきららアニメを振り返る
 date: 2016-12-05T00:00:01+09:00
+author: mzyy94
 categories: ["misc"]
 tags: ["manga", "time", "kirara", "dokidoki", "visual", "anime", "html5"]
 image: "/assets/images/2016/12/05/dokidokivisual.jpg"

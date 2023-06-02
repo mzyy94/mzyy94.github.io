@@ -1,6 +1,7 @@
 ---
 title: "Raspberry PiでHDMIディスプレイを調査する[EDID/CEC]"
 date: 2020-05-12T02:00:00+09:00
+author: mzyy94
 published: true
 toc: true
 categories: ["Multimedia"]

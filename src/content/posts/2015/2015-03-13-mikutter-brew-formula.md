@@ -1,6 +1,7 @@
 ---
 title: OS X向けmikutterパッケージ(Homebrew)作ったよ
 date: 2015-03-13T10:48:00+09:00
+author: mzyy94
 categories: ["misc"]
 tags: ["brew", "mikutter"]
 image: "/assets/images/2015/03/13/mikutter-brew.png"

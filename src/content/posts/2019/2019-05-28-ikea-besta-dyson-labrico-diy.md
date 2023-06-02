@@ -1,6 +1,7 @@
 ---
 title: "小さな穴に電源コードを通して壁に穴を開けずにダイソンを立てる"
 date: 2019-05-28T10:00:00+09:00
+author: mzyy94
 published: true
 toc: false
 categories: ["Home"]

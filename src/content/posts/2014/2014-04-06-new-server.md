@@ -1,6 +1,7 @@
 ---
 title: 自宅サーバーを増やした
 date: 2014-04-06T23:10:36+09:00
+author: mzyy94
 categories: ["NAS"]
 tags: ["xeon", "server"]
 image: "/assets/images/2014/4/6/DSC08148.JPG"

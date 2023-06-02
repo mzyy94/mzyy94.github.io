@@ -1,6 +1,7 @@
 ---
 title: "9インチ720pの大画面・高解像度カーナビを探した"
 date: 2020-09-03T22:30:00+09:00
+author: mzyy94
 published: true
 toc: true
 categories: ["Automobile"]

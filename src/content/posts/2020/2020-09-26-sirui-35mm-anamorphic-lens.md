@@ -1,6 +1,7 @@
 ---
 title: "SIRUI 35mm/F1.8 1.33xアナモルフィックレンズで夜景を撮る"
 date: 2020-09-26T15:00:00+09:00
+author: mzyy94
 published: true
 categories: ["Multimedia"]
 tags: ["camera", "lens", "anamorphic", "cinescope", "4k"]

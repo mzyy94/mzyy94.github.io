@@ -1,6 +1,7 @@
 ---
 title: "金属製プラチナカード"
 date: 2019-03-22T22:30:00+09:00
+author: mzyy94
 published: true
 categories: ["Credit Card"]
 tags: ["cashless", "platinum-card"]

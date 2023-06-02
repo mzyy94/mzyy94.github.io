@@ -1,6 +1,7 @@
 ---
 title: 小さなえびを飼い始めて2ヶ月が過ぎた
 date: 2015-04-26T23:46:19+09:00
+author: mzyy94
 categories: ["Aquarium"]
 tags: ["shrimp"]
 image: "/assets/images/2015/04/26/shrimp-bottle.jpg"
