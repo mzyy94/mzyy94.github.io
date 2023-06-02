@@ -4,13 +4,14 @@
   "description": "Astro and Tailwindcss boilerplate",
   "author": "zeon.studio",
   "license": "MIT",
-  "packageManager": "yarn@1.22.19",
+  "private": true,
+  "packageManager": "pnpm@8.6.0",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "format": "prettier -w ./src",
     "generate-json": "node scripts/jsonGenerator.js",
-    "remove-darkmode": "node scripts/removeDarkMode.js && yarn format"
+    "remove-darkmode": "node scripts/removeDarkMode.js && pnpm format"
   },
   "dependencies": {
     "@astrojs/image": "^0.16.9",
