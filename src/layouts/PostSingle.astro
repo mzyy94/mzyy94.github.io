@@ -105,7 +105,7 @@ const { title, description, author, categories, image, date, tags } = post.data;
     <nav class="container flex flex-nowrap justify-between py-8" role="navigation">
       {prev ?
         <a href={`/blog/${prev.slug}`}>
-          <p class="h5 text-black font-bold">前へ</p>
+          <p class="h5 nav-link font-bold">前へ</p>
           <span>
             <FaArrowLeft className="inline" />
             {prev.data.title}
@@ -115,7 +115,7 @@ const { title, description, author, categories, image, date, tags } = post.data;
       }
       {next ?
         <a class="text-right" href={`/blog/${next.slug}`}>
-          <p class="h5 text-black font-bold">次へ</p>
+          <p class="h5 nav-link font-bold">次へ</p>
           <span class="text-right">
             {next.data.title}
             <FaArrowRight className="inline" />
