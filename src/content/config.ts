@@ -1,4 +1,5 @@
 import { defineCollection, z } from "astro:content";
+import config from '@/config/config.json';
 
 // Post collection schema
 const blogCollection = defineCollection({
@@ -58,7 +59,7 @@ const pagesCollection = defineCollection({
 
 // Export collections
 export const collections = {
-  blog: blogCollection,
+  [config.settings.blog_folder]: blogCollection,
   authors: authorsCollection,
   pages: pagesCollection,
 };
