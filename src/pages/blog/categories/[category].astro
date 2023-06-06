@@ -4,6 +4,7 @@ import config from "@/config/config.json";
 import Base from "@/layouts/Base.astro";
 import { getSinglePage } from "@/lib/contentParser.astro";
 import { getTaxonomy } from "@/lib/taxonomyParser.astro";
+import { sortByDate } from "@/lib/utils/sortFunctions";
 import taxonomyFilter from "@/lib/utils/taxonomyFilter";
 import PageHeader from "@/partials/PageHeader.astro";
 
@@ -22,7 +23,8 @@ export async function getStaticPaths() {
 
 const { category } = Astro.params;
 const posts = await getSinglePage(config.settings.blog_folder);
-const filterByCategories = taxonomyFilter(posts, "categories", category!);
+const sortedPosts = sortByDate(posts);
+const filterByCategories = taxonomyFilter(sortedPosts, "categories", category!);
 ---
 
 <Base title={category}>
