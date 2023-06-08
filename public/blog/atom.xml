@@ -11,6 +11,21 @@
     <name>mzyy94</name>
   </author>
   <entry>
+    <title type="html">Feedパス変更のお知らせ</title>
+    <link href="https://www.mzyy94.com/blog/rss.xml" rel="alternate" type="text/html" title="Feedパス変更のお知らせ" />
+    <published>2023-06-09T05:00:00+09:00</published>
+    <updated>2023-06-09T05:00:00+09:00</updated>
+    <id>https://www.mzyy94.com/blog/rss.xml</id>
+    <author>
+      <name>mzyy94</name>
+    </author>
+    <category term="Misc" />
+    <summary type="html">
+      Feedのパスが https://www.mzyy94.com/blog/rss.xml に変更になりました。
+      このatom.xmlは以後更新されません。登録し直してください。
+    </summary>
+  </entry>
+  <entry>
     <title type="html">独身男性 新築を買う</title>
     <link href="https://www.mzyy94.com/blog/2023/02/07/my-new-house/" rel="alternate" type="text/html"
       title="独身男性 新築を買う" />
