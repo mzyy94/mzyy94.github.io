@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ja">
+  <generator uri="https://jekyllrb.com/" version="3.9.3">Jekyll</generator>
+  <link href="https://www.mzyy94.com/blog/atom.xml" rel="self" type="application/atom+xml" />
+  <link href="https://www.mzyy94.com/" rel="alternate" type="text/html" hreflang="ja" />
+  <updated>2023-06-09T04:55:28+09:00</updated>
+  <id>https://www.mzyy94.com/blog/atom.xml</id>
+  <title type="html">犬アイコンのみっきー</title>
+  <subtitle>いろいろ書く。</subtitle>
+  <author>
+    <name>mzyy94</name>
+  </author>
+  <entry>
+    <title type="html">独身男性 新築を買う</title>
+    <link href="https://www.mzyy94.com/blog/2023/02/07/my-new-house/" rel="alternate" type="text/html"
+      title="独身男性 新築を買う" />
+    <published>2023-02-07T01:00:00+09:00</published>
+    <updated>2023-02-07T01:00:00+09:00</updated>
+    <id>https://www.mzyy94.com/blog/2023/02/07/my-new-house</id>
+    <author>
+      <name>mzyy94</name>
+    </author>
+    <category term="Misc" />
+    <category term="home" />
+    <category term="house" />
+    <summary type="html">
+      家賃と駐車場代払ってると駐車場付きの家欲しいなる&amp;mdash; 不動産取得税申告 (@mzyy94) November 29, 2020
+      都内で月極駐車場を契約して賃貸マンションに住まう総居住費に対し、駐車場付き物件を住宅ローンを組んで支払う方が、税金や月々の返済を考えても安上がりなことを第一の理由に、この2023年に家を買うことにした。当初は一切のこだわりがなく、とにかく家を買って住むぞという軽い気持ちだけでスタートしたので、そのスタートからゴールまでの経験や過程を記事にする。</summary>
+    <media:thumbnail xmlns:media="http://search.yahoo.com/mrss/"
+      url="https://www.mzyy94.com/assets/images/2023/02/27/keys.jpg" />
+    <media:content medium="image" url="https://www.mzyy94.com/assets/images/2023/02/27/keys.jpg"
+      xmlns:media="http://search.yahoo.com/mrss/" />
+  </entry>
+  <entry>
+    <title type="html">Photon Mono 4K 光造形3Dプリンターを導入した</title>
+    <link href="https://www.mzyy94.com/blog/2022/06/15/photon-mono-4k-print/" rel="alternate"
+      type="text/html" title="Photon Mono 4K 光造形3Dプリンターを導入した" />
+    <published>2022-06-15T02:00:00+09:00</published>
+    <updated>2022-06-15T02:00:00+09:00</updated>
+    <id>https://www.mzyy94.com/blog/2022/06/15/photon-mono-4k-print</id>
+    <author>
+      <name>mzyy94</name>
+    </author>
+    <category term="3D Print" />
+    <category term="anycubic" />
+    <category term="photon" />
+    <category term="thingiverse" />
+    <summary type="html">ついに3Dプリンターを購入した。 𝑚𝑦 𝑛𝑒𝑤 𝑔𝑒𝑎𝑟 pic.twitter.com/aG8nI3wjDf&amp;mdash;
+      6月 (@mzyy94) April 1, 2022 これまで3Dプリントの必要に迫られてきたことは何度もあり、その度にShapewaysでプリントを外注してきた。
+      費用は高くつく上に、造形物が手元に届くまで数日から数週間かかっていた。 Shapewaysで金属3Dプリントした -シルバー925編- | 犬アイコンのみっきー
+      前回の予告でお伝えした通り、Shapewaysでシルバー925のプリントをしてみた話。 多くのシルバーアクセサリーで扱われる銀含有率925‰のスターリングシルバーで作ってみました。
+      ステンレススチール編ではざっくりとした感想しかお伝えいたしませんでしたが、今回はいろいろあったので多めに記録を残しておきます。 24th May 2017
+      ShapewaysでreTerminal用の電子基板ケースを3Dプリントした | 犬アイコンのみっきー reTerminalがSeeedから発表されたのは2021年の4月のこと。
+      Raspberry Pi CM4にディスプレイを搭載し、立派なケースに収められてすぐに使えるように作られているとても魅力あふれる製品だ。 𝑚𝑦 𝑛𝑒𝑤 𝑔𝑒𝑎𝑟
+      pic.twitter.com/89fEhgOETC&amp;mdash; MMP (@mzyy94) February 17, 2022 技適を通過していないRa... 28th Feb
+      2022 それでも3Dプリンターを買わず、金銭的時間的コストが掛かる外注を選択する理由は簡単で、導入コストとランニングコストを天秤に掛けても外注の方がパフォーマンスが良いと判断したからだ。
+      そんな考えを持っていたが、ラピッドプロトタイピングで3Dモデルを頻繁にプリントする必要に駆られ、時間的コストが無視できないようになってきた。
+      そこで導入を検討していると、近頃のコンシューマ向け3Dプリンターはこれらのコスト問題が減少していたこともあり、早速購入した。</summary>
+    <media:thumbnail xmlns:media="http://search.yahoo.com/mrss/"
+      url="https://www.mzyy94.com/assets/images/2022/06/15/photon_mono_4k_sample_print.jpg" />
+    <media:content medium="image"
+      url="https://www.mzyy94.com/assets/images/2022/06/15/photon_mono_4k_sample_print.jpg"
+      xmlns:media="http://search.yahoo.com/mrss/" />
+  </entry>
+  <entry>
+    <title type="html">Raspberry Pi CM4とCSI-2接続HDMI入力基板で音も取る</title>
+    <link href="https://www.mzyy94.com/blog/2022/03/01/hdmi-input-board-with-audio/" rel="alternate"
+      type="text/html" title="Raspberry Pi CM4とCSI-2接続HDMI入力基板で音も取る" />
+    <published>2022-03-01T03:00:00+09:00</published>
+    <updated>2022-03-01T03:00:00+09:00</updated>
+    <id>https://www.mzyy94.com/blog/2022/03/01/hdmi-input-board-with-audio</id>
+    <author>
+      <name>mzyy94</name>
+    </author>
+    <category term="Multimedia" />
+    <category term="hdmi" />
+    <category term="raspberry-pi" />
+    <category term="i2s" />
+    <category term="tc358743" />
+    <summary type="html">2年前に投稿したHDMI入力をRaspberry
+      Piで取り込む記事では映像しか取得していませんでしたが、このHDMI入力基板には音声も取り込めるチップTC358743が搭載されています。
+      取り込める端子は購入したHDMI入力基板にもちゃんと用意されていたので、ピンヘッダを取り付けて信号を見たりしたものの、音声出力が正常に取得できませんでした。
+      この問題をあれこれ探し回って解決した記録を残しておきます。</summary>
+    <media:thumbnail xmlns:media="http://search.yahoo.com/mrss/"
+      url="https://www.mzyy94.com/assets/images/2022/03/01/soldering-patch.jpg" />
+    <media:content medium="image"
+      url="https://www.mzyy94.com/assets/images/2022/03/01/soldering-patch.jpg"
+      xmlns:media="http://search.yahoo.com/mrss/" />
+  </entry>
+  <entry>
+    <title type="html">ShapewaysでreTerminal用の電子基板ケースを3Dプリントした</title>
+    <link href="https://www.mzyy94.com/blog/2022/02/28/shapeways-reterminal-plastic-case/"
+      rel="alternate" type="text/html" title="ShapewaysでreTerminal用の電子基板ケースを3Dプリントした" />
+    <published>2022-02-28T13:00:00+09:00</published>
+    <updated>2022-02-28T13:00:00+09:00</updated>
+    <id>https://www.mzyy94.com/blog/2022/02/28/shapeways-reterminal-plastic-case</id>
+    <author>
+      <name>mzyy94</name>
+    </author>
+    <category term="3D Print" />
+    <category term="reTerminal" />
+    <category term="raspberry-pi" />
+    <category term="plastic" />
+    <category term="pa12" />
+    <category term="mjf" />
+    <category term="acrylic" />
+    <summary type="html">reTerminalがSeeedから発表されたのは2021年の4月のこと。 Raspberry Pi
+      CM4にディスプレイを搭載し、立派なケースに収められてすぐに使えるように作られているとても魅力あふれる製品だ。 𝑚𝑦 𝑛𝑒𝑤 𝑔𝑒𝑎𝑟
+      pic.twitter.com/89fEhgOETC&amp;mdash; MMP (@mzyy94) February 17, 2022 技適を通過していないRaspberry Pi
+      CM4の無線モデルを搭載していることから、Seeed Studio
+      Bazaarから直接買っても国内で利用することができず、技適の取得に1年2年待たされるものだと悟ったため、頭の中から存在を消し去っていた。
+      それから1年が経とうとしている2022年2月、reTerminalを手にするツイートをちらほら見かけ、昨年10月に日本でも購入・利用ができるようになっていたことを知った。国内販売にあたってCM4単体としてではなく、reTerminalとして技適を取得したようだ。
+      総務省 電波利用ホームページ | 技術基準適合証明等を受けた機器の検索 ［速報］ reTerminal日本国内販売開始 - Seeed K.K. エンジニアブログ
+      ついうっかりポチってしまったが、毎度のことながら利用目的が特に定まっておらず箪笥の肥やしになる運命にあった。
+      そんな悲しい運命を打破するためにか、ProtoPediaなる開発支援サイトでreTerminalの活用コンテストを行なっていた。
+      みなこれをきっかけにreTerminalを購入していたようだ。 Seeed reTerminal 拡張モジュールコンテスト | ProtoPedia
+      コンテストの応募資格は側面か背面にある拡張端子にくっつけるモジュールを試作していることとある。
+      ハードウェアが絡むプロトタイピングはしばらくやっていなかったこともあり、ものづくりを久々にしっかりやるかという気持ちになった。
+      このコンテスト参加において、拡張モジュールを試作しケースを発注するに至るまでの記録をここに残す。</summary>
+    <media:thumbnail xmlns:media="http://search.yahoo.com/mrss/"
+      url="https://www.mzyy94.com/assets/images/2022/02/28/printed-case.jpg" />
+    <media:content medium="image"
+      url="https://www.mzyy94.com/assets/images/2022/02/28/printed-case.jpg"
+      xmlns:media="http://search.yahoo.com/mrss/" />
+  </entry>
+  <entry>
+    <title type="html">Firefly Station P2を買ったのでとりあえず動かした</title>
+    <link href="https://www.mzyy94.com/blog/2021/09/22/stationpc-p2/" rel="alternate" type="text/html"
+      title="Firefly Station P2を買ったのでとりあえず動かした" />
+    <published>2021-09-22T11:00:00+09:00</published>
+    <updated>2021-09-22T11:00:00+09:00</updated>
+    <id>https://www.mzyy94.com/blog/2021/09/22/stationpc-p2</id>
+    <author>
+      <name>mzyy94</name>
+    </author>
+    <category term="Gadget" />
+    <category term="station-pc" />
+    <category term="sbc" />
+    <category term="rk3568" />
+    <category term="rockchip" />
+    <summary type="html">『半導体不足で欲しいものが欲しい時に手に入らなくなるかもしれない。』
+      そんな危機感を覚えたので、今すぐ必要ではないが後で欲しくなった時に買えないと悔しい思いをするのを避けるようになった。
+      気になったものは悩まず買うという意志を強く持ち、結果として積みSBCや積み開発ボードなどが増えていってしまった。
+      このままでは未開封新品の品々が増えていくばかりなので、隙間時間を見つけて遊ぶことにした。 今回はFireflyのStationPCシリーズの最新作、Station
+      P2を軽く動かしてみた記録を書き殴った。</summary>
+    <media:thumbnail xmlns:media="http://search.yahoo.com/mrss/"
+      url="https://www.mzyy94.com/assets/images/2021/09/22/IMG_2555.jpg" />
+    <media:content medium="image" url="https://www.mzyy94.com/assets/images/2021/09/22/IMG_2555.jpg"
+      xmlns:media="http://search.yahoo.com/mrss/" />
+  </entry>
+  <entry>
+    <title type="html">75インチ液晶テレビHisense 75A6Gのレビューと通信システム調査</title>
+    <link href="https://www.mzyy94.com/blog/2021/08/07/hisense-75a6g-review/" rel="alternate"
+      type="text/html" title="75インチ液晶テレビHisense 75A6Gのレビューと通信システム調査" />
+    <published>2021-08-07T20:30:00+09:00</published>
+    <updated>2021-08-07T20:30:00+09:00</updated>
+    <id>https://www.mzyy94.com/blog/2021/08/07/hisense-75a6g-review</id>
+    <author>
+      <name>mzyy94</name>
+    </author>
+    <category term="Multimedia" />
+    <category term="4k" />
+    <category term="hdr" />
+    <category term="tv" />
+    <category term="display" />
+    <category term="ips" />
+    <summary type="html">三年前に65インチの格安4Kテレビを購入したが、視力の低下が著しく視聴距離2mでは鮮明さに欠けるようになってきた。
+      格安65インチ4K/HDRテレビが届いたのでレビュー | 犬アイコンのみっきー 兼ねてから発売したら購入しようと決めていたNVIDIAの4K HDR 65インチディスプレイ、BIG
+      FORMAT GAMING DISPLAYS(BFGD)が夏に発売される1と言われ夏が過ぎ、秋が来て、冬が迫る11月上旬。 アイリスオーヤマからプライベートブランドで4K HDR
+      65インチテレビが発売されると報じられた。 黒物家電事業に新規参入 4K・HDR対応※液晶テレビ「LUCAシリー... 29th Nov 2018
+      矯正視力なら精細に観ることができるものの、映像視聴を除いてはメガネの必要性が無い家の中なので、極力メガネをかけることなしに視聴したい。
+      解決策の一つとして、テレビのサイズをデカくする方法を考えていたが、65インチを超えるサイズとなると20万、30万円の価格帯となり、インチあたりの価格が極端に高くなる傾向にある。
+      そのためなかなか購入に踏み切れていなかったが、オリンピックと在庫処分が掛け合わさってLGの型落ち75インチ液晶テレビがコストコで税込16万円を切るなど、だいぶ手の届きやすいところへと落ち着いてきていた。
+      そのLGの型落ちモデルを買ってもよかったが、オリンピック開幕直前にハイセンスより75インチ4K液晶テレビ新製品が15万円前後で発売されると聞いて、この値段ならと購入した。</summary>
+    <media:thumbnail xmlns:media="http://search.yahoo.com/mrss/"
+      url="https://www.mzyy94.com/assets/images/2021/08/07/hisense-75a6g.jpg" />
+    <media:content medium="image"
+      url="https://www.mzyy94.com/assets/images/2021/08/07/hisense-75a6g.jpg"
+      xmlns:media="http://search.yahoo.com/mrss/" />
+  </entry>
+  <entry>
+    <title type="html">DIALというネットワークプロトコル</title>
+    <link href="https://www.mzyy94.com/blog/2021/08/03/dial-rest-protocol/" rel="alternate"
+      type="text/html" title="DIALというネットワークプロトコル" />
+    <published>2021-08-03T09:30:00+09:00</published>
+    <updated>2021-08-03T09:30:00+09:00</updated>
+    <id>https://www.mzyy94.com/blog/2021/08/03/dial-rest-protocol</id>
+    <author>
+      <name>mzyy94</name>
+    </author>
+    <category term="Network" />
+    <category term="upnp" />
+    <category term="dial" />
+    <category term="ssdp" />
+    <category term="chromecast" />
+    <summary type="html">家庭のネットワークの監視システムからDIALなるプロトコルが暴れていてアラートが飛んできたので調査しました。</summary>
+    <media:thumbnail xmlns:media="http://search.yahoo.com/mrss/"
+      url="https://www.mzyy94.com/assets/images/2021/08/03/dial-launch-demo.png" />
+    <media:content medium="image"
+      url="https://www.mzyy94.com/assets/images/2021/08/03/dial-launch-demo.png"
+      xmlns:media="http://search.yahoo.com/mrss/" />
+  </entry>
+  <entry>
+    <title type="html">Dell U4021QW 5K2Kモニターを買って周辺をカスタマイズした</title>
+    <link href="https://www.mzyy94.com/blog/2021/06/04/dell-u4021qw-5k2k-monitor/" rel="alternate"
+      type="text/html" title="Dell U4021QW 5K2Kモニターを買って周辺をカスタマイズした" />
+    <published>2021-06-04T10:00:00+09:00</published>
+    <updated>2021-06-04T10:00:00+09:00</updated>
+    <id>https://www.mzyy94.com/blog/2021/06/04/dell-u4021qw-5k2k-monitor</id>
+    <author>
+      <name>mzyy94</name>
+    </author>
+    <category term="Gadget" />
+    <category term="5k" />
+    <category term="ips" />
+    <category term="display" />
+    <summary type="html">かれこれ5年間、42インチの4Kディスプレイを使ってきた。パネルやDPIに強いこだわりがあり、2015年当時には物珍しかった42インチでIPSパネルの4KディスプレイをわざわざeBayで購入していた。
+      在宅ワークが増え、ここ1年半は毎日のように活躍してくれている。ただ、少しばかり不満と欲が出てきたため、5K2Kモニターを新たに購入した。</summary>
+    <media:thumbnail xmlns:media="http://search.yahoo.com/mrss/"
+      url="https://www.mzyy94.com/assets/images/2021/06/04/setup.jpg" />
+    <media:content medium="image" url="https://www.mzyy94.com/assets/images/2021/06/04/setup.jpg"
+      xmlns:media="http://search.yahoo.com/mrss/" />
+  </entry>
+  <entry>
+    <title type="html">新SoC UIS7862搭載の中華ナビを買った＋root化事情（JOYING製）</title>
+    <link href="https://www.mzyy94.com/blog/2021/02/04/new-android-car-navigation/" rel="alternate"
+      type="text/html" title="新SoC UIS7862搭載の中華ナビを買った＋root化事情（JOYING製）" />
+    <published>2021-02-04T09:00:00+09:00</published>
+    <updated>2021-02-04T09:00:00+09:00</updated>
+    <id>https://www.mzyy94.com/blog/2021/02/04/new-android-car-navigation</id>
+    <author>
+      <name>mzyy94</name>
+    </author>
+    <category term="Automobile" />
+    <category term="car-audio" />
+    <category term="中華ナビ" />
+    <category term="navigation" />
+    <category term="joying" />
+    <category term="android" />
+    <category term="carplay" />
+    <category term="review" />
+    <category term="rooting" />
+    <summary type="html">ついこの前買ったばかりのJOYING製の中華ナビ。 JOYINGのAndroid中華ナビを買ったので動かしてみた | 犬アイコンのみっきー
+      色々と探し回って見つけたJOYINGの720pの9インチカーナビ。 プリウスに取り付ける前に、家で動作確認をする準備ができたので、開封して起動してみた。
+      使いこなすまではいかない程度の軽めのレビューです。 7th Sep 2020
+      購入してブログの記事を書いた数週間後にモデルチェンジがあり、ほとんどお値段変わらず新しいよりパワフルなSoCを積んだものが発売されていました。
+      とても悔しかったので買いなおしました。悔しかったので（大事なことなので）。 商品自体は昨年11月に届いていたものの、外出自粛が長引き活用できずにずっとおうちに眠ったままです。
+      この記事も12月に大枠は完成していて、一緒に眠ったままでした。
+      このままでは眠りっぱなしなので、実際に取り付けてのレビューは無しに、前モデルと比較しつつ新しいモデルの違いの検証とroot化事情の記事としてお届けします。</summary>
+    <media:thumbnail xmlns:media="http://search.yahoo.com/mrss/"
+      url="https://www.mzyy94.com/assets/images/2021/02/04/homescreen.png" />
+    <media:content medium="image" url="https://www.mzyy94.com/assets/images/2021/02/04/homescreen.png"
+      xmlns:media="http://search.yahoo.com/mrss/" />
+  </entry>
+  <entry>
+    <title type="html">一般のご家庭に25GbEネットワークを導入する</title>
+    <link href="https://www.mzyy94.com/blog/2020/12/11/hello-25gbe-nic-at-home/" rel="alternate"
+      type="text/html" title="一般のご家庭に25GbEネットワークを導入する" />
+    <published>2020-12-11T06:30:00+09:00</published>
+    <updated>2020-12-11T06:30:00+09:00</updated>
+    <id>https://www.mzyy94.com/blog/2020/12/11/hello-25gbe-nic-at-home</id>
+    <author>
+      <name>mzyy94</name>
+    </author>
+    <category term="Network" />
+    <category term="25gbe" />
+    <category term="nic" />
+    <category term="mellanox" />
+    <category term="connectx-4" />
+    <summary type="html">師走と言えば大掃除。 一般のご家庭に溜まる可燃ゴミの掃除はもちろんのこと、デジタルデータに溢れる令和の時代は、データ掃除も入念に行う必要があります。
+      PCやiPadやNASなど、いたるところに散らばるデータの掃除には、高速ネットワーク環境を家庭内に構築しないと始まりませんよね。 そこで高速なネットワーク環境を導入し始めました。
+      そう、25GbEの敷設です！</summary>
+    <media:thumbnail xmlns:media="http://search.yahoo.com/mrss/"
+      url="https://www.mzyy94.com/assets/images/2020/12/11/hello-25gbe-nic.jpg" />
+    <media:content medium="image"
+      url="https://www.mzyy94.com/assets/images/2020/12/11/hello-25gbe-nic.jpg"
+      xmlns:media="http://search.yahoo.com/mrss/" />
+  </entry>
+  <entry>
+    <title type="html">SIRUI 35mm/F1.8 1.33xアナモルフィックレンズで夜景を撮る</title>
+    <link href="https://www.mzyy94.com/blog/2020/09/26/sirui-35mm-anamorphic-lens/" rel="alternate"
+      type="text/html" title="SIRUI 35mm/F1.8 1.33xアナモルフィックレンズで夜景を撮る" />
+    <published>2020-09-26T15:00:00+09:00</published>
+    <updated>2020-09-26T15:00:00+09:00</updated>
+    <id>https://www.mzyy94.com/blog/2020/09/26/sirui-35mm-anamorphic-lens</id>
+    <author>
+      <name>mzyy94</name>
+    </author>
+    <category term="Multimedia" />
+    <category term="camera" />
+    <category term="lens" />
+    <category term="anamorphic" />
+    <category term="cinescope" />
+    <category term="4k" />
+    <summary type="html">ずっと欲しかったアナモルフィックレンズを手に入れた。 SIRUI 35MM /F1.8 1.33X ANAMORPHIC LENS
+      最近カメラを手にする人が増えているようなので、どうせならとレンズにも興味をもって欲しく、記事にした。</summary>
+    <media:thumbnail xmlns:media="http://search.yahoo.com/mrss/"
+      url="https://www.mzyy94.com/assets/images/2020/09/26/Photo_1.png" />
+    <media:content medium="image" url="https://www.mzyy94.com/assets/images/2020/09/26/Photo_1.png"
+      xmlns:media="http://search.yahoo.com/mrss/" />
+  </entry>
+</feed>
