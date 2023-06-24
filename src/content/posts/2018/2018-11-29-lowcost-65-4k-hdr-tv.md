@@ -2,8 +2,8 @@
 title: "格安65インチ4K/HDRテレビが届いたのでレビュー"
 date: 2018-11-29T07:00:00+09:00
 author: mzyy94
-categories: ["Gadget"]
-tags: ["4k", "hdr", "tv", "display", "ips"]
+categories: ["Display"]
+tags: ["4k", "hdr", "tv", "hardware", "ips"]
 image: "/assets/images/2018/11/29/P1021487.JPG"
 ---
 

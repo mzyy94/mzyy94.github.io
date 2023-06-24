@@ -2,8 +2,8 @@
 title: 42インチのAH-IPS 4Kディスプレイ買ってみた
 date: 2016-01-10T05:00:00+09:00
 author: mzyy94
-categories: ["Gadget"]
-tags: ["4k", "ips", "ah-ips", "display"]
+categories: ["Display"]
+tags: ["4k", "ips", "ah-ips", "hardware", "monitor"]
 image: "/assets/images/2016/01/10/42inch-splatoon.jpg"
 ---
 
