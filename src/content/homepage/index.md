@@ -13,8 +13,8 @@ what_i_do:
   - title: "GitHub"
     link: "https://github.com/mzyy94"
   
-  - title: "Twitter"
-    link: "https://twitter.com/mzyy94"
+  - title: "Fediverse"
+    link: "https://sns.mzyy94.com/@mzyy94"
 
 ---
 
