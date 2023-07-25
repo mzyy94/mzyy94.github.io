@@ -1,0 +1,149 @@
+---
+title: "中華10GbEスイッチNetcore GS6を運用して1ヶ月たったレビュー"
+date: 2023-07-26T01:45:00+09:00
+author: mzyy94
+categories: ["Network"]
+tags: ["10gbe", "switch", "netcore", "hardware", "review"]
+image: "/assets/images/2023/07/26/IMG_9790.jpg"
+---
+
+春に新居に越してからベストエフォートで10Gbpsのインターネット回線を引き込み利用している。
+リビングに光コンセントを設置し、ONUに自作ルーターにNASやら母艦やらを集中してリビングに設置していた。
+
+![r86s router](/assets/images/2023/07/26/IMG_7647.jpg)
+
+暖かくなるにつれて冷却の関係でNASと母艦PCを仕事部屋に移動させなければならず、宅内LANを構成する必要に迫られた。
+当初は初夏にはWi-Fi 7機器が発売されていて、6GHz帯の無線でリビングと仕事部屋を繋ぐ構想を描いていた。
+しかしWi-Fi 7機器今夏発売のプレスリリースは見かけるものの国内販売に向けて動く気配がなく、猛暑を迎える前に機器を揃えることは困難だと察した。
+そこで重労働で避けたかったが有線配線をして、宅内LANを構成することにした。
+
+## 目次
+
+## ネットワーク構成図
+
+我が家はユニットバスの天井裏に各部屋からのCD管が集中している。
+リビングと仕事部屋とを繋げるためには、その天井裏を経由する必要がある。
+単純にリビングと仕事部屋だけを繋げるのであれば、2本のケーブルを通してガッチャンコすればいい。
+ただ、わざわざ重い腰を上げてLAN配線をするのだからと、他の部屋もまとめて配線することにした。
+ネットワーク構成図は以下の通り。
+
+![network map](/assets/images/2023/07/26/network.svg)
+
+はじめは全線10GbEをと考えていたが、次章で記す理由によって10GbE + 2.5GbEのスイッチングハブで妥協している。
+どのみち配線時点で予定しているのは2.5GbEの下にWi-Fi 6のAPをぶら下げることくらいで、最大2404Mbpsでの通信しかしないのだから結果として2.5GbEで十分だった。
+
+ちなみにNASには贅沢にも25GbEを搭載しているが、今は10GbEとして利用している。
+
+::PostLink{slug="hello-25gbe-nic-at-home"}
+
+
+
+## 全ポート10GbEスイッチは熱すぎる
+
+![cd hub](/assets/images/2023/07/26/IMG_8871.jpg)
+
+前途の通り、ユニットバスの天井裏にそれぞれの部屋と繋がったCD管が集まっている。
+各部屋とのLAN配線を考えると、必然とこの天井裏にスイッチングハブを設置しなければならない。
+ここで気になるのはスイッチングハブの発熱だ。
+
+閉鎖され断熱されているため気温や湿度は一定の低さを保つユニットバスの天井裏だが、閉鎖空間ゆえに空気の循環がない。
+手持ちの10GbEハブである[TL-SX105](https://www.amazon.co.jp/TP-Link-%E5%85%A8%E3%83%9D%E3%83%BC%E3%83%8810G%E5%AF%BE%E5%BF%9C-%E3%83%9E%E3%83%AB%E3%83%81%E3%82%AE%E3%82%AC%E3%83%93%E3%83%83%E3%83%88-%E3%82%B9%E3%82%A4%E3%83%83%E3%83%81%E3%83%B3%E3%82%B0%E3%83%8F%E3%83%96-TL-SX105/dp/B08WPWWM8W?th=1&linkCode=ll1&tag=mzyy-22&linkId=9d1277bec892940ce078319df38eddbc&language=ja_JP&ref_=as_li_ss_tl)は触れ続けることが困難なほど筐体が熱を持ち、こんな熱いものを天井裏に設置するのは流石に憚られる。
+他社の全ポート10GbEのスイッチングハブを調べてみても、どの製品も結構な発熱を持つものばかりだった。
+
+<a href="https://www.amazon.co.jp/TP-Link-%E5%85%A8%E3%83%9D%E3%83%BC%E3%83%8810G%E5%AF%BE%E5%BF%9C-%E3%83%9E%E3%83%AB%E3%83%81%E3%82%AE%E3%82%AC%E3%83%93%E3%83%83%E3%83%88-%E3%82%B9%E3%82%A4%E3%83%83%E3%83%81%E3%83%B3%E3%82%B0%E3%83%8F%E3%83%96-TL-SX105/dp/B08WPWWM8W?th=1&linkCode=li2&tag=mzyy-22&linkId=85d93ddbef990d5f83513d96a9e7415a&language=ja_JP&ref_=as_li_ss_il" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B08WPWWM8W&Format=_SL500_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22&language=ja_JP" /></a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=mzyy-22&language=ja_JP&l=li2&o=9&a=B08WPWWM8W" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+[Amazon \| TP-Link 5ポート 全ポート10G対応 10G マルチギガビット アンマネージ プラグ&プレイ スイッチングハブ TL-SX105 \| TP-Link \| スイッチングハブ 通販](https://www.amazon.co.jp/TP-Link-%E5%85%A8%E3%83%9D%E3%83%BC%E3%83%8810G%E5%AF%BE%E5%BF%9C-%E3%83%9E%E3%83%AB%E3%83%81%E3%82%AE%E3%82%AC%E3%83%93%E3%83%83%E3%83%88-%E3%82%B9%E3%82%A4%E3%83%83%E3%83%81%E3%83%B3%E3%82%B0%E3%83%8F%E3%83%96-TL-SX105/dp/B08WPWWM8W?th=1&linkCode=ll1&tag=mzyy-22&linkId=9d1277bec892940ce078319df38eddbc&language=ja_JP&ref_=as_li_ss_tl)
+
+天井裏にスイッチングハブを設置するという制約下では、発熱の関係で全室10GbE配線を諦めざるをえなかった。
+そのため、リビングと仕事部屋とを高速に繋げる目的のため**2つの10GbE**と、無線APや2.5G SBCなどとの中速通信に必要十分な**3つ以上の2.5GbE**を備える**低発熱な**スイッチを探すことにした。
+
+### 低発熱の10GbEスイッチを求めて
+
+スイッチングハブの発熱の根源はチップの消費電力にある。
+なので低消費電力にフォーカスしてスイッチングハブのチップを調べていると、蟹のRTL8372が最大消費電力5.6Wで優れているという情報が見つかった。
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">If anyone is looking for a 2.5GBE switch, you might want to wait for newer RTL8372 or RTL8373 based switch. They are now on the market but still in limited number.<br/><br/>These next-gen switch IC has 2.5GBE PHY built-in to the IC so the cost &amp; power is way lower then those old RTL8371 based switch.</p>&mdash; will whang🌻 (@will_whang) <a href="https://twitter.com/will_whang/status/1648151343960563713?ref_src=twsrc%5Etfw">April 18, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+ググってみるとチップ自体は10GbE + 2.5GbE対応のもので、CES 2022でRTL8373/RTL8372が展示されたというRealtekのプレスリリースが見つかるが、これを搭載した製品は疎か、チップに関する公式情報すら出てこない。
+最近のGoogleはフィッシングサイトを掲載することに本腰を入れている悪徳企業なので、ググって求める情報が出てこないのは至極当たり前なことだ。
+そう考え、ちょうどWeiboをお試し利用していたので中華圏で話題になっていないかウェイボってみたところ、acwifiという中国語のサイトの記事にたどり着いた。
+
+[磊科GS6拆机，4x 2.5G+2x 10G交换机-路由器交流](https://www.acwifi.net/24353.html)
+
+どうやら中国国内向けにRTL8372を搭載した10GbE x2 + 2.5GbE x4スイッチが販売されているという。
+[磊科(netcore)](https://www.netcoretec.com/)という聞き慣れないメーカーだが、日本でいうBuffaloみたいな感じだろう。
+ネットワーク機器を数多く展開していることもあって、このacwifiによるレビューを信じると性能はちゃんとしているようだ。
+
+JD.comでnetcore GS6と検索してみると、磊科の直販ページを発見した。販売価格は289元とあり、なんと日本への配送が可能な自营マークがついていた。
+すぐに売り切れてなかなか買えないという中国語の投稿をいくつか見かけていたので即注文した。
+
+<img src="/assets/images/2023/07/26/IMG_9021.jpg" width="40%" style="display: inline-block" />
+<img src="/assets/images/2023/07/26/IMG_9024.jpg" width="40%" style="display: inline-block" />
+
+6月上旬は何かのキャンペーンがあったようで少し割引が効いて、送料含めた合計金額は435元。クレジットカード決済で1元≒19.997円として計算され、請求額はほぼ8,700円だった。
+旧世代の20W近くの最大消費電力を持つチップを搭載した[Buffaloの同等品](https://www.buffalo.jp/product/detail/lxw-10g2_2g4.html)ですら発売から4年経っても2万円を超えているので、8,700円で最新チップ搭載品が手に入るのはものすごくお手頃である。
+
+<iframe sandbox="allow-popups allow-scripts allow-modals allow-forms allow-same-origin" style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=mzyy-22&language=ja_JP&o=9&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=B081DYYZQ7&linkId=4afa9664f443df65881e1d95e04e519e"></iframe>
+
+こうして低発熱と低価格の10GbE x2 + 2.5GbE x4の中華ハブを基幹に据えることになった。
+
+## netcore GS6
+
+Fedexによる配送で注文から一週間とちょっとで届いた。AliExpressやAmazon.co.jpなどと違って梱包は丁寧で、改めてJD.comの質の高さを感じた。
+
+![](/assets/images/2023/07/26/IMG_9221.jpg)
+
+付属の電源ケーブルは日本のコンセントには刺さらない形状だが、電圧はAC100V-240Vなので一般的な3ピンのものに交換して差し込むだけで使える。
+起動してしまえば至って普通のスイッチングハブである。
+
+![](/assets/images/2023/07/26/IMG_9310.jpg)
+
+性能の検証などはacwifiの記事にあるので割愛するが、レビューとは一つ異なる点があった。
+acwifiのレビューではSFP+の10GBase-Tモジュールが全く使えないとあったが、手持ちのipolexと10Gtekの2製品で試したところ正常に認識し、安定してiperf3の実測で9.4Gbps台で通信できていた。10GBase-SRはもちろんのこと、SFP28のDACでも問題なく通信でき、手持ちの全てのSFP+モジュールで安定動作していた。
+
+<a href="https://www.amazon.co.jp/gp/product/B0797GL6P7?ie=UTF8&th=1&linkCode=li2&tag=mzyy-22&linkId=8188cb6dc4c2a517bbe6519d5a5053ae&language=ja_JP&ref_=as_li_ss_il" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B0797GL6P7&Format=_SL250_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22&language=ja_JP" /></a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=mzyy-22&language=ja_JP&l=li2&o=9&a=B0797GL6P7" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+[Amazon.co.jp: 10GBASE-T SFP+モジュール RJ45コネクタ Cisco SFP-10G-T-S、Netgear、Ubiquiti、D-Link、Supermicro、TP-Link、Broadcom、Linksys、F5など対応互換 30m : パソコン・周辺機器](https://www.amazon.co.jp/gp/product/B0797GL6P7?ie=UTF8&linkCode=ll1&tag=mzyy-22&linkId=3e6783b07ef0503a4b49a772909a7727&language=ja_JP&ref_=as_li_ss_tl&th=1)
+
+<a href="https://www.amazon.co.jp/gp/product/B09HZJB214?ie=UTF8&th=1&linkCode=li2&tag=mzyy-22&linkId=162a0f115018e3348eb1ea753f049544&language=ja_JP&ref_=as_li_ss_il" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B09HZJB214&Format=_SL250_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22&language=ja_JP" /></a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=mzyy-22&language=ja_JP&l=li2&o=9&a=B09HZJB214" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+[Amazon.co.jp: 10Gtek 10GBase-T SFP+モジュール, 10G-T, 10Gカッパー, RJ-45 SFP+ CAT.6a, 最大30メートル, Mellanox互換 : 産業・研究開発用品](https://www.amazon.co.jp/gp/product/B09HZJB214?ie=UTF8&th=1&linkCode=sl1&tag=mzyy-22&linkId=fb32fa2c78fb34fc6df271d0ac950aac&language=ja_JP&ref_=as_li_ss_tl)
+
+10GBase-Tモジュールは発熱がすごいので低発熱を目指す今回は利用しないが、10GbEをLANケーブル（ツイストペアケーブル）で配線したい需要をも満たせる製品だ。
+
+![](/assets/images/2023/07/26/IMG_9313.jpg)
+
+
+## 配線作業
+
+![](/assets/images/2023/07/26/IMG_9790.jpg)
+
+動作チェックが終わったら敷設されているCD管にケーブルを通して、各部屋にケーブルを配線していく。
+10GbEはLC-LC光ファイバーケーブルで、2.5GbEはCat 6aのLANケーブルを通していく。
+LCケーブルの情報コンセント設置に関しては、次のブログ記事を参考にして部材を集めた。
+
+[自宅のネットワークを25GbEにする - blog.k5a.dev](https://blog.k5a.dev/entry/2023/05/14/190210)
+
+その他家庭内LAN配線は数多のブログで紹介され尽くしているので、今更ここに書く新規性のあるものはほとんどないが、一つだけアドバイスを記しておく。
+
+### 潤滑剤は買っておけ
+
+
+曲がりくねったCD管延べ15mへのLANケーブル通線は、静止摩擦係数が長大なケーブルの設置面に掛かって全然通らない。
+細く柔らかいLCケーブルがスムーズに通線できていたのに、太くコシのあるCat 6aケーブルは途中でびくともしなくなる。
+居室側からLANケーブルを5cm押し込んではバスルームから5cm引っ張るのを繰り返してなんとか通線したが、双方を行き来するため階段を幾度となく登り降りした。
+Apple Watchの計測では階段をビル136階分も登って降りたと記録されていた。
+ミーティも驚きの上昇負荷である。
+土日を丸っと潰すこととなってしまったため、一人で作業するならスムーズに通線するためにも入線用のシリコンスプレーを使うことをおすすめする。
+
+<img src="/assets/images/2023/07/26/IMG_9765.jpg" width="40%" style="display: inline-block" />
+
+
+## 1ヶ月間利用してみて
+
+人柱覚悟で購入してみたものの、何の問題もなく1ヶ月間稼働し続けている。
+ファンレスなのにiperf3しまくっても発熱は人肌くらいで、期待通りの仕事をしてくれている。さすが最新チップのRTL8732。
+あっけないくらいにトラブルがないので、逆に面白みがなさすぎてブログのネタにすることすら迷ったくらいだ。
+長期間利用して不調を表したとしても、この価格（定価299元≒約6,000円）なら交換対応として1台ストックしておくのも現実的だろう。
+
+## まとめ
+
+通線作業が苦行だったが、低発熱な中華スイッチによって当初の目的を達成することができた。何もかもが未知数な中華スイッチを導入するという新たな体験もでき、好奇心をも満たす結果となった。
+まだまだJD.comやTmallには中華なネットワーク機器がたくさん転がっている。この記事を読んで興味を持った人はぜひ未知の機器を購入し、人柱になってみてほしい。
