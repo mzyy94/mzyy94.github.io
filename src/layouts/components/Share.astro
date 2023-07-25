@@ -34,12 +34,19 @@ const title = encodeURIComponent(`${content_title} | ${site_title}`);
   <li class="inline-block">
     <a
       aria-label="twitter share button"
-      href={`https://twitter.com/intent/tweet/?text=${title}&amp;url=${base_url}/blog/${slug}`}
+      href={`https://twitter.com/intent/tweet/?text=${title}&url=${base_url}/blog/${slug}`}
       target="_blank"
       rel="noreferrer noopener"
     >
-      <IoLogoTwitter />
-    </a>
+    <svg xmlns="http://www.w3.org/2000/svg" stroke="currentColor" fill="currentColor" viewBox="0 0 512 512" width="1em" height="1em">
+      <text x="96" y="384" font-family="Verdana" font-size="472" font-weight="900" fill="white" class="dark:hidden">
+        𝕏
+      </text>
+      <text x="96" y="384" font-family="Verdana" font-size="472" font-weight="900" fill="black">
+        𝕏
+      </text>
+    </svg>
+  </a>
   </li>
   <li class="inline-block">
     <a
