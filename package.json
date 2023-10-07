@@ -53,7 +53,7 @@
     "@types/react-dom": "18.2.4",
     "autoprefixer": "^10.4.14",
     "eslint": "^8.42.0",
-    "postcss": "^8.4.24",
+    "postcss": "^8.4.31",
     "prettier": "^2.8.8",
     "prettier-plugin-astro": "^0.9.1",
     "prettier-plugin-tailwindcss": "^0.3.0",
