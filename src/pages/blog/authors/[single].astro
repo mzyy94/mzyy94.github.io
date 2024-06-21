@@ -5,7 +5,7 @@ import config from "@/config/config.json";
 import Base from "@/layouts/Base.astro";
 import { getSinglePage } from "@/lib/contentParser.astro";
 import { slugify } from "@/lib/utils/textConverter";
-import { Image } from "@astrojs/image/components";
+import { Image } from "astro:assets";
 
 export async function getStaticPaths() {
   const authors = await getSinglePage("authors");
@@ -45,10 +45,11 @@ const postFilterByAuthor = posts.filter(
             image && (
               <Image
                 src={image}
-                class="mx-auto mb-10 rounded"
+                class="mx-auto mb-10 rounded object-cover"
                 height={200}
                 width={200}
                 alt={title}
+                style="aspect-ratio: 200 / 200"
               />
             )
           }

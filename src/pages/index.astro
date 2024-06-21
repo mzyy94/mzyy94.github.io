@@ -1,7 +1,7 @@
 ---
 import Base from "@/layouts/Base.astro";
 import { markdownify } from "@/lib/utils/textConverter";
-import { Image } from "@astrojs/image/components";
+import { Image } from "astro:assets";
 import { getEntryBySlug } from "astro:content";
 
 
@@ -27,7 +27,8 @@ const { title, description, meta_title, image, what_i_do } = homepage.data;
                 width={295}
                 height={295}
                 alt={title}
-                class="rounded-lg w-full"
+                class="rounded-lg w-full object-cover"
+                style="aspect-ratio: 295 / 295"
               />
             </div>
           )}

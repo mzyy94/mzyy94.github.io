@@ -1,4 +1,3 @@
-import image from "@astrojs/image";
 import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
@@ -7,7 +6,7 @@ import AutoImport from "astro-auto-import";
 import remarkDirective from "remark-directive";
 import m2dx from "astro-m2dx";
 import remarkEmoji from "remark-emoji";
-import { defineConfig } from "astro/config";
+import { defineConfig, squooshImageService } from "astro/config";
 import remarkCollapse from "remark-collapse";
 import remarkToc from "remark-toc";
 import config from "./src/config/config.json";
@@ -52,9 +51,6 @@ export default defineConfig({
         applyBaseStyles: false,
       },
     }),
-    image({
-      serviceEntryPoint: "@astrojs/image/sharp",
-    }),
     AutoImport({
       imports: [
         "@/shortcodes/Button",
@@ -95,5 +91,8 @@ export default defineConfig({
       wrap: true,
     },
     extendDefaultPlugins: true,
+  },
+  image: {
+    service: squooshImageService(),
   },
 });

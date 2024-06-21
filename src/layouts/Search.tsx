@@ -6,7 +6,7 @@ import {
   FaRegFolder,
   FaRegUserCircle,
   FaSearch,
-} from "react-icons/fa/index.js";
+} from "react-icons/fa";
 
 const { summary_length, blog_folder } = config.settings;
 

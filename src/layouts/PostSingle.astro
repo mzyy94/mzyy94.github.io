@@ -8,14 +8,14 @@ import dateFormat from "@/lib/utils/dateFormat";
 import similerItems from "@/lib/utils/similarItems";
 import { humanize, markdownify, slugify } from "@/lib/utils/textConverter";
 import prevNextPost from "@/lib/utils/prevNextPost";
-import { Image } from "@astrojs/image/components";
+import { Image } from "astro:assets";
 import {
   FaRegClock,
   FaRegFolder,
   FaRegUserCircle,
   FaArrowLeft,
   FaArrowRight,
-} from "react-icons/fa/index.js";
+} from "react-icons/fa";
 
 const { blog_folder } = config.settings;
 const posts = await getSinglePage(blog_folder);
@@ -38,7 +38,8 @@ const { title, description, author, categories, image, date, tags } = post.data;
                 height={500}
                 width={1200}
                 alt={title}
-                class="w-full rounded"
+                class="w-full rounded object-cover"
+                style="aspect-ratio: 1200 / 500"
               />
             </div>
           )

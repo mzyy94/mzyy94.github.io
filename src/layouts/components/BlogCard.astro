@@ -1,10 +1,10 @@
 ---
-import { Image } from "@astrojs/image/components";
+import { Image } from "astro:assets";
 import config from "@/config/config.json";
 import dateFormat from "@/lib/utils/dateFormat";
 import { humanize, plainify, slugify } from "@/lib/utils/textConverter";
 import { getDescription } from "@/lib/utils/contentDescription";
-import { FaRegClock, FaRegFolder, FaRegUserCircle } from "react-icons/fa/index.js";
+import { FaRegClock, FaRegFolder, FaRegUserCircle } from "react-icons/fa";
 
 const {
   summary_length,
@@ -20,11 +20,12 @@ const description = await getDescription(data);
     image && (
     <a href={`/blog/${data.slug}`}>
       <Image
-        class="mb-6 w-full rounded"
+        class="mb-6 w-full rounded object-cover"
         src={image}
         alt={title}
         width={445}
         height={230}
+        style="aspect-ratio: 445 / 230"
       />
     </a>
     )

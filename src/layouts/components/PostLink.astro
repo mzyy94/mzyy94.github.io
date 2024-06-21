@@ -1,8 +1,8 @@
 ---
-import { Image } from "@astrojs/image/components";
+import { Image } from "astro:assets";
 import dateFormat from "@/lib/utils/dateFormat";
 import { humanize,slugify,markdownify,plainify } from "@/lib/utils/textConverter";
-import { FaRegClock, FaRegFolder, FaRegUserCircle } from "react-icons/fa/index.js";
+import { FaRegClock, FaRegFolder, FaRegUserCircle } from "react-icons/fa";
 import { getSinglePage } from "@/lib/contentParser.astro";
 import config from "@/config/config.json";
 import { getDescription } from "@/lib/utils/contentDescription";
@@ -60,11 +60,12 @@ const description = await getDescription(post);
     image && (
     <a href={`/blog/${data.slug}`} class="col col-2 hidden md:block">
       <Image
-        class="mb-6 w-full rounded"
+        class="mb-6 w-full rounded object-cover"
         src={image}
         alt={title}
         width={230}
         height={230}
+        style="aspect-ratio: 230 / 230"
       />
     </a>
     )
