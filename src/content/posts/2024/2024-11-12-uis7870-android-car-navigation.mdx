@@ -1,0 +1,254 @@
+---
+title: "UIS7870搭載の中華ナビを買った"
+date: 2024-11-12T06:00:00+09:00
+author: mzyy94
+categories: ["Automobile"]
+tags: ["car-audio", "中華ナビ", "navigation", "android", "carplay", "review"]
+image: "/assets/images/2024/11/12/top.jpg"
+---
+
+今年もAliExpressの11.11セールが開始しました。このセールに向けていい商品がないか物色していたある日のこと。
+おすすめ商品にふと見慣れない型番のチップを乗せた中華Androidカーナビが流れてきました
+
+
+<a href="https://s.click.aliexpress.com/e/_DBHfvm9" target="_blank"><img src="https://ae01.alicdn.com/kf/Sfb06a3df099349f3be52785ebda922f4b.jpg_500x500.jpg" /></a>
+
+[M7Plusユニバーサルマルチメディアカープレーヤー、qledラジオステレオ、3d ui、2k、GPS、benz、hyburs、kia、honda、toyota、Seat、bmw、vw、2 dinユニット - AliExpress 34](https://s.click.aliexpress.com/e/_DFBkXLX)
+
+「UIS7870」搭載とあります。どうやら以前購入したUIS7862の後継にあたる製品が出ていたようです。
+
+::PostLink{slug="new-android-car-navigation"}
+
+しばらく中華ナビは新機種が出ておらず（ソフトウェアの独自カスタム品を除く）、停滞している状況だったので関心を失っていたところに現れた新製品。
+独身の日のセールで購入しようと考えていたものの、待てずにポチったのが届いたので3年ぶりに中華ナビの記事をお届けします。
+
+## 目次
+
+
+## 新モデルスペック
+
+![トップ画](/assets/images/2024/11/12/top.jpg)
+
+[カーマルチメディアプレーヤー,カーラジオ,Android 13, 5g,wifi,CarPlay,GPS,dsp,mp5,Bluetooth,uis7870,8コア,12 256g - AliExpress 34](https://s.click.aliexpress.com/e/_DeSEyFj)
+
+特に買い替える理由がなかったため、UIS7870の中で最安価格帯のものを探しました。
+購入した製品の仕様を箇条書きにすると次の通りになっています。
+
+- 価格 (執筆時): 37,457円
+- 画面サイズ: 10インチ
+- ユニットサイズ: 2 Din（※後述）
+- 画面解像度: 2000x1200
+- 画面タイプ: 埋め込み式
+- SoC: UIS7870 (Unisoc T820?)
+- RAM: 6 GB
+- Flash: 128 GB
+- OS: Android 13.0
+- Apple CarPlay: ビルトイン
+- マルチメディア機能: Wi-Fi(2.4/5GHz)/Bluetooth/USB/4G
+- 対応操作方法: タッチパネル・ステアリングリモコン
+
+せっかくなので、画面サイズを9インチから10インチへ、10インチには高解像度のオプションがあったので2000x1200のモデルを注文しました。
+
+コア部分に絞って比較表を作ると以下のようになります。
+
+ 機能 | 旧モデル | **新モデル**
+:---:|---|---
+SoC | [Unisoc UIS7862] | **[Unisoc UIS7870]**
+CPU Arch | ARMv8.2-A | ARMv8.2-A
+μArch | ARM Cortex-A75/A55 | **ARM Cortex-A76/A55**
+Process technology | TSMC 12nm FFC | **TSMC 6nm EUV**
+CPU Core# | 8 (2+6) | **8 (1+3+4)**
+CPU Freq | 1.8 GHz | **2.7 GHz**
+GPU | Mali G52 | **Mali G57**
+RAM | 4GB | 6GB
+Flash | 64GB | 128GB
+
+[Unisoc UIS7862]: https://www.unisoc.com/en_us/home/TQCDZ-A7862-1
+[Unisoc UIS7870]: https://www.unisoc.com/en_us/home/TQCDZ-A7870-0
+
+中華ナビに使われるSoCは2010年代を賑やかせたローエンドのものが広く使われ続けていたところに、新モデルに搭載されているのは現代のミドルハイに当たるものになっています。
+SoCの性能を支えるためにメモリ容量も最低6GBからとなり、最安モデルでも十分なパフォーマンスが期待できます。
+
+## 新SoC UIS7870
+
+![cpu-z](/assets/images/2024/11/12/cpu-z.png)
+
+UIS7870の型番で調べるとUnisoc公式のA7870製品紹介ページが見つかりました。
+
+[Unisoc A7870](https://www.unisoc.com/en_us/home/TQCDZ-A7870-0)
+
+A7870は自動車関連産業向けのシリーズとして、フラグシップのSoCとあります。
+型番は前モデルの7862から8つの数字が増えていて、その分のスペックの向上は大きく目を見張るものがあります。
+
+最大の変化はプロセスルールの微細化に伴う高パフォーマンス化と高効率化。
+A76に進化したbig側の最大周波数は大きく伸び、処理能力が大幅に向上しています。
+
+CPU-ZではUIS7870ではなくUIS7885と表示されていますが、自動車向けであるA7870を無線機機向けに展開しているものがP7885であり、どちらもCPU部分は共通のものが使われています。
+
+[Unisoc P7885](https://www.unisoc.com/en_us/home/con545-P7885-5)
+
+それに加えて、スマホやタブレット向けに調整したものがUnisoc T820として展開されています。
+
+[Unisoc T820](https://www.unisoc.com/en_us/home/T5GSJ-T820-0)
+
+T820はCPUは同じ構成で、5G対応に加えてGPUにMali G57をパッケージしたもの。
+UIS7870はMali G57を搭載していることから、A7870やP7885ではなくT820と同等品と考えられます。
+T820搭載タブレットはミドルハイの性能で軽々と3Dゲームを動かせる実力があるようなので、このUIS7870もカーナビとしての処理には余りある性能を有していると言えるでしょう。
+
+### UIS7870搭載中華ナビ
+
+<a href="https://s.click.aliexpress.com/e/_DC2qqZX" target="_blank"><img src="https://ae01.alicdn.com/kf/Sd12ec7708e474aa0ab25c50dc1544830H.jpg_500x500.jpg" /></a>
+
+[カーマルチメディアプレーヤー,カーラジオ,Android 13, 5g,wifi,CarPlay,GPS,dsp,mp5,Bluetooth,uis7870,8コア,12 256g - AliExpress 34](https://s.click.aliexpress.com/e/_DeSEyFj)
+
+中華ナビは未だにUIS7862を中心とした製品が多く展開されてる中、UIS7870の製品が紛れ込む形で売られています。
+UIS7870を搭載した中華ナビの製品ページへ行くと、下位モデルとしてUIS7862のものが選択できるようになっているものが多々あります。
+より安く旧モデルを放出しようとする売り方から見て、ちょうど転換期を迎えているところなのでしょう。
+
+以前調べた中華ナビの歴史と合わせてまとめると、Androidカーナビに多く採用された主流SoCの時系列は次のようになっているようです（時期不明のQualcomm 6125/Mediatek MT8667/Unisoc UIS8581を除く）。
+
+- 2017年 Rockchip PX5
+- 2018年 Rockchip PX6
+- 2019年 Unisoc SC9853i
+- 2020年 Unisoc UIS7862
+- 2023年 Unisoc UIS7870
+
+AliExpressや海外フォーラムなどで調べてみたところ、UIS7870製品が登場し始めたのは2023年末ごろから。いくつかのメーカーが展開しているものの、DUDU7やM7を展開するMekedeがトップセールスを独走しているようです。
+
+<a href="https://s.click.aliexpress.com/e/_Dkpy97f" target="_blank"><img src="https://ae01.alicdn.com/kf/S96fa6badca844dedb733f0ccecb97897y.jpg_500x500.jpg" /></a>
+
+[Dududuauto-ユニバーサルカーマルチメディアナビゲーションシステム,Android 13,8コア,2k,bt5.0,11.5インチ,13インチ - AliExpress](https://s.click.aliexpress.com/e/_DCsWYSp)
+
+## 本体の外観
+
+システム全体の低電力化や基板の薄型化が伴って、DINレールの奥行きに向かって厚みが広がる[旧来の見た目](../2020/2020-09-07-joying-car-navigation-prius-zvw30.md#開封と外観の確認)ではなくなり、昨今の中華ナビは画面一体型の薄型タイプに移行しています。
+レールに固定しないため1DINや2DINという表現は適切ではないものの、背面の飛び出し部分は2DINの領域に及ぶサイズです。
+
+この背面ポートにはコネクタがいくつかあり、電源やスピーカーなどのハーネスケーブルを差し込んでそれぞれの配線を取り出す形になっています。
+本体中央にはUSB Type-Cポートがあり、USB 3.2 Gen1で高速・高電力な機器の接続ができるようになっています。
+
+![背面ポート](/assets/images/2024/11/12/rear.jpg)
+
+正面はフレーム目一杯に広がる2000x1200のIPSパネルとマイク穴があるのみ。正面から見ただけでは中華Androidタブレットと言われても疑う余地がないほどです。
+
+![正面パネル](/assets/images/2024/11/12/front.jpg)
+
+
+## 動作の確認
+
+[これまで中華ナビを扱ってきた](../2020/2020-09-07-joying-car-navigation-prius-zvw30.md#技適の壁)のと同様に4GとWi-Fiの無線出力部分にはダミーロードを取り付け、違法な電波を出力しないようにした上で起動して動作を見ていきます。
+
+### ホーム画面
+
+![homescreen.png](/assets/images/2024/11/12/homescreen.png)
+
+中華ナビの標準ランチャーにしてはリッチな見た目となり、右上に任意のアプリを起動できるエリアが設けられています（初期設定ではGoogle Mapが起動）。
+
+
+![subscreen.png](/assets/images/2024/11/12/subscreen.png)
+
+ホーム画面をスワイプして左側に移動すると、GPSを元にした車速や進行方向を表示するUIが出てきました。
+
+![applist.png](/assets/images/2024/11/12/applist.png)
+
+搭載アプリはPlayストアをはじめとするG系アプリと車関連の設定アプリに加え、Toppalなる謎サービスが勝手に起動するようになっています。Apple CarPlay/Android Autoを接続・表示するアプリは中華ナビお馴染みのCar Linkが搭載されていました。
+
+### 設定画面
+
+![settings.png](/assets/images/2024/11/12/settings.png)
+
+雰囲気は変わったものの、これまでの中華ナビと構成は変わらず。Factory項目にはロックがかかっているものの、これまで通り3368で突破できました。
+
+#### デバイス情報
+
+![device-info.png](/assets/images/2024/11/12/device-info.png)
+
+設定画面でAndroid 13搭載と書かれているのはフェイクであることが多い中華ナビの世界。なので鵜呑みにできないですが、後述する通りちゃんとAndroid 13が搭載されていました。
+
+### Apple CarPlay
+
+UIS7862と比べてCPUとGPUの処理能力が向上したことによって、応答性とタップ遅延が大幅に改善していました。
+性能向上と2000x1200高解像度パネル(比率5:3)とが掛け合わさり、CarPlayの画面が1800x1080(5:3)の高解像度で描画されるため、Apple Mapを高域にしても細かい道路が表示されるのはかなり嬉しいポイント。
+
+![carplay.png](/assets/images/2024/11/12/carplay.png)
+
+### DRM
+
+今回もPlayストアが入っているため、たいていのアプリはそのままインストールできます。
+高解像度を活かしてNetflixなどでフルHDのコンテンツを見たいところですが、それには対応するDRMのモジュールが必須です。
+
+[DRM Info](https://play.google.com/store/apps/details?id=com.androidfung.drminfo&hl=ja)アプリを使って調べてみたところ、ClearKeyとL3 Widevineが搭載されていることが確認できました。
+
+![drminfo.png](/assets/images/2024/11/12/drminfo.png)
+
+NetflixやプライムビデオではL1 Widevineが搭載されていない端末ではHD画質のコンテンツを視聴できないため、インストールはできても480pの低画質動画しか見られません。残念。
+
+ちなみに、DRM Infoの画面左にSDK Level 33とあることから、フェイクではないAndroid 13が搭載されていることも見てとれます。
+
+### ベンチマーク
+
+[Geekbench 6 - Google Play のアプリ](https://play.google.com/store/apps/details?id=com.primatelabs.geekbench6&hl=ja)
+
+みんな大好きベンチマーク。今回はGeekbench 6でベンチマークを取ってみました。バージョンが違うので比較はできませんが、旧モデルの結果を小さく後に載せています。
+
+![geekbench.png](/assets/images/2024/11/12/geekbench.png)
+<img alt="geekbench.png" width="640" style="width: 75%" src="/assets/images/2021/02/04/geekbench.png" />
+
+<details>
+<summary>結果を全部見る</summary>
+<img alt="geekbench-cpu-full.png" src="/assets/images/2024/11/12/geekbench-cpu-full.png" />
+<img alt="geekbench-gpu-full.png" src="/assets/images/2024/11/12/geekbench-gpu-full.png" />
+</details>
+
+
+Antutuベンチーマークも走らせてみようと試みたものの、開始ボタンを押した後に出るダイアログが押せない位置に表示されてしまってスタートできずでした。
+
+![antutu.png](/assets/images/2024/11/12/antutu.png)
+
+## 他社製ファームウェア
+
+ハードウェアがほぼ共通で差別化の難しい中華ナビが生き抜くため、ソフトウェアに力を入れるブランドがいくつかあります。例えばDUDU7は独自にファームウェアをカスタマイズしたDUDU OSを搭載しており、豊富な機能と美しいUIで頭一つ抜けた存在になっています。
+
+![duduos-1.png](/assets/images/2024/11/12/duduos-1.png)
+
+UIS7870向けに作られているのでDUDU7以外のUIS7870中華ナビでも動作するだろうと高を括り、[公開されているファームウェア](https://forum.dudu-auto.com/t/dudu-os)を焼いてみました。無事に起動して初期セットアップも完了したものの、製造元不一致の警告が出たり動作が制限されていたりと、第三者利用への対策が取られている様子でした。
+
+![duduos-2.png](/assets/images/2024/11/12/duduos-2.png)
+
+CarPlayをメインに使うので見た目や機能にこだわりはないですが、Androidカーナビとして使いたい人はソフトウェアに関しても注目して中華ナビを選ぶ必要があります。
+
+## Root化
+
+他社製ファームウェアを完璧に動作する形で動かしたい場合、root権限で細工をする必要が出てきます。
+その足掛かりとなるファームウェアアップデートですが、これまでのモデルと同様に特権でアップデートプロセスが走ることが確認できました。
+
+::PostLink{slug="rooting-joying-sp9853i-carnavi"}
+
+しかし、Android 13からはbootパーティションの扱いが変更されているため、 **/dev/block/by-name/init_boot_a** からinit_boot.imgを抽出することになります。
+
+[汎用ブート パーティション  \|  Android Open Source Project](https://source.android.com/docs/core/architecture/partitions/generic-boot?hl=ja)
+
+Magiskの扱い方にも変更があり、始めてのAndroid 13のroot化を中華ナビで挑戦するほどのチャレンジをする気も起きなかったため、今回はroot化までは行いませんでした。
+
+可能性としての話では、これまで同様の手順でroot化できるでしょう。
+興味がある方は**自己責任**で、過去記事の手順を下表の値の通り読み替えて挑戦してみてください。
+
+種類 | UIS7862 | **UIS7870**
+:---:|---|---
+アーカイブ名 | 6315\_1.zip | 6318\_1.zip
+実行ファイル名 | lsec6315update | lsec6318update
+スクリプト名 | lsec_updatesh/7862lsec.sh | lsec_updatesh/lsecsh.bin
+
+## アプリケーションアーカイブの展開
+
+ファームウェアに埋め込まれずにバンドルされるアプリは AllAppUpdateA13.bin ファイルに格納されるように変更されました。
+これまでの [AllApp.pkg](../2020/2020-09-11-rooting-joying-sp9853i-carnavi.md#システムアプリケーションアーカイブ)とはファイル構造からして違い、暗号化ZIPアーカイブになりました。
+暗号化キーは秘匿されているものの、キーの元になる秘密鍵は lsec6318update ファイルに隠されていて、それと合わせて解析するプログラムがGitHubに転がっています。
+
+[OT-dm/7870pwd_extract - GitHub](https://github.com/OT-dm/7870pwd_extract)
+
+これを用いてキーを手に入れることができれば、あとは普通のZIPアーカイブとして展開することができます。
+
+## まとめ
+
+CarPlayのために無駄に高機能なナビを買ってしまった。猫に小判
