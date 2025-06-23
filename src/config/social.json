@@ -1,39 +1,34 @@
 {
-  "facebook": "",
-  "twitter": "",
-  "mastodon": "https://sns.mzyy94.com/@mzyy94",
-  "instagram": "",
-  "youtube": "",
-  "linkedin": "",
-  "github": "https://github.com/mzyy94",
-  "gitlab": "",
-  "discord": "",
-  "slack": "",
-  "medium": "",
-  "codepen": "",
-  "bitbucket": "",
-  "dribbble": "",
-  "behance": "",
-  "pinterest": "",
-  "soundcloud": "",
-  "tumblr": "",
-  "reddit": "",
-  "vk": "",
-  "whatsapp": "",
-  "snapchat": "",
-  "vimeo": "",
-  "tiktok": "",
-  "foursquare": "https://foursquare.com/mzyy94",
-  "rss": "https://www.mzyy94.com/blog/rss.xml",
-  "email": "",
-  "phone": "",
-  "address": "",
-  "skype": "",
-  "website": "",
-  "keybase": "",
-  "steam": "",
-  "slideshare": "https://www.slideshare.net/mzyy94",
-  "twitch": "",
-  "amazon": "https://amzn.mzyy94.com",
-  "paypal": ""
+  "main": [
+    {
+      "name": "bluesky",
+      "icon": "FaBluesky",
+      "link": "https://bsky.app/profile/mzyy94.com"
+    },
+    {
+      "name": "foursquare",
+      "icon": "FaFoursquare",
+      "link": "https://foursquare.com/mzyy94"
+    },
+    {
+      "name": "github",
+      "icon": "FaGithub",
+      "link": "https://www.github.com/"
+    },
+    {
+      "name": "rss",
+      "icon": "FaRss",
+      "link": "https://www.mzyy94.com/blog/rss.xml"
+    },
+    {
+      "name": "slideshare",
+      "icon": "FaSlideshare",
+      "link": "https://www.slideshare.net/mzyy94"
+    },
+    {
+      "name": "amazon",
+      "icon": "FaAmazon",
+      "link": "https://amzn.mzyy94.com"
+    }
+  ]
 }
