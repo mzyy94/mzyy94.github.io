@@ -35,6 +35,11 @@
     "link": "https://github.com/mzyy94/mzyy94.github.io/"
   },
 
+  "google_tag_manager": {
+    "enable": true,
+    "gtm_id": "UA-41944495-3"
+  },
+
   "disqus": {
     "enable": true,
     "shortname": "mzyy94blog",
