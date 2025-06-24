@@ -9,6 +9,7 @@ import remarkCollapse from "remark-collapse";
 import remarkToc from "remark-toc";
 import sharp from "sharp";
 import config from "./src/config/config.json";
+import partytown from "@astrojs/partytown";
 
 const resolveRelativeMd = () => {
   function editLink(node) {
@@ -53,6 +54,7 @@ export default defineConfig({
       ],
     }),
     mdx(),
+    partytown(),
   ],
   markdown: {
     remarkPlugins: [
