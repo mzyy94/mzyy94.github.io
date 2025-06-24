@@ -3,7 +3,11 @@ import { defineCollection, z } from "astro:content";
 
 // Post collection schema
 const blogCollection = defineCollection({
-  loader: glob({ pattern: "**/*.{md,mdx}", base: "src/content/posts" }),
+  loader: glob({
+    pattern: "**/*.{md,mdx}",
+    base: "src/content/posts",
+    generateId: ({ entry }) => entry.match(/^\d{4}\/(\d{4})-(\d{2})-(\d{2})-(.*)\.mdx?$/)?.slice(1, 5)?.join("/")?.concat("/") ?? entry.replace(/\.mdx?$/, ""),
+  }),
   schema: z.object({
     title: z.string(),
     meta_title: z.string().optional(),
