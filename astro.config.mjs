@@ -49,6 +49,7 @@ export default defineConfig({
         "@/shortcodes/Youtube",
         "@/shortcodes/Tabs",
         "@/shortcodes/Tab",
+        "@/layouts/components/PostLink.astro",
       ],
     }),
     mdx(),
