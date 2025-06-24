@@ -39,6 +39,7 @@
     "remark-collapse": "^0.1.2",
     "remark-emoji": "^5.0.1",
     "remark-toc": "^9.0.0",
+    "sitemap": "^8.0.0",
     "swiper": "^11.2.6",
     "vite": "^6.3.3"
   },
