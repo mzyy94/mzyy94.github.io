@@ -1,14 +1,13 @@
 ---
 import BlogCard from "@/components/BlogCard.astro";
 import Share from "@/components/Share.astro";
-import config from "@/config/config.json";
-import Disqus from "@/function-components/Disqus";
+import Disqus from "@/helpers/Disqus";
 import { getSinglePage } from "@/lib/contentParser.astro";
 import dateFormat from "@/lib/utils/dateFormat";
-import similerItems from "@/lib/utils/similarItems";
+import similarItems from "@/lib/utils/similarItems";
 import { humanize, markdownify, slugify } from "@/lib/utils/textConverter";
 import prevNextPost from "@/lib/utils/prevNextPost";
-import { Image } from "astro:assets";
+import { render } from "astro:content";
 import {
   FaRegClock,
   FaRegFolder,
@@ -16,13 +15,15 @@ import {
   FaArrowLeft,
   FaArrowRight,
 } from "react-icons/fa";
+import ImageMod from "./components/ImageMod.astro";
 
-const { blog_folder } = config.settings;
-const posts = await getSinglePage(blog_folder);
+const COLLECTION_FOLDER = "blog";
 const { post } = Astro.props;
-const similarPosts = similerItems(post, posts, post.slug);
+
+const posts = await getSinglePage(COLLECTION_FOLDER);
+const similarPosts = similarItems(post, posts);
 const {prev, next} = prevNextPost(post, posts);
-const { Content } = await post.render();
+const { Content } = await render(post);
 const { title, description, author, categories, image, date, tags } = post.data;
 ---
 
@@ -33,13 +34,14 @@ const { title, description, author, categories, image, date, tags } = post.data;
         {
           image && (
             <div class="mb-10">
-              <Image
+              <ImageMod
                 src={image}
                 height={500}
                 width={1200}
                 alt={title}
                 class="w-full rounded object-cover"
                 style="aspect-ratio: 1200 / 500"
+                format="webp"
               />
             </div>
           )
@@ -72,14 +74,14 @@ const { title, description, author, categories, image, date, tags } = post.data;
           <Content />
         </div>
         <div class="row items-start justify-between">
-          <div class="mb-10 flex items-center lg:col-6 lg:mb-0">
+          <div class="mb-10 flex items-center lg:col-5 lg:mb-0">
             <h5 class="mr-3">Tags :</h5>
             <ul>
               {
                 tags.map((tag: string) => (
                   <li class="inline-block">
                     <a
-                      class="m-1 block rounded bg-theme-light px-3 py-1 hover:bg-primary hover:text-white dark:bg-darkmode-theme-light dark:hover:bg-darkmode-primary dark:hover:text-dark"
+                      class="m-1 block rounded bg-light px-3 py-1 hover:bg-primary hover:text-white dark:bg-darkmode-light dark:hover:bg-darkmode-primary dark:hover:text-text-dark"
                       href={encodeURI(`/blog/tags/${slugify(tag)}/`)}
                     >
                       {humanize(tag)}
@@ -89,13 +91,13 @@ const { title, description, author, categories, image, date, tags } = post.data;
               }
             </ul>
           </div>
-          <div class="flex items-center lg:col-6">
+          <div class="flex items-center lg:col-4">
             <h5 class="mr-3">Share :</h5>
             <Share
               className="social-icons"
               title={title}
               description={description}
-              slug={post.slug}
+              slug={post.id}
             />
           </div>
         </div>
@@ -105,7 +107,7 @@ const { title, description, author, categories, image, date, tags } = post.data;
 
     <nav class="container flex flex-nowrap justify-between py-8" role="navigation">
       {prev ?
-        <a href={`/blog/${prev.slug}`}>
+        <a href={`/blog/${prev.id}`}>
           <p class="h5 nav-link font-bold">前へ</p>
           <span>
             <FaArrowLeft className="inline" />
@@ -115,7 +117,7 @@ const { title, description, author, categories, image, date, tags } = post.data;
         : <span></span>
       }
       {next ?
-        <a class="text-right" href={`/blog/${next.slug}`}>
+        <a class="text-right" href={`/blog/${next.id}`}>
           <p class="h5 nav-link font-bold">次へ</p>
           <span class="text-right">
             {next.data.title}
@@ -133,7 +135,7 @@ const { title, description, author, categories, image, date, tags } = post.data;
       <div class="row justify-center">
         {
           similarPosts.map((post) => (
-            <div class="lg:col-4">
+            <div class="lg:col-4 md:col-6 mb-14">
               <BlogCard data={post} />
             </div>
           ))

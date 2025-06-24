@@ -1,37 +1,35 @@
 ---
-import { Image } from "astro:assets";
 import config from "@/config/config.json";
 import dateFormat from "@/lib/utils/dateFormat";
 import { humanize, plainify, slugify } from "@/lib/utils/textConverter";
-import { getDescription } from "@/lib/utils/contentDescription";
 import { FaRegClock, FaRegFolder, FaRegUserCircle } from "react-icons/fa";
+import ImageMod from "./ImageMod.astro";
 
 const {
   summary_length,
-  blog_folder,
 }: { summary_length: number; blog_folder: string } = config.settings;
 const { data } = Astro.props;
 const { title, image, date, author, categories } = data.data;
-const description = await getDescription(data);
 ---
 
 <div class="bg-body dark:bg-darkmode-body">
   {
     image && (
-    <a href={`/blog/${data.slug}`}>
-      <Image
+    <a href={`/blog/${data.id}`}>
+      <ImageMod
         class="mb-6 w-full rounded object-cover"
         src={image}
         alt={title}
         width={445}
         height={230}
+        format="webp"
         style="aspect-ratio: 445 / 230"
       />
     </a>
     )
   }
   <h4 class="mb-3">
-    <a href={`/blog/${data.slug}`}>
+    <a href={`/blog/${data.id}`}>
       {title}
     </a>
   </h4>
@@ -58,11 +56,8 @@ const description = await getDescription(data);
       {dateFormat(date)}
     </li>
   </ul>
-  <p class="mb-6">{plainify(description.slice(0, Number(summary_length)))}...</p>
-  <a
-    class="btn btn-outline-primary btn-sm"
-    href={`/blog/${data.slug}`}
-  >
+  <p class="mb-6">{plainify(data.body?.slice(0, Number(summary_length)))}...</p>
+  <a class="btn btn-outline-primary btn-sm" href={`/blog/${data.id}`}>
     read more
   </a>
 </div>
