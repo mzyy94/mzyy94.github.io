@@ -1,6 +1,6 @@
 ---
 title: "mzyy94.com"
-meta_title: "About"
+meta_title: "Home"
 image: "/assets/images/logo.png"
 draft: false
 
