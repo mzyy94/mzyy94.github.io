@@ -73,4 +73,10 @@ export default defineConfig({
     shikiConfig: { theme: "one-dark-pro", wrap: true },
     extendDefaultPlugins: true,
   },
+  redirects: {
+    "/blog/2016/10/09/household-eap-sim-wifi/": "/blog/2016/10/09/home-eap-sim-wifi/",
+    "/blog/2020/05/12/raspberry-pi-hdmi-edid-cec/": "/blog/2020/05/12/raspberrypi-hdmi-edid-cec/",
+    "/blog/2021/08/07/hisense-vidaa-hacking/": "/blog/2021/08/07/hisense-75a6g-review/",
+    "/blog/2023/02/07/my-new-house/": "/blog/2023/02/27/my-new-house/",
+  },
 });
