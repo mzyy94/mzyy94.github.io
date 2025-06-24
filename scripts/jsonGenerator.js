@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 
-const CONTENT_DEPTH = 2;
+const CONTENT_DEPTH = 3;
 const JSON_FOLDER = "./.json";
 const BLOG_FOLDER = "src/content/posts";
 
@@ -27,7 +27,11 @@ const getData = (folder, groupDepth) => {
         pathParts
           .slice(CONTENT_DEPTH)
           .join("/")
-          .replace(/\.[^/.]+$/, "");
+          .replace(/\.[^/.]+$/, "")
+          ?.match(/^\d{4}\/(\d{4})-(\d{2})-(\d{2})-(.*)$/)
+          ?.slice(1, 5)
+          ?.join("/")
+          ?.concat("/");
       const group = pathParts[groupDepth];
 
       return {
