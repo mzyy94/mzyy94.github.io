@@ -5,10 +5,10 @@ import PostSingle from "@/layouts/PostSingle.astro";
 import { getSinglePage } from "@/lib/contentParser.astro";
 
 export async function getStaticPaths() {
-  const posts = await getSinglePage(config.settings.blog_folder);
+  const posts = await getSinglePage("blog");
 
   const paths = posts.map((post) => {
-    const [year, month, date, slug] = post.slug.split("/");
+    const [year, month, date, slug] = post.id.split("/");
     return {
       params: {
         year,

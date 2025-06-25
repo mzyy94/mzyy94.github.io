@@ -21,7 +21,7 @@
     "default_theme": "system",
     "pagination": 10,
     "summary_length": 100,
-    "blog_folder": "posts"
+    "blog_folder": "blog"
   },
 
   "params": {
@@ -33,6 +33,11 @@
     "enable": false,
     "label": "View Source",
     "link": "https://github.com/mzyy94/mzyy94.github.io/"
+  },
+
+  "google_tag_manager": {
+    "enable": true,
+    "gtm_id": "UA-41944495-3"
   },
 
   "disqus": {

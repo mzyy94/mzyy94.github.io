@@ -4,7 +4,6 @@ date: 2023-02-27T01:00:00+09:00
 author: mzyy94
 categories: ["Misc"]
 tags: ["home", "house"]
-redirect_from: /blog/2023/02/07/my-new-house/
 image: "/assets/images/2023/02/27/keys.jpg"
 ---
 

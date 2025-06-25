@@ -1,11 +1,6 @@
 import { marked } from "marked";
 import React, { useEffect, useRef, useState } from "react";
 
-marked.use({
-  mangle: false,
-  headerIds: false,
-});
-
 const Tabs = ({ children }: { children: React.ReactElement }) => {
   const [active, setActive] = useState<number>(0);
   const [defaultFocus, setDefaultFocus] = useState<boolean>(false);
@@ -21,15 +16,15 @@ const Tabs = ({ children }: { children: React.ReactElement }) => {
   }, [active]);
 
   const tabLinks = Array.from(
-    children.props.value.matchAll(
-      /<div\s+data-name="([^"]+)"[^>]*>(.*?)<\/div>/gs
+    (children.props as any).value.matchAll(
+      /<div\s+data-name="([^"]+)"[^>]*>((?:.|\n)*?)<\/div>/g,
     ),
-    (match: RegExpMatchArray) => ({ name: match[1], children: match[0] })
+    (match: RegExpMatchArray) => ({ name: match[1], children: match[0] }),
   );
 
   const handleKeyDown = (
     event: React.KeyboardEvent<EventTarget>,
-    index: number
+    index: number,
   ) => {
     if (event.key === "Enter" || event.key === " ") {
       setActive(index);
@@ -57,7 +52,7 @@ const Tabs = ({ children }: { children: React.ReactElement }) => {
             >
               {item.name}
             </li>
-          )
+          ),
         )}
       </ul>
       {tabLinks.map((item: { name: string; children: string }, i: number) => (

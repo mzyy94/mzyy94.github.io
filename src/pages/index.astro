@@ -1,13 +1,27 @@
 ---
+import ImageMod from "@/components/ImageMod.astro";
 import Base from "@/layouts/Base.astro";
 import { markdownify } from "@/lib/utils/textConverter";
-import { Image } from "astro:assets";
-import { getEntryBySlug } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import { getEntry, render } from "astro:content";
+
+interface Homepage {
+  what_i_do: {
+    title: string;
+    items: {
+      title: string,
+      link: string,
+    }[]
+  };
+}
 
 
-const homepage = await getEntryBySlug("homepage", "index");
-const { Content } = await homepage.render();
-const { title, description, meta_title, image, what_i_do } = homepage.data;
+const homepage = (await getEntry(
+  "homepage",
+  "-index"
+)) as CollectionEntry<"homepage">;
+const { Content } = await render(homepage);
+const { title, description, meta_title, image, what_i_do } = homepage.data as Homepage;
 ---
 
 <Base
@@ -22,13 +36,14 @@ const { title, description, meta_title, image, what_i_do } = homepage.data;
         <div class="sm:col-5 md:col-4">
           {image && (
             <div class="img-cover mb-8">
-              <Image
+              <ImageMod
                 src={image}
                 width={295}
                 height={295}
                 alt={title}
                 class="rounded-lg w-full object-cover"
                 style="aspect-ratio: 295 / 295"
+                format="webp"
               />
             </div>
           )}

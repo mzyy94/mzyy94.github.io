@@ -8,7 +8,7 @@ blockquote.twitter-tweet {
     height: 1em;
     right: 1em;
     top: 1em;
-    background: url(/assets/icons/twitter-logo-blue.png) no-repeat;
+    background: url(/icons/twitter-logo-blue.png) no-repeat;
     background-size: contain;
     position: absolute;
   }

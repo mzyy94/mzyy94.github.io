@@ -16,7 +16,7 @@ paths.forEach((label: string, i: number) => {
   const href = `/${paths.slice(0, i + 1).join("/")}/`.replace("//", "/");
   label !== "page" &&
     parts.push({
-      label: humanize(label.replace(/[-_]/g, " ")) || "",
+      label: humanize(label.replace(".html", "").replace(/[-_]/g, " ")) || "",
       href,
       "aria-label": Astro.url.pathname === href ? "page" : undefined,
     });
@@ -34,7 +34,9 @@ paths.forEach((label: string, i: number) => {
               {label}
             </a>
           ) : (
-            <span class="text-light dark:text-darkmode-light">{label}</span>
+            <span class="text-text-light dark:text-darkmode-text-light">
+              {label}
+            </span>
           )}
         </li>
       ))

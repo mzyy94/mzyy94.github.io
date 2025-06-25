@@ -1,19 +1,18 @@
 ---
-import { Image } from "astro:assets";
 import dateFormat from "@/lib/utils/dateFormat";
-import { humanize,slugify,markdownify,plainify } from "@/lib/utils/textConverter";
+import { humanize,slugify,plainify } from "@/lib/utils/textConverter";
 import { FaRegClock, FaRegFolder, FaRegUserCircle } from "react-icons/fa";
 import { getSinglePage } from "@/lib/contentParser.astro";
 import config from "@/config/config.json";
-import { getDescription } from "@/lib/utils/contentDescription";
+import ImageMod from "./ImageMod.astro";
 
 const { summary_length } = config.settings;
 const { slug } = Astro.props;
-const posts = await getSinglePage("posts");
-const post = posts.find((post) => post.slug.includes(slug));
+const posts = await getSinglePage("blog");
+const post = posts.find((post) => post.id.includes(slug))!;
 const data = post;
 const { title, image, date, author, categories } = post.data;
-const description = await getDescription(post);
+const description = post.body || post.data.description || "";
 ---
 
 <div class="bg-body dark:bg-darkmode-body border border-gray-200 rounded px-4">
@@ -25,7 +24,7 @@ const description = await getDescription(post);
       width={32}
       height={32}
     />
-    <a href={`/blog/${data.slug}`}>
+    <a href={`/blog/${data.id}`}>
       {title}
     </a>
   </h4>
@@ -58,14 +57,15 @@ const description = await getDescription(post);
     </div>
   {
     image && (
-    <a href={`/blog/${data.slug}`} class="col col-2 hidden md:block">
-      <Image
+    <a href={`/blog/${data.id}`} class="col col-2 hidden md:block">
+      <ImageMod
         class="mb-6 w-full rounded object-cover"
         src={image}
         alt={title}
         width={230}
         height={230}
-        style="aspect-ratio: 230 / 230"
+        style="aspect-ratio: 230 / 230; width: 230px; height: 230px"
+        format="webp"
       />
     </a>
     )

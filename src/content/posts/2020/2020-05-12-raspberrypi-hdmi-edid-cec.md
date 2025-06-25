@@ -4,7 +4,6 @@ date: 2020-05-12T02:00:00+09:00
 author: mzyy94
 categories: ["Multimedia"]
 tags: ["hdmi", "cec", "edid"]
-redirect_from: /blog/2020/05/12/raspberry-pi-hdmi-edid-cec/
 image: "/assets/images/2020/05/12/hdmi.jpg"
 ---
 
