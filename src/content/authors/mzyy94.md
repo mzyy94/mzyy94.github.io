@@ -4,46 +4,46 @@ image: "/assets/images/logo.png"
 description: Yuki MIZUNO
 social:
   - name: twitter
-    icon: twitter
+    icon: FaXTwitter
     link: https://twitter.com/mzyy94
   - name: github
-    icon: github
+    icon: FaGithub
     link: https://github.com/mzyy94
   - name: gitlab
-    icon: gitlab
+    icon: FaGitlab
     link: https://gitlab.com/mzyy94
   - name: bitbucket
-    icon: bitbucket
+    icon: FaBitbucket
     link: https://bitbucket.org/mzyy94
   - name: foursquare
-    icon: foursquare
+    icon: FaFoursquare
     link: https://foursquare.com/mzyy94
   - name: rss
-    icon: rss
+    icon: FaRss
     link: https://www.mzyy94.com/blog/rss.xml
   - name: website
-    icon: website
+    icon: FaGlobe
     link: https://www.mzyy94.com
   - name: keybase
-    icon: keybase
+    icon: FaKeybase
     link: https://keybase.io/mzyy94
   - name: steam
-    icon: steam
+    icon: FaSteam
     link: https://steamcommunity.com/id/RockingUniform
   - name: slideshare
-    icon: slideshare
+    icon: FaSlideshare
     link: https://www.slideshare.net/mzyy94
   - name: twitch
-    icon: twitch
+    icon: FaTwitch
     link: https://www.twitch.tv/mzyy94
   - name: amazon
-    icon: amazon
+    icon: FaAmazon
     link: https://amzn.mzyy94.com
   - name: paypal
-    icon: paypal
+    icon: FaPaypal
     link: https://www.paypal.me/mzyy94
   - name: key
-    icon: key
+    icon: FaKey
     link: https://github.com/mzyy94.keys
 ---
 
