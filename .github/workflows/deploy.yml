@@ -18,6 +18,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 24
+      - run: corepack enable
       - run: yarn install --frozen-lockfile
       - run: yarn build
       - uses: actions/upload-pages-artifact@v3
