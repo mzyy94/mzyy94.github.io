@@ -4,6 +4,7 @@ import ThemeSwitcher from "@/components/ThemeSwitcher.astro";
 import config from "@/config/config.json";
 import menu from "@/config/menu.json";
 import { IoSearch } from "react-icons/io5";
+import { FaCookieBite } from "react-icons/fa6";
 
 export interface ChildNavigationLink {
   name: string;
@@ -140,6 +141,12 @@ const { pathname } = Astro.url;
         )
       }
       <ThemeSwitcher className="mr-5" />
+      <button
+        class="border-border text-text-dark hover:text-primary dark:border-darkmode-border mr-5 inline-block border-r pr-5 text-xl dark:text-white dark:hover:text-darkmode-primary"
+        data-cc="show-preferencesModal"
+      >
+        <FaCookieBite />
+      </button>
       {
         navigation_button.enable && (
           <a
