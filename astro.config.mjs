@@ -12,6 +12,7 @@ import sharp from "sharp";
 import config from "./src/config/config.json";
 import theme from "./src/config/theme.json";
 import { remarkGfmAlerts, remarkStripPublicPrefix, resolveRelativeMd } from "./src/lib/utils/remarkCustomize";
+import cookieconsent from "@jop-software/astro-cookieconsent";
 
 // Helper to parse font string format: "FontName:wght@400;500;600;700"
 function parseFontString(fontStr) {
@@ -73,6 +74,108 @@ export default defineConfig({
       ],
     }),
     mdx(),
+    cookieconsent({
+      guiOptions: {
+        consentModal: {
+          layout: "bar inline",
+          position: "bottom",
+          equalWeightButtons: true,
+          flipButtons: false
+        },
+        preferencesModal: {
+          layout: "box",
+          position: "right",
+          equalWeightButtons: false,
+          flipButtons: false
+        }
+      },
+      categories: {
+        necessary: {
+          readOnly: true
+        },
+        analytics: {
+          services: {
+            "Google Analytics": {
+              label: "Google Analytics"
+            }
+          }
+        }
+      },
+      language: {
+        default: "en",
+        autoDetect: "browser",
+        translations: {
+          en: {
+            consentModal: {
+              title: "Cookie Consent",
+              description: "This site uses cookies for traffic analysis. You can accept or manage your preferences.",
+              acceptAllBtn: "Accept all",
+              acceptNecessaryBtn: "Reject all",
+              showPreferencesBtn: "Manage preferences",
+              footer: "<a href=\"/privacy-policy/\">Privacy Policy</a>"
+            },
+            preferencesModal: {
+              title: "Cookie Preferences",
+              acceptAllBtn: "Accept all",
+              acceptNecessaryBtn: "Reject all",
+              savePreferencesBtn: "Save preferences",
+              closeIconLabel: "Close modal",
+              serviceCounterLabel: "Service|Services",
+              sections: [
+                {
+                  title: "Cookie Usage",
+                  description: "This site uses cookies for traffic analysis. You can accept or manage your preferences."
+                },
+                {
+                  title: "Strictly Necessary Cookies <span class=\"pm__badge\">Always enabled</span>",
+                  description: "Cookies required for basic site functionality such as comment management and session maintenance.",
+                  linkedCategory: "necessary"
+                },
+                {
+                  title: "Analytics Cookies",
+                  description: "Cookies used for traffic analysis and site performance improvement. These cookies collect information such as visitor count and page views.",
+                  linkedCategory: "analytics"
+                }
+              ]
+            }
+          },
+          ja: {
+            consentModal: {
+              title: "Cookieへの同意",
+              description: "このサイトでは、トラフィック分析のためにCookieを使用しています。Cookieの使用に同意するか、設定を管理してください。",
+              acceptAllBtn: "すべて受け入れる",
+              acceptNecessaryBtn: "すべて拒否",
+              showPreferencesBtn: "設定を管理",
+              footer: "<a href=\"/privacy-policy/\">プライバシーポリシー</a>"
+            },
+            preferencesModal: {
+              title: "Cookieの設定",
+              acceptAllBtn: "すべて受け入れる",
+              acceptNecessaryBtn: "すべて拒否",
+              savePreferencesBtn: "設定を保存",
+              closeIconLabel: "モーダルを閉じる",
+              serviceCounterLabel: "サービス",
+              sections: [
+                {
+                  title: "Cookieの使用",
+                  description: "このサイトでは、トラフィック分析のためにCookieを使用しています。Cookieの使用に同意するか、設定を管理してください。"
+                },
+                {
+                  title: "厳密に必要なCookie <span class=\"pm__badge\">常に有効</span>",
+                  description: "コメント欄の管理や、セッションの維持など、サイトの基本的な機能を提供するために必要なCookieです。",
+                  linkedCategory: "necessary"
+                },
+                {
+                  title: "解析用のCookie",
+                  description: "トラフィック分析やサイトのパフォーマンス向上のために使用されるCookieです。これらのCookieは、訪問者数やページビューなどの情報を収集します。",
+                  linkedCategory: "analytics"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }),
   ],
   markdown: {
     remarkPlugins: [
