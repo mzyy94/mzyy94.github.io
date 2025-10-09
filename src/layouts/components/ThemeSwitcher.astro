@@ -63,6 +63,7 @@ const { className }: { className?: string } = Astro.props;
     const isDarkTheme = currentTheme === "dark";
     themeSwitch.forEach((sw: any) => (sw.checked = isDarkTheme));
     document.documentElement.classList.toggle("dark", isDarkTheme);
+    document.documentElement.classList.toggle('cc--darkmode', isDarkTheme);
   }
 
   const setDarkMode = () => {
