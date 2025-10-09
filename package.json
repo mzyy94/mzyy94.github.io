@@ -25,7 +25,6 @@
     "@astrojs/react": "5.0.0",
     "@astrojs/rss": "4.0.15-beta.4",
     "@astrojs/sitemap": "3.7.1",
-    "@digi4care/astro-google-tagmanager": "^1.6.0",
     "@jop-software/astro-cookieconsent": "^3.0.1",
     "@justinribeiro/lite-youtube": "^1.9.0",
     "astro": "6.0.4",

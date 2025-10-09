@@ -545,15 +545,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@digi4care/astro-google-tagmanager@npm:^1.6.0":
-  version: 1.6.0
-  resolution: "@digi4care/astro-google-tagmanager@npm:1.6.0"
-  peerDependencies:
-    astro: ^1.2.1 || ^2.0.0 || ^3.0.0-beta.0 || ^3.0.0 || ^4.0.0 || ^5.0.0
-  checksum: 10c0/3ea1bed5a7e0810df866ebfaf64bba83f6b34772468966b2ccd216b02dcd259836fbdb521fca659a20eaa5d0d9c4b49723e27565185ca110353be312333eb09e
-  languageName: node
-  linkType: hard
-
 "@emmetio/abbreviation@npm:^2.3.3":
   version: 2.3.3
   resolution: "@emmetio/abbreviation@npm:2.3.3"
@@ -2605,7 +2596,6 @@ __metadata:
     "@astrojs/react": "npm:5.0.0"
     "@astrojs/rss": "npm:4.0.15-beta.4"
     "@astrojs/sitemap": "npm:3.7.1"
-    "@digi4care/astro-google-tagmanager": "npm:^1.6.0"
     "@jop-software/astro-cookieconsent": "npm:^3.0.1"
     "@justinribeiro/lite-youtube": "npm:^1.9.0"
     "@tailwindcss/forms": "npm:^0.5.11"
