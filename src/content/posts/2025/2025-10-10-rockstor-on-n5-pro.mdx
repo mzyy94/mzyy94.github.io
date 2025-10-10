@@ -1,0 +1,211 @@
+---
+title: "Synologyへの不信感からRockstorに戻ってきた"
+date: 2025-10-10T10:30:00+09:00
+author: mzyy94
+categories: ["NAS"]
+tags: ["minisforum", "n5-pro", "rockstor", "proxmox", "btrfs", "nas"]
+image: "/assets/images/2025/10/10/rockstor-dashboard.png"
+---
+
+ここ10年以上、NASを取っ替え引っ替えしてきた。
+
+2010年代前半には自作NASが楽しく、FreeNASやNAS4FreeやOpenMediaVaultなど、OSSのものを色々と触って楽しんでいた。
+
+<PostLink slug="timemachine-with-nas4free" />
+
+色々触ってはデータを吹き飛ばすこと数知れず、10年代後半に出会ったRockstorの使い心地がよく、しばらくはこれに落ち着いていた。
+
+<PostLink slug="do-you-know-rockstor" />
+
+しかし2020年代に差し掛かる前、自作NAS群を維持するより既製品のNASに乗っかる方が楽だと考え、QNAPの製品に移行した。
+謎の電源断などQNAPが不調になったことから、Synologyに乗り換えたのが2020年の頃で、そこから5年間はSynologyを利用し続けていた。
+
+<PostLink slug="hello-25gbe-nic-at-home" />
+
+不満もなく安定し動作していたので、これからもしばらくSynologyを使い続けるものだと思っていた。
+
+あのニュースを耳にするまで ⸺
+
+## 目次
+
+
+## SynologyのHDD利用制限
+
+2025年4月、こんなプレスリリースを目にした。
+Synologyが今後発売するNASでは、サードパーティのドライブが使えなくなり、Synology純正のHDD/SSDしか利用させないといった告知だ。
+
+[Synology is increasingly relying on its own ecosystem for upcoming Plus models | Synology Inc.](https://www.synology.com/en-eu/company/news/article/DACH_VL_plus/Synology%20is%20increasingly%20relying%20on%20its%20own%20ecosystem%20for%20upcoming%20Plus%20models)
+
+このプレスリリースから多くのメディアやコミュニティが反応し、主に否定的なものを中心に様々な意見が飛び交っていた。
+Synologyで他社HDDを使うとデータにアクセスできなくなる、なんて憶測も出たくらいだ。
+
+あくまで新発売される製品に適用されるポリシーで、既存の製品では継続して自由なHDD選択が可能との方針を出している。
+しかしSynologyが自社HDDへの囲い込みを狙っている姿勢は、多くの反感を買うこととなった。
+
+ポリシーは半年を経たずとして一部撤回されることとなったが、一度落ちた評判はそう簡単に戻らないものだ。
+
+[Synology、サードパーティ製ドライブの使用制限を緩和 - PC Watch](https://pc.watch.impress.co.jp/docs/news/2053798.html)
+
+Synology NASを利用し続ける限り、OSやソフトウェアの提供もSynologyに依存するため、急な方針転換で利用制限を施され、詰む可能性はゼロではない。
+そんな不安もあり、徐々に自由なOSS(オープンソースソフトウェア)への移行を考え始めていた。
+
+## ニーズを満たすRockstor
+
+Synology NASでは、写真整理やメディア視聴システムにDockerの飼育など、データ保管だけの用途には留まらない使い方をしてきた。
+データの安全性という面では、Btrfsによって組まれたRAIDとスナップショットで多重化し、ボリューム暗号化を施していた。ファイル共有サービスはSMBを中心にNFSやSFTPを使ったりもしていた。Synologyから不自由なく移行という点ではどれも外せない。
+
+押さえておきたいポイントを箇条書きにすると、
+
+- Btrfsによる多重化 （ZFSはプール破損でデータ消失の過去がありトラウマ）
+- 暗号化 （ディスク単位かプール単位の広域なもの）
+- コンテナ仮想化の動作 （Dockerが望ましい）
+- SMB/NFS/SFTP （標準提供されてなくてもよい）
+
+などが挙げられる。
+
+OSSのNAS用OSの顔ぶれを久々に調べてみたものの、FreeNAS→TrueNASやNAS4Free→XigmaNASと名前が変わったりするくらいで、メジャーどころの顔ぶれは10年前と変わっていなかったことに驚いた。
+そして全てのニーズを満たすものも、相変わらずRockstorであることに変わりがなかったことに、謎の感動があった。
+
+## Rockstor 10年の進化
+
+流石に[2016年に紹介した内容](../2016/2016-07-04-do-you-know-rockstor.md)とは変わっているだろうと思い、大きな変化を調べてみた。
+
+### openSUSEへの移行
+
+以前利用していた頃はCentOSをベースとしていたのだが、2021年ごろにopenSUSEへとベースOSを移行していたようだ。
+
+[Migrating Legacy v3 (CentOS) to “Built on openSUSE” - Rockstor](https://rockstor.com/docs/howtos/centos_to_opensuse.html)
+
+CentOSからBtrfsのサポートが外されたり、CentOS自体のサポートが終わったりと、避けられない理由からこうなったらしい。
+副産物としてARM64イメージも登場した。
+
+### Open Collectiveによる非営利化
+
+以前に記事にした時にはRockstor Inc.が開発と紹介していたものの、今はOpen Collectiveの一プロジェクトとして非営利で開発されるようになっていた。
+
+[The Rockstor Project - Open Collective](https://opencollective.com/the-rockstor-project)
+
+時期としてはopenSUSEに移行するくらいの時で、これが大掛かりなプロジェクトになり資金繰りが難航、非営利化を後押しする形となっていた様子。
+非営利化のトレードオフとして、有償サポートが停止されている。有償のインシデントベースサポートを追加予定と謳っているが、しばらく追加されそうに無い。
+
+## Rockstorの導入
+
+他にも色々変更点はあるみたいだが、まずは動かしてみる。
+10年前は自作PCを組んでそこにインストールしていたが、そこまで頑張りたくないのでベアボーンを購入した。
+
+### ハードウェア
+
+![n5-pro](/assets/images/2025/10/10/n5-pro.jpeg)
+
+
+Minisforumから今年発売されたNAS向けのベアボーンキット。AMD Ryzen™ AI 9を備え5本の3.5インチHDDを搭載できる優れもの。
+NAS用の独自OS入りSSDが搭載されているので本来はNAS製品ではあるが、今回の目的では使わないのでSSDは外して箱にしまっておく。
+
+[Minisforum N5 Pro AI NAS｜AMD Ryzen™ AI 9 HX PRO 370](https://www.minisforum.jp/products/minisforum-n5-pro-nas)
+
+ここに足りないパーツを買い揃え、次のような構成にした。移行元のSynology製品の構成も併記しておく。
+
+型番 | [Minisforum N5 Pro AI NAS](https://www.amazon.co.jp/dp/B0FG3691PP?th=1&linkCode=ll1&tag=mzyy-22&linkId=78e304e6b90cec5faa17aa35c777fc1b&language=ja_JP&ref_=as_li_ss_tl) | Synology DS1621+
+---|---|---
+CPU | AMD Ryzen™ AI 9 HX PRO 370 | AMD Ryzen Embedded V1500B
+RAM | [DDR5-5200 96GB](https://www.amazon.co.jp/dp/B0D2P24B8R?th=1&linkCode=ll1&tag=mzyy-22&linkId=e8ea09603cff27ef91f038c354b53ca9&language=ja_JP&ref_=as_li_ss_tl) | DDR4-2666 32GB
+PCIe | PCI Express 4.0 x4 | PCI Express 3.0 x4
+SSD | [CFD SFT4000G 2TB](https://www.amazon.co.jp/dp/B0CY4SY74Q?th=1&linkCode=ll1&tag=mzyy-22&linkId=ee64441b93abe2fa4a5aaf3a621b60c2&language=ja_JP&ref_=as_li_ss_tl) x3 | AGI AGI512G16AI198 512GB / Crucial P1 500GB
+HDD | ST8000VN004 8TB x2 / WD80EZAZ 8TB x2 | Seagate IronWolfやWD Redなど
+
+
+### Proxmox仮想化とパススルー
+
+![install-proxmox](/assets/images/2025/10/10/install-proxmox.jpeg)
+
+今回は柔軟な運用のため、Rockstorを仮想化して導入することにした。
+N5 Proのシステムにお馴染みのProxmox VEを導入し、その上でRockstorを動かす。
+
+仮想マシンの設定を **q35,viommu=intel** にし、Docker（Rock-on）の動作やPCIeパススルーができるようにする。
+N5 ProのHDDドライブはPCIe接続のJMicron TechnologyのJMB585 SATAコントローラーで繋がっているので、PCIパススルーでそれをRockstorに渡してあげれば仮想化の準備は完了だ。
+
+![passthrough-pcie](/assets/images/2025/10/10/passthrough-pcie.png)
+![pcie-device-select](/assets/images/2025/10/10/pcie-device-select.png)
+
+あとはRockstorのインストーラーISOから起動し、仮想ディスクにシステムをインストールしたら普通に動くRockstorのできあがり。
+
+![rockstor-dashboard](/assets/images/2025/10/10/rockstor-dashboard.png)
+
+### LUKSディスク暗号化 + Btrfs RAID
+
+Rockstorが起動したらWeb UIのStorage → Disksからデータドライブを追加していく。
+このタイミングでLUKSによるフルディスク暗号化をかけることができる。
+
+[LUKS Full Disk Encryption — Rockstor documentation](https://rockstor.com/docs/howtos/luks.html)
+
+新品のHDDを使っていれば、ディスク一覧の名前の横の歯車から暗号化を進めていける。
+
+![luks-setup](/assets/images/2025/10/10/luks-setup.png)
+
+暗号化設定ができたら一覧の名前の横のボタンから、次は自動マウントの設定を行う。
+鍵をシステムドライブに保存し、起動時に自動で復号するのが推奨設定なので、画面の説明に従って進める。
+
+![luks-automount](/assets/images/2025/10/10/luks-automount.png)
+
+一度再起動してみて暗号化が解除された状態でマウントされていることを確認。
+Poolsに移動してデータプールを作成する。
+
+![raid-setup](/assets/images/2025/10/10/raid-setup.png)
+
+速度と安全性を両立した **raid5-1c3** で、高速なアルゴリズムで圧縮する **zstd** を選択した。
+5本目は保守用に開けてあるので、8TBの弾4本使って正味21.9TBのストレージ領域となった。
+
+### シェアディレクトリの作成
+
+ディスクとプールが出来上がったらSynologyで言うところの共有フォルダを作成する。
+割り当てたいサイズや圧縮オプションを設定したら、あとはSMBなりNFSなりで好きに共有設定すればNASとしてデータのアクセスが可能になる。
+
+
+### USBメモリに鍵をストアする
+
+暗号化されたドライブはRockstorの起動時に自動で復号するため、システムドライブに鍵ファイルが保存されている。
+起動時に勝手に暗号化を解除してくれて便利だが、起動さえできれば誰でも復号できることを意味する。
+盗難や災害時などで本体ごと持ち出され起動されてしまったら、暗号化の効果は皆無となってしまうのだ。
+
+Synology NASではこの鍵の保管場所として、USBメモリなど外部ストレージを指定することができていた。
+起動時にUSBメモリが刺さっていれば中の鍵を使って復号してくれ、なければ暗号化されたままになる。
+NASが立ち上がったら金庫などにUSBメモリを保管しておけば、たとえNASが盗まれても暗号化は解除されずデータを漏洩せずに済む。
+
+この機能をRockstorでセットアップし、暗号化の効果をより高めていく。
+
+#### crypttabの外部デバイス指定
+
+外部デバイスをLUKSの鍵とする方法は何通りかあるが、RockstorのWeb UIではどの方法も設定できない。
+コンソール(Web UIのSystem Shell)を叩いて設定するのだが、できるだけ操作手順を最小限に、次の6ステップでこの機能を実現した。
+
+1. 適当なUSBメモリをRockstorに差し込む (ProxmoxならUSBパススルーする)
+2. USBメモリのパーティション（例: /dev/sdd1）を適当なフォルダにマウントする
+3. /root に置かれた鍵ファイルをUSBメモリに移動する
+4. `blkid /dev/sdd1` でUUIDを調べる（例: UUID=74B4-90CC）
+5. /etc/crypttab に書かれた各行を次のように書き換える
+
+```diff
+-luks-a70edc30-43c5-474a-be41-41ef8939f158 UUID=a70edc30-43c5-474a-be41-41ef8939f158 /root/keyfile-a70edc30-43c5-474a-be41-41ef8939f158 luks
++luks-a70edc30-43c5-474a-be41-41ef8939f158 UUID=a70edc30-43c5-474a-be41-41ef8939f158 /keyfile-a70edc30-43c5-474a-be41-41ef8939f158:UUID=74B4-90CC luks
+```
+
+6. `systemctl daemon-reload` と `dracut --force` を順に実行して再起動
+
+一番シンプルに設定する方法なので、こだわる人は `cryptsetup` などで自在にカスタマイズしてデータを保護されたい。
+
+[dm-crypt - ArchWiki](https://wiki.archlinux.jp/index.php/Dm-crypt)
+
+### iOS向けSMB設定
+
+iOSのファイルアプリからSMB接続すると読み出し専用になることがある。
+必要なSMBの設定が足りないので、以下のフォーラム回答を参考に設定することで解決した。
+
+[Configure Samba to work better with Apple devices - How-to - Rockstor Community Forum](https://forum.rockstor.com/t/configure-samba-to-work-better-with-apple-devices/8956)
+
+![smb-apple-device](/assets/images/2025/10/10/smb-apple-device.png)
+
+## まとめ
+
+見た目も使い勝手も以前と大きく変わっておらず、必要な機能もしっかりそろっていて、なんだか実家のような安心感が身に染みた。
+Synology NASから全てのデータを複製して2ヶ月ほどRockstorを使い続けているが、なんら不満なく使えている。
+今までありがとう、Synology
