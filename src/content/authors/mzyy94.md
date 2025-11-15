@@ -3,9 +3,9 @@ title: mzyy94
 image: "/assets/images/logo.png"
 description: Yuki MIZUNO
 social:
-  - name: twitter
-    icon: FaXTwitter
-    link: https://twitter.com/mzyy94
+  - name: bluesky
+    icon: FaBluesky
+    link: https://bsky.app/profile/mzyy94.com
   - name: github
     icon: FaGithub
     link: https://github.com/mzyy94
@@ -27,9 +27,6 @@ social:
   - name: keybase
     icon: FaKeybase
     link: https://keybase.io/mzyy94
-  - name: steam
-    icon: FaSteam
-    link: https://steamcommunity.com/id/RockingUniform
   - name: slideshare
     icon: FaSlideshare
     link: https://www.slideshare.net/mzyy94
@@ -47,4 +44,4 @@ social:
     link: https://github.com/mzyy94.keys
 ---
 
-何かしら生きた証を遺したい (575)
+人間が書いています
