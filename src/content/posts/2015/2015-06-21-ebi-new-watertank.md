@@ -30,7 +30,7 @@ image: "/assets/images/2015/06/21/ebi-new-watertank.jpg"
 <blockquote class="twitter-tweet" lang="ja"><p lang="ja" dir="ltr">えび用給水機設置 <a href="http://t.co/3QSjCYV2Tc">pic.twitter.com/3QSjCYV2Tc</a></p>&mdash; エビライブ配信休止中 (@mzyy94) <a href="https://twitter.com/mzyy94/status/610766091095183360">2015, 6月 16</a></blockquote>
 
 
-<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=mzyy-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B00BJEB67C" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+<a href="https://www.amazon.co.jp/%E3%83%8B%E3%83%83%E3%82%BD%E3%83%BC-NAG-185-%E8%87%AA%E5%8B%95%E7%B5%A6%E6%B0%B4%E5%99%A8%E6%B0%B4%E8%B6%B3%E3%81%97%E3%81%8F%E3%82%93/dp/B00BJEB67C?&linkCode=ll1&tag=mzyy-22&linkId=047b5ead21e8529c4f537119734800ed&language=ja_JP&ref_=as_li_ss_tl" target="_blank"><img border="0" src="https://m.media-amazon.com/images/I/6112vP3cuZL._SL500_.jpg" /></a>
 
 
 水量が減ると水圧によって自動でペットボトルから液体が水槽へと流れる仕組みとなっています。

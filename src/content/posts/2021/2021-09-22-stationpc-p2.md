@@ -146,16 +146,16 @@ HDDはSeagateの[ST2000LX001](https://www.amazon.co.jp/Seagate-ST2000LX001-2-5%E
 ![stationpc p2](/assets/images/2021/09/22/IMG_2580.jpg)
 ![stationpc p2](/assets/images/2021/09/22/IMG_2585.jpg)
 
-<a href="https://www.amazon.co.jp/gp/product/B099WNM519?ie=UTF8&psc=1&linkCode=li3&tag=mzyy-22&linkId=8be54a34fd3acf59be16ae36ad53c582&language=ja_JP&ref_=as_li_ss_il" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B099WNM519&Format=_SL250_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22&language=ja_JP" ></a>
+<a href="https://www.amazon.co.jp/gp/product/B099WNM519?ie=UTF8&psc=1&linkCode=li3&tag=mzyy-22&linkId=8be54a34fd3acf59be16ae36ad53c582&language=ja_JP&ref_=as_li_ss_il" target="_blank"><img border="0" src="https://m.media-amazon.com/images/I/61NYWVCOBML._SL500_.jpg" ></a>
 
 [Amazon.co.jp: QTEATAK PCIe NVMe M.2 2280SSDヒートシンククーラーおよび取り付けネジドライバーキット : パソコン・周辺機器](https://www.amazon.co.jp/gp/product/B099WNM519?ie=UTF8&psc=1&linkCode=sl1&tag=mzyy-22&linkId=0ee3725df49fe191da1bc04098f560c5&language=ja_JP&ref_=as_li_ss_tl)
 
-<a href="https://www.amazon.co.jp/Crucial-P2%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA-NVMe%E6%8E%A5%E7%B6%9A-%E6%AD%A3%E8%A6%8F%E4%BB%A3%E7%90%86%E5%BA%97%E4%BF%9D%E8%A8%BC%E5%93%81-CT500P2SSD8JP/dp/B086TDBW8J?&linkCode=li3&tag=mzyy-22&linkId=3c43b0d38b64d0ef40fc089d52de0382&language=ja_JP&ref_=as_li_ss_il" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B086TDBW8J&Format=_SL250_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22&language=ja_JP" ></a>
+<a href="https://www.amazon.co.jp/Crucial-P2%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA-NVMe%E6%8E%A5%E7%B6%9A-%E6%AD%A3%E8%A6%8F%E4%BB%A3%E7%90%86%E5%BA%97%E4%BF%9D%E8%A8%BC%E5%93%81-CT500P2SSD8JP/dp/B086TDBW8J?&linkCode=li3&tag=mzyy-22&linkId=3c43b0d38b64d0ef40fc089d52de0382&language=ja_JP&ref_=as_li_ss_il" target="_blank"><img border="0" src="https://m.media-amazon.com/images/I/61A971woTDL._SL500_.jpg" ></a>
 
 [Crucial SSD P2シリーズ 500GB M.2 NVMe接続 正規代理店保証品 CT500P2SSD8JP 5年保証 - Crucial(クルーシャル)](https://www.amazon.co.jp/Crucial-P2%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA-NVMe%E6%8E%A5%E7%B6%9A-%E6%AD%A3%E8%A6%8F%E4%BB%A3%E7%90%86%E5%BA%97%E4%BF%9D%E8%A8%BC%E5%93%81-CT500P2SSD8JP/dp/B086TDBW8J?&linkCode=sl1&tag=mzyy-22&linkId=a592773eb34670d00db6d5d07b580c2b&language=ja_JP&ref_=as_li_ss_tl)
 
 
-<a href="https://www.amazon.co.jp/Seagate-ST2000LX001-2-5%E3%82%A4%E3%83%B3%E3%83%81%E5%86%85%E8%94%B5SSHD-FireCuda%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA-SATA%E6%8E%A5%E7%B6%9A/dp/B01M1UQQT5?&linkCode=li3&tag=mzyy-22&linkId=23498950f09899a76756b8246f177451&language=ja_JP&ref_=as_li_ss_il" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B01M1UQQT5&Format=_SL250_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22&language=ja_JP" ></a>
+<a href="https://www.amazon.co.jp/Seagate-ST2000LX001-2-5%E3%82%A4%E3%83%B3%E3%83%81%E5%86%85%E8%94%B5SSHD-FireCuda%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA-SATA%E6%8E%A5%E7%B6%9A/dp/B01M1UQQT5?&linkCode=li3&tag=mzyy-22&linkId=23498950f09899a76756b8246f177451&language=ja_JP&ref_=as_li_ss_il" target="_blank"><img border="0" src="https://m.media-amazon.com/images/I/71eFwPDYlaL._SL500_.jpg" ></a>
 
 [Amazon \| Seagate ST2000LX001 [2TB/2.5インチ内蔵SSHD] [7mm厚] FireCudaシリーズ / SATA接続 / バルク品 \| SEAGATE \| 内蔵ハードディスク 通販](https://www.amazon.co.jp/Seagate-ST2000LX001-2-5%E3%82%A4%E3%83%B3%E3%83%81%E5%86%85%E8%94%B5SSHD-FireCuda%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA-SATA%E6%8E%A5%E7%B6%9A/dp/B01M1UQQT5?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&dchild=1&qid=1632234427&s=computers&sr=1-2&linkCode=sl1&tag=mzyy-22&linkId=a3d37b851b90ce780b16c11c96dd3ef6&language=ja_JP&ref_=as_li_ss_tl)
 
@@ -168,11 +168,11 @@ Station P2のアンテナ端子がSMAオスとなっていて、手持ちのダ�
 ![stationpc p2](/assets/images/2021/09/22/IMG_2587.jpg)
 
 
-<a href="https://www.amazon.co.jp/%E5%A4%89%E6%8F%9B%E5%90%8D%E4%BA%BA-SMA%E3%82%A2%E3%83%B3%E3%83%86%E3%83%8A-RP-SMA-%E5%A4%89%E6%8F%9B%E3%82%A2%E3%83%80%E3%83%97%E3%82%BF-SMAJ-RPSMAP/dp/B005XXC8HW?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=2UYYPU8VPVGMR&dchild=1&qid=1632194397&sprefix=RP-SMA%28%5C%29+%E2%86%92+SMA%2Ccomputers%2C241&sr=8-12&linkCode=li3&tag=mzyy-22&linkId=165598a40b9b30675b7740f0b9ed34e2&language=ja_JP&ref_=as_li_ss_il" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B005XXC8HW&Format=_SL250_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22&language=ja_JP" ></a>
+<a href="https://www.amazon.co.jp/%E5%A4%89%E6%8F%9B%E5%90%8D%E4%BA%BA-SMA%E3%82%A2%E3%83%B3%E3%83%86%E3%83%8A-RP-SMA-%E5%A4%89%E6%8F%9B%E3%82%A2%E3%83%80%E3%83%97%E3%82%BF-SMAJ-RPSMAP/dp/B005XXC8HW?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=2UYYPU8VPVGMR&dchild=1&qid=1632194397&sprefix=RP-SMA%28%5C%29+%E2%86%92+SMA%2Ccomputers%2C241&sr=8-12&linkCode=li3&tag=mzyy-22&linkId=165598a40b9b30675b7740f0b9ed34e2&language=ja_JP&ref_=as_li_ss_il" target="_blank"><img border="0" src="https://m.media-amazon.com/images/I/71PN+86l38L._SL500_.jpg" ></a>
 
 [変換名人 SMAアンテナ(メス) → RP-SMA(メス)変換アダプタ SMAJ-RPSMAP - Amazon.co.jp](https://www.amazon.co.jp/%E5%A4%89%E6%8F%9B%E5%90%8D%E4%BA%BA-SMA%E3%82%A2%E3%83%B3%E3%83%86%E3%83%8A-RP-SMA-%E5%A4%89%E6%8F%9B%E3%82%A2%E3%83%80%E3%83%97%E3%82%BF-SMAJ-RPSMAP/dp/B005XXC8HW?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=2UYYPU8VPVGMR&dchild=1&qid=1632194397&sprefix=RP-SMA(\)+%E2%86%92+SMA,computers,241&sr=8-12&linkCode=sl1&tag=mzyy-22&linkId=c27ea87ced2b06bc6d1ded99c7b5ec94&language=ja_JP&ref_=as_li_ss_tl)
 
-<a href="https://www.amazon.co.jp/gp/product/B07DSCD6YF?ie=UTF8&psc=1&linkCode=li3&tag=mzyy-22&linkId=a6b45884a2a8e28820e83f9c5b323979&language=ja_JP&ref_=as_li_ss_il" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B07DSCD6YF&Format=_SL250_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22&language=ja_JP" ></a>
+<a href="https://www.amazon.co.jp/gp/product/B07DSCD6YF?ie=UTF8&psc=1&linkCode=li3&tag=mzyy-22&linkId=a6b45884a2a8e28820e83f9c5b323979&language=ja_JP&ref_=as_li_ss_il" target="_blank"><img border="0" src="https://m.media-amazon.com/images/I/419Bmky-QzL._SL500_.jpg" ></a>
 
 [Amazon \| ランフィー 5 PCS SMA オス RF 同軸終端一致ダミー負荷50オームコネクタ RC ドローン \| DIY・工具・ガーデン](https://www.amazon.co.jp/gp/product/B07DSCD6YF?ie=UTF8&psc=1&linkCode=sl1&tag=mzyy-22&linkId=34c7dc6e37964acbae6e16d5e30bbf8c&language=ja_JP&ref_=as_li_ss_tl)
 

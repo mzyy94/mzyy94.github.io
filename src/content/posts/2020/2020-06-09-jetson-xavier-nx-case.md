@@ -89,7 +89,7 @@ I/Oポートの寸法も2つあるカメラコネクタの端子へのアクセ�
 
 ### 無線LANアンテナの取り付けについて
 
-<a href="https://www.amazon.co.jp/gp/product/B07K564T9L/ref=as_li_ss_il?ie=UTF8&linkCode=li3&tag=mzyy-22&linkId=01798636b9a995f572b81fbd14997fac&language=ja_JP" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B07K564T9L&Format=_SL500_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22&language=ja_JP" ></a>
+<a href="https://www.amazon.co.jp/gp/product/B07K564T9L/ref=as_li_ss_il?ie=UTF8&linkCode=li3&tag=mzyy-22&linkId=01798636b9a995f572b81fbd14997fac&language=ja_JP" target="_blank"><img border="0" src="https://m.media-amazon.com/images/I/41lUyE+WknL._SL500_.jpg" ></a>
 
 
 [Amazon \| NGFF M.2 ネットワーク カード用 6dBi RP-SMA アンテナ U.FL ピグテール ケーブル \| orangejuice.tech \| 無線LAN用アンテナ 通販](https://www.amazon.co.jp/gp/product/B07K564T9L/ref=as_li_ss_tl?ie=UTF8&linkCode=ll1&tag=mzyy-22&linkId=605a16669ce9a06953457d05373400f0&language=ja_JP)

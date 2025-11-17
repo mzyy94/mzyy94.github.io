@@ -111,7 +111,7 @@ iPadですらすらと絵をくのにオススメなのが、このProcreate。
 
 #### CLIP STUDIO PAINT
 
-<a href="https://www.amazon.co.jp/%E3%82%BB%E3%83%AB%E3%82%B7%E3%82%B9-CLIP-STUDIO-PAINT-PRO/dp/B00856V104/ref=as_li_ss_il?ie=UTF8&qid=1482600602&sr=8-1&keywords=clipstudiopaint&linkCode=li2&tag=mzyy-22&linkId=fb2578358645d88998db8c131842967f" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B00856V104&Format=_SL500_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=mzyy-22" ></a>
+<a href="https://www.amazon.co.jp/%E3%82%BB%E3%83%AB%E3%82%B7%E3%82%B9-CLIP-STUDIO-PAINT-PRO/dp/B00856V104/ref=as_li_ss_il?ie=UTF8&qid=1482600602&sr=8-1&keywords=clipstudiopaint&linkCode=li2&tag=mzyy-22&linkId=fb2578358645d88998db8c131842967f" target="_blank"><img border="0" src="https://m.media-amazon.com/images/I/61N-jtip+WL._SL500_.jpg" ></a>
 
 [Amazon \| CLIP STUDIO PAINT PRO \| セルシス \| ソフトウェア 通販](https://www.amazon.co.jp/%E3%82%BB%E3%83%AB%E3%82%B7%E3%82%B9-CLIP-STUDIO-PAINT-PRO/dp/B00856V104/ref=sr_1_1?ie=UTF8&qid=1482589950&tag=mzyy-22)
 

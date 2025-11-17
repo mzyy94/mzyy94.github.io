@@ -93,7 +93,7 @@ kanto1_1.jpgとkanto1_2.jpgのファイル情報に撮影場所の手がかり�
 
 <blockquote class="twitter-tweet" lang="ja"><p>ヤマノススメするぞといった気持ち</p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584858646346989568">2015, 4月 5</a></blockquote>
 
-<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=mzyy-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B00L3NPW7E" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+<a href="https://www.amazon.co.jp/gp/product/B00L3NPW7E?&linkCode=ll1&tag=mzyy-22&language=ja_JP&ref_=as_li_ss_tl" target="_blank"><img border="0" src="https://m.media-amazon.com/images/I/71XwnOmj3tL._SL500.jpg"/></a>
 
 
 ### 当日
@@ -326,7 +326,7 @@ iPhoneの電子コンパスを使って方角を確かめ、正しい出口か�
 
 <blockquote class="twitter-tweet" lang="ja"><p>ヤマノススメするぞといった気持ち</p>&mdash; えびと犬と柚子胡椒みっきー (@mzyy94) <a href="https://twitter.com/mzyy94/status/584858646346989568">2015, 4月 5</a></blockquote>
 
-<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=mzyy-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B00L3NPW7E" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+<a href="https://www.amazon.co.jp/gp/product/B00L3NPW7E?&linkCode=ll1&tag=mzyy-22&language=ja_JP&ref_=as_li_ss_tl" target="_blank"><img border="0" src="https://m.media-amazon.com/images/I/71XwnOmj3tL._SL500.jpg"/></a>
 
 
 
@@ -425,7 +425,7 @@ mondai10.txtによると、*ヒント：石の下のミンティア*とのこと
 
 ありました！ミンティアアップルフィズ味です！
 
-<iframe src="http://rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=mzyy-22&o=9&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=B00MQE4MG6" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+<a href="https://www.amazon.co.jp/gp/product/B00MQE4MG6?&linkCode=ll1&tag=mzyy-22&language=ja_JP&ref_=as_li_ss_tl" target="_blank"><img border="0" src="https://m.media-amazon.com/images/I/71G1UIZuVzL._SL500_.jpg" /></a>
 
 気になる中身は...
 
