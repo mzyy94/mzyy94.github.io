@@ -19,7 +19,7 @@
     "sticky_header": false,
     "theme_switcher": true,
     "default_theme": "system",
-    "pagination": 10,
+    "pagination": 16,
     "summary_length": 100,
     "blog_folder": "blog"
   },
