@@ -57,7 +57,7 @@ VAパネルも年々進化を遂げており、視野角などの問題もほと
 ここで日本国内で販売・購入できる41インチ前後の4Kディスプレイを並べてみます。
 
 型番 | メーカー | サイズ | パネル | 発売日
-:---:|:---:|:---:|:---:|:---:|:---:
+:---:|:---:|:---:|:---:|:---:
 [LCD-M4K401XVB](http://www.amazon.co.jp/gp/product/B018T5WQPE/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=B018T5WQPE&linkCode=as2&tag=mzyy-22) | I-O DATA | 39.5インチ | VA |2015/12/25
 [X4070UHS](http://www.amazon.co.jp/gp/product/B012LTUJDA/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=B012LTUJDA&linkCode=as2&tag=mzyy-22) | iiyama | 40インチ | MVA | 2015/7/27
 [BDM4065UC/11](http://www.amazon.co.jp/gp/product/B00P9VXD9A/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=B00P9VXD9A&linkCode=as2&tag=mzyy-22) | Philips | 40インチ | VA | 2014/12/27
