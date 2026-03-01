@@ -21,3 +21,14 @@
   @import "./toc.css";
   @import "./patch.css";
 }
+
+body {
+  overflow-wrap: anywhere;
+  word-break: normal;
+  line-break: strict;
+}
+
+details>summary {
+  color: var(--color-darkmode-text);
+  cursor: pointer;
+}
