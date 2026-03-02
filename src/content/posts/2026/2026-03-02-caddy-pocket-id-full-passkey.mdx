@@ -1,0 +1,494 @@
+---
+title: "宅内WebサービスをCaddyとPocket IDでまるごとPasskey認証に"
+date: 2026-03-02T10:00:00+09:00
+author: mzyy94
+categories: ["Network"]
+tags: ["proxmox", "pocket-id", "caddy", "oidc", "server", "reverse-proxy", "passkey"]
+image: "/assets/images/2026/03/02/pocket-id-login.png"
+---
+
+[Synologyを辞めてProxmox VE+Rockstorに移行](../2025/2025-10-10-rockstor-on-n5-pro.mdx)してからというもの、LXCコンテナでOSSのWebサービスを気軽に立てては試す日々が続いている。[Proxmox VE Helper-Scripts](https://community-scripts.github.io/ProxmoxVE/)とそれをWeb UIから実行できる[PVE Scripts Local](https://github.com/community-scripts/ProxmoxVE-Local)のおかげで、数クリックでLXCコンテナの構築とサービスのデプロイができてしまい、気になるサービスがあればとりあえず立てまくっている。paperless-ngxで書類管理、immichで写真管理、calibre-webで電子書籍管理と、気がつけばサービスが数十個に膨れ上がっていた。
+
+しかし、サービスが増えるにつれて困りごとも増えてきた。お試しで使う-うちは `192.168.10.15:8083` のようなアドレスを直打ちしていたが、ちゃんと運用するならドメイン割り当て・証明書管理・リバースプロキシ設定を数十個分やらなければならない。愚直に一個一個設定していったらまあ投げ出したくなる。そこで[Caddy](https://caddyserver.com)のダイナミックアップストリームとワイルドカード証明書の自動取得を組み合わせて、サービスを立てるだけで**ほぼ何もせずにドメイン設定とHTTPS化が全部反映されている**状態を作った。
+
+次なる困りごとは認証だ。サービスごとにバラバラなログインが面倒で、投げやりに認証なしで運用してしたりしていた。LDAPで統合する手もあるが、宅内のことに大袈裟な仕組みを導入する体力はもうない。そこで見つけたのが[Pocket ID](https://pocket-id.org/)。Passkey認証に対応した至極シンプルなOIDCプロバイダーだ。これとCaddyを組み合わせることで、サービスが立ったら**ほんの少しの設定でPasskey認証からログイン画面のスキップまで全部付いてくる**状態を作れたので、その記録をここに残しておく。
+
+## 目次
+
+## やったこと
+
+サービスを増やすたびに発生していた手作業を、2つの仕組みを組み合わせることで解消した。
+
+- **Caddy + Proxmox VE SDN**: IP直打ち・証明書管理・個別プロキシ設定 → ダイナミックアップストリームとワイルドカード証明書でサービスを立てたらHTTPSアクセスが自動で整う
+- **Pocket ID + Caddy**: バラバラな認証 → OIDCゲートウェイでPasskey認証を一括適用して各サービスのログイン画面もスキップ
+
+なお、今回は一人利用を前提としており、サービス追加時にこれらを一切の個別設定なしに解決する目的のため、複数ユーザーへの対応（アクセス制限や権限設定）は扱わない。
+
+## ネットワーク構成
+
+Proxmox VEで構築しているネットワーク構成の全体像を以下に示す。
+
+![構成図](/assets/images/2026/03/02/network-graph.svg)
+
+
+### 役割と経路
+
+登場人物が多いので、それぞれの役割を整理しておく。
+
+| コンポーネント | ネットワーク | 役割 |
+|:---:|---|---|
+| **OpenWRT** (VM) | LAN `192.168.1.1` | ルーター・DHCP・DNS |
+| **Caddy** (LXC) | LAN `192.168.10.2` + SDN (DHCP) | リバースプロキシ・OIDC認証 |
+| **PowerDNS** (LXC) | SDN `10.0.100.2` | SDN向けDNSサーバー |
+| **Pocket ID** (LXC) | SDN (DHCP) | OIDCプロバイダー |
+| **各種サービス** (LXC) | SDN (DHCP) or LAN | grafana, paperless-ngx, immich, calibre-web等 |
+
+ネットワークは大きく2つに分かれている。
+
+- **LAN** (`192.168.0.0/16`): Proxmox VEの`vmbr0`でブリッジされた通常のネットワーク。PCやNAS、OpenWRTがいる
+- **SDN** (`10.0.100.0/24`): Proxmox VEのSDN機能で構築した`vnet0`。Webサービス用のLXCコンテナを収容する
+
+**SDN**ではDHCPで接続されたコンテナに10.0.100.10以降のアドレスを割り振っている。設定でSNATを有効にしてあるので、`vnet0`に繋がったコンテナからも外部への通信は可能だ。SDNファイアウォールも定義してあり、ファイアウォールを有効にすればFORWARDをDROPして閉じ込めることもできるようにしてある。
+
+<details>
+<summary>Helper-Scriptsでvnet0をデフォルトにするTip💡</summary>
+
+<Notice type="tip">
+Helper-Scriptsで作るコンテナが自動で`vnet0`に繋ぐよう、 `/usr/local/community-scripts/default.vars` にデフォルト値設定 `var_brg=vnet0` を記述している。PVE Scripts LocalのWeb UIからのインストールではデフォルト値が反映されないバグがあるので、Advancedインストールで`vnet0`を指定している。
+</Notice>
+</details>
+
+SDNに接続されたLXCコンテナには `<ホスト名>.int.mzyy94.com` の形式で自動的にDNSレコードが割り当てられる。これはProxmox VE SDNの **PowerDNS plugin** によるもので、コンテナの作成に連動してPowerDNSのAPIを叩き、Aレコードを自動登録してくれる。
+
+SDNの構築やPowerDNS pluginの設定については、以下が参考になる。
+
+- [Proxmox VE SDN 公式ドキュメント - Software-Defined Network](https://pve.proxmox.com/pve-docs/chapter-pvesdn.html#pvesdn_dns_plugin_powerdns)
+- [Proxmox VEでVM作成時にDNSに自動登録 - Qiita](https://qiita.com/marokiki/items/fe094a3f1c2061a4691f)
+- [Proxmox VE 8.1で標準搭載になったSDNを試す - INTERNET Watch](https://internet.watch.impress.co.jp/docs/column/shimizu/1585271.html)
+
+**LAN**構成はOpenWRTをルーターとしていて、設定で`*.int.mzyy94.com` の名前解決先をCaddyの`192.168.10.2`に向けている。また、ローカルドメインを`lan.mzyy94.com`としているので、DHCPで割り振った先のホスト名を加えた `<ホスト名>.lan.mzyy94.com` でOpenWRTに問い合わせると、割り当てたIPアドレスが返ってくるようにしてある。
+
+![OpenWRT DHCP setting](/assets/images/2026/03/02/openwrt-dhcp-setting.png)
+
+**PowerDNS**のインストール自体は[公式のインストール手順](https://doc.powerdns.com/authoritative/installation.html)に従い、HTTP APIを有効にしてProxmox VE SDNからアクセスできるようにしておく。Hepler-ScriptsでdebianのLXCを作ってそこにaptで導入した。
+
+**Caddy**は`vmbr0`と`vnet0`の両方に接続されていて、LANとSDNの橋渡し役を担う。LANからの `*.int.mzyy94.com` へのリクエストを受け取り、SDN上（またはLAN上）のサービスにリバースプロキシする。
+
+**Pocket ID**の説明はまた後で。
+
+### HTTPSプロキシの流れ
+
+このネットワーク構成でLAN上のPCから `https://paperless-ngx.int.mzyy94.com` にアクセスした場合のHTTPSプロキシの流れを図にする。
+
+![DNS flow](/assets/images/2026/03/02/dns-flow.svg)
+
+PCからブラウザでアクセスすると、①DHCPで渡された`192.168.1.1` (OpenWRT) にDNSを問い合わせ、②`*.int.mzyy94.com`はCaddyの`192.168.10.2`に解決される。③PCはCaddyにHTTPSで接続し、④CaddyがPowerDNSに問い合わせてSDN上のpaperless-ngxのアドレスを得て、⑤HTTP経由でプロキシする。
+
+①と②はOpenWRTがやってるので、③以降をCaddyの設定ファイル「Caddyfile」を記述することで実現する。
+
+## Caddyによるリバースプロキシ
+
+Caddyで `*.int.mzyy94.com` の動的リバースプロキシを構成する。WebAuthnにはHTTPSが必須のため、Pocket IDの導入は後にして、先にHTTPSプロキシの仕組みを整える。
+
+Caddyfileの[公式ドキュメント](https://caddyserver.com/docs/caddyfile)は網羅的ではあるものの、実際の設定例が少なく読み解きにくい。よく訓練したAIでさえ読み違えるくらいなので、この記事ではCaddyfileの各ブロックを実例とともに解説していく。
+
+Caddyの導入は[Helper-Scripts](https://community-scripts.github.io/ProxmoxVE/scripts?id=caddy)を使ってもらうとして、導入後に[caddy-dns/cloudflare](https://github.com/caddy-dns/cloudflare)プラグインを追加しておく。CloudflareのDNS APIを使ってワイルドカード証明書を取得するためだ。他の方法で証明書を取得する人は、適切なものに読み替えてほしい。
+
+```sh
+caddy add-package github.com/caddy-dns/cloudflare
+```
+
+### ワイルドカード証明書の取得
+
+`*.int.mzyy94.com` のワイルドカード証明書は、CloudflareのDNS APIを使った[DNS-01チャレンジ](https://caddyserver.com/docs/automatic-https#dns-challenge)で取得している。ワイルドカード欲しがりな人にはお馴染みの方法なので、他の人の記事を参考にAPIトークンを取得し、`/etc/caddy/.env` に `CF_API_TOKEN=your-cloudflare-token` の行を追記しておく。
+
+- [ワイルドカード付きSSL証明書の自動発行には Cloudflare が便利 | Zenn](https://zenn.dev/n4mlz/articles/41653a6bea503c)
+- [cloudflare DNSとcertbotでローカル用のワイルドカード証明書を取得する(自分向け完全版) #TLS証明書 - Qiita](https://qiita.com/ynott/items/1dc9009b8ed3a21c9364)
+- [CloudflareのDNSを利用しているドメインの証明書をcertbotで発行する - akky blog](https://blog.akky.me/entry/20220109-certbot-cloudflare-dns/)
+
+```nginx
+*.int.mzyy94.com {
+    tls {
+        dns cloudflare {env.CF_API_TOKEN}
+        resolvers 1.1.1.1
+    }
+
+    # バックエンド転送ルートを指定(後述)
+    invoke dynamic-backend
+}
+```
+
+`resolvers`にCloudflareの`1.1.1.1`を指定しているのは、DNSチャレンジのTXTレコードの伝播確認をCloudflare自身に問い合わせるため。CaddyコンテナにはSDNも繋がっており、DHCPのタイミングで `/etc/resolv.conf` が上書きされてしまうため、明示的に指定している。
+
+なお、以前のバージョンのCaddyとcaddy-dns/cloudflareには[スプリットホライズンDNS環境で証明書の取得に失敗する問題](https://github.com/caddy-dns/cloudflare/issues/118)があり、証明書の発行がうまくいかなかった。別の方法で取得したものを用いて回避していたが、2026年2月23日にリリースされた[Caddy v2.11.1](https://github.com/caddyserver/caddy/releases/tag/v2.11.1)で修正され利用できるようになっていた。
+
+### 動的バックエンドの名前解決
+
+最近のモダンなリバースプロキシではお馴染みの動的バックエンド解決。Caddyでは[dynamic upstreams](https://caddyserver.com/docs/caddyfile/directives/reverse_proxy#dynamic-upstreams)という機能として用意されている。
+
+Caddyfileでは[named route](https://caddyserver.com/docs/caddyfile/concepts#named-routes)として`dynamic-backend`を定義し、先ほどの転送ルート指定部分で[`invoke`](https://caddyserver.com/docs/caddyfile/directives/invoke)で呼び出している。わざわざ定義して呼び出す手順を踏んでいるのは、続くOIDC認証をする場合にこの経路を複数箇所で再利用するためだ。
+
+```nginx
+&(dynamic-backend) {
+    reverse_proxy {
+        dynamic multi {
+            a {
+                name {host}
+                port 80
+                resolvers 10.0.100.2 # PowerDNS
+            }
+
+            a {
+                name {labels.3}.lan.mzyy94.com
+                port 80
+                resolvers 192.168.1.1 # OpenWRT
+            }
+        }
+    }
+}
+```
+
+[`dynamic multi`](https://caddyserver.com/docs/caddyfile/directives/reverse_proxy#multi)は複数のダイナミックアップストリームモジュールの結果を結合してアップストリームプールを構成するモジュールだ。すべてのソースに問い合わせ、解決できた結果をまとめてリストにする。この構成では各ホスト名はどちらか一方のDNSにしか存在しないので、結果的に1つだけが解決される。
+
+1. **PowerDNS（`10.0.100.2`）に問い合わせる**: `{host}`、つまり`paperless-ngx.int.mzyy94.com`をそのままAレコードとして引く。SDN上のコンテナならここで解決する
+2. **OpenWRT（`192.168.1.1`）に問い合わせる**: `{labels.3}.lan.mzyy94.com`に変換して引く。`{labels.3}`はホスト名の3番目のラベル、つまり`paperless-ngx.int.mzyy94.com`なら`paperless-ngx`部分。これを`paperless-ngx.lan.mzyy94.com`として、OpenWRTのDHCPで管理されるLAN上のホストを探す
+
+SDN上のコンテナならPowerDNSだけが解決し、LAN上のホストならOpenWRTだけが解決するので、結果的にどちらか一方のアドレスがアップストリームとして使われる。先ほどの図でPowerDNSへの **④ DNS lookup** の解決に失敗していた場合、OpenWRTに問い合わせた`paperless-ngx.lan.mzyy94.com`のAレコードががあればそこをアップストリームとするのだ。
+
+この仕組みにより、SDN上のコンテナもLAN上のコンテナも、同じ `<ホスト名>.int.mzyy94.com` のドメインで統一的にアクセスできる。新しいサービスを立てたら、SDNでもLANでもホスト名をサブドメインにアクセスするだけで、自動でリバースプロキシされていく。
+
+### 80番ポート以外のサービスへの対応
+
+dynamic-backendはポート80に対してリバースプロキシをかけている。3000番ポートなど80以外で動くサービスには、コンテナ内のnftablesでポートリダイレクトを設定する。
+
+```sh
+nft add table nat
+nft add chain nat prerouting { type nat hook prerouting priority -100 \; }
+nft add rule nat prerouting tcp dport 80 redirect to :3000
+nft list ruleset | tee /etc/nftables.conf
+systemctl enable nftables
+```
+
+これで外からの80番ポートへのアクセスが3000番に転送され、Caddyのdynamic-backendで疎通できる。この部分が唯一の手動で調整が必要な箇所で、冒頭で「ほぼ何もせず」と言っていた"ほぼ"が、このnftablesの設定にあたる。
+[nft-redirect.sh](https://gist.github.com/mzyy94/9047daf742bc1092d40705e9c153367e#file-nft-redirect-sh)を作って置いてあるので、80番ポート以外で動いているサービスに限り、Proxmox VEのシェルに入って`nft-redirect.sh 102 3000`と打つ作業だけ手を動かすことになる。
+
+
+<Notice type="tip">
+
+LANで立てているコンテナでは、PCなどから直接そのコンテナに対してアクセスできる状態になっている。
+そのままでは認証をCaddyでまとめても回避されてしまうので、nftablesのポートリダイレクト設定に加えて、filterでコンテナのサービスポートへの直接アクセスをブロックし、Caddy経由のみに制限しておくとよい。
+
+```sh
+nft add table inet filter
+nft add chain inet filter input { type filter hook input priority 0 \; policy accept \; }
+nft add rule inet filter input tcp dport { 80, 3000 } ip saddr 192.168.10.2 accept
+nft add rule inet filter input tcp dport { 80, 3000 } drop
+```
+
+</Notice>
+
+これで `*.int.mzyy94.com` でLAN・SDN上の各サービスにHTTPSアクセスできる状態が整った。ここまでのCaddyfileは次のようになっている。
+
+```nginx
+&(dynamic-backend) {
+    reverse_proxy {
+        dynamic multi {
+            a {
+                name {host}
+                port 80
+                resolvers 10.0.100.2 # PowerDNS
+            }
+
+            a {
+                name {labels.3}.lan.mzyy94.com
+                port 80
+                resolvers 192.168.1.1 # OpenWRT
+            }
+        }
+    }
+}
+
+*.int.mzyy94.com {
+    tls {
+        dns cloudflare {env.CF_API_TOKEN}
+        resolvers 1.1.1.1
+    }
+
+    invoke dynamic-backend
+}
+```
+
+## Pocket IDの導入
+
+[Pocket ID](https://pocket-id.org/)は、Go製の軽量なOIDC (OpenID Connect) プロバイダーだ。特徴的なのはWebAuthn/Passkeyをネイティブにサポートしており、その認証に特化していること。パスワードや他の方法は用意されておらず、Face IDやセキュリティキーでのみログインできる。
+
+![pocket id client config](/assets/images/2026/03/02/pocket-id-client-config.png)
+
+自宅サーバー勢の認証基盤としては[Authelia](https://www.authelia.com/)や[Authentik](https://goauthentik.io/)が人気だが、今回はPocket ID + Caddyの組み合わせを選んだ。Autheliaはリバースプロキシの前段に認証ポータルを置くオールインワン型で、LDAP・TOTP・OIDCプロバイダーまで一通り揃っている。機能は豊富だがその分設定項目も多いため、構築・運用に労力を必要とする。Authentikはもっとてんこ盛り。対してPocket IDは「OIDCプロバイダーに徹する」と割り切っていて、やることがWebAuthn認証とOIDCクライアントのトークン発行だけ。管理画面でできる事は、ユーザ・グループの追加編集とクライアントの管理くらいだ。認証のゲートウェイ機能すら持たないため、そこをCaddyに任せることでそれぞれの役割を分離できる。設定も少ないため、運用も楽だと見立てた。
+
+Pocket IDはSDNの`vnet0`上にLXCコンテナとして配置し、DHCPでアドレスを取得している。ホスト名は`pocket-id`にしたので、SDNのPowerDNS pluginにより `pocket-id.int.mzyy94.com` で名前解決できる。先ほど構築したCaddyのリバースプロキシにより、ブラウザからHTTPSでアクセスできる状態だ。
+
+インストールはPocket IDの[Helper-Scripts](https://community-scripts.github.io/ProxmoxVE/scripts?id=pocketid)で一発だ。
+
+`https://pocket-id.int.mzyy94.com/setup` からPocket IDの管理者とPasskeyを作成したら、管理画面でOIDCクライアントを作成できるようになる。
+
+<details>
+<summary>Pocket IDのオリジンを変えてしまった場合の対処Tip💡</summary>
+
+<Notice type="tip">
+Pocket IDはWebAuthn（Passkey）を認証の軸にしているため、当たり前だがPasskeyの登録時のオリジン（ドメイン+プロトコル+ポート）が変わると既存のPasskeyが無効になる。
+
+Helper-Scriptsのデフォルトのホスト名が`pocketid`だったため、最初は`pocketid.int.mzyy94.com`で立てていた。たくさん設定した後にホスト名が気になり `pocket-id` に変更したため、やらかしをしてしまった。
+
+WebAuthn以外のログイン手段がないため詰んだと思ったが、CLIから[ワンタイムアクセストークン](https://pocket-id.org/docs/troubleshooting/account-recovery)を発行すれば復旧できるとあった。.envがあるディレクトリ(例: /opt/pocket-id)で `pocket-id one-time-access-token <ユーザー名>` を実行し、一時的なログインコードで管理画面に入ってPasskeyを再登録した。
+</Notice>
+</details>
+
+### immichのPocket ID認証設定
+
+Pocket IDがうまく動くことをまずimmichで確認しておく。immichのドキュメント [OAuth Authentication | Immich](https://docs.immich.app/administration/oauth/) にOAuthをどう設定すればいいかが書かれている。
+
+#### OIDCクライアントの作成
+
+Pocket IDの場合は管理画面で「OIDC Clients」から新規作成し、ドキュメントに記載の値を参考に、以下のように設定する。
+
+- **Name**: `immich`
+- **Callback URLs**: `https://immich.int.mzyy94.com/auth/login` `https://immich.int.mzyy94.com/user-settings` `app.immich:///oauth-callback`
+
+![Immich OIDC client setting](/assets/images/2026/03/02/pocket-id-immich-client.png)
+
+作成後の **Client ID** と **クライアントシークレット** はImmich側の設定で使うので控えておく。
+
+忘れがちなのが、下の方にある「許可されたユーザーグループ」の設定で、ログイン可能なユーザーグループをチェックして保存するか、制限なしにしておかなければならない。これを忘れると、ログイン完了してもDenyされてしまうので注意。
+
+#### immichからPocket IDへの接続
+
+こちらもドキュメント通りで、設定ページの認証設定からOAuthを開いて設定値を入れていく。`CLIENT_ID` と `CLIENT_SECRET` はそれぞれ **Client ID** と **クライアントシークレット**をコピペすればOK。`ISSUER_URL`はPocket ID管理画面の「詳細を表示」から **OIDC Discovery URL**の項目をコピペするか、`https://<Pocket IDのドメイン>/.well-known/openid-configuration` を手入力する。他はドキュメントに規定値が書かれてるので、その通り埋めていけば完了。
+
+![Immich Pocket ID setting](/assets/images/2026/03/02/immich-pocket-id-setting.png)
+
+あとはアカウント設定からOAuth→OAuthへリンクするとPocket IDの認証画面に移動するので、Face IDなりセキュリティキーなりでログインする。ログインが成功したら今後はID/Passwordを使わずPasskeyでログインできるようになっている。
+
+![Immich Passkey Auth OK](/assets/images/2026/03/02/immich-passkey-ok.png)
+
+## CaddyにOIDC認証を追加する
+
+Pocket IDが動いていることを確認できたところで、Caddyに認証機能を組み込んでいく。
+
+先にCaddyでどのように認証フローが行われるか全体像を図示する。
+
+![OIDC認証フロー](/assets/images/2026/03/02/auth-flow.svg)
+
+`prometheus.int.mzyy94.com`にアクセスした場合を例にとると、①PCからPrometheusにアクセスしたら、②Caddyが未認証を検知して302でPocket IDのログイン画面にリダイレクトする。③Pocket IDにPasskeyでログインするとCaddyが裏で認可コードをトークンに交換し、④セッションCookieを発行してから元のサービスに案内する。⑤以降はCookieが有効な間、それをCaddyが確認してバックエンドに直接プロキシされる。
+
+この認証認可を行うのが[caddy-security](https://github.com/greenpau/caddy-security)。先ほどと同様にCaddyにプラグインを追加する。
+
+```sh
+caddy add-package github.com/greenpau/caddy-security
+```
+
+プラグインが追加できたら、この流れを実現する設定を順にしていく。
+
+### Caddy用OIDCクライアントの作成
+
+Pocket IDでCaddyが前段で認証するためのOIDCクライアントを作成する。基本の手順はimmichと同じだが、Callback URLsが異なる。
+
+- **Name**: `Caddy` ("宅内サービス群"とかでもいい)
+- **Callback URLs**: `https://*.int.mzyy94.com/caddy-security/oauth2/generic/authorization-code-callback`
+
+Callback URLsにワイルドカードを指定しているのがポイント。caddy-securityは認証後に元のサービスのURLにコールバックを戻すため、`*.int.mzyy94.com`配下のすべてのサービスで同じOIDCクライアントを使うようにするためだ。ここを空欄にすると、最初にログインしたサービスのが入ってしまい、別のサービスで認証が弾かれてしまう。
+
+### caddy-securityでOIDC認証をかける
+
+caddy-securityプラグインでPocket IDとの連携を設定する。
+[Pocket ID公式のCaddyガイド](https://pocket-id.org/docs/guides/proxy-services#caddy)にCaddyfileの設定例が書かれているので拝借すればいいのだが、少し手を加えてある。Caddyfileの先頭に書く**グローバルブロック**に以下を記述する。
+
+```nginx
+{
+    order authenticate before respond
+    security {
+        oauth identity provider generic {
+            delay_start 3
+            realm generic
+            driver generic
+            client_id {env.OIDC_CLIENT_ID}
+            client_secret {env.OIDC_CLIENT_SECRET}
+            scopes openid email profile
+            base_auth_url https://pocket-id.int.mzyy94.com
+            metadata_url https://pocket-id.int.mzyy94.com/.well-known/openid-configuration
+            extract all from userinfo
+        }
+        authentication portal pocket_id {
+            crypto default token lifetime 28800
+            enable identity provider generic
+            cookie insecure off
+            transform user {
+                match realm generic
+                action add role user
+            }
+        }
+        authorization policy pocket_id {
+            set auth url /caddy-security/oauth2/generic
+            allow roles user
+            inject headers with claims
+            inject header "Remote-User" from "userinfo|preferred_username"
+        }
+    }
+}
+```
+
+各ブロックを上から順に見ていく。
+
+#### `oauth identity provider generic`
+Pocket IDをOIDCプロバイダーとして登録する。`metadata_url`にOpenID Connectのディスカバリエンドポイントを指定すれば、認可エンドポイントやトークンエンドポイントは自動で取得される。`delay_start 3`はCaddy自身で`pocket-id.int.mzyy94.com`にリバースプロキシしているのを待つのに必須で、消すと起動にコケてしまう。`extract all from userinfo`は後述のヘッダー注入で`preferred_username`等を参照するために必要な設定で、[これがないとuserinfoのクレームを取り出せない](https://github.com/greenpau/caddy-security/issues/389)。忘れると`Remote-User`ヘッダーが空になり、リバースプロキシ認証が機能しない。
+
+#### `authentication portal pocket_id`
+認証ポータルの設定。トークンの有効期間は28800秒（8時間）にしてある。Passkeyなら毎回ログインする煩わしさも少ないため、寝て起きたらセッションが切れるくらいにしている。
+
+#### `authorization policy pocket_id`
+認可ポリシー。認証済みユーザーに`user`ロールを付与し、そのロールを持つユーザーにアクセスを許可する。`inject header "Remote-User" from "userinfo|preferred_username"`は、認証済みユーザーのユーザーIDをRemote-Userヘッダーにセット（上書き）してバックエンドに転送するための設定。後述するリバースプロキシ認証で利用する。
+
+**Client ID** と **クライアントシークレット** は環境変数経由で引っ張ってくるので、`/etc/caddy/.env`にそれぞれ追記しておく。
+
+### ルーティングと認証の振り分け
+
+認証認可の設定が済んだら `*.int.mzyy94.com` **サイトブロック**内で、リクエストに応じて認証の要否を振り分けている。
+
+```nginx
+*.int.mzyy94.com {
+    tls {
+        dns cloudflare {env.CF_API_TOKEN}
+        resolvers 1.1.1.1
+    }
+
+    @noauth {
+        host pocket-id.int.mzyy94.com
+        host immich.int.mzyy94.com
+    }
+    handle @noauth {
+        invoke dynamic-backend
+    }
+
+    @bypass-api {
+        path /api/*
+        header Authorization Bearer*
+    }
+    handle @bypass-api {
+        invoke dynamic-backend
+    }
+
+    handle {
+        handle /caddy-security/* {
+            authenticate with pocket_id
+        }
+
+        route {
+            authorize with pocket_id
+            invoke dynamic-backend
+        }
+    }
+}
+```
+
+[matchers](https://caddyserver.com/docs/caddyfile/matchers)と[`handle`](https://caddyserver.com/docs/caddyfile/directives/handle)の組み合わせで、3つのパターンに分岐している。
+
+#### `@noauth`
+認証をスキップするサイトを指定する。Pocket IDは認証プロバイダー自体なのでスキップしておかないと、Pocket IDの認証のためにPocket IDにリダイレクトし続けるループが起こる。
+
+immichは先ほど設定したOIDC認証を自身で行うため、Caddy側で二重に認証をかける必要がないのでスキップしている。実際の挙動は二重で認証リクエストされても、Caddy側の認証を突破していれば連続する2つ目のログイン画面は自動承認してくれるため、スキップしなくても体験としてはあまり差がない。Pocket IDで「再認証が必要」を設定している場合は自動承認されないため、スキップしておくべきだろう。
+他にCaddyでの認証をスキップしたいホストは、同様に続けてホスト名を列挙していく。
+
+#### `@bypass-api`
+`/api/*`パスかつ`Authorization: Bearer ...`ヘッダーを持つリクエストは認証をバイパスする。ブラウザを介さないモバイルアプリなど、APIトークンで認証するクライアント向け。Bearer以外の認証スキームにも対応したければ、続けて`header Authorization Token*`などと列挙していけば同様にバイパスされる。`X-Api-Key`など別のヘッダー名もバイパスさせたいとなると列挙しては書けないので、ブロック全体をCELに置き換える必要がある。
+```
+@bypass-api `path('/api/*') && (header({'Authorization':'Bearer *'}) || header({'X-Api-Key':'*'}))`
+```
+
+#### それ以外
+[`route`ブロック](https://caddyserver.com/docs/caddyfile/directives/route)内でcaddy-securityの`authorize`を通し、Pocket IDでのOIDC認証を要求する。未認証のユーザーはPocket IDのログイン画面にリダイレクトされ、Passkeyで認証する。
+
+### Caddyfile全体
+
+ここまでの全てを設定したCaddy v2.11.1で実際に動くCaddyfileを[gistに貼っておいた](https://gist.github.com/mzyy94/9047daf742bc1092d40705e9c153367e#file-caddyfile)。半年たらずだがトラブルなく安定して動いており、満足いく構成を作ることができた。
+
+## リバースプロキシ認証
+
+CaddyでOIDC認証を通過しても、サービス自体がログイン画面を持っているとIDとパスワードを求められてしまう。これを解消するのがリバースプロキシ認証だ。
+Caddyが認証済みユーザー名を`Remote-User`ヘッダーとしてバックエンドに転送すると、サービスはこのヘッダーを信頼してログインをスキップし、そのユーザーでログイン済みとする。各サービスにアクセスできるのをCaddyだけに構成しているため、Caddyが唯一ヘッダーを付与する認証ゲートウェイとして機能するからこそ実現できる技だ。
+多くのサービスがこの認証方法に対応しているため、いくつか取り上げて設定について記録しておく。
+
+### calibre-web
+
+calibre-webは独自のログイン画面を持つが、リバースプロキシ認証に対応している。特定のHTTPヘッダーにユーザー名が含まれていれば、そのユーザーとして自動ログインする仕組みだ。
+
+![calibre-web reverse proxy auth](/assets/images/2026/03/02/calibre-reverse-proxy-auth.png)
+
+これを有効にするため、calibre-webの基本設定の機能設定で「リバースプロキシの認証を許可」を有効にし、リバースプロキシのヘッダー名に`Remote-User`を指定する。
+
+前述のCaddyfileの認可ポリシーで、`inject header "Remote-User" from "userinfo|preferred_username"` と設定しているため、Pocket IDで認証したユーザーの`preferred_username`、すなわちユーザーIDが`Remote-User`ヘッダーとしてcalibre-webに渡される。そして同じユーザーIDがcalibre-webにあれば、ログイン画面を飛ばしてログイン済みになる。
+
+
+### Grafana
+
+#### リバースプロキシ認証
+
+多彩な認証方法が提供されているGrafanaは、[auth proxy項目](https://grafana.com/docs/grafana/latest/setup-grafana/configure-access/configure-authentication/auth-proxy/)としてリバースプロキシ認証を有効にできる。**grafana.ini**で次の通り設定するだけだ。
+
+```ini
+[auth.proxy]
+enabled = true
+header_name = REMOTE-USER
+```
+
+#### 代替: Generic OAuth
+
+リバースプロキシ認証の代わりに、Grafana自身のOIDC機能でPocket IDと直接連携することもできる。Webの設定画面からGeneric OAuth設定を探し、Pocket IDの対応する値をコピペしていくだけで設定できる。
+
+![grafana generic oauth](/assets/images/2026/03/02/grafana_authentication_generic_oauth.png)
+
+さらにPocket ID側で管理しているグループをGrafanaのロールにマッピングすることもできる。Pocket IDでadminグループを作って管理者にしたいユーザーをそこに追加しておき、Grafanaでgroupも得られるように**Scopes**に `openid email profile group` を設定。折りたたまれているUser mappingを展開して**Role attribute path**の入力欄に `contains(groups[*], 'admin') && 'Admin' || 'Viewer'` と設定することで、サインイン時にグループを確認してadminにも所属していればAdminロールを持ったアカウントとして扱われるようになる。
+
+![grafana signup](/assets/images/2026/03/02/grafana-signup.png)
+
+ちなみにauth proxyの方でも`headers = Name:X-WEBAUTH-NAME Role:X-WEBAUTH-ROLE Email:X-WEBAUTH-EMAIL Groups:X-WEBAUTH-GROUPS`などと設定を追加することで、ヘッダーに書かれたロールを直に反映冴えることができる。
+
+### paperless-ngx
+
+#### リバースプロキシ認証
+
+paperless-ngxもリバースプロキシ認証に対応している。`paperless.conf`でリバースプロキシ下で動くようにする設定値と、[リバースプロキシ認証用の設定値](https://docs.paperless-ngx.com/configuration/#PAPERLESS_ENABLE_HTTP_REMOTE_USER) の二つを次のように`paperless.conf`に記載しておく。
+
+```
+PAPERLESS_URL=https://paperless-ngx.int.mzyy94.com
+PAPERLESS_ENABLE_HTTP_REMOTE_USER=true
+```
+
+この状態で起動してあげることで、`Remote-User`ヘッダーを見て同じユーザーIDでログインしたことになる。
+
+#### 代替: Django allauth
+
+リバースプロキシ認証の代わりに、paperless-ngx自身でOIDC認証を行うこともできる。今のCaddyによるリバースプロキシ認証をする前はこの方法でやっていた。
+Djangoベースなので、Django Appsとして`allauth`のOpenID Connectプロバイダーを追加できる。
+`PAPERLESS_ENABLE_HTTP_REMOTE_USER`をコメントアウトして、以下の値を設定ファイルに記入して再起動することで、Pocket IDをOIDCとして登録可能になる。
+
+```
+PAPERLESS_APPS=allauth.socialaccount.providers.openid_connect
+```
+
+起動して管理者でログインしたら、Djangoの管理画面からSocial Applications（`/admin/socialaccount/socialapp/`）のページに移動し、Pocket IDのOIDCクライアント情報を登録する。
+
+![paperless-ngx django admin page](/assets/images/2026/03/02/paperless-django-pocket-id.png)
+
+設定項目はこれまで設定した他のOIDCクライアントと同様だが、OIDC Discovery URLの設定場所だけ `Settings:` の中でJSONとして記述するようになっている。
+
+```
+{"server_url": "https://pocket-id.int.mzyy94.com/.well-known/openid-configuration"}
+```
+
+ただ、Paperless-ngxはGrafanaのようにロールの割り当てができないため、Pocket IDでサインアップすると非管理者としてアカウントが作成されてしまう。非管理者ではドキュメント管理ができないので、adminでログインし直して「スーパーユーザー権限」を付与してあげる必要がある。先にDjangoからスーパーユーザーでアカウントを作成した後、そのアカウントでパスワードログインしてPocket IDに連携する方法がおすすめ。いや、リバースプロキシ認証の方がもっとおすすめ。
+
+## まとめ
+
+色々なめんどくささを抱えていた宅内Webサービスが、CaddyとPocket IDで個別設定なしに便利に安全に使えるようになった。それぞれのサービスに個別に認証設定をして回る作業から解放されたいま、まるで春のような清々しさがある。Face IDやTouch IDでシームレスにで全てのサービスにアクセスできる体験はとても気持ちいい。
+
+試してみて、Pocket ID。そしてCaddy

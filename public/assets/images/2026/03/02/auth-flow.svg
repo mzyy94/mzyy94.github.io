@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400" font-family="JetBrains Mono, SF Mono, Menlo, monospace">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f0c29"/>
+      <stop offset="50%" stop-color="#1a1a3e"/>
+      <stop offset="100%" stop-color="#24243e"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+    <marker id="arrow-blue" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="#3a7bd5"/>
+    </marker>
+    <marker id="arrow-orange" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="#ffb74d"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="#00e676"/>
+    </marker>
+    <marker id="arrow-pink" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="#f857a6"/>
+    </marker>
+  </defs>
+
+  <rect width="900" height="400" rx="12" fill="url(#bg)"/>
+
+  <!-- Grid -->
+  <g opacity="0.03" stroke="#fff" stroke-width="0.5">
+    <line x1="0" y1="30" x2="900" y2="30"/><line x1="0" y1="60" x2="900" y2="60"/>
+    <line x1="0" y1="90" x2="900" y2="90"/><line x1="0" y1="120" x2="900" y2="120"/>
+    <line x1="0" y1="150" x2="900" y2="150"/><line x1="0" y1="180" x2="900" y2="180"/>
+    <line x1="0" y1="210" x2="900" y2="210"/><line x1="0" y1="240" x2="900" y2="240"/>
+    <line x1="0" y1="270" x2="900" y2="270"/><line x1="0" y1="300" x2="900" y2="300"/>
+    <line x1="0" y1="330" x2="900" y2="330"/><line x1="0" y1="360" x2="900" y2="360"/>
+    <line x1="30" y1="0" x2="30" y2="400"/><line x1="60" y1="0" x2="60" y2="400"/>
+    <line x1="90" y1="0" x2="90" y2="400"/><line x1="120" y1="0" x2="120" y2="400"/>
+    <line x1="150" y1="0" x2="150" y2="400"/><line x1="180" y1="0" x2="180" y2="400"/>
+    <line x1="210" y1="0" x2="210" y2="400"/><line x1="240" y1="0" x2="240" y2="400"/>
+    <line x1="270" y1="0" x2="270" y2="400"/><line x1="300" y1="0" x2="300" y2="400"/>
+    <line x1="330" y1="0" x2="330" y2="400"/><line x1="360" y1="0" x2="360" y2="400"/>
+    <line x1="390" y1="0" x2="390" y2="400"/><line x1="420" y1="0" x2="420" y2="400"/>
+    <line x1="450" y1="0" x2="450" y2="400"/><line x1="480" y1="0" x2="480" y2="400"/>
+    <line x1="510" y1="0" x2="510" y2="400"/><line x1="540" y1="0" x2="540" y2="400"/>
+    <line x1="570" y1="0" x2="570" y2="400"/><line x1="600" y1="0" x2="600" y2="400"/>
+    <line x1="630" y1="0" x2="630" y2="400"/><line x1="660" y1="0" x2="660" y2="400"/>
+    <line x1="690" y1="0" x2="690" y2="400"/><line x1="720" y1="0" x2="720" y2="400"/>
+    <line x1="750" y1="0" x2="750" y2="400"/><line x1="780" y1="0" x2="780" y2="400"/>
+    <line x1="810" y1="0" x2="810" y2="400"/><line x1="840" y1="0" x2="840" y2="400"/>
+    <line x1="870" y1="0" x2="870" y2="400"/>
+  </g>
+
+  <!-- === Nodes === -->
+
+  <!-- PC -->
+  <rect x="30" y="55" width="130" height="60" rx="8" fill="#1e1e3a" stroke="#3a7bd5" stroke-width="1" filter="url(#shadow)"/>
+  <text x="95" y="80" font-size="13" font-weight="700" fill="#e0e0ff" text-anchor="middle">PC</text>
+  <text x="95" y="100" font-size="9" fill="#6a6a9a" text-anchor="middle">Browser</text>
+
+  <!-- Caddy -->
+  <rect x="370" y="55" width="160" height="60" rx="8" fill="#0a2e14" stroke="#00e676" stroke-width="1.5" filter="url(#shadow)"/>
+  <circle cx="385" cy="73" r="4" fill="#00e676"/>
+  <text x="450" y="80" font-size="13" font-weight="700" fill="#00e676" text-anchor="middle">Caddy</text>
+  <text x="450" y="100" font-size="9" fill="#4caf50" text-anchor="middle">caddy-security</text>
+
+  <!-- Pocket ID -->
+  <rect x="680" y="55" width="180" height="60" rx="8" fill="#2a1230" stroke="#f857a6" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="770" y="80" font-size="12" font-weight="700" fill="#f8bbd0" text-anchor="middle">Pocket ID</text>
+  <text x="770" y="100" font-size="9" fill="#6a6a9a" text-anchor="middle">pocket-id.int.mzyy94.com</text>
+
+  <!-- Prometheus -->
+  <rect x="680" y="240" width="180" height="60" rx="8" fill="#1e1e3a" stroke="#ffb74d" stroke-width="1" filter="url(#shadow)"/>
+  <text x="770" y="265" font-size="12" font-weight="700" fill="#ffb74d" text-anchor="middle">Prometheus</text>
+  <text x="770" y="283" font-size="9" fill="#6a6a9a" text-anchor="middle">prometheus.int.mzyy94.com</text>
+
+  <!-- Step labels -->
+  <g font-size="10" fill="#6a6a9a" font-weight="700" letter-spacing="0.5">
+    <text x="263" y="50" text-anchor="middle">① Access</text>
+    <text x="263" y="135" text-anchor="middle">② Redirect to Pocket ID</text>
+    <text x="230" y="160" text-anchor="middle">③ Passkey auth (via Caddy)</text>
+    <text x="220" y="230" text-anchor="middle">④ Authenticated response</text>
+    <text x="230" y="290" text-anchor="middle">⑤ Access with session cookie</text>
+  </g>
+
+  <!-- === Arrows === -->
+
+  <!-- ❶ PC → Caddy (prometheus.int.mzyy94.com) -->
+  <line x1="160" y1="70" x2="366" y2="70" stroke="#3a7bd5" stroke-width="1.5" opacity="0.7" marker-end="url(#arrow-blue)"/>
+  <text x="263" y="64" font-size="8" fill="#5a8ec0" text-anchor="middle" opacity="0.8">prometheus.int.mzyy94.com</text>
+
+  <!-- ❷ Caddy → PC (302 redirect to Pocket ID login) -->
+  <line x1="366" y1="100" x2="164" y2="100" stroke="#f857a6" stroke-width="1.5" opacity="0.7" marker-end="url(#arrow-pink)"/>
+  <text x="263" y="118" font-size="8" fill="#f8bbd0" text-anchor="middle" opacity="0.8">302 → pocket-id.int.…/authorize</text>
+
+  <!-- ❸ PC → Pocket ID (passkey auth, routed via Caddy) -->
+  <path d="M 105 115 L 105 170 L 730 170 L 730 115" fill="none" stroke="#f857a6" stroke-width="1.5" opacity="0.6" marker-end="url(#arrow-pink)" />
+  <text x="230" y="187" font-size="8" fill="#f8bbd0" text-anchor="middle" opacity="0.8">Passkey login → pocket-id.int.… (via Caddy)</text>
+
+  <!-- Caddy ↔ Pocket ID (back-channel: code → token) -->
+  <line x1="530" y1="75" x2="676" y2="75" stroke="#f857a6" stroke-width="1.2" opacity="0.4" stroke-dasharray="5 3" marker-end="url(#arrow-pink)"/>
+  <text x="610" y="68" font-size="7" fill="#f8bbd0" text-anchor="middle" opacity="0.6">code → token (back-channel)</text>
+
+  <!-- ❹ PC → Prometheus (proxy after auth) -->
+  <path d="M 60 115 L 60 270 L 560 270 L 676 270" fill="none" stroke="#00e676" stroke-width="1.5" opacity="0.6" marker-end="url(#arrow-green)"/>
+  <rect x="150" y="298" width="140" height="18" rx="4" fill="#1a1a3e" stroke="#00e676" stroke-width="0.5" opacity="0.8"/>
+  <text x="220" y="310" font-size="8" fill="#4caf50" text-anchor="middle">Cookie: session</text>
+
+  <!-- Caddy → PC (authenticated response with session cookie) -->
+  <path d="M 750 115 L 750 215 L 85 215 L 85 115" fill="none" stroke="#3a7bd5" stroke-width="1.5" opacity="0.6" marker-end="url(#arrow-blue)" />
+  <rect x="100" y="238" width="240" height="18" rx="4" fill="#1a1a3e" stroke="#3a7bd5" stroke-width="0.5" opacity="0.8"/>
+  <text x="220" y="250" font-size="8" fill="#5a8ec0" text-anchor="middle">Set-Cookie: session + Prometheus redirect</text>
+
+  <!-- Annotation: Caddy traffic area -->
+  <rect x="350" y="25" width="200" height="300" rx="4" fill="#00e676" opacity="0.28"/>
+  <text x="450" y="37" font-size="8" fill="#4caf50" text-anchor="middle">Caddy traffic via :443</text>
+
+  <!-- Legend -->
+  <g transform="translate(30, 340)">
+    <rect width="340" height="42" rx="6" fill="#1e1e3a" stroke="#fff" stroke-width="0.3" opacity="0.6"/>
+    <line x1="15" y1="22" x2="40" y2="22" stroke="#3a7bd5" stroke-width="1.5" marker-end="url(#arrow-blue)"/>
+    <text x="50" y="26" font-size="9" fill="#8899bb">HTTPS</text>
+    <line x1="95" y1="22" x2="120" y2="22" stroke="#f857a6" stroke-width="1.5" marker-end="url(#arrow-pink)"/>
+    <text x="130" y="26" font-size="9" fill="#8899bb">OIDC</text>
+    <line x1="175" y1="22" x2="200" y2="22" stroke="#00e676" stroke-width="1.5" marker-end="url(#arrow-green)"/>
+    <text x="210" y="26" font-size="9" fill="#8899bb">Proxy</text>
+    <line x1="255" y1="22" x2="280" y2="22" stroke="#fff" stroke-width="1.2" opacity="0.4" stroke-dasharray="5 3"/>
+    <text x="290" y="26" font-size="9" fill="#8899bb">Internal</text>
+  </g>
+</svg>
