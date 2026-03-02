@@ -9,9 +9,9 @@ image: "/assets/images/2026/03/02/pocket-id-login.png"
 
 [Synologyを辞めてProxmox VE+Rockstorに移行](../2025/2025-10-10-rockstor-on-n5-pro.mdx)してからというもの、LXCコンテナでOSSのWebサービスを気軽に立てては試す日々が続いている。[Proxmox VE Helper-Scripts](https://community-scripts.github.io/ProxmoxVE/)とそれをWeb UIから実行できる[PVE Scripts Local](https://github.com/community-scripts/ProxmoxVE-Local)のおかげで、数クリックでLXCコンテナの構築とサービスのデプロイができてしまい、気になるサービスがあればとりあえず立てまくっている。paperless-ngxで書類管理、immichで写真管理、calibre-webで電子書籍管理と、気がつけばサービスが数十個に膨れ上がっていた。
 
-しかし、サービスが増えるにつれて困りごとも増えてきた。お試しで使う-うちは `192.168.10.15:8083` のようなアドレスを直打ちしていたが、ちゃんと運用するならドメイン割り当て・証明書管理・リバースプロキシ設定を数十個分やらなければならない。愚直に一個一個設定していったらまあ投げ出したくなる。そこで[Caddy](https://caddyserver.com)のダイナミックアップストリームとワイルドカード証明書の自動取得を組み合わせて、サービスを立てるだけで**ほぼ何もせずにドメイン設定とHTTPS化が全部反映されている**状態を作った。
+しかし、サービスが増えるにつれて困りごとも増えてきた。お試しで使ううちは `192.168.10.15:8083` のようなアドレスを直打ちしていたが、ちゃんと運用するならドメイン割り当て・証明書管理・リバースプロキシ設定を数十個分やらなければならない。愚直に一個一個設定していったらまあ投げ出したくなる。そこで[Caddy](https://caddyserver.com)のダイナミックアップストリームとワイルドカード証明書の自動取得を組み合わせて、サービスを立てるだけで**ほぼ何もせずにドメイン設定とHTTPS化が全部反映されている**状態を作った。
 
-次なる困りごとは認証だ。サービスごとにバラバラなログインが面倒で、投げやりに認証なしで運用してしたりしていた。LDAPで統合する手もあるが、宅内のことに大袈裟な仕組みを導入する体力はもうない。そこで見つけたのが[Pocket ID](https://pocket-id.org/)。Passkey認証に対応した至極シンプルなOIDCプロバイダーだ。これとCaddyを組み合わせることで、サービスが立ったら**ほんの少しの設定でPasskey認証からログイン画面のスキップまで全部付いてくる**状態を作れたので、その記録をここに残しておく。
+次なる困りごとは認証だ。サービスごとにバラバラなログインが面倒で、投げやりに認証なしで運用したりしていた。LDAPで統合する手もあるが、宅内のことに大袈裟な仕組みを導入する体力はもうない。そこで見つけたのが[Pocket ID](https://pocket-id.org/)。Passkey認証に対応した至極シンプルなOIDCプロバイダーだ。これとCaddyを組み合わせることで、サービスが立ったら**ほんの少しの設定でPasskey認証からログイン画面のスキップまで全部付いてくる**状態を作れたので、その記録をここに残しておく。
 
 ## 目次
 
@@ -70,7 +70,7 @@ SDNの構築やPowerDNS pluginの設定については、以下が参考にな�
 
 ![OpenWRT DHCP setting](/assets/images/2026/03/02/openwrt-dhcp-setting.png)
 
-**PowerDNS**のインストール自体は[公式のインストール手順](https://doc.powerdns.com/authoritative/installation.html)に従い、HTTP APIを有効にしてProxmox VE SDNからアクセスできるようにしておく。Hepler-ScriptsでdebianのLXCを作ってそこにaptで導入した。
+**PowerDNS**のインストール自体は[公式のインストール手順](https://doc.powerdns.com/authoritative/installation.html)に従い、HTTP APIを有効にしてProxmox VE SDNからアクセスできるようにしておく。Helper-ScriptsでdebianのLXCを作ってそこにaptで導入した。
 
 **Caddy**は`vmbr0`と`vnet0`の両方に接続されていて、LANとSDNの橋渡し役を担う。LANからの `*.int.mzyy94.com` へのリクエストを受け取り、SDN上（またはLAN上）のサービスにリバースプロキシする。
 
@@ -153,7 +153,7 @@ Caddyfileでは[named route](https://caddyserver.com/docs/caddyfile/concepts#nam
 1. **PowerDNS（`10.0.100.2`）に問い合わせる**: `{host}`、つまり`paperless-ngx.int.mzyy94.com`をそのままAレコードとして引く。SDN上のコンテナならここで解決する
 2. **OpenWRT（`192.168.1.1`）に問い合わせる**: `{labels.3}.lan.mzyy94.com`に変換して引く。`{labels.3}`はホスト名の3番目のラベル、つまり`paperless-ngx.int.mzyy94.com`なら`paperless-ngx`部分。これを`paperless-ngx.lan.mzyy94.com`として、OpenWRTのDHCPで管理されるLAN上のホストを探す
 
-SDN上のコンテナならPowerDNSだけが解決し、LAN上のホストならOpenWRTだけが解決するので、結果的にどちらか一方のアドレスがアップストリームとして使われる。先ほどの図でPowerDNSへの **④ DNS lookup** の解決に失敗していた場合、OpenWRTに問い合わせた`paperless-ngx.lan.mzyy94.com`のAレコードががあればそこをアップストリームとするのだ。
+SDN上のコンテナならPowerDNSだけが解決し、LAN上のホストならOpenWRTだけが解決するので、結果的にどちらか一方のアドレスがアップストリームとして使われる。先ほどの図でPowerDNSへの **④ DNS lookup** の解決に失敗していた場合、OpenWRTに問い合わせた`paperless-ngx.lan.mzyy94.com`のAレコードがあればそこをアップストリームとするのだ。
 
 この仕組みにより、SDN上のコンテナもLAN上のコンテナも、同じ `<ホスト名>.int.mzyy94.com` のドメインで統一的にアクセスできる。新しいサービスを立てたら、SDNでもLANでもホスト名をサブドメインにアクセスするだけで、自動でリバースプロキシされていく。
 
@@ -399,9 +399,17 @@ immichは先ほど設定したOIDC認証を自身で行うため、Caddy側で�
 他にCaddyでの認証をスキップしたいホストは、同様に続けてホスト名を列挙していく。
 
 #### `@bypass-api`
-`/api/*`パスかつ`Authorization: Bearer ...`ヘッダーを持つリクエストは認証をバイパスする。ブラウザを介さないモバイルアプリなど、APIトークンで認証するクライアント向け。Bearer以外の認証スキームにも対応したければ、続けて`header Authorization Token*`などと列挙していけば同様にバイパスされる。`X-Api-Key`など別のヘッダー名もバイパスさせたいとなると列挙しては書けないので、ブロック全体をCELに置き換える必要がある。
+`/api/*`パスかつ`Authorization: Bearer ...`ヘッダーを持つリクエストは認証をバイパスする。ブラウザを介さないモバイルアプリなど、APIトークンで認証するクライアント向け。Bearer以外の認証スキームにも対応したければ、続けて`header Authorization Token*`などと列挙していけばOR条件で同様にバイパスされる。
+サービスが増えると`X-Api-Key`など次々と違うヘッダー名もバイパスさせたいとなってくる。別のヘッダーは列挙して書くとAND条件になってしまうので、ブロック全体をCELに置き換える必要がある。
+
 ```
 @bypass-api `path('/api/*') && (header({'Authorization':'Bearer *'}) || header({'X-Api-Key':'*'}))`
+```
+
+あるいは、caddy-securityのセッションクッキー（`access_token`）を持たないAPIリクエストを一律バイパスする手もある。認証スキームやヘッダーを個別に列挙する必要がなくなる反面、セッション切れのブラウザリクエストもバイパスされるため、安全性は少し下がる。
+
+```
+@bypass-api `path('/api/*') && !header_regexp('Cookie', 'access_token=')`
 ```
 
 #### それ以外
@@ -414,7 +422,7 @@ immichは先ほど設定したOIDC認証を自身で行うため、Caddy側で�
 ## リバースプロキシ認証
 
 CaddyでOIDC認証を通過しても、サービス自体がログイン画面を持っているとIDとパスワードを求められてしまう。これを解消するのがリバースプロキシ認証だ。
-Caddyが認証済みユーザー名を`Remote-User`ヘッダーとしてバックエンドに転送すると、サービスはこのヘッダーを信頼してログインをスキップし、そのユーザーでログイン済みとする。各サービスにアクセスできるのをCaddyだけに構成しているため、Caddyが唯一ヘッダーを付与する認証ゲートウェイとして機能するからこそ実現できる技だ。
+リバースプロキシが認証済みユーザー名を任意のヘッダーにセットしてバックエンドに転送すると、サービスはそのヘッダーを信頼してログインをスキップし、そのユーザーでログイン済みとする。各サービスにアクセスできるのをCaddyだけに構成しているため、Caddyが唯一ヘッダーを付与する認証ゲートウェイとして機能するからこそ実現できる技だ。
 多くのサービスがこの認証方法に対応しているため、いくつか取り上げて設定について記録しておく。
 
 ### calibre-web
@@ -430,9 +438,9 @@ calibre-webは独自のログイン画面を持つが、リバースプロキシ
 
 ### Grafana
 
-#### リバースプロキシ認証
+#### auth.proxy設定
 
-多彩な認証方法が提供されているGrafanaは、[auth proxy項目](https://grafana.com/docs/grafana/latest/setup-grafana/configure-access/configure-authentication/auth-proxy/)としてリバースプロキシ認証を有効にできる。**grafana.ini**で次の通り設定するだけだ。
+多彩な認証方法が提供されているGrafanaは、[auth.proxy項目](https://grafana.com/docs/grafana/latest/setup-grafana/configure-access/configure-authentication/auth-proxy/)としてリバースプロキシ認証を有効にできる。**grafana.ini**で次の通り設定するだけだ。
 
 ```ini
 [auth.proxy]
@@ -450,11 +458,11 @@ header_name = REMOTE-USER
 
 ![grafana signup](/assets/images/2026/03/02/grafana-signup.png)
 
-ちなみにauth proxyの方でも`headers = Name:X-WEBAUTH-NAME Role:X-WEBAUTH-ROLE Email:X-WEBAUTH-EMAIL Groups:X-WEBAUTH-GROUPS`などと設定を追加することで、ヘッダーに書かれたロールを直に反映冴えることができる。
+ちなみにauth.proxyの方でも`headers = Name:X-WEBAUTH-NAME Role:X-WEBAUTH-ROLE Email:X-WEBAUTH-EMAIL Groups:X-WEBAUTH-GROUPS`などと設定を追加してCaddyからロールをセットすることで、ヘッダーに書かれたロールを直に反映させることができる。
 
 ### paperless-ngx
 
-#### リバースプロキシ認証
+#### PAPERLESS_ENABLE_HTTP_REMOTE_USER
 
 paperless-ngxもリバースプロキシ認証に対応している。`paperless.conf`でリバースプロキシ下で動くようにする設定値と、[リバースプロキシ認証用の設定値](https://docs.paperless-ngx.com/configuration/#PAPERLESS_ENABLE_HTTP_REMOTE_USER) の二つを次のように`paperless.conf`に記載しておく。
 
@@ -467,11 +475,12 @@ PAPERLESS_ENABLE_HTTP_REMOTE_USER=true
 
 #### 代替: Django allauth
 
-リバースプロキシ認証の代わりに、paperless-ngx自身でOIDC認証を行うこともできる。今のCaddyによるリバースプロキシ認証をする前はこの方法でやっていた。
+リバースプロキシ認証の代わりに、paperless-ngx自身でOIDC認証を行うこともできる。Caddyによるリバースプロキシ認証に集約する前はこの方法でやっていた。
 Djangoベースなので、Django Appsとして`allauth`のOpenID Connectプロバイダーを追加できる。
-`PAPERLESS_ENABLE_HTTP_REMOTE_USER`をコメントアウトして、以下の値を設定ファイルに記入して再起動することで、Pocket IDをOIDCとして登録可能になる。
+次のように設定ファイルに記入して起動することで、Pocket IDをOIDCとして登録可能になる。
 
 ```
+PAPERLESS_URL=https://paperless-ngx.int.mzyy94.com
 PAPERLESS_APPS=allauth.socialaccount.providers.openid_connect
 ```
 
@@ -481,14 +490,14 @@ PAPERLESS_APPS=allauth.socialaccount.providers.openid_connect
 
 設定項目はこれまで設定した他のOIDCクライアントと同様だが、OIDC Discovery URLの設定場所だけ `Settings:` の中でJSONとして記述するようになっている。
 
-```
+```json
 {"server_url": "https://pocket-id.int.mzyy94.com/.well-known/openid-configuration"}
 ```
 
-ただ、Paperless-ngxはGrafanaのようにロールの割り当てができないため、Pocket IDでサインアップすると非管理者としてアカウントが作成されてしまう。非管理者ではドキュメント管理ができないので、adminでログインし直して「スーパーユーザー権限」を付与してあげる必要がある。先にDjangoからスーパーユーザーでアカウントを作成した後、そのアカウントでパスワードログインしてPocket IDに連携する方法がおすすめ。いや、リバースプロキシ認証の方がもっとおすすめ。
+ただ、Paperless-ngxはGrafanaのようにロールの割り当てができないため、Pocket IDでサインアップすると非管理者としてアカウントが作成されてしまう。非管理者ではドキュメント管理ができないので、adminでログインし直して「スーパーユーザー権限」を付与してあげる必要がある。先にDjangoからスーパーユーザーでアカウントを作成した後、そのアカウントでパスワードログインしてPocket IDに連携する方法がおすすめ。いや、リバースプロキシ認証の方がもっとおすすめだ。
 
 ## まとめ
 
-色々なめんどくささを抱えていた宅内Webサービスが、CaddyとPocket IDで個別設定なしに便利に安全に使えるようになった。それぞれのサービスに個別に認証設定をして回る作業から解放されたいま、まるで春のような清々しさがある。Face IDやTouch IDでシームレスにで全てのサービスにアクセスできる体験はとても気持ちいい。
+色々なめんどくささを抱えていた宅内Webサービスが、CaddyとPocket IDで個別設定なしに便利に安全に使えるようになった。それぞれのサービスに個別に認証設定をして回る作業から解放されたいま、まるで春のような清々しさがある。Face IDやTouch IDでシームレスに全てのサービスにアクセスできる体験はとても気持ちいい。
 
 試してみて、Pocket ID。そしてCaddy
