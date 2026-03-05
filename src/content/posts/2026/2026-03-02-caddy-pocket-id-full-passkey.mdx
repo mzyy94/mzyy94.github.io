@@ -326,12 +326,12 @@ caddy-securityプラグインでPocket IDとの連携を設定する。
                 match realm generic
                 action add role user
             }
+            trust login redirect uri domain suffix .int.mzyy94.com path prefix /
         }
         authorization policy pocket_id {
             set auth url /caddy-security/oauth2/generic
             allow roles user
             inject headers with claims
-            inject header "Remote-User" from "userinfo|preferred_username"
         }
     }
 }
@@ -340,13 +340,15 @@ caddy-securityプラグインでPocket IDとの連携を設定する。
 各ブロックを上から順に見ていく。
 
 #### `oauth identity provider generic`
-Pocket IDをOIDCプロバイダーとして登録する。`metadata_url`にOpenID Connectのディスカバリエンドポイントを指定すれば、認可エンドポイントやトークンエンドポイントは自動で取得される。`delay_start 3`はCaddy自身で`pocket-id.int.mzyy94.com`にリバースプロキシしているのを待つのに必須で、消すと起動にコケてしまう。`extract all from userinfo`は後述のヘッダー注入で`preferred_username`等を参照するために必要な設定で、[これがないとuserinfoのクレームを取り出せない](https://github.com/greenpau/caddy-security/issues/389)。忘れると`Remote-User`ヘッダーが空になり、リバースプロキシ認証が機能しない。
+Pocket IDをOIDCプロバイダーとして登録する。`metadata_url`にOpenID Connectのディスカバリエンドポイントを指定すれば、認可エンドポイントやトークンエンドポイントは自動で取得される。`delay_start 3`はCaddy自身で`pocket-id.int.mzyy94.com`にリバースプロキシしているのを待つのに必須で、消すと起動にコケてしまう。`extract all from userinfo`は後述のヘッダー挿入で`{http.auth.user.username}`を参照するために必要な設定で、[これがないと値を取り出せず](https://github.com/greenpau/caddy-security/issues/389)、不正な値がアップストリームに渡ってしまう。
 
 #### `authentication portal pocket_id`
 認証ポータルの設定。トークンの有効期間は28800秒（8時間）にしてある。Passkeyなら毎回ログインする煩わしさも少ないため、寝て起きたらセッションが切れるくらいにしている。
+`trust login redirect`は[caddy-security v1.1.36](https://github.com/greenpau/caddy-security/releases/tag/v1.1.36)から追加された、不正なリダイレクト先に飛ばされないようにする必須の設定項目。`.int.mzyy94.com`で終わるドメインと`/`で始まるパスを指定することで、管理下のすべてのサイトを信頼し許可している。これを指定し忘れるとログインループに陥る。
 
 #### `authorization policy pocket_id`
-認可ポリシー。認証済みユーザーに`user`ロールを付与し、そのロールを持つユーザーにアクセスを許可する。`inject header "Remote-User" from "userinfo|preferred_username"`は、認証済みユーザーのユーザーIDをRemote-Userヘッダーにセット（上書き）してバックエンドに転送するための設定。後述するリバースプロキシ認証で利用する。
+認可ポリシー。認証済みユーザーに`user`ロールを付与し、そのロールを持つユーザーにアクセスを許可する。
+`inject headers with claims`では、`X-Token`で始まるヘッダーに[フルネーム・メールアドレス・ロール・サブジェクト](https://github.com/greenpau/go-authcrunch/blob/v1.1.17/pkg/authz/authenticate.go#L271-L289)が注入される。
 
 **Client ID** と **クライアントシークレット** は環境変数経由で引っ張ってくるので、`/etc/caddy/.env`にそれぞれ追記しておく。
 
@@ -384,6 +386,7 @@ Pocket IDをOIDCプロバイダーとして登録する。`metadata_url`にOpenI
 
         route {
             authorize with pocket_id
+            request_header Remote-User {http.auth.user.username}
             invoke dynamic-backend
         }
     }
@@ -413,11 +416,11 @@ immichは先ほど設定したOIDC認証を自身で行うため、Caddy側で�
 ```
 
 #### それ以外
-[`route`ブロック](https://caddyserver.com/docs/caddyfile/directives/route)内でcaddy-securityの`authorize`を通し、Pocket IDでのOIDC認証を要求する。未認証のユーザーはPocket IDのログイン画面にリダイレクトされ、Passkeyで認証する。
+[`route`ブロック](https://caddyserver.com/docs/caddyfile/directives/route)内でcaddy-securityの`authorize`を通し、Pocket IDでのOIDC認証を要求する。未認証のユーザーはPocket IDのログイン画面にリダイレクトされ、Passkeyで認証する。認証後に`Remote-User`ヘッダーを挿入してアップストリームへリクエストを飛ばし、リバースプロキシする。
 
 ### Caddyfile全体
 
-ここまでの全てを設定したCaddy v2.11.1で実際に動くCaddyfileを[gistに貼っておいた](https://gist.github.com/mzyy94/9047daf742bc1092d40705e9c153367e#file-caddyfile)。半年たらずだがトラブルなく安定して動いており、満足いく構成を作ることができた。
+ここまでの全てを設定したCaddy v2.11.1 + caddy-security v1.1.40 + dns.providers.cloudflare v0.2.3で実際に動くCaddyfileを[gistに貼っておいた](https://gist.github.com/mzyy94/9047daf742bc1092d40705e9c153367e#file-caddyfile)。caddy-securityの更新で少し変更を必要としたが、それまで約半年間トラブルなく安定して動いており、満足いく構成を作ることができた。
 
 ## リバースプロキシ認証
 
@@ -433,7 +436,8 @@ calibre-webは独自のログイン画面を持つが、リバースプロキシ
 
 これを有効にするため、calibre-webの基本設定の機能設定で「リバースプロキシの認証を許可」を有効にし、リバースプロキシのヘッダー名に`Remote-User`を指定する。
 
-前述のCaddyfileの認可ポリシーで、`inject header "Remote-User" from "userinfo|preferred_username"` と設定しているため、Pocket IDで認証したユーザーの`preferred_username`、すなわちユーザーIDが`Remote-User`ヘッダーとしてcalibre-webに渡される。そして同じユーザーIDがcalibre-webにあれば、ログイン画面を飛ばしてログイン済みになる。
+前述の認証ルーティングで、`request_header Remote-User {http.auth.user.username}` と認証後にヘッダーを挿入している部分があるが、この`{http.auth.user.username}`がまさにユーザー名となっている。
+[caddy-security v1.1.38](https://github.com/greenpau/caddy-security/releases/tag/v1.1.38)で新たに追加されたメタデータで、Pocket IDで認証したユーザーの`preferred_username`、すなわちユーザーIDが取り出せる。それを`Remote-User`ヘッダーにセットしてcalibre-webに渡すと、calibre-webが同じユーザーIDが存在するかを照合し、ログイン画面を飛ばして同一ユーザーでログイン済みになる。
 
 
 ### Grafana
