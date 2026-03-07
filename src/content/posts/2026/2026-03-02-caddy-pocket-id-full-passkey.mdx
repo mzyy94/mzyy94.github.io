@@ -48,7 +48,7 @@ Proxmox VEで構築しているネットワーク構成の全体像を以下に�
 - **LAN** (`192.168.0.0/16`): Proxmox VEの`vmbr0`でブリッジされた通常のネットワーク。PCやNAS、OpenWRTがいる
 - **SDN** (`10.0.100.0/24`): Proxmox VEのSDN機能で構築した`vnet0`。Webサービス用のLXCコンテナを収容する
 
-**SDN**ではDHCPで接続されたコンテナに10.0.100.10以降のアドレスを割り振っている。設定でSNATを有効にしてあるので、`vnet0`に繋がったコンテナからも外部への通信は可能だ。SDNファイアウォールも定義してあり、ファイアウォールを有効にすればFORWARDをDROPして閉じ込めることもできるようにしてある。
+**SDN**ではDHCPで接続されたコンテナに10.0.100.10以降のアドレスを割り振っている。[Simple Zone設定でSNATを有効](https://pve.proxmox.com/wiki/Setup_Simple_Zone_With_SNAT_and_DHCP)にしてあるので、`vnet0`に繋がったコンテナからも外部への通信は可能だ。SDNファイアウォールも定義してあり、ファイアウォールを有効にすればFORWARDをDROPして閉じ込めることもできるようにしてある。
 
 <details>
 <summary>Helper-Scriptsでvnet0をデフォルトにするTip💡</summary>
@@ -70,7 +70,7 @@ SDNの構築やPowerDNS pluginの設定については、以下が参考にな�
 
 ![OpenWRT DHCP setting](/assets/images/2026/03/02/openwrt-dhcp-setting.png)
 
-**PowerDNS**のインストール自体は[公式のインストール手順](https://doc.powerdns.com/authoritative/installation.html)に従い、HTTP APIを有効にしてProxmox VE SDNからアクセスできるようにしておく。Helper-ScriptsでdebianのLXCを作ってそこにaptで導入した。
+**PowerDNS**のインストール自体は[公式のインストール手順](https://doc.powerdns.com/authoritative/installation.html)に従い、HTTP APIを有効にしてProxmox VE SDNからアクセスできるようにしておく。Helper-Scriptsでも[PowerDNS](https://community-scripts.github.io/ProxmoxVE/scripts?id=powerdns)はあるが、Poweradminなるものが同梱されていて邪魔なので、debianのLXCを作ってそこにaptで導入した。
 
 **Caddy**は`vmbr0`と`vnet0`の両方に接続されていて、LANとSDNの橋渡し役を担う。LANからの `*.int.mzyy94.com` へのリクエストを受け取り、SDN上（またはLAN上）のサービスにリバースプロキシする。
 
