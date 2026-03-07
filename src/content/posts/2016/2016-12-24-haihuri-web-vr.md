@@ -17,6 +17,7 @@ image: "/assets/images/2016/12/24/out-of-playarea.png"
 
 ## 目次
 
+## 経緯
 
 ハードルを下げに下げたところで記事の内容の話に移ります。
 当初はThree.jsを用いたはいふりWeb VRを画策していました。

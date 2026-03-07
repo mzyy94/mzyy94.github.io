@@ -21,6 +21,7 @@ Amazonが今年5月に予約販売を開始したディスプレイ付きスマ�
 
 ## 目次
 
+## Amazon Echo Spot
 
 <img src="/assets/images/2019/12/07/IMG_1425.JPG" alt="echo spot" width="500px" />
 

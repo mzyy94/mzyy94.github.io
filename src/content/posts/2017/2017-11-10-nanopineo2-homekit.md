@@ -15,6 +15,7 @@ image: "/assets/images/2017/11/10/applewatch-nanopineo2.jpg"
 
 ## 目次
 
+## NanoPi NEO2の入手
 
 <style>
 [alt="screenshot"] {
