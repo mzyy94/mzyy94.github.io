@@ -252,6 +252,6 @@ console.log(flag);
 TDUCTF 2015終了後、反省会をオンラインで開催していた頃に「TDUCTF」という名称を変更しようという話が立ち上がり、
 よくわらかないテンションでドメインから何から整え新名称に改称しました。
 
-<blockquote class="twitter-tweet" lang="ja"><p lang="ja" dir="ltr">TDUCTFからLepusCTFの移行で面白いのは4&#10;・新名称考案&#10;・サーバー確保&#10;・ドメイン取得&#10;・GitHub移行&#10;・Webサイト作成&#10;・アイコン作成&#10;・Twitter移行&#10;を4時間以内でやったというところ <a href="https://twitter.com/hashtag/lepusctf?src=hash">#lepusctf</a></p>&mdash; 友利奈緒 (@mzyy94) <a href="https://twitter.com/mzyy94/status/638606548818726912">2015, 9月 1</a></blockquote> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="missing-tweet" lang="ja"><p lang="ja" dir="ltr">TDUCTFからLepusCTFの移行で面白いのは4&#10;・新名称考案&#10;・サーバー確保&#10;・ドメイン取得&#10;・GitHub移行&#10;・Webサイト作成&#10;・アイコン作成&#10;・Twitter移行&#10;を4時間以内でやったというところ <a href="https://twitter.com/hashtag/lepusctf?src=hash">#lepusctf</a></p>&mdash; 友利奈緒 (@mzyy94) <a href="https://twitter.com/mzyy94/status/638606548818726912">2015, 9月 1</a></blockquote> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 ということなので、今後はTDUCTFあらため、[LepusCTF](http://lepus-ctf.org/)をよろしくお願いします。

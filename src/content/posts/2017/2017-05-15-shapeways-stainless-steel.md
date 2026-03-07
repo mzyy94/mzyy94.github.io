@@ -19,7 +19,7 @@ image: "/assets/images/2017/05/15/boss-6.jpg"
 :school_satchel: これは3Dプリントって言いまして、パソコン（？）で3Dモデリングしたオブジェクトをそのまま立体にする技術を使って作りました。
 3Dモデリングはとてもたいへんで、はじめてでしたが[Blender](https://www.blender.org/)を使ってこのラッキーさんの形をつくりました。
 
-<blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">ボスです <a href="https://t.co/amQodsw7sP">pic.twitter.com/amQodsw7sP</a></p>&mdash; サーバルキャット (@mzyy94) <a href="https://twitter.com/mzyy94/status/852546881439662082">2017年4月13日</a></blockquote>
+<blockquote class="missing-tweet" data-lang="ja"><p lang="ja" dir="ltr">ボスです <a href="https://t.co/amQodsw7sP">pic.twitter.com/amQodsw7sP</a></p>&mdash; サーバルキャット (@mzyy94) <a href="https://twitter.com/mzyy94/status/852546881439662082">2017年4月13日</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 :owl: さすがヒトなのです。

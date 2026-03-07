@@ -35,7 +35,7 @@ Amazonが今年5月に予約販売を開始したディスプレイ付きスマ�
 
 スマートスピーカー登場初期から、競合より有利な状態(音声認識能力や反応精度等)になるためのには盗聴器として動かした方が賢い。多くの学習用音声データに限らず、ユーザーの個人情報から趣味など、大変に多くのことを知ることができるかだ。故に、スマートスピーカーはクラウド事業者からしたらスマート盗聴器の他にないと考えていた。
 
-<blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">スマート盗聴器をみんな好んで買って家に設置するもんだからクラウド事業者はウハウハですよほんと</p>&mdash; ワンストップ申請 (@mzyy94) <a href="https://twitter.com/mzyy94/status/938470302010425344?ref_src=twsrc%5Etfw">2017年12月7日</a></blockquote>
+<blockquote class="missing-tweet" data-lang="ja"><p lang="ja" dir="ltr">スマート盗聴器をみんな好んで買って家に設置するもんだからクラウド事業者はウハウハですよほんと</p>&mdash; ワンストップ申請 (@mzyy94) <a href="https://twitter.com/mzyy94/status/938470302010425344?ref_src=twsrc%5Etfw">2017年12月7日</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 

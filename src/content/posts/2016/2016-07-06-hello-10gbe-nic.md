@@ -11,7 +11,7 @@ image: "/assets/images/2016/07/06/card-face.jpg"
 事の発端はこちらのツイート
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">Amazonに出品されてる激安X540-T2（19000円）って本物なの、大丈夫なの</p>&mdash; ゆずはら (@yuzuhara) <a href="https://twitter.com/yuzuhara/status/749804710530392065">2016年7月4日</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-<blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">同じこと思っててまだ買えずにいる <a href="https://t.co/424csKrtVR">https://t.co/424csKrtVR</a></p>&mdash; ハイスクール・フリートが生きがい (@mzyy94) <a href="https://twitter.com/mzyy94/status/749821436919885824">2016年7月4日</a></blockquote>
+<blockquote class="missing-tweet" data-lang="ja"><p lang="ja" dir="ltr">同じこと思っててまだ買えずにいる <a href="https://t.co/424csKrtVR">https://t.co/424csKrtVR</a></p>&mdash; ハイスクール・フリートが生きがい (@mzyy94) <a href="https://twitter.com/mzyy94/status/749821436919885824">2016年7月4日</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
@@ -49,7 +49,7 @@ ark intelの希望カスタマー価格を見ると*$508.00 - $513.00*とある�
 ## 購入＆到着
 
 購入を煽られてクレジットカードの締日を確認し、ポイント還元率の計算と締日が遠いカードの認証情報の登録を行って1時間ほど立ったあとにアマゾンポチｗ！
-<blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">買いました <a href="https://t.co/QauGkl8eQw">https://t.co/QauGkl8eQw</a></p>&mdash; ハイスクール・フリートが生きがい (@mzyy94) <a href="https://twitter.com/mzyy94/status/749832787960602624">2016年7月4日</a></blockquote>
+<blockquote class="missing-tweet" data-lang="ja"><p lang="ja" dir="ltr">買いました <a href="https://t.co/QauGkl8eQw">https://t.co/QauGkl8eQw</a></p>&mdash; ハイスクール・フリートが生きがい (@mzyy94) <a href="https://twitter.com/mzyy94/status/749832787960602624">2016年7月4日</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 14時頃に発注して翌日12時頃に到着しました。さすがAmazonプライムお急ぎ便ですね。

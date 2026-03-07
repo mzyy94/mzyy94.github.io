@@ -354,5 +354,5 @@ CTF予選問題としては出題ファイル形式含めてもちょっと優�
 さくさくと解けるものが多く、難しいものは無かったように感じます。
 ただ、text2pcapの存在を知らない人に取っては結構な時間を取られてしまう骨の折れるような問題群だったと思います。
 
-<blockquote class="twitter-tweet" lang="ja"><p>わいわい <a href="http://t.co/YaEfzCCFq8">pic.twitter.com/YaEfzCCFq8</a></p>&mdash; 誕生日前日amzn.to/1vvKISb (@mzyy94) <a href="https://twitter.com/mzyy94/status/507067029547806720">2014, 9月 3</a></blockquote>
+<blockquote class="missing-tweet" lang="ja"><p>わいわい <a href="http://t.co/YaEfzCCFq8">pic.twitter.com/YaEfzCCFq8</a></p>&mdash; 誕生日前日amzn.to/1vvKISb (@mzyy94) <a href="https://twitter.com/mzyy94/status/507067029547806720">2014, 9月 3</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>

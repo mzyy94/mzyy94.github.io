@@ -12,7 +12,7 @@ image: "/assets/images/2020/05/27/joycon-purple.png"
 
 [スプラトゥーン2：商品情報 \| Nintendo Switch \| 任天堂](https://www.nintendo.co.jp/switch/aab6a/products/index.html)
 
-<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">ｽﾌﾟﾗﾄｩｰﾝ2!!! <a href="https://t.co/nnu4HztBQr">pic.twitter.com/nnu4HztBQr</a></p>&mdash; ミ゛ (@mzyy94) <a href="https://twitter.com/mzyy94/status/888340517087346689?ref_src=twsrc%5Etfw">July 21, 2017</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="missing-tweet"><p lang="ja" dir="ltr">ｽﾌﾟﾗﾄｩｰﾝ2!!! <a href="https://t.co/nnu4HztBQr">pic.twitter.com/nnu4HztBQr</a></p>&mdash; ミ゛ (@mzyy94) <a href="https://twitter.com/mzyy94/status/888340517087346689?ref_src=twsrc%5Etfw">July 21, 2017</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 当時のSplatoon人気から、多くの人がスプラトゥーン2セットモデルを買い、遊ぶ人遊ぶ人全員が同じカラーのNintendo Switchを持っているなんてこともありました。本体から外してしまったら、もうどれが誰のJoy-Conだったかわからなくなります。
 

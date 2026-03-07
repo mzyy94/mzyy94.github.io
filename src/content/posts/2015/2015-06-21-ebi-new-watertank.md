@@ -11,13 +11,13 @@ image: "/assets/images/2015/06/21/ebi-new-watertank.jpg"
 ゴールデンウィークにスカイツリーに行った時、偶然にもまた小さいえび(ホロホロシュリンプ，ピクシーシュリンプ，)を見つけてしまい、一目惚れした結果、新しくえびを4匹追加しました。
 
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-<blockquote class="twitter-tweet" lang="ja"><p lang="ja" dir="ltr">【速報】エビ購入 <a href="http://t.co/7XvtGubiKJ">pic.twitter.com/7XvtGubiKJ</a></p>&mdash; エビライブ配信休止中 (@mzyy94) <a href="https://twitter.com/mzyy94/status/595125289643937792">2015, 5月 4</a></blockquote>
+<blockquote class="missing-tweet" lang="ja"><p lang="ja" dir="ltr">【速報】エビ購入 <a href="http://t.co/7XvtGubiKJ">pic.twitter.com/7XvtGubiKJ</a></p>&mdash; エビライブ配信休止中 (@mzyy94) <a href="https://twitter.com/mzyy94/status/595125289643937792">2015, 5月 4</a></blockquote>
 
 追加に伴い、今までの小さなポットは狭いと感じ、銀座の東急ハンズで大きなポットとガラス砂利を購入し、2月に飼い始めたエビとともに移し変えました。
 しかし悲しいことに、購入時の瓶から移し替える際に砂に潜ったエビが体調不良をおこし、購入の翌日の晩に亡くなってしまいました。
 他のエビは元気で、現在7匹ワイワイと過ごしております。
 
-<blockquote class="twitter-tweet" lang="ja"><p lang="ja" dir="ltr">一悶着あったけど無事全員の引越し完了！ <a href="http://t.co/jLvciTSJGs">pic.twitter.com/jLvciTSJGs</a></p>&mdash; エビライブ配信休止中 (@mzyy94) <a href="https://twitter.com/mzyy94/status/595228119708999680">2015, 5月 4</a></blockquote>
+<blockquote class="missing-tweet" lang="ja"><p lang="ja" dir="ltr">一悶着あったけど無事全員の引越し完了！ <a href="http://t.co/jLvciTSJGs">pic.twitter.com/jLvciTSJGs</a></p>&mdash; エビライブ配信休止中 (@mzyy94) <a href="https://twitter.com/mzyy94/status/595228119708999680">2015, 5月 4</a></blockquote>
 
 ## 目次
 
@@ -28,7 +28,7 @@ image: "/assets/images/2015/06/21/ebi-new-watertank.jpg"
 水槽の一般的な冷却方法は、ファンを当てることによる気化熱による熱量の移動です。ただ、この水槽内は汽水であるため、安易にファンでの冷却を行うと塩分濃度が変わってしまいます。
 そこで導入したのがこちらの水槽自動水足し機。
 
-<blockquote class="twitter-tweet" lang="ja"><p lang="ja" dir="ltr">えび用給水機設置 <a href="http://t.co/3QSjCYV2Tc">pic.twitter.com/3QSjCYV2Tc</a></p>&mdash; エビライブ配信休止中 (@mzyy94) <a href="https://twitter.com/mzyy94/status/610766091095183360">2015, 6月 16</a></blockquote>
+<blockquote class="missing-tweet" lang="ja"><p lang="ja" dir="ltr">えび用給水機設置 <a href="http://t.co/3QSjCYV2Tc">pic.twitter.com/3QSjCYV2Tc</a></p>&mdash; エビライブ配信休止中 (@mzyy94) <a href="https://twitter.com/mzyy94/status/610766091095183360">2015, 6月 16</a></blockquote>
 
 
 <a href="https://www.amazon.co.jp/%E3%83%8B%E3%83%83%E3%82%BD%E3%83%BC-NAG-185-%E8%87%AA%E5%8B%95%E7%B5%A6%E6%B0%B4%E5%99%A8%E6%B0%B4%E8%B6%B3%E3%81%97%E3%81%8F%E3%82%93/dp/B00BJEB67C?&linkCode=ll1&tag=mzyy-22&linkId=047b5ead21e8529c4f537119734800ed&language=ja_JP&ref_=as_li_ss_tl" target="_blank"><img border="0" src="https://m.media-amazon.com/images/I/6112vP3cuZL._SL500_.jpg" /></a>
@@ -132,13 +132,13 @@ image: "/assets/images/2015/06/21/ebi-new-watertank.jpg"
 ### Before
 
 
-<blockquote class="twitter-tweet" lang="ja"><p lang="ja" dir="ltr">2015年6月16日現在のえび飼育装置全貌 <a href="http://t.co/yKWdfrhbUH">pic.twitter.com/yKWdfrhbUH</a></p>&mdash; エビライブ配信休止中 (@mzyy94) <a href="https://twitter.com/mzyy94/status/610789625393647616">2015, 6月 16</a></blockquote>
+<blockquote class="missing-tweet" lang="ja"><p lang="ja" dir="ltr">2015年6月16日現在のえび飼育装置全貌 <a href="http://t.co/yKWdfrhbUH">pic.twitter.com/yKWdfrhbUH</a></p>&mdash; エビライブ配信休止中 (@mzyy94) <a href="https://twitter.com/mzyy94/status/610789625393647616">2015, 6月 16</a></blockquote>
 
 ### After
 
-<blockquote class="twitter-tweet" lang="ja"><p lang="ja" dir="ltr">2015年6月20日現在のえび飼育装置全貌 <a href="http://t.co/oCNNERkua0">pic.twitter.com/oCNNERkua0</a></p>&mdash; エビライブ配信休止中 (@mzyy94) <a href="https://twitter.com/mzyy94/status/612252163058745344">2015, 6月 20</a></blockquote>
+<blockquote class="missing-tweet" lang="ja"><p lang="ja" dir="ltr">2015年6月20日現在のえび飼育装置全貌 <a href="http://t.co/oCNNERkua0">pic.twitter.com/oCNNERkua0</a></p>&mdash; エビライブ配信休止中 (@mzyy94) <a href="https://twitter.com/mzyy94/status/612252163058745344">2015, 6月 20</a></blockquote>
 
-<blockquote class="twitter-tweet" lang="ja"><p lang="ja" dir="ltr">引っ越し完了！ <a href="http://t.co/ms1wCAqxyz">pic.twitter.com/ms1wCAqxyz</a></p>&mdash; エビライブ配信休止中 (@mzyy94) <a href="https://twitter.com/mzyy94/status/612251688510976000">2015, 6月 20</a></blockquote>
+<blockquote class="missing-tweet" lang="ja"><p lang="ja" dir="ltr">引っ越し完了！ <a href="http://t.co/ms1wCAqxyz">pic.twitter.com/ms1wCAqxyz</a></p>&mdash; エビライブ配信休止中 (@mzyy94) <a href="https://twitter.com/mzyy94/status/612251688510976000">2015, 6月 20</a></blockquote>
 
 ## まとめ
 

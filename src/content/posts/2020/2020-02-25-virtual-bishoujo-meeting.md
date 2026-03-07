@@ -57,7 +57,7 @@ image: "/assets/images/2020/02/25/babiniku.png"
 
 iOS 11でARKitのAPIが提供され始めた時のこと、Face Trackingして[Live2D Cubism](https://www.live2d.com/)のパラメーターを操作するデモアプリを作った過去があります。
 
-<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">iPhone X+ARKit+Live2Dがどんな感じに動くかのサンプル<br>(音声はPCで再生してるやつを録音したもの)<br>まだ表情のパラメーターは弄りがいがある感じ <a href="https://t.co/xNQZcQhsTY">pic.twitter.com/xNQZcQhsTY</a></p>&mdash; 劇場版ハイスクール・フリート4DX (@mzyy94) <a href="https://twitter.com/mzyy94/status/931228533166260225?ref_src=twsrc%5Etfw">November 16, 2017</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="missing-tweet"><p lang="ja" dir="ltr">iPhone X+ARKit+Live2Dがどんな感じに動くかのサンプル<br>(音声はPCで再生してるやつを録音したもの)<br>まだ表情のパラメーターは弄りがいがある感じ <a href="https://t.co/xNQZcQhsTY">pic.twitter.com/xNQZcQhsTY</a></p>&mdash; 劇場版ハイスクール・フリート4DX (@mzyy94) <a href="https://twitter.com/mzyy94/status/931228533166260225?ref_src=twsrc%5Etfw">November 16, 2017</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 そうだこれを使えばいいんだ。FaceRigから遠回りしたものの、一つの解決策にたどり着きました。
 
@@ -71,7 +71,7 @@ iOS 11でARKitのAPIが提供され始めた時のこと、Face Trackingして[L
 
 こんな感じで動きます
 
-<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">ビデオ会議風景 <a href="https://t.co/9jIyNgwBki">pic.twitter.com/9jIyNgwBki</a></p>&mdash; 劇場版ハイスクール・フリート4DX (@mzyy94) <a href="https://twitter.com/mzyy94/status/1232523165131108354?ref_src=twsrc%5Etfw">February 26, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="missing-tweet"><p lang="ja" dir="ltr">ビデオ会議風景 <a href="https://t.co/9jIyNgwBki">pic.twitter.com/9jIyNgwBki</a></p>&mdash; 劇場版ハイスクール・フリート4DX (@mzyy94) <a href="https://twitter.com/mzyy94/status/1232523165131108354?ref_src=twsrc%5Etfw">February 26, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 ちょっとアップデートして背景色と位置の変更ができるようになりました。
 

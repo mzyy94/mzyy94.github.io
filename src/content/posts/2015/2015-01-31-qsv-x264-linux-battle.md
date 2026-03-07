@@ -107,7 +107,7 @@ sys     0m0.972s
 
 記事公開直後にこのような気になる意見をいただきました。
 
-<blockquote class="twitter-tweet" data-conversation="none" data-lang="ja"><p lang="ja" dir="ltr"><a href="https://twitter.com/mzyy94">@mzyy94</a> 一コア使用QSVで複数同時エンコしたらどうなるか実験してもらえるとうれしいです</p>&mdash; バッファリング (@polamjag) <a href="https://twitter.com/polamjag/status/561469823561920513">2015年1月31日</a></blockquote>
+<blockquote class="missing-tweet" data-conversation="none" data-lang="ja"><p lang="ja" dir="ltr"><a href="https://twitter.com/mzyy94">@mzyy94</a> 一コア使用QSVで複数同時エンコしたらどうなるか実験してもらえるとうれしいです</p>&mdash; バッファリング (@polamjag) <a href="https://twitter.com/polamjag/status/561469823561920513">2015年1月31日</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 早速、QSVでの同時エンコードを試してみました。

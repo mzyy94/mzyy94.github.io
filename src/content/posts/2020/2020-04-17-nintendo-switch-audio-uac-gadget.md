@@ -268,7 +268,7 @@ index b8a716d..b9674b3 100644
 
 `OPENSSL_CONF= ./examples/webrtc-unidirectional-h264`で実行し、Chromeでみてみると、音声もWebRTCで転送できていることが確認できます。
 
-<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">音でた <a href="https://t.co/gKTdyVQNAH">pic.twitter.com/gKTdyVQNAH</a></p>&mdash; 咳9週間 (@mzyy94) <a href="https://twitter.com/mzyy94/status/1251113843599634432?ref_src=twsrc%5Etfw">April 17, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="missing-tweet"><p lang="ja" dir="ltr">音でた <a href="https://t.co/gKTdyVQNAH">pic.twitter.com/gKTdyVQNAH</a></p>&mdash; 咳9週間 (@mzyy94) <a href="https://twitter.com/mzyy94/status/1251113843599634432?ref_src=twsrc%5Etfw">April 17, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 ## まとめ
 

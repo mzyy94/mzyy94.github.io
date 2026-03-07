@@ -141,7 +141,7 @@ Splatoon = イカ なので、スライドに刺激を加えるためにイカ�
 
 [ロウディ EB \| キャッチ \| 書体を選ぶ \| FONTWORKS](http://fontworks.co.jp/font/catch/rowdy/EB.html)
 
-<blockquote class="twitter-tweet" lang="ja"><p lang="ja" dir="ltr">SplatoonのフォントはフォントワークスのロウディEBか&#10;<a href="https://t.co/KjnMGhtsm6">https://t.co/KjnMGhtsm6</a> <a href="https://t.co/2MYBNp1CVm">pic.twitter.com/2MYBNp1CVm</a></p>&mdash; 【ピュア】友利奈緒 (@mzyy94) <a href="https://twitter.com/mzyy94/status/662520841326845952">2015, 11月 6</a></blockquote>
+<blockquote class="missing-tweet" lang="ja"><p lang="ja" dir="ltr">SplatoonのフォントはフォントワークスのロウディEBか&#10;<a href="https://t.co/KjnMGhtsm6">https://t.co/KjnMGhtsm6</a> <a href="https://t.co/2MYBNp1CVm">pic.twitter.com/2MYBNp1CVm</a></p>&mdash; 【ピュア】友利奈緒 (@mzyy94) <a href="https://twitter.com/mzyy94/status/662520841326845952">2015, 11月 6</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 すでにこのフォントを持っている方は、お手数ですがSlidoonのNoto Sans CJK JPのフォント指定を全てそちらに変更いただくと、よりSplatoonっぽいスライドが作成できるかと思います。

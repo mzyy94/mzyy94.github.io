@@ -108,5 +108,5 @@ Kodi上でキーボードのEを押すと同じようにEPG番組表が表示さ
 
 MPEG-2ライセンスを導入してあるRaspberry Pi2だとサクサク地デジが見られる。
 
-<blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">Raspberry Pi 2での地デジ視聴時の負荷<br>HWデコーダー有効にするとフレームドロップなしでCPU負荷はほぼゼロ <a href="http://t.co/rAzv7eCTGW">pic.twitter.com/rAzv7eCTGW</a></p>&mdash; はいふりを見て®︎™ (@mzyy94) <a href="https://twitter.com/mzyy94/status/565610656809091072">2015年2月11日</a></blockquote>
+<blockquote class="missing-tweet" data-lang="ja"><p lang="ja" dir="ltr">Raspberry Pi 2での地デジ視聴時の負荷<br>HWデコーダー有効にするとフレームドロップなしでCPU負荷はほぼゼロ <a href="http://t.co/rAzv7eCTGW">pic.twitter.com/rAzv7eCTGW</a></p>&mdash; はいふりを見て®︎™ (@mzyy94) <a href="https://twitter.com/mzyy94/status/565610656809091072">2015年2月11日</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>

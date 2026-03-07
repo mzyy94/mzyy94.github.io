@@ -8,7 +8,7 @@ image: "/assets/images/2023/02/27/keys.jpg"
 ---
 
 
-<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">家賃と駐車場代払ってると駐車場付きの家欲しいなる</p>&mdash; 不動産取得税申告 (@mzyy94) <a href="https://twitter.com/mzyy94/status/1332977960500948992?ref_src=twsrc%5Etfw">November 29, 2020</a></blockquote>
+<blockquote class="missing-tweet"><p lang="ja" dir="ltr">家賃と駐車場代払ってると駐車場付きの家欲しいなる</p>&mdash; 不動産取得税申告 (@mzyy94) <a href="https://twitter.com/mzyy94/status/1332977960500948992?ref_src=twsrc%5Etfw">November 29, 2020</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 都内で月極駐車場を契約して賃貸マンションに住まう総居住費に対し、駐車場付き物件を住宅ローンを組んで支払う方が、税金や月々の返済を考えても安上がりなことを第一の理由に、この2023年に家を買うことにした。当初は一切のこだわりがなく、とにかく家を買って住むぞという軽い気持ちだけでスタートしたので、そのスタートからゴールまでの経験や過程を記事にする。
@@ -18,7 +18,7 @@ image: "/assets/images/2023/02/27/keys.jpg"
 
 ## 家選びの条件を狭める
 
-<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">戸建て vs マンション vs 新築 vs 中古 vs 23区 vs 首都圏 vs ダークライ</p>&mdash; 不動産取得税申告 (@mzyy94) <a href="https://twitter.com/mzyy94/status/1614282507587031040?ref_src=twsrc%5Etfw">January 14, 2023</a></blockquote>
+<blockquote class="missing-tweet"><p lang="ja" dir="ltr">戸建て vs マンション vs 新築 vs 中古 vs 23区 vs 首都圏 vs ダークライ</p>&mdash; 不動産取得税申告 (@mzyy94) <a href="https://twitter.com/mzyy94/status/1614282507587031040?ref_src=twsrc%5Etfw">January 14, 2023</a></blockquote>
 
 ### Q. マンションか一軒家か
 
@@ -38,14 +38,14 @@ image: "/assets/images/2023/02/27/keys.jpg"
 
 #### 2. 管理費と自治
 
-<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">戸建てだと町内会とかめんどいしマンションだと理事会とかめんどいしうーん</p>&mdash; 不動産取得税申告 (@mzyy94) <a href="https://twitter.com/mzyy94/status/1611637769989918720?ref_src=twsrc%5Etfw">January 7, 2023</a></blockquote>
+<blockquote class="missing-tweet"><p lang="ja" dir="ltr">戸建てだと町内会とかめんどいしマンションだと理事会とかめんどいしうーん</p>&mdash; 不動産取得税申告 (@mzyy94) <a href="https://twitter.com/mzyy94/status/1611637769989918720?ref_src=twsrc%5Etfw">January 7, 2023</a></blockquote>
 
 駐車場の以外の点では、マンションは管理費や修繕積立金等の月々の支払いや、理事会などの自治が金銭と時間の負担を増す。一軒家でも時に修繕は必要になったり町内会などの自治会があったりするが、額の大小や任意の入会など物件次第で負担は低く見積もれる。
 この点では一軒家に分があると考えられる。
 
 #### 3. ゴミ出し体験
 
-<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">別にだだっ広くなくても部屋数少なくても良くて庭あって屋上あって日当たり良くてゴミ捨てが楽なところに住みたい</p>&mdash; 不動産取得税申告 (@mzyy94) <a href="https://twitter.com/mzyy94/status/1589349961338327041?ref_src=twsrc%5Etfw">November 6, 2022</a></blockquote>
+<blockquote class="missing-tweet"><p lang="ja" dir="ltr">別にだだっ広くなくても部屋数少なくても良くて庭あって屋上あって日当たり良くてゴミ捨てが楽なところに住みたい</p>&mdash; 不動産取得税申告 (@mzyy94) <a href="https://twitter.com/mzyy94/status/1589349961338327041?ref_src=twsrc%5Etfw">November 6, 2022</a></blockquote>
 
 高い管理費を払っていた賃貸マンションでは、屋内ゴミ捨て場に24時間自由にゴミ捨てをすることができていた。
 生活リズムが一般人のそれとはかけ離れているため、深夜４時に捌いた魚などの生ごみを新鮮な状態で捨てられるのは利便性がとてもよかった。
@@ -336,7 +336,7 @@ auじぶん銀行はオンラインで契約ができたため、布団の中で
 国民負担率が半世紀で２倍になるような国で、かろうじて残されている個人への大きな節税制度を逃すわけにはいかないだろう。
 この記事を読み終えたらすぐに家を買ってもらい、購入体験記事をアップしてもらいたい。
 
-<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">こういう規制や税制の問題もあって家買うの今年を逃したらしばらく冬の時代が続くし急いで探した理由の一つ <a href="https://t.co/TqaASdi4SZ">https://t.co/TqaASdi4SZ</a></p>&mdash; 不動産取得税申告 (@mzyy94) <a href="https://twitter.com/mzyy94/status/1626617337632919558?ref_src=twsrc%5Etfw">February 17, 2023</a></blockquote> 
+<blockquote class="missing-tweet"><p lang="ja" dir="ltr">こういう規制や税制の問題もあって家買うの今年を逃したらしばらく冬の時代が続くし急いで探した理由の一つ <a href="https://t.co/TqaASdi4SZ">https://t.co/TqaASdi4SZ</a></p>&mdash; 不動産取得税申告 (@mzyy94) <a href="https://twitter.com/mzyy94/status/1626617337632919558?ref_src=twsrc%5Etfw">February 17, 2023</a></blockquote> 
 
 ## まとめ
 

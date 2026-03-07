@@ -9,9 +9,9 @@ image: "/assets/images/2020/06/09/IMG_5087.jpg"
 
 エッジAIスーパーコンピューターのNVIDIA Jetsonとの付き合いは長く、2015年に買った[Shield TVをJetson TX1化](https://forum.xda-developers.com/shield-tv/general/build-kernel-source-boot-to-ubuntu-t3274632)したのを発端に、遊び初めて5年となる。
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">SHIELD TV <a href="http://t.co/K4iEW26mM2">pic.twitter.com/K4iEW26mM2</a></p>&mdash; ミ゛ (@mzyy94) <a href="https://twitter.com/mzyy94/status/614300280687980544?ref_src=twsrc%5Etfw">June 26, 2015</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="missing-tweet"><p lang="en" dir="ltr">SHIELD TV <a href="http://t.co/K4iEW26mM2">pic.twitter.com/K4iEW26mM2</a></p>&mdash; ミ゛ (@mzyy94) <a href="https://twitter.com/mzyy94/status/614300280687980544?ref_src=twsrc%5Etfw">June 26, 2015</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">旧Shield TV、CUDAボードとしてしか使ってないので</p>&mdash; ミ゛ (@mzyy94) <a href="https://twitter.com/mzyy94/status/823039187167285249?ref_src=twsrc%5Etfw">January 22, 2017</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="missing-tweet"><p lang="ja" dir="ltr">旧Shield TV、CUDAボードとしてしか使ってないので</p>&mdash; ミ゛ (@mzyy94) <a href="https://twitter.com/mzyy94/status/823039187167285249?ref_src=twsrc%5Etfw">January 22, 2017</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 昨年末の11月頭、NVIDIAはJetson Xavier NXを2020年3月に399 USDで発売するとプレスリリースを出していた。
 
@@ -22,7 +22,7 @@ Jetson Xavier NX開発者キットが発売された。
 
 [組み込み/エッジ システム用の Jetson Xavier NX \| NVIDIA](https://www.nvidia.com/ja-jp/autonomous-machines/embedded-systems/jetson-xavier-nx/)
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">𝑚𝑦 𝑛𝑒𝑤 𝑔𝑒𝑎𝑟 <a href="https://t.co/6BB3gbgysT">pic.twitter.com/6BB3gbgysT</a></p>&mdash; ミ゛ (@mzyy94) <a href="https://twitter.com/mzyy94/status/1262214518110711810?ref_src=twsrc%5Etfw">May 18, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="missing-tweet"><p lang="en" dir="ltr">𝑚𝑦 𝑛𝑒𝑤 𝑔𝑒𝑎𝑟 <a href="https://t.co/6BB3gbgysT">pic.twitter.com/6BB3gbgysT</a></p>&mdash; ミ゛ (@mzyy94) <a href="https://twitter.com/mzyy94/status/1262214518110711810?ref_src=twsrc%5Etfw">May 18, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
 届いてしばらく放置していたが、早速使ってみるかと思い立ちSDカードイメージを焼いて火を入れてみると、Shield TVで苦労していた時と比べてあっけなく起動してしまった。

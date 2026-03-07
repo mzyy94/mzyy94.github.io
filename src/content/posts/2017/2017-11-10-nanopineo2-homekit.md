@@ -23,7 +23,7 @@ image: "/assets/images/2017/11/10/applewatch-nanopineo2.jpg"
   width: 30%;
 }
 </style>
-<blockquote class="twitter-tweet" data-lang="ja"><p lang="tl" dir="ltr">NanoPI NEO2 x6 <a href="https://t.co/ec4PeO7Abq">pic.twitter.com/ec4PeO7Abq</a></p>&mdash; おねえちゃんの人 (@mzyy94) <a href="https://twitter.com/mzyy94/status/926970965786898432?ref_src=twsrc%5Etfw">2017年11月5日</a></blockquote>
+<blockquote class="missing-tweet" data-lang="ja"><p lang="tl" dir="ltr">NanoPI NEO2 x6 <a href="https://t.co/ec4PeO7Abq">pic.twitter.com/ec4PeO7Abq</a></p>&mdash; おねえちゃんの人 (@mzyy94) <a href="https://twitter.com/mzyy94/status/926970965786898432?ref_src=twsrc%5Etfw">2017年11月5日</a></blockquote>
 
 
 ## 情報整理
@@ -382,7 +382,7 @@ NanoPi NEO2はマイクやスピーカー端子も備えているので、暇を
 
 先日Apple Watch Series 3を購入し、iPhone Xを握らなくてもスマートな生活を送れるようになってきています。
 
-<blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">・通知確認(メール・Twitter)<br>・モバイルSuica<br>・Swarmチェックイン<br>・通勤タイマー<br>・Yahoo!天気<br>・リマインダー<br>・1Password(ワンタイムパスワード)<br>・ミュージック<br>・睡眠記録<br>・目覚まし<br>Twitterと写真撮るくらいしかiPhoneの出番ない</p>&mdash; おねえちゃんの人 (@mzyy94) <a href="https://twitter.com/mzyy94/status/920849763548905472?ref_src=twsrc%5Etfw">2017年10月19日</a></blockquote>
+<blockquote class="missing-tweet" data-lang="ja"><p lang="ja" dir="ltr">・通知確認(メール・Twitter)<br>・モバイルSuica<br>・Swarmチェックイン<br>・通勤タイマー<br>・Yahoo!天気<br>・リマインダー<br>・1Password(ワンタイムパスワード)<br>・ミュージック<br>・睡眠記録<br>・目覚まし<br>Twitterと写真撮るくらいしかiPhoneの出番ない</p>&mdash; おねえちゃんの人 (@mzyy94) <a href="https://twitter.com/mzyy94/status/920849763548905472?ref_src=twsrc%5Etfw">2017年10月19日</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 これらに加えて手首だけで照明のON/OFFができるようになり、さらに快適な生活が送れるようになって、もう家からでたくないくらいです。

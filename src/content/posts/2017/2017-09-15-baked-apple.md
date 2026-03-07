@@ -22,7 +22,7 @@ image: "/assets/images/2017/09/15/baking.jpg"
 
 ## 事の発端
 
-<blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">MacBook Air Mid2013、歴代のMacBookシリーズの中で一番ロジックボード修理代金が高いようで、53,000円+税と言われたのでオーブンに放り込むことが決定した</p>&mdash; ふぇねっくのやべーやつ (@mzyy94) <a href="https://twitter.com/mzyy94/status/902800288242843649">2017年8月30日</a></blockquote>
+<blockquote class="missing-tweet" data-lang="ja"><p lang="ja" dir="ltr">MacBook Air Mid2013、歴代のMacBookシリーズの中で一番ロジックボード修理代金が高いようで、53,000円+税と言われたのでオーブンに放り込むことが決定した</p>&mdash; ふぇねっくのやべーやつ (@mzyy94) <a href="https://twitter.com/mzyy94/status/902800288242843649">2017年8月30日</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 ## 故障の症状について
@@ -89,7 +89,7 @@ Appleは鉛フリーはんだを用いているため、鉛フリーはんだの
 予熱が終わり4分間の加熱をし、自然冷却を行い待つこと30分。
 分解とは逆の手順で組み込み、恐る恐る電源を入れた。
 
-<blockquote class="twitter-tweet" data-conversation="none" data-lang="ja"><p lang="ja" dir="ltr">んんんwwww焼いたら動いた <a href="https://t.co/9Aks3CT0cu">pic.twitter.com/9Aks3CT0cu</a></p>&mdash; ふぇねっくのやべーやつ (@mzyy94) <a href="https://twitter.com/mzyy94/status/908343638614085632">2017年9月14日</a></blockquote>
+<blockquote class="missing-tweet" data-conversation="none" data-lang="ja"><p lang="ja" dir="ltr">んんんwwww焼いたら動いた <a href="https://t.co/9Aks3CT0cu">pic.twitter.com/9Aks3CT0cu</a></p>&mdash; ふぇねっくのやべーやつ (@mzyy94) <a href="https://twitter.com/mzyy94/status/908343638614085632">2017年9月14日</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 起動した。

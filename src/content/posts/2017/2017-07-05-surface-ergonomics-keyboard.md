@@ -184,7 +184,7 @@ Bluetooth HCI Event - Command Status
 確かに公式にはマルチペアリングに対応しているという旨は書かれていないので、このキーボードは1台のセントラルに対してのみペリフェラルになれるというのが実際の挙動のようです。<u>要するに、マルチペアリング非対応。</u>
 一度2つの環境で繋がって動作していたがために、解決まで1週間を費やしてしまったのを後悔しています。
 
-<blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">かれこれ1週間ずっとこれと戦ってた <a href="https://t.co/koPsgI9Akb">https://t.co/koPsgI9Akb</a></p>&mdash; サーバルちゃん@2日目東D-12a (@mzyy94) <a href="https://twitter.com/mzyy94/status/878671029131911169">2017年6月24日</a></blockquote>
+<blockquote class="missing-tweet" data-lang="ja"><p lang="ja" dir="ltr">かれこれ1週間ずっとこれと戦ってた <a href="https://t.co/koPsgI9Akb">https://t.co/koPsgI9Akb</a></p>&mdash; サーバルちゃん@2日目東D-12a (@mzyy94) <a href="https://twitter.com/mzyy94/status/878671029131911169">2017年6月24日</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 

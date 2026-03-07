@@ -11,7 +11,7 @@ image: "/assets/images/2019/05/28/IMG_9208.JPG"
 
 IKEAという北欧料理レストランが郊外には点在しています。休日に息抜きがてらIKEAに行き、北欧料理を食べることがたまにあり、つい先週末も行ってきました。
 
-<blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">高級ディナー (@ IKEA BISTRO in 船橋市, 千葉県) <a href="https://t.co/82QzRtNQu2">https://t.co/82QzRtNQu2</a> <a href="https://t.co/rdHtrDPksO">pic.twitter.com/rdHtrDPksO</a></p>&mdash; 🐳 (@mzyy94) <a href="https://twitter.com/mzyy94/status/1132255347756994560?ref_src=twsrc%5Etfw">2019年5月25日</a></blockquote>
+<blockquote class="missing-tweet" data-lang="ja"><p lang="ja" dir="ltr">高級ディナー (@ IKEA BISTRO in 船橋市, 千葉県) <a href="https://t.co/82QzRtNQu2">https://t.co/82QzRtNQu2</a> <a href="https://t.co/rdHtrDPksO">pic.twitter.com/rdHtrDPksO</a></p>&mdash; 🐳 (@mzyy94) <a href="https://twitter.com/mzyy94/status/1132255347756994560?ref_src=twsrc%5Etfw">2019年5月25日</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 このレストラン、罪なことにオシャレな家具屋も併設していて、食後についうっかりキッチンキャビネットを買ってしまいました。このうっかりのために、いろいろ試行錯誤することとなった<ruby>DIY<rp>(</rp><rt>日曜大工</rt><rp>)</rp></ruby>日記です。
@@ -91,7 +91,7 @@ IKEAという北欧料理レストランが郊外には点在しています。�
 
 ### // 追記
 
-<blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">電気工事士の資格もってるんだろうな？<br><br>小さな穴に電源コードを通して壁に穴を開けずにダイソンを立てる <a href="https://t.co/Ca4vBm77xg">https://t.co/Ca4vBm77xg</a> <a href="https://twitter.com/mzyy94?ref_src=twsrc%5Etfw">@mzyy94</a>から</p>&mdash; 海鮮居酒屋 ゆうなぎ亭「ゆうなぎ りつ」 (@you_nagisan1815) <a href="https://twitter.com/you_nagisan1815/status/1133300074379767808?ref_src=twsrc%5Etfw">2019年5月28日</a></blockquote>
+<blockquote class="missing-tweet" data-lang="ja"><p lang="ja" dir="ltr">電気工事士の資格もってるんだろうな？<br><br>小さな穴に電源コードを通して壁に穴を開けずにダイソンを立てる <a href="https://t.co/Ca4vBm77xg">https://t.co/Ca4vBm77xg</a> <a href="https://twitter.com/mzyy94?ref_src=twsrc%5Etfw">@mzyy94</a>から</p>&mdash; 海鮮居酒屋 ゆうなぎ亭「ゆうなぎ りつ」 (@you_nagisan1815) <a href="https://twitter.com/you_nagisan1815/status/1133300074379767808?ref_src=twsrc%5Etfw">2019年5月28日</a></blockquote>
 
 ご指摘ありがとうございます。電気工事士の資格が必要な作業と例外について記載が漏れていたので追記します。
 電気工事士法によって、電気工事士の資格が必要な範囲は以下のように定められています。

@@ -47,7 +47,7 @@ Charlotteの放映が終わり2ヶ月が経ち、友利奈緒の各家庭にもC
 
 ちなみにLサイズは身長163cmの男性に丁度いい大きさでした。参考までに。
 
-<blockquote class="twitter-tweet" lang="ja"><p lang="und" dir="ltr"><a href="https://t.co/y2yns2RgMP">pic.twitter.com/y2yns2RgMP</a></p>&mdash; 【公式】友利奈緒 (@mzyy94) <a href="https://twitter.com/mzyy94/status/669537697606664192">2015, 11月 25</a></blockquote>
+<blockquote class="missing-tweet" lang="ja"><p lang="und" dir="ltr"><a href="https://t.co/y2yns2RgMP">pic.twitter.com/y2yns2RgMP</a></p>&mdash; 【公式】友利奈緒 (@mzyy94) <a href="https://twitter.com/mzyy94/status/669537697606664192">2015, 11月 25</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 

@@ -69,7 +69,7 @@ Amazonでは参考価格より大幅に安く販売されているため、神�
 紙絵師としての成長を感じたら次はデジタル神絵師になりましょう。
 本物の神絵師たちはWacomのペンタブを買っているようですが、私の場合は違います。
 
-<blockquote class="twitter-tweet" data-lang="ja"><p lang="und" dir="ltr">😶 <a href="https://t.co/zt1ZbmYeet">pic.twitter.com/zt1ZbmYeet</a></p>&mdash; 入稿完了：3日目東v-14a (@mzyy94) <a href="https://twitter.com/mzyy94/status/732867861761269760">2016年5月18日</a></blockquote>
+<blockquote class="missing-tweet" data-lang="ja"><p lang="und" dir="ltr">😶 <a href="https://t.co/zt1ZbmYeet">pic.twitter.com/zt1ZbmYeet</a></p>&mdash; 入稿完了：3日目東v-14a (@mzyy94) <a href="https://twitter.com/mzyy94/status/732867861761269760">2016年5月18日</a></blockquote>
 
 
 
@@ -129,7 +129,7 @@ Macで動作するCLIP STUDIO PAINTをiPadに表示し、Apple Pencilの筆圧�
 
 どんな感じなのか描いているときの雰囲気はこんな感じです。
 
-<blockquote class="twitter-tweet" data-lang="ja"><p lang="es" dir="ltr">Astropad（<a href="https://t.co/rbMoBLgj5U">https://t.co/rbMoBLgj5U</a>）とクリスタでiPadを液タブ化してみたけどAppleペンシルとの相性最高ですらすら描けて良い <a href="https://t.co/P4GG4CiZNN">pic.twitter.com/P4GG4CiZNN</a></p>&mdash; 入稿完了：3日目東v-14a (@mzyy94) <a href="https://twitter.com/mzyy94/status/769580135322234880">2016年8月27日</a></blockquote>
+<blockquote class="missing-tweet" data-lang="ja"><p lang="es" dir="ltr">Astropad（<a href="https://t.co/rbMoBLgj5U">https://t.co/rbMoBLgj5U</a>）とクリスタでiPadを液タブ化してみたけどAppleペンシルとの相性最高ですらすら描けて良い <a href="https://t.co/P4GG4CiZNN">pic.twitter.com/P4GG4CiZNN</a></p>&mdash; 入稿完了：3日目東v-14a (@mzyy94) <a href="https://twitter.com/mzyy94/status/769580135322234880">2016年8月27日</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 左に並ぶツールは並び替えが自由で、ショートカットキーがわりあてられるため、次のように設定してiPadのみでのお絵描きができるようにしています。

@@ -22,7 +22,7 @@ image: "/assets/images/2016/12/24/out-of-playarea.png"
 ハードルを下げに下げたところで記事の内容の話に移ります。
 当初はThree.jsを用いたはいふりWeb VRを画策していました。
 
-<blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">はいふりWebVRやろうと思ったけどすごすぎて足元にも及べなさそうなのでネタチェンジ</p>&mdash; 原稿進捗49/50：3日目東v-14a (@mzyy94) <a href="https://twitter.com/mzyy94/status/807224354161364993">2016年12月9日</a></blockquote>
+<blockquote class="missing-tweet" data-lang="ja"><p lang="ja" dir="ltr">はいふりWebVRやろうと思ったけどすごすぎて足元にも及べなさそうなのでネタチェンジ</p>&mdash; 原稿進捗49/50：3日目東v-14a (@mzyy94) <a href="https://twitter.com/mzyy94/status/807224354161364993">2016年12月9日</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 はいふりアドベントカレンダーが進むにつれ、本格的なはいふりVRの記事が登場し、はいふりWeb VRは取り下げようと思いました。
