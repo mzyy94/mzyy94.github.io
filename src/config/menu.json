@@ -23,6 +23,10 @@
       "url": "/about/"
     },
     {
+      "name": "Privacy Policy",
+      "url": "/privacy-policy/"
+    },
+    {
       "name": "Key",
       "url": "https://github.com/mzyy94.keys"
     }
