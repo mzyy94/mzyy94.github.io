@@ -142,6 +142,7 @@ const { pathname } = Astro.url;
       }
       <ThemeSwitcher className="mr-5" />
       <button
+        transition:persist
         class="border-border text-text-dark hover:text-primary dark:border-darkmode-border mr-5 inline-block border-r pr-5 text-xl dark:text-white dark:hover:text-darkmode-primary"
         data-cc="show-preferencesModal"
       >
