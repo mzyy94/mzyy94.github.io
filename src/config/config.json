@@ -46,6 +46,12 @@
     "settings": {}
   },
 
+  "announcement": {
+    "enable": false,
+    "content": "",
+    "expire_days": 7
+  },
+
   "metadata": {
     "meta_author": "mzyy94",
     "meta_image": "/images/og-image.png",

@@ -7,7 +7,7 @@ export const GET: APIRoute = async (context) => {
   const posts = await getSinglePage("blog");
 
   const smStream = new SitemapStream({
-    hostname: context.site,
+    hostname: context.site?.origin,
   });
 
   posts.forEach((post) => {

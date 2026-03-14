@@ -2,11 +2,12 @@
 import config from "@/config/config.json";
 import dateFormat from "@/lib/utils/dateFormat";
 import { humanize, plainify, slugify } from "@/lib/utils/textConverter";
-import { FaRegClock, FaRegFolder, FaRegUserCircle } from "react-icons/fa";
+import { FaRegFolder, FaRegUserCircle } from "react-icons/fa";
 import ImageMod from "./ImageMod.astro";
 
 const {
   summary_length,
+  blog_folder,
 }: { summary_length: number; blog_folder: string } = config.settings;
 const { data } = Astro.props;
 const { title, image, date, author, categories } = data.data;
@@ -15,7 +16,7 @@ const { title, image, date, author, categories } = data.data;
 <div class="bg-body dark:bg-darkmode-body">
   {
     image && (
-    <a href={`/blog/${data.id}`}>
+    <a href={`/${blog_folder}/${data.id}`}>
       <ImageMod
         class="mb-6 w-full rounded object-cover"
         src={image}
@@ -29,7 +30,7 @@ const { title, image, date, author, categories } = data.data;
     )
   }
   <h4 class="mb-3">
-    <a href={`/blog/${data.id}`}>
+    <a href={`/${blog_folder}/${data.id}`}>
       {title}
     </a>
   </h4>
@@ -51,13 +52,10 @@ const { title, image, date, author, categories } = data.data;
         ))
       }
     </li>
-    <li class="mr-4 inline-block">
-      <FaRegClock className={"mr-2 -mt-1 inline-block"} />
-      {dateFormat(date)}
-    </li>
+    {date && <li class="inline-block">{dateFormat(date)}</li>}
   </ul>
   <p class="mb-6">{plainify(data.body?.slice(0, Number(summary_length)))}...</p>
-  <a class="btn btn-outline-primary btn-sm" href={`/blog/${data.id}`}>
+  <a class="btn btn-outline-primary btn-sm" href={`/${blog_folder}/${data.id}`}>
     read more
   </a>
 </div>

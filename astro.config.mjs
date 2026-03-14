@@ -1,34 +1,63 @@
 import mdx from "@astrojs/mdx";
+import partytown from "@astrojs/partytown";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 import AutoImport from "astro-auto-import";
-import remarkEmoji from "remark-emoji";
-import { defineConfig } from "astro/config";
+import { defineConfig, fontProviders } from "astro/config";
 import remarkCollapse from "remark-collapse";
+import remarkEmoji from "remark-emoji";
 import remarkToc from "remark-toc";
 import sharp from "sharp";
+import { visit } from "unist-util-visit";
 import config from "./src/config/config.json";
-import partytown from "@astrojs/partytown";
+import theme from "./src/config/theme.json";
 
-const resolveRelativeMd = () => {
-  function editLink(node) {
-    if (node.type == "link" && node.url.startsWith("../")) {
-      const newLink = node.url.replace(/^\.\.\/\d+\/(\d+)-(\d+)-(\d+)-([^\.]+)\.mdx?/, (_, y, m, d, s) => `/blog/${y}/${m}/${d}/${s}/`);
-      node.url = newLink;
+// Helper to parse font string format: "FontName:wght@400;500;600;700"
+function parseFontString(fontStr) {
+  const [name, weightPart] = fontStr.split(":");
+  let weights = [400]; // default weight
+
+  if (weightPart) {
+    const weightMatch = weightPart.match(/wght@?([\d;]+)/);
+    if (weightMatch) {
+      weights = weightMatch[1].split(";").map((w) => parseInt(w, 10));
     }
   }
 
-  function processChild(children) {
-    children?.forEach((child) => {
-      editLink(child);
-      processChild(child.children);
-    })
-  }
+  // remove + from font name and add space
+  const cleanName = name.replace(/\+/g, " ");
+  return { name: cleanName, weights };
+}
 
-  return async function transform(root, file) {
-    processChild(root.children ?? [root]);
-  }
+// Build fonts configuration from theme.json
+const fontsConfig = Object.entries(theme.fonts.font_family)
+  .filter(([key]) => !key.includes("_type"))
+  .map(([key, fontStr]) => {
+    const { name, weights } = parseFontString(fontStr);
+    const typeKey = `${key}_type`;
+    const fallback = theme.fonts.font_family[typeKey] || "sans-serif";
+
+    return {
+      name,
+      cssVariable: `--font-${key}`,
+      provider: fontProviders.google(),
+      weights,
+      display: "swap",
+      fallbacks: [fallback],
+    };
+  });
+
+function resolveRelativeMd() {
+  return (tree) => {
+    visit(tree, "link", (node) => {
+      if (node.url && node.url.match(/\.mdx?($|#)/)) {
+        node.url = node.url
+          .replace(/\.mdx?($|#)/, "/$1")
+          .replace(/.*\/(\d{4})-(\d{2})-(\d{2})-/, "/blog/$1/$2/$3/");
+      }
+    });
+  };
 }
 
 // https://astro.build/config
@@ -38,9 +67,11 @@ export default defineConfig({
   trailingSlash: config.site.trailing_slash ? "always" : "never",
   image: { service: sharp() },
   vite: { plugins: [tailwindcss()] },
+  fonts: fontsConfig,
   integrations: [
     react(),
     sitemap(),
+    partytown(),
     AutoImport({
       imports: [
         "@/shortcodes/Button",
@@ -50,35 +81,27 @@ export default defineConfig({
         "@/shortcodes/Youtube",
         "@/shortcodes/Tabs",
         "@/shortcodes/Tab",
-        "@/layouts/components/PostLink.astro",
+        "@/components/PostLink.astro",
       ],
     }),
     mdx(),
-    partytown(),
   ],
   markdown: {
     remarkPlugins: [
-      resolveRelativeMd,
       remarkEmoji,
-      [remarkToc, {
-        heading: "目次",
-        tight: true,
-        ordered: true,
-      }],
-      [
-        remarkCollapse,
-        {
-          test: "目次",
-        },
-      ],
+      [remarkToc, { heading: "目次", tight: true, ordered: true }],
+      [remarkCollapse, { test: "目次" }],
+      resolveRelativeMd,
     ],
     shikiConfig: { theme: "one-dark-pro", wrap: true },
-    extendDefaultPlugins: true,
   },
   redirects: {
-    "/blog/2016/10/09/household-eap-sim-wifi/": "/blog/2016/10/09/home-eap-sim-wifi/",
-    "/blog/2020/05/12/raspberry-pi-hdmi-edid-cec/": "/blog/2020/05/12/raspberrypi-hdmi-edid-cec/",
-    "/blog/2021/08/07/hisense-vidaa-hacking/": "/blog/2021/08/07/hisense-75a6g-review/",
+    "/blog/2016/10/09/household-eap-sim-wifi/":
+      "/blog/2016/10/09/home-eap-sim-wifi/",
+    "/blog/2020/05/12/raspberry-pi-hdmi-edid-cec/":
+      "/blog/2020/05/12/raspberrypi-hdmi-edid-cec/",
+    "/blog/2021/08/07/hisense-vidaa-hacking/":
+      "/blog/2021/08/07/hisense-75a6g-review/",
     "/blog/2023/02/07/my-new-house/": "/blog/2023/02/27/my-new-house/",
   },
 });
