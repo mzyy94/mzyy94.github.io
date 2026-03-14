@@ -1174,6 +1174,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@jop-software/astro-cookieconsent@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "@jop-software/astro-cookieconsent@npm:3.0.1"
+  peerDependencies:
+    vanilla-cookieconsent: ^3.0.0
+  checksum: 10c0/0e5893d757558e7bb60b1a86a047e6a503550670e702edac1f0203ae4575f992aee30567425ac0c822da2729ac9333d0827c4bea007bad0011e0edc22a4be821
+  languageName: node
+  linkType: hard
+
 "@jridgewell/gen-mapping@npm:^0.3.12":
   version: 0.3.13
   resolution: "@jridgewell/gen-mapping@npm:0.3.13"
@@ -2597,6 +2606,7 @@ __metadata:
     "@astrojs/rss": "npm:4.0.15-beta.4"
     "@astrojs/sitemap": "npm:3.7.1"
     "@digi4care/astro-google-tagmanager": "npm:^1.6.0"
+    "@jop-software/astro-cookieconsent": "npm:^3.0.1"
     "@justinribeiro/lite-youtube": "npm:^1.9.0"
     "@tailwindcss/forms": "npm:^0.5.11"
     "@tailwindcss/typography": "npm:^0.5.19"
@@ -2629,6 +2639,7 @@ __metadata:
     tailwind-bootstrap-grid: "npm:^7.0.0"
     tailwindcss: "npm:^4.2.1"
     typescript: "npm:^5.9.3"
+    vanilla-cookieconsent: "npm:^3.1.0"
     vite: "npm:^8.0.0"
     wrangler: "npm:^4.73.0"
   languageName: unknown
@@ -7736,6 +7747,13 @@ __metadata:
   version: 1.0.2
   resolution: "util-deprecate@npm:1.0.2"
   checksum: 10c0/41a5bdd214df2f6c3ecf8622745e4a366c4adced864bc3c833739791aeeeb1838119af7daed4ba36428114b5c67dcda034a79c882e97e43c03e66a4dd7389942
+  languageName: node
+  linkType: hard
+
+"vanilla-cookieconsent@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "vanilla-cookieconsent@npm:3.1.0"
+  checksum: 10c0/f344d9786ea74850ec4274d85c9049b4d36b3ff368ddb4a0e446bad2dc0ccfad03542e97f40f7eb103b9e06d8b4d5381f63f8f0f80d898f80c5bf3e96e877382
   languageName: node
   linkType: hard
 
