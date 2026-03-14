@@ -22,7 +22,7 @@ image: "/assets/images/2020/09/11/magisk-installed.png"
 
 はじめに、現在動作しているJOYINGカーナビのバージョンを確認する。
 
-![current-version.png](/assets/images/2020/09/11/current-version.png)
+![current-version.png](/public/assets/images/2020/09/11/current-version.png)
 
 
 JOYINGのファームウェアにはバージョン番号というものはなく、日付で管理されている。
@@ -39,7 +39,7 @@ JOYINGのファームウェアにはバージョン番号というものはな�
 
 ファームウェアアップデートの方法は、解凍して中身をUSBメモリに展開し、JOYINGカーナビに差し込めば良いようだ。
 
-![detect-firmware.png](/assets/images/2020/09/11/detect-firmware.png)
+![detect-firmware.png](/public/assets/images/2020/09/11/detect-firmware.png)
 
 アップデートファイルの入ったUSBメモリを検知すると、ダイアログが出てカウントダウンが進む。
 ゼロになるかそれまでにCANCELを選択しない場合、システムが再起動してファームウェアアップデートが開始される。
@@ -52,11 +52,11 @@ JOYINGのファームウェアにはバージョン番号というものはな�
 
 アップデートファイルのzipファイルの構造は、以下のようになっていた
 
-![firmware-structure.png](/assets/images/2020/09/11/firmware-structure.png)
+![firmware-structure.png](/public/assets/images/2020/09/11/firmware-structure.png)
 
 さらにzipファイルが含まれているので、この**6521_1.zip**も見てみる。
 
-![ota-package.png](/assets/images/2020/09/11/ota-package.png)
+![ota-package.png](/public/assets/images/2020/09/11/ota-package.png)
 
 ファイル構造から、**6521_1.zip**はOTAパッケージであることがわかる。
 
@@ -70,7 +70,7 @@ AndroidのOTAパッケージは署名がされている。Androidシステム内
 
 署名に用いられた公開鍵は、**/META-INF/com/android/otacert**にPEM形式で保管されている。中身を見てみると、次のようになっていた。
 
-![otacert.png](/assets/images/2020/09/11/otacert.png)
+![otacert.png](/public/assets/images/2020/09/11/otacert.png)
 
 よく見たことのある公開鍵だ。
 この公開鍵は、AOSP (Android Open Source Project) に含まれる[テスト用の公開鍵](https://android.googlesource.com/platform/build/+/refs/heads/oreo-release/target/product/security/testkey.x509.pem)であることがパッと見でわかる。
@@ -109,12 +109,12 @@ SystemUI.apkやSettings.apkなど、システムの要となるアプリケー�
 アップデートファイルには正体不明の **lsec6521update** なるファイルが含まれている。
 ちょろっと中身を見て、良い感じに切り出したら実行ファイルであることがわかった。
 
-![trim-lsec6521update.png](/assets/images/2020/09/11/trim-lsec6521update.png)
+![trim-lsec6521update.png](/public/assets/images/2020/09/11/trim-lsec6521update.png)
 
 どのような実装になっているのかを[Binary Ninja](https://binary.ninja/)で解析してみた。
 すると興味深い処理が含まれていることがわかった。
 
-![analyze-lsec6521update.png](/assets/images/2020/09/11/analyze-lsec6521update.png)
+![analyze-lsec6521update.png](/public/assets/images/2020/09/11/analyze-lsec6521update.png)
 
 main関数からいくつかの処理を経て、終盤に **lsec_updatesh/lsec.sh** というファイルが見つかればそれを実行しようとするのだ。
 このようなファイルはアップデートファイルには含まれていないが、勘でShellScriptを用意すれば良いことはわかる。
@@ -168,21 +168,21 @@ dd if=/dev/block/platform/soc/soc:ap-ahb/c0c00000.sdio/by-name/boot of=/storage/
 配置できたら好きな手段でJOYINGカーナビにMagisk Managerをインストールする。
 今回はJOYINGカーナビでGoogle Chromeを開き、Magisk Managerの配布ページにアクセスしてダウンロード・インストールした。
 
-![magiskmanager.png](/assets/images/2020/09/11/magiskmanager.png)
+![magiskmanager.png](/public/assets/images/2020/09/11/magiskmanager.png)
 
 Magisk Managerを起動するとｲﾝｽﾄｰﾙという項目が2つあるので、上のを選んだら「Select and Patch a File」を選び、先ほどの**boot.img**を選択して待つ。
 
-![install-magisk.png](/assets/images/2020/09/11/install-magisk.png)
+![install-magisk.png](/public/assets/images/2020/09/11/install-magisk.png)
 
-![select-and-patch-a-file.png](/assets/images/2020/09/11/select-and-patch-a-file.png)
+![select-and-patch-a-file.png](/public/assets/images/2020/09/11/select-and-patch-a-file.png)
 
-![select-image.png](/assets/images/2020/09/11/select-image.png)
+![select-image.png](/public/assets/images/2020/09/11/select-image.png)
 
-![magisk-done.png](/assets/images/2020/09/11/magisk-done.png)
+![magisk-done.png](/public/assets/images/2020/09/11/magisk-done.png)
 
 無事パッチがあたると/mnt/sdcard/Downloads/に**magisk_patched.img**が出来上がるので、それをUSBメモリに転送しておく。
 
-![magisk-patched.png](/assets/images/2020/09/11/magisk-patched.png)
+![magisk-patched.png](/public/assets/images/2020/09/11/magisk-patched.png)
 
 ### OTAパッケージの作成
 
@@ -218,11 +218,11 @@ rm 6521_1_plain.zip
 出来上がった**6521\_1.zip**と**lsec6521update**をUSBメモリに配置して、**_自己責任で_**JOYINGカーナビに差し込んで、あとは勝手に再起動するのを祈って見届けてあげればroot化の完了。
 root化は手順が合っていたとしても壊れる可能性があるので自己責任で（大事なことなので2回）。
 
-![magisk-installed.png](/assets/images/2020/09/11/magisk-installed.png)
+![magisk-installed.png](/public/assets/images/2020/09/11/magisk-installed.png)
 
 [Root Checker](https://play.google.com/store/apps/details?id=com.joeykrim.rootcheck&hl=ja)でも確認したところ、しっかりとrootが取れていることがわかった。
 
-![root-checker.png](/assets/images/2020/09/11/root-checker.png)
+![root-checker.png](/public/assets/images/2020/09/11/root-checker.png)
 
 
 ## まとめ

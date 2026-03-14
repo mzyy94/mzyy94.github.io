@@ -68,7 +68,7 @@ version 71bd3109023a0c8575585ba87cbb374d2eeb038f (clean) (release) (start_x)
 
 H2C-RPI-B01に搭載されているチップであるTC358743XBGは、実はHDMI音声入力が扱えます。データシートにはI2Sバス規格で音声データのやりとりをすると書かれています。
 
-![TC358743XBG_datasheet_en_20171026 p.1](/assets/images/2022/03/01/datasheet-p1.png)
+![TC358743XBG_datasheet_en_20171026 p.1](/public/assets/images/2022/03/01/datasheet-p1.png)
 
 引用元: TC358743XBG_datasheet_en_20171026.pdf [TC358743XBG \| HDMI® インターフェースブリッジ \| 東芝デバイス＆ストレージ株式会社 \| 日本](https://toshiba.semicon-storage.com/jp/semiconductor/product/interface-bridge-ics-for-mobile-peripheral-devices/hdmir-interface-bridge-ics/detail.TC358743XBG.html)
 
@@ -90,7 +90,7 @@ NXP Semiconductorsが1986年に仕様を定義したものですが、オリジ�
 
 Raspberry PiのGPIO端子は音声入力と出力の両方に対応しており、PCM_で始まるラベルのついているピン(GPIO 18,19,20,21)がI2Sです。
 
-![Raspberry Pi pinout](/assets/images/2022/03/01/GPIO-Pinout-Diagram-2.png)
+![Raspberry Pi pinout](/public/assets/images/2022/03/01/GPIO-Pinout-Diagram-2.png)
 
 引用元: [GPIO and the 40-pin Header - Raspberry Pi Documentation](https://www.raspberrypi.com/documentation/computers/os.html#gpio-and-the-40-pin-header)
 
@@ -105,7 +105,7 @@ HDMI入力基板の出力ピンとRaspberry Pi 40ピンヘッダーのI2Sのピ�
 HDMI入力基板には10ピンの入出力端子を取り付けられるスルーホールが用意されています。
 H2C-RPI-B01以外の類似品をいくつも買ってみましたが、同じTC358743XBGを搭載する基板には大抵あります。
 
-![HDMIボードピン](/assets/images/2022/03/01/hdmi-board-pins.jpg)
+![HDMIボードピン](/public/assets/images/2022/03/01/hdmi-board-pins.jpg)
 
 少し離れたところに各スルーホールの機能を記すシルクがありますが、それを参考にして下表の通り接続します。
 
@@ -232,7 +232,7 @@ pi@raspberrypi:~ $ v4l2-ctl --set-dv-bt-timings query
 
 ここまでできたら、HDMIに接続しているデバイスから音声を出力してみると、`v4l2-ctl --list-ctrls`のaudio_presentがvalue=1になってることが確認できるはずです。
 
-![I2S device detected](/assets/images/2022/03/01/device-detected.png)
+![I2S device detected](/public/assets/images/2022/03/01/device-detected.png)
 
 ```
 pi@raspberrypi:~ $ v4l2-ctl --list-ctrls
@@ -296,7 +296,7 @@ NDA下にある書類ということで、インターネットの海にはな�
 Raspberry Pi Forumsの投稿によると、I2Sの信号がおかしいのは音声信号の位相同期回路（PLL）が実装されていないことによるとのこと。
 このAudio PLLに関する機能仕様を兄弟チップのTC358749XBGの仕様書から探してみると、次のような回路を用意すればいいというのがわかりました。
 
-![APLL circuit schematic](/assets/images/2022/03/01/apll-circuit-schematic.png)
+![APLL circuit schematic](/public/assets/images/2022/03/01/apll-circuit-schematic.png)
 
 抵抗値や静電容量は他の[TC358シリーズ](https://toshiba.semicon-storage.com/jp/semiconductor/product/interface-bridge-ics-for-mobile-peripheral-devices.html)の仕様をいくつも読み漁って推定したものです。
 
@@ -305,26 +305,26 @@ Raspberry Pi Forumsの投稿によると、I2Sの信号がおかしいのは音�
 
 先ほどの回路図のうち、C3とC6はH2C-RPI-B01に実装されているのでそれ以外の配線を行い、次のように配置しました。
 
-![APLL circuit board](/assets/images/2022/03/01/apll-circuit-board.png)
+![APLL circuit board](/public/assets/images/2022/03/01/apll-circuit-board.png)
 
 これをユニバーサル基板に実装し、フォーラムにある類似基板の解析結果を参考にしながらH2C-RPI-B01につなげていきます。
 
-![patch circuit](/assets/images/2022/03/01/patch-circuit1.jpg)
+![patch circuit](/public/assets/images/2022/03/01/patch-circuit1.jpg)
 
-![patch on H2C-RPI-B01](/assets/images/2022/03/01/patch-circuit2.jpg)
+![patch on H2C-RPI-B01](/public/assets/images/2022/03/01/patch-circuit2.jpg)
 
 ### 再度録音に挑戦
 
 前回の挑戦と同じくして、Device Tree Overlayの設定とv4l2の設定を済ませarecordで録音したところ、ちゃんとレベルメーターでも音声が入力していることを確認でき、きれいに録音されたファイルも出来上がって大成功でした。
 
-![re arecord](/assets/images/2022/03/01/arecord-with-patch.png)
+![re arecord](/public/assets/images/2022/03/01/arecord-with-patch.png)
 
 
 ## reTerminalやCM4で使えるようにする
 
 Raspberry Pi 4Bで無事に録音できたので、さてケースに収めてreTerminalの拡張モジュールにするぞ！と意気込んだものの、CSI-2に通るI2Cがうまく通信できずにreTerminalでは動作してくれませんでした。
 
-![tc358743-load-failed](/assets/images/2022/03/01/tc358743-load-failed.png)
+![tc358743-load-failed](/public/assets/images/2022/03/01/tc358743-load-failed.png)
 
 ```
 pi@raspberrypi:~ $ dmesg | grep tc3
@@ -351,7 +351,7 @@ CM3/CM4ではMIPI CSI-2のバスが二つあり、そのうちCSI0で動作さ�
 ちなみに**このパッチが組み込まれた**音声も取れる格安HDMI入力基板が*今年の1月に発売されていた*ことを、今まさにこの記事を書いている最中に知りました。
 少しばかり高いですが、わざわざAPLLパッチを作る必要はありません。これまでの苦労とは一体。。。:sob:
 
-![bought-x630](/assets/images/2022/03/01/bought-x630.png)
+![bought-x630](/public/assets/images/2022/03/01/bought-x630.png)
 
 南無
 

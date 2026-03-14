@@ -45,9 +45,9 @@ Jetson Xavier NX開発者キットは、無線LANアンテナを備えたプラ�
 
 確信がないので、[Jetson Download Center](https://developer.nvidia.com/embedded/downloads)からそれぞれの開発者キットの3D CADモデルファイルをダウンロードして、見比べてみた。
 
-![xavier nx top](/assets/images/2020/06/09/Top3518_3668_A02_3509_A01_0204.stp.png)
+![xavier nx top](/public/assets/images/2020/06/09/Top3518_3668_A02_3509_A01_0204.stp.png)
 
-![jetson nano top](/assets/images/2020/06/09/Jetson_Nano_Dev_Kit_3D_b01.stp.png)
+![jetson nano top](/public/assets/images/2020/06/09/Jetson_Nano_Dev_Kit_3D_b01.stp.png)
 
 
 ねじ穴の位置もI/Oポートの位置も、ファン（Nanoではヒートシンク）の位置も、同じだということがわかった。
@@ -59,7 +59,7 @@ Jetson Xavier NX開発者キットは、無線LANアンテナを備えたプラ�
 
 ## Waveshare Acrylic Clear Case for Jetson Nano
 
-![Waveshare Acrylic Clear Case for Jetson Nano](/assets/images/2020/06/09/jetson-nano-case-a-5_3.jpg)
+![Waveshare Acrylic Clear Case for Jetson Nano](/public/assets/images/2020/06/09/jetson-nano-case-a-5_3.jpg)
 
 製品ページ・引用元: [Acrylic Case (Type A) for the Jetson Nano Developer Kit](https://www.waveshare.com/jetson-nano-case-a.htm)
 
@@ -70,17 +70,17 @@ Waveshare製のアクリルで簡易的にJetson Nano B01を保護できるケ�
 
 [16566 Jetson Nano用 アクリルクリアケース - せんごくネット通販](https://www.sengoku.co.jp/mod/sgk_cart/detail.php?code=EEHD-5KVV)
 
-![Acrylic Case Top](/assets/images/2020/06/09/IMG_5087.jpg)
+![Acrylic Case Top](/public/assets/images/2020/06/09/IMG_5087.jpg)
 
 組み立てに悩みようもないシンプルな構造。
 
-![Acrylic Case 40 pin header](/assets/images/2020/06/09/IMG_5091.jpg)
-![Acrylic Case SD Card Slot](/assets/images/2020/06/09/IMG_5095.jpg)
+![Acrylic Case 40 pin header](/public/assets/images/2020/06/09/IMG_5091.jpg)
+![Acrylic Case SD Card Slot](/public/assets/images/2020/06/09/IMG_5095.jpg)
 
 microSDカードの出し入れをするための開口部は大きく、40ピンヘッダーへのアクセスも容易にできる設計で、最小サイズで組み上がるコンパクトさも相まって「良い」の一言が出る。
 
-![Acrylic Case Camera Connector](/assets/images/2020/06/09/IMG_5090.jpg)
-![Acrylic Case I/O Port](/assets/images/2020/06/09/IMG_5092.jpg)
+![Acrylic Case Camera Connector](/public/assets/images/2020/06/09/IMG_5090.jpg)
+![Acrylic Case I/O Port](/public/assets/images/2020/06/09/IMG_5092.jpg)
 
 I/Oポートの寸法も2つあるカメラコネクタの端子へのアクセスもバッチリなので、小型で安価なケースを探している場合はこのケースがベスト。
 
@@ -110,7 +110,7 @@ Jetson Xavier NXに刻印のある技適マークには、以下の番号が記�
 
 [工事設計認証番号 201-180775 総務省 電波利用ホームページ \| 技術基準適合証明等を受けた機器の検索](https://www.tele.soumu.go.jp/giteki/SearchServlet?pageID=jg01_01&PC=201&TC=N&PK=1&FN=200514N201&SN=%94%46%8F%D8&LN=6&R1=*****&R2=*****)
 
-![Jetson Xavier NX Antenna](/assets/images/2020/06/09/jetson-xavier-nx-antenna.png)
+![Jetson Xavier NX Antenna](/public/assets/images/2020/06/09/jetson-xavier-nx-antenna.png)
 
 画像引用元: [201-180775_01_001.pdf](https://www.tele.soumu.go.jp/giteki/SearchServlet2?PageID=jt01&ATF=41905001)
 
@@ -125,7 +125,7 @@ Realtek RTL8822CEと認証情報ページに添付されているPDFに掲載さ
 
 ## Waveshare Jetson Nano Metal Case (C)
 
-![Waveshare Jetson Nano Metal Case (C)](/assets/images/2020/06/09/jetson-nano-case-c-7.jpg)
+![Waveshare Jetson Nano Metal Case (C)](/public/assets/images/2020/06/09/jetson-nano-case-c-7.jpg)
 
 製品ページ・引用元: [Metal Case (Type C) for the Jetson Nano Developer Kit](https://www.waveshare.com/jetson-nano-case-c.htm)
 
@@ -145,21 +145,21 @@ Type BはXavier NXやJetson Nano B01の電源ボタンやLEDの接続ができ�
 [Jetson Nano Case (C) - Waveshare Wiki](https://www.waveshare.com/wiki/Jetson_Nano_Case_(C))
 
 
-![Metal Case Internal](/assets/images/2020/06/09/IMG_5104.jpg)
+![Metal Case Internal](/public/assets/images/2020/06/09/IMG_5104.jpg)
 
 4G拡張ボードを載せられるようにスペースが確保されているため、サイズは大きめ。
 内部には余裕があり、microSDカードはライザーアダプタを介して接続するようになっている。
 
-![Metal Case I/O Port](/assets/images/2020/06/09/IMG_5110.jpg)
+![Metal Case I/O Port](/public/assets/images/2020/06/09/IMG_5110.jpg)
 
 
-![Metal Case Top](/assets/images/2020/06/09/IMG_5106.jpg)
+![Metal Case Top](/public/assets/images/2020/06/09/IMG_5106.jpg)
 
 I/Oポートはぴったり設計。使う予定のない4G拡張ボード用の穴が開いてるのがちょっと残念。
 
-![Metal Case Button and SD Card slot](/assets/images/2020/06/09/IMG_1825.jpg)
+![Metal Case Button and SD Card slot](/public/assets/images/2020/06/09/IMG_1825.jpg)
 
-![Metal Case 40 pin header](/assets/images/2020/06/09/IMG_5112.jpg)
+![Metal Case 40 pin header](/public/assets/images/2020/06/09/IMG_5112.jpg)
 
 念願の電源ボタンとリセットボタン。押しやすくて感度も良好。
 ライザーケーブルと基板で横向きに出している40pinヘッダーには、ピン配置が書かれていて色々繋げて遊ぶときに便利そう。

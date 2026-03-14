@@ -30,7 +30,7 @@ image: "/assets/images/2021/09/22/IMG_2555.jpg"
 
 ### StationPC
 
-![stationpc p2](/assets/images/2021/09/22/IMG_2547.jpg)
+![stationpc p2](/public/assets/images/2021/09/22/IMG_2547.jpg)
 
 [**StationPC - More entertainment, more free creation**](https://www.stationpc.com/)
 
@@ -110,19 +110,19 @@ MIPI_CSI | MIPI-CSI2, 1×4-lane/2×2-lane@2.5Gbps/lane
 
 箱に入っているのは本体と薄い説明書とアンテナ他周辺パーツ。
 
-![stationpc p2](/assets/images/2021/09/22/IMG_2548.jpg)
-![stationpc p2](/assets/images/2021/09/22/IMG_2550.jpg)
+![stationpc p2](/public/assets/images/2021/09/22/IMG_2548.jpg)
+![stationpc p2](/public/assets/images/2021/09/22/IMG_2550.jpg)
 
 ### 外観
-![stationpc p2](/assets/images/2021/09/22/IMG_2551.jpg)
+![stationpc p2](/public/assets/images/2021/09/22/IMG_2551.jpg)
 
 長方形の本体の寸法はStation P2のサイトに記載がある通り、幅142mm高さ31.5mm奥行き89mmである。
 長辺がiPhone 12 Proの高さと同じくらい。短辺はクレジットカードの長辺と同じくらい。
 
 インターフェースも先に紹介した通り、とても豊富だ。
 
-![stationpc p2](/assets/images/2021/09/22/IMG_2554.jpg)
-![stationpc p2](/assets/images/2021/09/22/IMG_2555.jpg)
+![stationpc p2](/public/assets/images/2021/09/22/IMG_2554.jpg)
+![stationpc p2](/public/assets/images/2021/09/22/IMG_2555.jpg)
 
 ### 内装
 
@@ -130,9 +130,9 @@ MIPI_CSI | MIPI-CSI2, 1×4-lane/2×2-lane@2.5Gbps/lane
 裏蓋を外すとHDD/SSDトレイがお目見えする。ここは裏蓋を外さなくても取り付けられるようになっている。
 トレイを外すとROC-RK3568-PCのメインボードが現れる。これを固定しているネジを外し、天板に力強く張り付いている熱伝導シートを本体ごと温めてあげるとメインボードが取り外せた。
 
-![stationpc p2](/assets/images/2021/09/22/IMG_2556.jpg)
-![stationpc p2](/assets/images/2021/09/22/IMG_2557.jpg)
-![stationpc p2](/assets/images/2021/09/22/IMG_2560.jpg)
+![stationpc p2](/public/assets/images/2021/09/22/IMG_2556.jpg)
+![stationpc p2](/public/assets/images/2021/09/22/IMG_2557.jpg)
+![stationpc p2](/public/assets/images/2021/09/22/IMG_2560.jpg)
 
 ### NVMeとHDDの組み付け
 
@@ -143,8 +143,8 @@ NVMeスロットがあるので取り付けていく。Station P2なので[Cruci
 HDDはSeagateの[ST2000LX001](https://www.amazon.co.jp/Seagate-ST2000LX001-2-5%E3%82%A4%E3%83%B3%E3%83%81%E5%86%85%E8%94%B5SSHD-FireCuda%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA-SATA%E6%8E%A5%E7%B6%9A/dp/B01M1UQQT5?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&dchild=1&qid=1632234427&s=computers&sr=1-2&linkCode=sl1&tag=mzyy-22&linkId=a3d37b851b90ce780b16c11c96dd3ef6&language=ja_JP&ref_=as_li_ss_tl)を取り付ける。
 作業はとても簡単で、HDD/SSDトレイを付属の取り付けパーツを使って引き出し、2箇所ネジ止めして戻すだけで済む。NVMeを取り付けずHDDだけならば裏蓋のネジを外したりする必要もない。
 
-![stationpc p2](/assets/images/2021/09/22/IMG_2580.jpg)
-![stationpc p2](/assets/images/2021/09/22/IMG_2585.jpg)
+![stationpc p2](/public/assets/images/2021/09/22/IMG_2580.jpg)
+![stationpc p2](/public/assets/images/2021/09/22/IMG_2585.jpg)
 
 <a href="https://www.amazon.co.jp/gp/product/B099WNM519?ie=UTF8&psc=1&linkCode=li3&tag=mzyy-22&linkId=8be54a34fd3acf59be16ae36ad53c582&language=ja_JP&ref_=as_li_ss_il" target="_blank"><img border="0" src="https://m.media-amazon.com/images/I/61NYWVCOBML._SL500_.jpg" ></a>
 
@@ -165,7 +165,7 @@ HDDはSeagateの[ST2000LX001](https://www.amazon.co.jp/Seagate-ST2000LX001-2-5%E
 どのみちソフトウェア側で電波出力はオフにするのだが、ハードウェアとして出力がされない状態にしなければならないとのことだったので、ダミーロードを取り付ける。
 Station P2のアンテナ端子がSMAオスとなっていて、手持ちのダミーロード（SMAオス）は適合しないのでSMAメス⇄RP-SMAメスの変換アダプタを用意した。
 
-![stationpc p2](/assets/images/2021/09/22/IMG_2587.jpg)
+![stationpc p2](/public/assets/images/2021/09/22/IMG_2587.jpg)
 
 
 <a href="https://www.amazon.co.jp/%E5%A4%89%E6%8F%9B%E5%90%8D%E4%BA%BA-SMA%E3%82%A2%E3%83%B3%E3%83%86%E3%83%8A-RP-SMA-%E5%A4%89%E6%8F%9B%E3%82%A2%E3%83%80%E3%83%97%E3%82%BF-SMAJ-RPSMAP/dp/B005XXC8HW?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=2UYYPU8VPVGMR&dchild=1&qid=1632194397&sprefix=RP-SMA%28%5C%29+%E2%86%92+SMA%2Ccomputers%2C241&sr=8-12&linkCode=li3&tag=mzyy-22&linkId=165598a40b9b30675b7740f0b9ed34e2&language=ja_JP&ref_=as_li_ss_il" target="_blank"><img border="0" src="https://m.media-amazon.com/images/I/71PN+86l38L._SL500_.jpg" ></a>
@@ -182,20 +182,20 @@ Station P2のアンテナ端子がSMAオスとなっていて、手持ちのダ�
 
 ### StationOS
 
-![stationos](/assets/images/2021/09/22/stationos-main.png)
+![stationos](/public/assets/images/2021/09/22/stationos-main.png)
 
 
 買ってすぐの状態ではAndroidベースのStationOSがeMMCに焼き込まれているので、microSDカードが挿入されていない場合はStationOSが起動する。
 使い勝手は良いとは言えず、Google Playストアも搭載されていないので使い道に困るものだ。
 [ゴニョゴニョやる](https://bbs.stationpc.com/thread-195-1-1.html)ことでPlayストアが追加でき、やっと使えるかなと思えるスタート地点に立つ。
 
-![stationos applist](/assets/images/2021/09/22/stationos-applist.png)
+![stationos applist](/public/assets/images/2021/09/22/stationos-applist.png)
 
 #### Geekbench 5
 
 [Geekbench 5 - Google Play のアプリ](https://play.google.com/store/apps/details?id=com.primatelabs.geekbench5&hl=ja&gl=US)
 
-![stationos geekbench score](/assets/images/2021/09/22/stationos-geekbench-score.png)
+![stationos geekbench score](/public/assets/images/2021/09/22/stationos-geekbench-score.png)
 
 [Rockchip Station P2 - Geekbench Browser](https://browser.geekbench.com/v5/cpu/9714051)
 
@@ -214,14 +214,14 @@ Station P2のアンテナ端子がSMAオスとなっていて、手持ちのダ�
 StationOSはメディア再生に特化したOSとのことなので、保護されたコンテンツの再生に必要となるDRMも確認してみたが、L3 Widevineを搭載していた。
 一番低い保護レベルなので、試していないがプライムビデオ等でHD画質以上でコンテンツを視聴することはできない可能性が高い。
 
-![stationos drminfo](/assets/images/2021/09/22/stationos-drminfo.png)
+![stationos drminfo](/public/assets/images/2021/09/22/stationos-drminfo.png)
 
 StationOSの使い勝手はとても良いとは言えないので今後利用することはないと思うが、Androidが好きな人で操作性に慣れればPlayストアも使えるので利用価値はありそうだ。
 
 
 ### Ubuntu 18.04 LTS
 
-![ubuntu](/assets/images/2021/09/22/ubuntu-main.png)
+![ubuntu](/public/assets/images/2021/09/22/ubuntu-main.png)
 
 Station P2向けに用意されているOSはいくつかFireflyのダウンロードページに掲載されている。
 
@@ -232,7 +232,7 @@ Raspberry PiのようにmicroSDXCに焼き込み、TFカードスロットに挿
 
 SSHサーバーが起動しているのでmDNSで名前「firefly」を解決するか、DHCPで接続が確立されていればIPアドレスを探すなりして、ID・パスワード共にfireflyで端末に接続できる。
 
-![ubuntu ssh](/assets/images/2021/09/22/ubuntu-ssh.png)
+![ubuntu ssh](/public/assets/images/2021/09/22/ubuntu-ssh.png)
 
 #### NVMe速度ベンチマーク
 
@@ -241,7 +241,7 @@ SSHサーバーが起動しているのでmDNSで名前「firefly」を解決す
 
 [JonMagon/KDiskMark: A simple open-source disk benchmark tool for Linux distros](https://github.com/JonMagon/KDiskMark)
 
-![NVMe SpeedTest](/assets/images/2021/09/22/nvme-speedtest.png)
+![NVMe SpeedTest](/public/assets/images/2021/09/22/nvme-speedtest.png)
 
 Crucial P2の公称値は読み込み2300 MB/s、書き込み940 MB/sであるが、これはPCIe 3.0x4接続での値である。
 Station P2はPCIe 3.0x2接続なので、片方向あたり理論値2GB/sが上限となる。
@@ -250,7 +250,7 @@ Crucial P2の書き込み速度はカタログスペックを大きく上回る�
 
 ### Armbian for Station P2
 
-![Armbian](/assets/images/2021/09/22/armbian-ssh.png)
+![Armbian](/public/assets/images/2021/09/22/armbian-ssh.png)
 
 StationOSも公式イメージのUbuntu 18.04もサーバーやNAS用途には向かない。これではせっかくの大容量HDDやデュアルギガビットイーサネットが活かせないままだ。
 幸いにもFireflyの製品は充実したWikiとフォーラム、そしてブートローダーやカーネルヘッダーなどのソースコードが潤沢に用意されていて、自分でLinuxイメージをビルドする手順まで書かれている。
@@ -271,7 +271,7 @@ U-Bootの更新をしてArmbianのインストーラーである[`nand-sata-inst
 
 ## まとめ
 
-![stationp2 bootup](/assets/images/2021/09/22/stationp2-bootup.png)
+![stationp2 bootup](/public/assets/images/2021/09/22/stationp2-bootup.png)
 
 Armbianの起動もでき、遊ぶための土台が整った。
 

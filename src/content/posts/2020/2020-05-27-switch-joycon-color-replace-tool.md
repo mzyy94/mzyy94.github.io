@@ -16,7 +16,7 @@ image: "/assets/images/2020/05/27/joycon-purple.png"
 
 当時のSplatoon人気から、多くの人がスプラトゥーン2セットモデルを買い、遊ぶ人遊ぶ人全員が同じカラーのNintendo Switchを持っているなんてこともありました。本体から外してしまったら、もうどれが誰のJoy-Conだったかわからなくなります。
 
-![joycon splatoon color](/assets/images/2020/05/27/joycon-splatoon-color.jpg)
+![joycon splatoon color](/public/assets/images/2020/05/27/joycon-splatoon-color.jpg)
 
 そんなSplatoon 2も発売から2年を迎えるタイミングで[ファイナルフェス](https://twitter.com/SplatoonJP/status/1153138774395609089)が開催され、先週末に開催された本当に最後（？）の[おかわりフェス](https://twitter.com/SplatoonJP/status/1252767629124632577)も終わったことで、一旦節目を迎えました。
 
@@ -29,7 +29,7 @@ image: "/assets/images/2020/05/27/joycon-purple.png"
 
 Joy-Conは外装シェルと呼ばれるプラスチックの「ガワ」に色がついており、その色の違いで多くのバリエーションが展開されています。Splatoon 2カラーもこれらの組み合わせの一つです。
 
-![joycon list](/assets/images/2020/05/27/joycon-list.png)
+![joycon list](/public/assets/images/2020/05/27/joycon-list.png)
 
 出典: [周辺機器 \| Nintendo Switch｜任天堂](https://www.nintendo.co.jp/hardware/switch/accessories/index.html)
 
@@ -45,7 +45,7 @@ Joy-Conで失われていた十字キーを搭載するものもあり、価格�
 
 買いました。
 
-![new purple shell](/assets/images/2020/05/27/new-purple-shell.jpg)
+![new purple shell](/public/assets/images/2020/05/27/new-purple-shell.jpg)
 
 後から知ったんですが、販売元のMyriannはAmazon.co.jpでも展開してるっぽいので、数百円高くなりますがこっちの方が早く届くかもしれません。
 
@@ -58,7 +58,7 @@ Nintendoのハーウェアは簡単に開けられないよう、昔から特殊
 ゲームキューブの分解ではLHドライバーが必要になり、わざわざそのためだけに2,000円近くするドライバーを買った覚えがあります。
 Nintendo SwitchのJoy-Conはその点では難易度が下がり、精密ドライバーセットに含まれるY型2mmビットがあれば開けられました。
 
-![reassemble](/assets/images/2020/05/27/reassemble.jpg)
+![reassemble](/public/assets/images/2020/05/27/reassemble.jpg)
 
 両面テープでの貼り付けがなかなか剥がれなかったりと躓くところはあれど、順にネジを外し逆の要領で組み上げるだけで容易に交換できました。
 
@@ -66,7 +66,7 @@ Nintendo SwitchのJoy-Conはその点では難易度が下がり、精密ドラ�
 
 [ゲームボーイカラーのクリアパープル](https://upload.wikimedia.org/wikipedia/commons/7/76/Nintendo-Game-Boy-Color-FL.jpg)を思い出させる見た目に仕上がりました。
 
-![my new gear](/assets/images/2020/05/27/my-new-gear.jpg)
+![my new gear](/public/assets/images/2020/05/27/my-new-gear.jpg)
 
 外観はとても満足いく形になったものの、一つ問題が残ります。
 それはNintendo Switchのゲーム画面上での表示色との食い違いです。
@@ -95,7 +95,7 @@ APIは仕様と[Example](https://github.com/WICG/webhid/blob/8d80264b37124ca532b
 
 [https://mzyy94.com/joycon-toolweb/](https://www.mzyy94.com/joycon-toolweb/)
 
-![joycon-toolweb](/assets/images/2020/05/27/joycon-toolweb.png)
+![joycon-toolweb](/public/assets/images/2020/05/27/joycon-toolweb.png)
 
 [mzyy94/joycon-toolweb: Joy-Con and Pro Controller color modification tool](https://github.com/mzyy94/joycon-toolweb)
 
@@ -113,23 +113,23 @@ Joy-Con Tool(Web)で色を変えるには、予めmacOSやWindowsにJoy-ConをBl
 
 [【Switch】はじめて使用するコントローラーを、無線でSwitch本体に登録したい。](https://support.nintendo.co.jp/app/answers/detail/a_id/36558/)
 
-![bluetooth connect](/assets/images/2020/05/27/bluetooth-connect.png)
+![bluetooth connect](/public/assets/images/2020/05/27/bluetooth-connect.png)
 
 ### コントローラーの接続
 
 [Joy-Con Tool(Web)](https://www.mzyy94.com/joycon-toolweb/)をGoogle Chromeで開いて、"+ Add"を押すと、コントローラーの接続メニューが出てきます。
 
-![connect controller](/assets/images/2020/05/27/connect-controller.png)
+![connect controller](/public/assets/images/2020/05/27/connect-controller.png)
 
 色を変えたいJoy-Conを選ぶとChromeに接続され、コントローラー一覧に表示されます。
 
-![connected](/assets/images/2020/05/27/connected.png)
+![connected](/public/assets/images/2020/05/27/connected.png)
 
 ### 色の変更
 
 右側のSelect ~~のボタン（&lt;button&gt;ではない）を押すとカラーピッカーが出てくるので、好きな色を選ぶだけです。
 
-![select color](/assets/images/2020/05/27/select-color.png)
+![select color](/public/assets/images/2020/05/27/select-color.png)
 
 余談ですが、先日配信されたChrome 83から独自のカラーピッカーが実装されるようになり、システムのカラーピッカーで使えていたパレットへの色の保存や、色の抽出ができなくなったのがちょっと残念です。
 
@@ -138,13 +138,13 @@ Joy-Con Tool(Web)で色を変えるには、予めmacOSやWindowsにJoy-ConをBl
 好きな色を選んだら、Applyで書き込んでおしまいです。
 書き込むと出荷時の状態には戻せなくなるので、自己責任のもと行ってください。
 
-![apply color](/assets/images/2020/05/27/apply-color.png)
+![apply color](/public/assets/images/2020/05/27/apply-color.png)
 
 ブラウザを閉じて、Joy-ConをNintendo Switch本体に取り付ければ、選んだ色が反映されて最高の気分になれます。
 
-![my new gear2](/assets/images/2020/05/27/my-new-gear2.jpg)
+![my new gear2](/public/assets/images/2020/05/27/my-new-gear2.jpg)
 
-![screenshot](/assets/images/2020/05/27/screenshot.jpg)
+![screenshot](/public/assets/images/2020/05/27/screenshot.jpg)
 
 
 ## まとめ
@@ -153,4 +153,4 @@ Joy-Con Tool(Web)で色を変えるには、予めmacOSやWindowsにJoy-ConをBl
 
 ああ、どうぶつの森カラーのPro Controller発売されないかなぁ。
 
-![acnh-procon](/assets/images/2020/05/27/acnh-procon.png)
+![acnh-procon](/public/assets/images/2020/05/27/acnh-procon.png)

@@ -65,7 +65,7 @@ Three.jsは最近追加されたMMD Loaderによって、日本国内で多く�
 夕雲型駆逐艦MMDモデルを読み込み表示したところ、MMDモデルのカラー情報が適切に扱えてないようで、変なところに値がセットされてしまい、
 テクスチャのないところは艦の色が黒くなっているところが多くあります。
 
-![ship1](/assets/images/2016/12/24/ship1.png)
+![ship1](/public/assets/images/2016/12/24/ship1.png)
 
 また、MMDモデルは日本で多く利用されていることもあり、日本語ファイル名が<del>クソ文字エンコード</del>Shift_JISで記されていることから、
 内部のファイル読み込み処理をフックし、TextDecoder APIを用いて適切にファイル名を変換してあげる必要がありました。
@@ -73,11 +73,11 @@ Three.jsは最近追加されたMMD Loaderによって、日本国内で多く�
 [TextDecoder() - Web API インターフェイス \| MDN](https://developer.mozilla.org/ja/docs/Web/API/TextDecoder/TextDecoder)
 
 
-![ship2](/assets/images/2016/12/24/ship2.png)
+![ship2](/public/assets/images/2016/12/24/ship2.png)
 
 艦の色がおかしい点を除けば、さらさらと揺れる波の背景のおかげでそれらしく見えます。
 
-![ship3](/assets/images/2016/12/24/ship3.png)
+![ship3](/public/assets/images/2016/12/24/ship3.png)
 
 艦橋もしっかりとモデルが作り込まれていますね。
 
@@ -85,12 +85,12 @@ Three.jsは最近追加されたMMD Loaderによって、日本国内で多く�
 
 艦長においても、艦と同様にしてMMD LoaderによってWeb GLで表示させることができます。
 
-![misakiakeno1](/assets/images/2016/12/24/misakiakeno1.png)
+![misakiakeno1](/public/assets/images/2016/12/24/misakiakeno1.png)
 
 ボーンの位置が初期状態なので腕と足を広げたままですが、パラメタをいくつかいじったり、
 MMDのモーションデータをセットすることで、動きをつけることができます。
 
-![misakiakeno2](/assets/images/2016/12/24/misakiakeno2.png)
+![misakiakeno2](/public/assets/images/2016/12/24/misakiakeno2.png)
 
 さきほどの艦に乗せてあげると、より海を往きている感じが表現できます。
 

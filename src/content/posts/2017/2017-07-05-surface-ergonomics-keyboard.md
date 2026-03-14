@@ -74,7 +74,7 @@ Sculpt Ergonomic Keyboardのようなチープなキートップや「ッター�
 
 ## Surface Ergonomic Keyboard買った
 
-![Surface Ergonomic Keyboard](/assets/images/2017/07/05/keyboard.jpg)
+![Surface Ergonomic Keyboard](/public/assets/images/2017/07/05/keyboard.jpg)
 
 
 やっぱりテンキーがあるだけあって、でかいです。これは気にしなければいいことなので、気にしないことにしました。
@@ -84,7 +84,7 @@ ErgoDox EZのレビューを見ていてあこがれていたキーボード専�
 Amazon.co.jpで購入可能だったマウスパッドは、幅がちょうどMagic Trackpad 2の横幅と同じ160ｍｍ。
 ジャストサイズだったので置いた時の見た目がとても美しく、肌触りもよくとても快適に作業できるようになりました。
 
-![Alcantara MousePad](/assets/images/2017/07/05/mousepad.jpg)
+![Alcantara MousePad](/public/assets/images/2017/07/05/mousepad.jpg)
 
 [Amazon \| OMP08 - Torino マウスパッド エクセーヌ アルカンターラ スエードタッチ グレー \| マウスパッド \| パソコン・周辺機器 通販](https://www.amazon.co.jp/OMP08-Torino-%E3%83%9E%E3%82%A6%E3%82%B9%E3%83%91%E3%83%83%E3%83%89-%E3%82%A2%E3%83%AB%E3%82%AB%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%A9-%E3%82%B9%E3%82%A8%E3%83%BC%E3%83%89%E3%82%BF%E3%83%83%E3%83%81/dp/B017CT9GT2/ref=as_li_ss_tl?ie=UTF8&qid=1499255720&sr=8-3&keywords=%E3%82%A2%E3%83%AB%E3%82%AB%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%A9+%E3%83%9E%E3%82%A6%E3%82%B9%E3%83%91%E3%83%83%E3%83%89&linkCode=ll1&tag=mzyy-22&linkId=e9d4a609d95edc873c10060d976e847c)
 
@@ -93,7 +93,7 @@ Amazon.co.jpで購入可能だったマウスパッドは、幅がちょうどMa
 Fnキーとの同時押しをしなくてもよく、Functionキーとしての使用するようにしている場合は小さくLEDが点灯するのも、接続状態の確認も兼ねられるのでちょっとしたお気に入りポイントです。
 1か月間使用してみて、自然な膨らみのあるカーブのおかげで、脇を閉め窮屈に肩を縮めてタイプする必要もなくなり、肩こりを感じなくなりました。
 
-![Fn key illumination](/assets/images/2017/07/05/fn_key.jpg)
+![Fn key illumination](/public/assets/images/2017/07/05/fn_key.jpg)
 
 ## BLE接続トラブル
 
@@ -260,7 +260,7 @@ macOSでは、以下のように認識されました。
 昨年1月に4Kディスプレイを導入し作業環境の拡大を行い、今年1月にFull HDディスプレイを追加して広大な作業場を確保しました。
 そして今回キーボードを新調して理想の作業環境を手に入れることができました。
 
-![Desktop](/assets/images/2017/07/05/desktop.jpg)
+![Desktop](/public/assets/images/2017/07/05/desktop.jpg)
 
 正面のディスプレイは[去年1月に紹介した](../2016/2016-01-10-42inch-4k-display.md) [WASABI MANGO UHD420 REAL 4K HDMI 2.0](https://www.amazon.co.jp/s/ref=as_li_ss_tl?sf=qz&rh=i:computers,k:WASABI+MANGO+REAL+4K&keywords=WASABI+MANGO+REAL+4K&unfiltered=1&ie=UTF8&qid=1499256622&linkCode=ll2&tag=mzyy-22&linkId=3410f241625cc0e0a746caa5bac537e5)、
 右の縦置きFull HDディスプレイは[Philips 25型 257E7QDSB/11](https://www.amazon.co.jp/Philips-25%E5%9E%8B%E3%83%AF%E3%82%A4%E3%83%89%E6%B6%B2%E6%99%B6%E3%83%87%E3%82%A3%E3%82%B9%E3%83%97%E3%83%AC%E3%82%A4-AH-IPS%E3%83%91%E3%83%8D%E3%83%AB-257E7QDSB-11/dp/B0109FQXME/ref=as_li_ss_tl?ie=UTF8&qid=1499256789&sr=8-1&keywords=B0109FQXME&linkCode=ll1&tag=mzyy-22&linkId=ecb36ae178e02442a770dc90f93569bf)です。

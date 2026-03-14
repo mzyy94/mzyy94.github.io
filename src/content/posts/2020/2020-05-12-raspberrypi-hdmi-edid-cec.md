@@ -156,7 +156,7 @@ Raspbianには`tvservice`コマンドが標準で用意されており、HDMI接
 Raspberry Pi起動後に接続したディスプレイに対しては、`-d`（ダンプEDID）オプション以外動いてくれません。
 まあ`-d`オプションが動いてくれれば目的のEDIDのダンプは取れるので、十分です。
   
-![tvservice help](/assets/images/2020/05/12/tvservice-help.png)
+![tvservice help](/public/assets/images/2020/05/12/tvservice-help.png)
 
 <!--
 ```
@@ -192,7 +192,7 @@ Written 256 bytes to /tmp/edid.bin
 出力したEDIDファイルは、以下のようになっています。
 これだけ見るとなんのこっちゃわかりませんね。
 
-![edid dump](/assets/images/2020/05/12/edid-dump.png)
+![edid dump](/public/assets/images/2020/05/12/edid-dump.png)
 
 
 <!--```
@@ -370,7 +370,7 @@ echo "scan" | cec-client -d 1 -s
 同じディスプレイに繋がっていて、CECの疎通ができるデバイスの一覧を`scan`コマンドで列挙できます。
 認識されているデバイスを確認することができます。
 
-![list of hdmi devices](/assets/images/2020/05/12/list-of-devices.png)
+![list of hdmi devices](/public/assets/images/2020/05/12/list-of-devices.png)
 
 <!--
 ```
@@ -476,7 +476,7 @@ cec-client -m
 流れているCECフレームを監視できます。
 監視中にリモコンでテレビの画面を消してみました。
 
-![monitor cec of standby tv](/assets/images/2020/05/12/monitor-cec.png)
+![monitor cec of standby tv](/public/assets/images/2020/05/12/monitor-cec.png)
 
 
 **>> 0f:36** とトラフィックが流れてきているのがログに現れています。
@@ -502,7 +502,7 @@ echo "tx 10:04" | cec-client -d 1 -s
 そんな時に役に立つのが、CECフレームパーサ・ジェネレーターWebアプリケーションの[CEC-O-MATIC](http://www.cec-o-matic.com/)。
 先ほどの監視したフレームのトラフィックもパースできます。
 
-![cec-o-matic](/assets/images/2020/05/12/cec-o-matic.png)
+![cec-o-matic](/public/assets/images/2020/05/12/cec-o-matic.png)
 
 **10:04**を送ってみました。
 

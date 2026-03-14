@@ -36,17 +36,17 @@ Releaseのページからダウンロードして設定のアドオンからzip�
 ### 使い方
 利用方法は、Kodiトップにあるビデオメニューの中のビデオアドオンからChinachu clientを起動するだけです。
 
-![Launch Chinachu client](/assets/images/2015/02/24/launch-chinachu-client.png)
+![Launch Chinachu client](/public/assets/images/2015/02/24/launch-chinachu-client.png)
 
 一覧の動画を選択した状態で右クリックを押すかメニューを表示すると、メニュー中に削除の項目があります。
 これを選択すると、確認ダイアログ表示の後、Chinachuで管理されている__録画ファイルと録画情報の両方を削除__します。
 キャンセルはできないのでご注意を。
 
-![File deletion](/assets/images/2015/02/24/deletion-dialog.png)
+![File deletion](/public/assets/images/2015/02/24/deletion-dialog.png)
 
 ### 設定
 
-![Configuratoin window](/assets/images/2015/02/24/configuration-window.png)
+![Configuratoin window](/public/assets/images/2015/02/24/configuration-window.png)
 
 
 Chinachu clientには幾つか設定を設けてあります。
@@ -54,7 +54,7 @@ Chinachu clientには幾つか設定を設けてあります。
 #### 基本
 基本となるChinachuのURLの設定は必須です。Chinachu-WUIのAPIを叩くので、プロトコルとポート番号を含めたURLを設定してください。
 
-![General configuratoin](/assets/images/2015/02/24/general-configuration.png)
+![General configuratoin](/public/assets/images/2015/02/24/general-configuration.png)
 
 #### ストリーミング
 ストリーミングカテゴリにはChinachu WUIでストリーミングする際に指定するものと同じ感覚で設定してください。
@@ -84,11 +84,11 @@ avconvで生成している都合上、取得には時間がかかるので必�
 こんなかんじです。
 スキンは一番上はConfluenceで他はTitanです。
 
-![Preview1](/assets/images/2015/02/24/preview1.png)
-![Preview2](/assets/images/2015/02/24/preview2.png)
-![Preview3](/assets/images/2015/02/24/preview3.png)
-![Preview4](/assets/images/2015/02/24/preview4.png)
-![Preview5](/assets/images/2015/02/24/preview5.png)
+![Preview1](/public/assets/images/2015/02/24/preview1.png)
+![Preview2](/public/assets/images/2015/02/24/preview2.png)
+![Preview3](/public/assets/images/2015/02/24/preview3.png)
+![Preview4](/public/assets/images/2015/02/24/preview4.png)
+![Preview5](/public/assets/images/2015/02/24/preview5.png)
 
 
 ## まとめ

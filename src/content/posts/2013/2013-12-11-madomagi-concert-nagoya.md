@@ -15,10 +15,10 @@ image: "/assets/images/2013/12/11/madomagi-concert-nagoya.jpg"
 
 
 ## 会場
-![alt](/assets/images/2013/12/11/madocon-1.jpg)
-![alt](/assets/images/2013/12/11/madocon-2.jpg)
-![alt](/assets/images/2013/12/11/madocon-3.jpg)
-![alt](/assets/images/2013/12/11/madocon-4.jpg)
+![alt](/public/assets/images/2013/12/11/madocon-1.jpg)
+![alt](/public/assets/images/2013/12/11/madocon-2.jpg)
+![alt](/public/assets/images/2013/12/11/madocon-3.jpg)
+![alt](/public/assets/images/2013/12/11/madocon-4.jpg)
 
 名古屋公演は[愛知芸術文化センター](http://www.aac.pref.aichi.jp/)内の[愛知芸術劇場](http://www.aac.pref.aichi.jp/gekijyo/)5階、[コンサートホール](http://www.aac.pref.aichi.jp/gekijyo/c_hole.html)にて開催されました。
 栄駅降りてすぐのところで、開場1時間前には辺りも暗くなり、隣接するオアシス２１とテレビ塔が綺麗に光り輝いていました。
@@ -62,10 +62,10 @@ image: "/assets/images/2013/12/11/madomagi-concert-nagoya.jpg"
 せっかくなのでパンフレットと、会場入りする前の水分補給として十六茶を購入しました。
 
 
-![alt](/assets/images/2013/12/11/madocon-5.jpg)
-![alt](/assets/images/2013/12/11/madocon-6.jpg)
-![alt](/assets/images/2013/12/11/madocon-7.jpg)
-![alt](/assets/images/2013/12/11/madocon-8.jpg)
+![alt](/public/assets/images/2013/12/11/madocon-5.jpg)
+![alt](/public/assets/images/2013/12/11/madocon-6.jpg)
+![alt](/public/assets/images/2013/12/11/madocon-7.jpg)
+![alt](/public/assets/images/2013/12/11/madocon-8.jpg)
 
 ## ホール内
 名古屋公演の特別演出として、他の会場にはない【スクリーン・コンサート形式】という演出をすると[公式サイト](http://www.aim-vil.com/sponsor/madoka-concert/12-11-%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%85%AC%E6%BC%94/)に記載がありました。

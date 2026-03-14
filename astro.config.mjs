@@ -12,7 +12,7 @@ import sharp from "sharp";
 import { visit } from "unist-util-visit";
 import config from "./src/config/config.json";
 import theme from "./src/config/theme.json";
-import { remarkGfmAlerts } from "./src/lib/utils/remarkCustomize";
+import { remarkGfmAlerts, remarkStripPublicPrefix } from "./src/lib/utils/remarkCustomize";
 
 // Helper to parse font string format: "FontName:wght@400;500;600;700"
 function parseFontString(fontStr) {
@@ -90,6 +90,7 @@ export default defineConfig({
   markdown: {
     remarkPlugins: [
       remarkGfmAlerts,
+      remarkStripPublicPrefix,
       resolveRelativeMd,
       remarkEmoji,
       [remarkToc, { heading: "目次", tight: true, ordered: true }],

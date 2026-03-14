@@ -1,4 +1,5 @@
 
+import type { Image, Root } from "mdast";
 import { visit } from "unist-util-visit";
 
 export const remarkGfmAlerts = () => {
@@ -49,6 +50,16 @@ export const remarkGfmAlerts = () => {
         ],
         children: node.children,
       };
+    });
+  };
+};
+
+export const remarkStripPublicPrefix = () => {
+  return (tree: Root) => {
+    visit(tree, "image", (node: Image) => {
+      if (node.url?.startsWith("/public/")) {
+        node.url = node.url.slice("/public".length);
+      }
     });
   };
 };

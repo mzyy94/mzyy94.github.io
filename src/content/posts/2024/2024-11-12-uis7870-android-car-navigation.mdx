@@ -27,7 +27,7 @@ image: "/assets/images/2024/11/12/top.jpg"
 
 ## 新モデルスペック
 
-![トップ画](/assets/images/2024/11/12/top.jpg)
+![トップ画](/public/assets/images/2024/11/12/top.jpg)
 
 [カーマルチメディアプレーヤー,カーラジオ,Android 13, 5g,wifi,CarPlay,GPS,dsp,mp5,Bluetooth,uis7870,8コア,12 256g - AliExpress 34](https://s.click.aliexpress.com/e/_DeSEyFj)
 
@@ -71,7 +71,7 @@ SoCの性能を支えるためにメモリ容量も最低6GBからとなり、�
 
 ## 新SoC UIS7870
 
-![cpu-z](/assets/images/2024/11/12/cpu-z.png)
+![cpu-z](/public/assets/images/2024/11/12/cpu-z.png)
 
 UIS7870の型番で調べるとUnisoc公式のA7870製品紹介ページが見つかりました。
 
@@ -127,11 +127,11 @@ AliExpressや海外フォーラムなどで調べてみたところ、UIS7870製
 この背面ポートにはコネクタがいくつかあり、電源やスピーカーなどのハーネスケーブルを差し込んでそれぞれの配線を取り出す形になっています。
 本体中央にはUSB Type-Cポートがあり、USB 3.2 Gen1で高速・高電力な機器の接続ができるようになっています。
 
-![背面ポート](/assets/images/2024/11/12/rear.jpg)
+![背面ポート](/public/assets/images/2024/11/12/rear.jpg)
 
 正面はフレーム目一杯に広がる2000x1200のIPSパネルとマイク穴があるのみ。正面から見ただけでは中華Androidタブレットと言われても疑う余地がないほどです。
 
-![正面パネル](/assets/images/2024/11/12/front.jpg)
+![正面パネル](/public/assets/images/2024/11/12/front.jpg)
 
 
 ## 動作の確認
@@ -140,28 +140,28 @@ AliExpressや海外フォーラムなどで調べてみたところ、UIS7870製
 
 ### ホーム画面
 
-![homescreen.png](/assets/images/2024/11/12/homescreen.png)
+![homescreen.png](/public/assets/images/2024/11/12/homescreen.png)
 
 中華ナビの標準ランチャーにしてはリッチな見た目となり、右上に任意のアプリを起動できるエリアが設けられています（初期設定ではGoogle Mapが起動）。
 
 
-![subscreen.png](/assets/images/2024/11/12/subscreen.png)
+![subscreen.png](/public/assets/images/2024/11/12/subscreen.png)
 
 ホーム画面をスワイプして左側に移動すると、GPSを元にした車速や進行方向を表示するUIが出てきました。
 
-![applist.png](/assets/images/2024/11/12/applist.png)
+![applist.png](/public/assets/images/2024/11/12/applist.png)
 
 搭載アプリはPlayストアをはじめとするG系アプリと車関連の設定アプリに加え、Toppalなる謎サービスが勝手に起動するようになっています。Apple CarPlay/Android Autoを接続・表示するアプリは中華ナビお馴染みのCar Linkが搭載されていました。
 
 ### 設定画面
 
-![settings.png](/assets/images/2024/11/12/settings.png)
+![settings.png](/public/assets/images/2024/11/12/settings.png)
 
 雰囲気は変わったものの、これまでの中華ナビと構成は変わらず。Factory項目にはロックがかかっているものの、これまで通り3368で突破できました。
 
 #### デバイス情報
 
-![device-info.png](/assets/images/2024/11/12/device-info.png)
+![device-info.png](/public/assets/images/2024/11/12/device-info.png)
 
 設定画面でAndroid 13搭載と書かれているのはフェイクであることが多い中華ナビの世界。なので鵜呑みにできないですが、後述する通りちゃんとAndroid 13が搭載されていました。
 
@@ -170,7 +170,7 @@ AliExpressや海外フォーラムなどで調べてみたところ、UIS7870製
 UIS7862と比べてCPUとGPUの処理能力が向上したことによって、応答性とタップ遅延が大幅に改善していました。
 性能向上と2000x1200高解像度パネル(比率5:3)とが掛け合わさり、CarPlayの画面が1800x1080(5:3)の高解像度で描画されるため、Apple Mapを高域にしても細かい道路が表示されるのはかなり嬉しいポイント。
 
-![carplay.png](/assets/images/2024/11/12/carplay.png)
+![carplay.png](/public/assets/images/2024/11/12/carplay.png)
 
 ### DRM
 
@@ -179,7 +179,7 @@ UIS7862と比べてCPUとGPUの処理能力が向上したことによって、�
 
 [DRM Info](https://play.google.com/store/apps/details?id=com.androidfung.drminfo&hl=ja)アプリを使って調べてみたところ、ClearKeyとL3 Widevineが搭載されていることが確認できました。
 
-![drminfo.png](/assets/images/2024/11/12/drminfo.png)
+![drminfo.png](/public/assets/images/2024/11/12/drminfo.png)
 
 NetflixやプライムビデオではL1 Widevineが搭載されていない端末ではHD画質のコンテンツを視聴できないため、インストールはできても480pの低画質動画しか見られません。残念。
 
@@ -191,7 +191,7 @@ NetflixやプライムビデオではL1 Widevineが搭載されていない端�
 
 みんな大好きベンチマーク。今回はGeekbench 6でベンチマークを取ってみました。バージョンが違うので比較はできませんが、旧モデルの結果を小さく後に載せています。
 
-![geekbench.png](/assets/images/2024/11/12/geekbench.png)
+![geekbench.png](/public/assets/images/2024/11/12/geekbench.png)
 <img alt="geekbench.png" width="640" style="width: 75%" src="/assets/images/2021/02/04/geekbench.png" />
 
 <details>
@@ -203,17 +203,17 @@ NetflixやプライムビデオではL1 Widevineが搭載されていない端�
 
 Antutuベンチーマークも走らせてみようと試みたものの、開始ボタンを押した後に出るダイアログが押せない位置に表示されてしまってスタートできずでした。
 
-![antutu.png](/assets/images/2024/11/12/antutu.png)
+![antutu.png](/public/assets/images/2024/11/12/antutu.png)
 
 ## 他社製ファームウェア
 
 ハードウェアがほぼ共通で差別化の難しい中華ナビが生き抜くため、ソフトウェアに力を入れるブランドがいくつかあります。例えばDUDU7は独自にファームウェアをカスタマイズしたDUDU OSを搭載しており、豊富な機能と美しいUIで頭一つ抜けた存在になっています。
 
-![duduos-1.png](/assets/images/2024/11/12/duduos-1.png)
+![duduos-1.png](/public/assets/images/2024/11/12/duduos-1.png)
 
 UIS7870向けに作られているのでDUDU7以外のUIS7870中華ナビでも動作するだろうと高を括り、[公開されているファームウェア](https://forum.dudu-auto.com/t/dudu-os)を焼いてみました。無事に起動して初期セットアップも完了したものの、製造元不一致の警告が出たり動作が制限されていたりと、第三者利用への対策が取られている様子でした。
 
-![duduos-2.png](/assets/images/2024/11/12/duduos-2.png)
+![duduos-2.png](/public/assets/images/2024/11/12/duduos-2.png)
 
 CarPlayをメインに使うので見た目や機能にこだわりはないですが、Androidカーナビとして使いたい人はソフトウェアに関しても注目して中華ナビを選ぶ必要があります。
 

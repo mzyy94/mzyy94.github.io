@@ -28,9 +28,9 @@ Shapewaysのステンレススチールプリントはバインダージェッ�
 その特徴を生かして、前回紹介したステンレススチールのラッキービーストに細かい模様を施すことにしました。
 アクセサリーとして機能するようにチェーンやストラップをつけるための内径3mmのトーラスとシルバー925であることを主張する「925」の刻印、そして後述する”石”を受けるための穴をあけました。
 
-![torus](/assets/images/2017/05/24/torus.png)
-![silver 925 sign](/assets/images/2017/05/24/925sign.png)
-![stone hole](/assets/images/2017/05/24/stone-hole.png)
+![torus](/public/assets/images/2017/05/24/torus.png)
+![silver 925 sign](/public/assets/images/2017/05/24/925sign.png)
+![stone hole](/public/assets/images/2017/05/24/stone-hole.png)
 
 
 ### 謎のリジェクトと消える割引
@@ -54,7 +54,7 @@ Shapewaysのステンレススチールプリントはバインダージェッ�
 > Find additional information in the attached image.
 > 
 > 
-> ![reject info](/assets/images/2017/05/24/reject-info.jpg)
+> ![reject info](/public/assets/images/2017/05/24/reject-info.jpg)
 
 耳の先やベルトの角などがエッジが再現できないとのことらしいです。
 ステンレスでも印刷できるんだったらそのままでいいから印刷してと申したところ、キャンセルしちゃったから再注文してねとの返答がありました。
@@ -66,14 +66,14 @@ Shapewaysのステンレススチールプリントはバインダージェッ�
 
 同じモデルデータで"Just do it, please."の添え字をしただけでそのまま印刷が進み、ステンレススチールの造形と同じくして出荷されました。そして届いたのがこちらです。
 
-![jewelry pouch](/assets/images/2017/05/24/jewelry-pouch.jpg)
-![luckybeast](/assets/images/2017/05/24/luckybeast.jpg)
+![jewelry pouch](/public/assets/images/2017/05/24/jewelry-pouch.jpg)
+![luckybeast](/public/assets/images/2017/05/24/luckybeast.jpg)
 
 写真で見る以上に、実物はシルバーの鏡面反射が驚くほど美しいです。
 925の刻印もしっかりと判別でき、加えてShapewaysによる925であることを表すプリントもされており、光沢もしっかりしていて、期待以上の仕上がりです。
 
-![925](/assets/images/2017/05/24/925.jpg)
-![925print](/assets/images/2017/05/24/925print.jpg)
+![925](/public/assets/images/2017/05/24/925.jpg)
+![925print](/public/assets/images/2017/05/24/925print.jpg)
 
 
 ストラップ用につけたトーラスは直径が均一ではなく、内径が小さくなっていましたが、強度には問題なさそうです。
@@ -105,7 +105,7 @@ Shapewaysのステンレススチールプリントはバインダージェッ�
 空けた穴のサイズから、0.02カラットが適切だと考えていたのですが、該当するサイズのダイヤモンドが見つからなかったので0.01カラットのものを調達しました。
 米粒よりも小さいながら、しっかりとカットが入っており、様々な角度から光が当たることで輝く美しい品でした。
 
-![diamond](/assets/images/2017/05/24/diamond.jpg)
+![diamond](/public/assets/images/2017/05/24/diamond.jpg)
 
 ### ジュエリー接着剤
 
@@ -120,8 +120,8 @@ Shapewaysのステンレススチールプリントはバインダージェッ�
 穴に接着剤を流し込み、ダイヤモンドを装着し硬化させること丸2日間。
 ロブスター金具の受け側を潰してトーラスの中を通し、チェーンが通ったら元のサイズまで広げて完成です。
 
-![joined](/assets/images/2017/05/24/joined.jpg)
-![chained](/assets/images/2017/05/24/chained.jpg)
+![joined](/public/assets/images/2017/05/24/joined.jpg)
+![chained](/public/assets/images/2017/05/24/chained.jpg)
 
 ### 価格
 

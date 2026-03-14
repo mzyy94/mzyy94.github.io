@@ -214,7 +214,7 @@ Raspbianでは、dwc2モジュールをロードしておくため、/boot/confi
 Raspberry Pi 4をUSB 2.0 Type-CケーブルでmacOSにつなげた状態でこれを実行すると、以下のようにPro Controllerっぽく認識してくれます。
 そしてRaspberry Pi側には、**/dev/hidg0** といったスペシャルファイルが出来上がります。
 
-![macOS USB Pro Controller detected](/assets/images/2020/03/20/macos-usb-info.png)
+![macOS USB Pro Controller detected](/public/assets/images/2020/03/20/macos-usb-info.png)
 
 あとは、**/dev/hidg0** に書き込むデータを準備するまでです。
 
@@ -226,7 +226,7 @@ Raspberry Pi 4をUSB 2.0 Type-CケーブルでmacOSにつなげた状態でこ�
 macOSで手軽にコントローラーの挙動を調査する方法として、パッと思いついたのがHTML5の[Gamepad API](https://developer.mozilla.org/ja/docs/Web/API/Gamepad_API)。
 モダンブラウザではHTML5 APIの一つとしてGamepad APIをサポートしているので、[HTML5 Gamepad Tester](https://html5gamepad.com/)でみてみました。
 
-![chrome screen shot](/assets/images/2020/03/20/html5gamepad-chrome.png)
+![chrome screen shot](/public/assets/images/2020/03/20/html5gamepad-chrome.png)
 
 ChromeではちゃんとGamepad APIで認識しているようです。
 
@@ -241,7 +241,7 @@ macOSではいとも簡単にUSBデバイスキャプチャができるので、
 
 USBケーブルを繋げてすぐにMacとPro Controllerが通信を始め、しばらくの手続きののちに、入力データらしき物を返し続けるようになりました。
 
-![wireshark screen shot](/assets/images/2020/03/20/wireshark-pro-con-capture.png)
+![wireshark screen shot](/public/assets/images/2020/03/20/wireshark-pro-con-capture.png)
 
 このとき通信を行っていたのはGoogle Chromeで、Gamepad APIの初期化をUSBデバイス認識時に行っているようでした。
 
@@ -326,7 +326,7 @@ Bits | Usage | Description |
 
 Chromeで[HTML5 Gamepad Tester](https://html5gamepad.com/)をみたときは左右のJoyスティックの座標を正しく認識していましたが、この状態でSafariでも見てみるとどうでしょう。
 
-![safari screen shot](/assets/images/2020/03/20/html5gamepad-safari.png)
+![safari screen shot](/public/assets/images/2020/03/20/html5gamepad-safari.png)
 
 Joyスティックは正しく表示されない上に、何も操作していなくてもボタンが押されているような挙動をしています。
 
@@ -371,7 +371,7 @@ UART要求に関しては、11バイト目から[Nintendo_Switch_Reverse_Enginee
 
 次のようにRaspberry Pi 4とNintendo Switch、そしてPro Controllerを配線します。
 
-![bypass pro controller](/assets/images/2020/03/20/bypass-pro-controller.jpg)
+![bypass pro controller](/public/assets/images/2020/03/20/bypass-pro-controller.jpg)
 
 Raspberry Pi 4には、ヒートシンク機能付きケースを付けてあります。
 数あるヒートシンク機能付きケースの中でも、HATを固定できるねじ穴が上に出てるのがこの製品にした決め手です。
@@ -551,7 +551,7 @@ Pro Controllerからのボタンの入力データは、**`08 04` Enable USB HID
 
 [1.3inch IPS LCD display HAT for Raspberry Pi, 240x240 pixels, SPI interface](https://www.waveshare.com/1.3inch-lcd-hat.htm)
 
-![connect Raspberry Pi to Switch](/assets/images/2020/03/20/connect-pi-to-switch.jpg)
+![connect Raspberry Pi to Switch](/public/assets/images/2020/03/20/connect-pi-to-switch.jpg)
 
 パッドの上下左右の入力はそのまま十字キーへ、押し込みを+、KEY1,KEY2,KEY3を順にA,B,Homeに割り当てます。
 ついでにコントローラーの色を変えられるっぽかったので、Raspberry Piカラーにしてみました。
@@ -561,7 +561,7 @@ Pro Controllerからのボタンの入力データは、**`08 04` Enable USB HID
 
 動かしてみると、期待通りちゃんとコントローラーとして認識され、操作できました。
 
-![Input from Raspberry Pi](/assets/images/2020/03/20/raspberry-pi-lcd-hat-input.jpg)
+![Input from Raspberry Pi](/public/assets/images/2020/03/20/raspberry-pi-lcd-hat-input.jpg)
 
 
 ### スマホからの入力

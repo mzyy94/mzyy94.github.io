@@ -20,13 +20,13 @@ Raspberry Piでのメディアセンター用途で代表的なのは[Raspbmc](h
 
 ## OSMCインストール
 
-![OSMC Installer](/assets/images/2015/02/16/osmc-installer.png)
+![OSMC Installer](/public/assets/images/2015/02/16/osmc-installer.png)
 
 OSMCは[https://osmc.tv/download/](https://osmc.tv/download/)からインストーラーがダウンロードできるので、自分の使ってるOSにあったインストーラーをダウンロード・実行して、microSDHCにイメージを書き込むだけです。2015/2/16時点での最新版であるAlpha 4をインストールしました。
 
 ## 日本語化
 
-![OSMC main menu](/assets/images/2015/02/16/osmc-mainmenu.png)
+![OSMC main menu](/public/assets/images/2015/02/16/osmc-mainmenu.png)
 
 起動するとこんな感じです。OSMCテーマ標準のフォントは流行りのLightなウェイトを持つRobotoとOpenSansが利用されているため、もちろんのこと日本語は表示できません。
 テーマのデザインを損ねることなく、日本語でも美しい細字のフォントで表示したく思い、[M+ FONT](http://mplus-fonts.sourceforge.jp/mplus-outline-fonts/index.html)を利用することにしました。
@@ -44,7 +44,7 @@ OSMCへはSSHで（USER/PASSともに`osmc`）ログインしてください。�
 
 （本当は日本語化したくてやったんじゃなく、次の記事で紹介する地デジの番組表情報が表示されるようにするために日本語フォントが必要で導入したので、表示確認後英語表記に戻しました。）
 
-![OSMC JP](/assets/images/2015/02/16/osmc-mainmenu-jp.png)
+![OSMC JP](/public/assets/images/2015/02/16/osmc-mainmenu-jp.png)
 
 
 ## MPEG-2ライセンス購入

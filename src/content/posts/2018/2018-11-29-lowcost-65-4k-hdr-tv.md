@@ -66,7 +66,7 @@ Apple TV 4Kがあるのでテレビ以上の付加機能はいらないのでち
 
 ### 外観
 
-![外観](/assets/images/2018/11/29/P1021487.JPG)
+![外観](/public/assets/images/2018/11/29/P1021487.JPG)
 
 
 でかい。左下のApple TV 4Kが小さく見える（実際小さい）。
@@ -87,7 +87,7 @@ Apple TV 4Kがあるのでテレビ以上の付加機能はいらないのでち
 
 低価格4Kではまず最初にコストカットされる点であるRGBサブピクセル。白い画像を表示させて撮影し、ピクセルが見えるまで拡大したのが以下。
 
-![rgbw subpixels](/assets/images/2018/11/29/P1021429.JPG)
+![rgbw subpixels](/public/assets/images/2018/11/29/P1021429.JPG)
 
 
 予想通りRGBWなので妥協点。
@@ -98,7 +98,7 @@ Apple TV 4Kがあるのでテレビ以上の付加機能はいらないのでち
 
 白(#ffffff)を一面に表示した状態を撮影した。
 
-![white test](/assets/images/2018/11/29/P1021467.JPG)
+![white test](/public/assets/images/2018/11/29/P1021467.JPG)
 
 直下型LEDを搭載しているだけあって、エッジ型のような中心が暗くなるような明るさのムラは出ていない。ただ、お世辞にも素晴らしいとはいえない。
 
@@ -110,19 +110,19 @@ Apple TV 4Kがあるのでテレビ以上の付加機能はいらないのでち
 
 まず[Test Card ╌ vah.dy.fi](http://vah.dy.fi/testcard/)のテストチャートをダウンロードして表示させたものを撮影した。
 
-![Test Card ╌ vah.dy.fi test](/assets/images/2018/11/29/P1021464.JPG)
+![Test Card ╌ vah.dy.fi test](/public/assets/images/2018/11/29/P1021464.JPG)
 
 目立つ色ムラはなさそう。
 
 続いて[Our definitive guide to the perfect TV picture set... - Sony](https://community.sony.co.uk/t5/how-tos-faqs-tvs-home-cinema/our-definitive-guide-to-the-perfect-tv-picture-settings/ba-p/1968909)のテストチャートも試してみた。
 
-![sony community test chart test](/assets/images/2018/11/29/P1021465.JPG)
+![sony community test chart test](/public/assets/images/2018/11/29/P1021465.JPG)
 
 若干色調にあやしいところがある様子。
 
 あとはRTINGS.comが[Gradients on TVs: Color bit depth - RTINGS.com](https://www.rtings.com/tv/tests/picture-quality/gradient)でテストしてるグラデーションテストの画像を表示させてみた。
 
-![RTINGS.com gradient test](/assets/images/2018/11/29/P1021466.JPG)
+![RTINGS.com gradient test](/public/assets/images/2018/11/29/P1021466.JPG)
 
 目で見てわかる帯はなく、きめ細やかな階調をしてるが、RGBWなので間近で見ると鮮明さには欠けている。
 
@@ -187,7 +187,7 @@ HDRの方が白飛びが少なく、Kカラーのダイヤモンドがわずか�
 
 **4K@30**
 
-![30fps delay test](/assets/images/2018/11/29/P1021450.JPG)
+![30fps delay test](/public/assets/images/2018/11/29/P1021450.JPG)
 
 5回計測して平均は126.4msec。
 
@@ -195,7 +195,7 @@ HDRの方が白飛びが少なく、Kカラーのダイヤモンドがわずか�
 
 **1080p@60**
 
-![60fps delay test](/assets/images/2018/11/29/P1021454.JPG)
+![60fps delay test](/public/assets/images/2018/11/29/P1021454.JPG)
 
 5回計測して平均は34.0msec。
 

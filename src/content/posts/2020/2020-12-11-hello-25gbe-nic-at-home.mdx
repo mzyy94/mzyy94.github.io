@@ -60,7 +60,7 @@ PCやiPadやNASなど、いたるところに散らばるデータの掃除に�
 QNAP TVS-672XTも例に漏れずNVMe SSDに対応しており、NAS上で行ったベンチマークテストでは**3.0GB/s**を超えるスピードを叩き出しました。
 
 
-![nvme-speedtest.png](/assets/images/2020/12/11/nvme-speedtest.png)
+![nvme-speedtest.png](/public/assets/images/2020/12/11/nvme-speedtest.png)
 
 
 そう、10Gbpsを凌ぐストレージスピードを出すほどにNASは進化しているのです。**10GbEは遅いのです。**
@@ -90,7 +90,7 @@ QNAP TVS-672XTも例に漏れずNVMe SSDに対応しており、NAS上で行っ�
 Intelより比較的安価なMellanox製ではあるものの、QNAPアクセサリーストアに掲載の品はIntelのそれの約半額という、破格の価格設定に驚きました。
 このリリースは、一般家庭へも10万円足らずで手軽に25GbEを導入できる時代になった瞬間とも言えます。**25GbE元年**と言っても過言ではないでしょう。
 
-![product-page.png](/assets/images/2020/12/11/product-page.png)
+![product-page.png](/public/assets/images/2020/12/11/product-page.png)
 
 情報引用元: [Dual-port SFP28 25GbE network expansion card; low-profile form factor; PCIe Gen3 x8](https://shop.qnap.com/index.php?route=product/product&product_id=314)
 
@@ -122,7 +122,7 @@ QNAPアクセサリーストアーから25GbEカード2枚とSFP28のDACケー�
 お値段はというと、US$ 247が2つとUS$ 118が1本で合計US$ 612(送料無料)。
 QNAPアクセサリーストアは台湾からの発送にもかかわらず、日本へ無料配送してくれるのはとてもありがたいですね（受け取り時に輸入消費税+手数料で約4,000円ほどの支払いあり）。
 
-![25g-nic-arrived.jpg](/assets/images/2020/12/11/25g-nic-arrived.jpg)
+![25g-nic-arrived.jpg](/public/assets/images/2020/12/11/25g-nic-arrived.jpg)
 
 
 翌日発送で注文6日後に受け取りました。
@@ -146,7 +146,7 @@ QNAPアクセサリーストアは台湾からの発送にもかかわらず、�
 
 ## Mellanox ConnectX®-4 Lx Ethernet Adapter Card
 
-![25g-nic.jpg](/assets/images/2020/12/11/25g-nic.jpg)
+![25g-nic.jpg](/public/assets/images/2020/12/11/25g-nic.jpg)
 
 
 今回購入した25GbEカードのQXG-25G2SF-CX4には、Mellanox ConnectX®-4 Lxネットワークコントローラーが搭載されています。
@@ -172,7 +172,7 @@ SFP28コネクタはSFP+と互換があり、コントローラーが対応し�
 
 十分にスピードを出すにはホストインターフェースにPCIe Gen 3.0 x8が必要なようですが、Gen 2.0やx4でも動作すると書かれています。
 
-![compatibility.png](/assets/images/2020/12/11/compatibility.png)
+![compatibility.png](/public/assets/images/2020/12/11/compatibility.png)
 
 引用元: [pb-connectx-4-lx-en-card.pdf](https://www.mellanox.com/sites/default/files/doc-2020/pb-connectx-4-lx-en-card.pdf)
 
@@ -197,19 +197,19 @@ OS | [QTS 4.5.1](https://www.qnap.com/qts/4.5.1/ja-jp) | [DSM 7.0 Beta](https://
 
 ### 25GbE NICの接続と認識
 
-![hello-25gbe-nic.jpg](/assets/images/2020/12/11/hello-25gbe-nic.jpg)
+![hello-25gbe-nic.jpg](/public/assets/images/2020/12/11/hello-25gbe-nic.jpg)
 
 それぞれのNASに25GbEカードを取り付け、SFP28ケーブルで接続し通信できる状態を準備します。
 
 #### QNAP TVS-672XT
 
-![TVS-672XT-25G.png](/assets/images/2020/12/11/TVS-672XT-25G.png)
+![TVS-672XT-25G.png](/public/assets/images/2020/12/11/TVS-672XT-25G.png)
 
 移行元のTVS-672XTは、この25GbEカードと[互換性があり](https://www.qnap.com/ja-jp/compatibility/?model=356&category=11)、取り付けるだけで認識しました。
 
 #### Synology DS1621+
 
-![DS1621plus-25G.png](/assets/images/2020/12/11/DS1621plus-25G.png)
+![DS1621plus-25G.png](/public/assets/images/2020/12/11/DS1621plus-25G.png)
 
 移行先のDS1621+ですが、これには互換性情報が見つかりませんでした。
 しかしSynologyの[他のモデルにはConnectX-4 Lx ENのカードと互換性がある](https://www.synology.com/ja-jp/compatibility?search_by=category&category=network_interface_cards&p=1)との情報があったので、淡い期待と共に接続状態を見ると、25000Mbpsでリンクアップしていました。
@@ -248,7 +248,7 @@ DSM 6.2でもDSM 7.0 Betaでも、両方ともリンクアップしていたの�
 
 #### ネットワーク通信速度 TVS-672XTがクライアント
 
-![iperf-tvs672xt-25g.png](/assets/images/2020/12/11/iperf-tvs672xt-25g.png)
+![iperf-tvs672xt-25g.png](/public/assets/images/2020/12/11/iperf-tvs672xt-25g.png)
 
 転送量 | ビットレート | 再送回数
 ---:|---:|---:
@@ -262,7 +262,7 @@ DSM 6.2でもDSM 7.0 Betaでも、両方ともリンクアップしていたの�
 
 #### ネットワーク通信速度 DS1621+がクライアント
 
-![iperf-ds1621plus-25g.png](/assets/images/2020/12/11/iperf-ds1621plus-25g.png)
+![iperf-ds1621plus-25g.png](/public/assets/images/2020/12/11/iperf-ds1621plus-25g.png)
 
 転送量 | ビットレート | 再送回数
 ---:|---:|---:
@@ -284,7 +284,7 @@ DS1621+の方はというと、サーバー・クライアント共に15%前後�
 
 その状態で再計測しました。
 
-![iperf-ds1621plus-25g2.png](/assets/images/2020/12/11/iperf-ds1621plus-25g2.png)
+![iperf-ds1621plus-25g2.png](/public/assets/images/2020/12/11/iperf-ds1621plus-25g2.png)
 
 転送量 | ビットレート | 再送回数
 ---:|---:|---:
@@ -301,7 +301,7 @@ DS1621+の方はというと、サーバー・クライアント共に15%前後�
 
 Synology DSM 7.0 BetaのFile Stationを用いて、大小様々なファイルの含まれるフォルダを転送しました。
 
-![transfer-file-on-file-station.png](/assets/images/2020/12/11/transfer-file-on-file-station.png)
+![transfer-file-on-file-station.png](/public/assets/images/2020/12/11/transfer-file-on-file-station.png)
 
 ピーク時で約1.8Gbpsと、遅すぎる結果となりました。
 大きな単一ファイルの転送では改善するものの、終始2Gbps台と振るわない結果でした。
@@ -312,7 +312,7 @@ SSDキャッシュは利用を進めていくことで学習していくよう�
 
 SSDキャッシュが最大限に効いた場合のファイル転送速度を想定して、SMB 3でマウントしているディレクトリに含まれる単一ファイルを/dev/nullに吐き出したものを参考値として計測してみました。
 
-![transfer-file-to-devnull.png](/assets/images/2020/12/11/transfer-file-to-devnull.png)
+![transfer-file-to-devnull.png](/public/assets/images/2020/12/11/transfer-file-to-devnull.png)
 
 SMB 3のオーバーヘッドがあれど、1.4GB/sと**11.2Gbps**のパフォーマンスがSMB 3転送で期待できる結果となりました。
 10GbEから25GbEに乗り換えた甲斐があったと実感させられます。

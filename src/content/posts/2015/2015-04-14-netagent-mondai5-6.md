@@ -217,7 +217,7 @@ qrcode.png: PNG image data, 123 x 123, 4-bit grayscale, non-interlaced
 さすがImageMagick難なく変換できたすごい！
 簡単に開ける形式の画像ファイルができたので開いてみます。
 
-![qrcode.png](/assets/images/2015/04/14/qrcode.png)
+![qrcode.png](/public/assets/images/2015/04/14/qrcode.png)
 
 [半分食べられてしまったパンケーキ](../2014/2014-12-07-seccon2014-online.md)ではなく、普通のQRコードでした。
 
@@ -237,7 +237,7 @@ $ echo BCcENQQxBEMEQAQwBEgEOgQw | nkf -mB -W16B
 
 何やらロシア語らしきものが出てきます。意味を調べると、ロシアの絵本のキャラクターとのことです。
 
-![Cheburashka.jpg](/assets/images/2015/04/14/Cheburashka.jpg)
+![Cheburashka.jpg](/public/assets/images/2015/04/14/Cheburashka.jpg)
 
 
 これ以上解くものがなくなったので、これがmondai5の答えのようです。しかし`7z`コマンドで解凍を試みても、パスワードが違うと言われる始末です。
@@ -335,7 +335,7 @@ MIPS R4000を搭載したデバイスでアクセスすればいいのかな？�
 Googleで「MIPS R4000 デバイス」で検索し、MIPS R4000搭載のデバイスを探してみました。
 
 
-![mips-r4000-search.png](/assets/images/2015/04/14/mips-r4000-search.png)
+![mips-r4000-search.png](/public/assets/images/2015/04/14/mips-r4000-search.png)
 
 検索結果1ページ目によると、PSPに搭載されているとの情報がいくつかヒットしていました。
 早速PSPのブラウザからアクセスする際に送られるUser-Agentを調べてみます。

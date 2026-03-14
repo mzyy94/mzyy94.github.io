@@ -117,7 +117,7 @@ OBSでは映像や音声、テキストなど、複数の入力ソースを組�
 それらの入力ソースの中に、映像キャプチャデバイスがあり、これによりiPhoneの画面出力をLightningケーブルで取り込むことができます。
 これはCoreMediaIOを用いて実現しています。
 
-![obs-capture-device-iphone](/assets/images/2020/02/25/obs-capture-device-iphone.png)
+![obs-capture-device-iphone](/public/assets/images/2020/02/25/obs-capture-device-iphone.png)
 
 そしてOBSはプラグインシステムで拡張でき、[obs-mac-virtualcam](https://github.com/johnboiles/obs-mac-virtualcam)というプラグインを用いることで、作った動画を**仮想Webカメラ**として、他のアプリケーションに取り込むことができるのです。
 
@@ -138,18 +138,18 @@ Zoomバージョン5.0.4からホワイトリストで一部の仮想Webカメ�
 
 [New updates for macOS – Zoom Help Center](https://support.zoom.us/hc/en-us/articles/201361963)
 
-![zoom-5-1-1-changelog](/assets/images/2020/02/25/zoom-5-1-1-changelog.png)
+![zoom-5-1-1-changelog](/public/assets/images/2020/02/25/zoom-5-1-1-changelog.png)
 
 
 OBSとobs-mac-virtualcamをインストール、そして、OBSで映像キャプチャデバイスを設定して動画を準備しツールメニューから"Start Virtual Camera"を選択すると、Zoomのカメラ一覧に"OBS Virtual Camera"が現れ、映像入力として使えるようになります。
 
 
-![zoom-camera-input](/assets/images/2020/02/25/zoom-camera-input.png)
+![zoom-camera-input](/public/assets/images/2020/02/25/zoom-camera-input.png)
 
 
 あとはこれでミーティングに参加すれば、バ美肉ビデオ会議が叶うこととなりました☺️
 
-![zoom-babiniku-meeting](/assets/images/2020/02/25/zoom-babiniku-meeting.png)
+![zoom-babiniku-meeting](/public/assets/images/2020/02/25/zoom-babiniku-meeting.png)
 
 声がおじさんのまま？よしなに頑張ってください。
 

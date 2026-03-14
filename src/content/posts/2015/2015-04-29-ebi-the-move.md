@@ -103,10 +103,10 @@ Amazon等で売ってる人工海水キットと比重計を買って汽水を�
 
 
 ##### Before
-![before](/assets/images/2015/04/29/before-shrimpbottle.jpg)
+![before](/public/assets/images/2015/04/29/before-shrimpbottle.jpg)
 
 ##### After
-![after](/assets/images/2015/04/29/after-ebipot.jpg)
+![after](/public/assets/images/2015/04/29/after-ebipot.jpg)
 
 ## えび飼育にあったほうがいいもの
 

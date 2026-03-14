@@ -165,7 +165,7 @@ image: "/assets/images/2023/02/27/keys.jpg"
 
 新築一軒家を購入すると決めたら次に悩むのが建売か注文住宅か。土地を買って建物を半オーダーメイドで作る注文住宅には憧れるものの、建築会社が設計と建設をして売り出している建売住宅のお得さも捨てがたい。注文住宅の場合、ここ最近の大工不足や木材不足などの全般的な建設リソース不足が続いているため、上に挙げた2023年中の入居を対象とした減税や控除が受けられない可能性が考えらえる。加えて土地と建物で別々の融資を考えないといけなかったりと、悩みが増える。ストレスは少ない方が人生は楽なので、新築建売住宅を購入することにした。
 
-![労働者の過不足状況2022](/assets/images/2023/02/27/4kekkagaiyo-2.png)
+![労働者の過不足状況2022](/public/assets/images/2023/02/27/4kekkagaiyo-2.png)
 引用元: [労働経済動向調査（令和４年２月）の結果の概況[PDF]](https://www.mhlw.go.jp/toukei/itiran/roudou/koyou/keizai/2202/dl/4kekkagaiyo.pdf)
 
 ### Q. 借地か所有権か
@@ -230,7 +230,7 @@ image: "/assets/images/2023/02/27/keys.jpg"
 間取りや設備などは記載がなく、取引年と面積と金額くらいの情報に限られるが、土地建物の実勢価格を知ることができる。
 首都圏の物件価格は年々上昇傾向であるため、直近のものくらいしか参考にできないが、一度目を通しておくと良い。
 
-![国土交通省土地総合情報システム](/assets/images/2023/02/27/www.land.mlit.go.jp_webland_servlet_MainServlet.png)
+![国土交通省土地総合情報システム](/public/assets/images/2023/02/27/www.land.mlit.go.jp_webland_servlet_MainServlet.png)
 引用元: [国土交通省 土地総合情報システム Land General Information System](https://www.land.mlit.go.jp/webland/servlet/MainServlet)
 
 ### 路線価から計算する
@@ -241,7 +241,7 @@ image: "/assets/images/2023/02/27/keys.jpg"
 
 ただ、評価額を[算出する計算](https://www.nta.go.jp/law/tsutatsu/kihon/sisan/hyoka_new/02/07.htm)が複雑な上、あくまで土地単体の評価額であるため、実勢価格の参考にはあまりならない。
 
-![令和４年分 財産評価基準書 40041 - 路線価図｜国税庁](/assets/images/2023/02/27/www.rosenka.nta.go.jp_main_r04_tokyo_tokyo_prices_html_40041f.htm.png)
+![令和４年分 財産評価基準書 40041 - 路線価図｜国税庁](/public/assets/images/2023/02/27/www.rosenka.nta.go.jp_main_r04_tokyo_tokyo_prices_html_40041f.htm.png)
 引用元: [令和４年分 財産評価基準書 40041 - 路線価図｜国税庁](https://www.rosenka.nta.go.jp/main_r04/tokyo/tokyo/prices/html/40041f.htm)
 
 ### 手数料込み販売価格

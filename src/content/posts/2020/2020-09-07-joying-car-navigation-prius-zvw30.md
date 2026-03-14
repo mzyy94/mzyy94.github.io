@@ -50,16 +50,16 @@ Dinとは[ISO 7736](https://ja.wikipedia.org/wiki/ISO_7736)で規格化されて
 
 ## 開封と外観の確認
 
-![JOYING Package](/assets/images/2020/09/03/joying-package.jpg)
+![JOYING Package](/public/assets/images/2020/09/03/joying-package.jpg)
 
 これが到着時の段ボール箱。この中に同じサイズの紙の箱が入っていて、緩衝材に挟まれる形でディスプレイとユニットが一体化した本体が鎮座していた。
 
 
-![contents.jpg](/assets/images/2020/09/07/contents.jpg)
+![contents.jpg](/public/assets/images/2020/09/07/contents.jpg)
 
 中身はこのようになっていて、写っているのがナビの標準セット。これにバックモニターのリアカメラなども追加で買ったので、他にも色々入っていた。
 
-![cables.jpg](/assets/images/2020/09/07/cables.jpg)
+![cables.jpg](/public/assets/images/2020/09/07/cables.jpg)
 
 本体の他にセットとなっているケーブル類がこちら。一緒にリアカメラが写ってしまっているが、JOYING プリウス用9インチナビの付属品は下記の通りである。
 
@@ -74,47 +74,47 @@ Dinとは[ISO 7736](https://ja.wikipedia.org/wiki/ISO_7736)で規格化されて
 
 ### ディスプレイ周り
 
-![display.jpg](/assets/images/2020/09/07/display.jpg)
+![display.jpg](/public/assets/images/2020/09/07/display.jpg)
 
 光沢の強いグレアパネルのディスプレイ。タッチ操作を続けると、画面が指紋まみれになってしまった。
 プリウス30型右ハンドル車に合わせたフレームがついているが、フレームにディスプレイはフィットしていない感じがある。
 下部にJOYINGのロゴが**上部だけ**わずかに見えていて、サイズを間違えたんじゃないかとも感じ取れるくらいだ。
 
-![display-logo.jpg](/assets/images/2020/09/07/display-logo.jpg)
+![display-logo.jpg](/public/assets/images/2020/09/07/display-logo.jpg)
 
 それもそのはず、汎用の9インチのディスプレイに、プリウス30型用のフレームを上から被せているだけの仕上がりになっているからだ。
 写真ではわかりづらいが、フレームの下に大きな9インチのディスプレイが噛み合わせられている形になっている。
 
-![display-cover.jpg](/assets/images/2020/09/07/display-cover.jpg)
+![display-cover.jpg](/public/assets/images/2020/09/07/display-cover.jpg)
 
 
 JOYINGはいろいろな車種向けに同じ仕様のナビを展開しているが、このフレームを入れ替えるだけという単純な仕組みによって、本体の共通化を果たしているようだ。
 
 ディスプレイはユニットとフラットケーブルで繋がれていて、組み込みの際はツメをはめ込むことで固定するようになっている。
 
-![display-removed.jpg](/assets/images/2020/09/07/display-removed.jpg)
+![display-removed.jpg](/public/assets/images/2020/09/07/display-removed.jpg)
 
-![display-back.jpg](/assets/images/2020/09/07/display-back.jpg)
+![display-back.jpg](/public/assets/images/2020/09/07/display-back.jpg)
 
 ディスプレイの裏に隠れて、microSDカードスロットとリセットボタンがそれぞれユニットの左右にあった。
 
-![sdcard-slot.jpg](/assets/images/2020/09/07/sdcard-slot.jpg)
+![sdcard-slot.jpg](/public/assets/images/2020/09/07/sdcard-slot.jpg)
 
-![reset-button.jpg](/assets/images/2020/09/07/reset-button.jpg)
+![reset-button.jpg](/public/assets/images/2020/09/07/reset-button.jpg)
 
 ### 背面ポートとコネクタ
 
-![port-connector.jpg](/assets/images/2020/09/07/port-connector.jpg)
+![port-connector.jpg](/public/assets/images/2020/09/07/port-connector.jpg)
 
 ユニットの背面ポートを見てみると、色々と接続できるようにできているのがわかる。
 各コネクタにどのように繋げばいいかについては、同梱されている一枚の説明用紙に記されている。
 
-![connection-diagram.jpg](/assets/images/2020/09/07/connection-diagram.jpg)
+![connection-diagram.jpg](/public/assets/images/2020/09/07/connection-diagram.jpg)
 
 基本的には、ユニットの右側にある20ピンコネクタにいろいろな機器を接続するよう説明用紙に記載がある。
 今回購入したJOYING プリウス用9インチナビのセットには、この20ピンコネクタの接続をトヨタ車のコネクタに合うように形状を変換する**JOYINGトヨタ車ケーブル**が付属していた。
 
-![toyota-connector.jpg](/assets/images/2020/09/07/toyota-connector.jpg)
+![toyota-connector.jpg](/public/assets/images/2020/09/07/toyota-connector.jpg)
 
 まだプリウス車内のコネクタを確認していないが、このケーブルとコネクタをいくつか噛み合わせるだけで、車内のオーディオ出力やステアリングリモコンの信号線などと接続ができるらしい。
 
@@ -164,7 +164,7 @@ JOYINGはいろいろな車種向けに同じ仕様のナビを展開してい�
 
 プラス側にBATとACCを、マイナス側にGNDを繋げて完成。
 
-![ac-power-adaptor.jpg](/assets/images/2020/09/07/ac-power-adaptor.jpg)
+![ac-power-adaptor.jpg](/public/assets/images/2020/09/07/ac-power-adaptor.jpg)
 
 
 ### 技適の壁
@@ -183,9 +183,9 @@ JOYINGはいろいろな車種向けに同じ仕様のナビを展開してい�
 
 GPSは受信専用なので問題ないとして、他の無線アンテナ部分にダミーロードを取り付け、無線を出力しない状態にし、USB接続のイーサネットアダプタをUSBポートに接続して電源を入れる。
 
-![dummy-load.jpg](/assets/images/2020/09/07/dummy-load.jpg)
+![dummy-load.jpg](/public/assets/images/2020/09/07/dummy-load.jpg)
 
-![ethernet-connection.jpg](/assets/images/2020/09/07/ethernet-connection.jpg)
+![ethernet-connection.jpg](/public/assets/images/2020/09/07/ethernet-connection.jpg)
 
 どのみちUSB接続のApple CarPlayしか利用しない予定なので、無線通信は不要なのである。
 
@@ -195,7 +195,7 @@ ACアダプタをコンセントに差し込むと、JOYINGのロゴ・Android�
 USBイーサネットアダプタを認識するまで、そこから1分ほどかかった。
 写真では時刻が狂っているが、ネットワーク接続が確立されれば現在時刻にすぐに切り替わった。
 
-![home-screen.jpg](/assets/images/2020/09/07/home-screen.jpg)
+![home-screen.jpg](/public/assets/images/2020/09/07/home-screen.jpg)
 
 輝度はとても高く、設定で一番低くしても十分に明るい。白昼でもしっかり視認できそうだ。
 輝度ムラがある点が少し気になったが、カーナビに完璧な画質を求める方が愚昧である。
@@ -206,54 +206,54 @@ USBイーサネットアダプタを認識するまで、そこから1分ほど�
 日本向けの出荷だからだろうか、初めから日本語になっていた。
 フォントも中華フォントではなく、ちゃんとした「漢字」が表示されていて見栄えが良い。
 
-![homescreen.png](/assets/images/2020/09/07/homescreen.png)
+![homescreen.png](/public/assets/images/2020/09/07/homescreen.png)
 
 真ん中の"サイコロの６みたいなアイコン"を選択すると、アプリ一覧に移動する。
 Google Chromeなど、使えそうなアプリが標準でいくつか入っていた。
 
-![app-list.png](/assets/images/2020/09/07/app-list.png)
+![app-list.png](/public/assets/images/2020/09/07/app-list.png)
 
-![app-list2.png](/assets/images/2020/09/07/app-list2.png)
+![app-list2.png](/public/assets/images/2020/09/07/app-list2.png)
 
 ### 設定画面
 
 ホーム画面の「車の設定」を選択すると、設定画面が開く。
 ちょっと日本語訳が怪しいところがあるが、これもまた風情があって良い。
 
-![settings.png](/assets/images/2020/09/07/settings.png)
+![settings.png](/public/assets/images/2020/09/07/settings.png)
 
 #### デバイス情報
 
 デバイス情報にも現れている通り、ちゃんと1280x720の表示となっている（スクリーンショットのサイズでもわかる）。
 
-![device-info.png](/assets/images/2020/09/07/device-info.png)
+![device-info.png](/public/assets/images/2020/09/07/device-info.png)
 
 #### 工場設定
 
 メニューにある工場設定にはプロテクトがかかっている。
 
-![factory-setting.png](/assets/images/2020/09/07/factory-setting.png)
+![factory-setting.png](/public/assets/images/2020/09/07/factory-setting.png)
 
 「Joying Password」でググるとすぐ見つかるが、[JOYING公式Facebookアカウントがパスワードを公開](https://www.facebook.com/notes/joying/all-of-the-passwords-on-joying-head-units/177036389663825/)しているので、それを入力すると工場設定のプロテクトが解除され、色々変更できるようになる。
 
-![factory-setting2.png](/assets/images/2020/09/07/factory-setting2.png)
+![factory-setting2.png](/public/assets/images/2020/09/07/factory-setting2.png)
 
 #### 起動ロゴの変更
 
 工場設定の中にある「ロゴ設定」に進むと、何やらみたことのあるロゴがたくさん表示される。
 
-![boot-logo.png](/assets/images/2020/09/07/boot-logo.png)
+![boot-logo.png](/public/assets/images/2020/09/07/boot-logo.png)
 
 この中から好きなロゴを選ぶと、起動時に表示されていたJOYINGのロゴが選択したロゴに変化する。
 
-![toyota-logo.jpg](/assets/images/2020/09/07/toyota-logo.jpg)
+![toyota-logo.jpg](/public/assets/images/2020/09/07/toyota-logo.jpg)
 
 #### 開発者向けオプション
 
 「システム設定」の中に、開発者向けオプションがデフォルトで存在する。ここにもプロテクトがかかっているが、先ほどと同じパスワードだった。
 このオプションに存在する項目は、Android 8.1搭載スマホと同じような内容である。
 
-![developer-mode.png](/assets/images/2020/09/07/developer-mode.png)
+![developer-mode.png](/public/assets/images/2020/09/07/developer-mode.png)
 
 
 ### Apple CarPlay
@@ -261,11 +261,11 @@ Google Chromeなど、使えそうなアプリが標準でいくつか入って�
 いよいよ本命のApple CarPlayを使ってみる。
 使い方は説明書に記されていなかったが、ZLINKアプリを立ち上げた状態でUSB - LightningケーブルでiPhone 11 Proを接続したところ、iPhoneに接続の確認画面が出た。
 
-![zlink-connection.png](/assets/images/2020/09/07/zlink-connection.png)
+![zlink-connection.png](/public/assets/images/2020/09/07/zlink-connection.png)
 
 接続を許可すると、JOYING プリウス用9インチナビの画面はCarPlayの表示に切り替わった。
 
-![carplay.png](/assets/images/2020/09/07/carplay.png)
+![carplay.png](/public/assets/images/2020/09/07/carplay.png)
 
 あっけなく使えてしまった。もっと手こずると思っていただけに、拍子抜けしてしまった。
 
@@ -274,9 +274,9 @@ Google Chromeなど、使えそうなアプリが標準でいくつか入って�
 iOSのYahoo!カーナビもGoogleマップも問題なく使えた。
 しかも9インチの画面に1280x720で表示できているので、とても視認性がよろしい。
 
-![carplay-yahoo-carnavi.png](/assets/images/2020/09/07/carplay-yahoo-carnavi.png)
+![carplay-yahoo-carnavi.png](/public/assets/images/2020/09/07/carplay-yahoo-carnavi.png)
 
-![carplay-google-map.png](/assets/images/2020/09/07/carplay-google-map.png)
+![carplay-google-map.png](/public/assets/images/2020/09/07/carplay-google-map.png)
 
 まだ実際に走行していないのでわかりかねるが、CarPlayはカーナビのGPS信号を利用するといった噂を耳にした。
 このZLINKを介したCarPlayでも同じように動けば、これまでiPhoneで利用していた時よりもより精度の高いナビゲーションが期待できる。
@@ -286,11 +286,11 @@ iOSのYahoo!カーナビもGoogleマップも問題なく使えた。
 Android 7.0以上に搭載されているマルチウィンドウ機能は、このJOYING プリウス用9インチナビに搭載のAndroidでも利用できた。
 CarPlayの画面を分割してみたところ、YouTubeアプリとCarPlayを同時に表示することができた。
 
-![split-screen.png](/assets/images/2020/09/07/split-screen.png)
+![split-screen.png](/public/assets/images/2020/09/07/split-screen.png)
 
 この時、CarPlayの画面は**800x831という変則的な解像度**で描画され、ステータスバーと中心の余白が表示される関係で、**635x600に縮小されて表示**されていた。
 
-![carplay-splitscreen.png](/assets/images/2020/09/07/carplay-splitscreen.png)
+![carplay-splitscreen.png](/public/assets/images/2020/09/07/carplay-splitscreen.png)
 
 少し表示が濁るが、これはこれで使えそうな機能だ。
 
@@ -298,7 +298,7 @@ CarPlayの画面を分割してみたところ、YouTubeアプリとCarPlayを�
 
 アプリ一覧にPlayストアがあったので起動してみたところ、普通に使えた。
 
-![google-play.png](/assets/images/2020/09/07/google-play.png)
+![google-play.png](/public/assets/images/2020/09/07/google-play.png)
 
 せっかくなので色々ダウンロードして動かしてみた。
 
@@ -308,7 +308,7 @@ CarPlayの画面を分割してみたところ、YouTubeアプリとCarPlayを�
 
 普通に見れた。USBポートからテザリングするなりでネットワーク通信を確保できれば、車内で地デジの代替にできそう。
 
-![abema.png](/assets/images/2020/09/07/abema.png)
+![abema.png](/public/assets/images/2020/09/07/abema.png)
 
 #### Yahoo!カーナビ
 
@@ -316,7 +316,7 @@ CarPlayの画面を分割してみたところ、YouTubeアプリとCarPlayを�
 
 非対応だった。Intel CPUには対応していないのかな。
 
-![yahoo-carnavi.png](/assets/images/2020/09/07/yahoo-carnavi.png)
+![yahoo-carnavi.png](/public/assets/images/2020/09/07/yahoo-carnavi.png)
 
 #### AGAMA Car Launcher
 
@@ -324,7 +324,7 @@ CarPlayの画面を分割してみたところ、YouTubeアプリとCarPlayを�
 
 ホーム画面をカーナビっぽくするアプリ。そこそこ人気があるらしいが、CarPlayメインの利用においては使うことなさそう。試用だけでおしまいの予定。
 
-![car-launcher.png](/assets/images/2020/09/07/car-launcher.png)
+![car-launcher.png](/public/assets/images/2020/09/07/car-launcher.png)
 
 ### マルチタッチのテスト
 
@@ -332,7 +332,7 @@ CarPlayの画面を分割してみたところ、YouTubeアプリとCarPlayを�
 
 カーナビは基本的に人差し指だけで操作するのでマルチタッチの本数はあまり重要ではないが、確認しておいた。
 
-![multitouch-tester.png](/assets/images/2020/09/07/multitouch-tester.png)
+![multitouch-tester.png](/public/assets/images/2020/09/07/multitouch-tester.png)
 
 結果、5本マルチタッチであると分かった。
 
@@ -342,7 +342,7 @@ CarPlayの画面を分割してみたところ、YouTubeアプリとCarPlayを�
 
 みんな大好きベンチマーク。Geekbench 5でベンチマークを取ってみた。
 
-![geekbench.png](/assets/images/2020/09/07/geekbench.png)
+![geekbench.png](/public/assets/images/2020/09/07/geekbench.png)
 
 結果からわかるように、SC9853iはそこまで高性能なCPUではない。
 ただ、カーナビとしてはレスポンスも悪くなく、この性能でも十分である。

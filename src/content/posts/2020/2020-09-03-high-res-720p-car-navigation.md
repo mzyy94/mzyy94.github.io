@@ -347,7 +347,7 @@ Android 10を搭載していて、ハードウェアも旧来のDINカーオー�
 どちらも要求はすべて満たしているので、JOYINGかCOHOの二択になる。メーカーページの見つけられなかったCOHOは不信感が残ったこともあり、JOYINGの[JY-TO195N4GSN](#joying-jy-to195n4gsn)を注文した。
 到着まで時間がかかることを覚悟していたが、大幅に予想よりも到着が早く、1週間たらずで届いた。
 
-![JOYING Package](/assets/images/2020/09/03/joying-package.jpg)
+![JOYING Package](/public/assets/images/2020/09/03/joying-package.jpg)
 
 過去の経験から1ヶ月前後かかるはずだという思い込みをしていたものの、AliexpressでもEMS配送であればすぐ到着するものなのかと驚かされた。
 おかげで車載する前に動作確認をするために必要なギボシ端子やケーブル、ダミーロードなどがまだ届かないので、開封と本体レビューはまた後日。

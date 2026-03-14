@@ -23,7 +23,7 @@ Nintendo Switchには、4つの音声出力方法があります。これらの�
 
 ### スピーカー
 
-![body-switch01-front](/assets/images/2020/04/17/body-switch01-front.jpg)
+![body-switch01-front](/public/assets/images/2020/04/17/body-switch01-front.jpg)
 
 引用元: [Nintendo Switch｜任天堂](https://www.nintendo.co.jp/hardware/switch/feature/index.html#1)
 
@@ -43,7 +43,7 @@ Nintendo Switchには、4つの音声出力方法があります。これらの�
 
 ### USB
 
-![body-switch02-front](/assets/images/2020/04/17/body-switch02-front.jpg)
+![body-switch02-front](/public/assets/images/2020/04/17/body-switch02-front.jpg)
 
 
 引用元: [Nintendo Switch｜任天堂](https://www.nintendo.co.jp/hardware/switch/feature/index.html#2)
@@ -107,7 +107,7 @@ ls /sys/class/udc > UDC
 
 root権限でこれを実行すると、Nintendo SwitchがRaspberry Pi 4をUSBサウンドデバイスとして認識しました。
 
-![usb audio device detected](/assets/images/2020/04/17/usb-audio-detected.jpg)
+![usb audio device detected](/public/assets/images/2020/04/17/usb-audio-detected.jpg)
 
 
 **uac1.0**の部分を**uac2.0**に書き換えることで、[UAC2 Gadget](https://github.com/raspberrypi/linux/blob/raspberrypi-kernel_1.20200212-1/drivers/usb/gadget/function/f_uac2.c)もシミュレートできますが、試したところNintendo SwitchのUSBサウンドデバイスは、USB GadgetにおいてはUAC1の出力装置のみを認識していました。
@@ -167,7 +167,7 @@ ls /sys/class/udc > UDC
 
 この状態で、[1.3inch LCD HATでの入力](../2020/2020-03-20-nintendo-switch-pro-controller-usb-gadget.md#13inch-lcd-hat%E3%81%A7%E3%81%AE%E5%85%A5%E5%8A%9B)を試してみると、ちゃんとUSBサウンドデバイスとPro Controllerとして認識されています。
 
-![pro controller and audio device](/assets/images/2020/04/17/controller-and-audio.jpg)
+![pro controller and audio device](/public/assets/images/2020/04/17/controller-and-audio.jpg)
 
 
 ## 音声取り込み
@@ -201,7 +201,7 @@ arecord -v -D hw:UAC1Gadget -c2 -r 48000 -f S16_LE -t wav -V stereo /tmp/rec.wav
 
 ちゃんと動きました。
 
-![arecord recording](/assets/images/2020/04/17/arecord-recording.png)
+![arecord recording](/public/assets/images/2020/04/17/arecord-recording.png)
 
 
 ## 映像と音声をWebRTC

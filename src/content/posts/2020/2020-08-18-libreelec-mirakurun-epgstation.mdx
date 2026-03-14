@@ -40,18 +40,18 @@ Kodiはアドオンというプラグインシステムで機能やサービス�
 LibreELECが優れている点として、2つの大きな特徴がある。Sambaの標準搭載とDockerアドオンの存在だ。
 
 #### Sambaファイル共有サービス
-![Samba config](/assets/images/2020/08/18/samba-configuration.png)
+![Samba config](/public/assets/images/2020/08/18/samba-configuration.png)
 
 ネットワークファイル共有のデファクトであろうSamba。そのSambaファイル共有サービスがLibreELECに標準で組み込まれていて、初回セットアップ時に有効にできる（もちろん後から変更できる）。
 これによって、コマンドラインを操作する必要なくLibreELECにmacOSやWindowsからファイルを転送できる。
 
-![Samba file sharing](/assets/images/2020/08/18/samba-filesharing.png)
+![Samba file sharing](/public/assets/images/2020/08/18/samba-filesharing.png)
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/oBlHCuGGrJ8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 #### Dockerアドオン
-![Docker addon](/assets/images/2020/08/18/docker-addon.png)
+![Docker addon](/public/assets/images/2020/08/18/docker-addon.png)
 
 LibreELECでDockerを動かすためのDockerアドオンが、LibreELECの公式アドオンリポジトリから提供されている。
 Raspberry PiでもDockerは動くため、arm/arm64プラットフォーム向けのDockerイメージであれば、アドオンの形でサービスを手軽に動作させることができるのだ。
@@ -186,7 +186,7 @@ B-CASカードを読むために必要。
 Raspberry Pi公式のOS書き込みツールである[Raspberry Pi Imager](https://www.raspberrypi.org/downloads/)には、LibreELECが候補のOSとして登録されている。
 自分のRaspberry Piにあったイメージを選択し、microSDカードに焼き込む。
 
-![Raspberry Pi Imager](/assets/images/2020/08/18/pi-imager.png)
+![Raspberry Pi Imager](/public/assets/images/2020/08/18/pi-imager.png)
 
 ### 2. Raspberry Piを準備する
 
@@ -222,21 +222,21 @@ Raspberry Pi公式のOS書き込みツールである[Raspberry Pi Imager](https
 セットアップが終わると、同じLANにつながっているWindowsやmacOSからLibreELECのSambaが見えるようになっている。
 SambaにあるDownloadsフォルダに[harekaze.github.io/repository](https://harekaze.github.io/repository/)からダウンロードしたリポジトリアドオンをコピーする。
 
-![Transfer repository zip](/assets/images/2020/08/18/transfer-repository-zip.png)
+![Transfer repository zip](/public/assets/images/2020/08/18/transfer-repository-zip.png)
 
 ### 5. アドオンマネージャからリポジトリアドオンをインストールする
 
 Kodiのアドオンメニューを進むと、「zipﾌｧｲﾙからｲﾝｽﾄｰﾙ」というメニューがあるため、そこからリポジトリアドオンをインストールしていく。初回は「提供元不明の〜」などといった警告が出るが、遷移先の設定画面で有効にすれば良い。
 
-![Install from zip menu](/assets/images/2020/08/18/install-from-zip.png)
+![Install from zip menu](/public/assets/images/2020/08/18/install-from-zip.png)
 
 zipファイル選択画面で、「ホーム→Downloads」と辿って先ほどのzipファイルを選択してインストールすれば、リポジトリが登録される。
 
-![Select addon zip](/assets/images/2020/08/18/select-zip.png)
+![Select addon zip](/public/assets/images/2020/08/18/select-zip.png)
 
 ### 6. アドオンのインストール
 
-![Harekaze2 repository](/assets/images/2020/08/18/harekaze2-repository.png)
+![Harekaze2 repository](/public/assets/images/2020/08/18/harekaze2-repository.png)
 
 「ﾘﾎﾟｼﾞﾄﾘからｲﾝｽﾄｰﾙ」メニューの中にHarekaze2リポジトリが登録されているはずなので、そこから必要なアドオンを追加していく。依存関係にあるDockerアドオンや、ffmpegアドオンもセットでインストールされるので、わざわざ先にインストールしておく必要はない。
 
@@ -245,30 +245,30 @@ Dockerイメージの取得に時間がかかるため、気長に待つ。
 
 初期状態で特に設定をしなくても使えるようにしてあるが、SambaのConfigfilesディレクトリにMirakurunとEPGStationの設定ファイルがあるので、必要であれば調整はそこからできる。
 
-![Samba configfiles directory](/assets/images/2020/08/18/configfiles.png)
+![Samba configfiles directory](/public/assets/images/2020/08/18/configfiles.png)
 
 ### 7. EPGStation録画先の変更
 
-![Choose recording location](/assets/images/2020/08/18/choose-location.png)
+![Choose recording location](/public/assets/images/2020/08/18/choose-location.png)
 
 接続したUSBハードディスクに録画を保存するようにepgstationサービスの設定画面を開き、録画先を変更する。
 
 ### 8. pvr.epgstationの設定
 
-![Select EPGStation server](/assets/images/2020/08/18/configure-pvrepgstation.png)
+![Select EPGStation server](/public/assets/images/2020/08/18/configure-pvrepgstation.png)
 
 EPGStationのサービスが動いている`http://0.0.0.0:8888`を、pvr.epgstationの設定画面で指定する。
 アドオンを再起動すれば、お手軽地デジ視聴環境の出来上がり。
 
-![pvr.epgstation1](/assets/images/2020/08/18/pvr-epgstation1.png)
+![pvr.epgstation1](/public/assets/images/2020/08/18/pvr-epgstation1.png)
 
-![pvr.epgstation2](/assets/images/2020/08/18/pvr-epgstation2.png)
+![pvr.epgstation2](/public/assets/images/2020/08/18/pvr-epgstation2.png)
 
 
 
 ### +α. 音ズレの解消
 
-![Fix ripsync](/assets/images/2020/08/18/fix-ripsync.png)
+![Fix ripsync](/public/assets/images/2020/08/18/fix-ripsync.png)
 
 
 音ズレするときは、Kodiの設定画面にあるプレイヤー設定の中の「ディスプレイの同期周波数に合わせて再生する」を有効にすると直る。

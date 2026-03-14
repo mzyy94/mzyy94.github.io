@@ -38,7 +38,7 @@ Raspberry Piのカメラ入力端子がこれを用いています。
 高解像度、高フレームレート、高精細な映像データの通過に耐えらえれるよう、高速なデータ転送を可能としています。
 転送レーンの数によって総通信速度が異なってきますが、1レーンでも2.5Gbpsの転送速度を誇っています。
 
-![MIPI CSI2 CameraPoster](/assets/images/2020/04/10/CameraPoster_0.jpg)
+![MIPI CSI2 CameraPoster](/public/assets/images/2020/04/10/CameraPoster_0.jpg)
 
 出典: [MIPI Camera Serial Interface 2 (MIPI CSI-2)](https://mipi.org/specifications/csi-2)
 
@@ -67,7 +67,7 @@ USB接続のこれらはHDMI入力の映像を、UVCプロトコルで転送で�
 
 ### HDMI to MIPI CSI-2
 
-![B101 HDMI to CSI-2 Bridge](/assets/images/2020/04/10/38126_B101_sale_800x356.jpg)
+![B101 HDMI to CSI-2 Bridge](/public/assets/images/2020/04/10/38126_B101_sale_800x356.jpg)
 
 引用元: [B101 HDMI to CSI-2 Bridge (15 pin FPC) – Auvidea](https://auvidea.eu/b101-hdmi-to-csi-2-bridge-15-pin-fpc/)
 
@@ -87,7 +87,7 @@ USB接続のこれらはHDMI入力の映像を、UVCプロトコルで転送で�
 
 価格も36.98 USD（執筆時）と安かったのでこれを購入しました。
 
-![HDMI Input board](/assets/images/2020/04/10/hdmi-input.jpg)
+![HDMI Input board](/public/assets/images/2020/04/10/hdmi-input.jpg)
 
 
 商品ページに 板子名稱：H2C-RPI-B01 と書かれているため、以下、この製品をH2C-RPI-B01と呼称します。
@@ -98,7 +98,7 @@ USB接続のこれらはHDMI入力の映像を、UVCプロトコルで転送で�
 
 ## H2C-RPI-B01
 
-![HDMI Input on Raspberry Pi](/assets/images/2020/04/10/raspi-hdmi-input.jpg)
+![HDMI Input on Raspberry Pi](/public/assets/images/2020/04/10/raspi-hdmi-input.jpg)
 
 H2C-RPI-B01はRaspberry Pi Zeroとほぼ同じサイズであり、ねじ穴もRaspberry PiのHAT位置にあり、Raspberry Pi 4とも親和性がとても良いです。
 
@@ -132,7 +132,7 @@ They were written for a demo purposes only, and are in the firmware on an as-is
 basis and therefore requests for support or changes will not be acted on.
 ```
 
-![raspivid recording](/assets/images/2020/04/10/hdmi-raspivid.png)
+![raspivid recording](/public/assets/images/2020/04/10/hdmi-raspivid.png)
 
 VLCで見てみると、ちゃんとraspividで取り込めています。
 
@@ -161,7 +161,7 @@ m=video 5678 RTP/AVP 96
 a=rtpmap:96 H264/90000
 ```
 
-![vlc rtp receiving capture](/assets/images/2020/04/10/hdmi-rtp.png)
+![vlc rtp receiving capture](/public/assets/images/2020/04/10/hdmi-rtp.png)
 
 遅延は大きいですが、ちゃんとgstreamerで転送できています。
 
@@ -204,7 +204,7 @@ gst-launch-1.0 v4l2src ! videorate ! video/x-raw,width=1280,height=720,framerate
 コマンドラインでこれを実行すると、Raspberry Piに繋げたHDMIディスプレイにほぼ遅延なく映像が表示され、Twitchで配信できていることを確認できます。
 
 
-![twitch rtmp broadcasting](/assets/images/2020/04/10/hdmi-rtmp-twitch.png)
+![twitch rtmp broadcasting](/public/assets/images/2020/04/10/hdmi-rtmp-twitch.png)
 
 
 ### WebRTC
@@ -249,7 +249,7 @@ OPENSSL_CONF= ./webrtc-unidirectional-h264
 
 これで http://raspberrypi.local:57778 にアクセスすると、HDMI入力の映像をWebブラウザで見ることができました。
 
-![webrtc capture](/assets/images/2020/04/10/hdmi-webrtc.png)
+![webrtc capture](/public/assets/images/2020/04/10/hdmi-webrtc.png)
 
 LAN内であれば遅延も1秒未満で、どうぶつの森であれば普通にプレイできるくらいです。
 ひとつこの実装には問題があり、一度映像を送出するとv4l2srcが開放されず、H2C-RPI-B01へのアクセスが占有され続けてしまうため、2度目のアクセスからRaspbianを再起動するまで映像が取得できなくなります。

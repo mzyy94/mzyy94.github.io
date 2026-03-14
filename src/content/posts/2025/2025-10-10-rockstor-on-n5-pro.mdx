@@ -95,7 +95,7 @@ CentOSからBtrfsのサポートが外されたり、CentOS自体のサポート
 
 ### ハードウェア
 
-![n5-pro](/assets/images/2025/10/10/n5-pro.jpeg)
+![n5-pro](/public/assets/images/2025/10/10/n5-pro.jpeg)
 
 
 Minisforumから今年発売されたNAS向けのベアボーンキット。AMD Ryzen™ AI 9を備え5本の3.5インチHDDを搭載できる優れもの。
@@ -116,7 +116,7 @@ HDD | ST8000VN004 8TB x2 / WD80EZAZ 8TB x2 | Seagate IronWolfやWD Redなど
 
 ### Proxmox仮想化とパススルー
 
-![install-proxmox](/assets/images/2025/10/10/install-proxmox.jpeg)
+![install-proxmox](/public/assets/images/2025/10/10/install-proxmox.jpeg)
 
 今回は柔軟な運用のため、Rockstorを仮想化して導入することにした。
 N5 Proのシステムにお馴染みのProxmox VEを導入し、その上でRockstorを動かす。
@@ -124,12 +124,12 @@ N5 Proのシステムにお馴染みのProxmox VEを導入し、その上でRock
 仮想マシンの設定を **q35,viommu=intel** にし、Docker（Rock-on）の動作やPCIeパススルーができるようにする。
 N5 ProのHDDドライブはPCIe接続のJMicron TechnologyのJMB585 SATAコントローラーで繋がっているので、PCIパススルーでそれをRockstorに渡してあげれば仮想化の準備は完了だ。
 
-![passthrough-pcie](/assets/images/2025/10/10/passthrough-pcie.png)
-![pcie-device-select](/assets/images/2025/10/10/pcie-device-select.png)
+![passthrough-pcie](/public/assets/images/2025/10/10/passthrough-pcie.png)
+![pcie-device-select](/public/assets/images/2025/10/10/pcie-device-select.png)
 
 あとはRockstorのインストーラーISOから起動し、仮想ディスクにシステムをインストールしたら普通に動くRockstorのできあがり。
 
-![rockstor-dashboard](/assets/images/2025/10/10/rockstor-dashboard.png)
+![rockstor-dashboard](/public/assets/images/2025/10/10/rockstor-dashboard.png)
 
 ### LUKSディスク暗号化 + Btrfs RAID
 
@@ -140,17 +140,17 @@ Rockstorが起動したらWeb UIのStorage → Disksからデータドライブ�
 
 新品のHDDを使っていれば、ディスク一覧の名前の横の歯車から暗号化を進めていける。
 
-![luks-setup](/assets/images/2025/10/10/luks-setup.png)
+![luks-setup](/public/assets/images/2025/10/10/luks-setup.png)
 
 暗号化設定ができたら一覧の名前の横のボタンから、次は自動マウントの設定を行う。
 鍵をシステムドライブに保存し、起動時に自動で復号するのが推奨設定なので、画面の説明に従って進める。
 
-![luks-automount](/assets/images/2025/10/10/luks-automount.png)
+![luks-automount](/public/assets/images/2025/10/10/luks-automount.png)
 
 一度再起動してみて暗号化が解除された状態でマウントされていることを確認。
 Poolsに移動してデータプールを作成する。
 
-![raid-setup](/assets/images/2025/10/10/raid-setup.png)
+![raid-setup](/public/assets/images/2025/10/10/raid-setup.png)
 
 速度と安全性を両立した **raid5-1c3** で、高速なアルゴリズムで圧縮する **zstd** を選択した。
 5本目は保守用に開けてあるので、8TBの弾4本使って正味21.9TBのストレージ領域となった。
@@ -205,7 +205,7 @@ iOSのファイルアプリからSMB接続すると読み出し専用になる�
 
 [Configure Samba to work better with Apple devices - How-to - Rockstor Community Forum](https://forum.rockstor.com/t/configure-samba-to-work-better-with-apple-devices/8956)
 
-![smb-apple-device](/assets/images/2025/10/10/smb-apple-device.png)
+![smb-apple-device](/public/assets/images/2025/10/10/smb-apple-device.png)
 
 ## まとめ
 

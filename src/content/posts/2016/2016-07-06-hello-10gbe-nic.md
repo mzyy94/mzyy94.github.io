@@ -16,7 +16,7 @@ image: "/assets/images/2016/07/06/card-face.jpg"
 
 
 この低価格NICはずっと気になっていて、ほしいものリストにもずっと突っ込んでありました。
-![Wishlistの画像](/assets/images/2016/07/06/wishlist.png)
+![Wishlistの画像](/public/assets/images/2016/07/06/wishlist.png)
 
 突っ込んだ当時の価格からずいぶんと安くなり、2016/07/04時点で2万円を切っていたので、以下のような煽りも受けたついでに2枚買ってみました。
 
@@ -33,7 +33,7 @@ image: "/assets/images/2016/07/06/card-face.jpg"
 
 ## Intel X540-T2
 
-![NICの画像 form Intel](/assets/images/2016/07/06/x540-t2.jpg)
+![NICの画像 form Intel](/public/assets/images/2016/07/06/x540-t2.jpg)
 
 [Intel® Ethernet Converged Network Adapter X540-T2 仕様](http://ark.intel.com/ja/products/58954/Intel-Ethernet-Converged-Network-Adapter-X540-T2)
 
@@ -55,11 +55,11 @@ ark intelの希望カスタマー価格を見ると*$508.00 - $513.00*とある�
 14時頃に発注して翌日12時頃に到着しました。さすがAmazonプライムお急ぎ便ですね。
 [Amazonプライムの入会はこちら](https://www.amazon.co.jp/tryprimefree?tag=mzyy-22)
 
-![箱の画像](/assets/images/2016/07/06/amazon-prime.jpg)
+![箱の画像](/public/assets/images/2016/07/06/amazon-prime.jpg)
 
 Twitterでは「この安さ、偽物じゃないか？」と噂されていましたが、Intelロゴはちゃんとしたものでした。
 
-![Intelロゴの画像](/assets/images/2016/07/06/intel-haitteru.jpg)
+![Intelロゴの画像](/public/assets/images/2016/07/06/intel-haitteru.jpg)
 
 [Amazon.co.jp： intel X540-T2: パソコン・周辺機器](https://www.amazon.co.jp/intel-X540T2-X540-T2/dp/B0077CS9UM/ref=sr_1_1?ie=UTF8&qid=1467713812&sr=8-1&tag=mzyy-22)
 
@@ -103,7 +103,7 @@ X540-T2はPCI Express 2.1以上の拡張カードスロットに対応してい�
 
 X540-T2と同時購入した*[こたつみたいなCAT7 LANケーブル](https://www.amazon.co.jp/gp/product/B00ID1S8ZW/ref=oh_aui_detailpage_o00_s00?ie=UTF8&tag=mzyy-22)*をそれぞれのポートに接続してこんな感じでつなげてみました。
 
-![つなげた図](/assets/images/2016/07/06/connected.jpg)
+![つなげた図](/public/assets/images/2016/07/06/connected.jpg)
 
 [Amazon.co.jp： intel X540-T2: パソコン・周辺機器](https://www.amazon.co.jp/intel-X540T2-X540-T2/dp/B0077CS9UM/ref=sr_1_1?ie=UTF8&qid=1467713812&sr=8-1&tag=mzyy-22)
 

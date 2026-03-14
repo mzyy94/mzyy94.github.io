@@ -78,7 +78,7 @@ Picture by Pictureや、Picture in Pictureと呼ばれる機能です。
 
 ### Picture by Picture (PbP)
 
-![Picture by Picture](/assets/images/2016/01/10/PbP.png)
+![Picture by Picture](/public/assets/images/2016/01/10/PbP.png)
 
 1枚のディスプレイを縦や横に分割して表示する機能です。
 ディスプレイに備わっている映像入力ポートからの入力を2つ選択し、
@@ -89,7 +89,7 @@ Picture by Pictureや、Picture in Pictureと呼ばれる機能です。
 
 ### Picture in Picture (PiP)
 
-![Picture in Picture](/assets/images/2016/01/10/PiP.png)
+![Picture in Picture](/public/assets/images/2016/01/10/PiP.png)
 
 一つの映像の上に小画面を表示し、ながら作業ができるものです。
 これもまたディスプレイの映像入力ポートからメインと小画面の映像を選択し、表示させるものです。
@@ -164,7 +164,7 @@ USBハブ | ◯ (USB 3.0x3)
 
 プチプチを剥がすときにすこし破損してしまいましたが、箱のサイズはこのくらい
 
-![Box size](/assets/images/2016/01/10/box-size.jpg)
+![Box size](/public/assets/images/2016/01/10/box-size.jpg)
 
 上に乗ってるのはきんいろモザイクのBlu-rayディスクケースと500mlペットボトル（サイズ感伝わってくれっ
 
@@ -173,7 +173,7 @@ USBハブ | ◯ (USB 3.0x3)
 
 そして付属品
 
-![Display accessories](/assets/images/2016/01/10/display-accessories.jpg)
+![Display accessories](/public/assets/images/2016/01/10/display-accessories.jpg)
 
 電源ケーブル・HDMIケーブル・DisplayPortケーブル・USB 3.0ケーブル(オス-オス)・ネジ6本・説明書、そして写真には写っていないですが、設定操作リモコンとディスプレイの足が入っていました。
 付属品のネジはおそらくディスプレイに足を取り付けるためのものだと思うんですが、ディスプレイに空いている足取り付け用のネジ穴に入れてもガバガバで取り付けられませんでした。
@@ -185,8 +185,8 @@ M5x10mmは売ってなかったので、ネジが奥まで入る長さにナッ�
 ### ポート類
 入力ポート・出力ポート
 
-![display input](/assets/images/2016/01/10/display-input.jpg)
-![usb output](/assets/images/2016/01/10/usb-output.jpg)
+![display input](/public/assets/images/2016/01/10/display-input.jpg)
+![usb output](/public/assets/images/2016/01/10/usb-output.jpg)
 
 USBハブの入力がtype-Aである点が少々気になったり。
 サービスUSBポート経由でファームウェアのアップデートができるとの噂があったり。
@@ -195,7 +195,7 @@ USBハブの入力がtype-Aである点が少々気になったり。
 
 でかさ比較
 
-![display relative size](/assets/images/2016/01/10/display-size.jpg)
+![display relative size](/public/assets/images/2016/01/10/display-size.jpg)
 
 右に写ってるのがMacBook Air 11インチで左に写ってるのがWii U ゲームパッドです（サイズ感伝わってくれっ！）
 一言で大きさを表現すると、**広げた新聞紙くらい**。
@@ -214,23 +214,23 @@ USBハブの入力がtype-Aである点が少々気になったり。
 これでは何のために買ったのやら…と途方にくれていましたが、よくよく考えればPbPでテレビを映しながら作業ができるようにPbP/PiP機能付きのものを買っていたので、4K全画面表示させる必要はないのです。
 左半分をメインに、右にサブのWindowsとゲームもしくはテレビを上下に分けて表示できれば十分なのです。
 
-![3 displays](/assets/images/2016/01/10/3-displays.png)
+![3 displays](/public/assets/images/2016/01/10/3-displays.png)
 
 これらはディスプレイの設定をいじって3画面PbPにし、それぞれの映像入力を指定するだけで分割できます。
 3画面分割にすると、メインの画面解像度は4Kの半分となり、1920x2160になります。OS X標準ではこの解像度を出すことはできないので、先ほど導入したSwitchResXを用いて、1920x2160の出力設定を追加します。
 
 
-![additional resolution](/assets/images/2016/01/10/additional-resolution.png)
+![additional resolution](/public/assets/images/2016/01/10/additional-resolution.png)
 
 再起動すると、以下のように1920x2160の解像度が追加されます。
 
 
-![1920x2160](/assets/images/2016/01/10/1920x2160.png)
+![1920x2160](/public/assets/images/2016/01/10/1920x2160.png)
 
 ＼じゃーん／
 
 
-![3-pbp](/assets/images/2016/01/10/3-pbp.jpg)
+![3-pbp](/public/assets/images/2016/01/10/3-pbp.jpg)
 
 ## まとめ
 4Kはいいぞ。

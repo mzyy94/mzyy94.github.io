@@ -68,9 +68,9 @@ NAS4Freeが起動したら
 以前、FreeNAS用にZFSで作った際にpoolを破壊してしまってデータが吹っ飛んだ経験があるため、ZFSは避けましたが、
 メモリが潤沢に搭載されているシステムであればraidzを利用してもいいかと思います。
 
-![alt](/assets/images/2013/12/10/NAS4Free-1.png)
-![alt](/assets/images/2013/12/10/NAS4Free-2.png)
-![alt](/assets/images/2013/12/10/NAS4Free-3.png)
+![alt](/public/assets/images/2013/12/10/NAS4Free-1.png)
+![alt](/public/assets/images/2013/12/10/NAS4Free-2.png)
+![alt](/public/assets/images/2013/12/10/NAS4Free-3.png)
 
 
 ### AFPの設定
@@ -93,14 +93,14 @@ Services->AFPにて、
 ---
 と、設定します。ほかはデフォルトのままにしました。
 
-![alt](/assets/images/2013/12/10/NAS4Free-4.png)
-![alt](/assets/images/2013/12/10/NAS4Free-5.png)
-![alt](/assets/images/2013/12/10/NAS4Free-6.png)
+![alt](/public/assets/images/2013/12/10/NAS4Free-4.png)
+![alt](/public/assets/images/2013/12/10/NAS4Free-5.png)
+![alt](/public/assets/images/2013/12/10/NAS4Free-6.png)
 
 この設定で、同一ネットワークにつながったMacからTime Machineの設定を開くと以下のように、バックアップ先に設定できるようになっていると思います。
 
 
-![Time Machineの設定画面](/assets/images/2013/12/10/NAS4Free-7.png)
+![Time Machineの設定画面](/public/assets/images/2013/12/10/NAS4Free-7.png)
 
 
 設定方法と、NASの紹介でした。

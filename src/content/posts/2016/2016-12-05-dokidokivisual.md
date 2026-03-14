@@ -32,14 +32,14 @@ image: "/assets/images/2016/12/05/dokidokivisual.jpg"
 さて、そんな三者三葉のWebサイトを見てみましょう。
 
 
-![Webサイトスクリーンショット](/assets/images/2016/12/05/sanyo.png)
+![Webサイトスクリーンショット](/public/assets/images/2016/12/05/sanyo.png)
 
 [TVアニメ『三者三葉』公式サイト](http://sansyasanyou.com/)
 
 三つ葉が散る穏やかな背景に美少女たちがセンターを飾る美しいサイトです。
 見た目は美しいですが、中身はどうでしょう。早速中をのぞいてみましょう。
 
-![Webサイトソースコード1 head](/assets/images/2016/12/05/sanyo-source1.png)
+![Webサイトソースコード1 head](/public/assets/images/2016/12/05/sanyo-source1.png)
 
 おっといきなりのXHTML宣言！さすが長い間連載していただけあって古のXHTMLで綴られています。
 しっかりとmetaやlinkの空タグをXHTMLとして閉じていますが、
@@ -48,7 +48,7 @@ image: "/assets/images/2016/12/05/dokidokivisual.jpg"
 また、モダンWebサイトに見られるOpenGraphの拡張タグもなく、TwitterやFacebookで共有されることを想定していない古の設計です。
 
 
-![Webサイトソースコード2](/assets/images/2016/12/05/sanyo-source2.png)
+![Webサイトソースコード2](/public/assets/images/2016/12/05/sanyo-source2.png)
 
 ソースコードのバージョン管理を行っていないのか、コメントアウトによって削除とする方針がとられているようです。
 コードだけではなくコーディングスタイルも古いようですね。
@@ -93,7 +93,7 @@ image: "/assets/images/2016/12/05/dokidokivisual.jpg"
 三者三葉と比べれば、連載開始は大幅に近代化された後なのでWebページの中身も期待ができます。
 
 
-![Webサイトスクリーンショット](/assets/images/2016/12/05/unhappy.png)
+![Webサイトスクリーンショット](/public/assets/images/2016/12/05/unhappy.png)
 
 [TVアニメ「あんハピ♪」公式サイト](http://anne-happy.com/)
 
@@ -102,7 +102,7 @@ image: "/assets/images/2016/12/05/dokidokivisual.jpg"
 この時期は葉っぱを散らせるのがブームだったのでしょうか。既視感のある背景です。
 さて、中身はどうでしょう。
 
-![Webサイトソースコード1 head](/assets/images/2016/12/05/unhappy-source1.png)
+![Webサイトソースコード1 head](/public/assets/images/2016/12/05/unhappy-source1.png)
 
 来ましたHTML5宣言！さすが新しい作品だけあってHTMLも最新のもので記述されています。
 そしてOpenGraphのmetaタグも記述がなされており、TwitterやFacebookで共有される喜びを知っているかのようです。
@@ -110,7 +110,7 @@ image: "/assets/images/2016/12/05/dokidokivisual.jpg"
 モダンWeb技術をもりだくさん取り込んでいて大変に美しいWebサイトです。
 
 
-![Webサイトソースコード2](/assets/images/2016/12/05/unhappy-source2.png)
+![Webサイトソースコード2](/public/assets/images/2016/12/05/unhappy-source2.png)
 
 これもまたソースコード中にコメントアウトによって要素や機能を削除するといった箇所が見られますね。アニメWebサイト制作の現場ではバージョン管理システムは使ってないんでしょうか。
 
@@ -142,7 +142,7 @@ image: "/assets/images/2016/12/05/dokidokivisual.jpg"
 コミック化の時期を考えると最も新しい部類に分けられるこのアニメ、はたしてWebサイトも新しい技術が使われているのでしょうか。
 
 
-![Webサイトスクリーンショット](/assets/images/2016/12/05/zoi.png)
+![Webサイトスクリーンショット](/public/assets/images/2016/12/05/zoi.png)
 
 [TVアニメ『NEW GAME!』オフィシャルサイト](http://newgame-anime.com/)
 
@@ -150,14 +150,14 @@ image: "/assets/images/2016/12/05/dokidokivisual.jpg"
 真ん中に登場キャラクターがそれぞれ漫画のコマのように分けられてメインを飾っています。
 おとなしい見た目をしていますが、中身はどうでしょう。
 
-![Webサイトソースコード1 head](/assets/images/2016/12/05/zoi-source1.png)
+![Webサイトソースコード1 head](/public/assets/images/2016/12/05/zoi-source1.png)
 
 
 これもまたHTML5です！HTML5ですがちゃんと古いIEに対してのサポートを忘れない心意気があります。
 既存のライブラリなどのリソースは/libディレクトリ下に、それ以外はその用途ごとにディレクトリを作成して置いているようですね。
 
 
-![Webサイトソースコード2](/assets/images/2016/12/05/zoi-source2.png)
+![Webサイトソースコード2](/public/assets/images/2016/12/05/zoi-source2.png)
 
 突如として現れる&amp;nbsp;の嵐。狂気しか感じません。
 
@@ -184,14 +184,14 @@ image: "/assets/images/2016/12/05/dokidokivisual.jpg"
 2016年冬アニメのほんわか担当として放映されているゆるふわアニメです。
 
 
-![Webサイトスクリーンショット](/assets/images/2016/12/05/stella.png)
+![Webサイトスクリーンショット](/public/assets/images/2016/12/05/stella.png)
 
 [TVアニメ「ステラのまほう」公式サイト](http://magicofstella.com/)
 
 ほわほわしているアニメですが、背景の星がめまぐるしく上昇しているアクティブなWebサイトです。かわいいですね。
 さて肝心のソースコードはどうでしょう。
 
-![Webサイトソースコード1 head](/assets/images/2016/12/05/stella-no-source1.png)
+![Webサイトソースコード1 head](/public/assets/images/2016/12/05/stella-no-source1.png)
 
 おっとまたしてもXHTML！そして見慣れた core_sys のリソースディレクトリ！
 さすが同じきらら作品だけあって依頼する業者が同じだったということですね。

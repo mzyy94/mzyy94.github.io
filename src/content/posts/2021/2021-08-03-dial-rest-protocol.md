@@ -17,7 +17,7 @@ image: "/assets/images/2021/08/03/dial-launch-demo.png"
 自宅のシステムを管理する上で、ネットワーク監視は重要なものと言えます。
 そんな監視システムが異常を検知したと言うのでパケットを見てみると、ある日を境に自宅ネットワークに何やら見慣れないものが大量に流れ始めていました。
 
-![Network Monitoring](/assets/images/2021/08/03/monitoring-multicast.png)
+![Network Monitoring](/public/assets/images/2021/08/03/monitoring-multicast.png)
 
 `M-SEARCH * HTTP/1.1`で始まるUDPパケットから見慣れたUPnP(Universal Plug and Play)の探索リクエストというのはわかるのですが、これが今まで以上に飛び交うようになっていたのです。
 リクエストの中身には、`urn:dial-multiscreen-org:service:dial:1`というリソース名（URN）を持っていることがわかります。
@@ -67,7 +67,7 @@ WAKEUP: MAC=96:14:ee:8a:ff:70;Timeout=120
 
 このURLを開いてみると、次のようになっていました。
 
-![Device Description](/assets/images/2021/08/03/dd-xml.png)
+![Device Description](/public/assets/images/2021/08/03/dd-xml.png)
 
 DIALを喋っている子は先日買い替えた75インチテレビのHISENSE-75A6Gでした！
 振り返ってみると、ちょうどテレビを買い替えた日からUPnPのマルチキャストパケットが大量発生していました！
@@ -297,10 +297,10 @@ img[alt$="on iOS"] {
 }
 </style>
 
-![YouTube DIAL connection menu on Vivaldi](/assets/images/2021/08/03/dial-youtube.png)
+![YouTube DIAL connection menu on Vivaldi](/public/assets/images/2021/08/03/dial-youtube.png)
 
-![YouTube DIAL connection menu on iOS](/assets/images/2021/08/03/dial-youtubeapp.png)
-![Netflix DIAL connection menu on iOS](/assets/images/2021/08/03/dial-netflix.png)
+![YouTube DIAL connection menu on iOS](/public/assets/images/2021/08/03/dial-youtubeapp.png)
+![Netflix DIAL connection menu on iOS](/public/assets/images/2021/08/03/dial-netflix.png)
 
 
 ### ChromeのDIALによる起動API
@@ -338,7 +338,7 @@ sessionRequest.dialRequest = new chrome.cast.DialRequest(dialAppName);
 
 [Source Code](https://gist.github.com/mzyy94/aa25615639fd3466d37bac7da204778e#file-launch_dial-js)
 
-![Demo preview](/assets/images/2021/08/03/dial-launch-demo.png)
+![Demo preview](/public/assets/images/2021/08/03/dial-launch-demo.png)
 
 
 ### DIALによる起動後の操作連携

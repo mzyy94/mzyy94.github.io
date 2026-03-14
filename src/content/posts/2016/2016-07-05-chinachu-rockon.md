@@ -94,7 +94,7 @@ scp chinachu.json root@your-rockstor-ip:/opt/rockstor/rockons-metastore
 
 そしてRock-onsのサービスが起動してなかったら起動し、その後Updateボタンを押すと、Chinachuがリストアップされてきます。
 
-![Listed up](/assets/images/2016/07/05/chinachu-rockon-listed.png)
+![Listed up](/public/assets/images/2016/07/05/chinachu-rockon-listed.png)
 
 Rock-onsの一覧にChinachuが現れてもあわててインストールせずに、
 ChinachuとMirakurunの設定ファイルと録画を保存する共有ディレクトリを作成します。
@@ -103,7 +103,7 @@ ChinachuのデータとMirakurunのデータが衝突してうまく動作しな
 逆を言えば、Chinachuの設定とデータは同じディレクトリにしてもいいですし、Mirakurunの設定とデータベースも同じディレクトリにしてOKです。
 また、録画ファイル保存ディレクトリは大容量必要ですが、それ以外は1GBもあれば十分でしょう。
 
-![Created share](/assets/images/2016/07/05/created-shares.png)
+![Created share](/public/assets/images/2016/07/05/created-shares.png)
 
 共有ディレクトリの作成が済んだらChinachuのインストールをしましょう。
 インストールといっても設定する項目はほとんどなく、設定する必要のあるのは以下の5つの共有ディレクトリの指定だけです。
@@ -116,9 +116,9 @@ ChinachuのデータとMirakurunのデータが衝突してうまく動作しな
 
 それぞれ先ほど作成した共有ディレクトリを指定し、ポート番号の設定はデフォルトのままでステップを進めていき、インストールは完了です。
 
-![Install step 1](/assets/images/2016/07/05/install-step-1.png)
-![Install step 2](/assets/images/2016/07/05/install-step-2.png)
-![Install step 3](/assets/images/2016/07/05/install-step-3.png)
+![Install step 1](/public/assets/images/2016/07/05/install-step-1.png)
+![Install step 2](/public/assets/images/2016/07/05/install-step-2.png)
+![Install step 3](/public/assets/images/2016/07/05/install-step-3.png)
 
 チャンネル設定などが適当なのでChinachuとMirakurunの設定ファイルを保存した共有ディレクトリにあるchannels.ymlやconfig.jsonを編集してChinachuを再起動させて完成です。
 録画ファイル保存ディレクトリをAFPで共有したり、各々のChinachuライフを快適にお過ごしください。

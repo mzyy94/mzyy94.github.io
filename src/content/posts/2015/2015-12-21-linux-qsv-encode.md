@@ -102,7 +102,7 @@ CentOSにてQSV対応カーネルをビルドする都合上、4コア割り当�
 
 [Intel® Media Server Studio \| Intel® Developer Zone](https://software.intel.com/en-us/intel-media-server-studio)
 
-![Get Intel Media Server Studio](/assets/images/2015/12/21/get-mss.png)
+![Get Intel Media Server Studio](/public/assets/images/2015/12/21/get-mss.png)
 
 手順は前に紹介した時のものとあまり大きくは変わらないのですが、今回もMSSのインストールスクリプトに少々バグがあります。
 文字でつらつらと説明するのも読者側からすればめんどくさいの一言で嫌われてしまう記事になってしまうので、MSSのインストールスクリプトを用意しました。
@@ -158,11 +158,11 @@ $ ffmpeg -y -i gr23608-18yd.m2ts -f mp4 -vcodec h264_qsv -vprofile main -level 4
 
 ##### 元ファイル(MPEG-2)
 
-[![シャロシコ Original](/assets/images/2015/12/21/syaro-original.png)](/assets/images/2015/12/21/syaro-original.png)
+[![シャロシコ Original](/public/assets/images/2015/12/21/syaro-original.png)](/public/assets/images/2015/12/21/syaro-original.png)
 
 ##### 変換後ファイル(H.264)
 
-[![シャロシコ QSV](/assets/images/2015/12/21/syaro-qsv.png)](/assets/images/2015/12/21/syaro-qsv.png)
+[![シャロシコ QSV](/public/assets/images/2015/12/21/syaro-qsv.png)](/public/assets/images/2015/12/21/syaro-qsv.png)
 
 
 -----
