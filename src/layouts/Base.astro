@@ -193,6 +193,20 @@ const { title, meta_title, description, image, noindex, canonical } =
       document.addEventListener('cc:onConsent', updateGoogleConsent);
       document.addEventListener('cc:onChange', updateGoogleConsent);
     </script>
+
+    <!-- Preserve cookieconsent UI across View Transitions -->
+    <script is:inline>
+      document.addEventListener('astro:before-swap', function(e) {
+        var ccMain = document.getElementById('cc-main');
+        if (ccMain) {
+          e.newDocument.body.appendChild(ccMain);
+          document.documentElement.classList.forEach(function(c) {
+            if (c.startsWith('show--') || c.startsWith('cc--'))
+              e.newDocument.documentElement.classList.add(c);
+          });
+        }
+      });
+    </script>
   </head>
   <body>
     <TwSizeIndicator />
