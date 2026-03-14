@@ -53,9 +53,9 @@ Proxmox VEで構築しているネットワーク構成の全体像を以下に�
 <details>
 <summary>Helper-Scriptsでvnet0をデフォルトにするTip💡</summary>
 
-<Notice type="tip">
-Helper-Scriptsで作るコンテナが自動で`vnet0`に繋ぐよう、 `/usr/local/community-scripts/default.vars` にデフォルト値設定 `var_brg=vnet0` を記述している。PVE Scripts LocalのWeb UIからのインストールではデフォルト値が反映されないバグがあるので、Advancedインストールで`vnet0`を指定している。
-</Notice>
+> [!TIP]
+> Helper-Scriptsで作るコンテナが自動で`vnet0`に繋ぐよう、 `/usr/local/community-scripts/default.vars` にデフォルト値設定 `var_brg=vnet0` を記述している。PVE Scripts LocalのWeb UIからのインストールではデフォルト値が反映されないバグがあるので、Advancedインストールで`vnet0`を指定している。
+>
 </details>
 
 SDNに接続されたLXCコンテナには `<ホスト名>.int.mzyy94.com` の形式で自動的にDNSレコードが割り当てられる。これはProxmox VE SDNの **PowerDNS plugin** によるもので、コンテナの作成に連動してPowerDNSのAPIを叩き、Aレコードを自動登録してくれる。
@@ -173,19 +173,16 @@ systemctl enable nftables
 [nft-redirect.sh](https://gist.github.com/mzyy94/9047daf742bc1092d40705e9c153367e#file-nft-redirect-sh)を作って置いてあるので、80番ポート以外で動いているサービスに限り、Proxmox VEのシェルに入って`nft-redirect.sh 102 3000`と打つ作業だけ手を動かすことになる。
 
 
-<Notice type="tip">
-
-LANで立てているコンテナでは、PCなどから直接そのコンテナに対してアクセスできる状態になっている。
-そのままでは認証をCaddyでまとめても回避されてしまうので、nftablesのポートリダイレクト設定に加えて、filterでコンテナのサービスポートへの直接アクセスをブロックし、Caddy経由のみに制限しておくとよい。
-
-```sh
-nft add table inet filter
-nft add chain inet filter input { type filter hook input priority 0 \; policy accept \; }
-nft add rule inet filter input tcp dport { 80, 3000 } ip saddr 192.168.10.2 accept
-nft add rule inet filter input tcp dport { 80, 3000 } drop
-```
-
-</Notice>
+> [!TIP]
+> LANで立てているコンテナでは、PCなどから直接そのコンテナに対してアクセスできる状態になっている。
+> そのままでは認証をCaddyでまとめても回避されてしまうので、nftablesのポートリダイレクト設定に加えて、filterでコンテナのサービスポートへの直接アクセスをブロックし、Caddy経由のみに制限しておくとよい。
+>
+> ```sh
+> nft add table inet filter
+> nft add chain inet filter input { type filter hook input priority 0 \; policy accept \; }
+> nft add rule inet filter input tcp dport { 80, 3000 } ip saddr 192.168.10.2 accept
+> nft add rule inet filter input tcp dport { 80, 3000 } drop
+> ```
 
 これで `*.int.mzyy94.com` でLAN・SDN上の各サービスにHTTPSアクセスできる状態が整った。ここまでのCaddyfileは次のようになっている。
 
@@ -235,13 +232,13 @@ Pocket IDはSDNの`vnet0`上にLXCコンテナとして配置し、DHCPでアド
 <details>
 <summary>Pocket IDのオリジンを変えてしまった場合の対処Tip💡</summary>
 
-<Notice type="tip">
-Pocket IDはWebAuthn（Passkey）を認証の軸にしているため、当たり前だがPasskeyの登録時のオリジン（ドメイン+プロトコル+ポート）が変わると既存のPasskeyが無効になる。
+> [!TIP]
+> Pocket IDはWebAuthn（Passkey）を認証の軸にしているため、当たり前だがPasskeyの登録時のオリジン（ドメイン+プロトコル+ポート）が変わると既存のPasskeyが無効になる。
+>
+> Helper-Scriptsのデフォルトのホスト名が`pocketid`だったため、最初は`pocketid.int.mzyy94.com`で立てていた。たくさん設定した後にホスト名が気になり `pocket-id` に変更したため、やらかしをしてしまった。
+>
+> WebAuthn以外のログイン手段がないため詰んだと思ったが、CLIから[ワンタイムアクセストークン](https://pocket-id.org/docs/troubleshooting/account-recovery)を発行すれば復旧できるとあった。.envがあるディレクトリ(例: /opt/pocket-id)で `pocket-id one-time-access-token <ユーザー名>` を実行し、一時的なログインコードで管理画面に入ってPasskeyを再登録した。
 
-Helper-Scriptsのデフォルトのホスト名が`pocketid`だったため、最初は`pocketid.int.mzyy94.com`で立てていた。たくさん設定した後にホスト名が気になり `pocket-id` に変更したため、やらかしをしてしまった。
-
-WebAuthn以外のログイン手段がないため詰んだと思ったが、CLIから[ワンタイムアクセストークン](https://pocket-id.org/docs/troubleshooting/account-recovery)を発行すれば復旧できるとあった。.envがあるディレクトリ(例: /opt/pocket-id)で `pocket-id one-time-access-token <ユーザー名>` を実行し、一時的なログインコードで管理画面に入ってPasskeyを再登録した。
-</Notice>
 </details>
 
 ### immichのPocket ID認証設定
