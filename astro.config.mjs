@@ -1,5 +1,4 @@
 import mdx from "@astrojs/mdx";
-import partytown from "@astrojs/partytown";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
@@ -60,7 +59,6 @@ export default defineConfig({
   integrations: [
     react(),
     sitemap(),
-    partytown(),
     AutoImport({
       imports: [
         "@/shortcodes/Button",
@@ -93,13 +91,7 @@ export default defineConfig({
         necessary: {
           readOnly: true
         },
-        analytics: {
-          services: {
-            "Google Analytics": {
-              label: "Google Analytics"
-            }
-          }
-        }
+        analytics: {}
       },
       language: {
         default: "en",

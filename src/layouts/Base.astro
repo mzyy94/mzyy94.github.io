@@ -152,6 +152,18 @@ const { title, meta_title, description, image, noindex, canonical } =
     />
     <meta name="twitter:card" content="summary_large_image" />
 
+    <!-- Google Consent Mode v2 defaults (must be before any Google scripts) -->
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        'ad_storage': 'granted',
+        'ad_user_data': 'granted',
+        'ad_personalization': 'granted',
+        'analytics_storage': 'denied',
+      });
+    </script>
+
     {process.env.NODE_ENV !== "development" && <>
       <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
       <script is:inline>
@@ -162,24 +174,24 @@ const { title, meta_title, description, image, noindex, canonical } =
       </script>
     </>}
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async
-      type="text/plain"
-      data-category="analytics"
-      data-service="Google Analytics"
-      data-type="text/partytown"
-      src="https://www.googletagmanager.com/gtag/js?id=G-1PR2WVYFR7"></script>
-    <script is:inline
-      type="text/plain"
-      data-category="analytics"
-      data-service="Google Analytics"
-      data-type="text/partytown"
-    >
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
+    <!-- Google Analytics (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1PR2WVYFR7"></script>
+    <script is:inline>
       gtag('js', new Date());
-
       gtag('config', 'G-1PR2WVYFR7');
+    </script>
+
+    <!-- Update Google Consent Mode on cookieconsent changes -->
+    <script is:inline>
+      function updateGoogleConsent() {
+        if (typeof CookieConsent === 'undefined') return;
+        gtag('consent', 'update', {
+          'analytics_storage': CookieConsent.acceptedCategory('analytics') ? 'granted' : 'denied',
+        });
+      }
+      document.addEventListener('cc:onFirstConsent', updateGoogleConsent);
+      document.addEventListener('cc:onConsent', updateGoogleConsent);
+      document.addEventListener('cc:onChange', updateGoogleConsent);
     </script>
   </head>
   <body>
