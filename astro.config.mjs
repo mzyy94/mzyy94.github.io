@@ -9,10 +9,9 @@ import remarkCollapse from "remark-collapse";
 import remarkEmoji from "remark-emoji";
 import remarkToc from "remark-toc";
 import sharp from "sharp";
-import { visit } from "unist-util-visit";
 import config from "./src/config/config.json";
 import theme from "./src/config/theme.json";
-import { remarkGfmAlerts, remarkStripPublicPrefix } from "./src/lib/utils/remarkCustomize";
+import { remarkGfmAlerts, remarkStripPublicPrefix, resolveRelativeMd } from "./src/lib/utils/remarkCustomize";
 
 // Helper to parse font string format: "FontName:wght@400;500;600;700"
 function parseFontString(fontStr) {
@@ -48,18 +47,6 @@ const fontsConfig = Object.entries(theme.fonts.font_family)
       fallbacks: [fallback],
     };
   });
-
-function resolveRelativeMd() {
-  return (tree) => {
-    visit(tree, "link", (node) => {
-      if (node.url && node.url.match(/\.mdx?($|#)/)) {
-        node.url = node.url
-          .replace(/\.mdx?($|#)/, "/$1")
-          .replace(/.*\/(\d{4})-(\d{2})-(\d{2})-/, "/blog/$1/$2/$3/");
-      }
-    });
-  };
-}
 
 // https://astro.build/config
 export default defineConfig({

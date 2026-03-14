@@ -3,7 +3,7 @@ import type { Image, Root } from "mdast";
 import { visit } from "unist-util-visit";
 
 export const remarkGfmAlerts = () => {
-  const typeMap = {
+  const typeMap: Record<string, string> = {
     note: "note",
     tip: "tip",
     important: "info",
@@ -11,7 +11,7 @@ export const remarkGfmAlerts = () => {
     caution: "warning",
   };
 
-  return (tree) => {
+  return (tree: Root) => {
     visit(tree, "blockquote", (node, index, parent) => {
       const firstChild = node.children[0];
       if (!firstChild || firstChild.type !== "paragraph") return;
@@ -63,3 +63,15 @@ export const remarkStripPublicPrefix = () => {
     });
   };
 };
+
+export const resolveRelativeMd = () => {
+  return (tree: Root) => {
+    visit(tree, "link", (node) => {
+      if (node.url && node.url.match(/\.mdx?($|#)/)) {
+        node.url = node.url
+          .replace(/\.mdx?($|#)/, "/$1")
+          .replace(/.*\/(\d{4})-(\d{2})-(\d{2})-/, "/blog/$1/$2/$3/");
+      }
+    });
+  };
+}
