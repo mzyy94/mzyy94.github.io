@@ -1,74 +1,57 @@
 ---
 import dateFormat from "@/lib/utils/dateFormat";
-import { humanize,slugify,plainify } from "@/lib/utils/textConverter";
-import { FaRegClock, FaRegFolder, FaRegUserCircle } from "react-icons/fa";
+import { plainify } from "@/lib/utils/textConverter";
 import { getSinglePage } from "@/lib/contentParser.astro";
 import config from "@/config/config.json";
 import ImageMod from "./ImageMod.astro";
 
-const { summary_length } = config.settings;
 const { slug } = Astro.props;
 const posts = await getSinglePage("blog");
 const post = posts.find((post) => post.id.includes(slug))!;
-const data = post;
-const { title, image, date, author, categories } = post.data;
-const description = post.body || post.data.description || "";
+const { title, image, date } = post.data;
+const description = plainify(post.body || post.data.description || "").slice(0, 120);
+const href = `/blog/${post.id}`;
+const domain = new URL(config.site.base_url).hostname;
+const meta = [domain, date && dateFormat(date)].filter(Boolean).join(" · ");
 ---
 
-<div class="bg-body dark:bg-darkmode-body border border-gray-200 rounded px-4">
-  <h4 class="mb-3 h5">
-    <img
-      class="inline my-0"
-      src={config.site.icon}
-      alt={post.data.title}
-      width={32}
-      height={32}
-    />
-    <a href={`/blog/${data.id}`}>
-      {title}
-    </a>
-  </h4>
-  <div class="row">
-    <div class="col row justify-between">
-      <p class="mb-6 text-sm">{plainify(description.slice(0, Number(summary_length * 2)))}...</p>
-      <ul class="m-0 flex items-end text-sm">
-        <li class="mr-4 inline-block">
-          <a href={`/blog/authors/${slugify(author)}/`}>
-            <FaRegUserCircle className={"mr-2 -mt-1 inline-block"} />
-            {humanize(author)}
-          </a>
-        </li>
-        <li class="mr-4 inline-block">
-          <FaRegFolder className={"mr-2 -mt-1 inline-block"} />
-          {
-            categories.map((category: string, index: number) => (
-              <a href={`/blog/categories/${slugify(category)}/`}>
-                {humanize(category)}
-                {index !== categories.length - 1 && ","}
-              </a>
-            ))
-          }
-        </li>
-        <li class="mr-4 inline-block">
-          <FaRegClock className={"mr-2 -mt-1 inline-block"} />
-          {dateFormat(date)}
-        </li>
-      </ul>
+<figure class="not-prose">
+  <a
+    href={href}
+    class="group flex overflow-hidden rounded-lg border border-border dark:border-darkmode-border bg-body dark:bg-darkmode-body no-underline! hover:shadow-md transition-shadow duration-200"
+  >
+    <div class="flex min-w-0 flex-1 flex-col justify-center gap-1 px-4 py-3">
+      <p class="m-0 font-semibold text-text-dark dark:text-darkmode-text-dark leading-snug line-clamp-2 group-hover:text-primary dark:group-hover:text-darkmode-primary transition-colors">
+        {title}
+      </p>
+      {description && (
+        <p class="m-0 text-sm text-text-light dark:text-darkmode-text-light leading-relaxed line-clamp-2">
+          {description}
+        </p>
+      )}
+      <figcaption class="flex items-center gap-1.5 text-xs text-text-light dark:text-darkmode-text-light">
+        <img
+          src={config.site.favicon}
+          alt=""
+          width={14}
+          height={14}
+          class="m-0 rounded-sm"
+          aria-hidden="true"
+        />
+        <span>{meta}</span>
+      </figcaption>
     </div>
-  {
-    image && (
-    <a href={`/blog/${data.id}`} class="col col-2 hidden md:block">
-      <ImageMod
-        class="mb-6 w-full rounded object-cover"
-        src={image}
-        alt={title}
-        width={230}
-        height={230}
-        style="aspect-ratio: 230 / 230; width: 230px; height: 230px"
-        format="webp"
-      />
-    </a>
-    )
-  }
-  </div>
-</div>
+    {image && (
+      <div class="hidden sm:block flex-shrink-0 w-[160px] md:w-[200px]" aria-hidden="true">
+        <ImageMod
+          class="m-0 h-full w-full object-cover"
+          src={image}
+          alt={title}
+          width={200}
+          height={120}
+          format="webp"
+        />
+      </div>
+    )}
+  </a>
+</figure>
