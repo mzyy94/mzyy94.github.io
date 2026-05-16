@@ -135,12 +135,14 @@ Caddyfileでは[named route](https://caddyserver.com/docs/caddyfile/concepts#nam
             a {
                 name {host}
                 port 80
+                versions ipv4
                 resolvers 10.0.100.2 # PowerDNS
             }
 
             a {
                 name {labels.3}.lan.mzyy94.com
                 port 80
+                versions ipv4
                 resolvers 192.168.1.1 # OpenWRT
             }
         }
@@ -149,6 +151,9 @@ Caddyfileでは[named route](https://caddyserver.com/docs/caddyfile/concepts#nam
 ```
 
 [`dynamic multi`](https://caddyserver.com/docs/caddyfile/directives/reverse_proxy#multi)は複数のダイナミックアップストリームモジュールの結果を結合してアップストリームプールを構成するモジュールだ。すべてのソースに問い合わせ、解決できた結果をまとめてリストにする。この構成では各ホスト名はどちらか一方のDNSにしか存在しないので、結果的に1つだけが解決される。
+
+> [!NOTE]
+> **追記**: 内部のアップストリームモジュールは[`dynamic a`](https://caddyserver.com/docs/caddyfile/directives/reverse_proxy#aaaaa)という名前だが、AAAAレコードも対象としているため、IPv6でのレコードを引き当ててしまうと、そちら側で待ち受けていないWebアプリにはアクセスできなくなってしまう。そのため、`versions ipv4`を指定してAレコードのみに繋げるよう指定しておく必要があった。
 
 1. **PowerDNS（`10.0.100.2`）に問い合わせる**: `{host}`、つまり`paperless-ngx.int.mzyy94.com`をそのままAレコードとして引く。SDN上のコンテナならここで解決する
 2. **OpenWRT（`192.168.1.1`）に問い合わせる**: `{labels.3}.lan.mzyy94.com`に変換して引く。`{labels.3}`はホスト名の3番目のラベル、つまり`paperless-ngx.int.mzyy94.com`なら`paperless-ngx`部分。これを`paperless-ngx.lan.mzyy94.com`として、OpenWRTのDHCPで管理されるLAN上のホストを探す
