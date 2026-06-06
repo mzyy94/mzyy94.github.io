@@ -192,18 +192,26 @@ systemctl enable nftables
 これで `*.int.mzyy94.com` でLAN・SDN上の各サービスにHTTPSアクセスできる状態が整った。ここまでのCaddyfileは次のようになっている。
 
 ```nginx
+{
+    servers {
+        protocols h1 h2
+    }
+}
+
 &(dynamic-backend) {
     reverse_proxy {
         dynamic multi {
             a {
                 name {host}
                 port 80
+                versions ipv4
                 resolvers 10.0.100.2 # PowerDNS
             }
 
             a {
                 name {labels.3}.lan.mzyy94.com
                 port 80
+                versions ipv4
                 resolvers 192.168.1.1 # OpenWRT
             }
         }
@@ -219,6 +227,10 @@ systemctl enable nftables
     invoke dynamic-backend
 }
 ```
+
+
+> [!NOTE]
+> **追記**: グローバルブロックに`servers { protocols h1 h2 }`を指定してHTTP/3 (h3)を無効化した。最初は何もしていせずデフォルトでHTTP/3有効になっていたが、Paperless-ngxのPDF取得など一部のリクエストで3000倍以上の時間がかかるケースがあった。寝てる間にClaudeに調査させたところ、ブラウザとCaddy間のHTTP/3通信で特定のレスポンスが詰まるケースがあるようで、この設定で本来の20msecでの応答を返すことがわかった。トークンがもったいないので深く調査させてないが、Caddyの変換処理だったり通信経路でUDPが詰まっていたりSafariのQUIC実装との相性などなど、考えられる原因はいくつかある。そもそもLAN内の利用なのでHTTP/3の恩恵なんぞ感じないため、オフにしておくほうが安定運用には向いている。
 
 ## Pocket IDの導入
 
@@ -307,6 +319,10 @@ caddy-securityプラグインでPocket IDとの連携を設定する。
 
 ```nginx
 {
+    servers {
+        protocols h1 h2
+    }
+
     order authenticate before respond
     security {
         oauth identity provider generic {
