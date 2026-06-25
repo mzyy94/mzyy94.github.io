@@ -13,6 +13,7 @@ import theme from "./src/config/theme.json";
 import rehypeExternalLinks from "rehype-external-links";
 import { remarkGfmAlerts, remarkStripPublicPrefix, resolveRelativeMd } from "./src/lib/utils/remarkCustomize";
 import cookieconsent from "@jop-software/astro-cookieconsent";
+import { unified } from "@astrojs/markdown-remark";
 
 // Helper to parse font string format: "FontName:wght@400;500;600;700"
 function parseFontString(fontStr) {
@@ -171,21 +172,23 @@ export default defineConfig({
     }),
   ],
   markdown: {
-    remarkPlugins: [
-      remarkGfmAlerts,
-      remarkStripPublicPrefix,
-      resolveRelativeMd,
-      remarkEmoji,
-      [remarkToc, { heading: "目次", tight: true, ordered: true }],
-      [remarkCollapse, { test: "目次" }],
-    ],
-    rehypePlugins: [
-      [rehypeExternalLinks, {
-        target: "_blank",
-        rel: ["noopener"],
-        content: { type: "text", value: " ⧉" },
-      }],
-    ],
+    processor: unified({
+      remarkPlugins: [
+        remarkGfmAlerts,
+        remarkStripPublicPrefix,
+        resolveRelativeMd,
+        remarkEmoji,
+        [remarkToc, { heading: "目次", tight: true, ordered: true }],
+        [remarkCollapse, { test: "目次" }],
+      ],
+      rehypePlugins: [
+        [rehypeExternalLinks, {
+          target: "_blank",
+          rel: ["noopener"],
+          content: { type: "text", value: " ⧉" },
+        }],
+      ],
+    }),
     shikiConfig: { theme: "one-dark-pro", wrap: true },
   },
 });

@@ -19,8 +19,8 @@ jobs:
         with:
           node-version: 24
       - run: corepack enable
-      - run: yarn install --frozen-lockfile
-      - run: yarn build
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
       - uses: actions/upload-pages-artifact@v3
         with:
           path: "./dist/"

@@ -51,5 +51,13 @@
     "meta_author": "mzyy94",
     "meta_image": "/images/og-image.png",
     "meta_description": "犬アイコンのみっきー"
+  },
+
+  "llms": {
+    "generate_llms_txt": true,
+    "generate_llms_full_txt": true,
+    "generate_individual_md": true,
+    "include": [],
+    "exclude": []
   }
 }

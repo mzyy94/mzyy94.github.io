@@ -208,14 +208,14 @@ const { title, meta_title, description, image, noindex, canonical } =
       });
     </script>
   </head>
-  <body>
-    <TwSizeIndicator />
-    <Announcement client:load />
+  <body class="flex flex-col min-h-screen">
+    <Announcement client:only="react" />
     <Header />
-    <SearchModal client:load />
-    <main id="main-content">
+    <SearchModal client:only="react" />
+    <main class="grow" id="main-content">
       <slot />
     </main>
     <Footer />
+    <TwSizeIndicator />
   </body>
 </html>
