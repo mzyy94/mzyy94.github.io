@@ -1,0 +1,454 @@
+---
+title: "OculinkでRX 9070 XTを2枚繋いでLocal LLM"
+date: 2026-08-19T10:00:00+09:00
+author: mzyy94
+categories: ["AI"]
+tags: ["local-llm", "oculink", "gpu", "server", "lemonade", "llama_cpp", "egpu", "npu", "vulkan"]
+image: "/assets/images/2026/08/19/dual-egpu-box.jpeg"
+---
+
+我が家ではMinisforum N5 Proなる[**AI NAS**を利用している](../2025/2025-10-10-rockstor-on-n5-pro.mdx)。**AMD Ryzen AI 9 HX PRO 370**というかっこいい名前のAI向けを謳うSoCを搭載していて、GPUはモバイル版のRadeon 890Mに、XDNA 2世代の50TOPSのNPUが積まれている。初期搭載のMiniscloud OSにはこれらをAI活用するツールがいくつか搭載されているらしい。
+
+SSDごとそのOSは葬ってしまったので使い勝手は知る由もないが、Proxmox VEを構築している今の環境でもGPU/NPUを活用してAI機能、すなわちLocal LLMを利用している。
+初めは小さなモデルを動かしてはチャットを楽しんで「ヾ(*´∀｀*)ﾉｷｬｯｷｬ」と喜ぶだけの使い方だったが、人間は欲に弱い生き物。大きなモデルを動かしてAIに雑務をやらせたくなってくる。HX PRO 370はiGPUにシステムメモリを共有しているので、たくさんGPUに割り当てて大きなモデルを動かしたりして暫くは満足していた。しかし人間は欲に弱い生き物。大きなモデルがいい感じに動くとわかったら、それをより高速に動かしたくなってくる。
+
+そんな時に目をつけたのがN5 ProのI/OポートにあるOculink。PCIe 4x4が外に出ているこのOculinkにGPUを繋いでAIを動かしたい気持ちが湧いてきた。
+この記事はそんな欲に向かって進んだ結果、2枚のGPUを外付けしたモンスターNASが誕生するまでの顛末を綴ったここ一年間の記録である。
+
+> [!NOTE]
+> この記事では生成AIを扱っていますが、記事の本文は全て人間が書いています（AI生成物であると明記してある箇所を除く）。AI生成記事を好んで読まれご所望されている方々のご期待に添えないこと、あらかじめご了承ください。
+
+## 目次
+
+## Day1 - iGPUでLLM
+
+ローカルLLMを動かしたい気持ちが湧いてきたのは約一年前、N5 Proを購入した当初にはすでにあった。パーツ選定で96GBのDDR5を購入したのも、LLMに使うことを見越してのことだ。
+Proxmox VEで構築しているので、LXCコンテナの中で動かすことになるのだが、単にGPUのデバイスパススルーするだけでは動かなかったのを覚えている。
+
+### コンテナ設定
+
+GPUで演算をするだけなら、デバイスパススルーで `/dev/dri/renderD128` をコンテナに追加するだけでいけると思っていたのだが、なぜか画面出力の`card0`も渡してあげないといけなかった。加えてGPUがシステムメモリを共有するという特性上、confファイルを直接編集して`lxc.prlimit.memlock`を追加し、メモリロックに関する設定を緩和させる必要があった。
+何度か試行錯誤して次の設定でうまく起動し、llama.cppで[gemma-3-4b-it:Q4_K_M](https://huggingface.co/ggml-org/gemma-3-4b-it-GGUF)が**20~25TPS**で動いてくれていた。
+
+```yaml
+arch: amd64
+cores: 4
+dev0: /dev/dri/renderD128,gid=993
+dev1: /dev/dri/card0,gid=44
+features: nesting=1,keyctl=1
+hostname: llm
+memory: 8192
+net0: name=eth0,bridge=vnet0,hwaddr=BC:24:11:C6:FA:F5,ip=dhcp,ip6=auto,type=veth
+onboot: 1
+ostype: ubuntu
+rootfs: local-zfs:subvol-131-disk-0,size=64G
+swap: 2048
+timezone: Asia/Tokyo
+unprivileged: 1
+lxc.prlimit.memlock: unlimited
+```
+
+
+## Day2 - NPUも使いたい
+
+せっかく高性能なNPUが搭載されているので使いたい気持ちはすごいあったのだが、2025年はLinuxサポートが壊滅的だった。
+今年3月になり、カーネルドライバの成熟と[FastFlow LMでLinuxサポートが追加された](https://github.com/ROCm/FastFlowLM/releases/tag/v0.9.35)ので、NPUでのLLM構築をして遊んでいた。
+
+### XDNA2ドライバの導入
+
+当時はProxmox 9.1/Linux 6.17で、まだカーネルでXDNA2のドライバが無効化されていたため、DKMSで[xdna-driver](https://github.com/amd/xdna-driver)を導入するところからスタート。xdna-driverはタグを切る運用ではないようだが、唯一存在した[2.21.75](https://github.com/amd/xdna-driver/releases/tag/2.21.75)のDKMSでの導入をセットアップした。
+おそらくProxmox 9.2の7系からか、原稿執筆時の最新版7.0.14-12-pveにはカーネルモジュールとしてamdxdnaが同梱されるようになっている。しかし自動復旧などのサポートがまだ取り込まれていないのもあって、未だにDKMSでの導入を続けている。
+
+ドライバが正常に読まれると、`/dev/kfd`と`/dev/accel/accel0`が登場するので、これらをコンテナにパススルーして準備は完了。
+
+```yaml
+dev0: /dev/kfd,gid=993
+dev1: /dev/accel/accel0,gid=993
+dev2: /dev/dri/renderD128,gid=993
+dev3: /dev/dri/card0,gid=44
+```
+
+### Lemonade導入
+
+コンテナにFastflow LMを導入して動作確認しつつ少し遊んだ後は、GPUとNPUとをLLMで使うのに便利なオールインワンツールの[Lemonade](https://github.com/lemonade-sdk/lemonade)を導入。バックエンドの管理からモデルの追加やロード、OpenAI互換APIの集約までをこれひとつで実現でき、さらに便利になった。
+
+![LemonadeでFastflowLM](/public/assets/images/2026/08/19/lemonade-fastflow.png)
+
+
+### NPU性能
+
+肝心のNPUの性能はというと、[gemma4-it-e2b-FLM](https://huggingface.co/FastFlowLM/Gemma4-E2B-IT-NPU2)で短文のキャッチボールでは**20~25TPS**と、簡単な作業にはストレスなく使える感じである。[RAG](https://ja.wikipedia.org/wiki/Retrieval-Augmented_Generation)から単純に情報を取ってきてもらったり、AIチャットのタイトル考案など、軽量な処理にはNPUモデルを常用する運用となった。
+
+
+## Day3 - 大きなモデルを動かしたい
+
+Lemonadeでいろんなモデルを動かして試した結果、GPUの性能的に4Bや9Bが実用速度で動かせるモデルだという感覚に落ち着いていた。大きくてもファイルサイズにして8GBもいかないくらいのモデルを動かして遊ぶ日々だった。
+しかし巷ではQwen3.6 35B-A3Bのファインチューニングが大流行りし、Q4量子化でも20GBを超える様々な特徴を持ったモデルが次々と登場することとなる。DistillationやUncensoredは当たり前になり、さらに特徴を持たせるなどして派生モデルは数えきれないほどに。MoEのアクティブ推論3Bなので、4Bが実用的な890Mでもモデルが読み込めさえすれば十分に使える可能性を秘めている。
+
+### メモリの節約とzramの導入
+
+派生モデルは一体どういったキャラ付けをされているのか、好奇心を掻き立てられこれらを動かしたくなってしまう。ただ、そのままではGPUに割り当てられるメモリが足りないので、空き容量の確保に奔走した。
+常駐不要なコンテナを停止し、使うときだけ起動するように[Sablier](https://sablierapp.dev/tutorials/providers/proxmox_lxc/)でオンデマンド起動を構成して10GB以上のメモリを回収。
+さらに[zramでメモリ圧縮を効かせて](https://gist.github.com/mzyy94/70a98c25d4ac4902105a60ac62ae4fc3)見かけ上のメモリ空き容量を増やした。
+UEFIで32GBのメモリをiGPUの890Mに固定して割り当て、VRAMから溢れたモデルやKVキャッシュが配置されるGTTはブート引数に `amdgpu.gttsize=16384` として16GBを確保し、48GB相当のVRAMとして十分に大きなモデルを動かせるようにした。
+
+### Qwen3.6 35B-A3B iGPU性能
+
+30B超の巨大なモデルでも、MTPでトークン予測が走るActive 3Bであれば890Mでも速度としては**20~25TPS**が出ていた。Qwen3.6 35B-A3B派生+MTPでもQ4量子化であれば、128Kのコンテキスト長でVRAMは29.8GBで収まっていた。[Hermes Agent](https://hermes-agent.org/ja/)で定期タスクを回す使い方では、この速度が出ていれば雑務をこなすには十分だ。
+
+
+## Day4 - 外付けGPUを繋げたい
+
+様々なモデルを大小色々と動かしていくうちに、思考中の時間が気になってきた。即答するInstructモデルであれば、長い会話が積み上がって20TPSに落ち込んでもまだ会話にストレスがないが、ぶつぶつと考え込むタイプのモデルが一向に回答しないThinkingを同じ速度で巡らせているとイライラが溜まってくる。コーディングモデルで対話して決定を下す作業をしている時だと、人間が書いた方が早いだろと感じることもしばしばあった。
+
+内蔵GPUの限界を感じたので、ちゃんとしたGPUを導入しようと考え始めた。
+
+
+### LLM向きなGPU
+
+今よりLLMが早く動いて欲しい気持ちだけでゲームに使う考えはなく、これと言ってこだわりもないためGPU選びをするところから始めた。半導体市場の先が読めないので長く使えるGPUがいい。LLMに使うのに8GB VRAMでは論外なので、最新GPUのうち16GB以上のVRAMを積むものをざっと並べて考えてみた。LLM性能はVRAM帯域やベンチ結果から捻り出した独自の評価で、価格は値上げもあって今では参考にならないが、どちらも相対的な指標としてみてほしい。
+
+ メーカー | 型番 | VRAM | LLM性能 | 価格(万円)
+ --- | --- | --- | --- | ---
+ NVIDIA | RTX 5090 | 32GB | ★★★★★ | 60~
+ AMD | AI PRO R9700 | 32GB | ★★★ | 25~
+ Intel | Arc Pro B70 | 32GB | ★★★ | 25~
+ NVIDIA | RTX 5080 | 16GB | ★★★★★ | 20〜25
+ NVIDIA | RTX 5070 Ti | 16GB | ★★★★ | 15〜20
+ NVIDIA | RTX 5060 Ti (16GB) | 16GB | ★★★ | 10-15
+ AMD | RX 9070 XT | 16GB | ★★★ | 8~10
+ AMD | RX 9070 | 16GB | ★★ | 7〜10
+ AMD | RX 9060 XT (16GB) | 16GB | ★★ | 6〜8
+
+32GB搭載品を狙いたいところだが、RTX 5090はAIバブルの餌食となっていてコスパがかなり悪い。AMDとIntelの32GBモデルは同じ価格帯でVRAM比でコスパはいいが、LLM性能はベンチマーク結果が振るわずまずまずのようだ。
+「まずまず」の理由を深掘りしてみると、どちらもソフトウェア最適化がCUDAほど成熟していないがために、ハードの性能を生かしきれていない様子だった。
+今は星3つでも、今後4つに化ける可能性は大いにある。
+
+ここで注目したいのが、R9700とRX 9070 XT。これらは共通のアーキテクチャで同じコアを持ち、VRAMだけが違うという仕様のため、実質R9700はRX 9070 XTのVRAM倍増版なのだ。
+VRAMがR9700の半分であるRX 9070 XTは価格が3分の1ほどで買える（2026年7月時点）ので、RX 9070 XTのお買い得さが際立っている。
+
+Oculinkの速度制約による性能低下も懸念されるので、星5つを買って大怪我するより星3つで体調不良くらいの方がマシと考え、RX 9070 XTを購入することにした。
+
+
+<img src="https://m.media-amazon.com/images/I/61QMyzHFSWL._AC_SL1200_.jpg" width="480" />
+[Amazon | ASRock AMD Radeon RX 9070 XT Steel Legend Dark 16GB GDDR6 256ビット、2970MHzブースト、PCIe 5.0、3xDP2.1+HDMI2.1、トリプルファン、メタルバックプレート、RGB同期、DirectX12 Ultimate、RDNA4、2x8ピン。 | ASRock | グラフィックボード 通販](https://www.amazon.co.jp/ASRock-256%E3%83%93%E3%83%83%E3%83%88%E3%80%812970MHz%E3%83%96%E3%83%BC%E3%82%B9%E3%83%88%E3%80%81PCIe-5-0%E3%80%813xDP2-1-HDMI2-1%E3%80%81%E3%83%88%E3%83%AA%E3%83%97%E3%83%AB%E3%83%95%E3%82%A1%E3%83%B3%E3%80%81%E3%83%A1%E3%82%BF%E3%83%AB%E3%83%90%E3%83%83%E3%82%AF%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%80%81RGB%E5%90%8C%E6%9C%9F%E3%80%81DirectX12-Ultimate%E3%80%81RDNA4%E3%80%812x8%E3%83%94%E3%83%B3%E3%80%82/dp/B0F3FQ9981?&linkCode=ll2&tag=mzyy-22&linkId=12e1a02ac3aec4d1a1c6c2a1660790bc&ref_=as_li_ss_tl)
+
+### Oculink PCIe変換カード
+
+OculinkでGPUを繋げるには、PCIeスロットの形に変換しないといけない。[Minisforum DEG1](https://www.amazon.co.jp/Minisforum-DEG1-%E5%A4%96%E4%BB%98%E3%81%91GPU-%E3%83%89%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0%E3%82%B9%E3%83%86%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3-Oculink%E5%AF%BE%E5%BF%9C/dp/B0D924WCL4?th=1&linkCode=ll2&tag=mzyy-22&linkId=a6a5fc78d3f38ffe383e36baa43cac6a&ref_=as_li_ss_tl)や[AOOSTAR EG01](https://www.amazon.co.jp/AOOSTAR-%E5%A4%96%E4%BB%98%E3%81%91GPU-%E3%83%89%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0%E3%82%B9%E3%83%86%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3-OCuLink-%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%95%E3%82%A7%E3%83%BC%E3%82%B9%E6%90%AD%E8%BC%89/dp/B0G1BRDS42?pd_rd_w=TzAs0&content-id=amzn1.sym.855d8f70-df76-4181-80b0-56e48ae3bb9b&pf_rd_p=855d8f70-df76-4181-80b0-56e48ae3bb9b&pf_rd_r=93MWBZQ5X8MZ4PDN0MBN&pd_rd_wg=vx4PT&pd_rd_r=141e90fa-baad-4233-85f2-5752ac878ce0&pd_rd_i=B0G1BRDS42&th=1&linkCode=ll2&tag=mzyy-22&linkId=6f5f87e71428bec6e57cb1118bb2076c&ref_=as_li_ss_tl)が有名どころだが、どちらも1万円以上する。Oculinkの信号はPCIeそのものなので、そこまで大袈裟なことをしていないものに1万円はかなり割高と感じたため、AliExpressで探すこととした。
+
+DEG1やEG01に似たGPUスタンド一体型のものはAliでも高価だったため、GPUの固定方法はあとで考えるとして3000円台でケーブル付きのこちらを購入した。
+
+<img src="https://ae-pic-a1.aliexpress-media.com/kf/S15741fbd24914859b9d6d987135f5b9cw.jpg" width="300" />
+
+[高速安定拡張 Oculink SFF-8612 から PCI-E 4.0 X16 アダプターライザーカード、ケーブル付き 24 ピン電源供給、GPU 用 - AliExpress](https://ja.aliexpress.com/item/1005012182833390.html)
+
+
+### 不安定なOculink接続と問題解決
+
+GPUと変換カードが届いていざ接続。手持ちの450W SFX電源を繋いで起動し、コンテナにパススルーしてLemonadeで動作させることに成功した。しかし長くは続かなかった。
+
+チャットでの動作確認では、モデルのロードが完了し、最初の会話を返すところまではうまくいくのだが、何回か会話を続けていると接続を見失ってしまうことがあった。Fableに解析を依頼すると、立派な調査レポートと解決案を得られた。実際に`pcie_aspm=off amdgpu.aspm=0 amdgpu.runpm=0`をブート引数に設定してみたところ、以降はずっと安定して稼働し続けている。省電力モードを切ってもアイドル時で3Wなので、安定性のトレードオフとして無視できるコストだ。
+
+以下、AI生成調査レポートのコピペ（抜粋）。
+
+---
+
+#### 症状
+
+- Vulkan (RADV) バックエンドで llama-server が、**何回目かのチャットのタイミングで不定期に** `vk::Queue::submit: ErrorDeviceLost` でクラッシュ
+- モデル非依存 (MoE の Qwen3.6 系でも dense の 13B でも発生)
+- ホスト側 dmesg には毎回同じパターン:
+
+```
+[drm:gfx_v12_0_bad_op_irq [amdgpu]] *ERROR* Illegal opcode in command stream
+amdgpu 0000:c9:00.0: [gfxhub] page fault (src_id:0 ring:222 ...)
+amdgpu 0000:c9:00.0:   in page starting at address 0x000080010002b000 from client 10
+amdgpu 0000:c9:00.0:          Faulty UTCL2 client ID: CPF (0x4)
+amdgpu 0000:c9:00.0:          WALKER_ERROR: 0x6 / PERMISSION_FAULTS: 0xb / MAPPING_ERROR: 0x1
+amdgpu 0000:c9:00.0: ring gfx_0.0.0 timeout ...
+amdgpu 0000:c9:00.0: [drm] device wedged, but recovered through reset
+```
+
+- 加えて、**推論が成功した直後のアイドル中**に `ring sdma0 timeout` が単発で出ていた
+
+#### 調査結果
+
+- 真因は **アイドル時の PCIe 省電力遷移 (ASPM L1 / runtime PM) からの復帰で、OcuLink 区間越しの GART (GPU→ホスト RAM の DMA 窓) アクセスが壊れる**こと
+- kernel cmdline に `pcie_aspm=off amdgpu.aspm=0 amdgpu.runpm=0` を追加して解消見込み
+
+##### パラメータの意味
+
+| パラメータ | レイヤー | 効果 |
+|---|---|---|
+| `pcie_aspm=off` | PCIe リンク層 (全体) | アイドル時のリンク省電力ステート (L0s/L1) を禁止、常時 L0 |
+| `amdgpu.aspm=0` | PCIe リンク層 (GPU) | amdgpu ドライバが自前で行う ASPM 有効化を抑止 (両方入れるのが定番) |
+| `amdgpu.runpm=0` | デバイス電源 | アイドル時に GPU を D3/BACO に落とすランタイム PM を無効化、常時オン |
+
+
+---
+
+
+## Day5 - やっぱり32GB VRAM欲しい
+
+Oculinkでも16GBに収まるモデルであれば、かなり高速に動作することがわかった。例えば[mmnga-o/GPT-OSS-Swallow-20B-RL-v0.1-gguf](https://huggingface.co/mmnga-o/GPT-OSS-Swallow-20B-RL-v0.1-gguf)のQ4_K_M量子化では、iGPUの890Mでは**24TPS**だった回答が、RX 9070 XTでは同じ質問で**140TPS**にまで高速化した。長考するタイプのモデルでも全くといっていいほどストレスを感じなくなった。
+
+ただ、やはり16GBのVRAMは少ない。モデルとKVキャッシュの合計が少しでもVRAMの容量を超えてしまうと、システムRAMに配置されたGTTにデータが溢れ、それを毎トークンOculinkを行き来し参照することになる。推論速度は5分の一にまで低下することもあった。ならばと精度を犠牲にファイルサイズを小さくしたIQ2モデルを動かしてみたものの、量子化サイズを落とすと想像以上におバカになってしまう。もうRX 9070 XTでは満たされない。1枚だけでは。
+
+実は最初からRX 9070 XTを2枚買うつもりで考えていた。というのも、性能が少し劣るがllama.cppではモデルを分割して複数のGPUに分けてロードできるので、2枚買って実質32GB VRAMとしてLLMを動かそうと企んでいたのだ。しかも2枚買っても1枚のR9700より価格は安いのに、活かせるコアは2枚分というお得さもある。消費電力も2倍になるが、暖房機能が無料で付いてきたと考えればお得だ。
+
+
+### 2枚目のGPUとeGPUボックス化
+
+1枚目は固定も何もない裸の状態で動作させていたが、2枚目とともにケースに収めることにした。
+
+#### MasterBox NR200P
+
+![nr200p](/public/assets/images/2026/08/19/nr200p.jpg)
+
+昔買って押し入れに眠っていたCooler Masterの[MasterBox NR200P](https://www.coolermaster.com/ja-jp/products/masterbox-nr200p.html)を引っ張り出してきた。
+このNR200P V1はMini-ITX向けにも関わらず、GPUなどPCIe拡張カードの搭載箇所が2つあるという、他に類を見ない変態ケースだ。写真ではすでにGPUを搭載した後だが、縦位置の2スロットと横位置の3スロットが目を引くだろう。メッシュパネルは全面外せてメンテナンス性に優れ、GPU2枚を組み込んで補助電源やOculinkカードの配置がしやすく、さらにATX電源も（力技で）内蔵できてしまう。まさにデュアルeGPUボックス作りにはぴったりだ。このケースありきで構成を考えていく。
+
+#### 玄人思考 RD-RX9070XT-E16GB/TP
+
+2枚目のGPUは玄人思考のRX 9070 XTを購入した。ちょうど底値だったのと、NR200Pの下部に収めるために2スロット厚である必要があったため。1枚目のOculinkカードの位置からして3スロットある一番上を開けないと干渉してしまうのだ。
+
+<img src="https://m.media-amazon.com/images/I/61WIPFSwJIL._AC_SL1350_.jpg" width="480" />
+[Amazon | 玄人志向 AMD Radeon RX 9070 XT 搭載 グラフィックボード 16GB トリプルファン 【国内正規品】 RD-RX9070XT-E16GB/TP | 玄人志向 | グラフィックボード 通販](https://www.amazon.co.jp/%E7%8E%84%E4%BA%BA%E5%BF%97%E5%90%91-%E3%82%B0%E3%83%A9%E3%83%95%E3%82%A3%E3%83%83%E3%82%AF%E3%83%9C%E3%83%BC%E3%83%89-%E3%83%88%E3%83%AA%E3%83%97%E3%83%AB%E3%83%95%E3%82%A1%E3%83%B3-%E3%80%90%E5%9B%BD%E5%86%85%E6%AD%A3%E8%A6%8F%E5%93%81%E3%80%91-RD-RX9070XT-E16GB/dp/B0F11V646F?&linkCode=ll2&tag=mzyy-22&linkId=fc449b781bc72c1a4d741cbf7f73ae8b&ref_=as_li_ss_tl)
+
+#### Oculinkカード
+
+2枚目向けのOculinkカードは、6ピン電源で給電できるこちらを購入した。1枚目のOculinkカードでATX24ピンを使っているので、同じカードを買ってもATX電源に繋げられないためである。なおOculinkケーブルは付属しない。
+
+<img src="https://ae-pic-a1.aliexpress-media.com/kf/S136ecfd0ac54433a8371f9c3bbb610b37.jpg" width="300" />
+[トップ評価のOculink SFF-8612 to Pcie X4 X16スロットアダプターカードDC 12V GPU電源PCメインボードグラフィックカード用 - AliExpress](https://ja.aliexpress.com/item/1005011743299959.html)
+
+
+#### PCIe to Oculinkカード
+
+Minisforum N5 ProにはOculinkポートが1つしかないため、2つ目のOculinkを増設するための拡張カードを追加する。PCI Expressに装着して信号をそのまま外に出す形のもの。
+
+<img src="https://ae-pic-a1.aliexpress-media.com/kf/S97b1f1f2937044868eb9e42e33bd7f28e.png" width="300" />
+
+[ADTLINK PCIe 4.0 X4 - OCuLink SFF-8611/8612 アダプター (ハーフハイトおよびフルハイトブラケット付き) OCuLink グラフィックスカード外部接続用 - AliExpress](https://ja.aliexpress.com/item/1005009464388853.html)
+
+#### その他
+
+
+##### Oculinkケーブル
+
+2まいめのOculinkカードはPCIeスロットに対して横向きにOculinkポートがあるが、ケース背面から引き回したいので、L字に曲がったケーブルを購入。L字側の端子部分に厚みがあって差し込めなかったので、干渉しないよう少し削って高さを抑える加工をした。
+
+<a href="https://s.click.aliexpress.com/e/_c3LgWm5h" target="_blank"><img src="//ae01.alicdn.com/kf/S90c4ef245b6042aba2328e2575a372346.jpg_350x350.jpg" /></a>
+
+[JULONGFENGBAO 1/2 個 6 ピン 8 ピン PCI Express からデュアル PCIE 8 (6+2) ピン電源ケーブルグラフィックスカード PCI-E GPU データスプリッタ - AliExpress](https://s.click.aliexpress.com/e/_c4agJrer)
+
+##### 850W GOLD ATX電源
+
+TGP 304WのGPUを2枚載せるだけなので700W級でも動作させることは可能だが、余裕を持って850Wを選択した。
+
+<img src="https://m.media-amazon.com/images/I/815zguLyHnL._AC_SL1500_.jpg" width="300" />
+[Amazon | Cooler Master ELITE Gold 850 FM A/JP cord 80PLUS GOLD認証取得 ATX 3.1対応 850W電源ユニット \[MPX-8505-AFAG-BJP\] | Cooler Master | 電源ユニット 通販](https://www.amazon.co.jp/dp/B0G4LCJJZD?th=1&linkCode=ll2&tag=mzyy-22&linkId=33f67b278ccaabda2a1ddb792492eee4&ref_=as_li_ss_tl)
+
+##### GPU電源分岐ケーブル
+
+先のATX電源にはPCIe電源が分岐型の8+8と単独の8ピンの3口あるが、GPU1枚あたり2口、なので2枚で4口と、Oculinkカードで1口の計5口必要なため、2本の分岐ケーブルを購入。安価なのに18AWGの太めのケーブルで大電流を流しても安心感がある。
+
+<a href="https://s.click.aliexpress.com/e/_c4agJrer" target="_blank"><img src="//ae01.alicdn.com/kf/S31a3348183314e08bb32fb4decbf6c68i.jpg_350x350.jpg" /></a>
+
+[JULONGFENGBAO 1/2 個 6 ピン 8 ピン PCI Express からデュアル PCIE 8 (6+2) ピン電源ケーブルグラフィックスカード PCI-E GPU データスプリッタ - AliExpress](https://s.click.aliexpress.com/e/_c4agJrer)
+
+##### GPU高さ調整具
+
+寝かせて取り付ける方のGPUの固定されない側が垂れ下がってしまうので、高さをいい感じに調整し支えるために購入。
+
+<a href="https://s.click.aliexpress.com/e/_c3FHEf5l" target="_blank"><img src="//ae01.alicdn.com/kf/S3ed4da60e1ce4422bf02af0add8791e18.jpg_350x350.jpg" /></a>
+[コンピュータグラフィックスカードホルダーシャーシファンサポート固定金属ブラケット6-96mm調整可能なGPUホルダー - AliExpress](https://s.click.aliexpress.com/e/_c3FHEf5l)
+
+##### ファンコントローラー
+
+NR200Pの天面から排気するケースファンを動かすためのもの。SATA電源を繋いでファンを固定の速度で動かす形となる。
+
+<a href="https://s.click.aliexpress.com/e/_c4L6aYwj" target="_blank"><img src="//ae01.alicdn.com/kf/H384e2c7e581c4822ac57f0978f8aa3146.jpg_350x350.jpg" /></a>
+[1 に 8 3Pin ファンハブ Pwm Sata Molex スプリッタ PC マイニングケーブル 12V 電源クーラー冷却速度コントローラ 4PIN アダプタ - AliExpress](https://s.click.aliexpress.com/e/_c4L6aYwj)
+
+
+
+
+
+
+### 外付けデュアルGPUボックスの完成
+
+購入したパーツを全て組み込み、完成したデュアルeGPUボックスがこちら！
+
+
+![box-side-a](/public/assets/images/2026/08/19/box-side-a.jpeg)
+
+![box-side-b](/public/assets/images/2026/08/19/box-side-b.jpeg)
+
+![box-top](/public/assets/images/2026/08/19/box-top.jpeg)
+
+![box](/public/assets/images/2026/08/19/box.jpeg)
+
+
+
+N5 Proの方にもOculink拡張カードを取り付けたら、2本のOculinkケーブルで繋ぐだけでデュアルeGPUをNASに追加できる。
+
+![pcie-oculink](/public/assets/images/2026/08/19/pcie-oculink.jpeg)
+![dual-oculink](/public/assets/images/2026/08/19/dual-oculink.jpeg)
+
+
+
+![gpu-monitor](/public/assets/images/2026/08/19/gpu-monitor.png)
+
+
+## 性能比較ベンチ
+
+デュアルOculinkによる性能低下が許容できるものであるかを、公開されているベンチマーク結果と照らし合わせて比較して考察していく。
+
+### RX 9070 XT 🆚 Oculink
+
+まずは単体GPUだけでOculinkに起因する性能低下を計測する。いくつか見つかったベンチ結果の中で、一番「同じベンチマーク環境に近いものを再現できそう」な結果がこちら。この結果を比較対象として、Oculinkでどれだけ低下するかを観測した。
+
+https://github.com/ggml-org/llama.cpp/discussions/15396#discussioncomment-14989283
+
+項目 | 投稿結果の構成 | 手元のOculinkの環境 | 差分 | 備考
+--|--|--|---|-
+PCIe | PCIe 5.0x16 64GB/s| PCIe 4x4 8GB/s | -87.5% | 投稿の方は記載のRyzen 7 7700Xから推測
+Power上限 | 317 W | [sysfsのpower1_cap](https://docs.kernel.org/gpu/amdgpu/thermal.html)で317Wに変更 | 0% | 投稿結果はOCモデル？
+llama-cpp | b7083 | b7083 | なし | [release](https://github.com/ggml-org/llama.cpp/releases/tag/b7083)バイナリを利用
+モデル | gpt-oss-20b-GGUF/gpt-oss-20b-MXFP4.gguf | [ggml-org/gpt-oss-20b-GGUF:MXFP4](https://huggingface.co/ggml-org/gpt-oss-20b-GGUF) | 若干違う | モデルファイルの更新が入っている
+
+
+`llama-bench`の実行時引数も投稿に書かれていたものと揃えてベンチマークを回し、結果の値部分を次の表にまとめた。
+
+
+n_ubatch |            test |   投稿ベンチ結果  t/s |       Oculinkベンチ結果    t/s | diff
+-------: | --------------: | -------------------: | -------------------: | -------------------: |
+    2048 |          pp2048 | 2753.99 ± 3.51  |      2871.56 ± 5.06 | +4.27%
+    2048 |          pp8192 | 2359.88 ± 4.74  |      2382.36 ± 4.48 | +0.95%
+    2048 |         pp16384 | 1942.51 ± 1.23  |      1890.34 ± 1.41 | -2.69%
+    2048 |         pp32768 | 1417.87 ± 0.44  |      1162.06 ± 0.59 | -18.04%
+    2048 |           tg128 | 174.16 ± 0.42   |      167.67 ± 0.40  | **-3.73%**
+
+#### 考察
+
+pp2048など、なぜかOculinkの結果がPCIe直結の結果より上回るものも現れているが、トークンサイズの小ささによってPCIeの転送速度の影響よりも揺らぎの方が大きく影響をもたらした可能性が考えられる。
+
+pp32768で大きく低下して見えるのは、サーマルスロットリングが発動したと見当を付けている。というのも、この時のGPUのjunction温度を観測したところ **105℃** を示しており、動作抑制が働くには十分すぎるくらい熱を持っていたからだ。OCモデルではない通常の9070 XTを317W(+13W)で長時間のプロンプト処理をさせ続けていたら、設計限界を超えていてもおかしくない。
+
+トークン生成の結果は **-3.73%** という結果となり、これがまさにOculinkによる性能低下を示している。tgではGPUからの転送速度がそのまま出力結果に反映されるためだ。想像以上に良い結果となり、Oculink運用でも十分にLocal LLMは使えるものと確認できた。
+
+<details>
+
+<summary>ベンチ結果全体</summary>
+
+```
+root@lemonade:/var/lib/lemonade/.cache/huggingface/hub# GGML_VK_VISIBLE_DEVICES=0 /tmp/tmp.7r808fAdJL/build/bin/llama-bench -m models--ggml-org--gpt-oss-20b-GGUF/snapshots/ef9b12f2ff56c69cf32153a02784e7a3c88bf524/gpt-oss-20b-MXFP4.gguf -ngl 99 -t 1 -fa 1 -b 4096 -ub 2048,4096 -p 2048,8192,16384,32768
+load_backend: loaded RPC backend from /tmp/tmp.7r808fAdJL/build/bin/libggml-rpc.so
+WARNING: radv is not a conformant Vulkan implementation, testing use only.
+WARNING: radv is not a conformant Vulkan implementation, testing use only.
+ggml_vulkan: Found 1 Vulkan devices:
+ggml_vulkan: 0 = AMD Radeon RX 9070 XT (RADV GFX1201) (radv) | uma: 0 | fp16: 1 | bf16: 1 | warp size: 64 | shared memory: 65536 | int dot: 1 | matrix cores: KHR_coopmat
+load_backend: loaded Vulkan backend from /tmp/tmp.7r808fAdJL/build/bin/libggml-vulkan.so
+load_backend: loaded CPU backend from /tmp/tmp.7r808fAdJL/build/bin/libggml-cpu-icelake.so
+| model                          |       size |     params | backend    | ngl | threads | n_batch | n_ubatch | fa |            test |                  t/s |
+| ------------------------------ | ---------: | ---------: | ---------- | --: | ------: | ------: | -------: | -: | --------------: | -------------------: |
+| gpt-oss 20B MXFP4 MoE          |  11.27 GiB |    20.91 B | Vulkan     |  99 |       1 |    4096 |     2048 |  1 |          pp2048 |       2871.56 ± 5.06 |
+| gpt-oss 20B MXFP4 MoE          |  11.27 GiB |    20.91 B | Vulkan     |  99 |       1 |    4096 |     2048 |  1 |          pp8192 |       2382.36 ± 4.48 |
+| gpt-oss 20B MXFP4 MoE          |  11.27 GiB |    20.91 B | Vulkan     |  99 |       1 |    4096 |     2048 |  1 |         pp16384 |       1890.34 ± 1.41 |
+| gpt-oss 20B MXFP4 MoE          |  11.27 GiB |    20.91 B | Vulkan     |  99 |       1 |    4096 |     2048 |  1 |         pp32768 |       1162.06 ± 0.59 |
+| gpt-oss 20B MXFP4 MoE          |  11.27 GiB |    20.91 B | Vulkan     |  99 |       1 |    4096 |     2048 |  1 |           tg128 |        167.67 ± 0.40 |
+| gpt-oss 20B MXFP4 MoE          |  11.27 GiB |    20.91 B | Vulkan     |  99 |       1 |    4096 |     4096 |  1 |          pp2048 |       2823.90 ± 6.14 |
+| gpt-oss 20B MXFP4 MoE          |  11.27 GiB |    20.91 B | Vulkan     |  99 |       1 |    4096 |     4096 |  1 |          pp8192 |       1866.95 ± 1.81 |
+| gpt-oss 20B MXFP4 MoE          |  11.27 GiB |    20.91 B | Vulkan     |  99 |       1 |    4096 |     4096 |  1 |         pp16384 |       1519.25 ± 2.50 |
+| gpt-oss 20B MXFP4 MoE          |  11.27 GiB |    20.91 B | Vulkan     |  99 |       1 |    4096 |     4096 |  1 |         pp32768 |        990.56 ± 0.43 |
+| gpt-oss 20B MXFP4 MoE          |  11.27 GiB |    20.91 B | Vulkan     |  99 |       1 |    4096 |     4096 |  1 |           tg128 |        167.81 ± 0.19 |
+
+build: 2376b7758 (7083)
+```
+
+</details>
+
+### 1枚のR9700 🆚 2枚のRX 9070 XT
+
+OculinkのPCIe 4x4と理論的に同じ速度であるPCIe 3x8でR9700を接続しているベンチマーク結果を見つけた。
+この結果を用いて、PCIeバスの速度に引っ張られない単純なGPU2枚構成による影響を反映した比較を行う。
+
+https://github.com/ggml-org/llama.cpp/discussions/21043#discussioncomment-16956724
+
+
+項目 | 投稿結果の構成 | 手元のOculinkの環境 | 差分 | 備考
+--|--|--|---|-
+PCIe | PCIe 3x8 8GB/s| PCIe 4x4 8GB/s | 0% | [pcie gen 3 at x8との発言コメント](https://github.com/ggml-org/llama.cpp/discussions/21043#discussioncomment-16968647)
+Power上限 | 300W | 304W | +1.33% | [R9700のTBPは300W](https://www.amd.com/ja/products/graphics/workstations/radeon-ai-pro/ai-9000-series/amd-radeon-ai-pro-r9700.html)
+llama-cpp | b9203 | b9203 | なし | [release](https://github.com/ggml-org/llama.cpp/releases/tag/b9203)バイナリを利用
+モデル | Qwen3.6-27B-UD-Q4_K_XL (MPT付き) | [unsloth/Qwen3.6-27B-GGUF:UD-Q4_K_XL](https://huggingface.co/unsloth/Qwen3.6-27B-GGUF) | 若干違う | MTPの比較はしないのでMTPなしモデルを利用
+
+
+`llama-bench`のコマンドはDiscusstion先頭にあるStock benchmarkを参考に、KV Q4_0の引数を加えてベンチマークを実施。次の表のとおりとなった。
+
+            test |  Single R9700    t/s |    Dual RX 9070 XT   t/s | diff
+ --------------: | -------------------: | -------------------: | ----:
+           pp128 |       736.8 |       511.79 ± 26.15 | -30.54%
+          pp2048 |       924.2 |       1375.25 ± 1.57 | **+48.80%**
+          pp8192 |      888.9 |      1263.51 ± 24.08 | **+42.14%**
+         pp16384 |       825.6 |       1160.00 ± 8.60 | **+40.50%**
+           tg128 |         28.2 |         23.66 ± 0.19 | -16.31%
+          tg2048 |         29.6 |         23.49 ± 0.06 | -20.95%
+          tg8192 |         29.9 |         23.14 ± 0.10 | -22.74%
+         tg16384 |         29.8 |         23.11 ± 0.09 | -22.48%
+
+
+#### 考察
+
+小さなプロンプト処理では2つのGPUに分けて処理する効率より、そのためのオーバーヘッドの方が勝って性能が負けていると考えられる。
+コンテキストの長い大きな処理においては、R9700単体よりRX 9070 XT2枚の方が **+40%以上のスコア**を叩き出していて、2つのGPUで処理をすることによる恩恵が明確に現れている。
+
+トークン生成の結果は **-16%〜-23%** と軒並み悪化しており、2枚のGPU間の同期などがボトルネックとなっていると考えられる。コンテキスト長が長くなると結果が悪化していくのを見るに、2つのGPUが相互参照するKVキャッシュ周りが詰まっているのだろう。
+
+<details>
+
+<summary>ベンチ結果全体</summary>
+
+```
+root@lemonade:/var/lib/lemonade/.cache/huggingface/hub# /tmp/tmp.7r808fAdJL/llama-b9203/llama-bench -m models--unsloth--Qwen3.6-27B-GGUF/snapshots/82d411acf4a06cfb8d9b073a5211bf410bfc29bf/Qwen3.6-27B-UD-Q4_K_XL.gguf -t 1 -ngl 99 -fa 1 -p 128,2048,8192,16384 -n 128,2048,8192,16384 -r 3 -ctk q4_0 -ctv q4_0
+load_backend: loaded RPC backend from /tmp/tmp.7r808fAdJL/llama-b9203/libggml-rpc.so
+WARNING: radv is not a conformant Vulkan implementation, testing use only.
+WARNING: radv is not a conformant Vulkan implementation, testing use only.
+ggml_vulkan: Found 2 Vulkan devices:
+ggml_vulkan: 0 = AMD Radeon RX 9070 XT (RADV GFX1201) (radv) | uma: 0 | fp16: 1 | bf16: 1 | warp size: 64 | shared memory: 65536 | int dot: 1 | matrix cores: KHR_coopmat
+ggml_vulkan: 1 = AMD Radeon RX 9070 XT (RADV GFX1201) (radv) | uma: 0 | fp16: 1 | bf16: 1 | warp size: 64 | shared memory: 65536 | int dot: 1 | matrix cores: KHR_coopmat
+load_backend: loaded Vulkan backend from /tmp/tmp.7r808fAdJL/llama-b9203/libggml-vulkan.so
+load_backend: loaded CPU backend from /tmp/tmp.7r808fAdJL/llama-b9203/libggml-cpu-zen4.so
+| model                          |       size |     params | backend    | ngl | threads | type_k | type_v | fa |            test |                  t/s |
+| ------------------------------ | ---------: | ---------: | ---------- | --: | ------: | -----: | -----: | -: | --------------: | -------------------: |
+| qwen35 27B Q4_K - Medium       |  16.39 GiB |    26.90 B | Vulkan     |  99 |       1 |   q4_0 |   q4_0 |  1 |           pp128 |       511.79 ± 26.15 |
+| qwen35 27B Q4_K - Medium       |  16.39 GiB |    26.90 B | Vulkan     |  99 |       1 |   q4_0 |   q4_0 |  1 |          pp2048 |       1375.25 ± 1.57 |
+| qwen35 27B Q4_K - Medium       |  16.39 GiB |    26.90 B | Vulkan     |  99 |       1 |   q4_0 |   q4_0 |  1 |          pp8192 |      1263.51 ± 24.08 |
+| qwen35 27B Q4_K - Medium       |  16.39 GiB |    26.90 B | Vulkan     |  99 |       1 |   q4_0 |   q4_0 |  1 |         pp16384 |       1160.00 ± 8.60 |
+| qwen35 27B Q4_K - Medium       |  16.39 GiB |    26.90 B | Vulkan     |  99 |       1 |   q4_0 |   q4_0 |  1 |           tg128 |         23.66 ± 0.19 |
+| qwen35 27B Q4_K - Medium       |  16.39 GiB |    26.90 B | Vulkan     |  99 |       1 |   q4_0 |   q4_0 |  1 |          tg2048 |         23.49 ± 0.06 |
+| qwen35 27B Q4_K - Medium       |  16.39 GiB |    26.90 B | Vulkan     |  99 |       1 |   q4_0 |   q4_0 |  1 |          tg8192 |         23.14 ± 0.10 |
+| qwen35 27B Q4_K - Medium       |  16.39 GiB |    26.90 B | Vulkan     |  99 |       1 |   q4_0 |   q4_0 |  1 |         tg16384 |         23.11 ± 0.09 |
+
+build: 87589042c (9203)
+```
+
+</details>
+
+
+
+
+
+## まとめ
+
+<img src="/public/assets/images/2026/08/19/nas-egpu.jpeg" alt="nas-egpu" width="500" style="width: 500px; margin: auto" />
+
+デュアルRX 9070 XTはLocal LLMにおいて、R9700の8割程度の性能は発揮できる結果となった。25万円の8割なので20万円相当の性能となるが、RX 9070 XTが底値だったのもあって、それを下回る金額で実現できた。
+この8割の性能というは2026年8月現在での話で、[ROCmドライバのP2P機能をllama.cppで活用する挑戦](https://github.com/ggml-org/llama.cpp/discussions/27082)や[デュアルRX 9070 XTに特化して高速化をする挑戦](https://github.com/MrLordCat/llama.cpp-rdna-lab/)が実れば、より高い性能を発揮できるようになるだろう。
+
+[Qwen3.8-27B-GGUF:Q6_K](https://huggingface.co/unsloth/Qwen3.8-27B-GGUF)に128kコンテキストを載せて[Oh My Pi](https://omp.sh/)でリポジトリの理解から実装の変更までの長時間タスクを動かしたりしているが、長いコンテキストになっても30TPS前後で動いてくれている。どうやら同じような構成で[R9700単体では50TPS出る](https://www.reddit.com/r/LocalLLaMA/comments/1vojr6m/qwen3827b_q6_k_at_128k_on_a_single_32gb_gpu/)らしいので、もう一踏ん張り欲しいところだ。
+まあ人間は欲に弱い生き物なので、いずれR9700を導入しているかもしれないが、今のところデュアルRX 9070 XTに大変満足している。
+
+しかし暑い。デュアルeGPUボックスが熱い。部屋があつい。エアコンつけててもぬるい風が棚から吹いてくる。夏にGPUを増やすもんじゃない。
